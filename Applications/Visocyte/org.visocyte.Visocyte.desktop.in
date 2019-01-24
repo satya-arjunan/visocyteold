@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Visocyte
+Comment=Parallel visualization application
+Exec=visocyte
+TryExec=visocyte
+Icon=visocyte

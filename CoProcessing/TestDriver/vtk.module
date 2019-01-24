@@ -1,0 +1,9 @@
+NAME
+  Visocyte::CatalystTestDriver
+LIBRARY_NAME
+  vtkPVCatalystTestDriver
+DEPENDS
+  Visocyte::Catalyst
+TEST_LABELS
+  Catalyst
+  Visocyte

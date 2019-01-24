@@ -1,0 +1,22 @@
+NAME
+  Visocyte::VTKExtensionsCosmoTools
+LIBRARY_NAME
+  vtkPVVTKExtensionsCosmoTools
+KIT
+  Visocyte::Extensions
+DEPENDS
+  VTK::CommonCore
+  VTK::CommonDataModel
+  VTK::CommonExecutionModel
+  VTK::ParallelCore
+PRIVATE_DEPENDS
+  Visocyte::VTKExtensionsDefault
+  Visocyte::cosmohalofinder
+  VTK::ParallelMPI
+  VTK::jsoncpp
+TEST_DEPENDS
+  VTK::TestingCore
+  VTK::TestingRendering
+  VTK::ParallelMPI
+TEST_LABELS
+  Visocyte

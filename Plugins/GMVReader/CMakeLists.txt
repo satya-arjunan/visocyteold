@@ -1,0 +1,14 @@
+visocyte_add_plugin(GMVReader
+  REQUIRED_ON_SERVER
+  VERSION "1.0"
+  MODULES GMVReader::vtkGMVReader)
+
+# TODO: What to do with pqGMVReaderPanel? This is needed if it is to be used.
+target_link_libraries(GMVReader
+  PRIVATE
+    Visocyte::Common
+    Visocyte::ServerManagerCore)
+
+if (BUILD_TESTING)
+  add_subdirectory(Testing)
+endif ()

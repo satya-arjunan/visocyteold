@@ -1,0 +1,13 @@
+NAME
+  Visocyte::pqPython
+LIBRARY_NAME
+  pqPython
+CONDITION
+  PARAVIEW_ENABLE_PYTHON
+DEPENDS
+  Visocyte::pqCore
+  VTK::PythonInterpreter
+  VTK::WrappingPythonCore
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

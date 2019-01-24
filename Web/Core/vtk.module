@@ -1,0 +1,16 @@
+NAME
+  Visocyte::PVWebCore
+LIBRARY_NAME
+  vtkPVWebCore
+CONDITION
+  PARAVIEW_ENABLE_WEB
+DEPENDS
+  Visocyte::ServerManagerDefault
+  VTK::WebCore
+  VTK::WebGLExporter
+TEST_DEPENDS
+  VTK::ImagingSources
+  VTK::TestingCore
+TEST_LABELS
+  Visocyte
+  VisocyteWeb

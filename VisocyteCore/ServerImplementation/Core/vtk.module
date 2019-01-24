@@ -1,0 +1,15 @@
+NAME
+  Visocyte::ServerImplementationCore
+LIBRARY_NAME
+  vtkPVServerImplementationCore
+GROUPS
+  VisocyteCore
+KIT
+  Visocyte::ServerImplementation
+DEPENDS
+  Visocyte::ClientServerCoreCore
+  Visocyte::protobuf
+PRIVATE_DEPENDS
+  VTK::vtksys
+TEST_LABELS
+  Visocyte

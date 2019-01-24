@@ -1,0 +1,12 @@
+NAME
+  Visocyte::VTKExtensionsPoints
+LIBRARY_NAME
+  vtkPVVTKExtensionsPoints
+KIT
+  Visocyte::Extensions
+DEPENDS
+  VTK::FiltersPoints
+PRIVATE_DEPENDS
+  VTK::FiltersCore
+TEST_LABELS
+  Visocyte

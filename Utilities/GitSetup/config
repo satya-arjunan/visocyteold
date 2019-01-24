@@ -1,0 +1,10 @@
+[hooks]
+	url = https://gitlab.kitware.com/visocyte/visocyte.git
+[upstream]
+	url = https://gitlab.kitware.com/visocyte/visocyte.git
+[gitlab]
+	host = gitlab.kitware.com
+	group-path = visocyte
+	group-name = Visocyte
+	project-path = visocyte
+	project-name = Visocyte

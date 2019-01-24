@@ -1,0 +1,13 @@
+NAME
+  Visocyte::ServerImplementationRendering
+LIBRARY_NAME
+  vtkPVServerImplementationRendering
+GROUPS
+  VisocyteRendering
+KIT
+  Visocyte::ServerImplementation
+DEPENDS
+  Visocyte::ClientServerCoreRendering
+  Visocyte::ServerImplementationCore
+TEST_LABELS
+  Visocyte

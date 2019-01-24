@@ -1,0 +1,10 @@
+NAME
+  Visocyte::ServerManagerApplication
+LIBRARY_NAME
+  vtkPVServerManagerApplication
+DEPENDS
+  Visocyte::ServerManagerCore
+PRIVATE_DEPENDS
+  VTK::vtksys
+TEST_LABELS
+  Visocyte

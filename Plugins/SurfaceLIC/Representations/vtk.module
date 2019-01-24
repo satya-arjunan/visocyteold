@@ -1,0 +1,10 @@
+NAME
+  SurfaceLIC::vtkSurfaceLICRepresentations
+LIBRARY_NAME
+  vtkSurfaceLICRepresentations
+DEPENDS
+  Visocyte::ClientServerCoreRendering
+PRIVATE_DEPENDS
+  VTK::CommonCore
+  VTK::RenderingCore
+  VTK::RenderingLICOpenGL2

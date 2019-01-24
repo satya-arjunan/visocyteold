@@ -1,0 +1,29 @@
+{
+  "edition": "Rendering-Base-Python",
+  "requires": [
+    "Rendering-Base",
+    "Enable-Python"
+  ],
+  "modules": [
+    { "name": "vtkPVClientServerCoreRendering",
+      "path": "VisocyteCore/ClientServerCore/Rendering",
+      "include": [
+        { "class": "vtkPythonRepresentation" },
+        { "class": "vtkPythonView" }
+      ],
+      "exclude": [
+        { "path": "Testing" }
+      ],
+      "cswrap": true,
+      "pythonwrap": true
+    },
+    { "name": "vtkPVServerManagerRendering",
+      "path": "VisocyteCore/ServerManager/Rendering",
+      "include": [
+        { "class": "vtkSMPythonViewProxy" }
+      ],
+      "cswrap": true,
+      "pythonwrap": true
+    }
+  ]
+}

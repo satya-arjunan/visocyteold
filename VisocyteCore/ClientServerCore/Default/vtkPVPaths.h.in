@@ -1,0 +1,25 @@
+/*=========================================================================
+
+  Program:   Visocyte
+  Module:    vtkPVPaths.h.in
+
+  Copyright (c) Kitware, Inc.
+  All rights reserved.
+  See Copyright.txt or http://www.visocyte.org/HTML/Copyright.html for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
+
+=========================================================================*/
+#ifndef VTK_PARAVIEW_PATHS_H
+#define VTK_PARAVIEW_PATHS_H
+
+static const char* PARAVIEW_PATHS[] = {
+  "@Visocyte_SOURCE_DIR@",
+  "@Visocyte_SOURCE_DIR@/GUI",
+  "@Visocyte_BINARY_DIR@",
+  "@Visocyte_BINARY_DIR@/GUI",
+  0};
+
+#endif

@@ -1,0 +1,12 @@
+NAME
+  Visocyte::smTestDriver
+LIBRARY_NAME
+  smTestDriver
+GROUPS
+  VisocyteCore
+PRIVATE_DEPENDS
+  VTK::CommonCore
+  VTK::vtksys
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

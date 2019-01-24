@@ -1,0 +1,24 @@
+NAME
+  Visocyte::pqCore
+LIBRARY_NAME
+  pqCore
+GROUPS
+  VisocyteQt
+DEPENDS
+  Visocyte::ClientServerCoreDefault
+  Visocyte::pqWidgets
+  VTK::GUISupportQt
+PRIVATE_DEPENDS
+  Visocyte::Animation
+  Visocyte::ServerManagerApplication
+  Visocyte::ServerManagerDefault
+  VTK::TestingRendering
+  VTK::vtksys
+OPTIONAL_DEPENDS
+  # These affect the public API.
+  #Visocyte::pqCorePython
+TEST_DEPENDS
+  Visocyte::ServerManagerRendering
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

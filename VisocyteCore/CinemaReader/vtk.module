@@ -1,0 +1,18 @@
+NAME
+  Visocyte::CinemaReader
+LIBRARY_NAME
+  vtkPVCinemaReader
+DEPENDS
+  Visocyte::ClientServerCoreRendering
+  Visocyte::ServerManagerCore
+  VTK::CommonExecutionModel
+  VTK::RenderingCore
+PRIVATE_DEPENDS
+  Visocyte::Animation
+  Visocyte::ServerManagerRendering
+  VTK::PythonInterpreter
+  VTK::RenderingOpenGL2
+  VTK::WrappingPythonCore
+  VTK::opengl
+TEST_LABELS
+  Visocyte

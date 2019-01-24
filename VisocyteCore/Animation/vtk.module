@@ -1,0 +1,22 @@
+NAME
+  Visocyte::Animation
+LIBRARY_NAME
+  vtkPVAnimation
+DEPENDS
+  Visocyte::ServerManagerCore
+  Visocyte::ServerManagerRendering
+  Visocyte::VTKExtensionsDefault
+  VTK::IOMovie
+PRIVATE_DEPENDS
+  Visocyte::ServerManagerDefault
+  VTK::vtksys
+OPTIONAL_DEPENDS
+  VTK::IOFFMPEG
+  VTK::IOOggTheora
+
+  # These affect the public API.
+  VTK::PythonInterpreter
+TEST_DEPENDS
+  VTK::TestingCore
+TEST_LABELS
+  Visocyte

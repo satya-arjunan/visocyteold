@@ -1,0 +1,12 @@
+NAME
+  Visocyte::pqWidgets
+GROUPS
+  VisocyteQt
+  Qt
+DEPENDS
+  Visocyte::ServerManagerCore
+  Visocyte::qttesting
+  VTK::GUISupportQt
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

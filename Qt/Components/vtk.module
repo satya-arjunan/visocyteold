@@ -1,0 +1,26 @@
+NAME
+  Visocyte::pqComponents
+LIBRARY_NAME
+  pqComponents
+GROUPS
+  VisocyteQt
+DEPENDS
+  Visocyte::pqCore
+  VTK::jsoncpp
+PRIVATE_DEPENDS
+  Visocyte::Animation
+  Visocyte::ClientServerCoreDefault
+  Visocyte::ServerManagerDefault
+  Visocyte::ServerManagerRendering
+  VTK::ChartsCore
+  VTK::IOImage
+  VTK::pugixml
+  VTK::vtksys
+OPTIONAL_DEPENDS
+  VTK::ParallelMPI
+
+  # These affect the public API.
+  Visocyte::pqPython
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

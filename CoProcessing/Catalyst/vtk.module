@@ -1,0 +1,18 @@
+NAME
+  Visocyte::Catalyst
+LIBRARY_NAME
+  vtkPVCatalyst
+DEPENDS
+  Visocyte::ServerManagerApplication
+PRIVATE_DEPENDS
+  VTK::FiltersGeneral
+  VTK::vtksys
+TEST_DEPENDS
+  Visocyte::CatalystTestDriver
+  VTK::IOXML
+  VTK::TestingCore
+TEST_OPTIONAL_DEPENDS
+  VTK::ParallelMPI
+TEST_LABELS
+  Catalyst
+  Visocyte

@@ -1,0 +1,36 @@
+NAME
+  Visocyte::ClientServerCoreRendering
+LIBRARY_NAME
+  vtkPVClientServerCoreRendering
+GROUPS
+  VisocyteRendering
+KIT
+  Visocyte::ClientServer
+DEPENDS
+  Visocyte::ClientServerCoreCore
+  Visocyte::VTKExtensionsDefault
+  Visocyte::VTKExtensionsRendering
+  VTK::DomainsChemistry
+  VTK::FiltersAMR
+  VTK::RenderingLabel
+  VTK::RenderingVolumeOpenGL2
+  VTK::ViewsContext2D
+  VTK::ViewsCore
+  VTK::jsoncpp
+PRIVATE_DEPENDS
+  VTK::InfovisCore
+  VTK::vtksys
+  VTK::zlib
+OPTIONAL_DEPENDS
+  VTK::AcceleratorsVTKm
+  VTK::FiltersOpenTurns
+  VTK::ParallelMPI
+  VTK::RenderingOSPRay
+  VTK::vtkm
+
+  # These affect the public API.
+  Visocyte::icet
+  VTK::PythonInterpreter
+  VTK::WrappingPythonCore
+TEST_LABELS
+  Visocyte

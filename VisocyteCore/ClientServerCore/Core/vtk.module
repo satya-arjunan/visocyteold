@@ -1,0 +1,32 @@
+NAME
+  Visocyte::ClientServerCoreCore
+LIBRARY_NAME
+  vtkPVClientServerCoreCore
+GROUPS
+  VisocyteCore
+KIT
+  Visocyte::ClientServer
+DEPENDS
+  Visocyte::Common
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsSIL
+  VTK::CommonCore
+  VTK::CommonSystem
+  VTK::FiltersExtraction
+  VTK::FiltersGeneral
+  VTK::FiltersParallel
+  VTK::IOLegacy
+PRIVATE_DEPENDS
+  VTK::CommonMisc
+  VTK::vtksys
+OPTIONAL_DEPENDS
+  Visocyte::icet
+  Visocyte::nvpipe
+  VTK::IOFFMPEG
+  VTK::ParallelMPI
+  VTK::WrappingPythonCore
+
+  # These affect the public API.
+  VTK::PythonInterpreter
+TEST_LABELS
+  Visocyte

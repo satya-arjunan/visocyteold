@@ -1,0 +1,26 @@
+NAME
+  Visocyte::VTKExtensionsCGNSReader
+LIBRARY_NAME
+  vtkPVVTKExtensionsCGNSReader
+KIT
+  Visocyte::Extensions
+DEPENDS
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsSIL
+  VTK::CommonCore
+  VTK::CommonDataModel
+  VTK::CommonExecutionModel
+  VTK::ParallelCore
+PRIVATE_DEPENDS
+  Visocyte::cgns
+  VTK::FiltersExtraction
+  VTK::ParallelCore
+  VTK::hdf5
+  VTK::vtksys
+TEST_DEPENDS
+  VTK::CommonSystem
+  VTK::InteractionStyle
+  VTK::TestingCore
+  VTK::TestingRendering
+TEST_LABELS
+  Visocyte

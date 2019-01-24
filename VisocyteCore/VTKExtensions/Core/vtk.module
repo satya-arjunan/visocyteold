@@ -1,0 +1,21 @@
+NAME
+  Visocyte::VTKExtensionsCore
+LIBRARY_NAME
+  vtkPVVTKExtensionsCore
+GROUPS
+  VisocyteCore
+KIT
+  Visocyte::Extensions
+DEPENDS
+  Visocyte::Common
+  VTK::CommonMisc
+  VTK::FiltersCore
+  VTK::FiltersSources
+  VTK::IOImage
+  VTK::ParallelCore
+PRIVATE_DEPENDS
+  VTK::IOLegacy
+  VTK::jsoncpp
+  VTK::vtksys
+TEST_LABELS
+  Visocyte

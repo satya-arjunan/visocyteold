@@ -1,0 +1,26 @@
+#include "@_visocyte_proxy_NAME@ServerManagerModelImplementation.h"
+#include "vtkSMProxy.h"
+#include <QRegularExpression>
+
+@_visocyte_proxy_includes@
+//-----------------------------------------------------------------------------
+@_visocyte_proxy_NAME@ServerManagerModelImplementation::@_visocyte_proxy_NAME@ServerManagerModelImplementation(QObject* parentObject)
+  : QObject(parentObject)
+{
+}
+
+//-----------------------------------------------------------------------------
+@_visocyte_proxy_NAME@ServerManagerModelImplementation::~@_visocyte_proxy_NAME@ServerManagerModelImplementation()
+{
+}
+
+//-----------------------------------------------------------------------------
+pqProxy* @_visocyte_proxy_NAME@ServerManagerModelImplementation::createPQProxy(
+  const QString& regGroup, const QString& regName, vtkSMProxy* proxy, pqServer* server) const
+{
+  if (!proxy || !proxy->GetXMLGroup() || !proxy->GetXMLName())
+  {
+    return nullptr;
+  }
+@_visocyte_proxy_body@
+}

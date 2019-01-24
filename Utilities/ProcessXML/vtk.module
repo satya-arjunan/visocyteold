@@ -1,0 +1,10 @@
+NAME
+  Visocyte::ProcessXML
+LIBRARY_NAME
+  vtkProcessXML
+PRIVATE_DEPENDS
+  VTK::CommonCore
+  VTK::vtksys
+TEST_LABELS
+  Visocyte
+EXCLUDE_WRAP

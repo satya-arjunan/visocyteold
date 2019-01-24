@@ -1,0 +1,153 @@
+#include "@_visocyte_build_plugin@Plugin.h"
+
+#include "vtkObjectFactory.h"
+#include "vtkPVPluginLoader.h"
+
+#cmakedefine BUILD_SHARED_LIBS
+#cmakedefine01 _visocyte_add_plugin_EULA
+#cmakedefine01 _visocyte_add_plugin_SERVER_MANAGER_XML
+#cmakedefine01 _visocyte_add_plugin_MODULES
+#cmakedefine01 _visocyte_add_plugin_UI_INTERFACES
+
+#if _visocyte_add_plugin_EULA
+#include "@_visocyte_add_plugin_eula_header@"
+#endif
+
+@_visocyte_add_plugin_includes@
+namespace
+{
+  // This ensures that when the shared library for this plugin is
+  // unloaded during finalization sequence, it notifies the vtkPVPluginLoader
+  // so it does not double-dlclose() an already unloaded plugin.
+  // This does not affect static builds and hence we don't need to worry about
+  // making sure this instance gets created in static builds.
+  static class @_visocyte_build_plugin@PluginCleaner
+  {
+  public:
+    @_visocyte_build_plugin@PluginCleaner()
+    {
+    }
+    ~@_visocyte_build_plugin@PluginCleaner()
+    {
+      // The plugin library is being unloaded.
+      // Let the plugin loader know so it doesn't try to unload it again.
+      vtkPVPluginLoader::PluginLibraryUnloaded("@_visocyte_build_plugin@");
+    }
+  } @_visocyte_build_plugin@PluginCleaner_Instance;
+}
+
+//-----------------------------------------------------------------------------
+#if _visocyte_add_plugin_SERVER_MANAGER_XML
+#include "@_visocyte_build_plugin@_server_manager.h"
+#endif
+
+#if _visocyte_add_plugin_MODULES
+#include "@_visocyte_build_plugin@_server_manager_modules.h"
+#include "@_visocyte_build_plugin@_client_server.h"
+#endif
+
+//-----------------------------------------------------------------------------
+void @_visocyte_build_plugin@Plugin::GetBinaryResources(
+  std::vector<std::string>& resources)
+{
+@_visocyte_add_plugin_binary_resources@
+  (void)resources;
+}
+
+//-----------------------------------------------------------------------------
+#if _visocyte_add_plugin_with_ui
+@_visocyte_add_plugin_include_interfaces@
+@_visocyte_add_plugin_push_back_interfaces@
+#endif
+
+//-----------------------------------------------------------------------------
+#if _visocyte_add_plugin_with_xml
+vtkClientServerInterpreterInitializer::InterpreterInitializationCallback
+@_visocyte_build_plugin@Plugin::GetInitializeInterpreterCallback()
+{
+#if _visocyte_add_plugin_MODULES
+  return @_visocyte_build_plugin@_client_server_initialize;
+#else
+  return nullptr;
+#endif
+}
+
+//-----------------------------------------------------------------------------
+void @_visocyte_build_plugin@Plugin::GetXMLs(std::vector<std::string> &xmls)
+{
+  (void)xmls;
+#if _visocyte_add_plugin_SERVER_MANAGER_XML
+  @_visocyte_build_plugin@_server_manager_initialize(xmls);
+#endif
+#if _visocyte_add_plugin_MODULES
+  @_visocyte_build_plugin@_server_manager_modules_initialize(xmls);
+#endif
+}
+#endif
+
+//-----------------------------------------------------------------------------
+#if _visocyte_add_plugin_with_ui
+QObjectList @_visocyte_build_plugin@Plugin::interfaces()
+{
+  QObjectList ifaces;
+#if _visocyte_add_plugin_UI_INTERFACES
+  PARAVIEW_ADD_INTERFACES(ifaces);
+#endif
+  return ifaces;
+}
+#endif
+
+//-----------------------------------------------------------------------------
+#if _visocyte_add_plugin_with_python
+@_visocyte_add_plugin_python_includes@
+void @_visocyte_build_plugin@Plugin::GetPythonSourceList(std::vector<std::string>& modules,
+  std::vector<std::string>& sources,
+  std::vector<int> &package_flags)
+{
+  const char *moduleNames[] = {
+@_visocyte_add_plugin_python_modules@
+  };
+  char *moduleSources[] = {
+@_visocyte_add_plugin_python_module_sources@
+  };
+  const int packageFlags[] = {
+@_visocyte_add_plugin_python_package_flags@
+  };
+
+  for (int cc=0; moduleNames[cc]; cc++)
+  {
+    modules.push_back(moduleNames[cc]);
+    sources.push_back(moduleSources[cc]);
+    package_flags.push_back(packageFlags[cc]);
+
+    // free allocated memory.
+    delete moduleSources[cc];
+    moduleSources[cc] = nullptr;
+  }
+}
+#endif
+
+//-----------------------------------------------------------------------------
+@_visocyte_build_plugin@Plugin::@_visocyte_build_plugin@Plugin()
+{
+#if !defined(BUILD_SHARED_LIBS) && _visocyte_add_plugin_with_ui
+  // For static builds, initialize the Qt resources as well as the Qt plugin.
+@_visocyte_add_plugin_resources_init@
+  // Qt 5
+  Q_IMPORT_PLUGIN(@_visocyte_build_plugin@Plugin)
+#endif
+}
+
+//-----------------------------------------------------------------------------
+const char* @_visocyte_build_plugin@Plugin::GetEULA()
+{
+#if _visocyte_add_plugin_EULA
+  return @_visocyte_build_plugin@_EULA;
+#else
+  return nullptr;
+#endif
+}
+
+//-----------------------------------------------------------------------------
+// Mark this as a Visocyte-ServerManager plugin.
+PV_PLUGIN_EXPORT(@_visocyte_build_plugin@, @_visocyte_build_plugin@Plugin)

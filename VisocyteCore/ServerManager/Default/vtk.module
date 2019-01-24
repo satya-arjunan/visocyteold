@@ -1,0 +1,20 @@
+NAME
+  Visocyte::ServerManagerDefault
+LIBRARY_NAME
+  vtkPVServerManagerDefault
+KIT
+  Visocyte::ServerManager
+DEPENDS
+  Visocyte::ServerManagerRendering
+PRIVATE_DEPENDS
+  Visocyte::ClientServerCoreDefault
+  VTK::RenderingVolumeOpenGL2
+  VTK::TestingRendering
+  VTK::pugixml
+  VTK::vtksys
+TEST_DEPENDS
+  Visocyte::Animation
+  Visocyte::ServerManagerApplication
+  VTK::TestingRendering
+TEST_LABELS
+  Visocyte

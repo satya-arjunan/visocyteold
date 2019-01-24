@@ -1,0 +1,17 @@
+NAME
+  StreamingParticles::vtkStreamingParticles
+LIBRARY_NAME
+  vtkStreamingParticles
+DEPENDS
+  Visocyte::ClientServerCoreRendering
+  VTK::CommonCore
+  VTK::CommonDataModel
+  VTK::CommonExecutionModel
+PRIVATE_DEPENDS
+  Visocyte::ClientServerCoreRendering
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsRendering
+  VTK::FiltersCore
+  VTK::ParallelCore
+  VTK::RenderingCore
+  VTK::RenderingOpenGL2
