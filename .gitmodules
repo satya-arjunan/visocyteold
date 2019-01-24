@@ -4,6 +4,9 @@
 [submodule "Utilities/VisItBridge"]
 	path = Utilities/VisItBridge
 	url = https://gitlab.kitware.com/paraview/visitbridge.git
+[submodule "ThirdParty/cinema/vtkcinemapython"]
+	path = ThirdParty/cinema/vtkcinemapython
+	url = https://gitlab.kitware.com/cinema/cinema_python.git
 [submodule "ThirdParty/IceT/vtkicet"]
 	path = ThirdParty/IceT/vtkicet
 	url = https://gitlab.kitware.com/paraview/icet.git
@@ -12,6 +15,3 @@
 	path = ThirdParty/QtTesting/vtkqttesting
 	url = https://gitlab.kitware.com/paraview/qttesting.git
 	branch = for/paraview
-[submodule "ThirdParty/cinema/vtkcinemapython"]
-	path = ThirdParty/cinema/vtkcinemapython
-	url = https://gitlab.kitware.com/cinema/cinema_python.git
