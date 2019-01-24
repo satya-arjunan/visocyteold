@@ -12,7 +12,7 @@ configure_file(
   @ONLY)
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file("${visocyte_cmake_build_dir}/visocyte-config-version.cmake"
-  VERSION "${PARAVIEW_MAJOR_VERSION}.${PARAVIEW_MINOR_VERSION}.${PARAVIEW_BUILD_VERSION}"
+  VERSION "${VISOCYTE_MAJOR_VERSION}.${VISOCYTE_MINOR_VERSION}.${VISOCYTE_BUILD_VERSION}"
   COMPATIBILITY SameMinorVersion)
 
 set(visocyte_cmake_module_files

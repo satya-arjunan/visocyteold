@@ -11,12 +11,12 @@
   <pqevent object="pqClientMainWindow/animationViewDock/animationView/1pqAnimationWidget0/1QHeaderView0" command="mouseRelease" arguments="1,0,0,0,0,2" />
 
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileSaveGeometry" />
-  <pqevent object="pqClientMainWindow/FileSaveAnimationDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/SaveAnimationGeometry.pvd" />
-  <pqevent object="pqClientMainWindow/FileSaveAnimationDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/SaveAnimationGeometry.pvd" />
+  <pqevent object="pqClientMainWindow/FileSaveAnimationDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/SaveAnimationGeometry.pvd" />
+  <pqevent object="pqClientMainWindow/FileSaveAnimationDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/SaveAnimationGeometry.pvd" />
   <pqevent object="pqClientMainWindow/VCRToolbar/actionVCRFirstFrame" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Delete" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileOpen" />
-  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/SaveAnimationGeometry.pvd" />
+  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/SaveAnimationGeometry.pvd" />
   <pqevent object="pqClientMainWindow/VCRToolbar/actionVCRFirstFrame" command="activate" arguments="" />  
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Accept" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/VCRToolbar/actionVCRNextFrame" command="activate" arguments="" />

@@ -70,7 +70,7 @@ public:
   void setUrl(const QUrl& url) override { this->Widget->setUrl(url); }
 };
 
-#ifdef PARAVIEW_USE_QTWEBENGINE
+#ifdef VISOCYTE_USE_QTWEBENGINE
 #include "pqHelpWindowWebEngine.h"
 typedef pqBrowserTemplate<pqWebView> PQBROWSER_TYPE;
 #else

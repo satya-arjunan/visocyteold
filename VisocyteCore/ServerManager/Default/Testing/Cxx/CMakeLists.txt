@@ -1,6 +1,6 @@
 ################################################################################
 # Visocyte ServerManager Unit Tests
-if (PARAVIEW_ENABLE_QT_SUPPORT)
+if (VISOCYTE_ENABLE_QT_SUPPORT)
   find_package(Qt5 REQUIRED COMPONENTS Test)
   set(CMAKE_AUTOMOC 1)
   set(UNITTESTS
@@ -32,6 +32,6 @@ vtk_add_test_cxx(vtkPVServerManagerDefaultCxxTests tests
 vtk_test_cxx_executable(vtkPVServerManagerDefaultCxxTests tests
   ${extra_sources}
   )
-if (PARAVIEW_ENABLE_QT_SUPPORT)
+if (VISOCYTE_ENABLE_QT_SUPPORT)
   target_link_libraries(vtkPVServerManagerDefaultCxxTests PRIVATE Qt5::Test)
 endif ()

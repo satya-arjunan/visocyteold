@@ -4,7 +4,7 @@ project(CxxGhostCellsExample)
 # For this example we use the vtkExtentTranslator to compute the partitioning
 # and ghost cells so Visocyte is always required.
 find_package(Visocyte 5.4 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-include("${PARAVIEW_USE_FILE}")
+include("${VISOCYTE_USE_FILE}")
 
 add_executable(CxxGhostCellsExample FEDriver.cxx FEDataStructures.cxx)
 target_link_libraries(CxxGhostCellsExample LINK_PRIVATE vtkPVPythonCatalyst vtkParallelMPI)
@@ -17,5 +17,5 @@ option(BUILD_TESTING "Build Testing" OFF)
 if (BUILD_TESTING)
   include(CTest)
   add_test(NAME CxxGhostCellsExampleTest COMMAND CxxGhostCellsExample -s ${CMAKE_CURRENT_SOURCE_DIR}/../SampleScripts/gridwriter.py)
-  set_tests_properties(CxxGhostCellsExampleTest PROPERTIES LABELS "PARAVIEW;CATALYST")
+  set_tests_properties(CxxGhostCellsExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 endif()

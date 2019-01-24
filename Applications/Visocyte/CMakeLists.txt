@@ -1,13 +1,13 @@
-cmake_dependent_option(PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION
+cmake_dependent_option(VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
   "Build the Visocyte help menu documentation for Visocyte and its plugins" ON
-  "PARAVIEW_BUILD_QT_GUI" ON)
-mark_as_advanced(PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION)
+  "VISOCYTE_BUILD_QT_GUI" ON)
+mark_as_advanced(VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
 
 set(xmls
   "${CMAKE_CURRENT_SOURCE_DIR}/VisocyteFilters.xml"
   "${CMAKE_CURRENT_SOURCE_DIR}/VisocyteSources.xml")
 
-if (PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION)
+if (VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
   #------------------------------------------------------------------------------
   # Build Online-Help (aka Embedded Help) for the Visocyte application.
   # This is done after the above piece of code that sets the application_gui_xmls
@@ -15,10 +15,10 @@ if (PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION)
   add_subdirectory(Documentation)
 endif ()
 
-if (DEFINED PARAVIEW_VERSION_NICKNAME)
-  set(visocyte_version "${PARAVIEW_VERSION_NICKNAME}")
+if (DEFINED VISOCYTE_VERSION_NICKNAME)
+  set(visocyte_version "${VISOCYTE_VERSION_NICKNAME}")
 else ()
-  set(visocyte_version "${PARAVIEW_VERSION_FULL}")
+  set(visocyte_version "${VISOCYTE_VERSION_FULL}")
 endif ()
 set(visocyte_title "")
 
@@ -44,7 +44,7 @@ visocyte_client_add(
   APPLICATION_NAME  "Visocyte"
   TITLE             "Visocyte ${visocyte_version}"
   ORGANIZATION      "Visocyte"
-  VERSION           "${PARAVIEW_VERSION_FULL}"
+  VERSION           "${VISOCYTE_VERSION_FULL}"
   MAIN_WINDOW_CLASS "VisocyteMainWindow"
   BUNDLE_ICON       "${CMAKE_CURRENT_SOURCE_DIR}/pvIcon.icns"
   APPLICATION_ICON  "${CMAKE_CURRENT_SOURCE_DIR}/pvIcon.ico"
@@ -61,16 +61,16 @@ target_link_libraries(visocyte
     Qt5::Core
     Qt5::Widgets)
 
-if (PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION)
+if (VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
   target_compile_definitions(visocyte
     PRIVATE
-      PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION)
+      VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
   target_link_libraries(visocyte
     PRIVATE
       vtkVisocyteDocumentation)
 endif ()
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   target_link_libraries(visocyte
     PRIVATE
       Visocyte::pqPython

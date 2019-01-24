@@ -24,15 +24,15 @@ vtk_module_build(
   MODULES             ${slac_modules}
   PACKAGE             SLACTools
   INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}"
-  VERSION             "${PARAVIEW_VERSION}"
+  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
+  VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1")
 
 set(ui_files)
 set(qrc_files)
 set(sources)
 set(interfaces)
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   list(APPEND ui_files
     pqSLACActionHolder.ui
     pqSLACDataLoadManager.ui)
@@ -67,7 +67,7 @@ visocyte_add_plugin(SLACTools
   SOURCES ${sources}
   MODULES SLACTools::vtkSLACFilters)
 
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(SLACTools
     PRIVATE
       Visocyte::ClientServerCoreCore

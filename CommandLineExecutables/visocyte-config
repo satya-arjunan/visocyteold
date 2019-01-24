@@ -30,24 +30,24 @@ int main(int argc, char* argv[]) {
 add_executable(with_visocyte "${src}")
 target_compile_definitions(with_visocyte
   PRIVATE
-    WITH_PARAVIEW)
+    WITH_VISOCYTE)
 target_link_libraries(with_visocyte
   PRIVATE
-    ${PARAVIEW_LIBRARIES}
+    ${VISOCYTE_LIBRARIES}
     ${VTK_LIBRARIES}
-    -LWITH_PARAVIEW)
+    -LWITH_VISOCYTE)
 # Explicitly not doing autoinit since the generated header gets deleted.
 #vtk_module_autoinit(
 #  TARGETS with_visocyte
-#  MODULES ${PARAVIEW_LIBRARIES})
+#  MODULES ${VISOCYTE_LIBRARIES})
 
 add_executable(without_visocyte "${src}")
 target_compile_definitions(without_visocyte
   PRIVATE
-    WITHOUT_PARAVIEW)
+    WITHOUT_VISOCYTE)
 target_link_libraries(without_visocyte
   PRIVATE
-    -LWITHOUT_PARAVIEW)
+    -LWITHOUT_VISOCYTE)
 """
 
 
@@ -79,8 +79,8 @@ def extract_flags(compile_with, compile_without, link_with, link_without):
     (_, link_flags) = diff_commands(link_without, link_with)
 
     # Remove our marker flags.
-    compile_flags.remove('-DWITH_PARAVIEW')
-    link_flags.remove('-LWITH_PARAVIEW')
+    compile_flags.remove('-DWITH_VISOCYTE')
+    link_flags.remove('-LWITH_VISOCYTE')
 
     # Remove target-specific flags.
     def is_target_specific(arg):
@@ -94,13 +94,13 @@ def extract_flags(compile_with, compile_without, link_with, link_without):
 
 def test_extract_flags():
     cmd_without_compile = \
-        'compiler -DWITHOUT_PARAVIEW -o without_visocyte.dir/src.cxx.o src.cxx'
+        'compiler -DWITHOUT_VISOCYTE -o without_visocyte.dir/src.cxx.o src.cxx'
     cmd_without_link = \
-        'compiler -LWITHOUT_PARAVIEW with_visocyte.dir/src.cxx.o'
+        'compiler -LWITHOUT_VISOCYTE with_visocyte.dir/src.cxx.o'
     cmd_with_compile = \
-        'compiler -DWITH_PARAVIEW -I/path/to/visocyte/includes -o with_visocyte.dir/src.cxx.o src.cxx'
+        'compiler -DWITH_VISOCYTE -I/path/to/visocyte/includes -o with_visocyte.dir/src.cxx.o src.cxx'
     cmd_with_link = \
-        'compiler -LWITH_PARAVIEW /path/to/pv.so with_visocyte.dir/src.cxx.o'
+        'compiler -LWITH_VISOCYTE /path/to/pv.so with_visocyte.dir/src.cxx.o'
     (compile_flags, link_flags) = \
         extract_flags(cmd_with_compile, cmd_without_compile, cmd_with_link,
                       cmd_without_link)
@@ -197,10 +197,10 @@ def extract_visocyte_flags(components, cmake='cmake',
 
         for line in build_output.stdout:
             line = line.strip().decode('utf-8')
-            check_line(lines, line, '-DWITH_PARAVIEW', 'compile_with')
-            check_line(lines, line, '-LWITH_PARAVIEW', 'link_with')
-            check_line(lines, line, '-DWITHOUT_PARAVIEW', 'compile_without')
-            check_line(lines, line, '-LWITHOUT_PARAVIEW', 'link_without')
+            check_line(lines, line, '-DWITH_VISOCYTE', 'compile_with')
+            check_line(lines, line, '-LWITH_VISOCYTE', 'link_with')
+            check_line(lines, line, '-DWITHOUT_VISOCYTE', 'compile_without')
+            check_line(lines, line, '-LWITHOUT_VISOCYTE', 'link_without')
 
         if not all(lines.values()):
             raise RuntimeError('missing some compile line outputs')
@@ -233,7 +233,7 @@ if __name__ == '__main__':
         choices=('Unix Makefiles', 'Ninja'), dest='generator',
         help='The CMake generator to use')
     parser.add_argument(
-        '-p', '--visocyte', metavar='PARAVIEW DIR', default=None,
+        '-p', '--visocyte', metavar='VISOCYTE DIR', default=None,
         dest='visocyte_dir',
         help='Where to find visocyte-config.cmake')
     parser.add_argument(

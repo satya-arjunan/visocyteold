@@ -18,8 +18,8 @@ vtk_module_build(
   MODULES             ${nifti_modules}
   PACKAGE             AnalyzeNIfTIIO
   INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}"
-  VERSION             "${PARAVIEW_VERSION}"
+  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
+  VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1")
 
 visocyte_add_plugin(AnalyzeNIfTIIO

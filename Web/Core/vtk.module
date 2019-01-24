@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkPVWebCore
 CONDITION
-  PARAVIEW_ENABLE_WEB
+  VISOCYTE_ENABLE_WEB
 DEPENDS
   Visocyte::ServerManagerDefault
   VTK::WebCore

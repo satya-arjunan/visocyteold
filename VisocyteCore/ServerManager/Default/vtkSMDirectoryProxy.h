@@ -48,7 +48,7 @@ public:
 
   /**
    * List server side directory
-   * NEVER USED IN PARAVIEW, TODO ?
+   * NEVER USED IN VISOCYTE, TODO ?
    */
   bool List(const char* dir);
 

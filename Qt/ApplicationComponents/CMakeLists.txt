@@ -255,7 +255,7 @@ set(resource_files
 set(qt_components
   Widgets)
 
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   list(APPEND qt_components
     Help)
 
@@ -287,7 +287,7 @@ vtk_module_add_module(Visocyte::pqApplicationComponents
 vtk_module_link(Visocyte::pqApplicationComponents
   PRIVATE
     Qt5::Widgets)
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   vtk_module_link(Visocyte::pqApplicationComponents
     PRIVATE
       Qt5::Help)

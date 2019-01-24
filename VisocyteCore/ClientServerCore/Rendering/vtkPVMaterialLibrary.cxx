@@ -67,7 +67,7 @@ vtkPVMaterialLibrary::vtkPVMaterialLibrary()
 #if defined(_WIN32) || defined(__APPLE__)
     "materials"
 #else
-    "share/visocyte-" PARAVIEW_VERSION "/materials"
+    "share/visocyte-" VISOCYTE_VERSION "/materials"
 #endif
   };
   // search

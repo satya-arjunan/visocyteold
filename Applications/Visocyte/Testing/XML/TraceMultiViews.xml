@@ -5,7 +5,7 @@
   <pqevent object="TraceOptionsDialog/widget/OKButton" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_File" />
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileOpen" />
-  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$PARAVIEW_DATA_ROOT/Testing/Data/can.ex2" />
+  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$VISOCYTE_DATA_ROOT/Testing/Data/can.ex2" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/PropertiesFrame/ProxyPanel/ArrayStatus/SelectionWidget/1QHeaderView0" command="mousePress" arguments="1,1,0,0,0,0" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/PropertiesFrame/ProxyPanel/ArrayStatus/SelectionWidget/1QHeaderView0" command="mouseRelease" arguments="1,0,0,0,0,0" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/PropertiesFrame/ProxyPanel/ApplyDisplacements/CheckBox" command="set_boolean" arguments="false" />
@@ -40,8 +40,8 @@
 
   <!-- save a multiview screenshot -->
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileSaveScreenshot" />
-  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsScreenshot.png" />
-  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsScreenshot.png" />
+  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsScreenshot.png" />
+  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsScreenshot.png" />
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/scrollArea/qt_scrollarea_viewport/Container/ProxyWidget/SaveAllViews/CheckBox" command="set_boolean" arguments="true" />
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/scrollArea/qt_scrollarea_viewport/Container/ProxyWidget/ImageResolution/width" command="set_string" arguments="800" />
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/scrollArea/qt_scrollarea_viewport/Container/ProxyWidget/ImageResolution/height" command="set_string" arguments="800" />
@@ -53,14 +53,14 @@
 
   <!-- save trace -->
   <pqevent object="pqClientMainWindow/1pqPythonScriptEditor0/PythonScriptEditorMenuBar/File" command="activate" arguments="Save &amp;As..." />
-  <pqevent object="pqClientMainWindow/1pqPythonScriptEditor0/FileOpenDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsTrace.py" />
-  <pqevent object="pqClientMainWindow/1pqPythonScriptEditor0/FileOpenDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsTrace.py" />
+  <pqevent object="pqClientMainWindow/1pqPythonScriptEditor0/FileOpenDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsTrace.py" />
+  <pqevent object="pqClientMainWindow/1pqPythonScriptEditor0/FileOpenDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsTrace.py" />
 
   <!-- save state -->
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_File" />
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileSaveServerState" />
-  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsState.py" />
-  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsState.py" />
+  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsState.py" />
+  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsState.py" />
   <pqevent object="StateOptionsDialog/widget/OKButton" command="activate" arguments="" />
 
 
@@ -70,15 +70,15 @@
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_View" />
   <pqevent object="pqClientMainWindow/menubar/menu_View" command="activate" arguments="Python Shell" />
   <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/runScriptButton" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsScreenshot.png" />
-  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsTrace.py" />
+  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsScreenshot.png" />
+  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsTrace.py" />
   <pqevent object="pqClientMainWindow/pythonShellDock/qt_dockwidget_closebutton" command="activate" arguments="" />
 
   <!-- compare the image saved in the trace -->
   <!-- I'm skipping the actual compare right now. We need to fix how charts
        render with mag>1, and also the fact that the spreadsheet header is too wide. -->
   <!--
-  <pqcompareview image="$PARAVIEW_TEST_ROOT/TraceMultiViewsScreenshot.png" baseline="$PARAVIEW_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/TraceMultiViewsScreenshot.png" />
+  <pqcompareview image="$VISOCYTE_TEST_ROOT/TraceMultiViewsScreenshot.png" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/TraceMultiViewsScreenshot.png" />
   -->
 
   <!-- now reset session and  load the state file -->
@@ -91,7 +91,7 @@
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_View" />
   <pqevent object="pqClientMainWindow/menubar/menu_View" command="activate" arguments="Python Shell" />
   <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/runScriptButton" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/TraceMultiViewsState.py" />
+  <pqevent object="pqClientMainWindow/pythonShellDock/pythonShell/PythonShellRunScriptDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/TraceMultiViewsState.py" />
   <pqevent object="pqClientMainWindow/pythonShellDock/qt_dockwidget_closebutton" command="activate" arguments="" />
 
   <pqevent object="pqClientMainWindow/menubar/menuTools" command="activate" arguments="actionTesting_Window_Size" />

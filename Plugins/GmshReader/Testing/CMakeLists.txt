@@ -1,4 +1,4 @@
-if (PARAVIEW_BUILD_QT_GUI AND BUILD_SHARED_LIBS)
+if (VISOCYTE_BUILD_QT_GUI AND BUILD_SHARED_LIBS)
   set(_visocyte_add_tests_default_test_data_target GmshReaderData)
   ExternalData_Expand_Arguments("${_visocyte_add_tests_default_test_data_target}" _
     "DATA{Data/Gmsh,REGEX:viz_*}"
@@ -6,11 +6,11 @@ if (PARAVIEW_BUILD_QT_GUI AND BUILD_SHARED_LIBS)
 
   add_client_tests(
     LOAD_PLUGIN "GmshReader"
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${CMAKE_CURRENT_SOURCE_DIR}/GmshReaderTest.xml)
 
   (
     LOAD_PLUGIN "GmshReader"
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${CMAKE_CURRENT_SOURCE_DIR}/GmshReaderMeshOnlyTest.xml)
 endif()

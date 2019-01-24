@@ -10,15 +10,15 @@
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_USE_MPI",
+      { "name":"VISOCYTE_USE_MPI",
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_BUILD_QT_GUI",
+      { "name":"VISOCYTE_BUILD_QT_GUI",
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_ENABLE_PYTHON",
+      { "name":"VISOCYTE_ENABLE_PYTHON",
         "type":"BOOL",
         "value":"OFF"
       },
@@ -26,7 +26,7 @@
         "type":"BOOL",
         "value":"ON"
       },
-      { "name":"PARAVIEW_ENABLE_COMMANDLINE_TOOLS",
+      { "name":"VISOCYTE_ENABLE_COMMANDLINE_TOOLS",
         "type":"BOOL",
         "value":"OFF"
       },

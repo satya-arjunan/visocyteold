@@ -445,7 +445,7 @@ void vtkLiveInsituLink::InitializeLive()
     std::ostringstream url;
     url << "tcp://localhost:" << this->InsituPort << "?"
         << "listen=true&nonblocking=true&"
-        << "handshake=visocyte.insitu." << PARAVIEW_VERSION;
+        << "handshake=visocyte.insitu." << VISOCYTE_VERSION;
     this->SetURL(url.str().c_str());
     if (vtkMultiProcessController* proc0NodesController = nam->NewConnection(this->URL))
     {
@@ -502,7 +502,7 @@ bool vtkLiveInsituLink::InitializeInsitu()
 
     std::ostringstream url;
     url << "tcp://" << this->Hostname << ":" << this->InsituPort << "?"
-        << "timeout=0&handshake=visocyte.insitu." << PARAVIEW_VERSION;
+        << "timeout=0&handshake=visocyte.insitu." << VISOCYTE_VERSION;
     this->SetURL(url.str().c_str());
     // Suppress any error messages while attempting to connect to Visocyte
     // visualization engine.

@@ -18,7 +18,7 @@
   <!-- save state file -->
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_File" />
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileSaveServerState" />
-  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/LoadStateMultiView" />
+  <pqevent object="pqClientMainWindow/FileSaveServerStateDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/LoadStateMultiView" />
 
   <!-- reset application state -->
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_Edit" />
@@ -26,14 +26,14 @@
 
   <!-- load saved state -->
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileLoadServerState" />
-  <pqevent object="pqClientMainWindow/FileLoadServerStateDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/LoadStateMultiView.pvsm" />
+  <pqevent object="pqClientMainWindow/FileLoadServerStateDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/LoadStateMultiView.pvsm" />
 
   <!-- now save a multiview screenshot with a size deliberately less than the application window.
        This exercises a different component of the screen capture than when the size is greater,
        which is already tested by another test. -->
   <pqevent object="pqClientMainWindow/menubar" command="activate" arguments="menu_File" />
   <pqevent object="pqClientMainWindow/menubar/menu_File" command="activate" arguments="actionFileSaveScreenshot" />
-  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/testmultiviewcapture.png" />
+  <pqevent object="pqClientMainWindow/SaveScreenshotFileDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/testmultiviewcapture.png" />
 
   <!-- save all views -->
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/scrollArea/qt_scrollarea_viewport/Container/ProxyWidget/SaveAllViews/CheckBox" command="set_boolean" arguments="true" />
@@ -46,5 +46,5 @@
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/widget/OKButton" command="activate" arguments="" />
 
   <!-- compare the saved screenshot -->
-  <pqcompareimage image="$PARAVIEW_TEST_ROOT/testmultiviewcapture.png" baseline="$PARAVIEW_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/LoadStateMultiView.png" />
+  <pqcompareimage image="$VISOCYTE_TEST_ROOT/testmultiviewcapture.png" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/LoadStateMultiView.png" />
 </pqevents>

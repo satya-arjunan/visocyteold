@@ -11762,11 +11762,11 @@
     </Proxy>
     <Proxy group="sources" type="ExodusIIReader" id="42436" servers="1">
       <Property name="FileName" id="42436.FileName" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         <Domain name="files" id="42436.FileName.files"/>
       </Property>
       <Property name="FileNameInfo" id="42436.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
       </Property>
       <Property name="TimestepValues" id="42436.TimestepValues"/>
       <Property name="UseMetaFile" id="42436.UseMetaFile" number_of_elements="1">
@@ -11858,13 +11858,13 @@
         <Element index="0" value="%s"/>
       </Property>
       <Property name="FilePrefix" id="42436.FilePrefix" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         <Domain name="default_value" id="42436.FilePrefix.default_value">
-          <String text="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+          <String text="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         </Domain>
       </Property>
       <Property name="FilePrefixInfo" id="42436.FilePrefixInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
       </Property>
       <Property name="FileRange" id="42436.FileRange" number_of_elements="2">
         <Element index="0" value="0"/>

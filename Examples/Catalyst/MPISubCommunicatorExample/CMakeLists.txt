@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.3)
 project(CatalystMPISubCommunicatorExample)
 
 find_package(Visocyte 4.2 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-include("${PARAVIEW_USE_FILE}")
-if(NOT PARAVIEW_USE_MPI)
+include("${VISOCYTE_USE_FILE}")
+if(NOT VISOCYTE_USE_MPI)
   message(SEND_ERROR "Visocyte must be built with MPI enabled")
 endif()
 
@@ -19,5 +19,5 @@ if (BUILD_TESTING)
   include(CTest)
   add_test(NAME MPISubCommunicatorExampleTest COMMAND MPISubCommunicatorExample
     ${CMAKE_CURRENT_SOURCE_DIR}/SampleScripts/feslicescript.py)
-  set_tests_properties(MPISubCommunicatorExampleTest PROPERTIES LABELS "PARAVIEW;CATALYST")
+  set_tests_properties(MPISubCommunicatorExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 endif()

@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF(NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -17,6 +17,6 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
   set(CMAKE_MACOSX_RPATH 0)
 endif()
 
-ADD_PARAVIEW_PLUGIN(SMParametricSource "1.0"
+ADD_VISOCYTE_PLUGIN(SMParametricSource "1.0"
   SERVER_MANAGER_XML ParametricSource.xml)
 

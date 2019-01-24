@@ -49,7 +49,7 @@
 class vtkCallbackCommand;
 class vtkDoubleArray;
 // FIXME: Don't expose this publicly.
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
 class vtkMultiProcessController;
 #endif
 class vtkStringArray;
@@ -148,7 +148,7 @@ public:
   void SetShowMultilayerView(bool val);
   vtkGetMacro(ShowMultilayerView, bool);
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   vtkGetObjectMacro(Controller, vtkMultiProcessController);
   virtual void SetController(vtkMultiProcessController*);
 #endif
@@ -204,7 +204,7 @@ protected:
   int FillVariableDimensions();
   int RegenerateVariables();
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   vtkMultiProcessController* Controller;
 #endif
 

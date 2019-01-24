@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /// pqOpenVRHidingDecorator's purpose is to prevent the GUI from
 /// showing any of the OpenVR specific rendering controls when
-/// Visocyte is not configured with PARAVIEW_USE_OpenVR
+/// Visocyte is not configured with VISOCYTE_USE_OpenVR
 class pqOpenVRHidingDecorator : public pqPropertyWidgetDecorator
 {
   Q_OBJECT

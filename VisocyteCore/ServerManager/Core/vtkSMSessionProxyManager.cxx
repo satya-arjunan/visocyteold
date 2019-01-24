@@ -19,7 +19,7 @@
 #include "vtkEventForwarderCommand.h"
 #include "vtkNew.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVConfig.h" // for PARAVIEW_VERSION_*
+#include "vtkPVConfig.h" // for VISOCYTE_VERSION_*
 #include "vtkPVInstantiator.h"
 #include "vtkPVProxyDefinitionIterator.h"
 #include "vtkPVXMLElement.h"

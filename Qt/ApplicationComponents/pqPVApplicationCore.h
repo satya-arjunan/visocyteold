@@ -88,7 +88,7 @@ public:
 
   /**
   * Provides access to the python manager. This is non-null only when visocyte
-  * is compiled with python support i.e. PARAVIEW_ENABLE_PYTHON is ON.
+  * is compiled with python support i.e. VISOCYTE_ENABLE_PYTHON is ON.
   */
   pqPythonManager* pythonManager() const;
 

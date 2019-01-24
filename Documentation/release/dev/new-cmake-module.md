@@ -6,10 +6,10 @@ variables have changed names:
   - `Module_X` becomes `VTK_MODULE_ENABLE_M` where X is the "library name"
     (e.g., `vtkPVCommon` and `M` is the sanitized module name (e.g.,
     `Visocyte::Common`'s sanitized name is `Visocyte_Common`).
-  - `PARAVIEW_BUILD_PLUGIN_P` becomes `PARAVIEW_PLUGIN_ENABLE_P`. Enabling a
+  - `VISOCYTE_BUILD_PLUGIN_P` becomes `VISOCYTE_PLUGIN_ENABLE_P`. Enabling a
     plugin now requests that its required modules are built.
   - Visocyte's flags forcefully disable some modules. For example, Visocyte
-    can no longer be built with `PARAVIEW_USE_MPI` and still build some
+    can no longer be built with `VISOCYTE_USE_MPI` and still build some
     MPI-releated modules.
 
 ## Server Manager XML

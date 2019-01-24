@@ -5,14 +5,14 @@ set(USE_CATALYST ON CACHE BOOL "Link the simulator with Catalyst")
 if(USE_CATALYST)
   # we need 5.0 for the proper in situ particle path filter
   find_package(Visocyte 5.0 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-  include("${PARAVIEW_USE_FILE}")
+  include("${VISOCYTE_USE_FILE}")
   set(Adaptor_SRCS
     FEAdaptor.cxx
     )
   add_library(CxxParticlePathExampleAdaptor ${Adaptor_SRCS})
   target_link_libraries(CxxParticlePathExampleAdaptor vtkPVPythonCatalyst vtkParallelMPI)
   add_definitions("-DUSE_CATALYST")
-  if(NOT PARAVIEW_USE_MPI)
+  if(NOT VISOCYTE_USE_MPI)
     message(SEND_ERROR "Visocyte must be built with MPI enabled")
   endif()
 else()
@@ -35,11 +35,11 @@ option(BUILD_TESTING "Build Testing" OFF)
 if (BUILD_TESTING)
   include(CTest)
 
-  if(PARAVIEW_TEST_OUTPUT_DIR)
-    set(TEST_OUTPUT_DIR ${PARAVIEW_TEST_OUTPUT_DIR})
-  else(PARAVIEW_TEST_OUTPUT_DIR)
+  if(VISOCYTE_TEST_OUTPUT_DIR)
+    set(TEST_OUTPUT_DIR ${VISOCYTE_TEST_OUTPUT_DIR})
+  else(VISOCYTE_TEST_OUTPUT_DIR)
     set(TEST_OUTPUT_DIR "${CMAKE_BINARY_DIR}/Testing/Temporary")
-  endif(PARAVIEW_TEST_OUTPUT_DIR)
+  endif(VISOCYTE_TEST_OUTPUT_DIR)
 
   add_test(NAME CxxParticlePathExampleTest
     COMMAND ${CMAKE_COMMAND}
@@ -53,6 +53,6 @@ if (BUILD_TESTING)
     -DMPIEXEC_PREFLAGS:STRING=${MPIEXEC_PREFLAGS}
     -DVTK_MPI_POSTFLAGS:STRING=${VTK_MPI_POSTFLAGS}
     -P ${CMAKE_CURRENT_SOURCE_DIR}/ParticlePathTesting.cmake)
-  set_tests_properties(CxxParticlePathExampleTest PROPERTIES LABELS "PARAVIEW;CATALYST")
+  set_tests_properties(CxxParticlePathExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 
 endif (BUILD_TESTING)

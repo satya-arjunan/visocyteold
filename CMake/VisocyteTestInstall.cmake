@@ -33,16 +33,16 @@
 # This script tests the Visocyte install tree by building the examples
 #
 # The script expects the following input variables:
-# PARAVIEW_BINARY_DIR : Build path for Visocyte (To run 'make install' here)
-# PARAVIEW_INSTALL_DIR : Install path for Visocyte Examples are built against
+# VISOCYTE_BINARY_DIR : Build path for Visocyte (To run 'make install' here)
+# VISOCYTE_INSTALL_DIR : Install path for Visocyte Examples are built against
 #                        (This should be CMAKE_INSTALL_PREFIX set for Visocyte)
-# PARAVIEW_SOURCE_DIR : Visocyte source dir (For source location of Examples)
-# PARAVIEW_TEST_DIR : Temporary directory for location of Examples build tree
-# PARAVIEW_VERSION : Visocyte version string used when creating the installtree
+# VISOCYTE_SOURCE_DIR : Visocyte source dir (For source location of Examples)
+# VISOCYTE_TEST_DIR : Temporary directory for location of Examples build tree
+# VISOCYTE_VERSION : Visocyte version string used when creating the installtree
 
 message (STATUS "Building Examples against Visocyte install tree")
 set (Visocyte_DIR
-  $ENV{DESTDIR}${PARAVIEW_INSTALL_DIR}/lib/cmake/visocyte-${PARAVIEW_VERSION})
+  $ENV{DESTDIR}${VISOCYTE_INSTALL_DIR}/lib/cmake/visocyte-${VISOCYTE_VERSION})
 
 # Build target "INSTALL" for visocyte
 if (MSVC)
@@ -53,16 +53,16 @@ else ()
   set (opt "-j5")
 endif ()
 execute_process (COMMAND ${CMAKE_COMMAND}
-  --build ${PARAVIEW_BINARY_DIR}
+  --build ${VISOCYTE_BINARY_DIR}
   --target ${install_tgt}
   -- ${opt}
-  WORKING_DIRECTORY ${PARAVIEW_BINARY_DIR}
+  WORKING_DIRECTORY ${VISOCYTE_BINARY_DIR}
   RESULT_VARIABLE irv)
 if (NOT irv EQUAL 0)
   message(FATAL_ERROR "Could not build target 'install' for Visocyte")
 endif ()
 
-set (INSTALL_TEST_BUILD_DIR ${PARAVIEW_TEST_DIR}/Examples-bld)
+set (INSTALL_TEST_BUILD_DIR ${VISOCYTE_TEST_DIR}/Examples-bld)
 if (NOT EXISTS ${INSTALL_TEST_BUILD_DIR})
   execute_process(COMMAND ${CMAKE_COMMAND} -E
     make_directory ${INSTALL_TEST_BUILD_DIR})
@@ -70,7 +70,7 @@ endif ()
 execute_process (
   COMMAND ${CMAKE_COMMAND}
   -DVisocyte_DIR:PATH=${Visocyte_DIR}
-  ${PARAVIEW_SOURCE_DIR}/Examples
+  ${VISOCYTE_SOURCE_DIR}/Examples
   WORKING_DIRECTORY ${INSTALL_TEST_BUILD_DIR}
   RESULT_VARIABLE crv)
 if (NOT crv EQUAL 0)

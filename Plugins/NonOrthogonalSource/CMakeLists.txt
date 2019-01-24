@@ -18,8 +18,8 @@ vtk_module_build(
   MODULES             ${sources_modules}
   PACKAGE             NonOrthogonalSource
   INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}"
-  VERSION             "${PARAVIEW_VERSION}"
+  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
+  VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1")
 
 set(interfaces)
@@ -27,7 +27,7 @@ set(sources
   pqNonOrthogonalAutoStart.cxx
   pqNonOrthogonalAutoStart.h
   pqSetupModelTransformBehavior.h)
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   visocyte_plugin_add_auto_start(
     CLASS_NAME pqNonOrthogonalAutoStart
     INTERFACES autostart_interface
@@ -44,7 +44,7 @@ visocyte_add_plugin(NonOrthogonalSource
   SOURCES       ${sources}
   MODULES       NonOrthogonalSource::vtkNonOrthogonalSources)
 
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(NonOrthogonalSource
     PRIVATE
       Visocyte::pqApplicationComponents)

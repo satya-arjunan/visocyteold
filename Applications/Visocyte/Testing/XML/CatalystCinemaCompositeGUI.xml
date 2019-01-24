@@ -66,5 +66,5 @@
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/1QFrame0/wizardPage_2/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/wCinemaTrackSelection/gbTrackSelection/wNewSelection/tabProxyProperties/qt_tabwidget_stackedwidget/wTabValues/CinemaTrack/ScalarValueListPropertyWidget/Table" command="editAccepted" arguments="2.0,6.66" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/1QFrame0/wizardPage_2/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/wViewSelection/groupBox/swViews/ImageOutputInfo/gbCinemaOptions/cbUseFloatValues" command="set_boolean" arguments="false" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/finishButton" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportCoprocessingStateFileDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/cptest.py" />
+  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportCoprocessingStateFileDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/cptest.py" />
 </pqevents>

@@ -1,7 +1,7 @@
 set (__dependencies)
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
     #set (__dependencies vtkFiltersParallelMPI)
-  if (PARAVIEW_USE_ICE_T)
+  if (VISOCYTE_USE_ICE_T)
       #list(APPEND __dependencies vtkicet)
   endif()
 
@@ -9,13 +9,13 @@ if (PARAVIEW_USE_MPI)
   add_definitions("-DMPICH_IGNORE_CXX_SEEK")
 endif()
 
-if(PARAVIEW_ENABLE_PYTHON)
+if(VISOCYTE_ENABLE_PYTHON)
   #list(APPEND __dependencies vtkRenderingMatplotlib)
 endif()
 
 list(APPEND __dependencies vtkglew)
 
-if(PARAVIEW_USE_OSPRAY)
+if(VISOCYTE_USE_OSPRAY)
   #list(APPEND __dependencies vtkRenderingOSPRay)
 endif()
 
@@ -63,7 +63,7 @@ vtk_module(vtkPVVTKExtensionsRendering
     vtkTestingRendering
 
   TEST_LABELS
-    PARAVIEW
+    VISOCYTE
   KIT
     vtkPVExtensions
 )

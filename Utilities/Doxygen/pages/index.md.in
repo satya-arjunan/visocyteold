@@ -1,7 +1,7 @@
 Visocyte C++ API Documentation                      {#index}
 ===============================
 
-**Version: @PARAVIEW_VERSION_FULL@**
+**Version: @VISOCYTE_VERSION_FULL@**
 
 This is doxygen generated documentation for the C++ API for developers of
 Visocyte as well as those writing plugins and custom applications based on

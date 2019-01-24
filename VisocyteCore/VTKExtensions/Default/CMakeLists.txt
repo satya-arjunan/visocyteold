@@ -145,11 +145,11 @@ vtk_module_add_module(Visocyte::VTKExtensionsDefault
   CLASSES ${classes}
   HEADERS ${headers})
 
-option(PARAVIEW_ENABLE_SPYPLOT_MARKERS "Enables markers in the spyplot reader" ON)
-mark_as_advanced(PARAVIEW_ENABLE_SPYPLOT_MARKERS)
+option(VISOCYTE_ENABLE_SPYPLOT_MARKERS "Enables markers in the spyplot reader" ON)
+mark_as_advanced(VISOCYTE_ENABLE_SPYPLOT_MARKERS)
 
-if (PARAVIEW_ENABLE_SPYPLOT_MARKERS)
+if (VISOCYTE_ENABLE_SPYPLOT_MARKERS)
   set_source_files_properties(vtkSpyPlotReader.cxx vtkSpyPlotFileSeriesReader.cxx
     PROPERTIES
-      COMPILE_DEFINITIONS "PARAVIEW_ENABLE_SPYPLOT_MARKERS")
+      COMPILE_DEFINITIONS "VISOCYTE_ENABLE_SPYPLOT_MARKERS")
 endif ()

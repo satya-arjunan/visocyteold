@@ -18,7 +18,7 @@ vtk_module(vtkPVVTKExtensionsCGNSWriter
       vtkTestingRendering
       vtkPVVTKExtensionsCGNSReader
     TEST_LABELS
-      PARAVIEW
+      VISOCYTE
     KIT
       vtkPVExtensions
 )

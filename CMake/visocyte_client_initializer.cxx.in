@@ -159,10 +159,10 @@ pq@_visocyte_client_NAME@Initializer::Status pq@_visocyte_client_NAME@Initialize
   this->MainWindow->setWindowTitle("@_visocyte_client_TITLE@");
 #endif
 
-  // the user can specify a different window title by setting the PARAVIEW_WINDOW_TITLE
+  // the user can specify a different window title by setting the VISOCYTE_WINDOW_TITLE
   // environment variable. This helps when using multiple PV GUIs simultaneously
   // and context switching quickly between them.
-  if (const char* newWindowTitle = vtksys::SystemTools::GetEnv("PARAVIEW_WINDOW_TITLE"))
+  if (const char* newWindowTitle = vtksys::SystemTools::GetEnv("VISOCYTE_WINDOW_TITLE"))
   {
     this->MainWindow->setWindowTitle(newWindowTitle);
   }

@@ -174,7 +174,7 @@ If the desired icon is not present in the list, it is possible to use a Qt resou
 Available icons are visible in the sources of Visocyte
 
 If the desired icon is not present, it can be added, for example in the context of a plugin, using
-GUI_RESOURCES in your ADD_PARAVIEW_PLUGIN macro, a .qrc file and your own icon file.
+GUI_RESOURCES in your ADD_VISOCYTE_PLUGIN macro, a .qrc file and your own icon file.
 
     <SourceProxy ...>
       ...

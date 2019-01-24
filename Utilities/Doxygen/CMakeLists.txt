@@ -53,7 +53,7 @@ configure_file(
 # in doxyfile we place all html pages relative to this dir under "cxx"
 # (see `HTML_OUTPUT`) var in doxyfile.in
 set(DOCUMENTATION_OUTPUT_DIRECTORY
-  "${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}")
+  "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}")
 
 configure_file(
   ${Visocyte_SOURCE_DIR}/Utilities/Doxygen/doxyfile.in

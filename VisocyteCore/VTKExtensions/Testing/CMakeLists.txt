@@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES(
   )
 
 set(vtk-module VTKExtensions)
-set(${vtk-module}_TEST_LABELS PARAVIEW)
+set(${vtk-module}_TEST_LABELS VISOCYTE)
 
 vtk_add_test_cxx(${vtk-modules}ServerFilterTests tests
   NO_VALID NO_OUTPUT
@@ -33,7 +33,7 @@ set (_MPI_TEST_PATH ${CXX_TEST_PATH}/\${CTEST_CONFIGURATION_TYPE})
 endif ()
 
 
-IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
+IF(VISOCYTE_USE_ICE_T AND VISOCYTE_USE_MPI)
   ADD_EXECUTABLE(TestIceTCompositePass TestIceTCompositePass.cxx)
   TARGET_LINK_LIBRARIES(TestIceTCompositePass vtkPVVTKExtensions)
 
@@ -46,9 +46,9 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
             --blur
             --use-ordered-compositing
             --use-depth-peeling
-            -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-            -T ${PARAVIEW_TEST_OUTPUT_DIR}
-            -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/TestIceTCompositePassWithBlurAndOrderedCompositing.png}
+            -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+            -T ${VISOCYTE_TEST_OUTPUT_DIR}
+            -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/TestIceTCompositePassWithBlurAndOrderedCompositing.png}
             ${VTK_MPI_POSTFLAGS})
 
   ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}"
@@ -57,9 +57,9 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
             ${VTK_MPIRUN_EXE} ${VTK_MPI_PRENUMPROC_FLAGS} ${VTK_MPI_NUMPROC_FLAG} 2 ${VTK_MPI_PREFLAGS}
             ${_MPI_TEST_PATH}/TestIceTCompositePass
             --sobel
-            -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-            -T ${PARAVIEW_TEST_OUTPUT_DIR}
-            -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/TestIceTCompositePassWithSobel.png}
+            -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+            -T ${VISOCYTE_TEST_OUTPUT_DIR}
+            -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/TestIceTCompositePassWithSobel.png}
             ${VTK_MPI_POSTFLAGS})
 
   ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}"
@@ -69,9 +69,9 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
             ${_MPI_TEST_PATH}/TestIceTCompositePass
             --tdx 2
             --depth-only
-            -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-            -T ${PARAVIEW_TEST_OUTPUT_DIR}
-            -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/TestIceTCompositePassDepthOnly.png}
+            -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+            -T ${VISOCYTE_TEST_OUTPUT_DIR}
+            -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/TestIceTCompositePassDepthOnly.png}
             ${VTK_MPI_POSTFLAGS})
 
   ADD_EXECUTABLE(TestSimpleIceTCompositePass TestSimpleIceTCompositePass.cxx)
@@ -82,9 +82,9 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
     COMMAND TestSimpleIceTCompositePass
             ${VTK_MPIRUN_EXE} ${VTK_MPI_PRENUMPROC_FLAGS} ${VTK_MPI_NUMPROC_FLAG} 2 ${VTK_MPI_PREFLAGS}
             ${_MPI_TEST_PATH}/TestSimpleIceTCompositePass
-            -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-            -T ${PARAVIEW_TEST_OUTPUT_DIR}
-            -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/TestSimpleIceTCompositePass.png}
+            -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+            -T ${VISOCYTE_TEST_OUTPUT_DIR}
+            -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/TestSimpleIceTCompositePass.png}
             ${VTK_MPI_POSTFLAGS})
 
   ADD_EXECUTABLE(TestIceTShadowMapPass TestIceTShadowMapPass.cxx)
@@ -96,9 +96,9 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
             ${VTK_MPIRUN_EXE} ${VTK_MPI_PRENUMPROC_FLAGS} ${VTK_MPI_NUMPROC_FLAG} 2 ${VTK_MPI_PREFLAGS}
             ${_MPI_TEST_PATH}/TestIceTShadowMapPass
             --tdx 2
-            -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-            -T ${PARAVIEW_TEST_OUTPUT_DIR}
-            -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/TestIceTShadowMapPass.png}
+            -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+            -T ${VISOCYTE_TEST_OUTPUT_DIR}
+            -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/TestIceTShadowMapPass.png}
             ${VTK_MPI_POSTFLAGS})
 
   set_tests_properties(
@@ -107,7 +107,7 @@ IF(PARAVIEW_USE_ICE_T AND PARAVIEW_USE_MPI)
     TestIceTCompositePassDepthOnly
     TestSimpleIceTCompositePass
     TestIceTShadowMapPass-image
-    PROPERTIES LABELS "PARAVIEW")
+    PROPERTIES LABELS "VISOCYTE")
 ENDIF()
 
 
@@ -119,7 +119,7 @@ if(Module_vtkRenderingOpenGL2)
   target_link_libraries(${vtk-module}CxxTest-Renderings vtkPVVTKExtensions)
 endif()
 
-IF (PARAVIEW_USE_MPI)
+IF (VISOCYTE_USE_MPI)
     IF (MPI_LIBRARY)
       SET(MPI_LIBRARIES ${MPI_LIBRARY})
     ENDIF ()
@@ -136,8 +136,8 @@ IF (PARAVIEW_USE_MPI)
               ${VTK_MPIRUN_EXE} ${VTK_MPI_PRENUMPROC_FLAGS} ${VTK_MPI_NUMPROC_FLAG} 2 ${VTK_MPI_PREFLAGS}
               ${_MPI_TEST_PATH}/DistributedSubsetSortingTable
               -D ${VTK_TEST_DATA_DIR}
-              -T ${PARAVIEW_TEST_OUTPUT_DIR}
+              -T ${VISOCYTE_TEST_OUTPUT_DIR}
               ${VTK_MPI_POSTFLAGS})
     set_tests_properties(
-      TestDistributedSubsetSortingTable PROPERTIES LABELS "PARAVIEW")
+      TestDistributedSubsetSortingTable PROPERTIES LABELS "VISOCYTE")
 ENDIF ()

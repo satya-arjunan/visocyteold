@@ -131,7 +131,7 @@ set(ui_files
 set(resource_files
   Resources/pqCore.qrc)
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   # TODO: Split these into a separate module so that there isn't a public
   # optional dependency.
   list(APPEND classes
@@ -141,7 +141,7 @@ endif ()
 set(qt_components
   Widgets)
 
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   list(APPEND qt_components
     Help)
 endif ()
@@ -166,7 +166,7 @@ vtk_module_add_module(Visocyte::pqCore
 vtk_module_link(Visocyte::pqCore
   PRIVATE
     Qt5::Widgets)
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   vtk_module_link(Visocyte::pqCore
     PRIVATE
       Qt5::Help)

@@ -26,7 +26,7 @@
 #include "vtkSMProxyManager.h"
 #include "vtkSMSession.h"
 
-// for PARAVIEW_INSTALL_DIR and PARAVIEW_BINARY_DIR variables
+// for VISOCYTE_INSTALL_DIR and VISOCYTE_BINARY_DIR variables
 #include "vtkCPConfig.h"
 
 #include <assert.h>
@@ -74,9 +74,9 @@ vtkCPCxxHelper* vtkCPCxxHelper::New()
 // make one up using the current working directory.
 // std::string self_dir = vtksys::SystemTools::GetCurrentWorkingDirectory(/*collapse=*/true);
 #if defined(_WIN32) && defined(CMAKE_INTDIR)
-    std::string programname = PARAVIEW_BINARY_DIR "/bin/" CMAKE_INTDIR "/unknown_exe";
+    std::string programname = VISOCYTE_BINARY_DIR "/bin/" CMAKE_INTDIR "/unknown_exe";
 #else
-    std::string programname = PARAVIEW_BINARY_DIR "/bin/unknown_exe";
+    std::string programname = VISOCYTE_BINARY_DIR "/bin/unknown_exe";
 #endif
 
     int argc = 1;

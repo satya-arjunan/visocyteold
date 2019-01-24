@@ -81,7 +81,7 @@ class vtkProcessModuleAutoMPIInternals
 {
 public:
   // This specify the preflags and post flags that can be set using:
-  // PARAVIEW_MPI_PREFLAGS / PARAVIEW_MPI_POSTFLAGS at config time
+  // VISOCYTE_MPI_PREFLAGS / VISOCYTE_MPI_POSTFLAGS at config time
   std::vector<std::string> MPIPreFlags;
   std::vector<std::string> MPIPostFlags;
 
@@ -109,9 +109,9 @@ public:
 };
 
 #ifdef _WIN32
-#define PARAVIEW_SERVER "pvserver.exe"
+#define VISOCYTE_SERVER "pvserver.exe"
 #else
-#define PARAVIEW_SERVER "pvserver"
+#define VISOCYTE_SERVER "pvserver"
 #endif
 
 //------------------------------------------------------------------------macro
@@ -231,7 +231,7 @@ int vtkProcessModuleAutoMPIInternals::StartRemoteBuiltInSelf(
   // issue. So we use the relative executable path for the server. Since we are
   // setting the working directory to be the one containing the server
   // executable, we should not have any issues (mostly).
-  serverExe = PARAVIEW_SERVER;
+  serverExe = VISOCYTE_SERVER;
 #endif
 
   std::vector<std::string> serverCommandStr;
@@ -314,7 +314,7 @@ bool vtkProcessModuleAutoMPIInternals::CollectConfiguredOptions()
     search_paths.push_back(vtksys::SystemTools::CollapseFullPath(applepath.c_str()));
 #endif
     this->ServerExecutablePath =
-      vtksys::SystemTools::FindProgram(PARAVIEW_SERVER, search_paths, /*no_system_path=*/true);
+      vtksys::SystemTools::FindProgram(VISOCYTE_SERVER, search_paths, /*no_system_path=*/true);
   }
 
   if (this->ServerExecutablePath.empty())
@@ -324,28 +324,28 @@ bool vtkProcessModuleAutoMPIInternals::CollectConfiguredOptions()
 
 // now find all the mpi information if mpi run is set
 #if VTK_MODULE_ENABLE_VTK_ParallelMPI
-#ifdef PARAVIEW_MPIEXEC_EXECUTABLE
-  if (!this->SetMPIRun(PARAVIEW_MPIEXEC_EXECUTABLE))
+#ifdef VISOCYTE_MPIEXEC_EXECUTABLE
+  if (!this->SetMPIRun(VISOCYTE_MPIEXEC_EXECUTABLE))
   {
-    this->MPIRun = PARAVIEW_MPIEXEC_EXECUTABLE;
+    this->MPIRun = VISOCYTE_MPIEXEC_EXECUTABLE;
   }
 #else
-#error "PARAVIEW_MPIEXEC_EXECUTABLE must be set when PARAVIEW_USE_MPI is on."
+#error "VISOCYTE_MPIEXEC_EXECUTABLE must be set when VISOCYTE_USE_MPI is on."
 #endif
   if (this->TotalMulticoreProcessors > 1)
   {
     int serverNumProc = this->TotalMulticoreProcessors;
 
-#ifdef PARAVIEW_MPI_NUMPROC_FLAG
-    this->MPINumProcessFlag = PARAVIEW_MPI_NUMPROC_FLAG;
+#ifdef VISOCYTE_MPI_NUMPROC_FLAG
+    this->MPINumProcessFlag = VISOCYTE_MPI_NUMPROC_FLAG;
 #else
-#error "Error PARAVIEW_MPI_NUMPROC_FLAG must be defined to run test if MPI is on."
+#error "Error VISOCYTE_MPI_NUMPROC_FLAG must be defined to run test if MPI is on."
 #endif
-#ifdef PARAVIEW_MPI_PREFLAGS
-    this->SeparateArguments(PARAVIEW_MPI_PREFLAGS, this->MPIPreFlags);
+#ifdef VISOCYTE_MPI_PREFLAGS
+    this->SeparateArguments(VISOCYTE_MPI_PREFLAGS, this->MPIPreFlags);
 #endif
-#ifdef PARAVIEW_MPI_POSTFLAGS
-    this->SeparateArguments(PARAVIEW_MPI_POSTFLAGS, this->MPIPostFlags);
+#ifdef VISOCYTE_MPI_POSTFLAGS
+    this->SeparateArguments(VISOCYTE_MPI_POSTFLAGS, this->MPIPostFlags);
 #endif
     char buf[1024];
     sprintf(buf, "%d", serverNumProc);

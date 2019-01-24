@@ -40,7 +40,7 @@ Example:
 NAME
   AdiosReaderPixie
 CONDITION
-  PARAVIEW_USE_MPI
+  VISOCYTE_USE_MPI
 DESCRIPTION
   Pixie file reader using ADIOS
 REQUIRES_MODULES
@@ -173,13 +173,13 @@ function (visocyte_plugin_scan)
     if (DEFINED "_visocyte_plugin_default_${_visocyte_scan_plugin_name}")
       set(_visocyte_scan_plugin_default "${_visocyte_plugin_default_${_visocyte_scan_plugin_name}}")
     endif ()
-    option("PARAVIEW_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
+    option("VISOCYTE_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
       "Enable the ${_visocyte_scan_plugin_name} plugin. ${${_visocyte_scan_plugin_name}_DESCRIPTION}"
       "${_visocyte_scan_plugin_default}")
     set("_visocyte_scan_enable_${_visocyte_scan_plugin_name}"
-      "${PARAVIEW_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}}")
+      "${VISOCYTE_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}}")
 
-    set_property(CACHE "PARAVIEW_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
+    set_property(CACHE "VISOCYTE_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
       PROPERTY
         TYPE "${_visocyte_scan_option_default_type}")
 
@@ -191,8 +191,8 @@ function (visocyte_plugin_scan)
 
     if (DEFINED ${_visocyte_scan_plugin_name}_CONDITION)
       if (NOT (${${_visocyte_scan_plugin_name}_CONDITION}))
-        if (DEFINED "PARAVIEW_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}")
-          set_property(CACHE "PARAVIEW_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
+        if (DEFINED "VISOCYTE_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}")
+          set_property(CACHE "VISOCYTE_PLUGIN_ENABLE_${_visocyte_scan_plugin_name}"
             PROPERTY
               TYPE INTERNAL)
         endif ()
@@ -580,7 +580,7 @@ function (visocyte_add_plugin name)
   endif ()
 
   if ((_visocyte_add_plugin_module_xmls OR _visocyte_add_plugin_xmls) AND
-      PARAVIEW_BUILD_QT_GUI AND _visocyte_add_plugin_XML_DOCUMENTATION)
+      VISOCYTE_BUILD_QT_GUI AND _visocyte_add_plugin_XML_DOCUMENTATION)
     visocyte_client_documentation(
       TARGET  "${_visocyte_build_plugin}_doc"
       XMLS    ${_visocyte_add_plugin_module_xmls}
@@ -640,7 +640,7 @@ function (visocyte_add_plugin name)
     set(_visocyte_add_plugin_with_ui 1)
     set(CMAKE_AUTOMOC 1)
     set(_visocyte_add_plugin_push_back_interfaces
-      "#define PARAVIEW_ADD_INTERFACES(arg) \\\n")
+      "#define VISOCYTE_ADD_INTERFACES(arg) \\\n")
     set(_visocyte_add_plugin_include_interfaces "")
 
     foreach (_visocyte_add_plugin_ui_interface IN LISTS _visocyte_add_plugin_UI_INTERFACES)

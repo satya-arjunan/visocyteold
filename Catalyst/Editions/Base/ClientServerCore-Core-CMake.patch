@@ -18,7 +18,7 @@ index 9b10ff8..f98b22e 100644
    vtkPVFileInformationHelper.cxx
    vtkPVGenericAttributeInformation.cxx
    vtkPVInformation.cxx
-@@ -108,7 +106,6 @@ if (PARAVIEW_ENABLE_PYTHON)
+@@ -108,7 +106,6 @@ if (VISOCYTE_ENABLE_PYTHON)
      vtkPythonExtractSelection.cxx
      vtkPythonProgrammableFilter.cxx
      vtkPythonAnnotationFilter.cxx

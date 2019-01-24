@@ -35,18 +35,18 @@
 #
 # The script expects the following input variables:
 # PYTHON_EXECUTABLE : The Python executable to catalyze the source code
-# PARAVIEW_SOURCE_DIR : Visocyte source dir (For source location of the Editions
-# PARAVIEW_TEST_DIR : Temporary directory for location of Catalyst generated source code
+# VISOCYTE_SOURCE_DIR : Visocyte source dir (For source location of the Editions
+# VISOCYTE_TEST_DIR : Temporary directory for location of Catalyst generated source code
 
 message (STATUS "Testing building Catalyst editions")
 
 execute_process (COMMAND ${PYTHON_EXECUTABLE}
-  ${PARAVIEW_SOURCE_DIR}/Catalyst/catalyze.py
-  -r ${PARAVIEW_SOURCE_DIR}
+  ${VISOCYTE_SOURCE_DIR}/Catalyst/catalyze.py
+  -r ${VISOCYTE_SOURCE_DIR}
   -i Editions/Base -i Editions/Essentials -i Editions/Enable-Python/
   -i Editions/Extras -i Editions/Rendering-Base -i Editions/Rendering-Base-Python
-  -o ${PARAVIEW_TEST_DIR}/CatalystEditions
-  WORKING_DIRECTORY ${PARAVIEW_SOURCE_DIR}/Catalyst
+  -o ${VISOCYTE_TEST_DIR}/CatalystEditions
+  WORKING_DIRECTORY ${VISOCYTE_SOURCE_DIR}/Catalyst
   RESULT_VARIABLE irv)
 if (NOT irv EQUAL 0)
   message(FATAL_ERROR "Could not generate Catalyst source code")
@@ -54,6 +54,6 @@ endif ()
 
 # cmake.sh is one of the last things that is generated when processing
 # Catalyst editions so check to see if that file exists for a bit of verification.
-if (NOT EXISTS ${PARAVIEW_TEST_DIR}/CatalystEditions/cmake.sh)
+if (NOT EXISTS ${VISOCYTE_TEST_DIR}/CatalystEditions/cmake.sh)
   message(FATAL_ERROR "Could not find Catalyst cmake.sh generated file")
 endif ()

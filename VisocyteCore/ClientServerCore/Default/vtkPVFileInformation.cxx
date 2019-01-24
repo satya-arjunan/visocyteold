@@ -1203,7 +1203,7 @@ std::string vtkPVFileInformation::GetVisocyteSharedResourcesDirectory()
 #if defined(_WIN32) || defined(__APPLE__)
     ".."
 #else
-    "share/visocyte-" PARAVIEW_VERSION
+    "share/visocyte-" VISOCYTE_VERSION
 #endif
   };
 

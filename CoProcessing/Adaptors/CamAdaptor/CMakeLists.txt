@@ -3,8 +3,8 @@ project(CamAdaptor CXX)
 
 find_package(Visocyte REQUIRED COMPONENTS vtkPVPythonCatalyst)
 
-INCLUDE(${PARAVIEW_USE_FILE})
-if(NOT PARAVIEW_USE_MPI)
+INCLUDE(${VISOCYTE_USE_FILE})
+if(NOT VISOCYTE_USE_MPI)
   message(SEND_ERROR "Visocyte must be built with MPI enabled")
 endif()
 

@@ -91,7 +91,7 @@ QObjectList @_visocyte_build_plugin@Plugin::interfaces()
 {
   QObjectList ifaces;
 #if _visocyte_add_plugin_UI_INTERFACES
-  PARAVIEW_ADD_INTERFACES(ifaces);
+  VISOCYTE_ADD_INTERFACES(ifaces);
 #endif
   return ifaces;
 }

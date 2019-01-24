@@ -4,7 +4,7 @@ find_python_module(matplotlib matplotlib_found)
 
 # Set variables to make the testing functions.
 set(_vtk_build_test "visocyte")
-set(${_vtk_build_test}_TEST_LABELS PARAVIEW)
+set(${_vtk_build_test}_TEST_LABELS VISOCYTE)
 
 ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/can.ex2}"
@@ -34,7 +34,7 @@ if (numpy_found)
     )
   unset(visocyte_python_args)
 
-  if (PARAVIEW_ENABLE_MATPLOTLIB AND matplotlib_found)
+  if (VISOCYTE_ENABLE_MATPLOTLIB AND matplotlib_found)
     # add Matplotlib tests only if matplotlib was found at configure time.
     visocyte_add_test_python(
       NO_DATA NO_RT
@@ -92,7 +92,7 @@ foreach (tfile IN LISTS PVBATCH_TESTS)
   set(${test}_ARGS
     --state ${CMAKE_CURRENT_SOURCE_DIR}/${test}.pvsm)
 endforeach ()
-if (PARAVIEW_USE_MPI AND VTK_MPIRUN_EXE)
+if (VISOCYTE_USE_MPI AND VTK_MPIRUN_EXE)
   # run the tests in parallel
   set(${}_NUMPROCS 3)
   visocyte_add_test_pvbatch_mpi(
@@ -135,7 +135,7 @@ if(BUILD_SHARED_LIBS)
   set(TestMultiServersRemoteProxy_ARGS
     --test-multi-servers 3
     )
-  set(${_vtk_build_test}_TEST_LABELS PARAVIEW)
+  set(${_vtk_build_test}_TEST_LABELS VISOCYTE)
 
   visocyte_add_test_driven(
     NO_DATA NO_VALID NO_OUTPUT NO_RT

@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void pqApplicationComponentsInit()
 {
-#ifndef PARAVIEW_BUILD_SHARED_LIBS
+#ifndef VISOCYTE_BUILD_SHARED_LIBS
   // init dependents
   pqComponentsInit();
 

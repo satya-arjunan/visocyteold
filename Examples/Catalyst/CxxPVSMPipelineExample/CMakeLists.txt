@@ -6,7 +6,7 @@ if(USE_CATALYST)
   # We have a C++ pipeline so we don't need to link with Python
   # or vtkPVPythonCatalyst since vtkPVCatalyst is sufficient.
   find_package(Visocyte 4.1 REQUIRED COMPONENTS vtkPVCatalyst vtkPVVTKExtensionsDefault)
-  include("${PARAVIEW_USE_FILE}")
+  include("${VISOCYTE_USE_FILE}")
   set(Adaptor_SRCS
     FEAdaptor.cxx
     vtkCPPVSMPipeline.cxx
@@ -14,7 +14,7 @@ if(USE_CATALYST)
   add_library(CxxPVSMPipelineExampleAdaptor ${Adaptor_SRCS})
   target_link_libraries(CxxPVSMPipelineExampleAdaptor vtkPVCatalyst vtkPVVTKExtensionsDefault)
   add_definitions("-DUSE_CATALYST")
-  if(NOT PARAVIEW_USE_MPI)
+  if(NOT VISOCYTE_USE_MPI)
     message(SEND_ERROR "Visocyte must be built with MPI enabled")
   endif()
 else()
@@ -37,5 +37,5 @@ option(BUILD_TESTING "Build Testing" OFF)
 if (BUILD_TESTING)
   include(CTest)
   add_test(NAME CxxPVSMPipelineExampleTest COMMAND CxxPVSMPipelineExample 5 output)
-  set_tests_properties(CxxPVSMPipelineExampleTest PROPERTIES LABELS "PARAVIEW;CATALYST")
+  set_tests_properties(CxxPVSMPipelineExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 endif()

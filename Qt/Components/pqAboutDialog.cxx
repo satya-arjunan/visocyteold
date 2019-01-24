@@ -85,7 +85,7 @@ pqAboutDialog::pqAboutDialog(QWidget* Parent)
   info = info.remove(0, idx);
 
   this->Ui->VersionLabel->setText(
-    QString("<html><b>Version: <i>%1</i></b></html>").arg(QString(PARAVIEW_VERSION_FULL)));
+    QString("<html><b>Version: <i>%1</i></b></html>").arg(QString(VISOCYTE_VERSION_FULL)));
 
   this->AddClientInformation();
   this->AddServerInformation();
@@ -128,7 +128,7 @@ void pqAboutDialog::AddClientInformation()
 
   QTreeWidget* tree = this->Ui->ClientInformation;
 
-  ::addItem(tree, "Version", QString(PARAVIEW_VERSION_FULL));
+  ::addItem(tree, "Version", QString(VISOCYTE_VERSION_FULL));
   ::addItem(tree, "Qt Version", QT_VERSION_STR);
 
   ::addItem(tree, "vtkIdType size", QString("%1bits").arg(8 * sizeof(vtkIdType)));

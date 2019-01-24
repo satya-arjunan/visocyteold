@@ -34,11 +34,11 @@ set(classes
   vtkClientServerStream)
 
 set(sources)
-cmake_dependent_option(PARAVIEW_USE_UNIFIED_BINDINGS
+cmake_dependent_option(VISOCYTE_USE_UNIFIED_BINDINGS
   "If enabled, Python bindings will back the ClientServer wrapping implementation" OFF
-  PARAVIEW_ENABLE_PYTHON OFF)
-mark_as_advanced(PARAVIEW_USE_UNIFIED_BINDINGS)
-if (PARAVIEW_USE_UNIFIED_BINDINGS)
+  VISOCYTE_ENABLE_PYTHON OFF)
+mark_as_advanced(VISOCYTE_USE_UNIFIED_BINDINGS)
+if (VISOCYTE_USE_UNIFIED_BINDINGS)
   list(APPEND sources
     vtkClientServerInterpreterPython.cxx)
 else ()

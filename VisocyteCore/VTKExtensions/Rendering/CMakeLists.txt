@@ -117,7 +117,7 @@ if (TARGET VTK::ParallelMPI)
   endif ()
 endif ()
 
-if (PARAVIEW_ENABLE_NVPIPE)
+if (VISOCYTE_ENABLE_NVPIPE)
   list(APPEND classes
     vtkNvPipeCompressor)
 endif ()

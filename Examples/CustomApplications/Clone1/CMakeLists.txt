@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.3)
 project(Clone1)
 
 FIND_PACKAGE(Visocyte REQUIRED)
-INCLUDE(${PARAVIEW_USE_FILE})
-if (NOT PARAVIEW_BUILD_QT_GUI)
+INCLUDE(${VISOCYTE_USE_FILE})
+if (NOT VISOCYTE_BUILD_QT_GUI)
   message(FATAL_ERROR
-    "Clone1 example requires PARAVIEW_BUILD_QT_GUI to be enabled. "
+    "Clone1 example requires VISOCYTE_BUILD_QT_GUI to be enabled. "
     "Please rebuild Visocyte (or point to a different build of Visocyte) "
-    "with PARAVIEW_BUILD_QT_GUI set to TRUE")
+    "with VISOCYTE_BUILD_QT_GUI set to TRUE")
 endif()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.

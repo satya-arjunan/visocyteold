@@ -16,7 +16,7 @@ set_source_files_properties(${sources}
 vtk_module_add_module(Visocyte::VTKExtensionsH5PartReader
   CLASSES ${classes}
   SOURCES ${sources})
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   vtk_module_definitions(Visocyte::VTKExtensionsH5PartReader
     PRIVATE
       H5PART_HAS_MPI)

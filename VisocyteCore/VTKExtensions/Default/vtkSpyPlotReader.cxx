@@ -65,7 +65,7 @@ PURPOSE.  See the above copyright notice for more information.
   (x)[0] << " " << (x)[1] << " " << (x)[2] << " " << (x)[3] << " " << (x)[4] << " " << (x)[5]
 #define coutVector3(x) (x)[0] << " " << (x)[1] << " " << (x)[2]
 
-// #define PARAVIEW_ENABLE_SPYPLOT_MARKERS
+// #define VISOCYTE_ENABLE_SPYPLOT_MARKERS
 
 vtkStandardNewMacro(vtkSpyPlotReader);
 vtkCxxSetObjectMacro(vtkSpyPlotReader, GlobalController, vtkMultiProcessController);
@@ -81,9 +81,9 @@ vtkSpyPlotReader::vtkSpyPlotReader()
 {
   this->SetNumberOfInputPorts(0);
   this->SetNumberOfOutputPorts(2);
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   this->SetNumberOfOutputPorts(3);
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
 
   this->Map = new vtkSpyPlotReaderMap;
   this->Bounds = new vtkBoundingBox;
@@ -208,13 +208,13 @@ int vtkSpyPlotReader::RequestDataObject(
   outInfo->Set(vtkDataObject::DATA_OBJECT(), polyData);
   polyData->Delete();
 
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   outInfo = outV->GetInformationObject(2);
   vtkMultiBlockDataSet* data = vtkMultiBlockDataSet::New();
   outInfo->Set(vtkDataObject::DATA_EXTENT_TYPE(), data->GetExtentType());
   outInfo->Set(vtkDataObject::DATA_OBJECT(), data);
   data->Delete();
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
 
   return 1;
 }
@@ -258,7 +258,7 @@ int vtkSpyPlotReader::RequestInformation(
   outInfo1->Remove(vtkStreamingDemandDrivenPipeline::TIME_STEPS());
   outInfo1->Remove(vtkStreamingDemandDrivenPipeline::TIME_RANGE());
   outInfo1->Set(CAN_HANDLE_PIECE_REQUEST(), 1);
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   vtkInformation* outInfo2 = 0;
   if (this->GenerateMarkers)
   {
@@ -267,7 +267,7 @@ int vtkSpyPlotReader::RequestInformation(
     outInfo2->Remove(vtkStreamingDemandDrivenPipeline::TIME_RANGE());
     outInfo2->Set(CAN_HANDLE_PIECE_REQUEST(), 1);
   }
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
   if (this->TimeSteps->size() > 0)
   {
     outInfo0->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), &(*this->TimeSteps)[0],
@@ -282,7 +282,7 @@ int vtkSpyPlotReader::RequestInformation(
 
     outInfo1->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), timeRange, 2);
 
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
     if (this->GenerateMarkers)
     {
       outInfo2->Set(vtkStreamingDemandDrivenPipeline::TIME_STEPS(), &(*this->TimeSteps)[0],
@@ -290,7 +290,7 @@ int vtkSpyPlotReader::RequestInformation(
 
       outInfo2->Set(vtkStreamingDemandDrivenPipeline::TIME_RANGE(), timeRange, 2);
     }
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
   }
   return 1;
 }
@@ -857,7 +857,7 @@ int vtkSpyPlotReader::RequestData(vtkInformation* request,
     delete blockIterator;
   }
 
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   if (this->GenerateMarkers)
   {
     info = outputVector->GetInformationObject(2);
@@ -900,7 +900,7 @@ int vtkSpyPlotReader::RequestData(vtkInformation* request,
       this->PrepareMarkers(mbds, uniReader);
     }
   }
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
 
   // At this point, each processor has its own blocks
   // They have to exchange the blocks they have get a unique id for
@@ -1317,7 +1317,7 @@ void vtkSpyPlotReader::SetGenerateMarkers(int gm)
   {
     return;
   }
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   vtkSpyPlotReaderMap::MapOfStringToSPCTH::iterator mapIt;
   for (mapIt = this->Map->Files.begin(); mapIt != this->Map->Files.end(); ++mapIt)
   {
@@ -1327,7 +1327,7 @@ void vtkSpyPlotReader::SetGenerateMarkers(int gm)
 #else
   vtkErrorMacro(
     "GenerateMarkers is currently disabled.  Please issue a support request to enable.");
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
 }
 
 //-----------------------------------------------------------------------------

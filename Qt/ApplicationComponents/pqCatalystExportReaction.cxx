@@ -62,7 +62,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sstream>
 #include <string>
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 #include "vtkPythonInterpreter.h"
 #endif
 
@@ -100,7 +100,7 @@ pqCatalystExportReaction::~pqCatalystExportReaction()
 //-----------------------------------------------------------------------------
 void pqCatalystExportReaction::onTriggered()
 {
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 
   // We populate these from information from the export proxies
   QString live_visualization = "True";

@@ -129,10 +129,10 @@ int pqXMLEventSource::getNextEvent(
 
     // Recover baseline file location
     QString baseline = elem->GetAttribute("baseline");
-    baseline = baseline.replace("$PARAVIEW_TEST_ROOT", pqCoreTestUtility::TestDirectory());
-    baseline = baseline.replace("$PARAVIEW_DATA_ROOT", pqCoreTestUtility::DataRoot());
+    baseline = baseline.replace("$VISOCYTE_TEST_ROOT", pqCoreTestUtility::TestDirectory());
+    baseline = baseline.replace("$VISOCYTE_DATA_ROOT", pqCoreTestUtility::DataRoot());
     baseline =
-      baseline.replace("$PARAVIEW_TEST_BASELINE_DIR", pqCoreTestUtility::BaselineDirectory());
+      baseline.replace("$VISOCYTE_TEST_BASELINE_DIR", pqCoreTestUtility::BaselineDirectory());
 
     // Recover optional width and height
     int width = 300, height = 300;
@@ -222,12 +222,12 @@ int pqXMLEventSource::getNextEvent(
     //                baseline="ExtractBlock.png"
     //                width="300" height="300" />
     QString image = elem->GetAttribute("image");
-    image = image.replace("$PARAVIEW_TEST_ROOT", pqCoreTestUtility::TestDirectory());
-    image = image.replace("$PARAVIEW_DATA_ROOT", pqCoreTestUtility::DataRoot());
+    image = image.replace("$VISOCYTE_TEST_ROOT", pqCoreTestUtility::TestDirectory());
+    image = image.replace("$VISOCYTE_DATA_ROOT", pqCoreTestUtility::DataRoot());
 
     QString baseline = elem->GetAttribute("baseline");
-    baseline = baseline.replace("$PARAVIEW_TEST_ROOT", pqCoreTestUtility::TestDirectory());
-    baseline = baseline.replace("$PARAVIEW_DATA_ROOT", pqCoreTestUtility::DataRoot());
+    baseline = baseline.replace("$VISOCYTE_TEST_ROOT", pqCoreTestUtility::TestDirectory());
+    baseline = baseline.replace("$VISOCYTE_DATA_ROOT", pqCoreTestUtility::DataRoot());
 
     pqOptions* const options =
       pqOptions::SafeDownCast(vtkProcessModule::GetProcessModule()->GetOptions());
@@ -256,7 +256,7 @@ int pqXMLEventSource::getNextEvent(
     object = elem->GetAttribute("object");
     command = elem->GetAttribute("command");
     arguments = elem->GetAttribute("arguments");
-    arguments = arguments.replace("$PARAVIEW_DATA_ROOT", pqCoreTestUtility::DataRoot());
+    arguments = arguments.replace("$VISOCYTE_DATA_ROOT", pqCoreTestUtility::DataRoot());
     return SUCCESS;
   }
   else if (elem->GetName() && strcmp(elem->GetName(), "pqcheck") == 0)

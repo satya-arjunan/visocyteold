@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF(NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -21,7 +21,7 @@ QT5_WRAP_CPP(MOC_SRCS
   pqRepresentationBehaviorStarter.h
   pqSurfaceRepresentationBehavior.h)
 
-ADD_PARAVIEW_AUTO_START(
+ADD_VISOCYTE_AUTO_START(
   IFACES
      IFACE_SRCS
   CLASS_NAME
@@ -32,7 +32,7 @@ ADD_PARAVIEW_AUTO_START(
      onShutdown)
 
 # create a plugin for this starter
-ADD_PARAVIEW_PLUGIN(AutoSurfaceRepresentation "1.0"
+ADD_VISOCYTE_PLUGIN(AutoSurfaceRepresentation "1.0"
    GUI_INTERFACES
       ${IFACES}
    SOURCES

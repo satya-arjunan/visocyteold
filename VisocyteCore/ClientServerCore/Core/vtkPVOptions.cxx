@@ -165,13 +165,13 @@ void vtkPVOptions::Initialize()
     "Load the specified data. "
     "To specify file series replace the numeral with a '.' eg. "
     "my0.vtk, my1.vtk...myN.vtk becomes my..vtk",
-    vtkPVOptions::PVCLIENT | vtkPVOptions::PARAVIEW);
+    vtkPVOptions::PVCLIENT | vtkPVOptions::VISOCYTE);
 
   this->AddArgument("--server-url", "-url", &this->ServerURL,
     "Set the server-url to connect to when the client starts. "
     "The --server (-s) option supersedes this option, hence use only "
     "one of the two options.",
-    vtkPVOptions::PVCLIENT | vtkPVOptions::PARAVIEW);
+    vtkPVOptions::PVCLIENT | vtkPVOptions::VISOCYTE);
 
   this->AddArgument("--connect-id", 0, &this->ConnectID,
     "Set the ID of the server and client to make sure they "
@@ -190,13 +190,13 @@ void vtkPVOptions::Initialize()
 #endif
   this->AddBooleanArgument("--stereo", 0, &this->UseStereoRendering,
     "Tell the application to enable stereo rendering",
-    vtkPVOptions::PVCLIENT | vtkPVOptions::PARAVIEW);
+    vtkPVOptions::PVCLIENT | vtkPVOptions::VISOCYTE);
   this->AddArgument("--stereo-type", 0, &this->StereoType,
     "Specify the stereo type. This valid only when "
     "--stereo is specified. Possible values are "
     "\"Crystal Eyes\", \"Red-Blue\", \"Interlaced\", "
     "\"Dresden\", \"Anaglyph\", \"Checkerboard\",\"SplitViewportHorizontal\"",
-    vtkPVOptions::PVCLIENT | vtkPVOptions::PARAVIEW);
+    vtkPVOptions::PVCLIENT | vtkPVOptions::VISOCYTE);
 
   this->AddBooleanArgument("--reverse-connection", "-rc", &this->ReverseConnection,
     "Have the server connect to the client.",
@@ -227,7 +227,7 @@ void vtkPVOptions::Initialize()
   this->AddArgument("--servers-file", 0, &this->ServersFileName,
     "Load the specified configuration servers file (.pvsc). This option replaces "
     "the default user's configuration servers file.",
-    vtkPVOptions::PVCLIENT | vtkPVOptions::PARAVIEW);
+    vtkPVOptions::PVCLIENT | vtkPVOptions::VISOCYTE);
 
   this->AddBooleanArgument("--symmetric", "-sym", &this->SymmetricMPIMode,
     "When specified, the python script is processed symmetrically on all processes.",
@@ -291,7 +291,7 @@ void vtkPVOptions::Initialize()
     vtkPVOptions::PVSERVER | vtkPVOptions::PVBATCH | vtkPVOptions::PVCLIENT |
       vtkPVOptions::PVRENDER_SERVER);
 
-#if defined(PARAVIEW_WITH_SUPERBUILD_MESA)
+#if defined(VISOCYTE_WITH_SUPERBUILD_MESA)
   // We add these here so that "--help" on the process can print these variables
   // out. The options are actually only available when built against a suitable
   // mesa and Visocyte is told that they exist. They are parsed in the forward
@@ -304,7 +304,7 @@ void vtkPVOptions::Initialize()
   this->AddBooleanArgument("--mesa-llvm", 0, &this->DummyMesaFlag,
     "Use the provided Mesa build and the software renderer "
     "(softpipe).");
-#if defined(PARAVIEW_WITH_SUPERBUILD_MESA_SWR)
+#if defined(VISOCYTE_WITH_SUPERBUILD_MESA_SWR)
   this->AddBooleanArgument(
     "--mesa-swr", 0, &this->DummyMesaFlag, "Use the provided Mesa build and the SWR renderer.");
 #endif
@@ -319,7 +319,7 @@ int vtkPVOptions::PostProcess(int, const char* const*)
     case vtkPVOptions::PVCLIENT:
       this->ClientMode = 1;
       break;
-    case vtkPVOptions::PARAVIEW:
+    case vtkPVOptions::VISOCYTE:
       break;
     case vtkPVOptions::PVRENDER_SERVER:
       this->RenderServerMode = 1;
@@ -345,7 +345,7 @@ int vtkPVOptions::PostProcess(int, const char* const*)
     }
   }
 
-#ifdef PARAVIEW_ALWAYS_SECURE_CONNECTION
+#ifdef VISOCYTE_ALWAYS_SECURE_CONNECTION
   if ((this->ClientMode || this->ServerMode) && !this->ConnectID)
   {
     this->SetErrorMessage("You need to specify a connect ID (--connect-id).");

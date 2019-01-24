@@ -13,13 +13,13 @@
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/PropertiesFrame/ProxyPanel/ComputeGradients/CheckBox" command="set_boolean" arguments="true" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Accept" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/MainControlsToolbar/actionSaveData" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/FileSaveDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
-  <pqevent object="pqClientMainWindow/FileSaveDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
+  <pqevent object="pqClientMainWindow/FileSaveDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
+  <pqevent object="pqClientMainWindow/FileSaveDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
   <pqevent object="pqClientMainWindow/WriterSettingsDialog/widget/OKButton" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Delete" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Delete" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/MainControlsToolbar/actionOpenData" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
+  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/PythonAlgorithmReadersAndWriters.csv" />
   <pqevent object="pqClientMainWindow/pqSelectReaderDialog/listWidget"  command="currentChangedbyItemName" arguments="Python-based CSV Reader" />
   <pqevent object="pqClientMainWindow/pqSelectReaderDialog/okButton" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/PropertiesFrame/ProxyPanel/Arrays/ArraySelectionWidget/1QHeaderView0" command="mousePress" arguments="1,1,0,0,0,0" />
@@ -41,6 +41,6 @@
   <pqevent object="pqClientMainWindow/pipelineBrowserDock/pipelineBrowser" command="mousePress" arguments="1,1,0,42,11,/0:0/0:0" />
   <pqevent object="pqClientMainWindow/pipelineBrowserDock/pipelineBrowser" command="mouseRelease" arguments="1,0,0,42,11,/0:0/0:0" />
   <pqevent object="pqClientMainWindow/MainControlsToolbar/actionSaveData" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/FileSaveDialog" command="remove" arguments="$PARAVIEW_TEST_ROOT/PythonAlgorithmReadersAndWriters.npz" />
-  <pqevent object="pqClientMainWindow/FileSaveDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/PythonAlgorithmReadersAndWriters.npz" />
+  <pqevent object="pqClientMainWindow/FileSaveDialog" command="remove" arguments="$VISOCYTE_TEST_ROOT/PythonAlgorithmReadersAndWriters.npz" />
+  <pqevent object="pqClientMainWindow/FileSaveDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/PythonAlgorithmReadersAndWriters.npz" />
 </pqevents>

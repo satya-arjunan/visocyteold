@@ -12,6 +12,6 @@ vtk_module(vtkPVPythonAlgorithm
     vtksys
     vtkWrappingPythonCore
   TEST_LABELS
-    PARAVIEW
+    VISOCYTE
 )
 endif()

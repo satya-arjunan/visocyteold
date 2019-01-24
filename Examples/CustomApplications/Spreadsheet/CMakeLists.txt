@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.3)
 project(SpreadSheet)
 
 find_package(Visocyte REQUIRED)
-include(${PARAVIEW_USE_FILE})
-if (NOT PARAVIEW_BUILD_QT_GUI)
+include(${VISOCYTE_USE_FILE})
+if (NOT VISOCYTE_BUILD_QT_GUI)
   message(FATAL_ERROR
-    "SpreadSheet example requires PARAVIEW_BUILD_QT_GUI to be enabled. "
+    "SpreadSheet example requires VISOCYTE_BUILD_QT_GUI to be enabled. "
     "Please rebuild Visocyte (or point to a different build of Visocyte) "
-    "with PARAVIEW_BUILD_QT_GUI set to TRUE")
+    "with VISOCYTE_BUILD_QT_GUI set to TRUE")
 endif()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -18,7 +18,7 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
 endif()
 
 # Variables that need to be set for installation code to work correctly.
-SET (BUILD_SHARED_LIBS ${PARAVIEW_BUILD_SHARED_LIBS}) # enable shared builds.
+SET (BUILD_SHARED_LIBS ${VISOCYTE_BUILD_SHARED_LIBS}) # enable shared builds.
 
 SET (SOURCE_FILES
   SpreadSheetMainWindow.cxx

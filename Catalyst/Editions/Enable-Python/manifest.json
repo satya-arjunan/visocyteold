@@ -5,7 +5,7 @@
   ],
   "cmake":{
     "cache":[
-      { "name":"PARAVIEW_ENABLE_PYTHON",
+      { "name":"VISOCYTE_ENABLE_PYTHON",
         "type":"BOOL",
         "value":"ON"
       }

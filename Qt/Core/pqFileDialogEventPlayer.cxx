@@ -68,24 +68,24 @@ bool pqFileDialogEventPlayer::playEvent(
   QString fileString = Arguments;
 
   const QString data_directory = pqCoreTestUtility::DataRoot();
-  if (fileString.contains("PARAVIEW_DATA_ROOT") && data_directory.isEmpty())
+  if (fileString.contains("VISOCYTE_DATA_ROOT") && data_directory.isEmpty())
   {
     qCritical()
-      << "You must set the PARAVIEW_DATA_ROOT environment variable to play-back file selections.";
+      << "You must set the VISOCYTE_DATA_ROOT environment variable to play-back file selections.";
     Error = true;
     return true;
   }
 
   const QString test_directory = pqCoreTestUtility::TestDirectory();
-  if (fileString.contains("PARAVIEW_TEST_ROOT") && test_directory.isEmpty())
+  if (fileString.contains("VISOCYTE_TEST_ROOT") && test_directory.isEmpty())
   {
     qCritical() << "You must specify --test-directory in the command line options.";
     Error = true;
     return true;
   }
 
-  fileString.replace("$PARAVIEW_DATA_ROOT", data_directory);
-  fileString.replace("$PARAVIEW_TEST_ROOT", test_directory);
+  fileString.replace("$VISOCYTE_DATA_ROOT", data_directory);
+  fileString.replace("$VISOCYTE_TEST_ROOT", test_directory);
   if (Command == "filesSelected")
   {
     if (object->selectFile(fileString))

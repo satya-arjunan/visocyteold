@@ -5108,11 +5108,11 @@
     </Proxy>
     <Proxy group="sources" type="ExodusIIReader" id="12370" servers="1">
       <Property name="FileName" id="12370.FileName" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/can.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/can.ex2"/>
         <Domain name="files" id="12370.FileName.files"/>
       </Property>
       <Property name="FileNameInfo" id="12370.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/can.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/can.ex2"/>
       </Property>
       <Property name="TimestepValues" id="12370.TimestepValues" number_of_elements="44">
         <Element index="0" value="0"/>
@@ -5259,13 +5259,13 @@
         <Element index="0" value="%s"/>
       </Property>
       <Property name="FilePrefix" id="12370.FilePrefix" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/can.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/can.ex2"/>
         <Domain name="default_value" id="12370.FilePrefix.default_value">
-          <String text="$PARAVIEW_EXAMPLES_DATA/can.ex2"/>
+          <String text="$VISOCYTE_EXAMPLES_DATA/can.ex2"/>
         </Domain>
       </Property>
       <Property name="FilePrefixInfo" id="12370.FilePrefixInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/can.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/can.ex2"/>
       </Property>
       <Property name="FileRange" id="12370.FileRange" number_of_elements="2">
         <Element index="0" value="0"/>

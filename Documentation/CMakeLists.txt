@@ -1,11 +1,11 @@
-file(MAKE_DIRECTORY ${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY})
+file(MAKE_DIRECTORY ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY})
 
 #---------------------------------------------------------------------------------
 # add a txt file to indicate which source version the documentation was
 # generated for.
-set(CMAKE_CONFIGURABLE_FILE_CONTENT "${PARAVIEW_VERSION_FULL}")
+set(CMAKE_CONFIGURABLE_FILE_CONTENT "${VISOCYTE_VERSION_FULL}")
 configure_file("${CMAKE_ROOT}/Modules/CMakeConfigurableFile.in"
-               "${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/version.txt")
+               "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/version.txt")
 unset(CMAKE_CONFIGURABLE_FILE_CONTENT)
 
 #---------------------------------------------------------------------------------
@@ -15,7 +15,7 @@ add_custom_target(VisocyteDoc-TGZ
   COMMAND
     ${CMAKE_COMMAND} -E tar cfz
     ${CMAKE_CURRENT_BINARY_DIR}/VisocyteGeneratedDocs.tar.gz
-    ${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}
-  WORKING_DIRECTORY ${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/..
+    ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}
+  WORKING_DIRECTORY ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/..
   COMMENT "Generate VisocyteGeneratedDocs.tar.gz")
 add_dependencies(VisocyteDoc-TGZ VisocyteDoc)

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 project(CatalystCxxOverlappingAMRExample)
 
 find_package(Visocyte 4.1 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-include("${PARAVIEW_USE_FILE}")
+include("${VISOCYTE_USE_FILE}")
 set(Adaptor_SRCS
   FEAdaptor.cxx
   )
@@ -18,5 +18,5 @@ if (BUILD_TESTING)
   include(CTest)
   add_test(NAME CxxOverlappingAMRExampleTest COMMAND CxxOverlappingAMRExample
     ${CMAKE_CURRENT_SOURCE_DIR}/SampleScripts/feslicescript.py)
-  set_tests_properties(CxxOverlappingAMRExampleTest PROPERTIES LABELS "PARAVIEW;CATALYST")
+  set_tests_properties(CxxOverlappingAMRExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 endif()

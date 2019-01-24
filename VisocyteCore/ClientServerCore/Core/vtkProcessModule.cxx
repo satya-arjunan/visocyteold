@@ -121,7 +121,7 @@ bool vtkProcessModule::Initialize(ProcessTypes type, int& argc, char**& argv)
   bool use_mpi;
   if (type == PROCESS_CLIENT)
   {
-#if defined(PARAVIEW_INITIALIZE_MPI_ON_CLIENT)
+#if defined(VISOCYTE_INITIALIZE_MPI_ON_CLIENT)
     use_mpi = true;
 #else
     use_mpi = false;
@@ -231,7 +231,7 @@ bool vtkProcessModule::Initialize(ProcessTypes type, int& argc, char**& argv)
   }
 #endif // _WIN32
 
-#ifdef PARAVIEW_ENABLE_FPE
+#ifdef VISOCYTE_ENABLE_FPE
   vtkFloatingPointExceptions::Enable();
 #endif
 
@@ -250,7 +250,7 @@ bool vtkProcessModule::Initialize(ProcessTypes type, int& argc, char**& argv)
   // we turn off prompts all together.
   vtkOutputWindow::GetInstance()->PromptUserOff();
 
-#ifdef PARAVIEW_USE_MPI_SSEND
+#ifdef VISOCYTE_USE_MPI_SSEND
   vtkMPIController::SetUseSsendForRMI(1);
 #endif
 

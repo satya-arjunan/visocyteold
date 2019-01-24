@@ -97,7 +97,7 @@ if (APPLE)
     PrintSupport)
 endif ()
 
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   list(APPEND classes
     pqHelpWindow)
 
@@ -105,7 +105,7 @@ if (PARAVIEW_USE_QTHELP)
     Help)
 endif ()
 
-if (PARAVIEW_USE_QTWEBENGINE)
+if (VISOCYTE_USE_QTWEBENGINE)
   list(APPEND qt_components
     WebEngineWidgets)
 endif ()
@@ -157,13 +157,13 @@ if (APPLE)
       Qt5::PrintSupport)
 endif ()
 
-if (PARAVIEW_USE_QTHELP)
+if (VISOCYTE_USE_QTHELP)
   vtk_module_link(Visocyte::pqWidgets
     PRIVATE
       Qt5::Help)
 endif ()
 
-if (PARAVIEW_USE_QTWEBENGINE)
+if (VISOCYTE_USE_QTWEBENGINE)
   vtk_module_link(Visocyte::pqWidgets
     PRIVATE
       Qt5::WebEngineWidgets)

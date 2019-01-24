@@ -31,7 +31,7 @@
 
 #include "vtkObject.h"
 #include "vtkPVClientServerCoreCoreModule.h" //needed for exports
-#include "vtkPVConfig.h" // needed for PARAVIEW_VERSION and CMAKE_CXX_COMPILER_ID
+#include "vtkPVConfig.h" // needed for VISOCYTE_VERSION and CMAKE_CXX_COMPILER_ID
 #include <string>
 #include <vector>
 
@@ -160,7 +160,7 @@ typedef vtkPVPlugin*(C_DECL* pv_plugin_query_instance_fptr)();
 #endif
 
 /// TODO: add compiler version.
-#define _PV_PLUGIN_VERIFICATION_STRING "visocyteplugin|" CMAKE_CXX_COMPILER_ID "|" PARAVIEW_VERSION
+#define _PV_PLUGIN_VERIFICATION_STRING "visocyteplugin|" CMAKE_CXX_COMPILER_ID "|" VISOCYTE_VERSION
 
 // vtkPVPluginLoader checks for existence of this function
 // to determine if the shared-library is a visocyte-server-manager plugin or
@@ -183,7 +183,7 @@ typedef vtkPVPlugin*(C_DECL* pv_plugin_query_instance_fptr)();
 
 // vtkPVPluginLoader uses this function to obtain the vtkPVPlugin instance  for
 // this plugin. In a plugin, there can only be one call to this macro. When
-// using the CMake macro ADD_PARAVIEW_PLUGIN, you don't have to worry about
+// using the CMake macro ADD_VISOCYTE_PLUGIN, you don't have to worry about
 // this, the CMake macro takes care of it.
 #define PV_PLUGIN_EXPORT(PLUGIN, PLUGINCLASS)                                                      \
   C_EXPORT vtkPVPlugin* C_DECL pv_plugin_instance_##PLUGIN()                                       \

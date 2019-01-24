@@ -14,7 +14,7 @@ PURPOSE.  See the above copyright notice for more information.
 =========================================================================*/
 #include "vtkPVConfig.h"
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 extern "C" {
 void vtkPVInitializePythonModules();
 }
@@ -48,7 +48,7 @@ static bool RealMain(int argc, char* argv[], vtkProcessModule::ProcessTypes type
     return 1;
   }
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
   // register callback to initialize modules statically. The callback is
   // empty when BUILD_SHARED_LIBS is ON.
   vtkPVInitializePythonModules();

@@ -8423,11 +8423,11 @@
     </Proxy>
     <Proxy group="sources" type="ExodusIIReader" id="28482" servers="1">
       <Property name="FileName" id="28482.FileName" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         <Domain name="files" id="28482.FileName.files"/>
       </Property>
       <Property name="FileNameInfo" id="28482.FileNameInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
       </Property>
       <Property name="TimestepValues" id="28482.TimestepValues"/>
       <Property name="UseMetaFile" id="28482.UseMetaFile" number_of_elements="1">
@@ -8519,13 +8519,13 @@
         <Element index="0" value="%s"/>
       </Property>
       <Property name="FilePrefix" id="28482.FilePrefix" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         <Domain name="default_value" id="28482.FilePrefix.default_value">
-          <String text="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+          <String text="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
         </Domain>
       </Property>
       <Property name="FilePrefixInfo" id="28482.FilePrefixInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_EXAMPLES_DATA/disk_out_ref.ex2"/>
+        <Element index="0" value="$VISOCYTE_EXAMPLES_DATA/disk_out_ref.ex2"/>
       </Property>
       <Property name="FileRange" id="28482.FileRange" number_of_elements="2">
         <Element index="0" value="0"/>
@@ -8691,13 +8691,13 @@
         <Domain name="array_list" id="28482.SideSetResultArrayStatus.array_list"/>
       </Property>
       <Property name="XMLFileName" id="28482.XMLFileName" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_TEST_ROOT/artifact.dta"/>
+        <Element index="0" value="$VISOCYTE_TEST_ROOT/artifact.dta"/>
         <Domain name="default_value" id="28482.XMLFileName.default_value">
-          <String text="$PARAVIEW_TEST_ROOT//artifact.dta"/>
+          <String text="$VISOCYTE_TEST_ROOT//artifact.dta"/>
         </Domain>
       </Property>
       <Property name="XMLFileNameInfo" id="28482.XMLFileNameInfo" number_of_elements="1">
-        <Element index="0" value="$PARAVIEW_TEST_ROOT//artifact.dta"/>
+        <Element index="0" value="$VISOCYTE_TEST_ROOT//artifact.dta"/>
       </Property>
     </Proxy>
     <Proxy group="misc" type="TimeKeeper" id="13641" servers="16">

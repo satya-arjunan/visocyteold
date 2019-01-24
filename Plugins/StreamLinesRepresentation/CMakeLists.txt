@@ -18,14 +18,14 @@ vtk_module_build(
   MODULES             ${streamlines_modules}
   PACKAGE             StreamLinesRepresentation
   INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}"
-  VERSION             "${PARAVIEW_VERSION}"
+  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
+  VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1")
 
 set(sources)
 set(interfaces)
 
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   list(APPEND sources
     pqStreamLinesAnimationManager.cxx
     pqStreamLinesAnimationManager.h)
@@ -49,7 +49,7 @@ visocyte_add_plugin(StreamLinesRepresentation
   MODULES StreamLinesRepresentation::vtkStreamLines
   XML_DOCUMENTATION OFF)
 
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(StreamLinesRepresentation
     PRIVATE
       Visocyte::ServerManagerCore

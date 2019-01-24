@@ -191,9 +191,9 @@ void pqPythonEventSourceImage::doComparison()
   }
   else if (SnapshotTestImage != QString::null)
   {
-    SnapshotTestImage = SnapshotTestImage.replace("$PARAVIEW_TEST_ROOT", test_directory);
+    SnapshotTestImage = SnapshotTestImage.replace("$VISOCYTE_TEST_ROOT", test_directory);
     SnapshotTestImage =
-      SnapshotTestImage.replace("$PARAVIEW_DATA_ROOT", pqCoreTestUtility::DataRoot());
+      SnapshotTestImage.replace("$VISOCYTE_DATA_ROOT", pqCoreTestUtility::DataRoot());
     ::SnapshotResult = pqCoreTestUtility::CompareImage(
       SnapshotTestImage, baseline_image, threshold, std::cerr, test_directory);
   }

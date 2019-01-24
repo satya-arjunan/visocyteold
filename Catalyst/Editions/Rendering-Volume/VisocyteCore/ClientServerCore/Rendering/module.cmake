@@ -1,9 +1,9 @@
 set (__dependencies)
 set (__private_dependencies)
-if (PARAVIEW_USE_PISTON)
+if (VISOCYTE_USE_PISTON)
   list (APPEND __dependencies vtkAcceleratorsPiston)
 endif()
-if(PARAVIEW_USE_VTKM)
+if(VISOCYTE_USE_VTKM)
   list(APPEND __private_dependencies
     vtkAcceleratorsVTKm
     vtkm
@@ -31,7 +31,7 @@ vtk_module(vtkPVClientServerCoreRendering
     vtkzlib
     ${__private_dependencies}
   TEST_LABELS
-    PARAVIEW
+    VISOCYTE
   KIT
     vtkPVClientServer
 )

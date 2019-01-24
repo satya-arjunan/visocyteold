@@ -86,24 +86,24 @@ public:
 
     new_url.setPath(url.path() +
       QString("/v%1_%2/%3/servers.pvsc")
-        .arg(PARAVIEW_VERSION_MAJOR)
-        .arg(PARAVIEW_VERSION_MINOR)
+        .arg(VISOCYTE_VERSION_MAJOR)
+        .arg(VISOCYTE_VERSION_MINOR)
         .arg(getOS()));
     urls.append(new_url);
 
     new_url.setPath(url.path() +
       QString("/v%1_%2/%3/servers.xml")
-        .arg(PARAVIEW_VERSION_MAJOR)
-        .arg(PARAVIEW_VERSION_MINOR)
+        .arg(VISOCYTE_VERSION_MAJOR)
+        .arg(VISOCYTE_VERSION_MINOR)
         .arg(getOS()));
     urls.append(new_url);
 
     new_url.setPath(url.path() +
-      QString("/v%1_%2/servers.pvsc").arg(PARAVIEW_VERSION_MAJOR).arg(PARAVIEW_VERSION_MINOR));
+      QString("/v%1_%2/servers.pvsc").arg(VISOCYTE_VERSION_MAJOR).arg(VISOCYTE_VERSION_MINOR));
     urls.append(new_url);
 
     new_url.setPath(url.path() +
-      QString("/v%1_%2/servers.xml").arg(PARAVIEW_VERSION_MAJOR).arg(PARAVIEW_VERSION_MINOR));
+      QString("/v%1_%2/servers.xml").arg(VISOCYTE_VERSION_MAJOR).arg(VISOCYTE_VERSION_MINOR));
     urls.append(new_url);
 
     new_url.setPath(url.path() + QString("/servers.pvsc"));

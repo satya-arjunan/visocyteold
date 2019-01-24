@@ -162,13 +162,13 @@ QString pqCoreTestUtility::DataRoot()
   // Let the user override the defaults by setting an environment variable ...
   if (result.isEmpty())
   {
-    result = getenv("PARAVIEW_DATA_ROOT");
+    result = getenv("VISOCYTE_DATA_ROOT");
   }
 
   // Otherwise, go with the compiled-in default ...
   if (result.isEmpty())
   {
-    result = PARAVIEW_DATA_ROOT;
+    result = VISOCYTE_DATA_ROOT;
   }
 
   // Ensure all slashes face forward ...
@@ -199,7 +199,7 @@ QString pqCoreTestUtility::BaselineDirectory()
   // Let the user override the defaults by setting an environment variable ...
   if (result.isEmpty())
   {
-    result = getenv("PARAVIEW_TEST_BASELINE_DIR");
+    result = getenv("VISOCYTE_TEST_BASELINE_DIR");
   }
 
   // Finally use the xml file location if an instance is available
@@ -428,7 +428,7 @@ QString pqCoreTestUtility::TestDirectory()
   // Let the user override the defaults by setting an environment variable ...
   if (result.isEmpty())
   {
-    result = getenv("PARAVIEW_TEST_DIR");
+    result = getenv("VISOCYTE_TEST_DIR");
   }
 
   // Ensure all slashes face forward ...

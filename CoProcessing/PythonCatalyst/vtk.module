@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkPVPythonCatalyst
 CONDITION
-  PARAVIEW_ENABLE_PYTHON
+  VISOCYTE_ENABLE_PYTHON
 DEPENDS
   Visocyte::Catalyst
   VTK::PythonInterpreter

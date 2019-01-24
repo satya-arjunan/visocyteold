@@ -201,11 +201,11 @@ QProcessEnvironment getDefaultEnvironment(const pqServerConfiguration& configura
   options.insert("PV_CLIENT_HOST", QHostInfo::localHostName());
   options.insert("PV_CONNECTION_URI", resource.toURI());
   options.insert("PV_CONNECTION_SCHEME", resource.scheme());
-  options.insert("PV_VERSION_MAJOR", QString::number(PARAVIEW_VERSION_MAJOR));
-  options.insert("PV_VERSION_MINOR", QString::number(PARAVIEW_VERSION_MINOR));
-  options.insert("PV_VERSION_PATCH", QString::number(PARAVIEW_VERSION_PATCH));
-  options.insert("PV_VERSION", PARAVIEW_VERSION);
-  options.insert("PV_VERSION_FULL", PARAVIEW_VERSION_FULL);
+  options.insert("PV_VERSION_MAJOR", QString::number(VISOCYTE_VERSION_MAJOR));
+  options.insert("PV_VERSION_MINOR", QString::number(VISOCYTE_VERSION_MINOR));
+  options.insert("PV_VERSION_PATCH", QString::number(VISOCYTE_VERSION_PATCH));
+  options.insert("PV_VERSION", VISOCYTE_VERSION);
+  options.insert("PV_VERSION_FULL", VISOCYTE_VERSION_FULL);
   options.insert("PV_SERVER_HOST", resource.host());
   options.insert("PV_SERVER_PORT", QString::number(resource.port(11111)));
   options.insert("PV_SSH_PF_SERVER_PORT", configuration.portForwardingLocalPort());

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF (NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF ()
 
 add_visocyte_plugin(LagrangianIntegrationModelExample "1.0"

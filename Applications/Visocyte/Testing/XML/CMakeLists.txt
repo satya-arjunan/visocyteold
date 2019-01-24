@@ -389,12 +389,12 @@ SET (TESTS_WITHOUT_BASELINES
   TestCompositePropertyWidgetDecorator.xml
 )
 
-if (PARAVIEW_PLUGIN_ENABLE_EULATestPlugin)
+if (VISOCYTE_PLUGIN_ENABLE_EULATestPlugin)
   list(APPEND TESTS_WITHOUT_BASELINES
     PluginEULA.xml)
 endif ()
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   list(APPEND TESTS_WITHOUT_BASELINES
     DetachedFromLayoutIndirect.xml
     TestPythonConsole.xml
@@ -474,7 +474,7 @@ SET(TESTS_WITH_BASELINES
   TestOpacityRendering.xml
 )
 
-if(PARAVIEW_USE_VISITBRIDGE)
+if(VISOCYTE_USE_VISITBRIDGE)
   list(APPEND TESTS_WITH_BASELINES
     VisItBridgeChombo.xml
     VisItBridgeLAMMPSDump.xml
@@ -497,12 +497,12 @@ else()
     TruchasReader.xml)
 endif()
 
-if(PARAVIEW_USE_OSPRAY)
+if(VISOCYTE_USE_OSPRAY)
   list(APPEND TESTS_WITH_BASELINES
     OSPRay.xml)
 endif()
 
-if(PARAVIEW_USE_OPENTURNS)
+if(VISOCYTE_USE_OPENTURNS)
   list(APPEND TESTS_WITH_BASELINES
     HistogramKernelSmoothing.xml)
   list(APPEND TESTS_WITH_BASELINES
@@ -532,8 +532,8 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
     --enable-bt
     ${command_line_connect_command}
     -dr
-    --test-directory=${PARAVIEW_TEST_DIR}
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    --test-directory=${VISOCYTE_TEST_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${test_name}.xml
     EXTRA_LABELS "CATALYST")
 
@@ -551,8 +551,8 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
     --enable-bt
     ${command_line_connect_command}
     -dr
-    --test-directory=${PARAVIEW_TEST_DIR}
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    --test-directory=${VISOCYTE_TEST_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${test_name}.xml
     EXTRA_LABELS "CATALYST")
 
@@ -560,7 +560,7 @@ endmacro(ADD_CATALYST_LIVE_TEST)
 
 # Catalyst tests
 # ----------------------------------------------------------------------
-if(PARAVIEW_ENABLE_CATALYST AND PARAVIEW_ENABLE_PYTHON)
+if(VISOCYTE_ENABLE_CATALYST AND VISOCYTE_ENABLE_PYTHON)
 
   visocyte_add_client_tests(
     FORCE_SERIAL
@@ -585,7 +585,7 @@ if(PARAVIEW_ENABLE_CATALYST AND PARAVIEW_ENABLE_PYTHON)
 
 endif()
 
-if (PARAVIEW_ENABLE_XDMF2 AND NOT PARAVIEW_ENABLE_XDMF3)
+if (VISOCYTE_ENABLE_XDMF2 AND NOT VISOCYTE_ENABLE_XDMF3)
   # Xdmf2 is optional.
   # And when both Xdmf2 and Xdmf3 are enabled, the SelectReader dialog
   # confuses these tests. So, we'll disable them for now.
@@ -807,7 +807,7 @@ list(APPEND TESTS_WITH_BASELINES
   RandomAttributes.xml
 )
 
-if (PARAVIEW_PLUGIN_ENABLE_AnalyzeNIfTIIO)
+if (VISOCYTE_PLUGIN_ENABLE_AnalyzeNIfTIIO)
   list(APPEND TESTS_WITH_BASELINES
     NiftiReaderWriterPlugin.xml)
 endif ()
@@ -819,7 +819,7 @@ if (TARGET VTK::IOParallelLSDyna)
     )
 endif ()
 
-if (PARAVIEW_PLUGIN_ENABLE_pvNVIDIAIndeX)
+if (VISOCYTE_PLUGIN_ENABLE_pvNVIDIAIndeX)
   list(APPEND TESTS_WITH_BASELINES
     IndeXRepresentation.xml)
   set(IndeXRepresentation_DISABLE_CS TRUE)
@@ -827,7 +827,7 @@ if (PARAVIEW_PLUGIN_ENABLE_pvNVIDIAIndeX)
 
   # The embedded free IndeX license doesn't support parallel processing.
   # Disable the test on MPI builds.
-  if (NOT PARAVIEW_USE_MPI)
+  if (NOT VISOCYTE_USE_MPI)
     list(APPEND TESTS_WITH_BASELINES
       IndeXRepresentationServer.xml)
     set(IndeXRepresentationServer_DISABLE_C TRUE)
@@ -865,7 +865,7 @@ list(APPEND TESTS_WITH_BASELINES
   CompositeGlyphTree.xml
   )
 
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   list(APPEND TESTS_WITH_BASELINES
     # Test uses D3 which is available in MPI only builds.
     D3SmallCells.xml
@@ -885,11 +885,11 @@ if (PARAVIEW_USE_MPI)
 
   # DistributePoints is only tested in non-built-in mode.
   visocyte_add_client_server_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS DistributePoints.xml
   )
   visocyte_add_client_server_render_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS DistributePoints.xml
   )
 
@@ -904,39 +904,39 @@ if (PARAVIEW_USE_MPI)
 
   # Test AppendReduce which can only be tested with non-built-in mode
   visocyte_add_client_server_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS AppendReduce.xml
   )
   # Test AppendReduce which can only be tested with non-built-in mode
   visocyte_add_client_server_render_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS AppendReduce.xml
   )
 
   # Test uses GhostCellsGenerator which is available in MPI only builds.
   # As the test use pvtu writer/reader it does not work in built-in mode.
   visocyte_add_client_server_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS GhostCellsGenerator.xml
     )
   visocyte_add_client_server_render_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS GhostCellsGenerator.xml
     )
 
-  if (PARAVIEW_ENABLE_COSMOTOOLS)
+  if (VISOCYTE_ENABLE_COSMOTOOLS)
     # Test the Generic IO file writer in VTKExtensions/CosmoTools
     visocyte_add_client_tests(
       ARGS --mpi
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS GenericIOReadWrite.xml
       )
     visocyte_add_client_server_tests(
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS GenericIOReadWrite.xml
       )
     visocyte_add_client_server_render_tests(
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS GenericIOReadWrite.xml
       )
 
@@ -948,7 +948,7 @@ if (PARAVIEW_USE_MPI)
   set(PointInterpolator_DISABLE_CRS TRUE)
   set(PointInterpolator_DISABLE_CS TRUE)
 endif()
-if(PARAVIEW_ENABLE_PYTHON)
+if(VISOCYTE_ENABLE_PYTHON)
   list(APPEND TESTS_WITH_BASELINES
     ColorByComponentNames.xml # needs programmable filter
     LiveProgrammableSource.xml
@@ -973,7 +973,7 @@ if(PARAVIEW_ENABLE_PYTHON)
   # Check that matplotlib is available
   include(FindPythonModules)
   find_python_module(matplotlib matplotlib_found)
-  if (PARAVIEW_ENABLE_MATPLOTLIB AND matplotlib_found)
+  if (VISOCYTE_ENABLE_MATPLOTLIB AND matplotlib_found)
     list(APPEND TESTS_WITH_BASELINES TestPythonView.xml)
   endif()
 
@@ -1078,9 +1078,9 @@ if (EXISTS "${smooth_flash}")
               --enable-bt
               -dr
               --enable-streaming
-              --test-directory=${PARAVIEW_TEST_DIR}
+              --test-directory=${VISOCYTE_TEST_DIR}
 
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS ${tname})
 
     add_pv_test(pvcs "_DISABLE_CS"
@@ -1092,20 +1092,20 @@ if (EXISTS "${smooth_flash}")
          --enable-bt
          -dr
          --enable-streaming
-         --test-directory=${PARAVIEW_TEST_DIR}
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+         --test-directory=${VISOCYTE_TEST_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS ${tname})
   endforeach()
 endif()
 
-option(PARAVIEW_SSH_SERVERS_TESTING
+option(VISOCYTE_SSH_SERVERS_TESTING
     "Add SSH Servers testing"
     OFF)
-mark_as_advanced(PARAVIEW_SSH_SERVERS_TESTING)
+mark_as_advanced(VISOCYTE_SSH_SERVERS_TESTING)
 
-if(PARAVIEW_SSH_SERVERS_TESTING)
+if(VISOCYTE_SSH_SERVERS_TESTING)
   message(STATUS
-    "With PARAVIEW_SSH_SERVERS_TESTING, to have the SSH Server tests pass, make sure that this machine has its own ssh public key as an authorized_keys and that 127.0.0.1 is in the known_hosts file, /usr/bin/xterm is available. In case of failing tests, pvserver logs are available in ${CMAKE_CURRENT_BINARY_DIR}")
+    "With VISOCYTE_SSH_SERVERS_TESTING, to have the SSH Server tests pass, make sure that this machine has its own ssh public key as an authorized_keys and that 127.0.0.1 is in the known_hosts file, /usr/bin/xterm is available. In case of failing tests, pvserver logs are available in ${CMAKE_CURRENT_BINARY_DIR}")
 
   configure_file (
     "${CMAKE_CURRENT_SOURCE_DIR}/server.sh.in"
@@ -1151,7 +1151,7 @@ if(PARAVIEW_SSH_SERVERS_TESTING)
 # The SSH tests should not be run in parallel to avoid port collision
     set(${tname}_FORCE_SERIAL TRUE)
   endforeach()
-endif(PARAVIEW_SSH_SERVERS_TESTING)
+endif(VISOCYTE_SSH_SERVERS_TESTING)
 
 #------------------------------------------------------------------------------
 
@@ -1273,7 +1273,7 @@ set (VolumeNoMapScalars_THRESHOLD 50)
 
 # Histogram filter produces different results when running in parallel, so
 # disable it.
-IF (PARAVIEW_USE_MPI)
+IF (VISOCYTE_USE_MPI)
   SET (SpreadSheet1_DISABLE_CS TRUE)
   SET (SpreadSheet1_DISABLE_CRS TRUE)
 
@@ -1312,7 +1312,7 @@ IF (PARAVIEW_USE_MPI)
   set(SelectionLinkRemove_DISABLE_CS TRUE)
   set(SelectionLinkReaction_DISABLE_CS TRUE)
 
-  if (PARAVIEW_ENABLE_PYTHON)
+  if (VISOCYTE_ENABLE_PYTHON)
     set (TraceStatisticsFilter_DISABLE_CS TRUE)
     set (TraceStatisticsFilter_DISABLE_CRS TRUE)
   endif()
@@ -1431,10 +1431,10 @@ set (PointGaussianMultiBlockDataSet_DISABLE_CRS TRUE)
 #
 ##########################################################
 
-OPTION(PARAVIEW_MULTI_CLIENT_TESTING
+OPTION(VISOCYTE_MULTI_CLIENT_TESTING
     "Add Collaboration testing"
     ON)
-MARK_AS_ADVANCED(PARAVIEW_MULTI_CLIENT_TESTING)
+MARK_AS_ADVANCED(VISOCYTE_MULTI_CLIENT_TESTING)
 
 # The create/delete test was only meant for collaboration
 SET (CreateDelete_DISABLE_C TRUE)
@@ -1442,69 +1442,69 @@ SET (CreateDelete_DISABLE_CS TRUE)
 SET (CreateDelete_DISABLE_CRS TRUE)
 
 # List of test Enable for collaboration
-#set (AnimatePipelineTime_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (CalcParens_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Calculator_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (CameraLink_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (CompositeSurfaceSelection_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (Contour_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ContourRange_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (CreateDelete_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (CustomSourceProbe_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (D3SmallCells_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (DualSphereAnimation_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (EnSight_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExodusModeShapes_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExodusXML_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExTimeseries_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExTimeseries2_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExtractBlock_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ExtractLevel_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (FindDataDialog_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (FFTOverTime_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Flow_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Flow2_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Fractal2D_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (GridConnectivity_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (NormalGlyphs_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (OpenSaveData_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Plot3DReader_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (PlotEdges_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (PlotEdges2_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (PropertyConversion_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (PropertyConversion1_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (PropertyConversion2_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
+#set (AnimatePipelineTime_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (CalcParens_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Calculator_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (CameraLink_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (CompositeSurfaceSelection_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (Contour_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ContourRange_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (CreateDelete_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (CustomSourceProbe_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (D3SmallCells_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (DualSphereAnimation_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (EnSight_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExodusModeShapes_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExodusXML_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExTimeseries_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExTimeseries2_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExtractBlock_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ExtractLevel_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (FindDataDialog_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (FFTOverTime_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Flow_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Flow2_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Fractal2D_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (GridConnectivity_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (NormalGlyphs_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (OpenSaveData_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Plot3DReader_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (PlotEdges_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (PlotEdges2_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (PropertyConversion_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (PropertyConversion1_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (PropertyConversion2_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
 ## disabling since the state file doesn't have view layout and such old state
 ## files are not currently supported in collaborative mode.
-##set (PropertyLink_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (ReadXMLPolyDataFileSeries_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (RepresentationSelector_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SaveColorMap_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SaveCSV_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SelectReader_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SimpleInteraction_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Slice_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (SpreadSheet1_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SpreadSheet2_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SPTimeseries_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (SpyPlotHistoryReader_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (StreamTracerUpdates_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (TemporalInterpolator_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (TemporalShiftScale_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Tessellate_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (Threshold_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (UnstructuredOutline_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (VariableSelector_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (VariableSelector1_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (XdmfRead_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadImageData_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadImageDataCollection_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadRectilinearGrid_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadRectilinearGridCollection_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadStructuredGrid_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfReadStructuredGridCollection_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-#set (XdmfGridAttributes_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
-set (ZLibXDMF_ENABLE_MULTI_CLIENT ${PARAVIEW_MULTI_CLIENT_TESTING})
+##set (PropertyLink_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (ReadXMLPolyDataFileSeries_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (RepresentationSelector_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SaveColorMap_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SaveCSV_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SelectReader_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SimpleInteraction_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Slice_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (SpreadSheet1_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SpreadSheet2_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SPTimeseries_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (SpyPlotHistoryReader_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (StreamTracerUpdates_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (TemporalInterpolator_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (TemporalShiftScale_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Tessellate_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (Threshold_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (UnstructuredOutline_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (VariableSelector_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (VariableSelector1_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (XdmfRead_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadImageData_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadImageDataCollection_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadRectilinearGrid_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadRectilinearGridCollection_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadStructuredGrid_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfReadStructuredGridCollection_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+#set (XdmfGridAttributes_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
+set (ZLibXDMF_ENABLE_MULTI_CLIENT ${VISOCYTE_MULTI_CLIENT_TESTING})
 
 
 set(TESTS_WITH_MULTI_SERVERS_3
@@ -1519,12 +1519,12 @@ visocyte_add_client_tests(
 )
 
 visocyte_add_client_tests(
-  BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+  BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
   TEST_SCRIPTS ${TESTS_WITH_BASELINES}
 )
 
 visocyte_add_client_server_tests(
-  BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+  BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
   TEST_SCRIPTS ${TESTS_WITH_BASELINES}
 )
 
@@ -1532,9 +1532,9 @@ visocyte_add_client_server_tests(
   TEST_SCRIPTS ${TESTS_WITH_INLINE_COMPARES}
 )
 
-if (PARAVIEW_CLIENT_RENDER_SERVER_TESTS)
+if (VISOCYTE_CLIENT_RENDER_SERVER_TESTS)
   visocyte_add_client_server_render_tests(
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${TESTS_WITH_BASELINES}
   )
 
@@ -1546,11 +1546,11 @@ endif ()
 # TODO: remote rendering tests and reverse connect tests.
 
 visocyte_add_multi_client_tests(
-  BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+  BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
   TEST_SCRIPTS ${TESTS_WITH_BASELINES})
 
 visocyte_add_multi_server_tests(3
-   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
    TEST_SCRIPTS ${TESTS_WITH_MULTI_SERVERS_3})
 
 # Removing these test since these have been failing for a while the the testing
@@ -1558,29 +1558,29 @@ visocyte_add_multi_server_tests(3
 # testing :(.
 #set (TileDisplayScatterPlot-2x1_THRESHOLD 40)
 #add_tile_display_tests("pvcs-tile-display" 2 1
-#   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+#   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
 #   TEST_SCRIPTS TileDisplayScatterPlot-2x1.xml)
 #
 #set (TileDisplayScatterPlot-2x2_THRESHOLD 40)
 #add_tile_display_tests("pvcs-tile-display" 2 2
-#   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+#   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
 #   TEST_SCRIPTS TileDisplayScatterPlot-2x2.xml)
 
 # This test has been behaving badly across many platforms and needs to be fixed
 # before it can be useful. Disabling for now, see bug #15424.
 #set (TileDisplay3DTesting-1x2_THRESHOLD 270)
 #add_tile_display_tests("pvcs-tile-display" 1 2
-#   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+#   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
 #   TEST_SCRIPTS TileDisplay3DTesting-1x2.xml)
 
 set (TileDisplay3DTesting-2x1_THRESHOLD 270)
 visocyte_add_tile_display_tests(2 1
-   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
    TEST_SCRIPTS TileDisplay3DTesting-2x1.xml)
 
 set (TileDisplay3DTesting-2x2_THRESHOLD 270)
 visocyte_add_tile_display_tests(2 2
-   BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
    TEST_SCRIPTS TileDisplay3DTesting-2x2.xml)
 
 
@@ -1595,10 +1595,10 @@ if (TARGET visocyte)
     "${CMAKE_CURRENT_BINARY_DIR}/exodusStateFile.3.14.1.pvsm" @ONLY)
   visocyte_add_client_tests(
     ARGS "--state=${CMAKE_CURRENT_BINARY_DIR}/exodusStateFile.3.14.1.pvsm"
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS LoadExodusStateFile.xml)
 
-  if (PARAVIEW_ENABLE_PYTHON)
+  if (VISOCYTE_ENABLE_PYTHON)
     # Test whether or not we can load a Python state file with the --state
     # command line option as well as loading a Python state file that was
     # generated with PV 5.4.1. Loading the 5.4.1 Python state file checks
@@ -1606,13 +1606,13 @@ if (TARGET visocyte)
     set (Calculator54State_THRESHOLD 100)
     visocyte_add_client_tests(
       ARGS "--state=${CMAKE_CURRENT_BINARY_DIR}/Calculator54State.py"
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS Calculator54State.xml)
 
     # Test backwards compatibility for Glyph filter change in Visocyte 5.6
     visocyte_add_client_tests(
       ARGS "--state=${CMAKE_CURRENT_BINARY_DIR}/Glyph56State.py"
-      BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+      BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS Glyph56State.xml
     )
   endif()
@@ -1621,27 +1621,27 @@ if (TARGET visocyte)
   # Add test to test stereo rendering modes.
   visocyte_add_client_tests(
     CLIENT_ARGS --stereo --stereo-type=Interlaced
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoInterlaced.xml)
   visocyte_add_client_server_tests(
     CLIENT_ARGS --stereo --stereo-type=Interlaced
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoInterlaced.xml)
   visocyte_add_client_server_render_tests(
     CLIENT_ARGS --stereo --stereo-type=Interlaced
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoInterlaced.xml)
   visocyte_add_client_tests(
     CLIENT_ARGS --stereo --stereo-type=SplitViewportHorizontal
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoSplitViewportHorizontal.xml)
   visocyte_add_client_server_tests(
     CLIENT_ARGS --stereo --stereo-type=SplitViewportHorizontal
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoSplitViewportHorizontal.xml)
   visocyte_add_client_server_render_tests(
     CLIENT_ARGS --stereo --stereo-type=SplitViewportHorizontal
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StereoSplitViewportHorizontal.xml)
 endif()
 
@@ -1661,19 +1661,19 @@ set(visocyte_python_verify_tests
   ExportSceneSpreadSheetView
 )
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   foreach(test_name ${visocyte_python_verify_tests})
     add_test(NAME ${test_name}
       COMMAND ${CMAKE_COMMAND}
-      -DPARAVIEW_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
+      -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
       -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::pvpython>
-      -DPARAVIEW_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
+      -DVISOCYTE_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
       -DTEST_NAME:STRING=${test_name}
       -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}.xml
       -DTEST_DRIVER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}Verify.py
       -DTEMPORARY_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
       -P ${CMAKE_CURRENT_SOURCE_DIR}/PythonScriptTestDriver.cmake
     )
-    set_tests_properties(${python_state_test} PROPERTIES LABELS "PARAVIEW")
+    set_tests_properties(${python_state_test} PROPERTIES LABELS "VISOCYTE")
   endforeach()
 endif()

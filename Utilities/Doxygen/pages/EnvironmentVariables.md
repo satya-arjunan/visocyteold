@@ -6,7 +6,7 @@ runtime.
 
 Variable | Description
 ---------|---------------------------------------------------------
-PARAVIEW_DATA_ROOT  | Change the location of the data root for testing.
+VISOCYTE_DATA_ROOT  | Change the location of the data root for testing.
 PV_DEBUG_APPLY_BUTTON | When set, debugging text will be printed out to assist developers with the reasons behind the change in state for the "Apply" button on the properties panel (pqPropertiesPanel).
 PV_DEBUG_PANELS | When set, debugging text will be printed out explaining the reason for creation of various widgets on the properties panel (pqPropertiesPanel).
 PV_DEBUG_SKIP_OPENGL_VERSION_CHECK | Skip test to validate OpenGL support at launch.

@@ -215,7 +215,7 @@ void vtkInitializationHelper::Initialize(int argc, char** argv, int type, vtkPVO
   if (options->GetTellVersion())
   {
     std::ostringstream str;
-    str << "visocyte version " << PARAVIEW_VERSION_FULL << "\n";
+    str << "visocyte version " << VISOCYTE_VERSION_FULL << "\n";
     vtkOutputWindow::GetInstance()->DisplayText(str.str().c_str());
     // TODO: indicate to the caller that application must quit.
   }
@@ -336,7 +336,7 @@ void vtkInitializationHelper::LoadSettings()
   // If the application path ends with lib/visocyte-X.X, shared
   // forwarding of the executable was used. Remove that part of the
   // path to get back to the installation root.
-  std::string installDirectory = app_dir.substr(0, app_dir.find("/lib/visocyte-" PARAVIEW_VERSION));
+  std::string installDirectory = app_dir.substr(0, app_dir.find("/lib/visocyte-" VISOCYTE_VERSION));
 
   // Remove the trailing /bin if it is there.
   if (installDirectory.size() >= 4 &&
@@ -346,7 +346,7 @@ void vtkInitializationHelper::LoadSettings()
   }
 
   std::vector<std::string> pathsToSearch;
-  pathsToSearch.push_back(installDirectory + "/share/visocyte-" PARAVIEW_VERSION);
+  pathsToSearch.push_back(installDirectory + "/share/visocyte-" VISOCYTE_VERSION);
   pathsToSearch.push_back(installDirectory + "/lib/");
   pathsToSearch.push_back(installDirectory);
 #if defined(__APPLE__)
@@ -355,7 +355,7 @@ void vtkInitializationHelper::LoadSettings()
   pathsToSearch.push_back(installDirectory + "/../../../../lib");
 
   // paths when doing a unix style install.
-  pathsToSearch.push_back(installDirectory + "/../lib/visocyte-" PARAVIEW_VERSION);
+  pathsToSearch.push_back(installDirectory + "/../lib/visocyte-" VISOCYTE_VERSION);
 #endif
   // On windows configuration files are in the parent directory
   pathsToSearch.push_back(installDirectory + "/../");

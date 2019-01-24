@@ -37,7 +37,7 @@ object9 = 'pqClientMainWindow/menubar/menu_File'
 QtTesting.playCommand(object9, 'activate', 'actionFileOpen')
 QtTesting.playCommand(object6, 'set_tab_with_text', 'Properties')
 object10 = 'pqClientMainWindow/FileOpenDialog'
-QtTesting.playCommand(object10, 'filesSelected', '$PARAVIEW_DATA_ROOT/Testing/Data/dualSphereAnimation.pvd')
+QtTesting.playCommand(object10, 'filesSelected', '$VISOCYTE_DATA_ROOT/Testing/Data/dualSphereAnimation.pvd')
 QtTesting.playCommand(object2, 'activate', '')
 object11 = 'pqClientMainWindow/menubar/menuView'
 QtTesting.playCommand(object11, 'activate', 'Animation View')
@@ -80,12 +80,12 @@ QtTesting.playCommand(object22, 'set_int', '800')
 object22 = 'Dialog/okButton'
 QtTesting.playCommand(object22, 'activate', '')
 objectSaveAnimationDialog = 'FileSaveAnimationDialog'
-QtTesting.playCommand(objectSaveAnimationDialog, 'filesSelected', '$PARAVIEW_TEST_ROOT/movie_test.png')
+QtTesting.playCommand(objectSaveAnimationDialog, 'filesSelected', '$VISOCYTE_TEST_ROOT/movie_test.png')
 
 time.sleep(3);
 objectPlayButton = 'pqClientMainWindow/VCRToolbar/1QToolButton2'
 while QtTesting.getProperty(objectPlayButton, "text") != 'Play' :
   time.sleep(1);
 
-QtTestingImage.compareImage('$PARAVIEW_TEST_ROOT/movie_test.0005.png', 'SaveAnimationMultiView.png');
+QtTestingImage.compareImage('$VISOCYTE_TEST_ROOT/movie_test.0005.png', 'SaveAnimationMultiView.png');
 

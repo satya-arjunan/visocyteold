@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.3)
 
 if (NOT Visocyte_BINARY_DIR)
   find_package(Visocyte REQUIRED)
-  include(${PARAVIEW_USE_FILE})
+  include(${VISOCYTE_USE_FILE})
 endif()
 
 add_visocyte_plugin(

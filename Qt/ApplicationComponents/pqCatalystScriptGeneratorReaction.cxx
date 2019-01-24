@@ -33,7 +33,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkPVConfig.h"
 
 #include "pqCoreUtilities.h"
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 #include "pqCatalystExportStateWizard.h"
 #endif
 #include <iostream>
@@ -52,7 +52,7 @@ pqCatalystScriptGeneratorReaction::~pqCatalystScriptGeneratorReaction()
 //-----------------------------------------------------------------------------
 void pqCatalystScriptGeneratorReaction::onTriggered()
 {
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
   pqCatalystExportStateWizard wizard(pqCoreUtilities::mainWidget());
   wizard.customize();
   wizard.exec();

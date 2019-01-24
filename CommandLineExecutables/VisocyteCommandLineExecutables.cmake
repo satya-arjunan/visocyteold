@@ -12,7 +12,7 @@ function (visocyte_add_executable name)
         visocyte_plugins_static)
   endif ()
 
-  if (PARAVIEW_ENABLE_PYTHON)
+  if (VISOCYTE_ENABLE_PYTHON)
     target_link_libraries("${name}"
       PRIVATE
         Visocyte::pvpythonmodules

@@ -1,5 +1,5 @@
 # Build Sphinx documentation for Python modules.
-if (NOT PARAVIEW_ENABLE_PYTHON OR NOT BUILD_DOCUMENTATION)
+if (NOT VISOCYTE_ENABLE_PYTHON OR NOT BUILD_DOCUMENTATION)
   return()
 endif()
 
@@ -38,7 +38,7 @@ add_custom_target(VisocytePythonDoc
           "${VTK_BUILD_PYTHON_MODULES_DIR}/visocyte"
   COMMAND ${sphinx-build}
           -b html "${CMAKE_CURRENT_BINARY_DIR}/config"
-          "${PARAVIEW_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/python"
+          "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/python"
   SOURCES sphinx_apidoc.py
           config/index.rst
           config/quick-start.rst

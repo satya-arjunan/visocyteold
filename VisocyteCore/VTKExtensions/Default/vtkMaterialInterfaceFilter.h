@@ -74,7 +74,7 @@ public:
   vtkTypeMacro(vtkMaterialInterfaceFilter, vtkMultiBlockDataSetAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
-  // PARAVIEW interface stuff
+  // VISOCYTE interface stuff
 
   /// Material sellection
   /**
@@ -676,7 +676,7 @@ protected:
   void FindNeighbor(int faceIndex[3], int faceLevel, vtkMaterialInterfaceFilterIterator* neighbor,
     vtkMaterialInterfaceFilterIterator* reference);
 
-  // PARAVIEW interface data
+  // VISOCYTE interface data
   vtkDataArraySelection* MaterialArraySelection;
   vtkDataArraySelection* MassArraySelection;
   vtkDataArraySelection* VolumeWtdAvgArraySelection;

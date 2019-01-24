@@ -64,7 +64,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqExampleVisualizationsDialogReaction.h"
 #include "pqExportReaction.h"
 #include "pqFiltersMenuReaction.h"
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 #include "pqHelpReaction.h"
 #endif
 #include "pqIgnoreSourceTimeReaction.h"
@@ -528,7 +528,7 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
                        .arg(vtkSMProxyManager::GetVersionPatch());
   new pqDesktopServicesReaction(QUrl(guideURL), guide);
 
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   // Help
   QAction* help = menu.addAction("Reader, Filter, and Writer Reference") << pqSetName("actionHelp");
   new pqHelpReaction(help);
@@ -574,7 +574,7 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
     (menu.addAction("Visocyte Mailing Lists") << pqSetName("actionMailingLists")));
 
   // Visocyte Release Notes
-  QString versionString(PARAVIEW_VERSION_FULL);
+  QString versionString(VISOCYTE_VERSION_FULL);
   int indexOfHyphen = versionString.indexOf('-');
   if (indexOfHyphen > -1)
   {

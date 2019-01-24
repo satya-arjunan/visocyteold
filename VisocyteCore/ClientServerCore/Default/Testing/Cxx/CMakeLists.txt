@@ -6,7 +6,7 @@ vtk_add_test_cxx(vtkPVClientServerCoreDefaultCxxTests tests
   TestSpecialDirectories.cxx
   TestSystemCaps.cxx
   )
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   vtk_add_test_mpi(vtkPVClientServerCoreDefaultCxxTests mpi_tests
     NO_DATA NO_VALID NO_OUTPUT
     TestMPI.cxx)

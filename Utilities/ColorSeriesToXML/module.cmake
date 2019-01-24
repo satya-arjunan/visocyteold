@@ -5,5 +5,5 @@ vtk_module(vtkUtilitiesColorSeriesToXML
     vtkCommonColor
   EXCLUDE_FROM_WRAPPING
   TEST_LABELS
-    PARAVIEW
+    VISOCYTE
 )

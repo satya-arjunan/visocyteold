@@ -299,7 +299,7 @@ vtk_module_link(Visocyte::pqComponents
     Qt5::Network
     Qt5::Widgets)
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   # The pqSGExportStateWizard has subclasses that directly access the UI file,
   # and currently we don't have a clean way to break this hard dependency, so
   # for now we manually install this ui file.

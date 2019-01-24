@@ -12,10 +12,10 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#ifndef VTK_PARAVIEW_PATHS_H
-#define VTK_PARAVIEW_PATHS_H
+#ifndef VTK_VISOCYTE_PATHS_H
+#define VTK_VISOCYTE_PATHS_H
 
-static const char* PARAVIEW_PATHS[] = {
+static const char* VISOCYTE_PATHS[] = {
   "@Visocyte_SOURCE_DIR@",
   "@Visocyte_SOURCE_DIR@/GUI",
   "@Visocyte_BINARY_DIR@",

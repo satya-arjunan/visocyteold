@@ -254,12 +254,12 @@ vtkPVPluginLoader::vtkPVPluginLoader()
     vtkPVPluginLoaderDebugMacro("PV_PLUGIN_PATH: " << env);
   }
 
-#ifdef PARAVIEW_PLUGIN_LOADER_PATHS
+#ifdef VISOCYTE_PLUGIN_LOADER_PATHS
   if (!paths.empty())
   {
     paths += ENV_PATH_SEP;
   }
-  paths += PARAVIEW_PLUGIN_LOADER_PATHS;
+  paths += VISOCYTE_PLUGIN_LOADER_PATHS;
 #endif
 
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();

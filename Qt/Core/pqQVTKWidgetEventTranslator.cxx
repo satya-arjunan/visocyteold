@@ -225,7 +225,7 @@ bool pqQVTKWidgetEventTranslator::translateEvent(
 
       // Emit record signal
       emit recordEvent(Object, pqCoreTestUtility::PQ_COMPAREVIEW_PROPERTY_NAME,
-        "$PARAVIEW_TEST_BASELINE_DIR/" + relPathFile, pqEventTypes::CHECK_EVENT);
+        "$VISOCYTE_TEST_BASELINE_DIR/" + relPathFile, pqEventTypes::CHECK_EVENT);
       return true;
     }
     if (Event->type() == QEvent::MouseMove)

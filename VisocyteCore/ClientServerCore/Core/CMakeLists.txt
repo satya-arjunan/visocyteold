@@ -87,24 +87,24 @@ if (TARGET VTK::PythonInterpreter)
     vtkPythonSelector)
 endif ()
 
-cmake_dependent_option(PARAVIEW_USE_MPI_SSEND
+cmake_dependent_option(VISOCYTE_USE_MPI_SSEND
   "Use MPI synchronous-send commands for communication" OFF
-  "PARAVIEW_USE_MPI" OFF)
-cmake_dependent_option(PARAVIEW_INITIALIZE_MPI_ON_CLIENT
+  "VISOCYTE_USE_MPI" OFF)
+cmake_dependent_option(VISOCYTE_INITIALIZE_MPI_ON_CLIENT
   "Initialize MPI on client-processes by default. Can be overridden using command line arguments" ON
-  "PARAVIEW_USE_MPI" OFF)
+  "VISOCYTE_USE_MPI" OFF)
 mark_as_advanced(
-  PARAVIEW_INITIALIZE_MPI_ON_CLIENT
-  PARAVIEW_USE_MPI_SSEND)
+  VISOCYTE_INITIALIZE_MPI_ON_CLIENT
+  VISOCYTE_USE_MPI_SSEND)
 
 set(vtkProcessModule_defines)
-if (PARAVIEW_USE_MPI_SSEND)
+if (VISOCYTE_USE_MPI_SSEND)
   list(APPEND vtkProcessModule_defines
-    PARAVIEW_USE_MPI_SSEND)
+    VISOCYTE_USE_MPI_SSEND)
 endif ()
-if (PARAVIEW_INITIALIZE_MPI_ON_CLIENT)
+if (VISOCYTE_INITIALIZE_MPI_ON_CLIENT)
   list(APPEND vtkProcessModule_defines
-    PARAVIEW_INITIALIZE_MPI_ON_CLIENT)
+    VISOCYTE_INITIALIZE_MPI_ON_CLIENT)
 endif ()
 set_source_files_properties(vtkProcessModule.cxx
   PROPERTIES
@@ -112,21 +112,21 @@ set_source_files_properties(vtkProcessModule.cxx
 
 # TODO: Expose CMake options for these?
 set(vtkPVOptions_defines)
-if (PARAVIEW_ALWAYS_SECURE_CONNECTION)
+if (VISOCYTE_ALWAYS_SECURE_CONNECTION)
   list(APPEND vtkPVOptions_defines
-    PARAVIEW_ALWAYS_SECURE_CONNECTION)
+    VISOCYTE_ALWAYS_SECURE_CONNECTION)
 endif ()
-if (PARAVIEW_ENABLE_FPE)
+if (VISOCYTE_ENABLE_FPE)
   list(APPEND vtkPVOptions_defines
-    PARAVIEW_ENABLE_FPE)
+    VISOCYTE_ENABLE_FPE)
 endif ()
-if (PARAVIEW_WITH_SUPERBUILD_MESA)
+if (VISOCYTE_WITH_SUPERBUILD_MESA)
   list(APPEND vtkPVOptions_defines
-    PARAVIEW_WITH_SUPERBUILD_MESA)
+    VISOCYTE_WITH_SUPERBUILD_MESA)
 
-  if (PARAVIEW_WITH_SUPERBUILD_MESA_SWR)
+  if (VISOCYTE_WITH_SUPERBUILD_MESA_SWR)
     list(APPEND vtkPVOptions_defines
-      PARAVIEW_WITH_SUPERBUILD_MESA_SWR)
+      VISOCYTE_WITH_SUPERBUILD_MESA_SWR)
   endif ()
 endif ()
 if (VTK_OPENGL_HAS_EGL)
@@ -140,28 +140,28 @@ set_source_files_properties(vtkPVOptions.cxx
 set(vtkProcessModuleAutoMPI_defines)
 if (TARGET VTK::ParallelMPI)
   list(APPEND vtkProcessModuleAutoMPI_defines
-    "PARAVIEW_MPIEXEC_EXECUTABLE=\"${MPIEXEC_EXECUTABLE}\""
-    "PARAVIEW_MPI_NUMPROC_FLAG=\"${MPIEXEC_NUMPROC_FLAG}\"")
+    "VISOCYTE_MPIEXEC_EXECUTABLE=\"${MPIEXEC_EXECUTABLE}\""
+    "VISOCYTE_MPI_NUMPROC_FLAG=\"${MPIEXEC_NUMPROC_FLAG}\"")
   if (MPI_PREFLAGS)
     list(APPEND vtkProcessModuleAutoMPI_defines
-      "PARAVIEW_MPI_PREFLAGS=\"${MPIEXEC_PREFLAGS}\"")
+      "VISOCYTE_MPI_PREFLAGS=\"${MPIEXEC_PREFLAGS}\"")
   endif ()
   if (MPI_POSTFLAGS)
     list(APPEND vtkProcessModuleAutoMPI_defines
-      "PARAVIEW_MPI_POSTFLAGS=\"${MPIEXEC_POSTFLAGS}\"")
+      "VISOCYTE_MPI_POSTFLAGS=\"${MPIEXEC_POSTFLAGS}\"")
   endif ()
 endif ()
 set_source_files_properties(vtkProcessModuleAutoMPI.cxx
   PROPERTIES
     COMPILE_DEFINITIONS "${vtkProcessModuleAutoMPI_defines}")
 
-set(PARAVIEW_PLUGIN_LOADER_PATHS ""
+set(VISOCYTE_PLUGIN_LOADER_PATHS ""
   CACHE STRING "Extra paths to search for plugins")
-mark_as_advanced(PARAVIEW_PLUGIN_LOADER_PATHS)
-if (PARAVIEW_PLUGIN_LOADER_PATHS)
+mark_as_advanced(VISOCYTE_PLUGIN_LOADER_PATHS)
+if (VISOCYTE_PLUGIN_LOADER_PATHS)
   set_source_files_properties(vtkPVPluginLoader.cxx
     PROPERTIES
-      COMPILE_DEFINITIONS PARAVIEW_PLUGIN_LOADER_PATHS=\"${PARAVIEW_PLUGIN_LOADER_PATHS}\")
+      COMPILE_DEFINITIONS VISOCYTE_PLUGIN_LOADER_PATHS=\"${VISOCYTE_PLUGIN_LOADER_PATHS}\")
 endif ()
 
 vtk_module_add_module(Visocyte::ClientServerCoreCore

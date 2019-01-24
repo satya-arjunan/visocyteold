@@ -121,33 +121,33 @@ void vtkSMTestDriver::CollectConfiguredOptions()
 // try to make sure that this timesout before dart so it can kill all the processes
 
 // now find all the mpi information if mpi run is set
-#ifdef PARAVIEW_USE_MPI
-#ifdef PARAVIEW_MPIEXEC_EXECUTABLE
-  this->MPIRun = PARAVIEW_MPIEXEC_EXECUTABLE;
+#ifdef VISOCYTE_USE_MPI
+#ifdef VISOCYTE_MPIEXEC_EXECUTABLE
+  this->MPIRun = VISOCYTE_MPIEXEC_EXECUTABLE;
 #else
-#error "Error: PARAVIEW_MPIEXEC_EXECUTABLE must be set when PARAVIEW_USE_MPI is on."
+#error "Error: VISOCYTE_MPIEXEC_EXECUTABLE must be set when VISOCYTE_USE_MPI is on."
 #endif
   int serverNumProc = 1;
   int renderNumProc = 1;
 
-#ifdef PARAVIEW_MPI_MAX_NUMPROCS
-  serverNumProc = PARAVIEW_MPI_MAX_NUMPROCS;
+#ifdef VISOCYTE_MPI_MAX_NUMPROCS
+  serverNumProc = VISOCYTE_MPI_MAX_NUMPROCS;
   renderNumProc = serverNumProc - 1;
   if (renderNumProc <= 0)
   {
     renderNumProc = 1;
   }
 #endif
-#ifdef PARAVIEW_MPI_NUMPROC_FLAG
-  this->MPINumProcessFlag = PARAVIEW_MPI_NUMPROC_FLAG;
+#ifdef VISOCYTE_MPI_NUMPROC_FLAG
+  this->MPINumProcessFlag = VISOCYTE_MPI_NUMPROC_FLAG;
 #else
-#error "Error PARAVIEW_MPI_NUMPROC_FLAG must be defined to run test if MPI is on."
+#error "Error VISOCYTE_MPI_NUMPROC_FLAG must be defined to run test if MPI is on."
 #endif
-#ifdef PARAVIEW_MPI_PREFLAGS
-  this->SeparateArguments(PARAVIEW_MPI_PREFLAGS, this->MPIPreFlags);
+#ifdef VISOCYTE_MPI_PREFLAGS
+  this->SeparateArguments(VISOCYTE_MPI_PREFLAGS, this->MPIPreFlags);
 #endif
-#ifdef PARAVIEW_MPI_POSTFLAGS
-  this->SeparateArguments(PARAVIEW_MPI_POSTFLAGS, this->MPIPostFlags);
+#ifdef VISOCYTE_MPI_POSTFLAGS
+  this->SeparateArguments(VISOCYTE_MPI_POSTFLAGS, this->MPIPostFlags);
 #endif
   char buf[1024];
   sprintf(buf, "%d", serverNumProc);

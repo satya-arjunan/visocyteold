@@ -44,7 +44,7 @@ public:
   vtkTypeMacro(vtkIntersectFragments, vtkMultiBlockDataSetAlgorithm);
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
-  /// PARAVIEW interface stuff
+  /// VISOCYTE interface stuff
   //@{
   /**
    * Specify the implicit function to perform the cutting.
@@ -133,7 +133,7 @@ protected:
   // only used on controller.
   std::vector<int> NFragmentsIntersected;
 
-  /// PARAVIEW interface data
+  /// VISOCYTE interface data
   vtkImplicitFunction* CutFunction;
   double Progress;
   double ProgressIncrement;

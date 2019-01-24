@@ -7,7 +7,7 @@ target_link_libraries(pqFileDialogTest LINK_PRIVATE Qt5::Core Qt5::Widgets)
 add_test(
   NAME pqFileDialogTest
   COMMAND pqFileDialogTest -dr
-         "--test-directory=${PARAVIEW_TEST_DIR}"
+         "--test-directory=${VISOCYTE_TEST_DIR}"
          "--test-script=${CMAKE_CURRENT_SOURCE_DIR}/pqFileDialogTest.py"
          --exit
 )

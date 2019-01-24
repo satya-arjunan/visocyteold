@@ -494,9 +494,9 @@ to not work.
 
 ## Optionally use QWebEngine for help
 
-The CMake option `PARAVIEW_USE_QTWEBKIT`, which did not work with
+The CMake option `VISOCYTE_USE_QTWEBKIT`, which did not work with
 Qt5 since WebKit was deprecated/removed, has been replaced with a new option
-`PARAVIEW_USE_QTWEBENGINE` which uses Qt's WebEngine (the library that replaced
+`VISOCYTE_USE_QTWEBENGINE` which uses Qt's WebEngine (the library that replaced
 WebKit).
 
 # Catalyst

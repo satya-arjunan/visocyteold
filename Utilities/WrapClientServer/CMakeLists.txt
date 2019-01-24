@@ -31,9 +31,9 @@
 
 if (NOT TARGET Visocyte::WrapClientServer)
   vtk_module_add_executable(Visocyte::WrapClientServer vtkWrapClientServer.c)
-  if (PARAVIEW_USE_UNIFIED_BINDINGS)
+  if (VISOCYTE_USE_UNIFIED_BINDINGS)
     vtk_module_define(Visocyte::WrapClientServer
       PRIVATE
-        PARAVIEW_USE_UNIFIED_BINDINGS)
+        VISOCYTE_USE_UNIFIED_BINDINGS)
   endif ()
 endif ()

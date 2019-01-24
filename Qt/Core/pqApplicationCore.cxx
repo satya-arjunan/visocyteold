@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QApplication>
 #include <QDebug>
 #include <QFile>
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 #include <QHelpEngine>
 #endif
 #include <QMainWindow>
@@ -160,7 +160,7 @@ void pqApplicationCore::constructor()
   this->RecentlyUsedResourcesList = NULL;
   this->ServerConfigurations = NULL;
   this->Settings = NULL;
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   this->HelpEngine = NULL;
 #endif
 
@@ -258,7 +258,7 @@ pqApplicationCore::~pqApplicationCore()
   delete this->Settings;
   this->Settings = 0;
 
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   if (this->HelpEngine)
   {
     QString collectionFile = this->HelpEngine->collectionFile();
@@ -662,7 +662,7 @@ void pqApplicationCore::onHelpEngineWarning(const QString& msg)
   qWarning() << msg;
 }
 
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 //-----------------------------------------------------------------------------
 QHelpEngine* pqApplicationCore::helpEngine()
 {
@@ -704,7 +704,7 @@ QHelpEngine* pqApplicationCore::helpEngine()
 //-----------------------------------------------------------------------------
 void pqApplicationCore::registerDocumentation(const QString& filename)
 {
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   QHelpEngine* engine = this->helpEngine();
 
   // QHelpEngine doesn't like files from resource space. So we create a local

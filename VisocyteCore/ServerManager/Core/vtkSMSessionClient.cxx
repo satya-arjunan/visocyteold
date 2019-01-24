@@ -165,7 +165,7 @@ bool vtkSMSessionClient::Connect(const char* url, int timeout)
   timeoutString << "timeout=" << timeout << "&";
 
   std::ostringstream handshake;
-  handshake << "handshake=visocyte-" << PARAVIEW_VERSION;
+  handshake << "handshake=visocyte-" << VISOCYTE_VERSION;
   // Add connect-id if needed. The connect-id is added to the handshake that
   // must match on client and server processes.
   if (options->GetConnectID() != 0)

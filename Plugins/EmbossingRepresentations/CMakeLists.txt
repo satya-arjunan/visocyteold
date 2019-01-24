@@ -18,13 +18,13 @@ vtk_module_build(
   MODULES             ${embossing_modules}
   PACKAGE             EmbossingRepresentations
   INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}"
-  VERSION             "${PARAVIEW_VERSION}"
+  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
+  VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1")
 
 set(interfaces)
 set(sources)
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   visocyte_plugin_add_property_widget(
     KIND        WIDGET_DECORATOR
     TYPE        ExtrusionPropertyWidgetDecorator

@@ -120,12 +120,12 @@ std::string vtkLocatePluginOrConfigFile(
 
   std::vector<std::string> prefixes = {
 #if defined(BUILD_SHARED_LIBS)
-    std::string("visocyte-" PARAVIEW_VERSION "/plugins/") + plugin,
-    std::string("visocyte-" PARAVIEW_VERSION "/plugins/"),
+    std::string("visocyte-" VISOCYTE_VERSION "/plugins/") + plugin,
+    std::string("visocyte-" VISOCYTE_VERSION "/plugins/"),
 #else
     // for static builds, we need to add "lib"
-    std::string("lib/visocyte-" PARAVIEW_VERSION "/plugins/") + plugin,
-    std::string("lib/visocyte-" PARAVIEW_VERSION "/plugins/"),
+    std::string("lib/visocyte-" VISOCYTE_VERSION "/plugins/") + plugin,
+    std::string("lib/visocyte-" VISOCYTE_VERSION "/plugins/"),
 #endif
 
 #if defined(__APPLE__)

@@ -3,7 +3,7 @@ NAME
 DESCRIPTION
   Plugin for creating Python spatio-temporal processing scripts
 CONDITION
-  PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_PYTHON
+  VISOCYTE_BUILD_QT_GUI AND VISOCYTE_ENABLE_PYTHON
 REQUIRES_MODULES
   Visocyte::Common
   Visocyte::ServerManagerCore

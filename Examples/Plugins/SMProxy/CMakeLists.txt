@@ -10,7 +10,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF(NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -27,7 +27,7 @@ SET(SM_SOURCES vtkSMMyElevationProxy.cxx vtkSMMyBoundsDomain.cxx)
 # we need server manager wrappings for SM_SOURCES
 # put instantiators in GUI_SOURCES because they are client side
 # and we need the plugin to be loaded on the client side
-ADD_PARAVIEW_PLUGIN(SMMyProxy "1.0"
+ADD_VISOCYTE_PLUGIN(SMMyProxy "1.0"
   SERVER_MANAGER_XML MyProxy.xml
   SERVER_MANAGER_SOURCES ${SM_SOURCES})
 

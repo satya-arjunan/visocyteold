@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <pqevents>
   <pqevent object="pqClientMainWindow/MainControlsToolbar/actionOpenData" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$PARAVIEW_DATA_ROOT/Plugins/TemporalParallelismScriptGenerator/Testing/Data/blow.vtk" />
+  <pqevent object="pqClientMainWindow/FileOpenDialog" command="filesSelected" arguments="$VISOCYTE_DATA_ROOT/Plugins/TemporalParallelismScriptGenerator/Testing/Data/blow.vtk" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Accept" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/menubar/menuFilters/pqProxyGroupMenuManager0/Cut" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/Accept" command="activate" arguments="" />
@@ -19,5 +19,5 @@
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/__qt__passive_wizardbutton1" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/1QFrame0/wizardPage_2/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/timeCompartmentSize" command="spin" arguments="up" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/finishButton" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportSpatio-TemporalStateFileDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/stpscript.py" />
+  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportSpatio-TemporalStateFileDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/stpscript.py" />
 </pqevents>

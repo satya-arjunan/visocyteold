@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
 #include "vtkPVConfig.h"
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 extern "C" {
 void vtkPVInitializePythonModules();
 }
@@ -61,7 +61,7 @@ void vtkPVInitializePythonModules();
 #include "pvStaticPluginsInit.h"
 #endif
 
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 #include "pqHelpReaction.h"
 #endif
 
@@ -71,11 +71,11 @@ void vtkPVInitializePythonModules();
 #include <QTextCodec>
 #include <QtDebug>
 
-#ifdef PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION
+#ifdef VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
 #include "VisocyteDocumentationInitializer.h"
 #endif
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
 #include "pqCatalystExportInspector.h"
 #include "pqPythonDebugLeaksView.h"
 #include "pqPythonShell.h"
@@ -114,11 +114,11 @@ VisocyteMainWindow::VisocyteMainWindow()
     leaksView->show();
   }
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
   vtkPVInitializePythonModules();
 #endif
 
-#ifdef PARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION
+#ifdef VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
   // init the Visocyte embedded documentation.
   visocyte_documentation_initialize();
 #endif
@@ -127,7 +127,7 @@ VisocyteMainWindow::VisocyteMainWindow()
   this->Internals->setupUi(this);
   this->Internals->outputWidgetDock->hide();
   this->Internals->pythonShellDock->hide();
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
   pqPythonShell* shell = new pqPythonShell(this);
   shell->setObjectName("pythonShell");
   this->Internals->pythonShellDock->setWidget(shell);
@@ -137,7 +137,7 @@ VisocyteMainWindow::VisocyteMainWindow()
   }
 #endif
 
-#ifdef PARAVIEW_ENABLE_PYTHON
+#ifdef VISOCYTE_ENABLE_PYTHON
   pqCatalystExportInspector* catalystInspector = new pqCatalystExportInspector(this);
   this->Internals->catalystInspectorDock->setWidget(catalystInspector);
   this->Internals->catalystInspectorDock->hide();
@@ -303,7 +303,7 @@ VisocyteMainWindow::~VisocyteMainWindow()
 //-----------------------------------------------------------------------------
 void VisocyteMainWindow::showHelpForProxy(const QString& groupname, const QString& proxyname)
 {
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   pqHelpReaction::showProxyHelp(groupname, proxyname);
 #endif
 }
@@ -381,7 +381,7 @@ void VisocyteMainWindow::updateFontSize()
   }
 
 // Console font size
-#if defined(PARAVIEW_ENABLE_PYTHON)
+#if defined(VISOCYTE_ENABLE_PYTHON)
   pqPythonShell* shell = qobject_cast<pqPythonShell*>(this->Internals->pythonShellDock->widget());
   shell->setFontSize(fontSize);
 #endif

@@ -178,8 +178,8 @@ custom panels for filters, displays, views, etc. before Visocyte 3.98 has now
 been removed. Refer to the
 [wiki](http://www.visocyte.org/Wiki/Visocyte/Properties_Panel) for getting
 oriented with the currently supported way for customizing the properties panel.
-This also removes plugin macros `ADD_PARAVIEW_OBJECT_PANEL()`, and
-`ADD_PARAVIEW_DISPLAY_PANEL()`.
+This also removes plugin macros `ADD_VISOCYTE_OBJECT_PANEL()`, and
+`ADD_VISOCYTE_DISPLAY_PANEL()`.
 
 ###Qt 5 Support (replacing QVTKWidget)###
 
@@ -245,7 +245,7 @@ pqStandardArrayColorMapsBehavior no longer does anything and so it has been remo
 
 Starting with 5.2, Visocyte natively supports Qt 4 and Qt 5. To simplify writing
 code with either dependency, we now have a new CMake file `VisocyteQt.cmake`
-that gets included by `PARAVIEW_USE_FILE`. This provides new macros that be used
+that gets included by `VISOCYTE_USE_FILE`. This provides new macros that be used
 to find qt (`pv_find_package_qt`), wrap cpp (`pv_qt_wrap_cpp`), ui
 (`pv_qt_wrap_ui`), or add resources (`pv_qt_add_resources`) instead of using
 `qt4_` or `qt4_` specific versions based on whether the app is being built with

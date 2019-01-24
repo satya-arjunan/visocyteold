@@ -16,7 +16,7 @@
 
 #include "vtkCommand.h"
 #include "vtkObjectFactory.h"
-#include "vtkPVConfig.h" // for PARAVIEW_VERSION_*
+#include "vtkPVConfig.h" // for VISOCYTE_VERSION_*
 #include "vtkPVXMLElement.h"
 #include "vtkProcessModule.h"
 #include "vtkSIProxyDefinitionManager.h"
@@ -32,7 +32,7 @@
 
 #include <map>
 
-#define PARAVIEW_SOURCE_VERSION "visocyte version " PARAVIEW_VERSION_FULL
+#define VISOCYTE_SOURCE_VERSION "visocyte version " VISOCYTE_VERSION_FULL
 //***************************************************************************
 class vtkSMProxyManager::vtkPXMInternal
 {
@@ -142,25 +142,25 @@ bool vtkSMProxyManager::IsInitialized()
 //----------------------------------------------------------------------------
 const char* vtkSMProxyManager::GetVisocyteSourceVersion()
 {
-  return PARAVIEW_SOURCE_VERSION;
+  return VISOCYTE_SOURCE_VERSION;
 }
 
 //----------------------------------------------------------------------------
 int vtkSMProxyManager::GetVersionMajor()
 {
-  return PARAVIEW_VERSION_MAJOR;
+  return VISOCYTE_VERSION_MAJOR;
 }
 
 //----------------------------------------------------------------------------
 int vtkSMProxyManager::GetVersionMinor()
 {
-  return PARAVIEW_VERSION_MINOR;
+  return VISOCYTE_VERSION_MINOR;
 }
 
 //----------------------------------------------------------------------------
 int vtkSMProxyManager::GetVersionPatch()
 {
-  return PARAVIEW_VERSION_PATCH;
+  return VISOCYTE_VERSION_PATCH;
 }
 
 //----------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # TODO: Update
 
-if (PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_COSMOTOOLS)
+if (VISOCYTE_BUILD_QT_GUI AND VISOCYTE_ENABLE_COSMOTOOLS)
   ExternalData_Expand_Arguments("VisocyteData" _
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/adaptive-cosmo/,REGEX:.*}"
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/multiresolution-streaming/,REGEX:.*}")
@@ -10,9 +10,9 @@ if (PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_COSMOTOOLS)
             --enable-bt
             -dr
             --enable-streaming
-            --test-directory=${PARAVIEW_TEST_DIR}
+            --test-directory=${VISOCYTE_TEST_DIR}
             --test-plugin=StreamingParticles
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS StreamingParticles.xml
     )
   visocyte_test_load_data_dirs(NewGenericIOStreaming
@@ -24,9 +24,9 @@ if (PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_COSMOTOOLS)
             -dr
             --mpi
             --enable-streaming
-            --test-directory=${PARAVIEW_TEST_DIR}
+            --test-directory=${VISOCYTE_TEST_DIR}
             --test-plugin=StreamingParticles
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS NewGenericIOStreaming.xml
     )
   add_pv_test("pvcs" "_DISABLE_CS"
@@ -39,9 +39,9 @@ if (PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_COSMOTOOLS)
             -dr
             --mpi
             --enable-streaming
-            --test-directory=${PARAVIEW_TEST_DIR}
+            --test-directory=${VISOCYTE_TEST_DIR}
             --test-plugin=StreamingParticles
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS NewGenericIOStreaming.xml
     )
   add_pv_test("pvcrs" "_DISABLE_CRS"
@@ -54,9 +54,9 @@ if (PARAVIEW_BUILD_QT_GUI AND PARAVIEW_ENABLE_COSMOTOOLS)
             -dr
             --mpi
             --enable-streaming
-            --test-directory=${PARAVIEW_TEST_DIR}
+            --test-directory=${VISOCYTE_TEST_DIR}
             --test-plugin=StreamingParticles
-    BASELINE_DIR ${PARAVIEW_TEST_BASELINE_DIR}
+    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS NewGenericIOStreaming.xml
     )
 endif ()

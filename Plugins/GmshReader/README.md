@@ -51,7 +51,7 @@ Building GmshReader Plugin at compilation of Visocyte:
 
 Configure Visocyte's CMake with the following additional recommended options:
 
- -DPARAVIEW_BUILD_PLUGIN_GMSHReader=ON
+ -DVISOCYTE_BUILD_PLUGIN_GMSHReader=ON
  -DGmsh_INCLUDE_DIR=/path_to_gmsh_install_dir/include/gmsh
  -DGmsh_LIBRARY=/path_to_install_dir/lib64/libgmsh.so
 

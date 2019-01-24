@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF(NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -16,14 +16,14 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
   set(CMAKE_MACOSX_RPATH 0)
 endif()
 
-IF(PARAVIEW_BUILD_QT_GUI)
+IF(VISOCYTE_BUILD_QT_GUI)
   # The pqReader.xml file contains xml defining readers with their file
   # extensions and descriptions.  The Server Manager XML file defines the
   # properties of the reader.  This example uses the already existing PNG
   # reader but gives it another identity in the Server Manager.  Adding your
   # own reader to Visocyte would mean the SourceProxy class points to your
   # class.
-  ADD_PARAVIEW_PLUGIN(MyPNGReader "1.0"
+  ADD_VISOCYTE_PLUGIN(MyPNGReader "1.0"
     SERVER_MANAGER_XML readers.xml
     REQUIRED_ON_SERVER
     )

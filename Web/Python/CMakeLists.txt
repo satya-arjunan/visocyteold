@@ -14,7 +14,7 @@ set(files
 vtk_module_add_python_package(Visocyte::WebPython
   FILES               ${files}
   PACKAGE             "visocyte.web"
-  MODULE_DESTINATION  "${PARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX}")
+  MODULE_DESTINATION  "${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}")
 
 vtk_module_add_python_module(Visocyte::WebPython
   PACKAGES "visocyte.web")

@@ -77,19 +77,19 @@ void pqFileDialogEventTranslator::onFilesSelected(const QString& file)
   if (data_directory.isEmpty())
   {
     qWarning()
-      << "You must set the PARAVIEW_DATA_ROOT environment variable to play-back file selections.";
+      << "You must set the VISOCYTE_DATA_ROOT environment variable to play-back file selections.";
   }
 
   QString cleanedFile = QDir::cleanPath(QDir::fromNativeSeparators(file));
 
   if (cleanedFile.indexOf(data_directory, 0, Qt::CaseInsensitive) == 0)
   {
-    cleanedFile.replace(data_directory, "$PARAVIEW_DATA_ROOT", Qt::CaseInsensitive);
+    cleanedFile.replace(data_directory, "$VISOCYTE_DATA_ROOT", Qt::CaseInsensitive);
   }
   else
   {
     qWarning()
-      << "You must choose a file under the PARAVIEW_DATA_ROOT directory to record file selections.";
+      << "You must choose a file under the VISOCYTE_DATA_ROOT directory to record file selections.";
   }
 
   emit recordEvent(this->CurrentObject, "filesSelected", cleanedFile);

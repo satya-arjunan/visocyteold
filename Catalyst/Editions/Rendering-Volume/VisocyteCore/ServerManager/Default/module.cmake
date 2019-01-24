@@ -1,6 +1,6 @@
 # If FFMPEG support is enabled, we need to depend on FFMPEG.
 set (__extra_dependencies)
-if (PARAVIEW_ENABLE_FFMPEG)
+if (VISOCYTE_ENABLE_FFMPEG)
   list(APPEND __extra_dependencies vtkIOFFMPEG)
 endif()
 
@@ -18,7 +18,7 @@ vtk_module(vtkPVServerManagerDefault
   TEST_DEPENDS
     vtkPVServerManagerApplication
   TEST_LABELS
-    PARAVIEW
+    VISOCYTE
   KIT
     vtkPVServerManager
 )

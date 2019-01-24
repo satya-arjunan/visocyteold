@@ -35,5 +35,5 @@
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/1QFrame0/wizardPage_2/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/wViewSelection/groupBox/swViews/ImageOutputInfo/gbCinemaOptions/wCameraOptions/phiResolution" command="set_int" arguments="3" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/1QFrame0/wizardPage_2/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/wViewSelection/groupBox/swViews/ImageOutputInfo/gbCinemaOptions/wCameraOptions/thetaResolution" command="set_int" arguments="3" />
   <pqevent object="pqClientMainWindow/ExportStateWizard/1QWidget0/finishButton" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportCoprocessingStateFileDialog" command="filesSelected" arguments="$PARAVIEW_TEST_ROOT/cptest.py" />
+  <pqevent object="pqClientMainWindow/ExportStateWizard/ExportCoprocessingStateFileDialog" command="filesSelected" arguments="$VISOCYTE_TEST_ROOT/cptest.py" />
 </pqevents>

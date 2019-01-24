@@ -32,7 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "myMainWindow.h"
 #include "ui_myMainWindow.h"
 
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 #include "pqHelpReaction.h"
 #endif
 #include "pqVisocyteBehaviors.h"
@@ -107,7 +107,7 @@ myMainWindow::~myMainWindow()
 //-----------------------------------------------------------------------------
 void myMainWindow::showHelpForProxy(const QString& groupname, const QString& proxyname)
 {
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   pqHelpReaction::showProxyHelp(groupname, proxyname);
 #endif
 }

@@ -1,6 +1,6 @@
 {
     "name"          : "visocyte",
-    "version"       : "@PARAVIEW_VERSION@",
+    "version"       : "@VISOCYTE_VERSION@",
     "description"   : "Data analysis and visualization framework for large data.",
     "author"        : "Kitware Inc.",
     "repository"    : {

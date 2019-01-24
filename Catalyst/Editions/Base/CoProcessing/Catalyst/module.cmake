@@ -12,5 +12,5 @@ vtk_module(vtkPVCatalyst
     vtkPVCatalystTestDriver
 
   TEST_LABELS
-    PARAVIEW CATALYST
+    VISOCYTE CATALYST
 )

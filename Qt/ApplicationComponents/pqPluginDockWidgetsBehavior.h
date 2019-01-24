@@ -41,7 +41,7 @@ class QMainWindow;
 * @ingroup Behaviors
 * pqPluginDockWidgetsBehavior adds support for loading dock widgets from
 * plugins. In other words, it adds support for plugins created using
-* ADD_PARAVIEW_DOCK_WINDOW.
+* ADD_VISOCYTE_DOCK_WINDOW.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqPluginDockWidgetsBehavior : public QObject
 {

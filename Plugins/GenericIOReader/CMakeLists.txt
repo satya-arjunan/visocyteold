@@ -1,7 +1,7 @@
 # Linking to Visocyte: needed to build a visocyte plugin
 if(NOT Visocyte_BINARY_DIR)
   find_package(Visocyte REQUIRED)
-  include(${PARAVIEW_USE_FILE})
+  include(${VISOCYTE_USE_FILE})
 else()
   include_directories(${VTK_INCLUDE_DIRS})
 endif(NOT Visocyte_BINARY_DIR)
@@ -38,6 +38,6 @@ add_visocyte_plugin(GenericIOReader "1.0"
 
 target_link_libraries(GenericIOReader LINK_PUBLIC LANL_GenericIO)
 
-if(BUILD_TESTING AND PARAVIEW_BUILD_QT_GUI)
+if(BUILD_TESTING AND VISOCYTE_BUILD_QT_GUI)
   add_subdirectory(Testing)
 endif()

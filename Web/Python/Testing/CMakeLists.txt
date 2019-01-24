@@ -5,4 +5,4 @@ add_test(NAME pvweb-StartTest
     -m visocyte.web.test_server
     --port 9739
     --timeout 1)
-set_tests_properties(pvweb-StartTest PROPERTIES LABELS "PARAVIEW")
+set_tests_properties(pvweb-StartTest PROPERTIES LABELS "VISOCYTE")

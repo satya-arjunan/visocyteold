@@ -39,7 +39,7 @@ foreach (exe IN ITEMS pvserver pvdataserver pvrenderserver)
   visocyte_add_executable("${exe}" "${exe}.cxx")
 endforeach ()
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   foreach (exe IN ITEMS pvbatch pvpython)
     visocyte_add_executable("${exe}" "${exe}.cxx")
     target_link_libraries("${exe}"

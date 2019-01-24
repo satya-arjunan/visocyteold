@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION 3.3)
 project(CatalystCxxFullExample)
 
 find_package(Visocyte 4.2 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-include("${PARAVIEW_USE_FILE}")
+include("${VISOCYTE_USE_FILE}")
 
 if(VTK_INSTALL_PREFIX)
   # we are in the install tree of Visocyte that includes development files.
   # the VisocyteConfig.cmake file is located at
   # <installdir>lib/cmake/visocyte-<majorversion>.<minorversion>
   set(PV_MAIN_DIR ${VTK_INSTALL_PREFIX})
-  set(PV_MAIN_SUBDIR "visocyte-${PARAVIEW_VERSION_MAJOR}.${PARAVIEW_VERSION_MINOR}")
+  set(PV_MAIN_SUBDIR "visocyte-${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}")
 else()
   set(PV_MAIN_DIR ${Visocyte_DIR})
 endif()

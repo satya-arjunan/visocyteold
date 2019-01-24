@@ -175,12 +175,12 @@ function (_visocyte_add_tests function)
         PROPERTY
           RUN_SERIAL ON)
     else ()
-      # if the XML test contains PARAVIEW_TEST_ROOT we assume that we may be writing
+      # if the XML test contains VISOCYTE_TEST_ROOT we assume that we may be writing
       # to that file and reading it back in so we add a resource lock on the XML
       # file so that the pv.X, pvcx.X and pvcrs.X tests don't run simultaneously.
       # we only need to do this if the test isn't forced to be serial already.
       if (NOT ${_visocyte_add_tests_name}_FORCE_LOCK)
-        file(STRINGS "${_visocyte_add_tests_script}" _visocyte_add_tests_visocyte_test_root REGEX PARAVIEW_TEST_ROOT)
+        file(STRINGS "${_visocyte_add_tests_script}" _visocyte_add_tests_visocyte_test_root REGEX VISOCYTE_TEST_ROOT)
       endif ()
       if (${_visocyte_add_tests_name}_FORCE_LOCK OR _visocyte_add_tests_visocyte_test_root)
         set_property(TEST "${_visocyte_add_tests_PREFIX}.${_visocyte_add_tests_name}"
@@ -291,7 +291,7 @@ function (visocyte_add_multi_server_tests count)
 endfunction ()
 
 function (visocyte_add_tile_display_tests width height)
-  if (NOT PARAVIEW_USE_MPI)
+  if (NOT VISOCYTE_USE_MPI)
     return ()
   endif ()
 

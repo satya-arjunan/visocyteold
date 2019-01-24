@@ -12,7 +12,7 @@ vtk_add_test_cxx(vtkPVCatalystCxxTests tests
 # the CoProcessingTestOutputs needs to be run with ${MPIEXEC} if
 # the executable was built with MPI because certain machines only
 # allow running MPI programs with the proper ${MPIEXEC}
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   vtk_add_test_mpi(vtkPVCatalystCxx-MPI mpi_tests
     NO_DATA NO_VALID NO_OUTPUT
     CoProcessingTestOutputs.cxx

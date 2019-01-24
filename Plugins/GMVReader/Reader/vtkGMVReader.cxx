@@ -2024,7 +2024,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
   if (ierr != -1)
     this->BinaryFile = 1;
 
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
   std::vector<DataInfo<float> > NodeDataInfoTemp, CellDataInfoTemp;
   DataInfo<float> Info;
 #endif
@@ -2109,7 +2109,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (NODE):
             this->NumberOfNodeFields += 1;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.longdata1, this->NumberOfNodes, miL, mxL);
             Info.min[0] = float(miL);
             Info.max[0] = float(mxL);
@@ -2122,7 +2122,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (CELL):
             this->NumberOfCellFields += 1;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.longdata1, this->NumberOfCells, miL, mxL);
             Info.min[0] = float(miL);
             Info.max[0] = float(mxL);
@@ -2150,7 +2150,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (NODE):
             this->NumberOfNodeFields += 3;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfNodes, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2169,7 +2169,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (CELL):
             this->NumberOfCellFields += 3;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfCells, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2199,7 +2199,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (NODE):
             this->NumberOfNodeFields += 1;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfNodes, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2212,7 +2212,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (CELL):
             this->NumberOfCellFields += 1;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfCells, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2238,7 +2238,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (NODE):
             this->NumberOfNodeFields += 1;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfNodes, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2251,7 +2251,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (CELL):
             this->NumberOfCellFields += 1;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfCells, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2284,7 +2284,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (NODE):
             this->NumberOfNodeFields += 1;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             // GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfNodes, miD, mxD);
             Info.min[0] = 0;
             Info.max[0] = 0;
@@ -2297,7 +2297,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (CELL):
             this->NumberOfCellFields += 1;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             // GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfCells, miD, mxD);
             Info.min[0] = 0;
             Info.max[0] = 0;
@@ -2342,7 +2342,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
 
           case (TRACERDATA):
 // Determine min/max values for statistics tab
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.doubledata1, this->NumberOfTracers, miD, mxD);
             Info.min[0] = miD;
             Info.max[0] = mxD;
@@ -2370,7 +2370,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
         break;
 
       case (TRACEIDS):
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
         GMVRead::minmax(GMVRead::gmv_data.longdata1, int(GMVRead::gmv_data.num), miL, mxL);
         Info.min[0] = float(miL);
         Info.max[0] = float(mxL);
@@ -2418,7 +2418,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (REGULAR):
             this->NumberOfNodeFields += 1;
             this->NumberOfNodeComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.longdata1, this->NumberOfNodes, miL, mxL);
             Info.min[0] = float(miL);
             Info.max[0] = float(mxL);
@@ -2438,7 +2438,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
           case (REGULAR):
             this->NumberOfCellFields += 1;
             this->NumberOfCellComponents += 1;
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
             GMVRead::minmax(GMVRead::gmv_data.longdata1, this->NumberOfCells, miL, mxL);
             Info.min[0] = float(miL);
             Info.max[0] = float(mxL);
@@ -2524,7 +2524,7 @@ int vtkGMVReader::RequestInformation(vtkInformation* vtkNotUsed(request),
     }
   }
 
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
   if (NodeDataInfoTemp.size() > 0)
   {
     this->NumberOfNodeComponents = (unsigned int)NodeDataInfoTemp.size();
@@ -2694,7 +2694,7 @@ const char* vtkGMVReader::GetByteOrderAsString()
 }
 
 //----------------------------------------------------------------------------
-#if PARAVIEW_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
+#if VISOCYTE_PLUGIN_GMVReader_SKIP_DATARANGE_CALCULATIONS
 void vtkGMVReader::GetNodeDataRange(int nodeComp, int index, float* min, float* max)
 {
   if (index >= this->NodeDataInfo[nodeComp].veclen || index < 0)

@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkUtilitiesPythonInitializer
 CONDITION
-  PARAVIEW_ENABLE_PYTHON
+  VISOCYTE_ENABLE_PYTHON
 PRIVATE_DEPENDS
   VTK::WrappingPythonCore
   VTK::CommonCore

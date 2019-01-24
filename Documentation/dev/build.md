@@ -91,7 +91,7 @@ Run CMake
 
 | Variable | Value | Description |
 | -------- | ----- | ------------|
-| PARAVIEW_ENABLE_PYTHON | ON | Add python scripting support |
+| VISOCYTE_ENABLE_PYTHON | ON | Add python scripting support |
 | BUILD_TESTING | ON/OFF | Build tests if you are contributing to Visocyte |
 
 

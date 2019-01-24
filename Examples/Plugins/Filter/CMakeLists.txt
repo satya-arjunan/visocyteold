@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 
 if (NOT Visocyte_BINARY_DIR)
   find_package(Visocyte REQUIRED)
-  include(${PARAVIEW_USE_FILE})
+  include(${VISOCYTE_USE_FILE})
 endif()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -18,7 +18,7 @@ include(VisocytePlugins)
 # manager classes to build
 # this plugin can be loaded on the server side
 
-ADD_PARAVIEW_PLUGIN(SMMyElevation "1.0"
+ADD_VISOCYTE_PLUGIN(SMMyElevation "1.0"
   SERVER_MANAGER_XML MyElevationFilter.xml
   SERVER_MANAGER_SOURCES vtkMyElevationFilter.cxx)
 

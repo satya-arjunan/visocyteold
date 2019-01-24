@@ -36,7 +36,7 @@ set (PROJECT_NAME Visocyte)
 #   PATH_TO_VTK_DOX_SCRIPTS=@Visocyte_SOURCE_DIR@/Utilities/Doxygen
 #
 set(PATH_TO_VTK_DOX_SCRIPTS "@Visocyte_SOURCE_DIR@/VTK/Utilities/Doxygen")
-set(PATH_TO_PARAVIEW_DOX_SCRIPTS "@Visocyte_SOURCE_DIR@/Utilities/Doxygen")
+set(PATH_TO_VISOCYTE_DOX_SCRIPTS "@Visocyte_SOURCE_DIR@/Utilities/Doxygen")
 
 # SOURCE_DIR:
 # Source directory. The top directory of the source files.
@@ -72,7 +72,7 @@ set(INTERMEDIATE_DOX_DIR "${DOXTEMP}/dox")
 # Example:
 #   DATA_ROOT=@VTK_DATA_ROOT@
 #
-set(DATA_ROOT "@PARAVIEW_DATA_ROOT@")
+set(DATA_ROOT "@VISOCYTE_DATA_ROOT@")
 
 # GITWEB, GITWEB_SUFFIX, GITWEB_CHECKOUT,
 # GITWEB_DATA, GITWEB_DATA_SUFFIX, GITWEB_DATA_CHECKOUT:
@@ -128,10 +128,10 @@ set(ALLOW_ERASE_OUTPUT_DIRECTORY ON)
 # Example:
 #   COMPILE_HTML_HELP ON
 #   COMPILE_HTML_HELP @DOCUMENTATION_HTML_HELP@
-#   RESULTING_HTML_HELP_FILE $DOXTEMP/vtk@PARAVIEW_VERSION_MAJOR@.@PARAVIEW_VERSION_MINOR@.chm
+#   RESULTING_HTML_HELP_FILE $DOXTEMP/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@.chm
 #
 set(COMPILE_HTML_HELP OFF)
-set(RESULTING_HTML_HELP_FILE "${DOXTEMP}/vtk@PARAVIEW_VERSION_MAJOR@.@PARAVIEW_VERSION_MINOR@.chm")
+set(RESULTING_HTML_HELP_FILE "${DOXTEMP}/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@.chm")
 
 # CREATE_HTML_TARZ_ARCHIVE RESULTING_HTML_TARZ_ARCHIVE_FILE:
 # Create a compressed (gzip) tar archive of the html directory (located
@@ -141,7 +141,7 @@ set(RESULTING_HTML_HELP_FILE "${DOXTEMP}/vtk@PARAVIEW_VERSION_MAJOR@.@PARAVIEW_V
 # Example:
 #   CREATE_HTML_TARZ_ARCHIVE ON
 #   CREATE_HTML_TARZ_ARCHIVE @DOCUMENTATION_HTML_TARZ@
-#   RESULTING_HTML_TARZ_ARCHIVE_FILE $DOXTEMP/vtk@PARAVIEW_VERSION_MAJOR@.@PARAVIEW_VERSION_MINOR@-html.tar.gz
+#   RESULTING_HTML_TARZ_ARCHIVE_FILE $DOXTEMP/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@-html.tar.gz
 #
 set(CREATE_HTML_TARZ_ARCHIVE OFF)
 set(RESULTING_HTML_TARZ_ARCHIVE_FILE "${DOXTEMP}/Visocyte-html.tar.gz")
@@ -152,11 +152,11 @@ set(RESULTING_HTML_TARZ_ARCHIVE_FILE "${DOXTEMP}/Visocyte-html.tar.gz")
 # using wget and stored in the destination dir. It will be automatically
 # deleted at the end of this script.
 # Note: your doxyfile must be tailored to make use-of or create this tag file.
-#    (using TAGFILES = vtk@PARAVIEW_VERSION_MAJOR@-nightly.tag=http://www.vtk.org/doc/nightly/html
-#        or GENERATE_TAGFILE = "@Visocyte_BINARY_DIR@/Utilities/Doxygen/vtk@PARAVIEW_VERSION_MAJOR@.@PARAVIEW_VERSION_MINOR@.tag")
+#    (using TAGFILES = vtk@VISOCYTE_VERSION_MAJOR@-nightly.tag=http://www.vtk.org/doc/nightly/html
+#        or GENERATE_TAGFILE = "@Visocyte_BINARY_DIR@/Utilities/Doxygen/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@.tag")
 # Example:
 #   DOWNLOAD_VTK_TAGFILE=OFF
-#   VTK_TAGFILE=vtk@PARAVIEW_VERSION_MAJOR@-nightly.tag
+#   VTK_TAGFILE=vtk@VISOCYTE_VERSION_MAJOR@-nightly.tag
 #   VTK_TAGFILE_REMOTE_DIR=http://www.vtk.org/doc/nightly/html
 #   VTK_TAGFILE_DEST_DIR=$DOXTEMP
 #

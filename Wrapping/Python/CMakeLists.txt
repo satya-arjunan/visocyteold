@@ -41,7 +41,7 @@ set(python_files
 set(python_copied_modules)
 foreach (python_file IN LISTS python_files)
   set(output_python_file
-    "${CMAKE_BINARY_DIR}/${PARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX}/${python_file}")
+    "${CMAKE_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/${python_file}")
   add_custom_command(
     OUTPUT  "${output_python_file}"
     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${python_file}"
@@ -52,7 +52,7 @@ foreach (python_file IN LISTS python_files)
   get_filename_component(python_file_directory "${python_file}" DIRECTORY)
   install(
     FILES       "${python_file}"
-    DESTINATION "${PARAVIEW_PYTHON_SITE_PACKAGES_SUFFIX}/${python_file_directory}"
+    DESTINATION "${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/${python_file_directory}"
     COMPONENT   "python")
   list(APPEND python_copied_modules
     "${output_python_file}")

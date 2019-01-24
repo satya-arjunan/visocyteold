@@ -20,7 +20,7 @@ int TestDataEncoder(int argc, char* argv[])
     return 1;
   }
 
-  // Open image files from the PARAVIEW_DATA_ROOT/Baseline and try to
+  // Open image files from the VISOCYTE_DATA_ROOT/Baseline and try to
   // encode/compress them and then verify that they are indeed the same.
   const char* filenames[] = { "/Web/Core/Testing/Data/Baseline/Clip.png",
     "/Web/Core/Testing/Data/Baseline/EnSight.png",

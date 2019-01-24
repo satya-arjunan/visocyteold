@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.3)
 
 IF(NOT Visocyte_BINARY_DIR)
   FIND_PACKAGE(Visocyte REQUIRED)
-  INCLUDE(${PARAVIEW_USE_FILE})
+  INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -14,18 +14,18 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
   set(CMAKE_MACOSX_RPATH 0)
 endif()
 
-IF(PARAVIEW_BUILD_QT_GUI)
+IF(VISOCYTE_BUILD_QT_GUI)
   # We need to wrap for Qt stuff such as signals/slots etc. to work correctly.
   QT5_WRAP_CPP(MOC_SRCS SourceToolbarActions.h)
 
   # This is a macro for adding QActionGroup subclasses automatically as toolbars.
-  ADD_PARAVIEW_ACTION_GROUP(IFACES IFACE_SRCS
+  ADD_VISOCYTE_ACTION_GROUP(IFACES IFACE_SRCS
                             CLASS_NAME SourceToolbarActions
                             GROUP_NAME "ToolBar/SourceToolbar")
 
   # Now crete a plugin for the toolbar. Here we pass IFACES and IFACE_SRCS
   # which are filled up by the above macro with relevant entries
-  ADD_PARAVIEW_PLUGIN(SourceToolbar "1.0"
+  ADD_VISOCYTE_PLUGIN(SourceToolbar "1.0"
                       GUI_INTERFACES ${IFACES}
                       SOURCES ${MOC_SRCS} ${IFACE_SRCS}
                       SourceToolbarActions.cxx)

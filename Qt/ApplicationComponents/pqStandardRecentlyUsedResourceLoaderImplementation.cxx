@@ -60,8 +60,8 @@ pqStandardRecentlyUsedResourceLoaderImplementation::
 //-----------------------------------------------------------------------------
 bool pqStandardRecentlyUsedResourceLoaderImplementation::canLoad(const pqServerResource& resource)
 {
-  return (resource.hasData("PARAVIEW_STATE") || resource.hasData("PARAVIEW_CINEMA_DATABASE") ||
-    (resource.hasData("PARAVIEW_DATA") && resource.hasData("smgroup") &&
+  return (resource.hasData("VISOCYTE_STATE") || resource.hasData("VISOCYTE_CINEMA_DATABASE") ||
+    (resource.hasData("VISOCYTE_DATA") && resource.hasData("smgroup") &&
             resource.hasData("smname")));
 }
 
@@ -70,15 +70,15 @@ bool pqStandardRecentlyUsedResourceLoaderImplementation::load(
   const pqServerResource& resource, pqServer* server)
 {
   Q_ASSERT(this->canLoad(resource));
-  if (resource.hasData("PARAVIEW_STATE"))
+  if (resource.hasData("VISOCYTE_STATE"))
   {
     return this->loadState(resource, server);
   }
-  else if (resource.hasData("PARAVIEW_DATA"))
+  else if (resource.hasData("VISOCYTE_DATA"))
   {
     return this->loadData(resource, server);
   }
-  else if (resource.hasData("PARAVIEW_CINEMA_DATABASE"))
+  else if (resource.hasData("VISOCYTE_CINEMA_DATABASE"))
   {
     return this->loadCinemaDatabase(resource, server);
   }
@@ -89,15 +89,15 @@ bool pqStandardRecentlyUsedResourceLoaderImplementation::load(
 //-----------------------------------------------------------------------------
 QIcon pqStandardRecentlyUsedResourceLoaderImplementation::icon(const pqServerResource& resource)
 {
-  if (resource.hasData("PARAVIEW_STATE"))
+  if (resource.hasData("VISOCYTE_STATE"))
   {
     return QIcon(":/pqWidgets/Icons/pvIcon32.png");
   }
-  else if (resource.hasData("PARAVIEW_DATA"))
+  else if (resource.hasData("VISOCYTE_DATA"))
   {
     return QIcon(":/pqWidgets/Icons/pqMultiBlockData16.png");
   }
-  else if (resource.hasData("PARAVIEW_CINEMA_DATABASE"))
+  else if (resource.hasData("VISOCYTE_CINEMA_DATABASE"))
   {
     return QIcon(":/pqWidgets/Icons/cinemascience_mark.png");
   }
@@ -188,7 +188,7 @@ bool pqStandardRecentlyUsedResourceLoaderImplementation::addDataFilesToRecentRes
     }
 
     resource.setPath(files[0]);
-    resource.addData("PARAVIEW_DATA", "1");
+    resource.addData("VISOCYTE_DATA", "1");
     resource.addData("smgroup", smgroup);
     resource.addData("smname", smname);
     resource.addData("extrafilesCount", QString("%1").arg(files.size() - 1));
@@ -223,7 +223,7 @@ bool pqStandardRecentlyUsedResourceLoaderImplementation::addStateFileToRecentRes
     resource.setScheme("session");
     resource.setPath(filename);
     resource.setSessionServer(tmpResource);
-    resource.addData("PARAVIEW_STATE", "1");
+    resource.addData("VISOCYTE_STATE", "1");
     pqApplicationCore* core = pqApplicationCore::instance();
     core->recentlyUsedResources().add(resource);
     core->recentlyUsedResources().save(*core->settings());
@@ -249,7 +249,7 @@ bool pqStandardRecentlyUsedResourceLoaderImplementation::addCinemaDatabaseToRece
 
     // Add this to the list of recent server resources ...
     resource.setPath(filename);
-    resource.addData("PARAVIEW_CINEMA_DATABASE", "1");
+    resource.addData("VISOCYTE_CINEMA_DATABASE", "1");
 
     pqApplicationCore* core = pqApplicationCore::instance();
     core->recentlyUsedResources().add(resource);

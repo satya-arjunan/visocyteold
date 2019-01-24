@@ -39,9 +39,9 @@ vtkStandardNewMacro(vtkSpyPlotFileSeriesReader);
 vtkSpyPlotFileSeriesReader::vtkSpyPlotFileSeriesReader()
 {
   this->SetNumberOfOutputPorts(2);
-#ifdef PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#ifdef VISOCYTE_ENABLE_SPYPLOT_MARKERS
   this->SetNumberOfOutputPorts(3);
-#endif // PARAVIEW_ENABLE_SPYPLOT_MARKERS
+#endif // VISOCYTE_ENABLE_SPYPLOT_MARKERS
 }
 
 vtkSpyPlotFileSeriesReader::~vtkSpyPlotFileSeriesReader()

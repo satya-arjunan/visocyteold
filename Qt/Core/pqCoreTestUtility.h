@@ -60,7 +60,7 @@ public:
 
 public:
   /**
-  * Returns the absolute path to the PARAVIEW_DATA_ROOT in canonical form
+  * Returns the absolute path to the VISOCYTE_DATA_ROOT in canonical form
   * (slashes forward), or empty string
   */
   static QString DataRoot();

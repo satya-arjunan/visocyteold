@@ -55,7 +55,7 @@ void vtkPVOptionsXMLParser::SetProcessType(const char* ptype)
 
   if (type == "visocyte")
   {
-    this->SetProcessTypeInt(vtkPVOptions::PARAVIEW);
+    this->SetProcessTypeInt(vtkPVOptions::VISOCYTE);
     return;
   }
 

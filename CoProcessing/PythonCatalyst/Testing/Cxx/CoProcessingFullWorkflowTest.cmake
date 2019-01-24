@@ -1,8 +1,8 @@
 # CoProcessing test expects the following arguments to be passed to cmake using
 # -DFoo=BAR arguments.
-# PARAVIEW_EXECUTABLE -- path to visocyte
+# VISOCYTE_EXECUTABLE -- path to visocyte
 # COPROCESSING_TEST_DIR    -- path to temporary dir
-# PARAVIEW_TEST_XML -- xml to run
+# VISOCYTE_TEST_XML -- xml to run
 # PVBATCH_EXECUTABLE -- path to pvbatch
 # COPROCESSING_DRIVER_SCRIPT -- driver py script
 # COPROCESSING_IMAGE_TESTER -- path to CoProcessingCompareImagesTester
@@ -35,22 +35,22 @@ file(REMOVE
   "${COPROCESSING_TEST_DIR}/RenderView1_4.png"
   )
 
-if (NOT EXISTS "${PARAVIEW_EXECUTABLE}")
-  message(FATAL_ERROR "Could not file Visocyte '${PARAVIEW_EXECUTABLE}'")
+if (NOT EXISTS "${VISOCYTE_EXECUTABLE}")
+  message(FATAL_ERROR "Could not file Visocyte '${VISOCYTE_EXECUTABLE}'")
 endif()
 
-# On windows, execute_process runs PARAVIEW_EXECUTABLE in background.
+# On windows, execute_process runs VISOCYTE_EXECUTABLE in background.
 # We prepend "cmd /c" to force visocyte's window to be shown to ensure proper
 # mouse interactions with the GUI.
 if(WIN32)
-  set(PARAVIEW_EXECUTABLE cmd /c ${PARAVIEW_EXECUTABLE})
+  set(VISOCYTE_EXECUTABLE cmd /c ${VISOCYTE_EXECUTABLE})
 endif()
 
 execute_process_with_echo(COMMAND
-    ${PARAVIEW_EXECUTABLE} -dr
+    ${VISOCYTE_EXECUTABLE} -dr
     --data-directory=${COPROCESSING_DATA_DIR}
     --test-directory=${COPROCESSING_TEST_DIR}
-    --test-script=${PARAVIEW_TEST_XML}
+    --test-script=${VISOCYTE_TEST_XML}
     --exit
   RESULT_VARIABLE rv)
 if(rv)

@@ -101,7 +101,7 @@ void pqExampleVisualizationsDialog::onButtonPressed()
       pqEventDispatcher::processEventsAndWait(100);
 
       QString xmldata(qfile.readAll());
-      xmldata.replace("$PARAVIEW_EXAMPLES_DATA", dataPath);
+      xmldata.replace("$VISOCYTE_EXAMPLES_DATA", dataPath);
       pqApplicationCore::instance()->loadStateFromString(
         xmldata.toUtf8().data(), pqActiveObjects::instance().activeServer());
     }

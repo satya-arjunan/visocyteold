@@ -10,27 +10,27 @@
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_BUILD_QT_GUI",
+      { "name":"VISOCYTE_BUILD_QT_GUI",
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_ENABLE_PYTHON",
+      { "name":"VISOCYTE_ENABLE_PYTHON",
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_ENABLE_WEB",
+      { "name":"VISOCYTE_ENABLE_WEB",
         "type":"BOOL",
         "value":"OFF"
       },
-      { "name":"PARAVIEW_USE_MPI",
+      { "name":"VISOCYTE_USE_MPI",
         "type":"BOOL",
         "value":"ON"
       },
-      { "name":"PARAVIEW_USE_ICE_T",
+      { "name":"VISOCYTE_USE_ICE_T",
         "type":"BOOL",
         "value":"ON"
       },
-      { "name":"PARAVIEW_ENABLE_VTK_MODULES_AS_NEEDED",
+      { "name":"VISOCYTE_ENABLE_VTK_MODULES_AS_NEEDED",
         "type":"BOOL",
         "value":"OFF"
       },
@@ -38,7 +38,7 @@
         "type":"BOOL",
         "value":"ON"
       },
-      { "name":"PARAVIEW_INSTALL_DEVELOPMENT_FILES",
+      { "name":"VISOCYTE_INSTALL_DEVELOPMENT_FILES",
         "type":"BOOL",
         "value":"ON"
       },

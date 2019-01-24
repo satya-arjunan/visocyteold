@@ -45,8 +45,8 @@ if (numpy_found)
 endif ()
 
 if (BUILD_SHARED_LIBS
-  AND PARAVIEW_BUILD_PLUGIN_SurfaceLIC
-  AND PARAVIEW_BUILD_PLUGIN_SLACTools)
+  AND VISOCYTE_BUILD_PLUGIN_SurfaceLIC
+  AND VISOCYTE_BUILD_PLUGIN_SLACTools)
   list(APPEND PY_TESTS
     Plugins.py,NO_VALID)
 endif ()
@@ -80,7 +80,7 @@ set(PVBATCH_TESTS
   UserTransformOnRepresentation.py
   )
 
-if (numpy_found AND PARAVIEW_USE_MPI)
+if (numpy_found AND VISOCYTE_USE_MPI)
   list(APPEND PVBATCH_TESTS
     D3CellsWithNegativeVolumes.py,NO_VALID)
 endif()
@@ -141,7 +141,7 @@ if (numpy_found)
   # set_tests_properties(vtkPVServerManagerDefaultPython-SymmetricPythonFilters PROPERTIES FAIL_REGULAR_EXPRESSION "Error")
 endif()
 
-if (PARAVIEW_USE_MPI AND VTK_MPIRUN_EXE AND NOT WIN32)
+if (VISOCYTE_USE_MPI AND VTK_MPIRUN_EXE AND NOT WIN32)
   set(Visocyte::ServerManagerDefault_ARGS
     --symmetric)
   visocyte_add_test_pvbatch_mpi(
@@ -163,20 +163,20 @@ set(visocyte_python_state_tests
   ScalarOpacityFunctionPythonState
 )
 foreach(python_state_test ${visocyte_python_state_tests})
-  if (PARAVIEW_BUILD_QT_GUI)
+  if (VISOCYTE_BUILD_QT_GUI)
     if(BUILD_SHARED_LIBS)
       add_test(NAME ${python_state_test}
         COMMAND ${CMAKE_COMMAND}
-        -DPARAVIEW_EXECUTABLE:FILEPATH=$<TARGET_FILE:visocyte>
+        -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:visocyte>
         -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:pvpython>
-        -DPARAVIEW_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
-        -DPARAVIEW_TEST_OUTPUT_BASELINE_DIR:PATH=${visocyte_test_data_directory_output}/Testing/Data/Baseline
+        -DVISOCYTE_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
+        -DVISOCYTE_TEST_OUTPUT_BASELINE_DIR:PATH=${visocyte_test_data_directory_output}/Testing/Data/Baseline
         -DTEST_DRIVER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.py
         -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${python_state_test}.xml
         -DTEMPORARY_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
         -DPYTHON_STATE_TEST_NAME:STRING=${python_state_test}
         -P ${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.cmake)
-      set_tests_properties(${python_state_test} PROPERTIES LABELS "PARAVIEW")
+      set_tests_properties(${python_state_test} PROPERTIES LABELS "VISOCYTE")
     endif()
   endif()
 endforeach()

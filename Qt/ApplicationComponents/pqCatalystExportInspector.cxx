@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "pqActiveObjects.h"
 #include "pqApplicationCore.h"
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
 #include "pqHelpReaction.h"
 #endif
 #include "pqCoreUtilities.h"
@@ -647,7 +647,7 @@ void pqCatalystExportInspector::Advanced(bool vtkNotUsed(setting))
 //-----------------------------------------------------------------------------
 void pqCatalystExportInspector::Help()
 {
-#ifdef PARAVIEW_USE_QTHELP
+#ifdef VISOCYTE_USE_QTHELP
   // this is better than nothing, but we want a custom page
   pqHelpReaction::showProxyHelp("coprocessing", "CatalystGlobalOptions");
 #endif

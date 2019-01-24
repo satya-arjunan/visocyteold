@@ -6,7 +6,7 @@ SET(PVBATCH_TESTS
   SurfaceLIC-ShuttleZoom2
   SurfaceLIC-ShuttleAll
   )
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   # run the tests in parallel
   SET(NP 3)
   # these depend on the D3 filter and
@@ -24,12 +24,12 @@ if (PARAVIEW_USE_MPI)
         $<TARGET_FILE:pvbatch>
         --enable-bt
         ${CMAKE_CURRENT_SOURCE_DIR}/SurfaceLICTestDriver.py
-        -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-        -T ${PARAVIEW_TEST_OUTPUT_DIR}
-        -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/SurfaceLICPlugin/${tfile}.png}
+        -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+        -T ${VISOCYTE_TEST_OUTPUT_DIR}
+        -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/SurfaceLICPlugin/${tfile}.png}
         --threshold 30
         --state ${CMAKE_CURRENT_SOURCE_DIR}/${tfile}.pvsm)
-    SET_TESTS_PROPERTIES(${tfile}-Batch PROPERTIES LABELS "PARAVIEW")
+    SET_TESTS_PROPERTIES(${tfile}-Batch PROPERTIES LABELS "VISOCYTE")
   ENDFOREACH()
   SET(SurfaceLIC-OfficeSlices_THRESHOLD 30)
   SET(SurfaceLIC-OfficeVSlice_THRESHOLD 30)
@@ -41,12 +41,12 @@ ELSE()
       COMMAND $<TARGET_FILE:pvbatch>
         --enable-bt
         ${CMAKE_CURRENT_SOURCE_DIR}/SurfaceLICTestDriver.py
-        -D ${PARAVIEW_TEST_OUTPUT_DATA_DIR}
-        -T ${PARAVIEW_TEST_OUTPUT_DIR}
-        -V DATA{${PARAVIEW_TEST_BASELINE_DIR}/SurfaceLICPlugin/${tfile}.png}
+        -D ${VISOCYTE_TEST_OUTPUT_DATA_DIR}
+        -T ${VISOCYTE_TEST_OUTPUT_DIR}
+        -V DATA{${VISOCYTE_TEST_BASELINE_DIR}/SurfaceLICPlugin/${tfile}.png}
         --threshold 30
         --state ${CMAKE_CURRENT_SOURCE_DIR}/${tfile}.pvsm)
-    SET_TESTS_PROPERTIES(${tfile}-Batch PROPERTIES LABELS "PARAVIEW")
+    SET_TESTS_PROPERTIES(${tfile}-Batch PROPERTIES LABELS "VISOCYTE")
   ENDFOREACH()
 ENDIF()
 

@@ -29,12 +29,12 @@ endforeach()
 set (examples_dependencies
   vtkPVServerManagerApplication
   vtkPVServerManagerApplicationCS)
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   list (APPEND examples_dependencies pqApplicationComponents)
 endif()
 
 set(ENABLE_CATALYST OFF)
-if (PARAVIEW_ENABLE_PYTHON AND PARAVIEW_USE_MPI AND PARAVIEW_ENABLE_CATALYST AND NOT WIN32)
+if (VISOCYTE_ENABLE_PYTHON AND VISOCYTE_USE_MPI AND VISOCYTE_ENABLE_CATALYST AND NOT WIN32)
   list (APPEND examples_dependencies vtkPVPythonCatalyst)
   set (ENABLE_CATALYST ON)
 endif()
@@ -52,7 +52,7 @@ add_custom_command(
        --build-generator ${CMAKE_GENERATOR}
        --build-makeprogram ${CMAKE_MAKE_PROGRAM}
        --build-options -DVisocyte_DIR:PATH=${Visocyte_BINARY_DIR}
-                       -DPARAVIEW_QT_VERSION:STRING=${PARAVIEW_QT_VERSION}
+                       -DVISOCYTE_QT_VERSION:STRING=${VISOCYTE_QT_VERSION}
                        -DQT_QMAKE_EXECUTABLE:FILEPATH=${QT_QMAKE_EXECUTABLE}
                        -DQt5_DIR:PATH=${Qt5_DIR}
                        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
@@ -63,7 +63,7 @@ add_custom_command(
                        -DCMAKE_LIBRARY_OUTPUT_DIRECTORY:PATH=${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
                        -DCMAKE_RUNTIME_OUTPUT_DIRECTORY:PATH=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
                        -DBUILD_TESTING:BOOL=${BUILD_TESTING}
-                       -DPARAVIEW_TEST_OUTPUT_DIR:PATH=${PARAVIEW_TEST_OUTPUT_DIR}
+                       -DVISOCYTE_TEST_OUTPUT_DIR:PATH=${VISOCYTE_TEST_OUTPUT_DIR}
                        -DENABLE_CATALYST:BOOL=${ENABLE_CATALYST}
                        ${extra_params}
                        --no-warn-unused-cli

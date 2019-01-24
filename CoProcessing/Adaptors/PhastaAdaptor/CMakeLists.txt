@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 project(PhastaAdaptor)
 
 find_package(Visocyte REQUIRED COMPONENTS vtkPVCatalyst)
-include("${PARAVIEW_USE_FILE}")
+include("${VISOCYTE_USE_FILE}")
 
 enable_language(Fortran)
 include(FortranCInterface)

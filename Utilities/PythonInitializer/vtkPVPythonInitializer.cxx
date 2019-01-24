@@ -19,7 +19,7 @@
 #include "pvpythonmodules.h"
 #include "vtkUtilitiesPythonInitializerModule.h"
 
-#ifdef PARAVIEW_FREEZE_PYTHON
+#ifdef VISOCYTE_FREEZE_PYTHON
 #include "vtkFrozenVisocytePython.h"
 #include <vtksys/SystemTools.hxx>
 #endif
@@ -28,7 +28,7 @@ extern "C" {
 
 void VTKUTILITIESPYTHONINITIALIZER_EXPORT vtkPVInitializePythonModules()
 {
-#ifdef PARAVIEW_FREEZE_PYTHON
+#ifdef VISOCYTE_FREEZE_PYTHON
   // If PYTHONHOME is unset, python attempts to build a reasonable sys.path
   // by inspecting paths relative to the executable among others locations.
   // We set PYTHONHOME to avoid that from happening.

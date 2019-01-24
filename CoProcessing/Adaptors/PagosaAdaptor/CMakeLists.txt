@@ -4,7 +4,7 @@ project(PagosaAdaptor)
 set(STANDALONE_BUILD 0)
 if(NOT TARGET vtkPVPythonCatalyst)
   find_package(Visocyte REQUIRED COMPONENTS vtkPVCatalyst vtkPVPythonCatalyst)
-  include(${PARAVIEW_USE_FILE})
+  include(${VISOCYTE_USE_FILE})
   set(STANDALONE_BUILD 1)
 else()
   include_directories(${CMAKE_SOURCE_DIR}/CoProcessing/Catalyst ${CMAKE_SOURCE_DIR}/CoProcessing/PythonCatalyst ${VTK_INCLUDE_DIRS})
@@ -40,7 +40,7 @@ if(STANDALONE_BUILD)
     PagosaAdaptor.cmake)
 #  export(EXPORT PagosaAdaptorTargets
 #    FILE ${PagosaAdaptor_BINARY_DIR}/PagosaAdaptorTargets.cmake)
-elseif(PARAVIEW_INSTALL_DEVELOPMENT_FILES)
+elseif(VISOCYTE_INSTALL_DEVELOPMENT_FILES)
   install(TARGETS PagosaAdaptor EXPORT ${PV_INSTALL_EXPORT_NAME}
     DESTINATION lib
     COMPONENT Development)

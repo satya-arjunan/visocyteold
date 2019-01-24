@@ -3,10 +3,10 @@ find_package(Qt5 QUIET REQUIRED COMPONENTS Network)
 list(INSERT CMAKE_MODULE_PATH 0
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-option(PARAVIEW_PLUGIN_VRPlugin_USE_VRPN "Build VRPlugin with VRPN support" OFF)
-mark_as_advanced(PARAVIEW_PLUGIN_VRPlugin_USE_VRPN)
-option(PARAVIEW_PLUGIN_VRPlugin_USE_VRUI "Build VRPlugin with VRUI support" OFF)
-mark_as_advanced(PARAVIEW_PLUGIN_VRPlugin_USE_VRUI)
+option(VISOCYTE_PLUGIN_VRPlugin_USE_VRPN "Build VRPlugin with VRPN support" OFF)
+mark_as_advanced(VISOCYTE_PLUGIN_VRPlugin_USE_VRPN)
+option(VISOCYTE_PLUGIN_VRPlugin_USE_VRUI "Build VRPlugin with VRUI support" OFF)
+mark_as_advanced(VISOCYTE_PLUGIN_VRPlugin_USE_VRUI)
 
 # TODO: There's a QTSOCK preprocessor definition floating around. What should
 # be done with that?
@@ -52,7 +52,7 @@ set(sources
   "${CMAKE_CURRENT_BINARY_DIR}/vtkPVVRConfig.h")
 
 
-if (PARAVIEW_PLUGIN_VRPlugin_USE_VRPN)
+if (VISOCYTE_PLUGIN_VRPlugin_USE_VRPN)
   find_package(VRPN REQUIRED)
   list(APPEND sources
     pqVRPNConnection.cxx
@@ -63,7 +63,7 @@ if (PARAVIEW_PLUGIN_VRPlugin_USE_VRPN)
     vtkVRPNCallBackHandlers.h)
 endif ()
 
-if (PARAVIEW_PLUGIN_VRPlugin_USE_VRUI)
+if (VISOCYTE_PLUGIN_VRPlugin_USE_VRUI)
   set(sources
     pqVRUIConnection.cxx
     pqVRUIConnection.h
@@ -118,7 +118,7 @@ target_link_libraries (VRPlugin
     VTK::CommonTransforms
     VTK::RenderingCore)
 
-if (PARAVIEW_PLUGIN_VRPlugin_USE_VRPN)
+if (VISOCYTE_PLUGIN_VRPlugin_USE_VRPN)
   target_link_libraries(VRPlugin
     PRIVATE
       VRPN::VRPN)

@@ -3,6 +3,6 @@ NAME
 DESCRIPTION
   Provides NetCDF Time Annotation filter
 CONDITION
-  PARAVIEW_ENABLE_PYTHON
+  VISOCYTE_ENABLE_PYTHON
 REQUIRES_MODULES
   Visocyte::ClientServerCorePython

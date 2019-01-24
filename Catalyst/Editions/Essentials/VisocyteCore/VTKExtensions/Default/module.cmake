@@ -1,5 +1,5 @@
 set (_dependencies)
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   list(APPEND _dependencies vtkIOMPIImage)
 elseif()
   list(APPEND _dependencies vtkIOImage)

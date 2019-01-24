@@ -3,8 +3,8 @@ include(CTest)
 enable_testing()
 
 find_package(Visocyte REQUIRED)
-include("${PARAVIEW_USE_FILE}")
-include_directories(${PARAVIEW_INCLUDE_DIRS})
+include("${VISOCYTE_USE_FILE}")
+include_directories(${VISOCYTE_INCLUDE_DIRS})
 
 file(GLOB dirs */)
 

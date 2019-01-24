@@ -28,14 +28,14 @@
 # Arguments are:
 #   source_dir : Source directory
 #   git_command : git executable
-#   var_prefix : prefix for variables e.g. "PARAVIEW".
+#   var_prefix : prefix for variables e.g. "VISOCYTE".
 function(determine_version source_dir git_command var_prefix)
   if ("$Format:$" STREQUAL "")
     # We are in an exported tarball and should use the shipped version
     # information. Just return here to avoid the warning message at the end of
     # this function.
     return ()
-  elseif (NOT PARAVIEW_GIT_DESCRIBE AND
+  elseif (NOT VISOCYTE_GIT_DESCRIBE AND
           EXISTS ${git_command} AND
           EXISTS ${source_dir}/.git)
     execute_process(
@@ -51,8 +51,8 @@ function(determine_version source_dir git_command var_prefix)
       set(output "")
     endif()
   else ()
-    # note, output may be set to empty if PARAVIEW_GIT_DESCRIBE is not defined.
-    set(output "${PARAVIEW_GIT_DESCRIBE}")
+    # note, output may be set to empty if VISOCYTE_GIT_DESCRIBE is not defined.
+    set(output "${VISOCYTE_GIT_DESCRIBE}")
   endif()
 
   unset(tmp_VERSION)

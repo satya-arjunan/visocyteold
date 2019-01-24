@@ -35,8 +35,8 @@
 
 #include "vtknvindex_rtc_kernel_params.h"
 
-//#if PARAVIEW_VERSION_MAJOR == 5 && PARAVIEW_VERSION_MINOR >= 2
-#define PARAVIEW_UGRID_USE_PARTITIONS
+//#if VISOCYTE_VERSION_MAJOR == 5 && VISOCYTE_VERSION_MINOR >= 2
+#define VISOCYTE_UGRID_USE_PARTITIONS
 //#endif
 
 class vtkColorTransferFunction;
@@ -124,7 +124,7 @@ public:
   // Provides access to the actor used by this representation.
   vtkPVLODVolume* GetActor() { return this->Actor; }
 
-#ifdef PARAVIEW_UGRID_USE_PARTITIONS
+#ifdef VISOCYTE_UGRID_USE_PARTITIONS
   //@{
   /**
    * Specify whether or not to redistribute the data. The default is false
@@ -136,7 +136,7 @@ public:
   vtkGetMacro(UseDataPartitions, bool);
 //@}
 
-#endif // PARAVIEW_UGRID_USE_PARTITIONS
+#endif // VISOCYTE_UGRID_USE_PARTITIONS
 
   //
   // Configuration options set from Visocyte GUI.
@@ -241,9 +241,9 @@ protected:
 
   double DataBounds[6];
 
-#ifdef PARAVIEW_UGRID_USE_PARTITIONS
+#ifdef VISOCYTE_UGRID_USE_PARTITIONS
   bool UseDataPartitions;
-#endif // PARAVIEW_UGRID_USE_PARTITIONS
+#endif // VISOCYTE_UGRID_USE_PARTITIONS
 
 private:
   vtknvindex_irregular_volume_representation(

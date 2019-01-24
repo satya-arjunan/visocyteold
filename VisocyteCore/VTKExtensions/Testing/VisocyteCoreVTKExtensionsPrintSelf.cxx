@@ -173,14 +173,14 @@
 #include "vtkXMLPVDWriter.h"
 #include "vtkZlibImageCompressor.h"
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
 #include "vtkAllToNRedistributeCompositePolyData.h"
 #include "vtkAllToNRedistributePolyData.h"
 #include "vtkBalancedRedistributePolyData.h"
 #include "vtkMPICompositeManager.h"
 #include "vtkRedistributePolyData.h"
 #include "vtkWeightedRedistributePolyData.h"
-#ifdef PARAVIEW_USE_ICE_T
+#ifdef VISOCYTE_USE_ICE_T
 #include "vtkIceTCompositePass.h"
 #include "vtkIceTContext.h"
 #endif
@@ -352,14 +352,14 @@ int VisocyteCoreVTKExtensionsPrintSelf(int, char* [])
   PRINT_SELF(vtkXMLCollectionReader);
   PRINT_SELF(vtkXMLPVDWriter);
   PRINT_SELF(vtkZlibImageCompressor);
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   PRINT_SELF(vtkAllToNRedistributeCompositePolyData);
   PRINT_SELF(vtkAllToNRedistributePolyData);
   PRINT_SELF(vtkBalancedRedistributePolyData);
   PRINT_SELF(vtkRedistributePolyData);
   PRINT_SELF(vtkWeightedRedistributePolyData);
   PRINT_SELF(vtkMPICompositeManager);
-#ifdef PARAVIEW_USE_ICE_T
+#ifdef VISOCYTE_USE_ICE_T
   PRINT_SELF(vtkIceTCompositePass);
   PRINT_SELF(vtkIceTContext);
 #endif

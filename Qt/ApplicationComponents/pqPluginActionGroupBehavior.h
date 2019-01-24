@@ -41,7 +41,7 @@ class QMainWindow;
 * @ingroup Behaviors
 * pqPluginActionGroupBehavior adds support for loading menus/toolbars from
 * plugins. In other words, it adds support for plugins created using
-* ADD_PARAVIEW_ACTION_GROUP.
+* ADD_VISOCYTE_ACTION_GROUP.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqPluginActionGroupBehavior : public QObject
 {

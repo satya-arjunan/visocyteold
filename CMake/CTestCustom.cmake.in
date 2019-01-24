@@ -1,5 +1,5 @@
 # Inherit VTK's exclusions. We don't have to redefine them in this file anymore.
-set(visocyte_use_external_vtk "@PARAVIEW_USE_EXTERNAL_VTK@")
+set(visocyte_use_external_vtk "@VISOCYTE_USE_EXTERNAL_VTK@")
 if (NOT visocyte_use_external_vtk)
   include("${CMAKE_CURRENT_LIST_DIR}/VTK/CTestCustom.cmake")
 endif ()

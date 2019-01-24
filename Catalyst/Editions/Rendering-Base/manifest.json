@@ -5,7 +5,7 @@
   ],
   "cmake": {
     "cache": [
-      { "name": "PARAVIEW_USE_VTKM",
+      { "name": "VISOCYTE_USE_VTKM",
         "type": "BOOL",
         "value": "OFF"
       },

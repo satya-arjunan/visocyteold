@@ -4,7 +4,7 @@ vtk_module_test_data(
 
 add_subdirectory(Cxx)
 
-if (PARAVIEW_ENABLE_PYTHON)
+if (VISOCYTE_ENABLE_PYTHON)
   vtk_module_test_data(
     Data/can.ex2)
 

@@ -347,7 +347,7 @@ int ComparePointWithIndex(const void* a, const void* b)
 }
 
 vtkStandardNewMacro(vtkCDIReader);
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
 #include "vtkMultiProcessController.h"
 vtkCxxSetObjectMacro(vtkCDIReader, Controller, vtkMultiProcessController);
 #endif
@@ -390,7 +390,7 @@ vtkCDIReader::vtkCDIReader()
   this->PointDataArraySelection->AddObserver(vtkCommand::ModifiedEvent, this->SelectionObserver);
   this->DomainDataArraySelection->AddObserver(vtkCommand::ModifiedEvent, this->SelectionObserver);
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   this->Controller = nullptr;
   this->SetController(vtkMultiProcessController::GetGlobalController());
   if (!this->Controller)
@@ -514,7 +514,7 @@ vtkCDIReader::~vtkCDIReader()
 
   delete this->Internals;
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   this->SetController(nullptr);
 #endif
 
@@ -542,7 +542,7 @@ int vtkCDIReader::RequestInformation(
     return 0;
   }
 
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   if (this->Controller->GetNumberOfProcesses() > 1)
   {
     this->Decomposition = true;
@@ -1736,7 +1736,7 @@ int vtkCDIReader::ConstructGridGeometry()
   int* vertex_ids2 = new int[size2];
   CHECK_NEW(this->VertexIds);
   CHECK_NEW(vertex_ids2);
-#ifdef PARAVIEW_USE_MPI
+#ifdef VISOCYTE_USE_MPI
   if (this->Decomposition)
   {
     if (this->Piece == 0)

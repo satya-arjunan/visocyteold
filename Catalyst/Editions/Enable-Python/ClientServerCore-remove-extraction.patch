@@ -2,7 +2,7 @@
 +++ b/VisocyteCore/ClientServerCore/Core/CMakeLists.txt
 @@ -79,7 +79,6 @@
  
- if (PARAVIEW_ENABLE_PYTHON)
+ if (VISOCYTE_ENABLE_PYTHON)
    list(APPEND Module_SRCS
 -    vtkPythonExtractSelection.cxx
      vtkPythonProgrammableFilter.cxx

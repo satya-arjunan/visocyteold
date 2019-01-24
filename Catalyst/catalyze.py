@@ -254,7 +254,7 @@ esac
 
 $cmake \\
   --no-warn-unused-cli \\
-  -DPARAVIEW_CS_MODULES:STRING="%(cs_modules)s" \\
+  -DVISOCYTE_CS_MODULES:STRING="%(cs_modules)s" \\
   -DVTK_WRAP_PYTHON_MODULES:STRING="%(python_modules)s" \\
 ''' % {
       'cs_modules': ';'.join(cs_modules),
@@ -275,7 +275,7 @@ $cmake \\
       err = config.repo+' is not a git repo and does not contain a versions.txt file'
       error(err)
 
-  cmake_script+='  -DPARAVIEW_GIT_DESCRIBE="%s" \\\n' % version.strip()
+  cmake_script+='  -DVISOCYTE_GIT_DESCRIBE="%s" \\\n' % version.strip()
 
   cmake_script += ' "$@"\n'
 

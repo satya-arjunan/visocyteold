@@ -4,7 +4,7 @@
 # open-adaptors in one place, we place them under this directory and build them
 # using a pattern similar to the Visocyte/Examples so that each one of the
 # adaptors can be built separately if the user wants.
-if (NOT PARAVIEW_ENABLE_CATALYST)
+if (NOT VISOCYTE_ENABLE_CATALYST)
   # sanity check.
   return()
 endif()
@@ -88,7 +88,7 @@ endfunction()
 #------------------------------------------------------------------------------
 cmake_dependent_option(BUILD_NPIC_ADAPTOR
   "Build the NPIC Catalyst Adaptor" OFF
-  "PARAVIEW_BUILD_CATALYST_ADAPTORS" OFF)
+  "VISOCYTE_BUILD_CATALYST_ADAPTORS" OFF)
 mark_as_advanced(BUILD_NPIC_ADAPTOR)
 if(BUILD_NPIC_ADAPTOR)
   build_adaptor(NPICAdaptor
@@ -97,10 +97,10 @@ if(BUILD_NPIC_ADAPTOR)
     DEPENDS vtkPVCatalyst)
 endif()
 
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   cmake_dependent_option(BUILD_PARTICLE_ADAPTOR
     "Build the Particle Catalyst Adaptor" OFF
-    "PARAVIEW_BUILD_CATALYST_ADAPTORS" OFF)
+    "VISOCYTE_BUILD_CATALYST_ADAPTORS" OFF)
   mark_as_advanced(BUILD_PARTICLE_ADAPTOR)
   if(BUILD_PARTICLE_ADAPTOR)
     build_adaptor(ParticleAdaptor
@@ -117,7 +117,7 @@ endif()
 if (CMAKE_Fortran_COMPILER_WORKS)
   cmake_dependent_option(BUILD_PHASTA_ADAPTOR
     "Build the Phasta Catalyst Adaptor" OFF
-    "PARAVIEW_BUILD_CATALYST_ADAPTORS" OFF)
+    "VISOCYTE_BUILD_CATALYST_ADAPTORS" OFF)
   mark_as_advanced(BUILD_PHASTA_ADAPTOR)
   if(BUILD_PHASTA_ADAPTOR)
     build_adaptor(PhastaAdaptor
@@ -130,14 +130,14 @@ endif()
 #------------------------------------------------------------------------------
 # Adaptors that need Python
 #------------------------------------------------------------------------------
-if (PARAVIEW_ENABLE_PYTHON AND NOT WIN32)
+if (VISOCYTE_ENABLE_PYTHON AND NOT WIN32)
   # Add CTHAdaptor if Python is enabled.
   build_adaptor(CTHAdaptor
     "C"
     COMMENT "Building CTH Adaptor"
     DEPENDS vtkPVPythonCatalyst)
 
-  if (PARAVIEW_USE_MPI)
+  if (VISOCYTE_USE_MPI)
       build_adaptor(CamAdaptor
                     ""
                     COMMENT "Building Cam Adaptor"
@@ -149,11 +149,11 @@ if (PARAVIEW_ENABLE_PYTHON AND NOT WIN32)
   # The Pagosa adaptor is done as part of the normal Visocyte CMake configuration
   # so that the library can be installed.
   #------------------------------------------------------------------------------
-  cmake_dependent_option(PARAVIEW_BUILD_PAGOSA_ADAPTOR
+  cmake_dependent_option(VISOCYTE_BUILD_PAGOSA_ADAPTOR
     "Build the Pagosa Catalyst Adaptor" OFF
-    "PARAVIEW_BUILD_CATALYST_ADAPTORS" OFF)
-  mark_as_advanced(PARAVIEW_BUILD_PAGOSA_ADAPTOR)
-  if(PARAVIEW_BUILD_PAGOSA_ADAPTOR)
+    "VISOCYTE_BUILD_CATALYST_ADAPTORS" OFF)
+  mark_as_advanced(VISOCYTE_BUILD_PAGOSA_ADAPTOR)
+  if(VISOCYTE_BUILD_PAGOSA_ADAPTOR)
     add_subdirectory(CoProcessing/Adaptors/PagosaAdaptor)
   endif()
 

@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.3)
 
 if (NOT Visocyte_BINARY_DIR)
   find_package(Visocyte REQUIRED)
-  include(${PARAVIEW_USE_FILE})
+  include(${VISOCYTE_USE_FILE})
 endif()
 
 # Set a consistent MACOSX_RPATH default across all CMake versions.
@@ -14,7 +14,7 @@ if(NOT DEFINED CMAKE_MACOSX_RPATH)
   set(CMAKE_MACOSX_RPATH 0)
 endif()
 
-if (PARAVIEW_BUILD_QT_GUI)
+if (VISOCYTE_BUILD_QT_GUI)
   qt5_wrap_cpp(moc_srcs
     pqMyPropertyWidgetForProperty.h
     pqMyPropertyWidgetForGroup.h
