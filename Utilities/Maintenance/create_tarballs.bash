@@ -4,7 +4,7 @@
 set -e
 
 # The URLs where data is stored for Visocyte.
-readonly urlbases="http://www.visocyte.org/files/ExternalData/ALGO/HASH http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=HASH&algorithm=ALGO"
+readonly urlbases="http://www.paraview.org/files/ExternalData/ALGO/HASH http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=HASH&algorithm=ALGO"
 
 # Move to the top of the Visocyte tree.
 readonly output_base="$( pwd )"
