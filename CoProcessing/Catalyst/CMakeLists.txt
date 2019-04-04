@@ -71,7 +71,7 @@ vtk_module_add_module(Visocyte::Catalyst
 vtk_module_client_server_exclude()
 
 if (CATALYST_FORTRAN_USING_MANGLING)
-  vtk_module_define(Visocyte::Catalyst
+  vtk_module_definitions(Visocyte::Catalyst
     PRIVATE
       CATALYST_FORTRAN_USING_MANGLING=1)
 endif ()
