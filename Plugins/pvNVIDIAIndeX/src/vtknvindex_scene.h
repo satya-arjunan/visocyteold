@@ -37,7 +37,7 @@
 class vtknvindex_application;
 class vtknvindex_cluster_properties;
 
-// The class vtknvindex_scene represents NVIDIA IndeX's scene representation of Visocyte's state
+// The class vtknvindex_scene represents NVIDIA IndeX's scene representation of ParaView's state
 // scene.
 // Through this class dataset, camera, light, colormap and configuration settings
 // are created and updated in NVIDIA IndeX.
@@ -79,14 +79,14 @@ public:
     const vtknvindex_rtc_params_buffer& rtc_param_buffer, Volume_type volume_type,
     bool kernel_changed);
 
-  // Propagate camera changes from Visocyte to NVIDIA IndeX.
+  // Propagate camera changes from ParaView to NVIDIA IndeX.
   void update_camera(vtkRenderer* ren,
     const mi::base::Handle<mi::neuraylib::IDice_transaction>& dice_transaction,
     const vtknvindex_application& application_context);
 
   vtknvindex_colormap& get_colormap();
 
-  // Propagate colormap changes from Visocyte to NVIDIA IndeX.
+  // Propagate colormap changes from ParaView to NVIDIA IndeX.
   void update_colormap(vtkVolume* vol,
     const mi::base::Handle<mi::neuraylib::IDice_transaction>& dice_transaction,
     vtknvindex_regular_volume_properties* regular_volume_properties);
@@ -119,7 +119,7 @@ private:
   bool m_only_init;     // Some config settings need to be updated only once.
   bool m_is_parallel;   // True id=f parallel projection is used;
 
-  vtknvindex_cluster_properties* m_cluster_properties; // Cluster properties gathered from Visocyte.
+  vtknvindex_cluster_properties* m_cluster_properties; // Cluster properties gathered from ParaView.
 
   mi::neuraylib::Tag m_vol_properties_tag;     // Volume properties tag.
   mi::neuraylib::Tag m_perspective_camera_tag; // Perspective camera database tag.

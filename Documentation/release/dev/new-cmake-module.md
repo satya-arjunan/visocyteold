@@ -1,14 +1,14 @@
 # New CMake Module System
 
-VTK's module system has been updated and Visocyte now works with it. CMake
+VTK's module system has been updated and ParaView now works with it. CMake
 variables have changed names:
 
   - `Module_X` becomes `VTK_MODULE_ENABLE_M` where X is the "library name"
     (e.g., `vtkPVCore` and `M` is the sanitized module name (e.g.,
-    `Visocyte::Core`'s sanitized name is `Visocyte_Core`).
+    `ParaView::Core`'s sanitized name is `ParaView_Core`).
   - `VISOCYTE_BUILD_PLUGIN_P` becomes `VISOCYTE_PLUGIN_ENABLE_P`. Enabling a
     plugin now requests that its required modules are built.
-  - Visocyte's flags forcefully disable some modules. For example, Visocyte
+  - ParaView's flags forcefully disable some modules. For example, ParaView
     can no longer be built with `VISOCYTE_USE_MPI` and still build some
     MPI-releated modules.
 
@@ -43,15 +43,15 @@ visocyte_server_manager_process(
 ```
 
 which provides a target which may be linked to in order to access the XML files
-attached to the given modules. See `CMake/VisocyteServerManager.cmake` for
+attached to the given modules. See `CMake/ParaViewServerManager.cmake` for
 details.
 
 ## Plugins
 
-Visocyte's plugin CMake API has also been improved. Documentation is in
-`CMake/VisocytePlugin.cmake`. The biggest change is that for a plugin to
+ParaView's plugin CMake API has also been improved. Documentation is in
+`CMake/ParaViewPlugin.cmake`. The biggest change is that for a plugin to
 provide its own classes which are used from Server Manager XML files, the
-classes must be part of a VTK module. Visocyte's plugins have been updated to
+classes must be part of a VTK module. ParaView's plugins have been updated to
 use this new pattern, so looking in `Plugins` for examples is recommended.
 
 In shared builds, plugins are now built using `add_library(MODULE)` which
@@ -65,4 +65,4 @@ its documentation for details.
 ## Clients
 
 The CMake API has been updated to be use CMake targets and stricter argument
-parsing. See `CMake/VisocyteClient.cmake` for documentation.
+parsing. See `CMake/ParaViewClient.cmake` for documentation.

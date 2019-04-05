@@ -30,7 +30,7 @@
 #include "pqUndoStack.h"
 #include "pqView.h"
 #include "vtkNew.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMProperty.h"
 #include "vtkSMSourceProxy.h"
 
@@ -110,7 +110,7 @@ void pqSLACDataLoadManager::setupPipeline()
 {
   pqApplicationCore* core = pqApplicationCore::instance();
   pqObjectBuilder* builder = core->getObjectBuilder();
-  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
   pqSLACManager* manager = pqSLACManager::instance();
 

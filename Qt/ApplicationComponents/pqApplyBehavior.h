@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqApplyBehavior.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -46,11 +46,11 @@ class pqView;
 * @ingroup Behaviors
 * pqApplyBehavior collects the logic that needs to happen after the user hits
 * "Apply" on the pqPropertiesPanel. Since "Apply" is an important concept in
-* Visocyte application, it gets its own behavior so applications can customize
+* ParaView application, it gets its own behavior so applications can customize
 * it, if needed.
 *
 * For pqApplyBehavior to work, one needs to manually register
-* pqPropertiesPanel instance(s). pqVisocyteBehaviors does that automatically
+* pqPropertiesPanel instance(s). pqParaViewBehaviors does that automatically
 * for pqPropertiesPanel instances available during the startup.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqApplyBehavior : public QObject

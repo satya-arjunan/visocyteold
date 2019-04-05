@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqPresetGroupManager.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -152,7 +152,7 @@ private:
 
   /**
    * Clears all groups the manager knows.  This resets the internal state so that
-   * Visocyte's default groups can be overridden.  This is private since pqPresetDialog
+   * ParaView's default groups can be overridden.  This is private since pqPresetDialog
    * does not handle the case where there are no groups.  Use replaceGroups to clear
    * the groups and replace them with a new set of groups from a JSON string.
    */

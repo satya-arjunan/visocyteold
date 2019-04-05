@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMLoadStateOptionsProxy.cxx
 
   Copyright (c) Kitware, Inc.

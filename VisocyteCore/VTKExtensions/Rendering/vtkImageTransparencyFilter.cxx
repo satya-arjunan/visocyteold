@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkImageTransparencyFilter.cxx
 
   Copyright (c) Kitware, Inc.

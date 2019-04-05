@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVGUIPluginInterface.h
 
   Copyright (c) Kitware, Inc.

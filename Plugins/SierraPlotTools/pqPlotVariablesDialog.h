@@ -68,7 +68,7 @@ public:
   virtual int getPlotType();
   virtual void activateSelectionByNumberFrame();
   virtual void setNumberItemsLabel(QString value);
-  virtual bool getUseVisocyteGUIToSelectNodesCheckBoxState();
+  virtual bool getUseParaViewGUIToSelectNodesCheckBoxState();
   virtual void setEnableNumberItems(bool flag);
   virtual void setupActivationForOKButton(bool flag);
   virtual QList<int> determineSelectedItemsList(bool& errFlag);
@@ -85,7 +85,7 @@ public slots:
   void slotOk(void);
   void slotCancel(void);
 
-  void slotUseVisocyteGUIToSelectNodesCheckBox(bool checked);
+  void slotUseParaViewGUIToSelectNodesCheckBox(bool checked);
   void slotTextChanged(const QString&);
 
 signals:
@@ -94,7 +94,7 @@ signals:
   void variableSelectionByName(QString varName);
   void okDismissed();
   void cancelDismissed();
-  void useVisocyteGUIToSelectNodesCheck();
+  void useParaViewGUIToSelectNodesCheck();
 
 protected:
   pqServer* Server;

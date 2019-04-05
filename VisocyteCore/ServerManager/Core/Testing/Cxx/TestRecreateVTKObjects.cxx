@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    TestRecreateVTKObjects.cxx
 
 Copyright (c) Kitware, Inc.

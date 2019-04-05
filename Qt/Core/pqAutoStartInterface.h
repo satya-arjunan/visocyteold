@@ -2,16 +2,16 @@
 #define _pqAutoStartInterface_h
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqAutoStartInterface.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -63,8 +63,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /**
 * Abstract interface for "auto-start" plugins. An auto-start plugin is a
-* plugin that is notified by Visocyte when Visocyte starts and exits.
-* In practice, no plugin can be loaded until Visocyte is up and running, hence
+* plugin that is notified by ParaView when ParaView starts and exits.
+* In practice, no plugin can be loaded until ParaView is up and running, hence
 * the \c startup() is called immediately after the plugin is loaded. When the
 * application is about to exit or if the plugin is about to be unloaded,
 * \c shutdown() is called on all the registered /// interfaces.
@@ -75,7 +75,7 @@ public:
   virtual ~pqAutoStartInterface();
 
   /**
-  * Called once after the Visocyte starts. If Visocyte is already running when
+  * Called once after the ParaView starts. If ParaView is already running when
   * the plugin is loaded, this method will be called when the plugin is loaded.
   */
   virtual void startup() = 0;

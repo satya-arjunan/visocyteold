@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqView.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -79,7 +79,7 @@ public:
   virtual vtkView* getClientSideView() const;
 
   /**
-  * Return a widget associated with this view. Every view in Visocyte Qt
+  * Return a widget associated with this view. Every view in ParaView Qt
   * application must be able to render itself in a QWidget. The first time
   * this method is called, this will call pqView::createWidget(). Subclasses
   * createWidget() to create a QWidget for the view.

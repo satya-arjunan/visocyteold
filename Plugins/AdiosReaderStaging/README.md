@@ -12,7 +12,7 @@ details about ADIOS. ADIOS' staging support can be used to perform in-situ
 visualization. This plugin demonstrates how that can be done.
 
 
-This plugin is implemented as a Visocyte reader. Currently, it is implemented
+This plugin is implemented as a ParaView reader. Currently, it is implemented
 to specifically read the data written by the "cartiso" mini-app, which is part
 of a set of IO benchmarking mini-apps, MiniIO. A fork of the original
 MiniIO repository, with some changes for our use case, can be found
@@ -35,9 +35,9 @@ Set the `ADIOS_CONFIG` cmake variable to the “`adios_config`” executable bui
 by ADIOS. For our purposes, the cmake variable `ENABLE_ADIOS` should be `ON`,
 whereas `ENABLE_HDF5`, `ENABLE_PVTI`, `ENABLE_PVTP` can be `OFF`.
 
-**Plugin:** This plugin is part of Visocyte. While configuring Visocyte
+**Plugin:** This plugin is part of ParaView. While configuring ParaView
 build, set the `VISOCYTE_BUILD_PLUGIN_AdiosStagingReader` cmake variable
-to `ON`. To automatically load the plugin with Visocyte set
+to `ON`. To automatically load the plugin with ParaView set
 `VISOCYTE_AUTOLOAD_PLUGIN_AdiosStagingReader` to `ON`. You may also need
 to set the `ADIOS_CONFIG` variable as mentioned for cartiso.
 
@@ -61,7 +61,7 @@ When the simulation is run it writes a file
 staging-reader on how to connect to the staging area.
 
 To use this plugin:
-1. Run an MPI job with pvserver and connect the Visocyte client to it.
+1. Run an MPI job with pvserver and connect the ParaView client to it.
 2. In the client, select File/Open and open the
 `cartiso.full.bp_writer_info.txt` file.
 3. Choose "Cartiso Stream Reader".
@@ -80,8 +80,8 @@ steps are lost. When advancing past the last step a warning
 
 We have run this plugin as a demo on "Cooley", which is an ALCF
 (Argonne Leadership Computing Facility) machine. For simplicity, instead
-of visualizing the data through a Visocyte client, we implemented a
-Visocyte python script that reads each time-step from the simulation,
+of visualizing the data through a ParaView client, we implemented a
+ParaView python script that reads each time-step from the simulation,
 applies the contour filter on it (on the value field) and writes out the
 resulting polydata. We ran 72 processes (6 nodes) of the simulation and 24
 processes (2 nodes) of pvbatch.
@@ -123,7 +123,7 @@ SIMULATION=cartiso
 PVBATCH=pvbatch
 PVSCRIPT=demoscript.py
 
-cd VisocyteStaging
+cd ParaViewStaging
 
 NODES=`cat $COBALT_NODEFILE | wc -l`
 if [ $NODES -lt 8 ]; then

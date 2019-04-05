@@ -2,11 +2,11 @@ r"""Utility module for easy manipultions of lookup tables.
 This module is intended for use with by simple.py.
 
 
-DEPRECATED: will be removed in future releases of Visocyte.
+DEPRECATED: will be removed in future releases of ParaView.
 """
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    lookuptable.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -29,7 +29,7 @@ from ._colorMaps import getColorMaps
 
 class _vtkPVLUTData:
   """
-  Internal container for Visocyte lookup table data.
+  Internal container for ParaView lookup table data.
   Don't use this directly. Use vtkPVLUTReader.
   """
   def __init__(self):
@@ -89,15 +89,15 @@ class _vtkPVLUTData:
 
 class vtkPVLUTReader:
   """
-  Reader and container for Visocyte's XML based lookup tables.
+  Reader and container for ParaView's XML based lookup tables.
   Once lookup tables are loaded you access them by name. When
   accessing you must provide the array instance, which you may
   get from a pvpython 'Source' type object.
 
-  This reader makes use of Visocyte's XML LUT file format with
+  This reader makes use of ParaView's XML LUT file format with
   one exception - the XML document must be root'ed by an element
   named "ColorMaps". Within the "ColorMaps" element an arbitrary
-  number of Visocyte's "ColorMap" elements define LUT entries.
+  number of ParaView's "ColorMap" elements define LUT entries.
 
   Usage:
 

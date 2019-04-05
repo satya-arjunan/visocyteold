@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -56,7 +56,7 @@ static QString userServers()
     vtkProcessModule::GetProcessModule()->GetOptions()->GetServersFileName();
 
   return serversFileName ? serversFileName
-                         : pqCoreUtilities::getVisocyteUserDirectory() + "/servers.pvsc";
+                         : pqCoreUtilities::getParaViewUserDirectory() + "/servers.pvsc";
 }
 
 // get path to shared system servers.
@@ -171,7 +171,7 @@ bool pqServerConfigurationCollection::loadContents(const QString& contents, bool
   vtkPVXMLElement* root = parser->GetRootElement();
   if (QString(root->GetName()) != "Servers")
   {
-    qWarning() << "Not a Visocyte server configuration file. Missing <Servers /> root.";
+    qWarning() << "Not a ParaView server configuration file. Missing <Servers /> root.";
     return false;
   }
 

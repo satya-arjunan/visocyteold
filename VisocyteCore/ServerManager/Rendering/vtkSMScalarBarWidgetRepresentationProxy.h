@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMScalarBarWidgetRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.

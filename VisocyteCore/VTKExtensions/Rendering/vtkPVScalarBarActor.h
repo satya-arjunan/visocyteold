@@ -28,7 +28,7 @@
  * vtkPVScalarBarActor has basically the same functionality as vtkScalarBarActor
  * except that the fonts are set to a fixed size and tick labels vary in precision
  * before their size is adjusted to meet geometric constraints.
- * These changes make it easier to control in Visocyte.
+ * These changes make it easier to control in ParaView.
  *
 */
 

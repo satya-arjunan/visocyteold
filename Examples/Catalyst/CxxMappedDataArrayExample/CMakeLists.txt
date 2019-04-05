@@ -6,7 +6,7 @@ if (USE_CATALYST)
     vtkCPMappedVectorArrayTemplate.txx)
   target_link_libraries(CxxMappedDataArrayExampleAdaptor
     PRIVATE
-      Visocyte::PythonCatalyst
+      ParaView::PythonCatalyst
       VTK::CommonDataModel
       VTK::ParallelMPI)
 endif ()

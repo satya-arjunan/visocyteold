@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program:   Visocyte
+   Program:   ParaView
    Module:    pqPipelineModel.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -50,7 +50,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkNew.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMLiveInsituLinkProxy.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSourceProxy.h"
 #include "vtkSMViewProxy.h"
@@ -113,7 +113,7 @@ class pqPipelineModelDataItem : public QObject
   bool InConstructor;
 
 public:
-  static vtkNew<vtkSMVisocytePipelineControllerWithRendering> Controller;
+  static vtkNew<vtkSMParaViewPipelineControllerWithRendering> Controller;
 
 public:
   pqPipelineModel* Model;
@@ -414,7 +414,7 @@ private:
   }
 };
 
-vtkNew<vtkSMVisocytePipelineControllerWithRendering> pqPipelineModelDataItem::Controller;
+vtkNew<vtkSMParaViewPipelineControllerWithRendering> pqPipelineModelDataItem::Controller;
 
 //-----------------------------------------------------------------------------
 class pqPipelineModelInternal

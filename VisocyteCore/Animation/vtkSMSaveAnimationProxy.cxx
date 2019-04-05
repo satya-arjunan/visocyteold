@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMSaveAnimationProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -28,7 +28,7 @@
 #include "vtkPVXMLElement.h"
 #include "vtkSMAnimationScene.h"
 #include "vtkSMAnimationSceneWriter.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyIterator.h"

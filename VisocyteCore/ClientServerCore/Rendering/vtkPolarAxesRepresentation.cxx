@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPolarAxesRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

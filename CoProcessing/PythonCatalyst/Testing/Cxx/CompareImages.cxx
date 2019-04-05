@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    CompareImages.cxx
 
   Copyright (c) Kitware, Inc.

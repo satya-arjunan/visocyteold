@@ -1,10 +1,10 @@
 NAME
-  Visocyte::ServerManagerApplication
+  ParaView::ServerManagerApplication
 LIBRARY_NAME
   vtkPVServerManagerApplication
 DEPENDS
-  Visocyte::ServerManagerCore
+  ParaView::ServerManagerCore
 PRIVATE_DEPENDS
   VTK::vtksys
 TEST_LABELS
-  Visocyte
+  ParaView

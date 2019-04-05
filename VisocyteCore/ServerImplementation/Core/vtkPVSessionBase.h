@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVSessionBase.h
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVSessionBase
  *
- * Abstract class used to provide the main implementation of the Visocyte
+ * Abstract class used to provide the main implementation of the ParaView
  * session methods for the following classes: vtkSMSession,
  *                                            vtkSMSessionClient,
  *                                            vtkSMSessionServer

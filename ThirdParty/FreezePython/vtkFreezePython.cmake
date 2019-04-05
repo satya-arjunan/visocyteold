@@ -10,7 +10,7 @@
 # Example:
 # cmake -DOUTPUT_HEADER_PREFIX:STRING=FrozenPython
 #       -DOUTPUT_DIRECTORY:PATH=/tmp/frozen_visocyte
-#       -DPACKAGE_ROOT=/home/utkarsh/Kitware/Visocyte3/VisocyteBin/lib/site-packages
+#       -DPACKAGE_ROOT=/home/utkarsh/Kitware/ParaView3/ParaViewBin/lib/site-packages
 #       -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
 #       -DPYTHON_LIBRARY_PATH:PATH=/usr/lib/python2.7/
 #       -P ThirdParty/FreezePython/vtkFreezePython.cmake

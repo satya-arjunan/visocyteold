@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMNullProxy.h
 
   Copyright (c) Kitware, Inc.

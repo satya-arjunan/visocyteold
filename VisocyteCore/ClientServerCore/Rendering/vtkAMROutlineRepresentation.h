@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@
  *
  * vtkAMROutlineRepresentation is a simple representation for Overlapping-AMR
  * datasets that with streaming capabilities. It demonstrates how a
- * representation can exploit streaming capabilities provided by Visocyte's
+ * representation can exploit streaming capabilities provided by ParaView's
  * Render View (vtkPVRenderView).
 */
 

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSISourceProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -172,11 +172,11 @@ void vtkSISourceProxy::RecreateVTKObjects()
   // we cannot recreated those pipelines after the VTK object has been
   // recreated. Hence we warn and ignore the request.
   // I don't anticipate a whole lot of use-cases where we'll encounter those
-  // since all public-facing Visocyte proxies will employ a PostFilter.
+  // since all public-facing ParaView proxies will employ a PostFilter.
   if (this->PortsCreated && this->Internals->PostFilters.size() == 0)
   {
     vtkWarningMacro("You have encountered a proxy that currently does not support call to "
-                    "RecreateVTKObjects() properly. Please contact the Visocyte developers."
+                    "RecreateVTKObjects() properly. Please contact the ParaView developers."
                     "This request will be ignored.");
     return;
   }

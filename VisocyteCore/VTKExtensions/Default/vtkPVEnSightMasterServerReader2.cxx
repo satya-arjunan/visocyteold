@@ -1,6 +1,6 @@
 /*=========================================================================
 
- Program:   Visocyte
+ Program:   ParaView
  Module:    vtkPVEnSightMasterServerReader2.cxx
 
  Copyright (c) Kitware, Inc.

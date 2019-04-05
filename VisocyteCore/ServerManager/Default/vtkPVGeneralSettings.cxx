@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVGeneralSettings.cxx
 
   Copyright (c) Kitware, Inc.
@@ -22,7 +22,7 @@
 #include "vtkSMArraySelectionDomain.h"
 #include "vtkSMChartSeriesSelectionDomain.h"
 #include "vtkSMInputArrayDomain.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMTrace.h"
 #include "vtkSMTransferFunctionManager.h"
 #include "vtkSMViewLayoutProxy.h"
@@ -175,15 +175,15 @@ void vtkPVGeneralSettings::SetScalarBarMode(int val)
   switch (val)
   {
     case AUTOMATICALLY_HIDE_SCALAR_BARS:
-      vtkSMVisocytePipelineControllerWithRendering::SetHideScalarBarOnHide(true);
+      vtkSMParaViewPipelineControllerWithRendering::SetHideScalarBarOnHide(true);
       break;
 
     case AUTOMATICALLY_SHOW_AND_HIDE_SCALAR_BARS:
-      vtkSMVisocytePipelineControllerWithRendering::SetHideScalarBarOnHide(true);
+      vtkSMParaViewPipelineControllerWithRendering::SetHideScalarBarOnHide(true);
       break;
 
     default:
-      vtkSMVisocytePipelineControllerWithRendering::SetHideScalarBarOnHide(false);
+      vtkSMParaViewPipelineControllerWithRendering::SetHideScalarBarOnHide(false);
   }
 
   if (val != this->ScalarBarMode)
@@ -196,9 +196,9 @@ void vtkPVGeneralSettings::SetScalarBarMode(int val)
 //----------------------------------------------------------------------------
 void vtkPVGeneralSettings::SetInheritRepresentationProperties(bool val)
 {
-  if (val != vtkSMVisocytePipelineControllerWithRendering::GetInheritRepresentationProperties())
+  if (val != vtkSMParaViewPipelineControllerWithRendering::GetInheritRepresentationProperties())
   {
-    vtkSMVisocytePipelineControllerWithRendering::SetInheritRepresentationProperties(val);
+    vtkSMParaViewPipelineControllerWithRendering::SetInheritRepresentationProperties(val);
     this->Modified();
   }
 }

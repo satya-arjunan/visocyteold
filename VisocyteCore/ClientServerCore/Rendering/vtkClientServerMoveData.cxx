@@ -126,7 +126,7 @@ int vtkClientServerMoveData::RequestData(
       vtkPVSession::SafeDownCast(vtkProcessModule::GetProcessModule()->GetSession());
     if (!session)
     {
-      vtkErrorMacro("No active Visocyte session");
+      vtkErrorMacro("No active ParaView session");
       return 0;
     }
     if (vtkProcessModule::GetProcessType() == vtkProcessModule::PROCESS_CLIENT)

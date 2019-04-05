@@ -1,5 +1,5 @@
 ################################################################################
-# Visocyte ServerManager Unit Tests
+# ParaView ServerManager Unit Tests
 if (VISOCYTE_ENABLE_QT_SUPPORT)
   find_package(Qt5 REQUIRED COMPONENTS Test)
   set(CMAKE_AUTOMOC 1)
@@ -20,7 +20,7 @@ endif()
 
 vtk_add_test_cxx(vtkPVServerManagerDefaultCxxTests tests
   NO_DATA NO_VALID NO_OUTPUT
-  VisocyteCoreServerManagerPrintSelf.cxx
+  ParaViewCoreServerManagerPrintSelf.cxx
   TestComparativeAnimationCueProxy.cxx
   # Disabled previously.
   #TestMultipleSessions.cxx

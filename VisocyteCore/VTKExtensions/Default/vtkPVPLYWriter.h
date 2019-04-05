@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPLYWriter.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class   vtkPVPLYWriter
- * @brief   provides a Visocyte friendly API for vtkPLYWriter.
+ * @brief   provides a ParaView friendly API for vtkPLYWriter.
  *
  * This is a facade for vtkPLYWriter that provides an API more amiable to the
- * GUI shown in the Visocyte application.
+ * GUI shown in the ParaView application.
 */
 
 #ifndef vtkPVPLYWriter_h

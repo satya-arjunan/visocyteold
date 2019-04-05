@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMRemoteObject.h
 
   Copyright (c) Kitware, Inc.

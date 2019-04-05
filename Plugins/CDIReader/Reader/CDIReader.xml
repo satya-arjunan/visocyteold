@@ -303,7 +303,7 @@
                             repeatable="1">
         <TimeStepsInformationHelper />
         <Documentation>
-          This magic property sends time information to the animation panel. Visocyte will
+          This magic property sends time information to the animation panel. ParaView will
           automatically set up the animation to visit the time steps defined in the file.
         </Documentation>
       </DoubleVectorProperty>

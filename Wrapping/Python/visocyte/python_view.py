@@ -4,7 +4,7 @@ convenience classes in Python.
 """
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    python_view.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -167,7 +167,7 @@ def call_render(render_function, view, width, height):
     image = render_function(view, width, height)
 
   elif (num_args == 2):
-    # Old-style render() function introduced in Visocyte 4.1
+    # Old-style render() function introduced in ParaView 4.1
     figure = matplotlib_figure(width, height)
     render_function(view, figure)
 

@@ -1,6 +1,6 @@
 #New QVTKOpenGLWidget Implementation
 
-A new implementation of the QVTKOpenGLWidget has been added to VTK and Visocyte whom now makes uses of it.
+A new implementation of the QVTKOpenGLWidget has been added to VTK and ParaView whom now makes uses of it.
 
 * The main feature of this new widget is the support of quad buffer based stereo mode "Crystal Eyes" which was unsupported since the switch to Qt5.
 * This new widget ensures the rendering can only happen with a valid widget (aka ready for rendering)

@@ -1,16 +1,16 @@
 NAME
-  Visocyte::ServerManagerRendering
+  ParaView::ServerManagerRendering
 LIBRARY_NAME
   vtkPVServerManagerRendering
 GROUPS
-  VisocyteRendering
+  ParaViewRendering
 KIT
-  Visocyte::ServerManager
+  ParaView::ServerManager
 IMPLEMENTS
-  Visocyte::ServerManagerCore
+  ParaView::ServerManagerCore
 DEPENDS
-  Visocyte::ServerImplementationRendering
-  Visocyte::ServerManagerCore
+  ParaView::ServerImplementationRendering
+  ParaView::ServerManagerCore
   VTK::jsoncpp
 PRIVATE_DEPENDS
   VTK::CommonColor
@@ -19,9 +19,9 @@ OPTIONAL_DEPENDS
   VTK::RenderingOSPRay
 
   # These affect the public API.
-  Visocyte::ClientServerCorePython
+  ParaView::ClientServerCorePython
 TEST_DEPENDS
-  Visocyte::ServerManagerApplication
+  ParaView::ServerManagerApplication
   VTK::TestingCore
 TEST_LABELS
-  Visocyte
+  ParaView

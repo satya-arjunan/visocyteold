@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMMessage.cxx
 
   Copyright (c) Kitware, Inc.

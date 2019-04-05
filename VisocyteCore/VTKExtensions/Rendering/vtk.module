@@ -1,14 +1,14 @@
 NAME
-  Visocyte::VTKExtensionsRendering
+  ParaView::VTKExtensionsRendering
 LIBRARY_NAME
   vtkPVVTKExtensionsRendering
 GROUPS
-  VisocyteRendering
+  ParaViewRendering
   Qt
 KIT
-  Visocyte::Extensions
+  ParaView::Extensions
 DEPENDS
-  Visocyte::VTKExtensionsCore
+  ParaView::VTKExtensionsCore
   VTK::ChartsCore
   VTK::CommonComputationalGeometry
   VTK::CommonSystem
@@ -34,15 +34,15 @@ PRIVATE_DEPENDS
   VTK::lz4
   VTK::zlib
 OPTIONAL_DEPENDS
-  Visocyte::ClientServerCoreCore
-  Visocyte::icet
-  Visocyte::nvpipe
+  ParaView::ClientServerCoreCore
+  ParaView::icet
+  ParaView::nvpipe
   VTK::FiltersParallelMPI
   VTK::RenderingMatplotlib
   VTK::RenderingOSPRay
 
   # These affect the public API.
-  Visocyte::icet
+  ParaView::icet
   VTK::ParallelMPI
   VTK::PythonInterpreter
 TEST_DEPENDS
@@ -52,4 +52,4 @@ TEST_DEPENDS
   VTK::TestingCore
   VTK::TestingRendering
 TEST_LABELS
-  Visocyte
+  ParaView

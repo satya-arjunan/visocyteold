@@ -29,7 +29,7 @@ def PrintReport(dashDate, branch):
   branch = branch.replace(" ", "%20")
 
   url =\
-  'http://open.cdash.org/api/?method=build&task=sitetestfailures&project=Visocyte&group='\
+  'http://open.cdash.org/api/?method=build&task=sitetestfailures&project=ParaView&group='\
   + branch
   page = urllib.urlopen(url)
   data = page.readlines()
@@ -64,11 +64,11 @@ def PrintReport(dashDate, branch):
     elif wikiOutput:
       print r'|-'
       print r'| ',
-      print r'[http://open.cdash.org/index.php?project=Visocyte' + '&date=' + dashDate + r'&filtercount=1' + r'&field1=buildname/string&compare1=61&value1=' + bname + " " + bname + "]"
+      print r'[http://open.cdash.org/index.php?project=ParaView' + '&date=' + dashDate + r'&filtercount=1' + r'&field1=buildname/string&compare1=61&value1=' + bname + " " + bname + "]"
       print r'|'
       print len(bfails)
     elif htmlOutput:
-      print '<a href=http://open.cdash.org/index.php?project=Visocyte&date=' +\
+      print '<a href=http://open.cdash.org/index.php?project=ParaView&date=' +\
         dashDate + '&filtercount=1' +\
         '&field1=buildname/string&compare1=61&value1=' + bname + '>' + bname +\
         '</a>'
@@ -140,7 +140,7 @@ def PrintSubmitterIssues(dashDate):
     print "<p><u><b>Issues with submitters</b></u></p>"
 #    print "<table border=\"1\" style=\"width:500px\">"
 
-  url = "http://open.cdash.org/index.php?project=Visocyte"
+  url = "http://open.cdash.org/index.php?project=ParaView"
   url = url + "&date=" + dashDate
   url = url + "&filtercount=1&field1=buildname/string&compare1=61&value1="
 

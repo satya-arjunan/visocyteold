@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDataSetAttributesInformation.h
 
   Copyright (c) Kitware, Inc.
@@ -20,7 +20,7 @@
  * This object does not have any user interface.  It is created and destroyed
  * on the fly as needed.  It may be possible to add features of this object
  * to vtkDataSetAttributes.  That would eliminate all of the "Information"
- * in Visocyte.
+ * in ParaView.
 */
 
 #ifndef vtkPVDataSetAttributesInformation_h

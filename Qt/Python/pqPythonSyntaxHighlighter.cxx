@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqPythonScriptEditor.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -72,7 +72,7 @@ pqPythonSyntaxHighlighter::pqPythonSyntaxHighlighter(QTextEdit* textEdit, QObjec
 
     // PyErr_Fetch() -- PyErr_Restore() helps us catch import related exceptions
     // thus avoiding printing any messages to the terminal if the `pygments`
-    // import fails. `pygments` is totally optional for Visocyte.
+    // import fails. `pygments` is totally optional for ParaView.
     PyObject *type, *value, *traceback;
     PyErr_Fetch(&type, &value, &traceback);
     this->Internals->PygmentsModule.TakeReference(PyImport_ImportModule("pygments"));
@@ -85,7 +85,7 @@ pqPythonSyntaxHighlighter::pqPythonSyntaxHighlighter(QTextEdit* textEdit, QObjec
       vtkSmartPyObject lexersModule(PyImport_ImportModule("pygments.lexers"));
       vtkSmartPyObject formattersModule(PyImport_ImportModule("pygments.formatters.redtabhtml"));
       vtkSmartPyObject htmlFormatterClass;
-      // If we have the custom formatter written for Visocyte, great.
+      // If we have the custom formatter written for ParaView, great.
       // otherwise just default to the HtmlFormatter in pygments
       if (formattersModule)
       {

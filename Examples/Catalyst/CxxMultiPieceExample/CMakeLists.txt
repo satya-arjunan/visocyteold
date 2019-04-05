@@ -4,7 +4,7 @@ if (USE_CATALYST)
     FEAdaptor.h)
   target_link_libraries(CxxMultiPieceExampleAdaptor
     PRIVATE
-      Visocyte::PythonCatalyst
+      ParaView::PythonCatalyst
       VTK::CommonDataModel
       VTK::mpi
       VTK::ParallelCore)

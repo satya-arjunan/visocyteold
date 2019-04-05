@@ -1,7 +1,7 @@
-diff --git a/VisocyteCore/ServerManager/SMApplication/CMakeLists.txt b/VisocyteCore/ServerManager/SMApplication/CMakeLists.txt
+diff --git a/ParaViewCore/ServerManager/SMApplication/CMakeLists.txt b/ParaViewCore/ServerManager/SMApplication/CMakeLists.txt
 index 8312828..18de793 100644
---- a/VisocyteCore/ServerManager/SMApplication/CMakeLists.txt
-+++ b/VisocyteCore/ServerManager/SMApplication/CMakeLists.txt
+--- a/ParaViewCore/ServerManager/SMApplication/CMakeLists.txt
++++ b/ParaViewCore/ServerManager/SMApplication/CMakeLists.txt
 @@ -100,6 +100,7 @@ target_link_libraries(vtkPVServerManagerApplication
  #------------------------------------------------------------------------------
  SET(requestedResourceFiles

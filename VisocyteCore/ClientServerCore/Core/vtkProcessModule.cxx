@@ -1,7 +1,7 @@
 
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkProcessModule.cxx
 
   Copyright (c) Kitware, Inc.
@@ -79,8 +79,8 @@ bool vtkFindArgument(const char* boolean_arg, int argc, char**& argv)
 }
 #endif
 
-// This is used to avoid creating vtkWin32OutputWindow on Visocyte executables.
-// vtkWin32OutputWindow is not a useful window for any of the Visocyte commandline
+// This is used to avoid creating vtkWin32OutputWindow on ParaView executables.
+// vtkWin32OutputWindow is not a useful window for any of the ParaView commandline
 // executables.
 class vtkPVGenericOutputWindow : public vtkOutputWindow
 {
@@ -579,12 +579,12 @@ bool vtkProcessModule::InitializePythonEnvironment()
   {
     // If someone already initialized Python before ProcessModule was started,
     // we don't finalize it when ProcessModule finalizes. This is for the cases
-    // where Visocyte modules are directly imported in python (not pvpython).
+    // where ParaView modules are directly imported in python (not pvpython).
     vtkProcessModule::FinalizePython = true;
   }
 
 #if defined(_WIN32)
-  // Visocyte executables generally link with all modules built except a few
+  // ParaView executables generally link with all modules built except a few
   // such as the Catalyst libraries e.g. vtkPVCatalyst.dll. Now, when importing its
   // Python module `vtkPVCatalystPython.pyd` for example, it will need to load
   // vtkPVCatalyst.dll from its standard load paths which do not include the

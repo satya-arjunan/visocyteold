@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqProgressManager.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -146,7 +146,7 @@ void pqProgressManager::setProgress(const QString& message, int progress_val)
   if (progress_val > 0)
   {
     // we don't want to call a processEvents on zero progress
-    // since that breaks numerous other classes currently in Visocyte
+    // since that breaks numerous other classes currently in ParaView
     // mainly because of subtle timing issues from QTimers that are expected
     // to expire in a certain order
 

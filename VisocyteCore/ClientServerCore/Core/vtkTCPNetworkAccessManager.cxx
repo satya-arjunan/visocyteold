@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTCPNetworkAccessManager.cxx
 
   Copyright (c) Kitware, Inc.
@@ -335,7 +335,7 @@ void vtkTCPNetworkAccessManager::PrintHandshakeError(int errorcode, bool server_
     case HANDSHAKE_DIFFERENT_PV_VERSIONS:
       vtkErrorMacro("\n"
                     "**********************************************************************\n"
-                    " Connection failed during handshake.  The server has a different Visocyte"
+                    " Connection failed during handshake.  The server has a different ParaView"
                     " version than the client.\n"
                     "**********************************************************************\n");
       break;
@@ -411,7 +411,7 @@ vtkMultiProcessController* vtkTCPNetworkAccessManager::ConnectToRemote(
 #endif
   comm->SetSocket(cs);
   int errorcode = HANDSHAKE_SOCKET_COMMUNICATOR_DIFFERENT;
-  if (!comm->Handshake() || (errorcode = this->VisocyteHandshake(controller, false, handshake)))
+  if (!comm->Handshake() || (errorcode = this->ParaViewHandshake(controller, false, handshake)))
   {
     controller->Delete();
     // handshake failed, must be bogus client, continue waiting (unless
@@ -484,7 +484,7 @@ vtkMultiProcessController* vtkTCPNetworkAccessManager::WaitForConnection(
     client_socket->FastDelete();
     int errorcode = HANDSHAKE_SOCKET_COMMUNICATOR_DIFFERENT;
     if (comm->Handshake() == 0 ||
-      (errorcode = this->VisocyteHandshake(controller, true, handshake)))
+      (errorcode = this->ParaViewHandshake(controller, true, handshake)))
     {
       controller->Delete();
       controller = NULL;
@@ -517,7 +517,7 @@ int vtkTCPNetworkAccessManager::AnalyzeHandshakeAndGetErrorCode(
     "^visocyte-([0-9]+\\.[0-9]+)\\.(connect_id\\.([0-9]+)\\.)?renderingbackend\\.([^\\.]+)$");
   bool success = re.find(serverHS);
   // Since this regex and the server handshake are from the same version
-  // of Visocyte, if it doesn't match then something is very wrong.
+  // of ParaView, if it doesn't match then something is very wrong.
   if (!success)
   {
     vtkErrorMacro(
@@ -532,7 +532,7 @@ int vtkTCPNetworkAccessManager::AnalyzeHandshakeAndGetErrorCode(
   if (!clientMatched)
   {
     vtkErrorMacro(
-      << "Client Handshake didn't parse.  The client is likely a different version of Visocyte.");
+      << "Client Handshake didn't parse.  The client is likely a different version of ParaView.");
     return HANDSHAKE_UNKNOWN_ERROR;
   }
   std::string clientVersion = re.match(1);
@@ -541,7 +541,7 @@ int vtkTCPNetworkAccessManager::AnalyzeHandshakeAndGetErrorCode(
 
   if (clientVersion != serverVersion)
   {
-    vtkErrorMacro(<< "Client and server are different Visocyte versions. Client reports version: "
+    vtkErrorMacro(<< "Client and server are different ParaView versions. Client reports version: "
                   << clientVersion << " but server is version " << serverVersion);
     return HANDSHAKE_DIFFERENT_PV_VERSIONS;
   }
@@ -562,12 +562,12 @@ int vtkTCPNetworkAccessManager::AnalyzeHandshakeAndGetErrorCode(
   // If this function was called, there was a difference but since we got here without detecting it
   // we have no idea what it is.
   vtkErrorMacro(
-    << "Unknown error in handshakes, client and server are likely different versions of Visocyte.");
+    << "Unknown error in handshakes, client and server are likely different versions of ParaView.");
   return HANDSHAKE_UNKNOWN_ERROR;
 }
 
 //----------------------------------------------------------------------------
-int vtkTCPNetworkAccessManager::VisocyteHandshake(
+int vtkTCPNetworkAccessManager::ParaViewHandshake(
   vtkMultiProcessController* controller, bool server_side, const char* _handshake)
 {
   const std::string handshake = _handshake ? _handshake : "";

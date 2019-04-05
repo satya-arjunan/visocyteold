@@ -1,12 +1,12 @@
 NAME
-  Visocyte::VTKExtensionsPoints
+  ParaView::VTKExtensionsPoints
 LIBRARY_NAME
   vtkPVVTKExtensionsPoints
 KIT
-  Visocyte::Extensions
+  ParaView::Extensions
 DEPENDS
   VTK::FiltersPoints
 PRIVATE_DEPENDS
   VTK::FiltersCore
 TEST_LABELS
-  Visocyte
+  ParaView

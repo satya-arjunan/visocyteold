@@ -148,8 +148,8 @@ int vtkPVExtractSelection::RequestData(
   // entries index
   //
   // TODO: The ExtractSelectedGraph filter does not produce the vtkOriginalXIds,
-  // so to add support for vtkGraph selection in Visocyte the filter will have
-  // to be extended. This requires test cases in Visocyte to confirm it functions
+  // so to add support for vtkGraph selection in ParaView the filter will have
+  // to be extended. This requires test cases in ParaView to confirm it functions
   // as expected.
   vtkSelection* output = vtkSelection::GetData(outputVector, 1);
 

@@ -1,4 +1,4 @@
-# Plugins for Visocyte that add support to export state for spatio-temporal
+# Plugins for ParaView that add support to export state for spatio-temporal
 # parallelism
 #------------------------------------------------------------------------------
 set(sources
@@ -45,9 +45,9 @@ visocyte_add_plugin(TemporalParallelismScriptGenerator
   SOURCES ${sources})
 target_link_libraries(TemporalParallelismScriptGenerator
   PRIVATE
-    Visocyte::Core
-    Visocyte::ServerManagerCore
-    Visocyte::ServerManagerRendering)
+    ParaView::Core
+    ParaView::ServerManagerCore
+    ParaView::ServerManagerRendering)
 
 if (BUILD_TESTING)
   add_subdirectory(Testing)

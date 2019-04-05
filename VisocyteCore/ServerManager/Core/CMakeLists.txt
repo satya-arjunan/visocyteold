@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -83,7 +83,7 @@ set(classes
   vtkSMOrderedPropertyIterator
   vtkSMOutputPort
   vtkSMPWriterProxy
-  vtkSMVisocytePipelineController
+  vtkSMParaViewPipelineController
   vtkSMPipelineState
   vtkSMPluginLoaderProxy
   vtkSMPluginManager
@@ -137,6 +137,6 @@ set(classes
 set(template_classes
   vtkSMRangeDomainTemplate)
 
-vtk_module_add_module(Visocyte::ServerManagerCore
+vtk_module_add_module(ParaView::ServerManagerCore
   CLASSES ${classes}
   TEMPLATE_CLASSES ${template_classes})

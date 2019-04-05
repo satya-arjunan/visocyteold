@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVRenderingCapabilitiesInformation.h
 
   Copyright (c) Kitware, Inc.
@@ -100,8 +100,8 @@ public:
    * process. This is useful to query additional OpenGL information, for
    * example.
    *
-   * This may create a non-mapped onscreen render window, if Visocyte was built
-   * with onscreen GL support) or headless off-screen render window, if Visocyte
+   * This may create a non-mapped onscreen render window, if ParaView was built
+   * with onscreen GL support) or headless off-screen render window, if ParaView
    * was built with headless GL support (e.g. EGL or OSMesa). Headless is
    * preferred, if available.
    *

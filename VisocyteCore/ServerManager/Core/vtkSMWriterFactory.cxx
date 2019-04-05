@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMWriterFactory.cxx
 
   Copyright (c) Kitware, Inc.
@@ -20,7 +20,7 @@
 #include "vtkPVXMLElement.h"
 #include "vtkPVXMLParser.h"
 #include "vtkSMInputProperty.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyDefinitionManager.h"
 #include "vtkSMProxyManager.h"
@@ -332,7 +332,7 @@ vtkSMProxy* vtkSMWriterFactory::CreateWriter(
         }
       }
       vtkSMProxy* proxy = pxm->NewProxy(iter->second.Group.c_str(), iter->second.Name.c_str());
-      vtkNew<vtkSMVisocytePipelineController> controller;
+      vtkNew<vtkSMParaViewPipelineController> controller;
       controller->PreInitializeProxy(proxy);
       vtkSMPropertyHelper(proxy, "FileName").Set(filename);
       vtkSMPropertyHelper(proxy, "Input").Set(source, outputport);

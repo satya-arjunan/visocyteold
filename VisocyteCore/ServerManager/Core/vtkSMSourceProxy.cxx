@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMSourceProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -224,10 +224,10 @@ int vtkSMSourceProxy::ReadXMLAttributes(vtkSMSessionProxyManager* pm, vtkPVXMLEl
   }
   if (const char* mp = element->GetAttribute("multiprocess_support"))
   {
-    // For Visocyte we don't mark any sources as multiple_processes only
+    // For ParaView we don't mark any sources as multiple_processes only
     // since for things like tracing or Catalyst script generation we
     // want to make them always available. Other tools that are built on
-    // top of Visocyte though may want to be able to set multiple_processes
+    // top of ParaView though may want to be able to set multiple_processes
     // only.
     if (strcmp(mp, "multiple_processes") == 0)
     {

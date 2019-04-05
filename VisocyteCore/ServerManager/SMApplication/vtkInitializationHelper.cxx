@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    vtkInitializationHelper.cxx
 
 Copyright (c) Kitware, Inc.
@@ -81,8 +81,8 @@ bool vtkInitializationHelper::LoadSettingsFilesDuringInitialization = true;
 
 bool vtkInitializationHelper::SaveUserSettingsFileDuringFinalization = false;
 
-std::string vtkInitializationHelper::OrganizationName = "Visocyte";
-std::string vtkInitializationHelper::ApplicationName = "GenericVisocyteApplication";
+std::string vtkInitializationHelper::OrganizationName = "ParaView";
+std::string vtkInitializationHelper::ApplicationName = "GenericParaViewApplication";
 
 //----------------------------------------------------------------------------
 void vtkInitializationHelper::SetLoadSettingsFilesDuringInitialization(bool val)

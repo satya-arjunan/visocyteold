@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCompositeRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVCompositeRepresentation
- * @brief   a data-representation used by Visocyte.
+ * @brief   a data-representation used by ParaView.
  *
- * vtkPVCompositeRepresentation is a data-representation used by Visocyte for showing
+ * vtkPVCompositeRepresentation is a data-representation used by ParaView for showing
  * a type of data-set in the render view. It is a composite-representation with
  * some fixed representations for showing things like selection and polar axes.
  * This representation has 1 input port and it ensures that that input is passed

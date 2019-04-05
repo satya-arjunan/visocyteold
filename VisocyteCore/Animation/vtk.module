@@ -1,14 +1,14 @@
 NAME
-  Visocyte::Animation
+  ParaView::Animation
 LIBRARY_NAME
   vtkPVAnimation
 DEPENDS
-  Visocyte::ServerManagerCore
-  Visocyte::ServerManagerRendering
-  Visocyte::VTKExtensionsDefault
+  ParaView::ServerManagerCore
+  ParaView::ServerManagerRendering
+  ParaView::VTKExtensionsDefault
   VTK::IOMovie
 PRIVATE_DEPENDS
-  Visocyte::ServerManagerDefault
+  ParaView::ServerManagerDefault
   VTK::vtksys
 OPTIONAL_DEPENDS
   VTK::IOFFMPEG
@@ -19,4 +19,4 @@ OPTIONAL_DEPENDS
 TEST_DEPENDS
   VTK::TestingCore
 TEST_LABELS
-  Visocyte
+  ParaView

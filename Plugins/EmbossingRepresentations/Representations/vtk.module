@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkEmbossingRepresentations
 DEPENDS
-  Visocyte::ClientServerCoreRendering
+  ParaView::ClientServerCoreRendering
   VTK::RenderingOpenGL2
 PRIVATE_DEPENDS
   VTK::CommonCore

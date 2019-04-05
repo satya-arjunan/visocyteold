@@ -1,11 +1,11 @@
 NAME
-  Visocyte::PVWebPython2
+  ParaView::PVWebPython2
 LIBRARY_NAME
   vtkPVWebPython2
 CONDITION
   # FIXME: This is for Python 2.x.
   VISOCYTE_ENABLE_PYTHON AND VISOCYTE_ENABLE_WEB
 TEST_LABELS
-  Visocyte
-  VisocyteWeb
+  ParaView
+  ParaViewWeb
 EXCLUDE_WRAP

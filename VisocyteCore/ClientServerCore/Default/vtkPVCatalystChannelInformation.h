@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCatalystChannelInformation.h
 
   Copyright (c) Kitware, Inc.

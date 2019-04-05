@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMEnumerationDomain.h
 
   Copyright (c) Kitware, Inc.
@@ -37,7 +37,7 @@
  * Where, `value` is the integral value to use to set the element on the
  * property and `text` is the descriptive text used in UI and Python script.
  *
- * Starting with Visocyte 5.5, the `info` attribute is supported on an `Entry`
+ * Starting with ParaView 5.5, the `info` attribute is supported on an `Entry`
  * The value is an additional qualifier for the entry that used in UI to explain
  * the item e.g.
  *

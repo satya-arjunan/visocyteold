@@ -2,7 +2,7 @@ from PyQt4 import QtCore, QtGui, QtNetwork
 from visocyte import simple as pvsimple
 from vtk.qt4 import QVTKRenderWindowInteractor
 
-class VisocyteClient(QtCore.QObject):
+class ParaViewClient(QtCore.QObject):
 
     def __init__(self, port, serverHost=None, serverPort=11111):
 
@@ -73,13 +73,13 @@ class VisocyteClient(QtCore.QObject):
             QtCore.QTimer.singleShot(30, self.readData)
 
 if __name__ == '__main__':
-    class SimpleClient(VisocyteClient):
+    class SimpleClient(ParaViewClient):
         def createPipeline(self):
             self.renderView = pvsimple.CreateRenderView()
 
             pvsimple.Sphere()
             pvsimple.Show()
-    app = QtGui.QApplication(['Visocyte Python App'])
-    #s = VisocyteClient(12345, 'localhost')
+    app = QtGui.QApplication(['ParaView Python App'])
+    #s = ParaViewClient(12345, 'localhost')
     s = SimpleClient(12345)
     app.exec_()

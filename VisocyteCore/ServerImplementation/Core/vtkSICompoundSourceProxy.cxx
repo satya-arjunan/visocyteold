@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSICompoundSourceProxy.cxx
 
   Copyright (c) Kitware, Inc.

@@ -17,7 +17,7 @@
         "mpi",
         "3d",
         "remote rendering",
-        "VisocyteWeb"
+        "ParaViewWeb"
     ],
     "license": "BSD-3-Clause"
 }

@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -139,11 +139,11 @@ set(CMAKE_AUTORCC 1)
 set(CMAKE_AUTOUIC 1)
 set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/Resources/UI")
 
-vtk_module_add_module(Visocyte::pqWidgets
+vtk_module_add_module(ParaView::pqWidgets
   CLASSES ${classes}
   SOURCES ${ui_files}
           ${resource_files})
-vtk_module_link(Visocyte::pqWidgets
+vtk_module_link(ParaView::pqWidgets
   PUBLIC
     Qt5::Core
     Qt5::Gui
@@ -152,19 +152,19 @@ vtk_module_link(Visocyte::pqWidgets
     Qt5::Network)
 
 if (APPLE)
-  vtk_module_link(Visocyte::pqWidgets
+  vtk_module_link(ParaView::pqWidgets
     PRIVATE
       Qt5::PrintSupport)
 endif ()
 
 if (VISOCYTE_USE_QTHELP)
-  vtk_module_link(Visocyte::pqWidgets
+  vtk_module_link(ParaView::pqWidgets
     PRIVATE
       Qt5::Help)
 endif ()
 
 if (VISOCYTE_USE_QTWEBENGINE)
-  vtk_module_link(Visocyte::pqWidgets
+  vtk_module_link(ParaView::pqWidgets
     PRIVATE
       Qt5::WebEngineWidgets)
 endif ()

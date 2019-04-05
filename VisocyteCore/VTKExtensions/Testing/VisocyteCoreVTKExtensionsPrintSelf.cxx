@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   Visocyte
-  Module:    VisocyteCoreVTKExtensionsPrintSelf.cxx
+  Program:   ParaView
+  Module:    ParaViewCoreVTKExtensionsPrintSelf.cxx
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -191,7 +191,7 @@
   c->Print(cout);                                                                                  \
   c->Delete();
 
-int VisocyteCoreVTKExtensionsPrintSelf(int, char* [])
+int ParaViewCoreVTKExtensionsPrintSelf(int, char* [])
 {
   vtkObject* c;
 

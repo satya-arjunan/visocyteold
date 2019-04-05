@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSessionIterator.h
 
   Copyright (c) Kitware, Inc.

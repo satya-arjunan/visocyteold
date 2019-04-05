@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkImageVolumeRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
  * datasets as a volume.
  *
  * vtkImageVolumeRepresentation is a representation for volume rendering
- * vtkImageData. Unlike other data-representations used by Visocyte, this
+ * vtkImageData. Unlike other data-representations used by ParaView, this
  * representation does not support delivery to client (or render server) nodes.
  * In those configurations, it merely delivers a outline for the image to the
  * client and render-server and those nodes simply render the outline.

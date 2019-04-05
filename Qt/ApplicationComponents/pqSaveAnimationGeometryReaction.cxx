@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqSaveAnimationGeometryReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -80,7 +80,7 @@ void pqSaveAnimationGeometryReaction::saveAnimationGeometry()
     return;
   }
 
-  QString filters = "Visocyte Data files (*.pvd);;All files (*)";
+  QString filters = "ParaView Data files (*.pvd);;All files (*)";
   pqFileDialog fileDialog(pqActiveObjects::instance().activeServer(), pqCoreUtilities::mainWidget(),
     tr("Save Animation Geometry"), QString(), filters);
   fileDialog.setObjectName("FileSaveAnimationDialog");

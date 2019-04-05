@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqProxyInformationWidget.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -45,7 +45,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkEventQtSlotConnect.h"
 #include <vtksys/SystemTools.hxx>
 
-// Visocyte Server Manager includes
+// ParaView Server Manager includes
 #include "vtkPVArrayInformation.h"
 #include "vtkPVCompositeDataInformation.h"
 #include "vtkPVDataInformation.h"
@@ -60,9 +60,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "vtkPVGeneralSettings.h"
 
-// Visocyte widget includes
+// ParaView widget includes
 
-// Visocyte core includes
+// ParaView core includes
 #include "pqActiveObjects.h"
 #include "pqCompositeDataInformationTreeModel.h"
 #include "pqCoreUtilities.h"
@@ -74,7 +74,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqServer.h"
 #include "pqTimeKeeper.h"
 
-// Visocyte components includes
+// ParaView components includes
 
 class pqProxyInformationWidget::pqUi : public Ui::pqProxyInformationWidget
 {

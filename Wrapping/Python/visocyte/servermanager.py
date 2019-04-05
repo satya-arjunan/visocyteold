@@ -33,7 +33,7 @@ A simple example::
 """
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    servermanager.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -133,14 +133,14 @@ def _wrap_property(proxy, smproperty):
         property = Property(proxy, smproperty)
     return property
 
-class VisocytePipelineController(object):
-    """VisocytePipelineController wraps vtkSMVisocytePipelineController class
+class ParaViewPipelineController(object):
+    """ParaViewPipelineController wraps vtkSMParaViewPipelineController class
     to manage conversion of arguments passed around from Python Proxy objects to
     vtkSMProxy instances are vice-versa."""
     def __init__(self):
         """Constructor. Creates a new instance of
-        vtkSMVisocytePipelineController."""
-        self.SMController = vtkSMVisocytePipelineController()
+        vtkSMParaViewPipelineController."""
+        self.SMController = vtkSMParaViewPipelineController()
 
     def __ConvertArgumentsAndCall(self, *args):
         newArgs = []
@@ -163,7 +163,7 @@ class VisocytePipelineController(object):
             return retVal
 
     def __getattr__(self, name):
-        """Returns attribute from the VisocytePipelineController."""
+        """Returns attribute from the ParaViewPipelineController."""
         try:
             pmAttr = getattr(self.SMController, name)
             self.__LastAttrName = name
@@ -1634,7 +1634,7 @@ def OutputPort(proxy, outputPort=0):
     return newinstance
 
 class ProxyManager(object):
-    """When running scripts from the python shell in the Visocyte application,
+    """When running scripts from the python shell in the ParaView application,
     registering proxies with the proxy manager is the only mechanism to
     notify the graphical user interface (GUI) that a proxy
     exists. Therefore, unless a proxy is registered, it will not show up in
@@ -2725,7 +2725,7 @@ def createModule(groupName, mdl=None):
             if pname in mdl.__dict__ and debug:
                 visocyte.print_warning(\
                         "Warning: %s is being overwritten."\
-                        " This may point to an issue in the Visocyte configuration files"\
+                        " This may point to an issue in the ParaView configuration files"\
                         % pname)
             # Add it to the modules dictionary
             mdl.__dict__[pname] = cobj
@@ -2870,12 +2870,12 @@ def demo1():
 
     return (data, rv)
 
-def demo2(fname="/Users/berk/Work/VisocyteData/Data/disk_out_ref.ex2"):
+def demo2(fname="/Users/berk/Work/ParaViewData/Data/disk_out_ref.ex2"):
     """This method demonstrates the user of a reader, representation and
     view. It also demonstrates how meta-data can be obtained using proxies.
     Make sure to pass the full path to an exodus file. Also note that certain
     parameters are hard-coded for disk_out_ref.ex2 which can be found
-    in VisocyteData. This method returns the render view."""
+    in ParaViewData. This method returns the render view."""
     if not ActiveConnection:
         Connect()
     # Create the exodus reader and specify a file name
@@ -3016,7 +3016,7 @@ def demo3():
 
     return (data, rv, probe)
 
-def demo4(fname="/Users/berk/Work/VisocyteData/Data/can.ex2"):
+def demo4(fname="/Users/berk/Work/ParaViewData/Data/can.ex2"):
     """This method demonstrates the user of AnimateReader for
     creating animations."""
     if not ActiveConnection:
@@ -3142,7 +3142,7 @@ def SetActiveConnection(connection=None):
 # of pvpython, pvbatch or GUI. If running in parallel this will
 # also set up the vtkMPIController automatically as well. Users
 # should specify visocyte.options.{batch,symmetric} to be true
-# or false to set up Visocyte properly. If MPI was initialized, calling
+# or false to set up ParaView properly. If MPI was initialized, calling
 # servermanager.Finalize() may also be needed to exit properly without
 # VTK_DEBUG_LEAKS reporting memory leaks.
 if not vtkProcessModule.GetProcessModule():
@@ -3278,4 +3278,4 @@ __initialize()
 
 if hasattr(sys, "ps1"):
     # session is interactive.
-    visocyte.print_debug_info(vtkSMProxyManager.GetVisocyteSourceVersion());
+    visocyte.print_debug_info(vtkSMProxyManager.GetParaViewSourceVersion());

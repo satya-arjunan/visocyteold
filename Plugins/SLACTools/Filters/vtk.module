@@ -5,7 +5,7 @@ LIBRARY_NAME
 DEPENDS
   VTK::CommonExecutionModel
 PRIVATE_DEPENDS
-  Visocyte::VTKExtensionsCore
+  ParaView::VTKExtensionsCore
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::FiltersCore

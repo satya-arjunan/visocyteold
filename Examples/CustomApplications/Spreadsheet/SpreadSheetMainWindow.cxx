@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    SpreadSheetMainWindow.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -53,7 +53,7 @@ SpreadSheetMainWindow::SpreadSheetMainWindow(QWidget* parentObject, Qt::WindowFl
   ui.setupUi(this);
 
   // Define default behaviors - create only small subset, since this application
-  // is not really a Visocyte-like application at all.
+  // is not really a ParaView-like application at all.
   new pqAlwaysConnectedBehavior(this);
   new pqPersistentMainWindowStateBehavior(this);
 

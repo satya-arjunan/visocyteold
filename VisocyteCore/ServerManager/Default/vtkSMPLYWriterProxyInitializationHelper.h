@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMPLYWriterProxyInitializationHelper.h
 
   Copyright (c) Kitware, Inc.

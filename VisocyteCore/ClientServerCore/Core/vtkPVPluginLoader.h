@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPluginLoader.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVPluginLoader
- * @brief   Used to load Visocyte plugins.
+ * @brief   Used to load ParaView plugins.
  *
- * vtkPVPluginLoader can be used to load plugins for Visocyte. vtkPVPluginLoader
+ * vtkPVPluginLoader can be used to load plugins for ParaView. vtkPVPluginLoader
  * loads the plugin on the local process.
  *
  * vtkPVPluginLoader logs plugin related messages using at
@@ -143,7 +143,7 @@ public:
   //@}
 
   /**
-   * Internal method used in pqVisocytePlugin.cxx.in to tell the
+   * Internal method used in pqParaViewPlugin.cxx.in to tell the
    * vtkPVPluginLoader that a library was unloaded so it doesn't try to unload
    * it again.
    */
@@ -181,7 +181,7 @@ private:
 };
 
 // Implementation of Schwartz counter idiom to ensure that the plugin library
-// unloading doesn't happen before the Visocyte application is finalized.
+// unloading doesn't happen before the ParaView application is finalized.
 static class VTKPVCLIENTSERVERCORECORE_EXPORT vtkPVPluginLoaderCleanerInitializer
 {
 public:

@@ -1,21 +1,21 @@
 NAME
-  Visocyte::ServerManagerDefault
+  ParaView::ServerManagerDefault
 LIBRARY_NAME
   vtkPVServerManagerDefault
 KIT
-  Visocyte::ServerManager
+  ParaView::ServerManager
 DEPENDS
-  Visocyte::ServerManagerRendering
+  ParaView::ServerManagerRendering
 PRIVATE_DEPENDS
-  Visocyte::ClientServerCoreDefault
+  ParaView::ClientServerCoreDefault
   VTK::RenderingVolumeOpenGL2
   VTK::TestingRendering
   VTK::pugixml
   VTK::vtksys
 TEST_DEPENDS
-  Visocyte::Animation
-  Visocyte::ServerManagerApplication
+  ParaView::Animation
+  ParaView::ServerManagerApplication
   VTK::FiltersVerdict
   VTK::TestingRendering
 TEST_LABELS
-  Visocyte
+  ParaView

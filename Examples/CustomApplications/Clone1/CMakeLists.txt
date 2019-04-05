@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.8)
 project(Clone1)
 
-find_package(Visocyte REQUIRED)
+find_package(ParaView REQUIRED)
 
 if (NOT VISOCYTE_BUILD_QT_GUI)
   message(STATUS
     "${CMAKE_PROJECT_NAME} example requires VISOCYTE_BUILD_QT_GUI to be "
-    "enabled. Please rebuild Visocyte (or point to a different build of "
-    "Visocyte) with VISOCYTE_BUILD_QT_GUI set to TRUE")
+    "enabled. Please rebuild ParaView (or point to a different build of "
+    "ParaView) with VISOCYTE_BUILD_QT_GUI set to TRUE")
   return ()
 endif()
 
@@ -25,9 +25,9 @@ set(sources
 set(ui_files
   myMainWindow.ui)
 set(xml_files
-  VisocyteFilters.xml
-  #VisocyteReaders.xml
-  VisocyteSources.xml)
+  ParaViewFilters.xml
+  #ParaViewReaders.xml
+  ParaViewSources.xml)
 
 visocyte_client_add(
   NAME visocyte_revised
@@ -38,4 +38,4 @@ visocyte_client_add(
   MAIN_WINDOW_CLASS myMainWindow
 
   ORGANIZATION "Kitware, Inc."
-  TITLE "Visocyte (ReVisEd)")
+  TITLE "ParaView (ReVisEd)")

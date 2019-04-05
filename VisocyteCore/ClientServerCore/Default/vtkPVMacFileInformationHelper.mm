@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVMacFileInformationHelper.mm
 
   Copyright (c) Kitware, Inc.

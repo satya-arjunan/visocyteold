@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkParallelSerialWriter.h
 
   Copyright (c) Kitware, Inc.

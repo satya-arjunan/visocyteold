@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -53,7 +53,7 @@ set(classes
   vtkSMOrthographicSliceViewProxy
   vtkSMPVMoleculeRepresentationProxy
   vtkSMPVRepresentationProxy
-  vtkSMVisocytePipelineControllerWithRendering
+  vtkSMParaViewPipelineControllerWithRendering
   vtkSMPlotMatrixViewProxy
   vtkSMRangedTransferFunctionDomain
   vtkSMRenderViewProxy
@@ -77,7 +77,7 @@ set(classes
   vtkSMViewResolutionDomain
   vtkSMWidgetRepresentationProxy)
 
-if (TARGET Visocyte::ClientServerCorePython)
+if (TARGET ParaView::ClientServerCorePython)
   # TODO: Split these into a separate module so that there isn't a public
   # optional dependency.
   list(APPEND classes
@@ -88,8 +88,8 @@ endif ()
 add_custom_command(
   OUTPUT  "${CMAKE_CURRENT_BINARY_DIR}/vtkSMTransferFunctionPresetsBuiltin.h"
   DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/ColorMaps.json"
-          Visocyte::ProcessXML
-  COMMAND Visocyte::ProcessXML
+          ParaView::ProcessXML
+  COMMAND ParaView::ProcessXML
           "${CMAKE_CURRENT_BINARY_DIR}/vtkSMTransferFunctionPresetsBuiltin.h"
           vtkSMTransferFunctionPresets JSON JSON
           "${CMAKE_CURRENT_SOURCE_DIR}/ColorMaps.json"
@@ -98,14 +98,14 @@ set(headers
   "${CMAKE_CURRENT_BINARY_DIR}/vtkSMTransferFunctionPresetsBuiltin.h")
 
 vtk_object_factory_declare(
-  BASE vtkSMVisocytePipelineController
-  OVERRIDE vtkSMVisocytePipelineControllerWithRendering)
+  BASE vtkSMParaViewPipelineController
+  OVERRIDE vtkSMParaViewPipelineControllerWithRendering)
 vtk_object_factory_configure(
   SOURCE_FILE vtk_object_factory_source
   HEADER_FILE vtk_object_factory_header
   EXPORT_MACRO "VTKPVSERVERMANAGERRENDERING_EXPORT")
 
-vtk_module_add_module(Visocyte::ServerManagerRendering
+vtk_module_add_module(ParaView::ServerManagerRendering
   CLASSES ${classes}
   SOURCES ${vtk_object_factory_source}
   HEADERS ${headers}

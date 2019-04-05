@@ -81,7 +81,7 @@
 #include "vtkUnstructuredGridVolumeRepresentation.h"
 #include "vtkXYChartRepresentation.h"
 
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
 #include "vtkIceTSynchronizedRenderers.h"
 #endif
 
@@ -92,7 +92,7 @@
   c->Print(cout);                                                                                  \
   c->Delete();
 
-int VisocyteCoreClientServerCorePrintSelf(int, char* [])
+int ParaViewCoreClientServerCorePrintSelf(int, char* [])
 {
   vtkObject* c;
   PRINT_SELF(vtk3DWidgetRepresentation);
@@ -177,7 +177,7 @@ int VisocyteCoreClientServerCorePrintSelf(int, char* [])
   PRINT_SELF(vtkUnstructuredGridVolumeRepresentation);
   PRINT_SELF(vtkXYChartRepresentation);
 
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
   PRINT_SELF(vtkIceTSynchronizedRenderers);
 #endif
 

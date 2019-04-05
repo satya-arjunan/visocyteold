@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPlugin.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVPlugin
- * @brief   defines the core interface for any Visocyte plugin.
+ * @brief   defines the core interface for any ParaView plugin.
  *
- * vtkPVPlugin defines the core interface for any Visocyte plugin. A plugin
+ * vtkPVPlugin defines the core interface for any ParaView plugin. A plugin
  * implementing merely this interface is pretty much useless.
  * The header file also defines few import macros that are required for
  * exporting/importing plugins.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkHybridProbeFilter.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkHybridProbeFilter
  *
  * vtkHybridProbeFilter is a combination of vtkExtractSelection at a specific
- * location and vtkProbeFilter. Since the 'Selection Inspector' in Visocyte was
+ * location and vtkProbeFilter. Since the 'Selection Inspector' in ParaView was
  * removed, we were missing ability to extract cells based on location. This
  * filter fills that gap until we get the change to extend "Find Data" mechanism
  * to support location based selections.

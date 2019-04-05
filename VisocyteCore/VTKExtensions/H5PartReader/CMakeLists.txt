@@ -13,18 +13,18 @@ set_source_files_properties(${sources}
   PROPERTIES
     LANGUAGE CXX)
 
-vtk_module_add_module(Visocyte::VTKExtensionsH5PartReader
+vtk_module_add_module(ParaView::VTKExtensionsH5PartReader
   CLASSES ${classes}
   SOURCES ${sources})
 if (VISOCYTE_USE_MPI)
-  vtk_module_definitions(Visocyte::VTKExtensionsH5PartReader
+  vtk_module_definitions(ParaView::VTKExtensionsH5PartReader
     PRIVATE
       H5PART_HAS_MPI)
 endif ()
-vtk_module_definitions(Visocyte::VTKExtensionsH5PartReader
+vtk_module_definitions(ParaView::VTKExtensionsH5PartReader
   PRIVATE
     H5_USE_16_API)
-vtk_module_include(Visocyte::VTKExtensionsH5PartReader
+vtk_module_include(ParaView::VTKExtensionsH5PartReader
   PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/H5Part/src")
 

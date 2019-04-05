@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMRangedTransferFunctionDomain.cxx
 
   Copyright (c) Kitware, Inc.

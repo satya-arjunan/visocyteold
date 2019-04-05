@@ -43,7 +43,7 @@
  *
  * The compressor uses a modified SQUIRT implementation where encode 4-bit
  * opacity information as well. This is needed to improve background color
- * blending for translucent renderings in Visocyte.
+ * blending for translucent renderings in ParaView.
  * @par Thanks:
  * Thanks to Sandia National Laboratories for this compression technique
 */

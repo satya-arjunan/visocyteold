@@ -11,7 +11,7 @@ endif (WIN32)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 if (CGNS_ENABLE_HDF5)
   add_definitions(-DBUILD_HDF5)
-  if (FALSE) # XXX(kitware): Handled by Visocyte.
+  if (FALSE) # XXX(kitware): Handled by ParaView.
   if (WIN32)
     if (HDF5_LIBRARY)
      # file(STRINGS ${HDF5_LIBRARY} HDF5isDLL REGEX "__imp__H5close")
@@ -64,7 +64,7 @@ if (CGNS_ENABLE_BASE_SCOPE)
   set(BUILDBASESCOPE 1)
 endif (CGNS_ENABLE_BASE_SCOPE)
 
-if (FALSE) # XXX(kitware): Visocyte handles flags better.
+if (FALSE) # XXX(kitware): ParaView handles flags better.
 set(SYSCFLAGS "")
 set(CFGFLAGS "")
 set(LIBS "")
@@ -507,7 +507,7 @@ else (CGNS_ENABLE_FORTRAN)
   set(cgns_FILES ${cgns_C_FILES})
 endif (CGNS_ENABLE_FORTRAN)
 
-if (FALSE) # XXX(kitware): Handled by Visocyte.
+if (FALSE) # XXX(kitware): Handled by ParaView.
 set(CGNS_BUILD_SHARED "ON" CACHE BOOL "Build a shared version of the library")
 option(CGNS_USE_SHARED "Link programs to the CGNS shared library" "ON")
 
@@ -578,7 +578,7 @@ if(CGNS_BUILD_SHARED)
                                RUNTIME DESTINATION bin)
 endif(CGNS_BUILD_SHARED)
 else ()
-vtk_module_add_module(Visocyte::cgns
+vtk_module_add_module(ParaView::cgns
   SOURCES ${cgns_FILES})
 set_target_properties(cgns PROPERTIES DEFINE_SYMBOL BUILD_DLL)
 endif ()
@@ -628,7 +628,7 @@ endif ()
 # Tools #
 #########
 
-if (FALSE) # XXX(kitware): Visocyte doesn't need this.
+if (FALSE) # XXX(kitware): ParaView doesn't need this.
 add_subdirectory(tools)
 
 #########

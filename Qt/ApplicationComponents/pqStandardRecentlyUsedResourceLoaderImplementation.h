@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqStandardRecentlyUsedResourceLoaderImplementation.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -44,9 +44,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * pqStandardRecentlyUsedResourceLoaderImplementation is an implementation of
  * the pqRecentlyUsedResourceLoaderInterface that support loading resources
- * known to Visocyte e.g. data files and state files. `pqVisocyteBehaviors`
+ * known to ParaView e.g. data files and state files. `pqParaViewBehaviors`
  * instantiates this unless
- * `pqVisocyteBehaviors::enableStandardRecentlyUsedResourceLoader` is false.
+ * `pqParaViewBehaviors::enableStandardRecentlyUsedResourceLoader` is false.
  */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqStandardRecentlyUsedResourceLoaderImplementation
   : public QObject,

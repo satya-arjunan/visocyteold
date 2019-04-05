@@ -3,11 +3,11 @@ NAME
 DESCRIPTION
   Plugin for NVIDIA IndeX
 REQUIRES_MODULES
-  Visocyte::ClientServerCoreCore
-  Visocyte::ClientServerCoreRendering
-  Visocyte::Core
-  Visocyte::ServerManagerDefault
-  Visocyte::VTKExtensionsRendering
+  ParaView::ClientServerCoreCore
+  ParaView::ClientServerCoreRendering
+  ParaView::Core
+  ParaView::ServerManagerDefault
+  ParaView::VTKExtensionsRendering
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

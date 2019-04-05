@@ -55,7 +55,7 @@ int vtkNvPipeCompressor::Compress()
   }
   assert(this->Quality <= 5);
   const uint64_t f_m =
-    (5 - this->Quality + 1); // Quality setting in Visocyte compressor GUI is inverted
+    (5 - this->Quality + 1); // Quality setting in ParaView compressor GUI is inverted
   const uint64_t fps = 30;
   const uint64_t brate = static_cast<uint64_t>(this->Width * this->Height * fps * f_m * 0.07);
   if (NULL == this->Pipe)

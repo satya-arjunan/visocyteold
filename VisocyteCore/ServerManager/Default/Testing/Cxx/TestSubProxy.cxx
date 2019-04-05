@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    TestSubProxy.cxx
 
 Copyright (c) Kitware, Inc.
@@ -55,7 +55,7 @@ int TestSubProxy(int argc, char* argv[])
   else
   {
     pxm->LoadConfigurationXML("/home/seb/Kitware/Projects/DOE-Collaboration-SBIR-II/code/git/"
-                              "Visocyte4/Servers/ServerManager/Testing/Cxx/"
+                              "ParaView4/Servers/ServerManager/Testing/Cxx/"
                               "TestCustomSubProxyDefinition.xml");
   }
 

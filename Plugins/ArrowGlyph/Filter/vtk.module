@@ -6,6 +6,6 @@ DEPENDS
   VTK::CommonExecutionModel
   VTK::CommonCore
 PRIVATE_DEPENDS
-  Visocyte::ClientServerCoreCore
+  ParaView::ClientServerCoreCore
   VTK::CommonDataModel
   VTK::FiltersCore

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMProxyClipboard.cxx
 
   Copyright (c) Kitware, Inc.

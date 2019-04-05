@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkIceTSynchronizedRenderers.cxx
 
   Copyright (c) Kitware, Inc.
@@ -179,7 +179,7 @@ protected:
 };
 vtkStandardNewMacro(vtkMyCameraPass);
 
-// vtkPVIceTCompositePass extends vtkIceTCompositePass to add some Visocyte
+// vtkPVIceTCompositePass extends vtkIceTCompositePass to add some ParaView
 // specific rendering tweaks eg.
 // * render to full viewport
 // * don't let IceT paste back rendered images to the active frame buffer.
@@ -190,7 +190,7 @@ public:
   static vtkPVIceTCompositePass* New();
 
   // Description:
-  // Updates some IceT context parameters to suit Visocyte's need esp. in
+  // Updates some IceT context parameters to suit ParaView's need esp. in
   // multi-view configuration.
   virtual void SetupContext(const vtkRenderState* render_state) override
   {

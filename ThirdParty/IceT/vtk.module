@@ -1,5 +1,5 @@
 NAME
-  Visocyte::icet
+  ParaView::icet
 LIBRARY_NAME
   vtkicet
 PRIVATE_DEPENDS

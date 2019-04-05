@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMViewExportHelper.cxx
 
   Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@
 #include "vtkPVProxyDefinitionIterator.h"
 #include "vtkSMDocumentation.h"
 #include "vtkSMExporterProxy.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyDefinitionManager.h"
 #include "vtkSMSessionProxyManager.h"
@@ -121,7 +121,7 @@ vtkSMExporterProxy* vtkSMViewExportHelper::CreateExporter(
         {
           vtkSMExporterProxy* exporter =
             vtkSMExporterProxy::SafeDownCast(pxm->NewProxy("exporters", iter->GetProxyName()));
-          vtkNew<vtkSMVisocytePipelineController> controller;
+          vtkNew<vtkSMParaViewPipelineController> controller;
           controller->PreInitializeProxy(exporter);
           exporter->SetView(view);
           vtkSMPropertyHelper(exporter, "FileName").Set(filename);

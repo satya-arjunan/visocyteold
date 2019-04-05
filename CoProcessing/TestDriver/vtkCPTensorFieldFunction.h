@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPTensorFieldFunction.h
 
   Copyright (c) Kitware, Inc.

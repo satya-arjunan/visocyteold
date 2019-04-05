@@ -8,7 +8,7 @@ have relationships between them e.g. to describe an assembly, or block propertie
 materials. When such relationships are available in the dataset, it is indeed
 useful to present this information to the users so that they can choose to load
 blocks in multiple ways. Subset inclusion lattice or SIL is the mechanism
-available to Visocyte readers to describe this information.
+available to ParaView readers to describe this information.
 
 Currently, SIL is only used by readers to describe relations among blocks to
 enable selecting of blocks to reader. The blocks need not corresponding to
@@ -189,7 +189,7 @@ vtkSubsetInclusionLattice.
 
 Additionally, readers should expose selection API for clearing selections and
 selecting/deselecting nodes by path. This is useful not only for the users to
-make easy selections, but also when defining Visocyte Server-Manager
+make easy selections, but also when defining ParaView Server-Manager
 configuration XML.
 
 @code{cpp}
@@ -214,7 +214,7 @@ public:
   }
 
   /**
-  * This is presently need for Visocyte to decide when
+  * This is presently need for ParaView to decide when
   * the SIL needs to be refetched. This is admittedly a cluncky mechanism
   * and is expected to be cleaned up in the future.
   */
@@ -267,7 +267,7 @@ ServerManager configuration
 ---------------------------
 
 Now that the reader supports SIL-based block selection, we need to expose it in
-the Visocyte UI. This is done by adding the following set of properties.
+the ParaView UI. This is done by adding the following set of properties.
 
 @code{xml}
   <SourceProxy name="Reader" class="vtkReader">

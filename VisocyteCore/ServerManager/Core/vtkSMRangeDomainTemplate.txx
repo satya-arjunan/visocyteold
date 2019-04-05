@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMRangeDomainTemplate.txx
 
   Copyright (c) Kitware, Inc.

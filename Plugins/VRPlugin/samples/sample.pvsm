@@ -1,4 +1,4 @@
-<Visocyte>
+<ParaView>
   <ServerManagerState version="3.14.1">
     <Proxy group="animation" type="AnimationScene" id="261" servers="16">
       <Property name="AnimationTime" id="261.AnimationTime" number_of_elements="1">
@@ -459,7 +459,7 @@
     <CustomProxyDefinitions/>
     <Links/>
     <GlobalPropertiesManagers>
-      <GlobalPropertiesManager group="misc" type="GlobalProperties" name="VisocyteProperties">
+      <GlobalPropertiesManager group="misc" type="GlobalProperties" name="ParaViewProperties">
         <Link global_name="BackgroundColor" proxy="267" property="Background"/>
       </GlobalPropertiesManager>
     </GlobalPropertiesManagers>
@@ -484,4 +484,4 @@
       <Button role="Translate world" name="vrui.2"/>
     </Style>
    </VRInteractorStyles>
-</Visocyte>
+</ParaView>

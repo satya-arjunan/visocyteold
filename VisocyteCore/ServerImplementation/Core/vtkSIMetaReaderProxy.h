@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSIMetaReaderProxy.h
 
   Copyright (c) Kitware, Inc.

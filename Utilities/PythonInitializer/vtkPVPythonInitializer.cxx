@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -20,7 +20,7 @@
 #include "vtkUtilitiesPythonInitializerModule.h"
 
 #ifdef VISOCYTE_FREEZE_PYTHON
-#include "vtkFrozenVisocytePython.h"
+#include "vtkFrozenParaViewPython.h"
 #include <vtksys/SystemTools.hxx>
 #endif
 
@@ -37,7 +37,7 @@ void VTKUTILITIESPYTHONINITIALIZER_EXPORT vtkPVInitializePythonModules()
   // removes an access for locale
   vtksys::SystemTools::PutEnv("LC_CTYPE=C");
 
-  vtkFrozenVisocytePython();
+  vtkFrozenParaViewPython();
 #endif
   pvpythonmodules_load();
 }

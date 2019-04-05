@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTimeStepProgressFilter.cxx
 
   Copyright (c) Kitware, Inc.

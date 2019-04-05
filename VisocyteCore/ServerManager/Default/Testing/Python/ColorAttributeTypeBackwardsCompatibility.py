@@ -5,7 +5,7 @@ import visocyte
 # properties.
 
 assert (visocyte.compatibility.GetVersion().GetVersion() == None),\
-    "Visocyte modules should never force backwards compatibility to any version"
+    "ParaView modules should never force backwards compatibility to any version"
 assert ((visocyte.compatibility.GetVersion() < 4.1) == False),\
     "less-than test should always fail when version is not specified."
 assert ((visocyte.compatibility.GetVersion() <= 4.1) == False),\

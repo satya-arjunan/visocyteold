@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqTPExportStateWizard.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -75,7 +75,7 @@ void pqTPExportStateWizard::customize()
   this->Internals->wizardPage1->setTitle("Export Spatio-Temporal Parallel Script");
   this->Internals->label->setText("This wizard will guide you through the steps required to export "
                                   "the current visualization state as a Python script that can be "
-                                  "run with spatio-temporal parallelism with Visocyte.  Make sure "
+                                  "run with spatio-temporal parallelism with ParaView.  Make sure "
                                   "to add appropriate writers for the desired pipelines to be used "
                                   "in the Writers menu.");
   QStringList labels;
@@ -155,7 +155,7 @@ bool pqTPExportStateWizard::getCommandString(QString& command)
     rendering_info = this->Internals->wViewSelection->getSelectionAsString(itemFormat);
   }
 
-  QString filters = "Visocyte Python State Files (*.py);;All files (*)";
+  QString filters = "ParaView Python State Files (*.py);;All files (*)";
 
   pqFileDialog file_dialog(NULL, this, tr("Save Server State:"), QString(), filters);
   file_dialog.setObjectName("ExportSpatio-TemporalStateFileDialog");

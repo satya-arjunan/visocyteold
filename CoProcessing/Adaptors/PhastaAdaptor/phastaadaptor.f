@@ -1,6 +1,6 @@
 c$$$=========================================================================
 c$$$
-c$$$  Program:   Visocyte
+c$$$  Program:   ParaView
 c$$$  Module:    phastaadaptor.f
 c$$$
 c$$$  Copyright (c) Kitware, Inc.

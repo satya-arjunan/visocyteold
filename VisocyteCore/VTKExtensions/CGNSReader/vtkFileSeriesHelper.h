@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkFileSeriesHelper.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  * @brief Helper class to process file series.
  *
  * vtkFileSeriesHelper is intended to be a helper class that processes file
- * series. File series encountered in Visocyte are of two types: temporal or
+ * series. File series encountered in ParaView are of two types: temporal or
  * spatial. This class encapsulates logic to determine which form it is in.
  *
  * Currently, this is used by vtkCGNSFileSeriesReader. Eventually, we should be

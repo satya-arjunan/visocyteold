@@ -4,7 +4,7 @@ from visocyte import coprocessing
 
 #--------------------------------------------------------------
 # Code generated from cpstate.py to create the CoProcessor.
-# Visocyte 4.2.0-15-g46ac001 64 bits
+# ParaView 4.2.0-15-g46ac001 64 bits
 
 
 # ----------------------- CoProcessor definition -----------------------
@@ -64,13 +64,13 @@ def CreateCoProcessor():
 
 #--------------------------------------------------------------
 # Global variables that will hold the pipeline for each timestep
-# Creating the CoProcessor object, doesn't actually create the Visocyte pipeline.
+# Creating the CoProcessor object, doesn't actually create the ParaView pipeline.
 # It will be automatically setup when coprocessor.UpdateProducers() is called the
 # first time.
 coprocessor = CreateCoProcessor()
 
 #--------------------------------------------------------------
-# Enable Live-Visualizaton with Visocyte
+# Enable Live-Visualizaton with ParaView
 coprocessor.EnableLiveVisualization(True, 1)
 
 

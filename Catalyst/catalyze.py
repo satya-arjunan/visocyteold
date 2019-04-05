@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 #
-# Scripted used to transform a Visocyte source tree into a Catalyst source tree.
+# Scripted used to transform a ParaView source tree into a Catalyst source tree.
 #
 # Usage: python catalyze.py -r <visocyte_repo> -i <input_dir> -o <output_dir>
 #
-#  visocyte_repo - The Visocyte repository to use as the source.
+#  visocyte_repo - The ParaView repository to use as the source.
 #  input_dir - The directory containing the manifest.json describing the
 #              transformation and any replacement files.
 #  output_dir - The output directory where the Catalyst source will be written.
@@ -52,7 +52,7 @@ def edition_name(dir):
 def filter_proxies(fin, fout, proxies, all_proxies):
   root = ET.fromstring(fin.read())
   if not root.tag == 'ServerManagerConfiguration':
-    raise RuntimeError('Invalid Visocyte XML file input')
+    raise RuntimeError('Invalid ParaView XML file input')
   new_tree = ET.Element('ServerManagerConfiguration')
   def is_wanted(proxy):
     return proxy.tag.endswith("Proxy") and \
@@ -264,7 +264,7 @@ $cmake \\
   for key, value in cmake_cache(config, manifest_list).items():
     cmake_script += '  -D%s=%s \\\n' % (key, value)
 
-  # add Visocyte git describe so the build has the correct version
+  # add ParaView git describe so the build has the correct version
   try:
     version = subprocess.check_output(['git', 'describe'], cwd=config.repo)
   except subprocess.CalledProcessError as err:

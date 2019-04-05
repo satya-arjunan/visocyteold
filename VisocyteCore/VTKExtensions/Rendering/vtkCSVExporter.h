@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCSVExporter.h
 
   Copyright (c) Kitware, Inc.

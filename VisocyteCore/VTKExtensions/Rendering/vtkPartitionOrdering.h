@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPartitionOrdering.h
 
   Copyright (c) Kitware, Inc.

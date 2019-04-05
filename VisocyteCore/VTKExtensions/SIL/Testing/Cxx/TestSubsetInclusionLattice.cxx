@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    TestSubsetInclusionLattice.cxx
 
   Copyright (c) Kitware, Inc.

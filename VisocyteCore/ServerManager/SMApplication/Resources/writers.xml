@@ -5,8 +5,8 @@
                   base_proxyname="ParallelWriterBase"
                   class="vtkXMLPVDWriter"
                   name="XMLPVDWriter">
-      <Documentation short_help="Write Visocyte data files (pvd).">Writer to
-      write Visocyte data files (pvd). It is used to save all pieces of a
+      <Documentation short_help="Write ParaView data files (pvd).">Writer to
+      write ParaView data files (pvd). It is used to save all pieces of a
       source/filter to a file with pieces spread across the server
       processes.</Documentation>
       <InputProperty command="SetInputConnection"
@@ -135,7 +135,7 @@
         <Property name="WriteAllTimeSteps"
                   show="1" />
         <WriterFactory extensions="pvd"
-                       file_description="Visocyte Data Files" />
+                       file_description="ParaView Data Files" />
       </Hints>
       <!-- End of XMLPVDWriter -->
     </PWriterProxy>

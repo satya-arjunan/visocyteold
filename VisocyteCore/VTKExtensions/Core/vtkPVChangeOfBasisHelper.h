@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVChangeOfBasisHelper.h
 
   Copyright (c) Kitware, Inc.

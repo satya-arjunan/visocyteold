@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPluginLoader.cxx
 
   Copyright (c) Kitware, Inc.
@@ -407,7 +407,7 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
   int flags = 0;
 #ifdef _WIN32
   // Windows doesn't have rpath or other mechanisms for specifying where
-  // dependent libraries live. Assume those not provided by Visocyte live next
+  // dependent libraries live. Assume those not provided by ParaView live next
   // to the plugin.
   flags |= vtksys::DynamicLoader::SearchBesideLibrary;
 #endif
@@ -421,7 +421,7 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
   }
 
   vtkVLogF(VISOCYTE_LOG_PLUGIN_VERBOSITY(),
-    "Loaded shared library successfully. Now trying to validate that it's a Visocyte plugin.");
+    "Loaded shared library successfully. Now trying to validate that it's a ParaView plugin.");
 
   // A plugin shared library has two global functions:
   // * pv_plugin_query_verification_data -- to obtain version
@@ -435,10 +435,10 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
     vtkVLogF(VISOCYTE_LOG_PLUGIN_VERBOSITY(),
       "Failed to locate the global function "
       "\"pv_plugin_query_verification_data\" which is required to test the "
-      "plugin signature. This may not be a Visocyte plugin dll or maybe "
-      "from a older version of Visocyte when this function was not required.");
+      "plugin signature. This may not be a ParaView plugin dll or maybe "
+      "from a older version of ParaView when this function was not required.");
     vtkPVPluginLoaderErrorMacro(
-      "Not a Visocyte Plugin since could not locate the plugin-verification function");
+      "Not a ParaView Plugin since could not locate the plugin-verification function");
     vtkDynamicLoader::CloseLibrary(lib);
     return false;
   }
@@ -452,14 +452,14 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
   {
     std::ostringstream error;
     error << "Mismatch in versions: \n"
-          << "Visocyte Signature: " << _PV_PLUGIN_VERIFICATION_STRING << "\n"
+          << "ParaView Signature: " << _PV_PLUGIN_VERIFICATION_STRING << "\n"
                                                                          "Plugin Signature: "
           << pv_verfication_data;
     vtkPVPluginLoaderErrorMacro(error.str().c_str());
     vtkDynamicLoader::CloseLibrary(lib);
     vtkVLogF(VISOCYTE_LOG_PLUGIN_VERBOSITY(),
       "Mismatch in versions signifies that the plugin was built for "
-      "a different version of Visocyte or with a different compilter. "
+      "a different version of ParaView or with a different compilter. "
       "Look at the signatures to determine what caused the mismatch.");
     return false;
   }
@@ -476,7 +476,7 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
       "global function \"pv_plugin_instance\" which is required to locate the "
       "instance of the vtkPVPlugin class. Possibly the plugin shared library was "
       "not compiled properly.");
-    vtkPVPluginLoaderErrorMacro("Not a Visocyte Plugin since could not locate the plugin-instance "
+    vtkPVPluginLoaderErrorMacro("Not a ParaView Plugin since could not locate the plugin-instance "
                                 "function.");
     vtkDynamicLoader::CloseLibrary(lib);
     return false;
@@ -484,8 +484,8 @@ bool vtkPVPluginLoader::LoadPluginInternal(const char* file, bool no_errors)
 
   vtkVLogF(VISOCYTE_LOG_PLUGIN_VERBOSITY(),
     "Plugin signature verification successful. "
-    "This is definitely a Visocyte plugin compiled with correct compiler for "
-    "correct Visocyte version.");
+    "This is definitely a ParaView plugin compiled with correct compiler for "
+    "correct ParaView version.");
 
   // BUG # 0008673
   // Tell the platform to look in the plugin's directory for

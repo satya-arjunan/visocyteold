@@ -389,7 +389,7 @@ nv::index::IDistributed_data_subset* vtknvindex_sparse_volume_importer::create(
 
   mi::Uint8* subdivision_ptr = nullptr;
 
-  // Using volume subvision from Visocyte scalar raw pointer
+  // Using volume subvision from ParaView scalar raw pointer
   if (pv_subdivision_ptr)
   {
     // Convert double scalar data to float.

@@ -1,12 +1,12 @@
 NAME
-  Visocyte::ClientServerCoreDefault
+  ParaView::ClientServerCoreDefault
 LIBRARY_NAME
   vtkPVClientServerCoreDefault
 KIT
-  Visocyte::ClientServerKit
+  ParaView::ClientServerKit
 DEPENDS
-  Visocyte::ClientServerCoreRendering
-  Visocyte::VTKExtensionsDefault
+  ParaView::ClientServerCoreRendering
+  ParaView::VTKExtensionsDefault
 
   # Only needed because of the vtkPythonInterpreter optional dependency.
   VTK::FiltersProgrammable
@@ -20,7 +20,7 @@ TEST_OPTIONAL_DEPENDS
   VTK::Python
 
   # This is due to a public optional dependency in
-  # Visocyte::VTKExtensionsRendering.
-  Visocyte::icet
+  # ParaView::VTKExtensionsRendering.
+  ParaView::icet
 TEST_LABELS
-  Visocyte
+  ParaView

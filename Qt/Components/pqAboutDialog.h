@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    $RCS $
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -44,8 +44,8 @@ class pqServer;
 class QTreeWidget;
 
 /**
-* pqAboutDialog is the about dialog used by Visocyte.
-* It provides information about Visocyte and current configuration.
+* pqAboutDialog is the about dialog used by ParaView.
+* It provides information about ParaView and current configuration.
 */
 class PQCOMPONENTS_EXPORT pqAboutDialog : public QDialog
 {

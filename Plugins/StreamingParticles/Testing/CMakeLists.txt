@@ -1,7 +1,7 @@
 # TODO: Update
 
 if (FALSE AND VISOCYTE_BUILD_QT_GUI AND VISOCYTE_ENABLE_COSMOTOOLS)
-  ExternalData_Expand_Arguments("VisocyteData" _
+  ExternalData_Expand_Arguments("ParaViewData" _
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/adaptive-cosmo/,REGEX:.*}"
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/multiresolution-streaming/,REGEX:.*}")
 

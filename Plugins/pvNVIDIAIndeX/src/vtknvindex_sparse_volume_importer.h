@@ -93,7 +93,7 @@ public:
     nv::index::IData_subset_factory* factory,
     mi::neuraylib::IDice_transaction* dice_transaction) const override;
 
-  // Create internal storage of Visocyte's subset inside bounding box.
+  // Create internal storage of ParaView's subset inside bounding box.
   nv::index::IDistributed_data_subset* create(
     const mi::math::Bbox_struct<mi::Sint32, 3>& bounding_box,
     nv::index::IData_subset_factory* factory,
@@ -102,7 +102,7 @@ public:
   using nv::index::Distributed_discrete_data_import_callback<0x5c35b7ce, 0x496c, 0x4342, 0xa3, 0x5f,
     0x9d, 0x85, 0x4, 0xa1, 0x69, 0x7e>::create;
 
-  // The cluster properties triggered by Visocyte.
+  // The cluster properties triggered by ParaView.
   void set_cluster_properties(vtknvindex_cluster_properties* host_properties);
 
   // DiCE methods.

@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -49,13 +49,13 @@ if (CMAKE_Fortran_COMPILER_WORKS)
     "${CMAKE_CURRENT_BINARY_DIR}/FortranPythonAdaptorAPIMangling.h")
 endif ()
 
-vtk_module_add_module(Visocyte::PythonCatalyst
+vtk_module_add_module(ParaView::PythonCatalyst
   CLASSES ${classes}
   HEADERS ${headers})
 vtk_module_client_server_exclude()
 
 if (catalyst_fortran_using_mangling)
-  vtk_module_definitions(Visocyte::PythonCatalyst
+  vtk_module_definitions(ParaView::PythonCatalyst
     PRIVATE
       CATALYST_FORTRAN_USING_MANGLING=1)
 endif ()

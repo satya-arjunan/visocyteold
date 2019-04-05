@@ -9,7 +9,7 @@ from visocyte import smtesting
 smtesting.ProcessCommandLineArguments()
 
 # Connect to the "builtin"
-#(in-process) Visocyte server ...
+#(in-process) ParaView server ...
 #=================================
 servermanager.Connect()
 

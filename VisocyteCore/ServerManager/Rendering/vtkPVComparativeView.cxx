@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVComparativeView.cxx
 
   Copyright (c) Kitware, Inc.
@@ -24,7 +24,7 @@
 #include "vtkProcessModule.h"
 #include "vtkSMCameraLink.h"
 #include "vtkSMComparativeAnimationCueProxy.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMPropertyIterator.h"
 #include "vtkSMProxyLink.h"
@@ -208,7 +208,7 @@ public:
       vtkSmartPointer<vtkSMProxy>::Take(pxm->NewProxy(root->GetXMLGroup(), root->GetXMLName()));
     if (clone)
     {
-      vtkNew<vtkSMVisocytePipelineController> controller;
+      vtkNew<vtkSMParaViewPipelineController> controller;
       controller->PreInitializeProxy(clone);
       this->Copy(root, clone);
       controller->PostInitializeProxy(clone);

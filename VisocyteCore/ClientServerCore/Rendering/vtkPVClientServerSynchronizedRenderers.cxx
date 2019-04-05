@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVClientServerSynchronizedRenderers.cxx
 
   Copyright (c) Kitware, Inc.
@@ -23,7 +23,7 @@
 #include "vtkSquirtCompressor.h"
 #include "vtkUnsignedCharArray.h"
 #include "vtkZlibImageCompressor.h"
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
 #include "vtkNvPipeCompressor.h"
 #endif
 
@@ -192,7 +192,7 @@ void vtkPVClientServerSynchronizedRenderers::ConfigureCompressor(const char* str
     }
     else if (className == "vtkNvPipeCompressor" && this->NVPipeSupport)
     {
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
       comp = vtkNvPipeCompressor::New();
 #else
       assert(false);

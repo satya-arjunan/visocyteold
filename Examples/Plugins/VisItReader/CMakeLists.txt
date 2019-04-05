@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 
-if (NOT Visocyte_BINARY_DIR)
-  find_package(Visocyte REQUIRED)
+if (NOT ParaView_BINARY_DIR)
+  find_package(ParaView REQUIRED)
   include(${VISOCYTE_USE_FILE})
 endif()
 
@@ -14,10 +14,10 @@ endif()
 
 if (NOT TARGET vtkIOVisItBridge)
   message(FATAL_ERROR
-    "Please rebuild Visocyte with VisIt reader support enabled.")
+    "Please rebuild ParaView with VisIt reader support enabled.")
 endif()
 
-FIND_PACKAGE(Visocyte REQUIRED)
+FIND_PACKAGE(ParaView REQUIRED)
 INCLUDE(${VISOCYTE_USE_FILE})
 
 SET(SOURCES

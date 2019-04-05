@@ -3,7 +3,7 @@ project(PagosaAdaptor)
 
 set(STANDALONE_BUILD 0)
 if(NOT TARGET vtkPVPythonCatalyst)
-  find_package(Visocyte REQUIRED COMPONENTS vtkPVCatalyst vtkPVPythonCatalyst)
+  find_package(ParaView REQUIRED COMPONENTS vtkPVCatalyst vtkPVPythonCatalyst)
   include(${VISOCYTE_USE_FILE})
   set(STANDALONE_BUILD 1)
 else()

@@ -1,12 +1,12 @@
-Contributing to Visocyte
+Contributing to ParaView
 ========================
 
-This page documents at a very high level how to contribute to Visocyte.
+This page documents at a very high level how to contribute to ParaView.
 Please check our [developer instructions][] for a more detailed guide to
-developing and contributing to the project, and our [Visocyte Git README][]
+developing and contributing to the project, and our [ParaView Git README][]
 for additional information.
 
-The Visocyte development cycle is built upon the following components:
+The ParaView development cycle is built upon the following components:
 
 1. [Issues][] identify any issues including bugs and feature requests. In
    general, every code change should have an associated issue which identifies
@@ -24,7 +24,7 @@ The Visocyte development cycle is built upon the following components:
 Reporting Issues
 ================
 
-If you have a bug report or a feature request for Visocyte, you can use the
+If you have a bug report or a feature request for ParaView, you can use the
 [issues][] tracker to report a [new issue][].
 
 To report an issue.
@@ -88,28 +88,28 @@ For every issue, developers can assign:
 Fixing issues
 =============
 
-Typically, one addresses issues by writing code. To start contributing to Visocyte:
+Typically, one addresses issues by writing code. To start contributing to ParaView:
 
 1.  Register [GitLab Access] to create an account and select a user name.
 
-2.  [Fork Visocyte][] into your user's namespace on GitLab.
+2.  [Fork ParaView][] into your user's namespace on GitLab.
 
-3.  Create a local clone of the main Visocyte repository. Optionally configure
+3.  Create a local clone of the main ParaView repository. Optionally configure
     Git to [use SSH instead of HTTPS][].
     Then clone:
 
-        $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git Visocyte
-        $ cd Visocyte
+        $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git ParaView
+        $ cd ParaView
     The main repository will be configured as your `origin` remote.
 
     For more information see: [Setup][] and [download instructions][]
 
-4.  Run the [developer setup script][] to prepare your Visocyte work
+4.  Run the [developer setup script][] to prepare your ParaView work
     tree and create Git command aliases used below:
 
         $ ./Utilities/SetupForDevelopment.sh
     This will prompt for your GitLab user name and configure a remote
-    called `gitlab` to refer to it. Choose the defaults for Visocyte Data questions.
+    called `gitlab` to refer to it. Choose the defaults for ParaView Data questions.
 
     For more information see: [Setup][]
 
@@ -155,13 +155,13 @@ Typically, one addresses issues by writing code. To start contributing to Visocy
     the customer with any details necessary to test the fix.
 
 Our [Wiki][] is used to document features, flesh out designs and host other
-documentation. We have a [Visocyte Discourse][] forum to coordinate development
+documentation. We have a [ParaView Discourse][] forum to coordinate development
 and to provide support.
 
-[Visocyte Git README]: Documentation/dev/git/README.md
+[ParaView Git README]: Documentation/dev/git/README.md
 [developer instructions]: Documentation/dev/git/develop.md
 [GitLab Access]: https://gitlab.kitware.com/users/sign_in
-[Fork Visocyte]: https://gitlab.kitware.com/visocyte/visocyte/fork/new
+[Fork ParaView]: https://gitlab.kitware.com/visocyte/visocyte/fork/new
 [use SSH instead of HTTPS]: Documentation/dev/git/download.md#use-ssh-instead-of-https
 [download instructions]: Documentation/dev/git/download.md#clone
 [developer setup script]: /Utilities/SetupForDevelopment.sh
@@ -175,8 +175,8 @@ and to provide support.
 [Merge Requests]: https://gitlab.kitware.com/visocyte/visocyte/merge_requests
 [Labels]: https://gitlab.kitware.com/visocyte/visocyte/labels
 [Milestones]: https://gitlab.kitware.com/visocyte/visocyte/milestones
-[Wiki]: http://www.visocyte.org/Wiki/Visocyte
-[Visocyte Discourse]: https://discourse.visocyte.org/
+[Wiki]: http://www.visocyte.org/Wiki/ParaView
+[ParaView Discourse]: https://discourse.visocyte.org/
 [Gitlab Markdown]: https://gitlab.kitware.com/help/markdown/markdown
 [new issue]: https://gitlab.kitware.com/visocyte/visocyte/issues/new
 [Labels Glossary]: Documentation/dev/git/labels.md

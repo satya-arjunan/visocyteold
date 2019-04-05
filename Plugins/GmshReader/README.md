@@ -1,13 +1,13 @@
 GmshReader Plugin
-Visocyte/VTK reader for visualization of high-order polynomial solutions under the Gmsh format.
+ParaView/VTK reader for visualization of high-order polynomial solutions under the Gmsh format.
 Version: 1.0
 
 See Copyright.txt, License.txt and Credits.txt for respective copyright,
 license and authors information. You should have received a copy of
-these files along with VisocyteGMSHReaderPlugin.
+these files along with ParaViewGMSHReaderPlugin.
 
 -For more information on Gmsh see http://geuz.org/gmsh/
--For more information on Visocyte see http://visocyte.org/
+-For more information on ParaView see http://visocyte.org/
 
 Contact Info:
 ------------
@@ -46,10 +46,10 @@ Beware: the default Gmsh library provided by some Linux distributions under thei
 It is strongly advised to build your own version of the Gmsh library using the cmake variables listed above.
 Please contact us if you can't build your own version with the cmake command above.
 
-Building GmshReader Plugin at compilation of Visocyte:
+Building GmshReader Plugin at compilation of ParaView:
 ------------------------------------------------------
 
-Configure Visocyte's CMake with the following additional recommended options:
+Configure ParaView's CMake with the following additional recommended options:
 
  -DVISOCYTE_BUILD_PLUGIN_GMSHReader=ON
  -DGmsh_INCLUDE_DIR=/path_to_gmsh_install_dir/include/gmsh
@@ -61,13 +61,13 @@ Note that if you do not specify the cmake variables Gmsh_INCLUDE_DIR and Gmsh_LI
 In this case, it is advised though to help cmake find the paths to the right version of the Gmsh library and include directory by setting CMAKE_PREFIX_PATH for instance.
 
 
-Loading the Visocyte Gmsh reader plugin:
+Loading the ParaView Gmsh reader plugin:
 ---------------------------------------
 
 First make sure that libgmsh.so will be found at runtime, this will be automatic if you have set a standard CMAKE_INSTALL_PREFIX for gmsh
 Alternativaly, you can set LD_LIBRARY_PATH to the directory containing libgmsh.so.
 
-Open up Visocyte, from the "Tools" menu, then choose "Manage Plugins".
+Open up ParaView, from the "Tools" menu, then choose "Manage Plugins".
 You should see "GmshReader" in the client/GUI and, if available, server panel.
 Selected it and click on "Load Selected".
 You may want to expand it and check the "Auto Load" box.
@@ -94,7 +94,7 @@ Reading your msh files:
 
 Once the Gmsh plugin is loaded, you should now be able to select and load an XML interface file with the extension ".mshi" file (MSH Input).
 This XML file specifies all the information required by the plugin.
-For a demo xml file, configure Visocyte with BUILD_TESTING set to ON, then build and check in your build directory ExternalData/Testing/Data/Gmsh/viz_naca0012.mshi and viz_naca0012_meshonly.mshi, along with the corresponding msh data.
+For a demo xml file, configure ParaView with BUILD_TESTING set to ON, then build and check in your build directory ExternalData/Testing/Data/Gmsh/viz_naca0012.mshi and viz_naca0012_meshonly.mshi, along with the corresponding msh data.
 
 The format of this xml file is the following:
 
@@ -155,12 +155,12 @@ If present, FieldInfo contains at least three elements related to the solution d
                         (absolute or relative to the mshi file location) and the solution filename(s).
                         There can be any arbitrary number of Gmsh solution filenames (velocity, pressure, etc).
                         In the examples above. two distinct sets of files are loaded (domainPressure* and domainVelocity*).
-                        All the pfields included in these Gmsh files will be passed to Visocyte.
+                        All the pfields included in these Gmsh files will be passed to ParaView.
                         As usual, the %d and %06d placeholders will be replaced by appropriate indices.
                         The first index is time (if specified), the second one is piece.
 
  * The TimeSteps element contains TimeStep sub-elements. Each TimeStep element specifies an index (index_attribute), an index used in the geometry filename pattern (geometry_index), an index used in the field filename pattern (field_index) and a time value (float).
-    1. number_of_steps specifies how many steps of your solution you want to visualize. These steps can then be visualized sequentially with the Visocyte play button (green arrow).
+    1. number_of_steps specifies how many steps of your solution you want to visualize. These steps can then be visualized sequentially with the ParaView play button (green arrow).
     2. Normally there is one TimeStep element per timestep. However, it is possible to ask the reader to automatically generate timestep entries. This is done by setting the (optional) auto_generate_indices to 1. This is the usual and recommended mode for constant intervals between successive time steps. In this case, the reader will generate number_of_steps entries.
     3. The geometry_index and field_index of these entries will start at start_index and will be incremented by increment_index_by.
     4. The time value of these entries will start at start_value and will be incremented by increment_value_by.

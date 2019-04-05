@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVOpenGLInformation.h
 
   Copyright (c) Kitware, Inc.

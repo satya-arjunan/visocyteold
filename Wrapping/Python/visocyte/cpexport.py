@@ -1,7 +1,7 @@
 r"""This module is used to export complete CoProcessing Python scripts that
 can be used in a vtkCPPythonScriptPipeline.
 
-This module uses visocyte.cpstate Module to dump the Visocyte session state as a
+This module uses visocyte.cpstate Module to dump the ParaView session state as a
 an Python class description that can be then be used in the CoProcessor.
 
 The exported script can be used in a vtkCPPythonScriptPipeline instance for
@@ -44,13 +44,13 @@ from visocyte import coprocessing
 
 #--------------------------------------------------------------
 # Global variable that will hold the pipeline for each timestep
-# Creating the CoProcessor object, doesn't actually create the Visocyte pipeline.
+# Creating the CoProcessor object, doesn't actually create the ParaView pipeline.
 # It will be automatically setup when coprocessor.UpdateProducers() is called the
 # first time.
 coprocessor = CreateCoProcessor()
 
 #--------------------------------------------------------------
-# Enable Live-Visualizaton with Visocyte and the update frequency
+# Enable Live-Visualizaton with ParaView and the update frequency
 coprocessor.EnableLiveVisualization(%s, %s)
 
 # ---------------------- Data Selection method ----------------------
@@ -123,7 +123,7 @@ def DumpCoProcessingScript(export_rendering, simulation_input_map, screenshot_in
 
     """
     from visocyte.servermanager import vtkSMProxyManager
-    version_str = vtkSMProxyManager.GetVisocyteSourceVersion()
+    version_str = vtkSMProxyManager.GetParaViewSourceVersion()
 
     pipeline_script = cpstate.DumpPipeline(\
       export_rendering, simulation_input_map, screenshot_info, cinema_tracks,\

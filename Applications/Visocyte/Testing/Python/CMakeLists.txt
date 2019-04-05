@@ -6,7 +6,7 @@ find_python_module(matplotlib matplotlib_found)
 set(_vtk_build_test "visocyte")
 set(${_vtk_build_test}_TEST_LABELS visocyte)
 
-ExternalData_Expand_Arguments(VisocyteData _
+ExternalData_Expand_Arguments(ParaViewData _
   # data files
   "DATA{${visocyte_test_data_directory_input}/Data/can.ex2}"
   "DATA{${visocyte_test_data_directory_input}/Data/multicomb_0.vts}"
@@ -24,7 +24,7 @@ if (numpy_found)
     TestAnnotateAttributeData.py
     )
 
-  if (TARGET Visocyte::CinemaPython)
+  if (TARGET ParaView::CinemaPython)
     visocyte_add_test_python(
       NO_DATA NO_VALID NO_RT
       CinemaAERTest.py

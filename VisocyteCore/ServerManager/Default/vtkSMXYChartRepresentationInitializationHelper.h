@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMXYChartRepresentationInitializationHelper.h
 
   Copyright (c) Kitware, Inc.

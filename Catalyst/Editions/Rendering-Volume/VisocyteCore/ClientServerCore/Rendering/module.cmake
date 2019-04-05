@@ -12,7 +12,7 @@ endif()
 
 vtk_module(vtkPVClientServerCoreRendering
   GROUPS
-    VisocyteRendering
+    ParaViewRendering
   DEPENDS
     #vtkDomainsChemistry
     #vtkFiltersAMR

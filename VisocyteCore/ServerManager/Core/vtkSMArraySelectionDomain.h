@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMArraySelectionDomain.h
 
   Copyright (c) Kitware, Inc.

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 project(CTHAdaptor)
 
-find_package(Visocyte REQUIRED COMPONENTS vtkPVPythonCatalyst)
+find_package(ParaView REQUIRED COMPONENTS vtkPVPythonCatalyst)
 include("${VISOCYTE_USE_FILE}")
 set(CTHAdaptor_SRCS
   CTHAdaptor.cxx

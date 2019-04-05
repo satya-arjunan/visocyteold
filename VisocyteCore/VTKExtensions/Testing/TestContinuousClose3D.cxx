@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    TestContinuousClose3D.cxx
 
   Copyright (c) Kitware, Inc.

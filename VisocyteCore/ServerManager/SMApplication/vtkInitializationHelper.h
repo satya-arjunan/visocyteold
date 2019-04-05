@@ -1,7 +1,7 @@
 
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkInitializationHelper.h
 
   Copyright (c) Kitware, Inc.
@@ -91,7 +91,7 @@ public:
   //@{
   /**
    * Sets the organization producing this application. This is
-   * "Visocyte" by default, but can be different for branded applications.
+   * "ParaView" by default, but can be different for branded applications.
    */
   static void SetOrganizationName(const std::string& organizationName);
   static const std::string& GetOrganizationName();
@@ -99,7 +99,7 @@ public:
 
   //@{
   /**
-   * Sets the name of the application. This is "Visocyte" by default, but
+   * Sets the name of the application. This is "ParaView" by default, but
    * can be different for branded applications.
    */
   static void SetApplicationName(const std::string& appName);

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCompositeDataInformationIterator.cxx
 
   Copyright (c) Kitware, Inc.

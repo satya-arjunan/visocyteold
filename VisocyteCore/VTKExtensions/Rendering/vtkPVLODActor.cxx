@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVLODActor.cxx
 
   Copyright (c) Kitware, Inc.

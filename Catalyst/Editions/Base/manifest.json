@@ -84,17 +84,17 @@
       "path":"VTK/Utilities/KWIML"
     },
     { "name":"vtkPVServerManagerCore",
-      "path":"VisocyteCore/ServerManager/Core",
+      "path":"ParaViewCore/ServerManager/Core",
       "cswrap":true,
       "pythonwrap":true
     },
     { "name":"vtkPVServerImplementationCore",
-      "path":"VisocyteCore/ServerImplementation/Core",
+      "path":"ParaViewCore/ServerImplementation/Core",
       "cswrap":true,
       "pythonwrap":true
     },
     { "name":"vtkPVClientServerCoreCore",
-      "path":"VisocyteCore/ClientServerCore/Core",
+      "path":"ParaViewCore/ClientServerCore/Core",
       "exclude": [
           { "path": "vtkPConvertSelection*" },
           { "path": "vtkPVExtractSelection*" },
@@ -190,7 +190,7 @@
       "pythonwrap":true
     },
     { "name":"vtkPVCommon",
-      "path":"VisocyteCore/Common",
+      "path":"ParaViewCore/Common",
       "exclude":[
         { "path":"Testing" }
       ],
@@ -198,7 +198,7 @@
       "pythonwrap":true
     },
     { "name":"vtkClientServer",
-      "path":"VisocyteCore/ClientServerStream",
+      "path":"ParaViewCore/ClientServerStream",
       "exclude":[
         { "path":"Testing" }
       ]
@@ -235,10 +235,10 @@
       "path":"VTK/ThirdParty/jsoncpp"
     },
     { "name":"vtkPVVTKExtensionsSIL",
-      "path":"VisocyteCore/VTKExtensions/SIL"
+      "path":"ParaViewCore/VTKExtensions/SIL"
     },
     { "name":"vtkPVVTKExtensionsCore",
-      "path":"VisocyteCore/VTKExtensions/Core",
+      "path":"ParaViewCore/VTKExtensions/Core",
       "include": [
         { "class":"vtkCommunicationErrorCatcher" },
         { "class":"vtkCompositeMultiProcessController" },
@@ -258,8 +258,8 @@
         { "path":"vtkUndoStackInternal.h" }
       ],
       "replace": [
-        { "path":"VisocyteCore/VTKExtensions/Core/module.cmake" },
-        { "path":"VisocyteCore/VTKExtensions/Core/CMakeLists.txt" }
+        { "path":"ParaViewCore/VTKExtensions/Core/module.cmake" },
+        { "path":"ParaViewCore/VTKExtensions/Core/CMakeLists.txt" }
       ],
       "exclude": [
         { "path": "Testing" }
@@ -316,15 +316,15 @@
       ]
     },
     { "name":"vtkPVServerManagerApplication",
-      "path":"VisocyteCore/ServerManager/SMApplication",
+      "path":"ParaViewCore/ServerManager/SMApplication",
       "exclude":[
         { "path":"Resources" }
       ],
       "replace":[
-        { "path":"VisocyteCore/ServerManager/SMApplication/Resources/catalyst.xml" }
+        { "path":"ParaViewCore/ServerManager/SMApplication/Resources/catalyst.xml" }
       ],
       "patches": [
-          { "path": "VisocyteCore-catalyst-xml.patch" }
+          { "path": "ParaViewCore-catalyst-xml.patch" }
       ],
       "cswrap":true,
       "pythonwrap":true
@@ -333,18 +333,18 @@
     { "path":"CommandLineExecutables" },
     { "path":"Applications",
       "exclude":[
-        { "path":"Visocyte" }
+        { "path":"ParaView" }
       ]
     },
-    { "path":"VisocyteConfigVersion.cmake.in" },
-    { "path":"VisocyteConfig.cmake.in" },
-    { "path":"VisocyteCore/README.txt" },
+    { "path":"ParaViewConfigVersion.cmake.in" },
+    { "path":"ParaViewConfig.cmake.in" },
+    { "path":"ParaViewCore/README.txt" },
     { "path":"VTK/vtkLogo.ico" },
     { "path":"VTK/README.md" },
     { "path":"VTK/ThirdParty/utf8" }
   ],
   "proxies":[
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/filters.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/filters.xml",
       "proxies":[
         "Append",
         "AppendMolecule",
@@ -355,7 +355,7 @@
         "Threshold"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/utilities.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/utilities.xml",
       "proxies":[ "TimeKeeper" ]
     }
   ]

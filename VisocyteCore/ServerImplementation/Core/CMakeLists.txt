@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -68,7 +68,7 @@ set(headers
   vtkSMMessageMinimal.h
   vtkSIVectorPropertyTemplate.h)
 
-vtk_module_add_module(Visocyte::ServerImplementationCore
+vtk_module_add_module(ParaView::ServerImplementationCore
   CLASSES ${classes}
   HEADERS ${headers})
 
@@ -83,5 +83,5 @@ vtk_module_install_headers(
 add_custom_target(vtkPVMessage_protobuf_compile
   DEPENDS
     ${vtkPVMessage_sources})
-vtk_module_depend(Visocyte::ServerImplementationCore
+vtk_module_depend(ParaView::ServerImplementationCore
   vtkPVMessage_protobuf_compile)

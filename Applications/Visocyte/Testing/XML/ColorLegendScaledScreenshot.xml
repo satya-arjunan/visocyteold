@@ -15,5 +15,5 @@
   <pqevent object="pqClientMainWindow/SaveScreenshotDialog/widget/OKButton" command="activate" arguments="" />
 
   <!-- compare the saved screenshot -->
-  <pqcompareimage image="$VISOCYTE_TEST_ROOT/colorlegendscaledscreenshot.png" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/ColorLegendScaledScreenshot.png" />
+  <pqcompareimage image="$VISOCYTE_TEST_ROOT/colorlegendscaledscreenshot.png" baseline="$VISOCYTE_DATA_ROOT/Applications/ParaView/Testing/Data/Baseline/ColorLegendScaledScreenshot.png" />
 </pqevents>

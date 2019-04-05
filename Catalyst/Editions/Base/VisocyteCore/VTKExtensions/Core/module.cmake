@@ -14,7 +14,7 @@ endforeach ()
 
 vtk_module(vtkPVVTKExtensionsCore
   GROUPS
-    VisocyteCore
+    ParaViewCore
   DEPENDS
     vtkFiltersCore
     vtkParallelCore

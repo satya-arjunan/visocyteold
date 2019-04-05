@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    TestAdjustRange.cxx
 
 Copyright (c) Kitware, Inc.

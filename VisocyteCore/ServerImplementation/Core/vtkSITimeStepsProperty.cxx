@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSITimeStepsProperty.cxx
 
   Copyright (c) Kitware, Inc.

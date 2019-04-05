@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqImportCinemaReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqView.h"
 #include "vtkNew.h"
 
-#if VTK_MODULE_ENABLE_Visocyte_CinemaReader
+#if VTK_MODULE_ENABLE_ParaView_CinemaReader
 #include "vtkSMCinemaDatabaseImporter.h"
 #endif
 
@@ -65,7 +65,7 @@ pqImportCinemaReaction::~pqImportCinemaReaction()
 //-----------------------------------------------------------------------------
 void pqImportCinemaReaction::updateEnableState()
 {
-#if VTK_MODULE_ENABLE_Visocyte_CinemaReader
+#if VTK_MODULE_ENABLE_ParaView_CinemaReader
   bool enable_state = false;
   pqActiveObjects& activeObjects = pqActiveObjects::instance();
   vtkSMSession* session =
@@ -84,7 +84,7 @@ void pqImportCinemaReaction::updateEnableState()
 //-----------------------------------------------------------------------------
 bool pqImportCinemaReaction::loadCinemaDatabase()
 {
-#if VTK_MODULE_ENABLE_Visocyte_CinemaReader
+#if VTK_MODULE_ENABLE_ParaView_CinemaReader
   pqServer* server = pqActiveObjects::instance().activeServer();
   pqFileDialog fileDialog(server, pqCoreUtilities::mainWidget(), tr("Open Cinema Database:"),
     QString(), "Cinema Database Files (info.json);;All files(*)");
@@ -107,7 +107,7 @@ bool pqImportCinemaReaction::loadCinemaDatabase()
 //-----------------------------------------------------------------------------
 bool pqImportCinemaReaction::loadCinemaDatabase(const QString& dbase, pqServer* server)
 {
-#if VTK_MODULE_ENABLE_Visocyte_CinemaReader
+#if VTK_MODULE_ENABLE_ParaView_CinemaReader
   CLEAR_UNDO_STACK();
 
   server = (server != NULL) ? server : pqActiveObjects::instance().activeServer();

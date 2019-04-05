@@ -142,7 +142,7 @@ public:
 #endif // VISOCYTE_UGRID_USE_PARTITIONS
 
   //
-  // Configuration options set from Visocyte GUI.
+  // Configuration options set from ParaView GUI.
   // These are stored in vtknvindex_config_settings class.
   //
 
@@ -265,7 +265,7 @@ private:
   double m_roi_range_K[2];
 
   vtkResampleToImage* ResampleToImageFilter;
-  vtkMultiProcessController* m_controller;           // MPI controller from Visocyte.
+  vtkMultiProcessController* m_controller;           // MPI controller from ParaView.
   vtknvindex_config_settings* m_app_config_settings; // Application side config settings.
   vtknvindex_cluster_properties*
     m_cluster_properties; // Cluster wide properties, refer class documentation.

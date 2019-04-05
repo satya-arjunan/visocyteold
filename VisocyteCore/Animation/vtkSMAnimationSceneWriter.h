@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMAnimationSceneWriter.h
 
   Copyright (c) Kitware, Inc.

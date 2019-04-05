@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVOptionsXMLParser.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVOptionsXMLParser
- * @brief   Visocyte options storage
+ * @brief   ParaView options storage
  *
- * An object of this class represents a storage for Visocyte options
+ * An object of this class represents a storage for ParaView options
  *
  * These options can be retrieved during run-time, set using configuration file
  * or using Command Line Arguments.

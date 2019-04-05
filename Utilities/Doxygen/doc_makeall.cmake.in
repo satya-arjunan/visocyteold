@@ -9,13 +9,13 @@ set(PERL "@PERL@")
 set(DOXYGEN_KEEP_TEMP "@DOXYGEN_KEEP_TEMP@")
 
 if(NOT DOXYGEN)
-  message(FATAL_ERROR "error: cannot build Visocyte documentation without doxygen")
+  message(FATAL_ERROR "error: cannot build ParaView documentation without doxygen")
 endif()
 if(NOT DOXYGEN_DOT_EXECUTABLE)
-  message(FATAL_ERROR "error: cannot build Visocyte documentation without dot")
+  message(FATAL_ERROR "error: cannot build ParaView documentation without dot")
 endif()
 if(NOT PERL)
-  message(FATAL_ERROR "error: cannot build Visocyte documentation without perl")
+  message(FATAL_ERROR "error: cannot build ParaView documentation without perl")
 endif()
 
 # PROJECT_NAME:
@@ -24,26 +24,26 @@ endif()
 # Doxygen's tag files. Mandatory for each documentation set.
 # Note: might be the same as the doxyfile's PROJECT_NAME
 # Example:
-#   PROJECT_NAME=Visocyte
+#   PROJECT_NAME=ParaView
 #
-set (PROJECT_NAME Visocyte)
+set (PROJECT_NAME ParaView)
 
 # PATH_TO_VTK_DOX_SCRIPTS:
 # Path to the directory holding the Perl scripts used to produce the VTK doc
 # in Doxygen format. You need the VTK source files or a local copy of
 # these scripts.
 # Example:
-#   PATH_TO_VTK_DOX_SCRIPTS=@Visocyte_SOURCE_DIR@/Utilities/Doxygen
+#   PATH_TO_VTK_DOX_SCRIPTS=@ParaView_SOURCE_DIR@/Utilities/Doxygen
 #
-set(PATH_TO_VTK_DOX_SCRIPTS "@Visocyte_SOURCE_DIR@/VTK/Utilities/Doxygen")
-set(PATH_TO_VISOCYTE_DOX_SCRIPTS "@Visocyte_SOURCE_DIR@/Utilities/Doxygen")
+set(PATH_TO_VTK_DOX_SCRIPTS "@ParaView_SOURCE_DIR@/VTK/Utilities/Doxygen")
+set(PATH_TO_VISOCYTE_DOX_SCRIPTS "@ParaView_SOURCE_DIR@/Utilities/Doxygen")
 
 # SOURCE_DIR:
 # Source directory. The top directory of the source files.
 # Example:
-#   SOURCE_DIR=@Visocyte_SOURCE_DIR@
+#   SOURCE_DIR=@ParaView_SOURCE_DIR@
 #
-set(SOURCE_DIR "@Visocyte_SOURCE_DIR@")
+set(SOURCE_DIR "@ParaView_SOURCE_DIR@")
 
 # REL_PATH_TO_TOP:
 # Relative path from the top directory of the source files to the directory
@@ -61,7 +61,7 @@ set(REL_PATH_TO_TOP .)
 # the corresponding line.
 # DOXTEMP might be used to simplify the syntax.
 # Example:
-#   DOXTEMP=DOXTEMP=@Visocyte_BINARY_DIR@/Utilities/Doxygen
+#   DOXTEMP=DOXTEMP=@ParaView_BINARY_DIR@/Utilities/Doxygen
 #   INTERMEDIATE_DOX_DIR=$DOXTEMP/dox
 #
 set(DOXTEMP "@CMAKE_CURRENT_BINARY_DIR@")
@@ -91,10 +91,10 @@ set(DATA_ROOT "@VISOCYTE_DATA_ROOT@")
 #
 set(GITWEB http://visocyte.org/gitweb) # not used
 set(GITWEB_SUFFIX ) #empty for git ?p=VTK)
-set(GITWEB_CHECKOUT http://visocyte.org/gitweb?p=Visocyte.git;a=blob;f=)
+set(GITWEB_CHECKOUT http://visocyte.org/gitweb?p=ParaView.git;a=blob;f=)
 set(GITWEB_DATA http://visocyte.org/gitweb)
 set(GITWEB_DATA_SUFFIX ) # empty for git ?p=VTKData)
-set(GITWEB_DATA_CHECKOUT http://visocyte.org/gitweb?p=VisocyteData.git;a=blob;f=)
+set(GITWEB_DATA_CHECKOUT http://visocyte.org/gitweb?p=ParaViewData.git;a=blob;f=)
 
 # DOXYFILE:
 # Path to the Doxygen configuration file (i.e. doxyfile).
@@ -144,7 +144,7 @@ set(RESULTING_HTML_HELP_FILE "${DOXTEMP}/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_V
 #   RESULTING_HTML_TARZ_ARCHIVE_FILE $DOXTEMP/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@-html.tar.gz
 #
 set(CREATE_HTML_TARZ_ARCHIVE OFF)
-set(RESULTING_HTML_TARZ_ARCHIVE_FILE "${DOXTEMP}/Visocyte-html.tar.gz")
+set(RESULTING_HTML_TARZ_ARCHIVE_FILE "${DOXTEMP}/ParaView-html.tar.gz")
 
 # DOWNLOAD_VTK_TAGFILE VTK_TAGFILE VTK_TAGFILE_REMOTE_DIR VTK_TAGFILE_DEST_DIR:
 # Download the VTK tag file, name, remote location and destination dir of this
@@ -153,7 +153,7 @@ set(RESULTING_HTML_TARZ_ARCHIVE_FILE "${DOXTEMP}/Visocyte-html.tar.gz")
 # deleted at the end of this script.
 # Note: your doxyfile must be tailored to make use-of or create this tag file.
 #    (using TAGFILES = vtk@VISOCYTE_VERSION_MAJOR@-nightly.tag=http://www.vtk.org/doc/nightly/html
-#        or GENERATE_TAGFILE = "@Visocyte_BINARY_DIR@/Utilities/Doxygen/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@.tag")
+#        or GENERATE_TAGFILE = "@ParaView_BINARY_DIR@/Utilities/Doxygen/vtk@VISOCYTE_VERSION_MAJOR@.@VISOCYTE_VERSION_MINOR@.tag")
 # Example:
 #   DOWNLOAD_VTK_TAGFILE=OFF
 #   VTK_TAGFILE=vtk@VISOCYTE_VERSION_MAJOR@-nightly.tag
@@ -298,9 +298,9 @@ step(3 "build full text index -- skipping")
 # ----------------------------------------------------------------------------
 # Extract the VTK version and create the main page.
 #  -- Here we differ from VTK, we simply install the generated
-#  doc_Visocyte_version.dox file instead.
-step(4 "extract Visocyte version")
-#file(INSTALL "${DOXTEMP}/doc_Visocyte_version.dox"
+#  doc_ParaView_version.dox file instead.
+step(4 "extract ParaView version")
+#file(INSTALL "${DOXTEMP}/doc_ParaView_version.dox"
 #     DESTINATION "${INTERMEDIATE_DOX_DIR}"
 #     USE_SOURCE_PERMISSIONS)
 

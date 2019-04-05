@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqSaveStateReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqServer.h"
 #include "pqStandardRecentlyUsedResourceLoaderImplementation.h"
 #include "vtkNew.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxy.h"
 #include "vtkSMSessionProxyManager.h"
@@ -76,10 +76,10 @@ void pqSaveStateReaction::updateEnableState()
 //-----------------------------------------------------------------------------
 bool pqSaveStateReaction::saveState()
 {
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
-  QString fileExt = tr("Visocyte state file (*.pvsm);;Python state file (*.py);;All files (*)");
+#if VTK_MODULE_ENABLE_ParaView_pqPython
+  QString fileExt = tr("ParaView state file (*.pvsm);;Python state file (*.py);;All files (*)");
 #else
-  QString fileExt = tr("Visocyte state file (*.pvsm);;All files (*)");
+  QString fileExt = tr("ParaView state file (*.pvsm);;All files (*)");
 #endif
   pqFileDialog fileDialog(
     NULL, pqCoreUtilities::mainWidget(), tr("Save State File"), QString(), fileExt);
@@ -116,7 +116,7 @@ void pqSaveStateReaction::saveState(const QString& filename)
 //-----------------------------------------------------------------------------
 void pqSaveStateReaction::savePythonState(const QString& filename)
 {
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   vtkSMSessionProxyManager* pxm = pqActiveObjects::instance().proxyManager();
   assert(pxm);
 
@@ -127,7 +127,7 @@ void pqSaveStateReaction::savePythonState(const QString& filename)
     return;
   }
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->InitializeProxy(options);
 
   pqProxyWidgetDialog dialog(options);

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqCrashRecoveryBehavior.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -64,13 +64,13 @@ pqCrashRecoveryBehavior::pqCrashRecoveryBehavior(QObject* parentObject)
   bool recoveryEnabled = settings->value("GeneralSettings.CrashRecovery", false).toBool();
   if (recoveryEnabled && QFile::exists(CrashRecoveryStateFile))
   {
-    int recover = QMessageBox::question(pqCoreUtilities::mainWidget(), "Visocyte",
+    int recover = QMessageBox::question(pqCoreUtilities::mainWidget(), "ParaView",
       "A crash recovery state file has been found.\n"
       "Would you like to save it?",
       QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (recover == QMessageBox::Yes)
     {
-      QString fileExt = tr("Visocyte state file (*.pvsm);;All files (*)");
+      QString fileExt = tr("ParaView state file (*.pvsm);;All files (*)");
       QString path = QFileDialog::getSaveFileName(
         pqCoreUtilities::mainWidget(), "Save crash state file", QDir::currentPath(), fileExt);
       if (!path.isNull())
@@ -154,7 +154,7 @@ void pqCrashRecoveryBehavior::onServerDisconnect()
     QMessageBox mbox(QMessageBox::Critical, tr("Server disconnected!"),
       tr("The server side has disconnected. "
          "The application will now quit since it may be in an unrecoverable state.\n\n"
-         "Would you like to save a Visocyte state file?"),
+         "Would you like to save a ParaView state file?"),
       QMessageBox::NoButton, pqCoreUtilities::mainWidget());
     mbox.addButton(QMessageBox::Yes)->setText("Save state and exit");
     mbox.addButton(QMessageBox::No)->setText("Exit without saving state");

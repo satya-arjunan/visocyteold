@@ -9,7 +9,7 @@ def RegressionTest(imageName, baselineName):
     testing.AddArgument("-T")
     testing.AddArgument(smtesting.TempDir)
     testing.AddArgument("-V")
-    testing.AddArgument(smtesting.DataDir + "/VisocyteCore/ServerManager/Default/Testing/Data/Baseline/" + baselineName)
+    testing.AddArgument(smtesting.DataDir + "/ParaViewCore/ServerManager/Default/Testing/Data/Baseline/" + baselineName)
     return testing.RegressionTest(smtesting.TempDir + "/" + imageName, 10) == vtkTesting.PASSED
 
 

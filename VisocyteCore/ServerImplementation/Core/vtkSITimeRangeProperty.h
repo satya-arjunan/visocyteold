@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSITimeRangeProperty.h
 
   Copyright (c) Kitware, Inc.

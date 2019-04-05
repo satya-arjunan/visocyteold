@@ -101,7 +101,7 @@
   },
   "modules": [
     { "name": "vtkPVVTKExtensionsRendering",
-      "path": "VisocyteCore/VTKExtensions/Rendering",
+      "path": "ParaViewCore/VTKExtensions/Rendering",
       "include": [
         { "path": "module.cmake" },
         { "path": "vtkIceTCompositeZPassShader_fs.glsl" },
@@ -171,9 +171,9 @@
         { "class": "vtkZlibImageCompressor" }
       ],
       "replace": [
-        { "path":"VisocyteCore/VTKExtensions/Rendering/CMakeLists.txt" },
-        { "path":"VisocyteCore/VTKExtensions/Rendering/module.cmake" },
-        { "path": "VisocyteCore/VTKExtensions/Rendering/Rendering-Base-glsl.catalyst.cmake" }
+        { "path":"ParaViewCore/VTKExtensions/Rendering/CMakeLists.txt" },
+        { "path":"ParaViewCore/VTKExtensions/Rendering/module.cmake" },
+        { "path": "ParaViewCore/VTKExtensions/Rendering/Rendering-Base-glsl.catalyst.cmake" }
       ],
       "cswrap": true,
       "pythonwrap": true
@@ -539,7 +539,7 @@
       "pythonwrap": true
     },
     { "name": "vtkPVClientServerCoreRendering",
-      "path": "VisocyteCore/ClientServerCore/Rendering",
+      "path": "ParaViewCore/ClientServerCore/Rendering",
       "include": [
         { "class": "vtk3DWidgetRepresentation" },
         { "class": "vtkCacheSizeKeeper" },
@@ -587,8 +587,8 @@
         { "class": "vtkSelectionRepresentation" }
       ],
       "replace": [
-        { "path": "VisocyteCore/ClientServerCore/Rendering/module.cmake" },
-        { "path": "VisocyteCore/ClientServerCore/Rendering/CMakeLists.txt" }
+        { "path": "ParaViewCore/ClientServerCore/Rendering/module.cmake" },
+        { "path": "ParaViewCore/ClientServerCore/Rendering/CMakeLists.txt" }
       ],
       "exclude": [
         { "path": "Testing" }
@@ -657,7 +657,7 @@
       "pythonwrap": true
     },
     { "name": "vtkPVServerImplementationRendering",
-      "path": "VisocyteCore/ServerImplementation/Rendering",
+      "path": "ParaViewCore/ServerImplementation/Rendering",
       "include": [
         { "path": "module.cmake" },
         { "class": "vtkSIImageTextureProxy" },
@@ -665,7 +665,7 @@
         { "class": "vtkSIUnstructuredGridVolumeRepresentationProxy" }
       ],
       "replace": [
-        { "path": "VisocyteCore/ServerImplementation/Rendering/CMakeLists.txt" }
+        { "path": "ParaViewCore/ServerImplementation/Rendering/CMakeLists.txt" }
       ],
       "exclude": [
         { "path": "Testing" }
@@ -674,7 +674,7 @@
       "pythonwrap": true
     },
     { "name": "vtkPVServerManagerRendering",
-      "path": "VisocyteCore/ServerManager/Rendering",
+      "path": "ParaViewCore/ServerManager/Rendering",
       "include": [
         { "path": "module.cmake" },
         { "path": "ColorMaps.json" },
@@ -697,7 +697,7 @@
         { "class": "vtkSMMaterialDomain" },
         { "class": "vtkSMMaterialLibraryProxy" },
         { "class": "vtkSMNewWidgetRepresentationProxy" },
-        { "class": "vtkSMVisocytePipelineControllerWithRendering" },
+        { "class": "vtkSMParaViewPipelineControllerWithRendering" },
         { "class": "vtkSMPlotMatrixViewProxy" },
         { "class": "vtkSMPVRepresentationProxy" },
         { "class": "vtkSMRenderViewProxy" },
@@ -720,7 +720,7 @@
         { "class": "vtkSMWidgetRepresentationProxy" }
       ],
       "replace": [
-        { "path": "VisocyteCore/ServerManager/Rendering/CMakeLists.txt" }
+        { "path": "ParaViewCore/ServerManager/Rendering/CMakeLists.txt" }
       ],
       "exclude": [
         { "path": "Testing" }
@@ -919,7 +919,7 @@
       "pythonwrap": true
     },
     { "name": "vtkPVVTKExtensionsDefault",
-      "path": "VisocyteCore/VTKExtensions/Default",
+      "path": "ParaViewCore/VTKExtensions/Default",
       "include": [
         { "class": "vtkAppendRectilinearGrid" },
         { "class": "vtkGridAxes2DActor" },
@@ -966,7 +966,7 @@
     }
   ],
   "proxies":[
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/filters.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/filters.xml",
       "proxies":[
         "DataSetSurfaceFilter",
         "DecimatePro",
@@ -977,18 +977,18 @@
         "WarpVector"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/rendering.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/rendering.xml",
       "proxies":[
         "Camera",
         "TextProperty"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/rendering.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/rendering.xml",
       "proxies":[
         "ProjectedTetrahedraMapper"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/views_and_representations.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/views_and_representations.xml",
       "proxies":[
         "AMROutlineRepresentation",
         "AMRRepresentation",
@@ -1013,7 +1013,7 @@
         "ViewBase"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/utilities.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/utilities.xml",
       "proxies":[
         "BlackBackground",
         "DefaultBackground",

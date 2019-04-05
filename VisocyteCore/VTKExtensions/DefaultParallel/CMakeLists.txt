@@ -1,5 +1,5 @@
 set(classes
   vtkInSituPParticlePathFilter)
 
-vtk_module_add_module(Visocyte::VTKExtensionsDefaultParallel
+vtk_module_add_module(ParaView::VTKExtensionsDefaultParallel
   CLASSES ${classes})

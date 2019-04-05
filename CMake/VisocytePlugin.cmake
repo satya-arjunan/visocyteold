@@ -1,7 +1,7 @@
-set(_VisocytePlugin_cmake_dir "${CMAKE_CURRENT_LIST_DIR}")
+set(_ParaViewPlugin_cmake_dir "${CMAKE_CURRENT_LIST_DIR}")
 
 #[==[.md
-# Visocyte Plugin CMake API
+# ParaView Plugin CMake API
 
 # TODO
 
@@ -66,7 +66,7 @@ macro (_visocyte_plugin_parse_args name_output)
 
   if (NOT _name_NAME)
     message(FATAL_ERROR
-      "A Visocyte plugin requires a name (from ${_visocyte_scan_plugin_file}).")
+      "A ParaView plugin requires a name (from ${_visocyte_scan_plugin_file}).")
   endif ()
   set("${name_output}" "${_name_NAME}")
 
@@ -303,7 +303,7 @@ function (visocyte_plugin_build)
       PROPERTY  "_visocyte_plugin_${_visocyte_build_plugin}_file")
     if (NOT _visocyte_build_plugin_file)
       message(FATAL_ERROR
-        "The requested ${_visocyte_build_plugin} plugin is not a Visocyte plugin.")
+        "The requested ${_visocyte_build_plugin} plugin is not a ParaView plugin.")
     endif ()
 
     # TODO: Support external plugins?
@@ -335,7 +335,7 @@ void ${_visocyte_build_TARGET}_initialize()
     else ()
       target_link_libraries("${_visocyte_build_TARGET}"
         INTERFACE
-          Visocyte::ClientServerCoreCore
+          ParaView::ClientServerCoreCore
           ${_visocyte_build_PLUGINS})
 
       set(_visocyte_build_declarations)
@@ -668,7 +668,7 @@ function (visocyte_add_plugin name)
       "${_visocyte_add_plugin_qch_output}")
     add_custom_command(
       OUTPUT "${_visocyte_add_plugin_qch_output}"
-      COMMAND Visocyte::ProcessXML
+      COMMAND ParaView::ProcessXML
               -base64
               "${_visocyte_add_plugin_qch_output}"
               \"\"
@@ -677,7 +677,7 @@ function (visocyte_add_plugin name)
               "${_visocyte_build_plugin_qch_path}"
       DEPENDS "${_visocyte_build_plugin_qch_path}"
               "${_visocyte_build_plugin}_qch"
-              Visocyte::ProcessXML
+              ParaView::ProcessXML
       COMMENT "Generating header for ${_visocyte_build_plugin} documentation")
     set_property(SOURCE "${_visocyte_add_plugin_qch_output}"
       PROPERTY
@@ -721,7 +721,7 @@ function (visocyte_add_plugin name)
         "#include \"${_visocyte_add_plugin_ui_interface}.h\"\n")
     endforeach ()
     list(APPEND _visocyte_add_plugin_required_libraries
-      Visocyte::pqComponents)
+      ParaView::pqComponents)
   endif ()
 
   set(_visocyte_add_plugin_with_resources 0)
@@ -758,7 +758,7 @@ function (visocyte_add_plugin name)
       Qt5::Core)
     if (_visocyte_add_plugin_with_ui)
       list(APPEND _visocyte_add_plugin_required_libraries
-        Visocyte::pqCore)
+        ParaView::pqCore)
     endif ()
 
     # CMake 3.13 started using Qt5's version variables to detect what version
@@ -815,7 +815,7 @@ function (visocyte_add_plugin name)
         "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_add_plugin_python_header_name}")
       add_custom_command(
         OUTPUT  "${_visocyte_add_plugin_python_header}"
-        COMMAND Visocyte::ProcessXML
+        COMMAND ParaView::ProcessXML
                 "${_visocyte_add_plugin_python_header}"
                 "module_${_visocyte_add_plugin_python_module_mangled}_"
                 "_string"
@@ -890,7 +890,7 @@ function (visocyte_add_plugin name)
   endif ()
   target_link_libraries("${_visocyte_build_plugin}"
     PRIVATE
-      Visocyte::ClientServerCoreCore
+      ParaView::ClientServerCoreCore
       ${_visocyte_add_plugin_required_libraries})
   target_include_directories("${_visocyte_build_plugin}"
     PRIVATE
@@ -912,7 +912,7 @@ endfunction ()
 #[==[.md
 ## Plugin interfaces
 
-Visocyte plugins may satisfy a number of interfaces. These functions all take a
+ParaView plugins may satisfy a number of interfaces. These functions all take a
 `INTERFACES` argument which takes the name of a variable to set with the name
 of the interface generated. This variable's should be passed to
 `visocyte_add_plugin`'s `UI_INTERFACES` argument.
@@ -987,11 +987,11 @@ function (visocyte_plugin_add_property_widget)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqPropertyWidgetInterface.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqPropertyWidgetInterface.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_property_widget_CLASS_NAME}PWIImplementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqPropertyWidgetInterface.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqPropertyWidgetInterface.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_property_widget_CLASS_NAME}PWIImplementation.cxx"
     @ONLY)
 
@@ -1066,11 +1066,11 @@ function (visocyte_plugin_add_dock_window)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqDockWindowImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqDockWindowImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_dock_window_CLASS_NAME}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqDockWindowImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqDockWindowImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_dock_window_CLASS_NAME}Implementation.cxx"
     @ONLY)
 
@@ -1136,11 +1136,11 @@ function (visocyte_plugin_add_action_group)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqActionGroupImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqActionGroupImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_action_group_CLASS_NAME}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqActionGroupImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqActionGroupImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_action_group_CLASS_NAME}Implementation.cxx"
     @ONLY)
 
@@ -1199,11 +1199,11 @@ function (visocyte_plugin_add_toolbar)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqToolBarImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqToolBarImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_toolbar_CLASS_NAME}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqToolBarImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqToolBarImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_toolbar_CLASS_NAME}Implementation.cxx"
     @ONLY)
 
@@ -1262,11 +1262,11 @@ function (visocyte_plugin_add_view_frame_action_group)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqViewFrameActionGroupImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqViewFrameActionGroupImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_view_frame_action_group_CLASS_NAME}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqViewFrameActionGroupImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqViewFrameActionGroupImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_view_frame_action_group_CLASS_NAME}Implementation.cxx"
     @ONLY)
 
@@ -1339,11 +1339,11 @@ function (visocyte_plugin_add_auto_start)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqAutoStartImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqAutoStartImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_auto_start_CLASS_NAME}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqAutoStartImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqAutoStartImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_auto_start_CLASS_NAME}Implementation.cxx"
     @ONLY)
 
@@ -1409,11 +1409,11 @@ function (visocyte_plugin_add_tree_layout_strategy)
   endif ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqTreeLayoutStrategyImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqTreeLayoutStrategyImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_tree_layout_strategy_STRATEGY_TYPE}Implementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqTreeLayoutStrategyImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqTreeLayoutStrategyImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_tree_layout_strategy_STRATEGY_TYPE}Implementation.cxx"
     @ONLY)
 
@@ -1573,11 +1573,11 @@ function (visocyte_plugin_add_proxy)
   endforeach ()
 
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqServerManagerModelImplementation.h.in"
+    "${_ParaViewPlugin_cmake_dir}/pqServerManagerModelImplementation.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_proxy_NAME}ServerManagerModelImplementation.h"
     @ONLY)
   configure_file(
-    "${_VisocytePlugin_cmake_dir}/pqServerManagerModelImplementation.cxx.in"
+    "${_ParaViewPlugin_cmake_dir}/pqServerManagerModelImplementation.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_proxy_NAME}ServerManagerModelImplementation.cxx"
     @ONLY)
 

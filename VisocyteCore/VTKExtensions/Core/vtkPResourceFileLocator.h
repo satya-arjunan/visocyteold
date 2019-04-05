@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPResourceFileLocator.h
 
   Copyright (c) Kitware, Inc.

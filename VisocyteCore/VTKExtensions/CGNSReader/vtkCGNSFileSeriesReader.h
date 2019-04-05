@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCGNSFileSeriesReader.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVGeneralSettings.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkPVGeneralSettings
  * @brief   object for general options.
  *
- * vtkPVGeneralSettings keeps track of general options in a Visocyte
+ * vtkPVGeneralSettings keeps track of general options in a ParaView
  * application.
  * This is a singleton. All calls to vtkPVGeneralSettings::New() return a
  * pointer to the same global instance (with reference count incremented as
@@ -220,7 +220,7 @@ public:
   //@}
 
   /**
-   * Forwarded for vtkSMVisocytePipelineControllerWithRendering.
+   * Forwarded for vtkSMParaViewPipelineControllerWithRendering.
    */
   void SetInheritRepresentationProperties(bool val);
 

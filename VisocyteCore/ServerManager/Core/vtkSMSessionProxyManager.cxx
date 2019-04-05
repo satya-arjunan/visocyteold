@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMSessionProxyManager.cxx
 
   Copyright (c) Kitware, Inc.
@@ -1254,7 +1254,7 @@ void vtkSMSessionProxyManager::SaveXMLState(const char* filename)
 vtkPVXMLElement* vtkSMSessionProxyManager::SaveXMLState()
 {
   vtkPVXMLElement* root = vtkPVXMLElement::New();
-  root->SetName("GenericVisocyteApplication");
+  root->SetName("GenericParaViewApplication");
   this->AddInternalState(root);
 
   vtkSMProxyManager::LoadStateInformation info;

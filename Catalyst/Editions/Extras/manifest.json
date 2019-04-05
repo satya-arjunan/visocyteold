@@ -45,7 +45,7 @@
   },
   "modules":[
     { "name":"vtkPVClientServerCoreCore",
-      "path":"VisocyteCore/ClientServerCore/Core",
+      "path":"ParaViewCore/ClientServerCore/Core",
       "include":[
         { "class":"vtkPVExtractSelection" },
         { "class":"vtkPythonSelector" }
@@ -153,19 +153,19 @@
       "pythonwrap":true
     },
     { "name":"vtkPVVTKExtensionsDefault",
-      "path":"VisocyteCore/VTKExtensions/Default",
+      "path":"ParaViewCore/VTKExtensions/Default",
       "include":[
         { "class":"vtkPVGlyphFilter" },
         { "class":"vtkPVGlyphFilterLegacy" }
       ],
       "replace":[
-        { "path":"VisocyteCore/VTKExtensions/Default/module.cmake" }
+        { "path":"ParaViewCore/VTKExtensions/Default/module.cmake" }
       ],
       "cswrap":true,
       "pythonwrap":true
     },
     { "name":"vtkPVVTKExtensionsCore",
-      "path":"VisocyteCore/VTKExtensions/Core",
+      "path":"ParaViewCore/VTKExtensions/Core",
       "include":[
         { "class":"vtkAttributeDataReductionFilter" },
         { "class":"vtkExtractHistogram" },
@@ -276,7 +276,7 @@
     }
   ],
   "proxies":[
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/filters.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/filters.xml",
       "proxies":[
         "AggregateDataSet",
         "AppendReductionFilter",
@@ -295,7 +295,7 @@
         "WarpVector"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/utilities.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/utilities.xml",
       "proxies":[
         "Transform2",
         "XMLPImageDataWriter",
@@ -307,7 +307,7 @@
         "XMLHierarchicalBoxDataWriter"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/sources.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/sources.xml",
       "proxies":[
         "ArrowSource",
         "ConeSource",
@@ -318,7 +318,7 @@
         "SphereSource"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/writers.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/writers.xml",
       "proxies":[
         "XMLDataObjectWriter",
         "XMLMultiBlockDataWriter",
@@ -329,7 +329,7 @@
         "XMLPUnstructuredGridWriter"
       ]
     },
-    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/internal_writers.xml",
+    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/internal_writers.xml",
       "proxies":[
         "FileSeriesWriter",
         "ParallelFileSeriesWriter",

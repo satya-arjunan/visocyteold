@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVParallelCoordinatesRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

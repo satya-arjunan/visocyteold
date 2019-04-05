@@ -4,10 +4,10 @@
     ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     This is a modified version of apidoc.py provided by Sphinx. We have modified
-    it to generate separate rst files for each of modules in Visocyte e.g.
+    it to generate separate rst files for each of modules in ParaView e.g.
     visocyte.simple, visocyte.servermanager etc. The default behavior is that
     all these modules are documented on the same page corresponding to the
-    package which is very hard to read, especially in case of Visocyte.
+    package which is very hard to read, especially in case of ParaView.
 
     Following is the original header form the file.
     ~~~~~~~~~~~~~
@@ -30,7 +30,7 @@ import sys
 import optparse
 from os import path
 
-# Custom module filter for Visocyte
+# Custom module filter for ParaView
 def is_exclude_module(module):
     excludeList = ['visocyte/vtk/vtk','visocyte/vtk/tk','visocyte/vtk/gtk','visocyte/vtk/test', 'visocyte/vtk/qt', 'visocyte/vtk/wx', 'visocyte/vtk/util', 'visocyte/_arg', 'visocyte/compile_all', 'visocyte/vtkConstants']
     m = str(module)

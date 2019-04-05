@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSIImageTextureProxy.h
 
   Copyright (c) Kitware, Inc.

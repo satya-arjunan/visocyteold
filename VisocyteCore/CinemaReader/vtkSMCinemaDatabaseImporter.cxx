@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMCinemaDatabaseImporter.cxx
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVCinemaDatabaseInformation.h"
 #include "vtkSMAnimationSceneProxy.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSelfGeneratingSourceProxy.h"
 #include "vtkSMSession.h"
@@ -82,7 +82,7 @@ bool vtkSMCinemaDatabaseImporter::ImportCinema(
   vtkNew<vtkPVCinemaDatabaseInformation> cinemaInfo;
   cdbase->GatherInformation(cinemaInfo.Get());
 
-  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
   bool update_scene = false;
 

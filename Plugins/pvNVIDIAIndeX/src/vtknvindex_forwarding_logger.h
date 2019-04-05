@@ -42,7 +42,7 @@ namespace logger
 {
 
 // The class vtknvindex_forwarding_logger forwards warning/errors messages gathered
-// by the NVIDIA IndeX Visocyte plugin to Visocyte's console.
+// by the NVIDIA IndeX ParaView plugin to ParaView's console.
 
 class vtknvindex_forwarding_logger
 {

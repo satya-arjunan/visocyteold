@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqAnimationViewWidget.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -84,7 +84,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <cassert>
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
 #include "pqPythonSyntaxHighlighter.h"
 #endif
 //-----------------------------------------------------------------------------
@@ -311,10 +311,10 @@ pqAnimationViewWidget::pqAnimationViewWidget(QWidget* _parent)
   this->Internal->LockStartTime = new QToolButton(this) << pqSetName("LockStartTime");
   this->Internal->LockStartTime->setIcon(QIcon(":pqWidgets/Icons/pqLock24.png"));
   this->Internal->LockStartTime->setToolTip(
-    "<html>Lock the start time to keep Visocyte from changing it "
+    "<html>Lock the start time to keep ParaView from changing it "
     "as available data times change</html>");
   this->Internal->LockStartTime->setStatusTip(
-    "<html>Lock the start time to keep Visocyte from changing it "
+    "<html>Lock the start time to keep ParaView from changing it "
     "as available data times change</html>");
   this->Internal->LockStartTime->setCheckable(true);
   hboxlayout->addWidget(this->Internal->LockStartTime);
@@ -327,10 +327,10 @@ pqAnimationViewWidget::pqAnimationViewWidget(QWidget* _parent)
   this->Internal->LockEndTime = new QToolButton(this) << pqSetName("LockEndTime");
   this->Internal->LockEndTime->setIcon(QIcon(":pqWidgets/Icons/pqLock24.png"));
   this->Internal->LockEndTime->setToolTip(
-    "<html>Lock the end time to keep Visocyte from changing it"
+    "<html>Lock the end time to keep ParaView from changing it"
     " as available data times change</html>");
   this->Internal->LockEndTime->setStatusTip(
-    "<html>Lock the end time to keep Visocyte from changing it"
+    "<html>Lock the end time to keep ParaView from changing it"
     " as available data times change</html>");
   this->Internal->LockEndTime->setCheckable(true);
   hboxlayout->addWidget(this->Internal->LockEndTime);
@@ -356,7 +356,7 @@ pqAnimationViewWidget::pqAnimationViewWidget(QWidget* _parent)
   QWidget* w = this->Internal->AnimationWidget->createDeleteWidget();
 
   this->Internal->CreateSource = new pqAnimatableProxyComboBox(w) << pqSetName("ProxyCombo");
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   this->Internal->CreateSource->addProxy(0, "Python", NULL);
 #endif
   this->Internal->CreateProperty = new pqAnimatablePropertiesComboBox(w)
@@ -674,7 +674,7 @@ void pqAnimationViewWidget::trackSelected(pqAnimationTrack* track)
     QDialog dialog(this);
     Ui::PythonAnimationCue ui;
     ui.setupUi(&dialog);
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
     new pqPythonSyntaxHighlighter(ui.script, ui.script);
 #endif
     ui.script->setPlainText(vtkSMPropertyHelper(cue->getProxy(), "Script").GetAsString());
@@ -939,7 +939,7 @@ void pqAnimationViewWidget::createTrack()
 // we only support that when python is enabled.
 // we allow creating as many python tracks as needed, hence we don't check
 // if there exists a track already (which is the case with others).
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
     this->createPythonTrack();
 #endif
     return;
@@ -1029,7 +1029,7 @@ void pqAnimationViewWidget::createTrack()
 //-----------------------------------------------------------------------------
 void pqAnimationViewWidget::createPythonTrack()
 {
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   BEGIN_UNDO_SET("Add Animation Track");
 
   pqAnimationCue* cue = this->Internal->Scene->createCue("PythonAnimationCue");
@@ -1037,7 +1037,7 @@ void pqAnimationViewWidget::createPythonTrack()
   (void)cue;
   END_UNDO_SET();
 #else
-  qCritical() << "Python support not enabled. Please recompile Visocyte "
+  qCritical() << "Python support not enabled. Please recompile ParaView "
                  "with Python enabled.";
 #endif
 }

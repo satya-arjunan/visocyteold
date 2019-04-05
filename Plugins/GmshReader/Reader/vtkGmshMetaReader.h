@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkGmshMetaReader.h
 
   Copyright (c) Kitware, Inc.
@@ -19,9 +19,9 @@
  * Reader for visualization of high-order polynomial solutions under
  * the Gmsh format.
  * @par Thanks:
- * VisocyteGmshReaderPlugin - Copyright (C) 2015 Cenaero
+ * ParaViewGmshReaderPlugin - Copyright (C) 2015 Cenaero
  * See the Copyright.txt and License.txt files provided
- * with VisocyteGmshReaderPlugin for license information.
+ * with ParaViewGmshReaderPlugin for license information.
  *
 */
 
@@ -70,7 +70,7 @@ public:
   //@{
   /** The following methods allow selective reading of solutions fields. By
     * default, ALL point data fields are read,
-    * but this can be modified (e.g. from the Visocyte GUI).
+    * but this can be modified (e.g. from the ParaView GUI).
     */
   int GetNumberOfPointArrays();
   const char* GetPointArrayName(int index);

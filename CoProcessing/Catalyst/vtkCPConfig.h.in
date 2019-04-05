@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPPythonScriptPipelineConfig.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
 
 // These variables are used to locate the python module files since we cannot
 // reply on the executable path to locate python module files.
-#define VISOCYTE_BINARY_DIR "@Visocyte_BINARY_DIR@"
+#define VISOCYTE_BINARY_DIR "@ParaView_BINARY_DIR@"
 #define VISOCYTE_INSTALL_DIR "@CMAKE_INSTALL_PREFIX@"
 
 #endif

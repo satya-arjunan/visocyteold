@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMStringListDomain.h
 
   Copyright (c) Kitware, Inc.

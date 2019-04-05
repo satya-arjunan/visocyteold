@@ -1,4 +1,4 @@
-r"""Module for generating a Python state for Visocyte.
+r"""Module for generating a Python state for ParaView.
 This module uses visocyte.smtrace to generate a trace for a selected set of
 proxies my mimicking the creating of various pipeline components in sequence.
 Typical usage of this module is as follows::
@@ -137,7 +137,7 @@ def get_state(propertiesToTraceOnCreate=1, # sm.vtkSMTrace.RECORD_MODIFIED_PROPE
     trace_config.SetFullyTraceSupplementalProxies(True)
 
     trace = smtrace.TraceOutput()
-    trace.append("# state file generated using %s" % simple.GetVisocyteSourceVersion())
+    trace.append("# state file generated using %s" % simple.GetParaViewSourceVersion())
 
     #--------------------------------------------------------------------------
     # First, we trace the views and layouts, if any.

@@ -6,7 +6,7 @@
   ],
   "modules": [
     { "name": "vtkPVClientServerCoreRendering",
-      "path": "VisocyteCore/ClientServerCore/Rendering",
+      "path": "ParaViewCore/ClientServerCore/Rendering",
       "include": [
         { "class": "vtkPythonRepresentation" },
         { "class": "vtkPythonView" }
@@ -18,7 +18,7 @@
       "pythonwrap": true
     },
     { "name": "vtkPVServerManagerRendering",
-      "path": "VisocyteCore/ServerManager/Rendering",
+      "path": "ParaViewCore/ServerManager/Rendering",
       "include": [
         { "class": "vtkSMPythonViewProxy" }
       ],

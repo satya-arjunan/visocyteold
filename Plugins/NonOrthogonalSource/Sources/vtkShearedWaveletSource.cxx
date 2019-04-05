@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkShearedWaveletSource.cxx
 
   Copyright (c) Kitware, Inc.

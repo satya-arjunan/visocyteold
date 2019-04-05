@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMProxyLink.h
 
   Copyright (c) Kitware, Inc.

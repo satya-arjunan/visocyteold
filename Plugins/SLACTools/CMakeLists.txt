@@ -44,9 +44,9 @@ visocyte_add_plugin(SLACTools
 if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(SLACTools
     PRIVATE
-      Visocyte::ClientServerCoreCore
-      Visocyte::ServerManagerCore
-      Visocyte::ServerManagerRendering
+      ParaView::ClientServerCoreCore
+      ParaView::ServerManagerCore
+      ParaView::ServerManagerRendering
       VTK::CommonCore
       VTK::CommonDataModel
       VTK::CommonExecutionModel)

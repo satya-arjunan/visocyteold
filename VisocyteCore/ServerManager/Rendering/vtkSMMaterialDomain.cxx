@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMMaterialDomain.cxx
 
   Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVMaterialLibrary.h"
 #include "vtkSMMaterialLibraryProxy.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMProperty.h"
 #include "vtkStdString.h"
 #include "vtkWeakPointer.h"
@@ -57,7 +57,7 @@ public:
   void StartWatching()
   {
 #if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
-    vtkNew<vtkSMVisocytePipelineController> controller;
+    vtkNew<vtkSMParaViewPipelineController> controller;
     vtkSMMaterialLibraryProxy* mlp = vtkSMMaterialLibraryProxy::SafeDownCast(
       controller->FindMaterialLibrary(this->Owner->GetSession()));
     if (mlp)
@@ -144,7 +144,7 @@ void vtkSMMaterialDomain::Update(vtkSMProperty* vtkNotUsed(prop))
 {
 #if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
   // find the material library we reflect contents of
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   vtkSMMaterialLibraryProxy* mlp =
     vtkSMMaterialLibraryProxy::SafeDownCast(controller->FindMaterialLibrary(this->GetSession()));
   if (!mlp)

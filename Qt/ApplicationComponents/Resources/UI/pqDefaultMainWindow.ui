@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visocyte - The Beast  UNLEASHED !!!</string>
+   <string>ParaView - The Beast  UNLEASHED !!!</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">

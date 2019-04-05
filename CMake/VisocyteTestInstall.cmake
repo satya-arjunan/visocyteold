@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -30,18 +30,18 @@
 #==========================================================================
 
 #
-# This script tests the Visocyte install tree by building the examples
+# This script tests the ParaView install tree by building the examples
 #
 # The script expects the following input variables:
-# VISOCYTE_BINARY_DIR : Build path for Visocyte (To run 'make install' here)
-# VISOCYTE_INSTALL_DIR : Install path for Visocyte Examples are built against
-#                        (This should be CMAKE_INSTALL_PREFIX set for Visocyte)
-# VISOCYTE_SOURCE_DIR : Visocyte source dir (For source location of Examples)
+# VISOCYTE_BINARY_DIR : Build path for ParaView (To run 'make install' here)
+# VISOCYTE_INSTALL_DIR : Install path for ParaView Examples are built against
+#                        (This should be CMAKE_INSTALL_PREFIX set for ParaView)
+# VISOCYTE_SOURCE_DIR : ParaView source dir (For source location of Examples)
 # VISOCYTE_TEST_DIR : Temporary directory for location of Examples build tree
-# VISOCYTE_VERSION : Visocyte version string used when creating the installtree
+# VISOCYTE_VERSION : ParaView version string used when creating the installtree
 
-message (STATUS "Building Examples against Visocyte install tree")
-set (Visocyte_DIR
+message (STATUS "Building Examples against ParaView install tree")
+set (ParaView_DIR
   $ENV{DESTDIR}${VISOCYTE_INSTALL_DIR}/lib/cmake/visocyte-${VISOCYTE_VERSION})
 
 # Build target "INSTALL" for visocyte
@@ -59,7 +59,7 @@ execute_process (COMMAND ${CMAKE_COMMAND}
   WORKING_DIRECTORY ${VISOCYTE_BINARY_DIR}
   RESULT_VARIABLE irv)
 if (NOT irv EQUAL 0)
-  message(FATAL_ERROR "Could not build target 'install' for Visocyte")
+  message(FATAL_ERROR "Could not build target 'install' for ParaView")
 endif ()
 
 set (INSTALL_TEST_BUILD_DIR ${VISOCYTE_TEST_DIR}/Examples-bld)
@@ -69,7 +69,7 @@ if (NOT EXISTS ${INSTALL_TEST_BUILD_DIR})
 endif ()
 execute_process (
   COMMAND ${CMAKE_COMMAND}
-  -DVisocyte_DIR:PATH=${Visocyte_DIR}
+  -DParaView_DIR:PATH=${ParaView_DIR}
   ${VISOCYTE_SOURCE_DIR}/Examples
   WORKING_DIRECTORY ${INSTALL_TEST_BUILD_DIR}
   RESULT_VARIABLE crv)

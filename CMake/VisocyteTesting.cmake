@@ -1,6 +1,6 @@
 function (visocyte_add_test_python)
   set(_vtk_testing_python_exe
-    "$<TARGET_FILE:Visocyte::pvpython>"
+    "$<TARGET_FILE:ParaView::pvpython>"
     -dr
     ${visocyte_python_args})
   vtk_add_test_python(${ARGN})
@@ -8,7 +8,7 @@ endfunction ()
 
 function (visocyte_add_test_python_mpi)
   set(_vtk_testing_python_exe
-    "$<TARGET_FILE:Visocyte::pvpython>"
+    "$<TARGET_FILE:ParaView::pvpython>"
     -dr
     ${visocyte_python_args})
   vtk_add_test_python_mpi(${ARGN})
@@ -16,7 +16,7 @@ endfunction ()
 
 function (visocyte_add_test_pvbatch)
   set(_vtk_testing_python_exe
-    "$<TARGET_FILE:Visocyte::pvbatch>"
+    "$<TARGET_FILE:ParaView::pvbatch>"
     -dr
     ${visocyte_pvbatch_args})
   set(vtk_test_prefix "Batch-${vtk_test_prefix}")
@@ -25,7 +25,7 @@ endfunction ()
 
 function (visocyte_add_test_pvbatch_mpi)
   set(_vtk_testing_python_exe
-    "$<TARGET_FILE:Visocyte::pvbatch>"
+    "$<TARGET_FILE:ParaView::pvbatch>"
     -dr
     ${visocyte_pvbatch_args})
   set(vtk_test_prefix "Batch-${vtk_test_prefix}")
@@ -36,10 +36,10 @@ function(visocyte_add_test_driven)
   if (NOT (TARGET pvserver AND TARGET pvpython))
     return()
   endif ()
-  set(_vtk_testing_python_exe "$<TARGET_FILE:Visocyte::smTestDriver>")
+  set(_vtk_testing_python_exe "$<TARGET_FILE:ParaView::smTestDriver>")
   list(APPEND VTK_PYTHON_ARGS
-    --server $<TARGET_FILE:Visocyte::pvserver>
-    --client $<TARGET_FILE:Visocyte::pvpython> -dr)
+    --server $<TARGET_FILE:ParaView::pvserver>
+    --client $<TARGET_FILE:ParaView::pvpython> -dr)
   vtk_add_test_python(${ARGN})
 endfunction ()
 
@@ -73,7 +73,7 @@ function (_visocyte_add_tests function)
 
   if (NOT DEFINED _visocyte_add_tests_CLIENT)
     set(_visocyte_add_tests_CLIENT
-      "$<TARGET_FILE:Visocyte::visocyte>")
+      "$<TARGET_FILE:ParaView::visocyte>")
   endif ()
 
   if (NOT DEFINED _visocyte_add_tests_PREFIX)
@@ -163,12 +163,12 @@ function (_visocyte_add_tests function)
 
     ExternalData_add_test("${_visocyte_add_tests_TEST_DATA_TARGET}"
       NAME    "${_visocyte_add_tests_PREFIX}.${_visocyte_add_tests_name}"
-      COMMAND Visocyte::smTestDriver
+      COMMAND ParaView::smTestDriver
               --enable-bt
               ${_visocyte_add_tests_script_args})
     set_property(TEST "${_visocyte_add_tests_PREFIX}.${_visocyte_add_tests_name}"
       PROPERTY
-        LABELS Visocyte)
+        LABELS ParaView)
     set_property(TEST "${_visocyte_add_tests_PREFIX}.${_visocyte_add_tests_name}"
       PROPERTY
         ENVIRONMENT "${_visocyte_add_tests_ENVIRONMENT}")
@@ -213,7 +213,7 @@ function (visocyte_add_client_server_tests)
     PREFIX "pvcs"
     _DISABLE_SUFFIX "_DISABLE_CS"
     _COMMAND_PATTERN
-      --server "$<TARGET_FILE:Visocyte::pvserver>"
+      --server "$<TARGET_FILE:ParaView::pvserver>"
         --enable-bt
         __visocyte_args__
       --client __visocyte_client__
@@ -231,10 +231,10 @@ function (visocyte_add_client_server_render_tests)
     PREFIX "pvcrs"
     _DISABLE_SUFFIX "_DISABLE_CRS"
     _COMMAND_PATTERN
-      --data-server "$<TARGET_FILE:Visocyte::pvdataserver>"
+      --data-server "$<TARGET_FILE:ParaView::pvdataserver>"
         --enable-bt
         __visocyte_args__
-      --render-server "$<TARGET_FILE:Visocyte::pvrenderserver>"
+      --render-server "$<TARGET_FILE:ParaView::pvrenderserver>"
         --enable-bt
         __visocyte_args__
       --client __visocyte_client__
@@ -253,7 +253,7 @@ function (visocyte_add_multi_client_tests)
     _ENABLE_SUFFIX "_ENABLE_MULTI_CLIENT"
     _COMMAND_PATTERN
       --test-multi-clients
-      --server "$<TARGET_FILE:Visocyte::pvserver>"
+      --server "$<TARGET_FILE:ParaView::pvserver>"
         --enable-bt
         __visocyte_args__
       --client __visocyte_client__
@@ -280,7 +280,7 @@ function (visocyte_add_multi_server_tests count)
     SUFFIX "-${count}"
     _COMMAND_PATTERN
       --test-multi-servers "${count}"
-      --server "$<TARGET_FILE:Visocyte::pvserver>"
+      --server "$<TARGET_FILE:ParaView::pvserver>"
         --enable-bt
       --client __visocyte_client__
         --enable-bt
@@ -307,7 +307,7 @@ function (visocyte_add_tile_display_tests width height)
       PV_ICET_WINDOW_BORDERS=1
     _COMMAND_PATTERN
       --test-tiled "${width}" "${height}"
-      --server "$<TARGET_FILE:Visocyte::pvserver>"
+      --server "$<TARGET_FILE:ParaView::pvserver>"
         --enable-bt
       --client __visocyte_client__
         --enable-bt

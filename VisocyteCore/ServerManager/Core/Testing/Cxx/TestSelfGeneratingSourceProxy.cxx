@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    TestSelfGeneratingSourceProxy.cxx
 
 Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkInitializationHelper.h"
 #include "vtkNew.h"
 #include "vtkProcessModule.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyDefinitionManager.h"
 #include "vtkSMRepresentationProxy.h"
@@ -54,7 +54,7 @@ int TestSelfGeneratingSourceProxy(int argc, char* argv[])
   (void)argc;
   vtkInitializationHelper::Initialize(argv[0], vtkProcessModule::PROCESS_CLIENT);
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
 
   // Create a new session.
   vtkSMSession* session = vtkSMSession::New();

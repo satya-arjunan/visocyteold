@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqFileDialogModel.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -44,7 +44,7 @@ class pqServer;
 class QModelIndex;
 
 /**
-pqFileDialogModel allows remote browsing of a connected Visocyte server's
+pqFileDialogModel allows remote browsing of a connected ParaView server's
 filesystem, as well as browsing of the local file system.
 
 To use, pass a new instance of pqServerFileDialogModel to pqFileDialog object.

@@ -17,7 +17,7 @@
 #include "vtkNew.h"
 #include "vtkObjectFactory.h"
 #include "vtkProcessModule.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSessionProxyManager.h"
 #include "vtkSMSourceProxy.h"
@@ -35,7 +35,7 @@ MainWindow::MainWindow()
 
   vtkSMSessionProxyManager* pxm = server->proxyManager();
 
-  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
   // create a graphics window and put it in our main window
   vtkSmartPointer<vtkSMProxy> viewProxy;

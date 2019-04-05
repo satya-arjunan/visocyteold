@@ -1,6 +1,6 @@
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    numeric.py
 #
 #  Copyright (c) Kitware, Inc.

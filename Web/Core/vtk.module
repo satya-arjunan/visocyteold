@@ -1,16 +1,16 @@
 NAME
-  Visocyte::PVWebCore
+  ParaView::PVWebCore
 LIBRARY_NAME
   vtkPVWebCore
 CONDITION
   VISOCYTE_ENABLE_WEB
 DEPENDS
-  Visocyte::ServerManagerDefault
+  ParaView::ServerManagerDefault
   VTK::WebCore
   VTK::WebGLExporter
 TEST_DEPENDS
   VTK::ImagingSources
   VTK::TestingCore
 TEST_LABELS
-  Visocyte
-  VisocyteWeb
+  ParaView
+  ParaViewWeb

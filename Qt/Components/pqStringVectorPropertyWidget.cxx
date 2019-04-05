@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module: pqStringVectorPropertyWidget.cxx
 
    Copyright (c) 2005-2012 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -84,7 +84,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <cassert>
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
 #include "pqPythonSyntaxHighlighter.h"
 #endif
 
@@ -367,7 +367,7 @@ pqStringVectorPropertyWidget::pqStringVectorPropertyWidget(
     vbox->addWidget(w);
     if (python)
     {
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
       vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "supports Python syntax highlighter.");
       new pqPythonSyntaxHighlighter(textEdit, textEdit);
 #else

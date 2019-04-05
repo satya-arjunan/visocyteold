@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMProxyManager.cxx
 
   Copyright (c) Kitware, Inc.
@@ -140,7 +140,7 @@ bool vtkSMProxyManager::IsInitialized()
 }
 
 //----------------------------------------------------------------------------
-const char* vtkSMProxyManager::GetVisocyteSourceVersion()
+const char* vtkSMProxyManager::GetParaViewSourceVersion()
 {
   return VISOCYTE_SOURCE_VERSION;
 }

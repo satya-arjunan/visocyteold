@@ -39,7 +39,7 @@ vtkPVOptions::vtkPVOptions()
 
   // Initialize vtksys::CommandLineArguments
   this->UseRenderingGroup = 0;
-  this->VisocyteDataName = 0;
+  this->ParaViewDataName = 0;
   this->ServersFileName = 0;
   this->TestPlugin = 0;
   this->TestPluginPath = 0;
@@ -97,7 +97,7 @@ vtkPVOptions::~vtkPVOptions()
   this->SetServersFileName(0);
   this->SetLogFileName(0);
   this->SetStereoType(0);
-  this->SetVisocyteDataName(0);
+  this->SetParaViewDataName(0);
   this->SetServerURL(0);
   this->SetTestPlugin(0);
   this->SetTestPluginPath(0);
@@ -175,7 +175,7 @@ void vtkPVOptions::Initialize()
   this->AddBooleanArgument("--multi-servers", 0, &this->MultiServerMode,
     "Allow client to connect to several pvserver", vtkPVOptions::PVCLIENT);
 
-  this->AddArgument("--data", 0, &this->VisocyteDataName,
+  this->AddArgument("--data", 0, &this->ParaViewDataName,
     "Load the specified data. "
     "To specify file series replace the numeral with a '.' eg. "
     "my0.vtk, my1.vtk...myN.vtk becomes my..vtk",
@@ -272,7 +272,7 @@ void vtkPVOptions::Initialize()
     "--enable-bt", 0, &this->EnableStackTrace, "Enable stack trace signal handler.");
 
   this->AddBooleanArgument("--disable-registry", "-dr", &this->DisableRegistry,
-    "Do not use registry when running Visocyte (for testing).");
+    "Do not use registry when running ParaView (for testing).");
 
   this->AddBooleanArgument("--disable-xdisplay-test", 0, &this->DisableXDisplayTests,
     "When specified, all X-display tests and OpenGL version checks are skipped. Use this option if "
@@ -308,7 +308,7 @@ void vtkPVOptions::Initialize()
 #if defined(VISOCYTE_WITH_SUPERBUILD_MESA)
   // We add these here so that "--help" on the process can print these variables
   // out. The options are actually only available when built against a suitable
-  // mesa and Visocyte is told that they exist. They are parsed in the forward
+  // mesa and ParaView is told that they exist. They are parsed in the forward
   // executable infrastructure.
   this->AddBooleanArgument(
     "--native", 0, &this->DummyMesaFlag, "Use the system-provided OpenGL implementation.");
@@ -534,10 +534,10 @@ int vtkPVOptions::WrongArgument(const char* argument)
     return 1;
   }
 
-  if (this->VisocyteDataName == NULL && this->GetProcessType() == PVCLIENT)
+  if (this->ParaViewDataName == NULL && this->GetProcessType() == PVCLIENT)
   {
     // BUG #11199. Assume it's a data file.
-    this->SetVisocyteDataName(argument);
+    this->SetParaViewDataName(argument);
     if (this->GetUnknownArgument() && strcmp(this->GetUnknownArgument(), argument) == 0)
     {
       this->SetUnknownArgument(0);
@@ -560,7 +560,7 @@ void vtkPVOptions::PrintSelf(ostream& os, vtkIndent indent)
   os << indent << "HostName: " << (this->HostName ? this->HostName : "(none)") << endl;
 
   os << indent
-     << "VisocyteDataName: " << (this->VisocyteDataName ? this->VisocyteDataName : "(none)")
+     << "ParaViewDataName: " << (this->ParaViewDataName ? this->ParaViewDataName : "(none)")
      << endl;
 
   // Everything after this line will be showned in Help/About dialog

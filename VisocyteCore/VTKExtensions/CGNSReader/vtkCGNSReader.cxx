@@ -3534,37 +3534,37 @@ void vtkCGNSReader::SetCacheConnectivity(bool enable)
 #if !defined(VTK_LEGACY_REMOVE)
 void vtkCGNSReader::SetLoadBndPatch(int vtkNotUsed(val))
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::SetLoadBndPatch, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::SetLoadBndPatch, "ParaView 5.5");
 }
 
 //------------------------------------------------------------------------------
 void vtkCGNSReader::LoadBndPatchOn()
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::LoadBndPatchOn, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::LoadBndPatchOn, "ParaView 5.5");
 }
 
 //------------------------------------------------------------------------------
 void vtkCGNSReader::LoadBndPatchOff()
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::LoadBndPatchOff, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::LoadBndPatchOff, "ParaView 5.5");
 }
 
 //------------------------------------------------------------------------------
 void vtkCGNSReader::SetLoadMesh(bool vtkNotUsed(val))
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::SetLoadMesh, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::SetLoadMesh, "ParaView 5.5");
 }
 
 //------------------------------------------------------------------------------
 void vtkCGNSReader::LoadMeshOn()
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::LoadMeshOn, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::LoadMeshOn, "ParaView 5.5");
 }
 
 //------------------------------------------------------------------------------
 void vtkCGNSReader::LoadMeshOff()
 {
-  VTK_LEGACY_BODY(vtkCGNSReader::LoadMeshOff, "Visocyte 5.5");
+  VTK_LEGACY_BODY(vtkCGNSReader::LoadMeshOff, "ParaView 5.5");
 }
 
 #endif // !defined(VTK_LEGACY_REMOVE)

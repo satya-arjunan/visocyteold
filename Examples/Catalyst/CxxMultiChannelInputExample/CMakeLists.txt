@@ -4,7 +4,7 @@ if (USE_CATALYST)
     FEAdaptor.h)
   target_link_libraries(CxxMultiChannelInputExampleAdaptor
     PRIVATE
-      Visocyte::PythonCatalyst
+      ParaView::PythonCatalyst
       VTK::CommonDataModel
       VTK::ParallelMPI)
 endif ()

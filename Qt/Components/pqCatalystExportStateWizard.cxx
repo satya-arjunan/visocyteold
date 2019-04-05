@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqCatalystExportStateWizard.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -160,7 +160,7 @@ bool pqCatalystExportStateWizard::getCommandString(QString& command)
     array_selection = this->Internals->wCinemaTrackSelection->getArraySelectionAsString(format);
   }
 
-  QString filters = "Visocyte Python State Files (*.py);;All files (*)";
+  QString filters = "ParaView Python State Files (*.py);;All files (*)";
 
   pqFileDialog file_dialog(NULL, this, tr("Save Server State:"), QString(), filters);
   file_dialog.setObjectName("ExportCoprocessingStateFileDialog");

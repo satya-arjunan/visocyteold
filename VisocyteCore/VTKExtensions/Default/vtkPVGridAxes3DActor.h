@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVGridAxes3DActor.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVGridAxes3DActor
- * @brief   Visocyte extensions for vtkGridAxes3DActor.
+ * @brief   ParaView extensions for vtkGridAxes3DActor.
  *
- * vtkPVGridAxes3DActor adds support for Visocyte-specific use-cases to
+ * vtkPVGridAxes3DActor adds support for ParaView-specific use-cases to
  * vtkGridAxes3DActor.
  * The special use-cases are:
  * \li Showing original data bounds when data has been transformed by

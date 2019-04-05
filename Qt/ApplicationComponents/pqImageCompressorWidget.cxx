@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqImageCompressorWidget.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -79,7 +79,7 @@ pqImageCompressorWidget::pqImageCompressorWidget(
   this->connect(ui.zlibLevel, SIGNAL(valueChanged(int)), SIGNAL(compressorConfigChanged()));
   this->connect(ui.zlibStripAlpha, SIGNAL(stateChanged(int)), SIGNAL(compressorConfigChanged()));
 
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
   ui.compressionType->addItem("NvPipe");
   this->connect(ui.nvpLevel, SIGNAL(valueChanged(int)), SIGNAL(compressorConfigChanged()));
 #endif
@@ -201,7 +201,7 @@ void pqImageCompressorWidget::currentIndexChanged(int index)
   ui.zlibColorSpace->setVisible(index == ZLIB_COMPRESSION);
   ui.zlibStripAlpha->setVisible(index == ZLIB_COMPRESSION);
 
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
   ui.nvpLabel->setVisible(index == NVPIPE_COMPRESSION);
   ui.nvpLevel->setVisible(index == NVPIPE_COMPRESSION);
 #else

@@ -43,7 +43,7 @@
 #include "vtkPVDataSetAttributesInformation.h"
 #include "vtkSMChartSeriesSelectionDomain.h"
 #include "vtkSMPVRepresentationProxy.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyManager.h"
@@ -722,7 +722,7 @@ void pqSLACManager::createPlotOverZ()
 {
   pqApplicationCore* core = pqApplicationCore::instance();
   pqObjectBuilder* builder = core->getObjectBuilder();
-  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
   pqPipelineSource* meshReader = this->getMeshReader();
   if (!meshReader)

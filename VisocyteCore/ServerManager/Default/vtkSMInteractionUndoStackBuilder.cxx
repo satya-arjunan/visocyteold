@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMInteractionUndoStackBuilder.cxx
 
   Copyright (c) Kitware, Inc.

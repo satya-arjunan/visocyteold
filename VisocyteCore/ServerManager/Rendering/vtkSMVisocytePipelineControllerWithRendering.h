@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   Visocyte
-  Module:    vtkSMVisocytePipelineControllerWithRendering.h
+  Program:   ParaView
+  Module:    vtkSMParaViewPipelineControllerWithRendering.h
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -13,40 +13,40 @@
 
 =========================================================================*/
 /**
- * @class   vtkSMVisocytePipelineControllerWithRendering
+ * @class   vtkSMParaViewPipelineControllerWithRendering
  *
- * vtkSMVisocytePipelineControllerWithRendering overrides
- * vtkSMVisocytePipelineController to add support for initializing rendering
- * proxies appropriately. vtkSMVisocytePipelineControllerWithRendering uses
- * vtkObjectFactory mechanisms to override vtkSMVisocytePipelineController's
+ * vtkSMParaViewPipelineControllerWithRendering overrides
+ * vtkSMParaViewPipelineController to add support for initializing rendering
+ * proxies appropriately. vtkSMParaViewPipelineControllerWithRendering uses
+ * vtkObjectFactory mechanisms to override vtkSMParaViewPipelineController's
  * creation. One should not need to create or use this class directly (excepting
- * when needing to subclass). Simply create vtkSMVisocytePipelineController. If
+ * when needing to subclass). Simply create vtkSMParaViewPipelineController. If
  * the application is linked with the rendering module, then this class will be
- * instantiated instead of vtkSMVisocytePipelineController automatically.
+ * instantiated instead of vtkSMParaViewPipelineController automatically.
  *
- * vtkSMVisocytePipelineControllerWithRendering also adds new API to control
+ * vtkSMParaViewPipelineControllerWithRendering also adds new API to control
  * representation visibility and manage creation of views. To use that API
- * clients can instantiate vtkSMVisocytePipelineControllerWithRendering. Just
- * like vtkSMVisocytePipelineController, this class also uses vtkObjectFactory
+ * clients can instantiate vtkSMParaViewPipelineControllerWithRendering. Just
+ * like vtkSMParaViewPipelineController, this class also uses vtkObjectFactory
  * mechanisms to enable overriding by clients at compile time.
 */
 
-#ifndef vtkSMVisocytePipelineControllerWithRendering_h
-#define vtkSMVisocytePipelineControllerWithRendering_h
+#ifndef vtkSMParaViewPipelineControllerWithRendering_h
+#define vtkSMParaViewPipelineControllerWithRendering_h
 
 #include "vtkPVServerManagerRenderingModule.h" //needed for exports
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 
 class vtkSMSourceProxy;
 class vtkSMViewLayoutProxy;
 class vtkSMViewProxy;
 
-class VTKPVSERVERMANAGERRENDERING_EXPORT vtkSMVisocytePipelineControllerWithRendering
-  : public vtkSMVisocytePipelineController
+class VTKPVSERVERMANAGERRENDERING_EXPORT vtkSMParaViewPipelineControllerWithRendering
+  : public vtkSMParaViewPipelineController
 {
 public:
-  static vtkSMVisocytePipelineControllerWithRendering* New();
-  vtkTypeMacro(vtkSMVisocytePipelineControllerWithRendering, vtkSMVisocytePipelineController);
+  static vtkSMParaViewPipelineControllerWithRendering* New();
+  vtkTypeMacro(vtkSMParaViewPipelineControllerWithRendering, vtkSMParaViewPipelineController);
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   /**
@@ -98,7 +98,7 @@ public:
    *
    * There are several different strategies employed to determine the preferred
    * view for the producer's output. See
-   * vtkSMVisocytePipelineControllerWithRendering::GetPreferredViewType() for
+   * vtkSMParaViewPipelineControllerWithRendering::GetPreferredViewType() for
    * details.
    *
    * @note if the source's hint indicates so, the data may also be
@@ -211,8 +211,8 @@ public:
   virtual bool RegisterLayoutProxy(vtkSMProxy* proxy, const char* proxyname = NULL);
 
 protected:
-  vtkSMVisocytePipelineControllerWithRendering();
-  ~vtkSMVisocytePipelineControllerWithRendering() override;
+  vtkSMParaViewPipelineControllerWithRendering();
+  ~vtkSMParaViewPipelineControllerWithRendering() override;
 
   virtual void UpdatePipelineBeforeDisplay(
     vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view);
@@ -230,9 +230,9 @@ protected:
   virtual void DoMaterialSetup(vtkSMProxy* proxy) override;
 
 private:
-  vtkSMVisocytePipelineControllerWithRendering(
-    const vtkSMVisocytePipelineControllerWithRendering&) = delete;
-  void operator=(const vtkSMVisocytePipelineControllerWithRendering&) = delete;
+  vtkSMParaViewPipelineControllerWithRendering(
+    const vtkSMParaViewPipelineControllerWithRendering&) = delete;
+  void operator=(const vtkSMParaViewPipelineControllerWithRendering&) = delete;
   static bool HideScalarBarOnHide;
   static bool InheritRepresentationProperties;
 };

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVMultiSliceView.cxx
 
   Copyright (c) Kitware, Inc.

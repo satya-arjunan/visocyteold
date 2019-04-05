@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkIceTConstants.h
 
   Copyright (c) Kitware, Inc.
@@ -26,7 +26,7 @@
  * simply holds constants that can be used with the IceT classes.  These
  * constants are defined outside of the vtkIceTRenderManager and
  * vtkOpenGLIceTRenderer definitions so that they can be accessed when the IceT
- * implementation classes are not compiled.  Because Visocyte is designed to run
+ * implementation classes are not compiled.  Because ParaView is designed to run
  * client/server and because the server should be able to use its IceT
  * implementation even when the client is not compiled with IceT.  In this case,
  * the client needs to send flags to the server.

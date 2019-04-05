@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    PagosaAdaptor.cxx
 
   Copyright (c) Kitware, Inc.

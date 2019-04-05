@@ -39,7 +39,7 @@ pqExampleVisualizationsDialog::~pqExampleVisualizationsDialog()
 //-----------------------------------------------------------------------------
 void pqExampleVisualizationsDialog::onButtonPressed()
 {
-  QString dataPath(vtkPVFileInformation::GetVisocyteExampleFilesDirectory().c_str());
+  QString dataPath(vtkPVFileInformation::GetParaViewExampleFilesDirectory().c_str());
   QPushButton* button = qobject_cast<QPushButton*>(sender());
   if (button)
   {

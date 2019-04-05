@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPSciVizContingencyStats.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMPipelineState.h
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
  * pipeline
  *
  * This class is used to provide a RemoteObject API to the vtkSMProxyManager
- * which allow Undo/Redo and state sharing across several Visocyte clients.
+ * which allow Undo/Redo and state sharing across several ParaView clients.
  * Basically, we expose the state management API of RemoteObject to handle
  * registration and unregistration of proxies.
 */

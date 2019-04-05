@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqPluginDialog.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -147,7 +147,7 @@ void pqPluginDialog::loadPlugin(pqServer* server, bool remote)
 #if defined(_WIN32) && !defined(__CYGWIN__)
   exts[tr("Binary plugins")] << "*.dll";
 #else
-  // starting with Visocyte 5.7, we are building .so's even on macOS
+  // starting with ParaView 5.7, we are building .so's even on macOS
   // since they are built as "add_library(.. MODULE)" which by default generates
   // `.so`s which seems to be the convention.
   exts[tr("Binary plugins")] << "*.so";

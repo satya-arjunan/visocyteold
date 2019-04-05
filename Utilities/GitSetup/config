@@ -5,6 +5,6 @@
 [gitlab]
 	host = gitlab.kitware.com
 	group-path = visocyte
-	group-name = Visocyte
+	group-name = ParaView
 	project-path = visocyte
-	project-name = Visocyte
+	project-name = ParaView

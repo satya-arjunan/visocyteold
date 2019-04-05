@@ -9,7 +9,7 @@ vtk_add_test_cxx(vtkPVServerManagerCoreCxxTests tests
 
 vtk_add_test_cxx(vtkPVServerManagerCoreCxxTests tmp_tests
   NO_VALID
-  TestVisocytePipelineController.cxx
+  TestParaViewPipelineController.cxx
   )
 list(APPEND tests
   ${tmp_tests})

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTextSourceRepresentation.cxx
 
   Copyright (c) Kitware, Inc.
@@ -158,7 +158,7 @@ int vtkTextSourceRepresentation::RequestData(
   this->CacheKeeper->Update();
 
   // It is tempting to try to do the data delivery in RequestData() itself.
-  // However, whenever a representation updates, Visocyte GUI may have some
+  // However, whenever a representation updates, ParaView GUI may have some
   // GatherInformation() requests that happen. That messes up with any
   // data-delivery code placed here. So we leave the data delivery to the
   // REQUEST_PREPARE_FOR_RENDER() pass.

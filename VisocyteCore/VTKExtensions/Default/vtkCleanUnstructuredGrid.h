@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCleanUnstructuredGrid.h
 
   Copyright (c) Kitware, Inc.

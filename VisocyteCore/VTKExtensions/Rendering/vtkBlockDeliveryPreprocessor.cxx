@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkBlockDeliveryPreprocessor.cxx
 
   Copyright (c) Kitware, Inc.

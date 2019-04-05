@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPaths.h.in
 
   Copyright (c) Kitware, Inc.
@@ -16,10 +16,10 @@
 #define VTK_VISOCYTE_PATHS_H
 
 static const char* VISOCYTE_PATHS[] = {
-  "@Visocyte_SOURCE_DIR@",
-  "@Visocyte_SOURCE_DIR@/GUI",
-  "@Visocyte_BINARY_DIR@",
-  "@Visocyte_BINARY_DIR@/GUI",
+  "@ParaView_SOURCE_DIR@",
+  "@ParaView_SOURCE_DIR@/GUI",
+  "@ParaView_BINARY_DIR@",
+  "@ParaView_BINARY_DIR@/GUI",
   0};
 
 #endif

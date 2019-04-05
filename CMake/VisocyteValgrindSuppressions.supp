@@ -13699,8 +13699,8 @@
    fun:_Z17qRegisterMetaTypeI24pqServerManagerSelectionEiPKcPT_
    fun:_Z41__static_initialization_and_destruction_0ii
    fun:_GLOBAL__I__ZN29pqServerManagerSelectionModelC2EP20pqServerManagerModelP7QObject
-   obj:/projects/Dashboards/MyTests/Visocyte3-gcc40/bin/libpqCore.so
-   obj:/projects/Dashboards/MyTests/Visocyte3-gcc40/bin/libpqCore.so
+   obj:/projects/Dashboards/MyTests/ParaView3-gcc40/bin/libpqCore.so
+   obj:/projects/Dashboards/MyTests/ParaView3-gcc40/bin/libpqCore.so
    fun:call_init
    fun:_dl_init
    obj:/lib/ld-2.3.6.so

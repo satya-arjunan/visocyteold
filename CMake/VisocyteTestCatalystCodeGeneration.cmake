@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -35,7 +35,7 @@
 #
 # The script expects the following input variables:
 # PYTHON_EXECUTABLE : The Python executable to catalyze the source code
-# VISOCYTE_SOURCE_DIR : Visocyte source dir (For source location of the Editions
+# VISOCYTE_SOURCE_DIR : ParaView source dir (For source location of the Editions
 # VISOCYTE_TEST_DIR : Temporary directory for location of Catalyst generated source code
 
 message (STATUS "Testing building Catalyst editions")

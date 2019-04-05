@@ -5,22 +5,22 @@ include(CMakeDependentOption)
 cmake_dependent_option(USE_CATALYST "Link the simulator with Catalyst" ON
   "NOT WIN32" OFF)
 if (USE_CATALYST)
-  find_package(Visocyte REQUIRED)
+  find_package(ParaView REQUIRED)
 
-  if (NOT TARGET Visocyte::PythonCatalyst)
+  if (NOT TARGET ParaView::PythonCatalyst)
     message(STATUS
-      "${CMAKE_PROJECT_NAME} requires Visocyte to be built with Catalyst and "
-      "Python support enabled. Please rebuild Visocyte (or point to a "
-      "different build of Visocyte) with VISOCYTE_ENABLE_CATALYST and "
+      "${CMAKE_PROJECT_NAME} requires ParaView to be built with Catalyst and "
+      "Python support enabled. Please rebuild ParaView (or point to a "
+      "different build of ParaView) with VISOCYTE_ENABLE_CATALYST and "
       "VISOCYTE_ENABLE_PYTHON set to TRUE")
     return ()
   endif()
 
   if (NOT VISOCYTE_USE_MPI)
     message(STATUS
-      "${CMAKE_PROJECT_NAME} requires Visocyte to be built with MPI support "
-      "enabled. Please rebuild Visocyte (or point to a different build of "
-      "Visocyte) with VISOCYTE_USE_MPI set to TRUE")
+      "${CMAKE_PROJECT_NAME} requires ParaView to be built with MPI support "
+      "enabled. Please rebuild ParaView (or point to a different build of "
+      "ParaView) with VISOCYTE_USE_MPI set to TRUE")
     return ()
   endif ()
 

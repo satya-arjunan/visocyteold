@@ -68,13 +68,13 @@ def CreateCoProcessor():
 
 #--------------------------------------------------------------
 # Global variables that will hold the pipeline for each timestep
-# Creating the CoProcessor object, doesn't actually create the Visocyte pipeline.
+# Creating the CoProcessor object, doesn't actually create the ParaView pipeline.
 # It will be automatically setup when coprocessor.UpdateProducers() is called the
 # first time.
 coprocessor = CreateCoProcessor()
 
 #--------------------------------------------------------------
-# Enable Live-Visualizaton with Visocyte
+# Enable Live-Visualizaton with ParaView
 coprocessor.EnableLiveVisualization(False, 1)
 
 # ---------------------- Data Selection method ----------------------

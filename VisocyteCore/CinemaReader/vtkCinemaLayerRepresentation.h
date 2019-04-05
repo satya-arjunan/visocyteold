@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCinemaLayerRepresentation.h
 
   Copyright (c) Kitware, Inc.

@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -55,7 +55,7 @@ configure_file(
   ESCAPE_QUOTES
   @ONLY)
 
-vtk_module_add_executable(Visocyte::smTestDriver
+vtk_module_add_executable(ParaView::smTestDriver
   vtkSMTestDriver.cxx
   vtkSMTestDriver.h
   "${CMAKE_CURRENT_BINARY_DIR}/vtkSMTestDriverConfig.h")
@@ -85,7 +85,7 @@ if (VISOCYTE_USE_MPI)
 endif ()
 
 if (mpi_defines)
-  vtk_module_definitions(Visocyte::smTestDriver
+  vtk_module_definitions(ParaView::smTestDriver
     PRIVATE
       ${mpi_defines})
 endif ()

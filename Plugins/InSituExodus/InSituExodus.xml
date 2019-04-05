@@ -4,7 +4,7 @@
                 class="vtkCPExodusIIInSituReader"
                 label="InSitu Exodus II Reader">
      <Documentation
-        long_help="Read an Exodus II file into Visocyte, reusing the memory
+        long_help="Read an Exodus II file into ParaView, reusing the memory
                    allocated by the Exodus II library. Experimental use only."
         short_help="Experimental memory-conserving Exodus II file reader.">
      </Documentation>

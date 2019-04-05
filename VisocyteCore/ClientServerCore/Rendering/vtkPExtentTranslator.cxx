@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile: vtkPExtentTranslator.cxx,v $
 
   Copyright (c) Kitware, Inc.

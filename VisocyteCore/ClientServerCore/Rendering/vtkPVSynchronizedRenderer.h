@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVSynchronizedRenderer.h
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVSynchronizedRenderer
  * @brief   synchronizes and composites renderers among
- * processes in Visocyte configurations.
+ * processes in ParaView configurations.
  *
  *
 */
@@ -113,7 +113,7 @@ public:
    * Get/Set geometry rendering pass. This pass is used to render the geometry.
    * If none specified then default rendering pipeline is used. This is
    * typically the render-pass pipeline after the CameraPass. The CameraPass is
-   * setup by Visocyte specially since Visocyte needs some customizations for
+   * setup by ParaView specially since ParaView needs some customizations for
    * multiviews/icet etc.
    */
   void SetRenderPass(vtkRenderPass*);

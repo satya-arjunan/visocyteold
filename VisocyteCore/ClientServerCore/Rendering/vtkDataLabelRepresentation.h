@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkDataLabelRepresentation.h
 
   Copyright (c) Kitware, Inc.

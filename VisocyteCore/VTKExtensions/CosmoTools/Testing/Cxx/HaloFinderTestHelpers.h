@@ -158,7 +158,7 @@ inline HaloFinderTestVTKObjects SetupHaloFinderTest(int argc, char* argv[],
   testObjects.maskPoints->SingleVertexPerCellOn();
   testObjects.maskPoints->Update();
 
-  // So that this test can be easily modified to reproduce Visocyte GUI errors
+  // So that this test can be easily modified to reproduce ParaView GUI errors
   testObjects.mapper->SetInputConnection(testObjects.maskPoints->GetOutputPort());
   testObjects.mapper->Update();
 

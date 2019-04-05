@@ -33,7 +33,7 @@
 #include "pqUndoStack.h"
 #include "pqView.h"
 #include "vtkNew.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMProxy.h"
 
 #include <QPushButton>
@@ -103,7 +103,7 @@ void pqSierraPlotToolsDataLoadManager::setupPipeline()
   pqApplicationCore* core = pqApplicationCore::instance();
   pqObjectBuilder* builder = core->getObjectBuilder();
   pqUndoStack* stack = core->getUndoStack();
-  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
   pqSierraPlotToolsManager* manager = pqSierraPlotToolsManager::instance();
 

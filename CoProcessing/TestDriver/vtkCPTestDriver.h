@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPTestDriver.h
 
   Copyright (c) Kitware, Inc.

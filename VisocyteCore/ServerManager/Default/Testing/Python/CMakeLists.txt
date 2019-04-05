@@ -54,13 +54,13 @@ if (BUILD_SHARED_LIBS
 endif ()
 
 set(SMSTATE_FILE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
-set(Visocyte::ServerManagerDefault_ARGS
+set(ParaView::ServerManagerDefault_ARGS
   -S "${SMSTATE_FILE_DIR}")
 visocyte_add_test_python(
   JUST_VALID
   ${PY_TESTS}
   )
-set(Visocyte::ServerManagerDefault_ARGS)
+set(ParaView::ServerManagerDefault_ARGS)
 
 ###############################################################################
 # Add tests for pvbatch.
@@ -155,7 +155,7 @@ if (VISOCYTE_USE_MPI AND MPIEXEC_EXECUTABLE AND NOT WIN32)
   unset(visocyte_pvbatch_args)
 endif()
 
-# Python state tests. Each test executes an XML test in the Visocyte UI, saves
+# Python state tests. Each test executes an XML test in the ParaView UI, saves
 # the state as a Python state file, runs the Python state file script in
 # pvpython, then checks that the same image is generated in both the UI and
 # pvpython. Each <TEST> list here requires a <TEST>.xml that generates the
@@ -166,7 +166,7 @@ set(visocyte_python_state_tests
 )
 foreach(python_state_test ${visocyte_python_state_tests})
   if (VISOCYTE_BUILD_QT_GUI)
-    set(tname "Visocyte::ServerManagerDefaultPython-${python_state_test}")
+    set(tname "ParaView::ServerManagerDefaultPython-${python_state_test}")
     ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}" NAME ${tname}
       COMMAND ${CMAKE_COMMAND}
       -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:visocyte>

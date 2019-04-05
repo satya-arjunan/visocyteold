@@ -87,8 +87,8 @@ def setattr(proxy, pname, value):
         else:
             # if ColorAttributeType is being used, raise NotSupportedException.
             raise NotSupportedException(
-                    "'ColorAttributeType' is obsolete as of Visocyte 4.2. Simply use 'ColorArrayName' "\
-                    "instead. Refer to Visocyte Python API changes documentation online.")
+                    "'ColorAttributeType' is obsolete as of ParaView 4.2. Simply use 'ColorArrayName' "\
+                    "instead. Refer to ParaView Python API changes documentation online.")
 
     if pname == "AspectRatio" and proxy.SMProxy.GetProperty("ScalarBarThickness"):
         if visocyte.compatibility.GetVersion() <= 5.3:
@@ -110,7 +110,7 @@ def setattr(proxy, pname, value):
         else:
             #if AspectRatio is being used, raise NotSupportedException
             raise NotSupportedException(\
-                "'AspectRatio' is obsolete as of Visocyte 5.4. Use the "\
+                "'AspectRatio' is obsolete as of ParaView 5.4. Use the "\
                 "'ScalarBarThickness' property to set the width instead.")
 
     if pname == "Position2" and proxy.SMProxy.GetProperty("ScalarBarLength"):
@@ -126,7 +126,7 @@ def setattr(proxy, pname, value):
         else:
             #if Position2 is being used, raise NotSupportedException
             raise NotSupportedException(\
-                "'Position2' is obsolete as of Visocyte 5.4. Use the "\
+                "'Position2' is obsolete as of ParaView 5.4. Use the "\
                 "'ScalarBarLength' property to set the length instead.")
 
     if pname == "LockScalarRange" and proxy.SMProxy.GetProperty("AutomaticRescaleRangeMode"):
@@ -143,7 +143,7 @@ def setattr(proxy, pname, value):
             raise Continue()
         else:
             raise NotSupportedException(
-                    "'LockScalarRange' is obsolete as of Visocyte 5.5. Use "\
+                    "'LockScalarRange' is obsolete as of ParaView 5.5. Use "\
                     "'AutomaticRescaleRangeMode' property instead.")
 
     # In 5.5, we changed the vtkArrayCalculator to use a different set of constants to control which
@@ -153,7 +153,7 @@ def setattr(proxy, pname, value):
         if visocyte.compatibility.GetVersion() <= 5.4:
             # The Attribute type uses enumeration values from vtkDataObject::AttributeTypes
             # rather than custom constants for the calculator.  For the values supported by
-            # Visocyte before this change, the conversion works out to subtracting 1 if value
+            # ParaView before this change, the conversion works out to subtracting 1 if value
             # is an integer. If value is an enumerated string we use that as is since it matches
             # the previous enumerated string options.
             if isinstance(value, int):
@@ -199,7 +199,7 @@ def setattr(proxy, pname, value):
         else:
             #if inflat factor is being used, raise NotSupportedException
             raise NotSupportedException(\
-                "'DataBoundsInflateFactor' is obsolete as of Visocyte 5.5. Use the "\
+                "'DataBoundsInflateFactor' is obsolete as of ParaView 5.5. Use the "\
                 "'DataBoundsScaleFactor' property to modify the axes gris data bounds instead.")
 
     if proxy.SMProxy and proxy.SMProxy.GetXMLName() == "AnnotateAttributeData":
@@ -223,7 +223,7 @@ def setattr(proxy, pname, value):
                 raise Continue()
             else:
                 raise NotSupportedException(\
-                    "'ArrayAssociation' is obsolete as of Visocyte 5.5.  Use 'SelectInputArray' instead.")
+                    "'ArrayAssociation' is obsolete as of ParaView 5.5.  Use 'SelectInputArray' instead.")
         elif pname == "ArrayName":
             if visocyte.compatibility.GetVersion() <= 5.4:
                 visocyte.print_warning(\
@@ -234,7 +234,7 @@ def setattr(proxy, pname, value):
                 raise Continue()
             else:
                 raise NotSupportedException(\
-                    "'ArrayName' is obsolete as of Visocyte 5.5.  Use 'SelectInputArray' instead.")
+                    "'ArrayName' is obsolete as of ParaView 5.5.  Use 'SelectInputArray' instead.")
 
     # In 5.5, we changed the Clip to be inverted from what it was before and changed the InsideOut
     # property to be called Invert to be clearer.
@@ -254,7 +254,7 @@ def setattr(proxy, pname, value):
             raise Continue()
         else:
             raise NotSupportedException(
-                  "'%s' is obsolete on SpreadSheetRepresentation as of Visocyte 5.6 and has been migrated to the view." % pname)
+                  "'%s' is obsolete on SpreadSheetRepresentation as of ParaView 5.6 and has been migrated to the view." % pname)
 
     # In 5.7, we changed to the names of the input proxies in ResampleWithDataset to clarify what
     # each source does.
@@ -264,7 +264,7 @@ def setattr(proxy, pname, value):
             raise Continue()
         else:
             raise NotSupportedException(
-                'The ResampleWithDataset.Input property has been changed in Visocyte 5.7. '\
+                'The ResampleWithDataset.Input property has been changed in ParaView 5.7. '\
                 'Please set the SourceDataArrays property instead.')
 
     if pname == "Source" and proxy.SMProxy.GetXMLName() == "ResampleWithDataset":
@@ -273,7 +273,7 @@ def setattr(proxy, pname, value):
             raise Continue()
         else:
             raise NotSupportedException(
-                'The ResampleWithDataset.Source property has been changed in Visocyte 5.7. '\
+                'The ResampleWithDataset.Source property has been changed in ParaView 5.7. '\
                 'Please set the DestinationMesh property instead.')
 
     # In 5.7, we removed `ArrayName` property on the `GenerateIdScalars` filter
@@ -285,7 +285,7 @@ def setattr(proxy, pname, value):
             raise Continue()
         else:
             raise NotSupportedException(
-                'The GenerateIdScalars.ArrayName property has been removed in Visocyte 5.7. '\
+                'The GenerateIdScalars.ArrayName property has been removed in ParaView 5.7. '\
                 'Please set `PointIdsArrayName` or `CellIdsArrayName` property instead.')
 
     if not hasattr(proxy, pname):
@@ -338,7 +338,7 @@ def getattr(proxy, pname):
         else:
             # if ColorAttributeType is being used, warn.
             raise NotSupportedException(
-                "'ColorAttributeType' is obsolete. Simply use 'ColorArrayName' instead.  Refer to Visocyte Python API changes documentation online.")
+                "'ColorAttributeType' is obsolete. Simply use 'ColorArrayName' instead.  Refer to ParaView Python API changes documentation online.")
 
     # In 5.1, we removed CameraClippingRange property. It was not of any use
     # since we added support to render view to automatically reset clipping
@@ -368,7 +368,7 @@ def getattr(proxy, pname):
             return 20.0
         else:
             raise NotSupportedException(
-                    'The AspectRatio property has been removed in Visocyte '\
+                    'The AspectRatio property has been removed in ParaView '\
                     '5.4. Please use the ScalarBarThickness property instead '\
                     'to set the thickness in terms of points.')
 
@@ -382,7 +382,7 @@ def getattr(proxy, pname):
                 return [proxy.GetProperty("ScalarBarLength").GetData(), 0.05]
         else:
             raise NotSupportedException(
-                    'The Position2 property has been removed in Visocyte '\
+                    'The Position2 property has been removed in ParaView '\
                     '5.4. Please set the ScalarBarLength property instead.')
 
     # In 5.5, we removed the PVLookupTable.LockScalarRange boolean property and
@@ -397,7 +397,7 @@ def getattr(proxy, pname):
         else:
             raise NotSupportedException(
                     'The PVLookupTable.LockScalarRange property has been removed '\
-                    'in Visocyte 5.5. Please set the AutomaticRescaleRangeMode property '\
+                    'in ParaView 5.5. Please set the AutomaticRescaleRangeMode property '\
                     'instead.')
     # In 5.5, we changed the vtkArrayCalculator to use a different set of constants to control which
     # data it operates on.  This change changed the method and property name from AttributeMode to
@@ -406,7 +406,7 @@ def getattr(proxy, pname):
         if visocyte.compatibility.GetVersion() <= 5.4:
             # The Attribute type uses enumeration values from vtkDataObject::AttributeTypes
             # rather than custom constants for the calculator.  For the values supported by
-            # Visocyte before this change, the conversion works out to adding 1 if it is an
+            # ParaView before this change, the conversion works out to adding 1 if it is an
             # integer. If the value is an enumerated string we use that as is since it matches
             # the previous enumerated string options.
             value = proxy.GetProperty("AttributeType").GetData()
@@ -415,7 +415,7 @@ def getattr(proxy, pname):
             return value
         else:
             raise NotSupportedException(
-                    'The Calculator.AttributeMode property has been removed in Visocyte 5.5. '\
+                    'The Calculator.AttributeMode property has been removed in ParaView 5.5. '\
                     'Please set the AttributeType property instead. Note that different '\
                     'constants are needed for the two properties.')
 
@@ -458,7 +458,7 @@ def getattr(proxy, pname):
                 return 0
         else:
             raise NotSupportedException(
-                    'The  DataBoundsInflateFactorproperty has been removed in Visocyte '\
+                    'The  DataBoundsInflateFactorproperty has been removed in ParaView '\
                     '5.4. Please use the DataBoundsScaleFactor property instead.')
 
     if proxy.SMProxy and proxy.SMProxy.GetXMLName() == "AnnotateAttributeData":
@@ -479,7 +479,7 @@ def getattr(proxy, pname):
                     return "Point Data"
             else:
                 raise NotSupportedException(\
-                    "'ArrayAssociation' is obsolete as of Visocyte 5.5.  Use 'SelectInputArray' instead.")
+                    "'ArrayAssociation' is obsolete as of ParaView 5.5.  Use 'SelectInputArray' instead.")
         elif pname == "ArrayName":
             if visocyte.compatibility.GetVersion() <= 5.4:
                 visocyte.print_warning(\
@@ -487,7 +487,7 @@ def getattr(proxy, pname):
                 return proxy.GetProperty("SelectInputArray")[1]
             else:
                 raise NotSupportedException(\
-                    "'ArrayName' is obsolete as of Visocyte 5.5.  Use 'SelectInputArray' instead.")
+                    "'ArrayName' is obsolete as of ParaView 5.5.  Use 'SelectInputArray' instead.")
 
     # In 5.5, we changed the Clip to be inverted from what it was before and changed the InsideOut
     # property to be called Invert to be clearer.
@@ -496,7 +496,7 @@ def getattr(proxy, pname):
             return proxy.GetProperty("Invert").GetData()
         else:
             raise NotSupportedException(
-                    'The Clip.InsideOut property has been changed in Visocyte 5.5. '\
+                    'The Clip.InsideOut property has been changed in ParaView 5.5. '\
                     'Please set the Invert property instead.')
 
     # In 5.6, we changed the "SpreadSheetRepresentation" proxy to no longer have
@@ -507,7 +507,7 @@ def getattr(proxy, pname):
             return 0
         else:
             raise NotSupportedException(
-                  "'%s' is obsolete on SpreadSheetRepresentation as of Visocyte 5.6 and has been migrated to the view." % pname)
+                  "'%s' is obsolete on SpreadSheetRepresentation as of ParaView 5.6 and has been migrated to the view." % pname)
 
     # In 5.7, we changed to the names of the input proxies in ResampleWithDataset to clarify what
     # each source does.
@@ -516,7 +516,7 @@ def getattr(proxy, pname):
             return proxy.GetProperty("SourceDataArrays")
         else:
             raise NotSupportedException(
-                'The ResampleWithDataset.Input property has been changed in Visocyte 5.7. '\
+                'The ResampleWithDataset.Input property has been changed in ParaView 5.7. '\
                 'Please access the SourceDataArrays property instead.')
 
     if pname == "Source" and proxy.SMProxy.GetXMLName() == "ResampleWithDataset":
@@ -524,7 +524,7 @@ def getattr(proxy, pname):
             return proxy.GetProperty("DestinationMesh")
         else:
             raise NotSupportedException(
-                'The ResampleWithDataset.Source property has been changed in Visocyte 5.7. '\
+                'The ResampleWithDataset.Source property has been changed in ParaView 5.7. '\
                 'Please access the DestinationMesh property instead.')
 
     # In 5.7, we removed `ArrayName` property on the `GenerateIdScalars` filter
@@ -534,7 +534,7 @@ def getattr(proxy, pname):
             return proxy.GetProperty("PointIdsArrayName")
         else:
             raise NotSupportedException(
-                'The GenerateIdScalars.ArrayName property has been removed in Visocyte 5.7. ' \
+                'The GenerateIdScalars.ArrayName property has been removed in ParaView 5.7. ' \
                 'Please access `PointIdsArrayName` or `CellIdsArrayName` property instead.')
 
     raise Continue()

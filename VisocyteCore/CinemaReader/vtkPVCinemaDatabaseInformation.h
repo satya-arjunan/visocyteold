@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCinemaDatabaseInformation.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCustomTestDriver.h
 
   Copyright (c) Kitware, Inc.
@@ -14,11 +14,11 @@
 =========================================================================*/
 /**
  * @class   vtkPVCustomTestDriver
- * @brief   A custom test driver code that uses Visocyte and python.
+ * @brief   A custom test driver code that uses ParaView and python.
  *
  * A custom test driver that creates a vtkUniformGrid with a single
  * scalar point field named "Pressure".  It runs a python script
- * using Visocyte.
+ * using ParaView.
 */
 
 #ifndef vtkPVCustomTestDriver_h

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkMPIMToNSocketConnection.h
 
   Copyright (c) Kitware, Inc.

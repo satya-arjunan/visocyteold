@@ -39,7 +39,7 @@ namespace logger
 {
 
 // The class vtknvindex_forwarding_logger forwards warning/errors messages gathered
-// by the NVIDIA IndeX library to Visocyte's console.
+// by the NVIDIA IndeX library to ParaView's console.
 
 class vtknvindex_receiving_logger : public mi::base::Interface_implement<mi::base::ILogger>
 {

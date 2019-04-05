@@ -1,5 +1,5 @@
 NAME
-  Visocyte::cosmohalofinder
+  ParaView::cosmohalofinder
 LIBRARY_NAME
   vtkcosmohalofinder
 CONDITION

@@ -1,9 +1,9 @@
 # -------------------------------------------------------------------------
-# doxyfile for Visocyte
+# doxyfile for ParaView
 # modified by S. Barre (Time-stamp: <2005-12-05 12:59:07 barre>
 # -------------------------------------------------------------------------
 
-PROJECT_NAME         = Visocyte
+PROJECT_NAME         = ParaView
 
 FULL_PATH_NAMES      = YES
 WARN_IF_UNDOCUMENTED = NO
@@ -15,7 +15,7 @@ GENERATE_HTML        = YES
 GENERATE_LATEX       = NO
 GENERATE_MAN         = NO
 GENERATE_RTF         = NO
-GENERATE_TAGFILE     = "@CMAKE_CURRENT_BINARY_DIR@/Visocyte.tag"
+GENERATE_TAGFILE     = "@CMAKE_CURRENT_BINARY_DIR@/ParaView.tag"
 
 HTML_HEADER          = "@CMAKE_CURRENT_SOURCE_DIR@/templates/header.html"
 HTML_FOOTER          = "@CMAKE_CURRENT_SOURCE_DIR@/templates/footer.html"
@@ -49,32 +49,32 @@ HTML_OUTPUT          = "cxx"
 
 INPUT                = \
           "@CMAKE_CURRENT_BINARY_DIR@/dox" \
-          "@CMAKE_CURRENT_BINARY_DIR@/dox/doc_Visocyte_events2.dox" \
-          "@CMAKE_CURRENT_BINARY_DIR@/dox/doc_Visocyte_events.dox" \
+          "@CMAKE_CURRENT_BINARY_DIR@/dox/doc_ParaView_events2.dox" \
+          "@CMAKE_CURRENT_BINARY_DIR@/dox/doc_ParaView_events.dox" \
           "@CMAKE_CURRENT_BINARY_DIR@/pages" \
-          "@Visocyte_SOURCE_DIR@/" \
+          "@ParaView_SOURCE_DIR@/" \
 
 
 EXCLUDE              = \
-    "@Visocyte_SOURCE_DIR@/Catalyst/Editions" \
-    "@Visocyte_SOURCE_DIR@/Examples" \
-    "@Visocyte_SOURCE_DIR@/VisocyteCore/VTKExtensions/H5PartReader/H5Part/src" \
-    "@Visocyte_SOURCE_DIR@/Plugins" \
-    "@Visocyte_SOURCE_DIR@/ThirdParty" \
-    "@Visocyte_SOURCE_DIR@/Utilities/ColorSeriesToXML" \
-    "@Visocyte_SOURCE_DIR@/Utilities/Git" \
-    "@Visocyte_SOURCE_DIR@/Utilities/GitSetup" \
-    "@Visocyte_SOURCE_DIR@/Utilities/LegacyColorMapXMLToJSON" \
-    "@Visocyte_SOURCE_DIR@/Utilities/Maintenance" \
-    "@Visocyte_SOURCE_DIR@/Utilities/MinimalBuildTools" \
-    "@Visocyte_SOURCE_DIR@/Utilities/ProcessXML" \
-    "@Visocyte_SOURCE_DIR@/Utilities/PythonInitializer" \
-    "@Visocyte_SOURCE_DIR@/Utilities/Scripts" \
-    "@Visocyte_SOURCE_DIR@/Utilities/Sphinx" \
-    "@Visocyte_SOURCE_DIR@/Utilities/TestDriver" \
-    "@Visocyte_SOURCE_DIR@/Utilities/VisItBridge" \
-    "@Visocyte_SOURCE_DIR@/VTK" \
-    "@Visocyte_SOURCE_DIR@/Web/Documentation" \
+    "@ParaView_SOURCE_DIR@/Catalyst/Editions" \
+    "@ParaView_SOURCE_DIR@/Examples" \
+    "@ParaView_SOURCE_DIR@/ParaViewCore/VTKExtensions/H5PartReader/H5Part/src" \
+    "@ParaView_SOURCE_DIR@/Plugins" \
+    "@ParaView_SOURCE_DIR@/ThirdParty" \
+    "@ParaView_SOURCE_DIR@/Utilities/ColorSeriesToXML" \
+    "@ParaView_SOURCE_DIR@/Utilities/Git" \
+    "@ParaView_SOURCE_DIR@/Utilities/GitSetup" \
+    "@ParaView_SOURCE_DIR@/Utilities/LegacyColorMapXMLToJSON" \
+    "@ParaView_SOURCE_DIR@/Utilities/Maintenance" \
+    "@ParaView_SOURCE_DIR@/Utilities/MinimalBuildTools" \
+    "@ParaView_SOURCE_DIR@/Utilities/ProcessXML" \
+    "@ParaView_SOURCE_DIR@/Utilities/PythonInitializer" \
+    "@ParaView_SOURCE_DIR@/Utilities/Scripts" \
+    "@ParaView_SOURCE_DIR@/Utilities/Sphinx" \
+    "@ParaView_SOURCE_DIR@/Utilities/TestDriver" \
+    "@ParaView_SOURCE_DIR@/Utilities/VisItBridge" \
+    "@ParaView_SOURCE_DIR@/VTK" \
+    "@ParaView_SOURCE_DIR@/Web/Documentation" \
 
 
 # Exclude module testing directories.

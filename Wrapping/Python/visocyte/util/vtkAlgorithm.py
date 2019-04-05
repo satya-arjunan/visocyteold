@@ -1,6 +1,6 @@
 r"""
 This module provides utility functions that can be used to expose a
-`VTKPythonAlgorithmBase` derived Pythonic vtkAlgorithm subclass in Visocyte.
+`VTKPythonAlgorithmBase` derived Pythonic vtkAlgorithm subclass in ParaView.
 
 Introduction
 ============
@@ -34,11 +34,11 @@ write subclasses of `VTKPythonAlgorithmBase` and then implement the
 
 
 Such `VTKPythonAlgorithmBase`-based algorithms act as any other `vtkAlgorithm`
-and can be used directly in VTK pipelines. To use them in Visocyte, however, one
-has to make Visocyte aware of the capabilities of the algorithm. For
+and can be used directly in VTK pipelines. To use them in ParaView, however, one
+has to make ParaView aware of the capabilities of the algorithm. For
 `vtkAlgorithm` subclasses in C++, this is done by writing an XML description of
 the algorithm. For Python-based algorithms, this module provides us a mechanism
-to build the Visocyte-specific XML via decorators.
+to build the ParaView-specific XML via decorators.
 
 .. code-block:: python
 
@@ -59,7 +59,7 @@ to build the Visocyte-specific XML via decorators.
 
 .. note::
 
-    Visocyte's XML description provides a wide gamut of features.
+    ParaView's XML description provides a wide gamut of features.
     The decorators available currently only expose a small subset of them. The
     plan is to have complete feature parity in the future. If you encounter a
     missing capability, please raise an issue or better yet, a merge-request to address
@@ -80,7 +80,7 @@ All available decorators exhibit the following characteristics:
    only intended for classes.
 #. Decorators take keyword arguments (positional arguments are discouraged).
    While there may be exceptions, the general pattern is that a decorator
-   corresponds to an XML node in the Visocyte XML configuration. Any attributes
+   corresponds to an XML node in the ParaView XML configuration. Any attributes
    on the XML node itself can be specified as keyword arguments to the
    decorator. The decorator may explicitly define parameters that affect the
    generated node or to explicit limit the arguments provided.
@@ -102,7 +102,7 @@ All available decorators exhibit the following characteristics:
    `smdomain`.
 
    When chaining `smproperty` decorators under a `smproxy`, the order in which
-   the properties are shown in Visocyte UI is reverse of the order in the
+   the properties are shown in ParaView UI is reverse of the order in the
    Python code e.g. the in following snippets the UI will show "PolyDataInput"
    above "TableInput".
 
@@ -120,7 +120,7 @@ All available decorators exhibit the following characteristics:
 `smproxy` Decorators
 ====================
 
-To make `VTKPythonAlgorithmBase` subclass available in Visocyte as a data-source,
+To make `VTKPythonAlgorithmBase` subclass available in ParaView as a data-source,
 filter, reader, or writer, one must use of the decorators in the `smproxy`
 class.
 
@@ -130,13 +130,13 @@ Common decorator parameters
 The following keyword parameters are supported by all `smproxy` decorators:
 
 #. `name`: if present, provides the name to use of the Proxy. This is the name
-   that Visocyte uses to refer to your class. If none specified, the name is
+   that ParaView uses to refer to your class. If none specified, the name is
    deduced from the class name.
 #. `label`: if present, provides the label to use in the UI. If missing, the
    label is deduced from the `name`.
-#. `class`: if present, is the fully qualified class name Visocyte should use to
+#. `class`: if present, is the fully qualified class name ParaView should use to
    instantiate this object. Except for exceptional situation, it's best to let
-   Visocyte deduce this argument.
+   ParaView deduce this argument.
 #. `group`: if present, is the proxy-group under which the definition must be
    placed. This is often not needed since the decorators set a good default
    based on the role of the proxy.
@@ -163,7 +163,7 @@ one or more outputs. The inputs themselves must be declared using
 ----------------
 
 This decorator is used to declare reader. This is same as `smproxy.source`,
-except it adds the appropriate hints to make Visocyte aware that this is a
+except it adds the appropriate hints to make ParaView aware that this is a
 reader.
 
 It takes the following keyword parameters, in addition to the standard ones:
@@ -203,7 +203,7 @@ The following keyword parameters are supported by all `smproperty` decorators:
    when decorating class methods, but required when decorating class objects.
 #. `label`: if present, provides the label to use in the UI. If missing, the
    label is deduced from the `name`.
-#. `command`: if present, is the method name. If missing, Visocyte can deduce it
+#. `command`: if present, is the method name. If missing, ParaView can deduce it
    based on the method being decorated. Hence, as before, optional when
    decorating class methods, but generally required when decorating class
    objects (with the exception of `smproperty.input`).
@@ -255,7 +255,7 @@ particular method.
 
 This a convenience decorator that can be used to decorate a method that returns
 a `vtkDataArraySelection` object often used to array selection in data sources
-and readers. The decorator adds appropriate Visocyte ServerManager XML
+and readers. The decorator adds appropriate ParaView ServerManager XML
 components to expose the array selection to the user.
 
 
@@ -263,7 +263,7 @@ components to expose the array selection to the user.
 =======================
 
 These decorators are used to add domains to `smproperty`. Domains often guide
-the UI that Visocyte generated for the specific property. The current set of
+the UI that ParaView generated for the specific property. The current set of
 available domains, includes `smdomain.intrange`, `smdomain.doublerange`,
 `smdomain.filelist`, and `smdomain.datatype`. More will be added as needed.
 Additionally, one can use the `smdomain.xml` catch-all decorator to add XML

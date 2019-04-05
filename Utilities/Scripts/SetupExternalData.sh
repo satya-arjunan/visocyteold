@@ -74,11 +74,11 @@ select a default for VISOCYTE_DATA_STORE [n/h/s]: ' ans &&
 cd "${BASH_SOURCE%/*}/../.." &&
 config_store='.ExternalData/config/store' &&
 store_home="$(native_path "${HOME-$USERPROFILE}/.ExternalData")" &&
-store_sibling="$(native_path "${PWD%/*}/VisocyteExternalData")" &&
-echo 'Visocyte may download data objects into a local "store" using
+store_sibling="$(native_path "${PWD%/*}/ParaViewExternalData")" &&
+echo 'ParaView may download data objects into a local "store" using
 the CMake ExternalData module.  The store is content-addressed
 and can be shared across multiple projects and build trees.
-Visocyte build trees have a VISOCYTE_DATA_STORE CMake cache entry
+ParaView build trees have a VISOCYTE_DATA_STORE CMake cache entry
 to set their store location.  A default for this value to be used
 in build trees created with this source tree may now be chosen.
 ' &&
@@ -110,8 +110,8 @@ ask_exclude() {
 
  <empty>     = No change
  d,delete    = No default or delete current default
- n,no,off    = Include VisocyteData target in default build
- y,yes,on    = Exclude VisocyteData target from default build
+ n,no,off    = Include ParaViewData target in default build
+ y,yes,on    = Exclude ParaViewData target from default build
 
 select a default for VISOCYTE_DATA_EXCLUDE_FROM_ALL [d/n/y]: ' ans &&
     case "$ans" in
@@ -128,10 +128,10 @@ select a default for VISOCYTE_DATA_EXCLUDE_FROM_ALL [d/n/y]: ' ans &&
 
 cd "${BASH_SOURCE%/*}/../.." &&
 config_exclude='.ExternalData/config/exclude-from-all' &&
-echo 'Visocyte defines a "VisocyteData" build target to download data
+echo 'ParaView defines a "ParaViewData" build target to download data
 objects at build time to make them available for running tests.
-Visocyte build trees have a VISOCYTE_DATA_EXCLUDE_FROM_ALL CMake
-cache option to exclude the "VisocyteData" target from being built
+ParaView build trees have a VISOCYTE_DATA_EXCLUDE_FROM_ALL CMake
+cache option to exclude the "ParaViewData" target from being built
 as part of the default ("all") build.  A default for this value to
 be used in build trees created with this source tree may now be
 chosen.

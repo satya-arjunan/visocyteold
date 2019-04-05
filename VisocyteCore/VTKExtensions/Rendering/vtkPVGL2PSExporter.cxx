@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVGL2PSExporter.cxx
 
   Copyright (c) Kitware, Inc.
@@ -42,7 +42,7 @@ vtkPVGL2PSExporter::~vtkPVGL2PSExporter()
 void vtkPVGL2PSExporter::WriteData()
 {
   // Write the output to a temporary file (vtkGL2PSExporter takes a prefix
-  // and sets the extension itself, while the Visocyte export mechanism uses the
+  // and sets the extension itself, while the ParaView export mechanism uses the
   // full filename). The full name of the temporary file will be
   // this->FileName + ".pvtmp.[format extension]".
   vtkStdString tmpFilePrefix(this->FileName + ".pvtmp");

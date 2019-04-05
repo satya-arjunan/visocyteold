@@ -93,7 +93,7 @@ _vtk_module_install(protobuf)
 target_compile_features(protobuf
   PUBLIC
     cxx_std_11)
-add_library(Visocyte::protobuf ALIAS protobuf)
+add_library(ParaView::protobuf ALIAS protobuf)
 
 target_include_directories(protobuf
   PUBLIC
@@ -287,7 +287,7 @@ _vtk_module_install(vtklibprotoc)
 
 target_link_libraries(vtklibprotoc
   PRIVATE
-    Visocyte::protobuf)
+    ParaView::protobuf)
 set_target_properties(vtklibprotoc
   PROPERTIES
     DEFINE_SYMBOL LIBPROTOC_EXPORTS)
@@ -297,5 +297,5 @@ vtk_module_add_executable(vtkprotoc
 target_link_libraries(vtkprotoc
   PRIVATE
     vtklibprotoc
-    Visocyte::protobuf)
-add_executable(Visocyte::protoc ALIAS vtkprotoc)
+    ParaView::protobuf)
+add_executable(ParaView::protoc ALIAS vtkprotoc)

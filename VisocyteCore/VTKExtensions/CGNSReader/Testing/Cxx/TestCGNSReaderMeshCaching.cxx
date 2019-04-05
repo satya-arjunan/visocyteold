@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    TestGNSReaderMeshCaching.cxx
 
   Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen

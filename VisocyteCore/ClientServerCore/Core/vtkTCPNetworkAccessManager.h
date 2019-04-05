@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTCPNetworkAccessManager.h
 
   Copyright (c) Kitware, Inc.
@@ -135,7 +135,7 @@ protected:
     HANDSHAKE_UNKNOWN_ERROR
   };
 
-  int VisocyteHandshake(
+  int ParaViewHandshake(
     vtkMultiProcessController* controller, bool server_side, const char* handshake);
   void PrintHandshakeError(int errorcode, bool server_side);
   int AnalyzeHandshakeAndGetErrorCode(const char* clientHS, const char* serverHS);

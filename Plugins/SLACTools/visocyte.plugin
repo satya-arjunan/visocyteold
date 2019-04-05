@@ -3,10 +3,10 @@ NAME
 DESCRIPTION
   SLAC Tools
 REQUIRES_MODULES
-  Visocyte::ClientServerCoreCore
-  Visocyte::ServerManagerCore
-  Visocyte::ServerManagerRendering
-  Visocyte::VTKExtensionsCore
+  ParaView::ClientServerCoreCore
+  ParaView::ServerManagerCore
+  ParaView::ServerManagerRendering
+  ParaView::VTKExtensionsCore
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqMultiBlockInspectorWidget.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -468,7 +468,7 @@ public:
   using Superclass::select;
 
   /**
-   * used to disable propagation between Qt and Visocyte (or vice-versa).
+   * used to disable propagation between Qt and ParaView (or vice-versa).
    */
   bool blockSelectionPropagation(bool newval)
   {
@@ -480,7 +480,7 @@ public:
   bool selectionPropagationBlocked() const { return this->BlockSelectionPropagation; }
 
   /**
-   * Overridden to propagate selection to Visocyte. If user selected blocks, create a block-based
+   * Overridden to propagate selection to ParaView. If user selected blocks, create a block-based
    * selection
    * to select (and hence show) the selected blocks.
    */
@@ -513,7 +513,7 @@ public:
   }
 
   /**
-   * Called when Visocyte notifies us that the application selected something.
+   * Called when ParaView notifies us that the application selected something.
    * We update the selection, as appropriate.
    */
   void selected(pqOutputPort* port)

@@ -163,7 +163,7 @@ void vtknvindex_volume_compute::launch_compute(mi::neuraylib::IDice_transaction*
 
   mi::Uint8* subdivision_ptr = nullptr;
 
-  // Using volume subvision from Visocyte scalar raw pointer
+  // Using volume subvision from ParaView scalar raw pointer
   if (pv_subdivision_ptr)
   {
     // Convert double scalar data to float.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMStateLocator.cxx
 
   Copyright (c) Kitware, Inc.

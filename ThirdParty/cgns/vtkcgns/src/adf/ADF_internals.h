@@ -781,7 +781,7 @@ extern  int     ADFI_stack_control(
 	    char *stack_data ) ;
 
 
-// XXX(kitware): Visocyte does not use the Fortran interface.
+// XXX(kitware): ParaView does not use the Fortran interface.
 #if 0
 /***********************************************************************
     Prototypes for the FORTRAN to C Interface Routines

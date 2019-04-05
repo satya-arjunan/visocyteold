@@ -7,8 +7,8 @@ visocyte_add_plugin(GMVReader
 # TODO: What to do with pqGMVReaderPanel? This is needed if it is to be used.
 target_link_libraries(GMVReader
   PRIVATE
-    Visocyte::Core
-    Visocyte::ServerManagerCore)
+    ParaView::Core
+    ParaView::ServerManagerCore)
 
 if (BUILD_TESTING)
   add_subdirectory(Testing)

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    myMainWindow.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -39,8 +39,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqDefaultViewBehavior.h"
 #include "pqHelpReaction.h"
 #include "pqInterfaceTracker.h"
-#include "pqVisocyteBehaviors.h"
-#include "pqVisocyteMenuBuilders.h"
+#include "pqParaViewBehaviors.h"
+#include "pqParaViewMenuBuilders.h"
 #include "pqStandardViewFrameActionsImplementation.h"
 
 #include <QAction>
@@ -76,27 +76,27 @@ myMainWindow::myMainWindow()
 
 // Populate application menus with actions.
 #if 0
-  pqVisocyteMenuBuilders::buildFileMenu(*this->Internals->menu_File);
+  pqParaViewMenuBuilders::buildFileMenu(*this->Internals->menu_File);
 #else
   QList<QAction*> qa = this->Internals->menu_File->actions();
   QAction* mqa = qa.at(0);
   new pqLoadDataReaction(mqa);
 #endif
 
-  pqVisocyteMenuBuilders::buildEditMenu(*this->Internals->menu_Edit);
+  pqParaViewMenuBuilders::buildEditMenu(*this->Internals->menu_Edit);
 
   // Populate sources menu.
-  pqVisocyteMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
+  pqParaViewMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
 
   // Populate filters menu.
-  pqVisocyteMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
+  pqParaViewMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
 
   // Populate Tools menu.
-  pqVisocyteMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
+  pqParaViewMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
 
 // Populate toolbars
 #if 0
-  pqVisocyteMenuBuilders::buildToolbars(*this);
+  pqParaViewMenuBuilders::buildToolbars(*this);
 #else
   QToolBar* mainToolBar = new pqMainControlsToolbar(this) << pqSetName("MainControlsToolbar");
   mainToolBar->layout()->setSpacing(0);
@@ -113,41 +113,41 @@ myMainWindow::myMainWindow()
 
   // Setup the View menu. This must be setup after all toolbars and dockwidgets
   // have been created.
-  pqVisocyteMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
+  pqParaViewMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
 
   // Setup the help menu.
-  pqVisocyteMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
+  pqParaViewMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
 
 #if 1
   // Final step, define application behaviors. Since we want some visocyte behaviors
-  // we can use static method to configure the pqVisocyteBehaviors and select
+  // we can use static method to configure the pqParaViewBehaviors and select
   // only the components we want
-  pqVisocyteBehaviors::setEnableStandardPropertyWidgets(false);
-  pqVisocyteBehaviors::setEnableStandardRecentlyUsedResourceLoader(false);
-  pqVisocyteBehaviors::setEnableDataTimeStepBehavior(false);
-  pqVisocyteBehaviors::setEnableSpreadSheetVisibilityBehavior(false);
-  pqVisocyteBehaviors::setEnablePipelineContextMenuBehavior(false);
-  pqVisocyteBehaviors::setEnableObjectPickingBehavior(false);
-  pqVisocyteBehaviors::setEnableUndoRedoBehavior(false);
-  pqVisocyteBehaviors::setEnableCrashRecoveryBehavior(false);
-  pqVisocyteBehaviors::setEnablePluginDockWidgetsBehavior(false);
-  pqVisocyteBehaviors::setEnableVerifyRequiredPluginBehavior(false);
-  pqVisocyteBehaviors::setEnablePluginActionGroupBehavior(false);
-  pqVisocyteBehaviors::setEnableCommandLineOptionsBehavior(false);
-  pqVisocyteBehaviors::setEnablePersistentMainWindowStateBehavior(false);
-  pqVisocyteBehaviors::setEnableCollaborationBehavior(false);
-  pqVisocyteBehaviors::setEnableViewStreamingBehavior(false);
-  pqVisocyteBehaviors::setEnablePluginSettingsBehavior(false);
-  pqVisocyteBehaviors::setEnableQuickLaunchShortcuts(false);
-  pqVisocyteBehaviors::setEnableLockPanelsBehavior(false);
+  pqParaViewBehaviors::setEnableStandardPropertyWidgets(false);
+  pqParaViewBehaviors::setEnableStandardRecentlyUsedResourceLoader(false);
+  pqParaViewBehaviors::setEnableDataTimeStepBehavior(false);
+  pqParaViewBehaviors::setEnableSpreadSheetVisibilityBehavior(false);
+  pqParaViewBehaviors::setEnablePipelineContextMenuBehavior(false);
+  pqParaViewBehaviors::setEnableObjectPickingBehavior(false);
+  pqParaViewBehaviors::setEnableUndoRedoBehavior(false);
+  pqParaViewBehaviors::setEnableCrashRecoveryBehavior(false);
+  pqParaViewBehaviors::setEnablePluginDockWidgetsBehavior(false);
+  pqParaViewBehaviors::setEnableVerifyRequiredPluginBehavior(false);
+  pqParaViewBehaviors::setEnablePluginActionGroupBehavior(false);
+  pqParaViewBehaviors::setEnableCommandLineOptionsBehavior(false);
+  pqParaViewBehaviors::setEnablePersistentMainWindowStateBehavior(false);
+  pqParaViewBehaviors::setEnableCollaborationBehavior(false);
+  pqParaViewBehaviors::setEnableViewStreamingBehavior(false);
+  pqParaViewBehaviors::setEnablePluginSettingsBehavior(false);
+  pqParaViewBehaviors::setEnableQuickLaunchShortcuts(false);
+  pqParaViewBehaviors::setEnableLockPanelsBehavior(false);
 
   // This is actually useless, as they are activated by default
-  pqVisocyteBehaviors::setEnableStandardViewFrameActions(true);
-  pqVisocyteBehaviors::setEnableDefaultViewBehavior(true);
-  pqVisocyteBehaviors::setEnableAlwaysConnectedBehavior(true);
-  pqVisocyteBehaviors::setEnableAutoLoadPluginXMLBehavior(true);
-  pqVisocyteBehaviors::setEnableApplyBehavior(true);
-  new pqVisocyteBehaviors(this, this);
+  pqParaViewBehaviors::setEnableStandardViewFrameActions(true);
+  pqParaViewBehaviors::setEnableDefaultViewBehavior(true);
+  pqParaViewBehaviors::setEnableAlwaysConnectedBehavior(true);
+  pqParaViewBehaviors::setEnableAutoLoadPluginXMLBehavior(true);
+  pqParaViewBehaviors::setEnableApplyBehavior(true);
+  new pqParaViewBehaviors(this, this);
 
 #else
   // Or do everything manually, not recommended

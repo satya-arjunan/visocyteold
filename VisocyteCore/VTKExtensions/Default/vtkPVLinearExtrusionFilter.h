@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVLinearExtrusionFilter.h
 
   Copyright (c) Kitware, Inc.

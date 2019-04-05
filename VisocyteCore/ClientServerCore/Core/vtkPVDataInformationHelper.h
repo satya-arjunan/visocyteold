@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDataInformationHelper.h
 
   Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@
  *
  *
  * Plugins can subclass this and call vtkPVDataInformation::RegisterHelper()
- * in order to allow vtkPVDataInformation (and thus Visocyte) to handle new
+ * in order to allow vtkPVDataInformation (and thus ParaView) to handle new
  * data types.
 */
 

@@ -11,7 +11,7 @@ has the same color.
 `area:...`
 ------------
 
-Labels in this category identify a component of Visocyte affected by the issue.
+Labels in this category identify a component of ParaView affected by the issue.
 Current list includes `area:catalyst`, `area:doc`, `area:packaging`, `area:third-party`,
 and `area:web`.
 

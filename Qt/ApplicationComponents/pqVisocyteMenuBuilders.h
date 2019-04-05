@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
-   Module:    pqVisocyteMenuBuilders.h
+   Program: ParaView
+   Module:    pqParaViewMenuBuilders.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,8 +29,8 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#ifndef pqVisocyteMenuBuilders_h
-#define pqVisocyteMenuBuilders_h
+#ifndef pqParaViewMenuBuilders_h
+#define pqParaViewMenuBuilders_h
 
 #include "pqApplicationComponentsModule.h"
 
@@ -41,12 +41,12 @@ class QMainWindow;
 class pqPropertiesPanel;
 
 /**
-* pqVisocyteMenuBuilders provides helper methods to build menus that are
-* exactly as used by Visocyte client. Simply call the appropriate method with
+* pqParaViewMenuBuilders provides helper methods to build menus that are
+* exactly as used by ParaView client. Simply call the appropriate method with
 * the menu as an argument, and it will be populated with actions and reactions
-* for standard Visocyte behavior.
+* for standard ParaView behavior.
 */
-class PQAPPLICATIONCOMPONENTS_EXPORT pqVisocyteMenuBuilders
+class PQAPPLICATIONCOMPONENTS_EXPORT pqParaViewMenuBuilders
 {
 public:
   /**
@@ -110,7 +110,7 @@ public:
   static void buildPipelineBrowserContextMenu(QMenu& menu);
 
   /**
-  * Builds and adds all standard Visocyte toolbars.
+  * Builds and adds all standard ParaView toolbars.
   */
   static void buildToolbars(QMainWindow& mainWindow);
 };

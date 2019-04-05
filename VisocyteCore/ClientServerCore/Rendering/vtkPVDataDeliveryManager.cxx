@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -190,7 +190,7 @@ public:
 
       const int real_mode = this->GetItemDataDistributionMode(data_distribution_mode);
       vtkNew<vtkMPIMoveData> dataMover;
-      dataMover->InitializeForCommunicationForVisocyte();
+      dataMover->InitializeForCommunicationForParaView();
       dataMover->SetOutputDataType(dataObj->GetDataObjectType());
       dataMover->SetMoveMode(real_mode);
       if (this->DeliverToClientAndRenderingProcesses)
@@ -964,7 +964,7 @@ void vtkPVDataDeliveryManager::DeliverStreamedPieces(unsigned int size, unsigned
     vtkDataObject* piece = item->GetStreamedPiece();
 
     vtkNew<vtkMPIMoveData> dataMover;
-    dataMover->InitializeForCommunicationForVisocyte();
+    dataMover->InitializeForCommunicationForParaView();
     dataMover->SetOutputDataType(data->GetDataObjectType());
     dataMover->SetMoveMode(mode);
     if (item->CloneDataToAllNodes)

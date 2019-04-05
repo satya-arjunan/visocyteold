@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -504,7 +504,7 @@ bool vtkLiveInsituLink::InitializeInsitu()
     url << "tcp://" << this->Hostname << ":" << this->InsituPort << "?"
         << "timeout=0&handshake=visocyte.insitu." << VISOCYTE_VERSION;
     this->SetURL(url.str().c_str());
-    // Suppress any error messages while attempting to connect to Visocyte
+    // Suppress any error messages while attempting to connect to ParaView
     // visualization engine.
     int display_errors = vtkObject::GetGlobalWarningDisplay();
     vtkObject::GlobalWarningDisplayOff();
@@ -588,7 +588,7 @@ void vtkLiveInsituLink::DropLiveInsituConnection()
   this->Proc0NodesController = 0;
   this->ExtractsDeliveryHelper = 0;
   this->SimulationPaused = 0;
-  vtkDebugMacro("Catalyst and Visocyte should now be disconnected");
+  vtkDebugMacro("Catalyst and ParaView should now be disconnected");
 }
 
 //----------------------------------------------------------------------------
@@ -606,7 +606,7 @@ void vtkLiveInsituLink::InsituConnect(vtkMultiProcessController* proc0NodesContr
   int numProcs = parallelController->GetNumberOfProcesses();
   int myId = parallelController->GetLocalProcessId();
 
-  vtkDebugMacro("Catalyst and Visocyte should now be connected");
+  vtkDebugMacro("Catalyst and ParaView should now be connected");
 
   if (myId == 0)
   {
@@ -781,21 +781,21 @@ void vtkLiveInsituLink::InsituUpdate(double time, vtkIdType timeStep)
 
   if (!this->ExtractsDeliveryHelper.GetPointer())
   {
-    // We are not connected to Visocyte LIVE. That can happen if the
-    // Visocyte LIVE was not ready the last time we attempted to connect
-    // to it, or Visocyte LIVE disconnected. We make a fresh attempt to
+    // We are not connected to ParaView LIVE. That can happen if the
+    // ParaView LIVE was not ready the last time we attempted to connect
+    // to it, or ParaView LIVE disconnected. We make a fresh attempt to
     // connect to it.
     assert(this->ProcessType == INSITU);
 
     this->Initialize(this->InsituProxyManager);
     if (!this->ExtractsDeliveryHelper.GetPointer())
     {
-      // Visocyte LIVE is still not ready. Another time.
+      // ParaView LIVE is still not ready. Another time.
       return;
     }
   }
 
-  // Okay, Visocyte LIVE connection is currently valid, but it may
+  // Okay, ParaView LIVE connection is currently valid, but it may
   // break, so add error interceptor.
   vtkCommunicationErrorCatcher catcher(this->Proc0NodesController);
 
@@ -960,7 +960,7 @@ void vtkLiveInsituLink::InsituPostProcess(double time, vtkIdType timeStep)
   if (!this->ExtractsDeliveryHelper)
   {
     // if this->ExtractsDeliveryHelper is NULL it means we are not connected to
-    // any Visocyte Visualization Engine yet. Just skip.
+    // any ParaView Visualization Engine yet. Just skip.
     return;
   }
 
@@ -982,7 +982,7 @@ void vtkLiveInsituLink::InsituPostProcess(double time, vtkIdType timeStep)
 
   if (drop_connection)
   {
-    // Visocyte Live has disconnected. Clean up the connection.
+    // ParaView Live has disconnected. Clean up the connection.
     this->DropLiveInsituConnection();
     return;
   }

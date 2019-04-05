@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkRedistributePolyData.h
 
   Copyright (c) Kitware, Inc.
@@ -55,7 +55,7 @@ public:
 
   //@{
   /**
-   * These are here for Visocyte compatibility. Not used.
+   * These are here for ParaView compatibility. Not used.
    */
   virtual void SetSocketController(vtkSocketController*){};
   virtual void SetPassThrough(int){};

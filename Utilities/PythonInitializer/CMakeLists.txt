@@ -1,11 +1,11 @@
 set(sources
   vtkPVPythonInitializer.cxx)
 
-vtk_module_add_module(Visocyte::PythonInitializer
+vtk_module_add_module(ParaView::PythonInitializer
   SOURCES ${sources})
 
 # TODO: Frozen python support
 
-vtk_module_link(Visocyte::PythonInitializer
+vtk_module_link(ParaView::PythonInitializer
   PRIVATE
-    Visocyte::pvpythonmodules)
+    ParaView::pvpythonmodules)

@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkSurfaceLICRepresentations
 DEPENDS
-  Visocyte::ClientServerCoreRendering
+  ParaView::ClientServerCoreRendering
 PRIVATE_DEPENDS
   VTK::CommonCore
   VTK::RenderingCore

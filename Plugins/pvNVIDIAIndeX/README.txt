@@ -1,7 +1,7 @@
-NVIDIA IndeX for Visocyte Plugin
+NVIDIA IndeX for ParaView Plugin
 
-The NVIDIA IndeX for Visocyte Plugin enables the large-scale volume data
-visualization capabilities of the NVIDIA IndeX library inside Kitware's Visocyte.
+The NVIDIA IndeX for ParaView Plugin enables the large-scale volume data
+visualization capabilities of the NVIDIA IndeX library inside Kitware's ParaView.
 This document will provide a brief overview of the installation package, please
 refer to the user guide for detailed instructions.
 
@@ -11,7 +11,7 @@ refer to the user guide for detailed instructions.
 
  installation-directory
     |
-    | -- doc                User's Guide for the NVIDIA IndeX for Visocyte Plugin.
+    | -- doc                User's Guide for the NVIDIA IndeX for ParaView Plugin.
     |                       The users guide provides detailed installation
     |                       instructions, describes the implemented feature set
     |                       supported by the plugin, answers frequently asked
@@ -20,7 +20,7 @@ refer to the user guide for detailed instructions.
     | -- lib                NVIDIA IndeX and DiCE libraries specific
     |                       to your platform.
     |
-    | -- src                 Visocyte plugin source code
+    | -- src                 ParaView plugin source code
     |
     | -- EULA.pdf           NVIDIA End User License Agreement.
     |
@@ -33,14 +33,14 @@ refer to the user guide for detailed instructions.
 # Compatibility and Prerequisites
 #-------------------------------------------------------------------------------
 
-The NVIDIA IndeX for Visocyte Plugin is compatible with:
+The NVIDIA IndeX for ParaView Plugin is compatible with:
 
-* Visocyte-5.5.0 and later.
+* ParaView-5.5.0 and later.
   (depending on the downloaded package, Windows 64-bit).
 * OpenMPI-1.7.4
   (if running in client-server mode).
 * NVIDIA IndeX 2.0
-  (installed with the Visocyte plugin).
+  (installed with the ParaView plugin).
 * NVIDIA GPU(s) supporting CUDA compute capability 3.0 or higher, i.e. Kepler
   GPU architecture generation or later.
 * NVIDIA display driver version 387.26 or later on Linux and
@@ -50,7 +50,7 @@ The NVIDIA IndeX for Visocyte Plugin is compatible with:
 # Features and Licensing
 #-------------------------------------------------------------------------------
 
-The NVIDIA IndeX for Visocyte plugin comes with a free workstation license that
+The NVIDIA IndeX for ParaView plugin comes with a free workstation license that
 enables exploiting the capabilities of a single GPU.
 
 If you aim to use NVIDIA IndeX on a cluster of multiple hosts and/or
@@ -79,7 +79,7 @@ with multiple NVIDIA GPUs, then please contact us for the appropriate licensing.
 * Advanced filtering and pre-integration techniques enabling high-fidelity
   visualizations.
 
-* Depth-correct integration of Visocyte geometry rendering into NVIDIA IndeX
+* Depth-correct integration of ParaView geometry rendering into NVIDIA IndeX
   volume rendering.
 
 * Free single GPU version for leveraging today's GPU performance.
@@ -101,19 +101,19 @@ with multiple NVIDIA GPUs, then please contact us for the appropriate licensing.
 
 * Datasets in *.vtk format won’t distribute to the PV Server and cause
   errors. Please use *.pvti or any other format instead for distributed data
-  This issue is Visocyte specific. Please contact Kitware for additional details.
+  This issue is ParaView specific. Please contact Kitware for additional details.
 
 # Unstructured volume grids
 ---------------------------
 
 * Datasets containing degenerated faces may result in correct renderings
-  or cause Visocyte to fail. The NVIDIA IndeX Visocyte plugin tries to resolve
+  or cause ParaView to fail. The NVIDIA IndeX ParaView plugin tries to resolve
   all invalid faces automatically.
 
 # Auxiliary
 -----------
 
-* The Windows version of the NVIDIA IndeX plugin for Visocyte is restricted
+* The Windows version of the NVIDIA IndeX plugin for ParaView is restricted
   to run on a single workstation/computer only, i.e., cluster rendering
   is not supported on Windows platforms.
 
@@ -131,7 +131,7 @@ with multiple NVIDIA GPUs, then please contact us for the appropriate licensing.
 # Contact
 #-------------------------------------------------------------------------------
 
-Please do not hesitate to contact us on the NVIDIA IndeX for Visocyte Plugin
+Please do not hesitate to contact us on the NVIDIA IndeX for ParaView Plugin
 forum for further assistance: https://devtalk.nvidia.com/default/board/323/index-visocyte/
 
 Support mailing list: visocyte-plugin-support@nvidia.com

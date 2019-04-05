@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCylinder
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVCylinder
- * @brief   extends vtkCylinder to add Visocyte specific API.
+ * @brief   extends vtkCylinder to add ParaView specific API.
  *
- * vtkPVCylinder extends vtkCylinder to add Visocyte specific API.
+ * vtkPVCylinder extends vtkCylinder to add ParaView specific API.
 */
 
 #ifndef vtkPVCylinder_h

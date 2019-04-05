@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    PhastaAdaptor.cxx
 
   Copyright (c) Kitware, Inc.

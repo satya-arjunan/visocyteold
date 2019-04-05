@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -29,7 +29,7 @@
 #
 #==========================================================================
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project(Visocyte)
+project(ParaView)
 
 foreach (policy IN ITEMS
     CMP0083 # CMake 3.14
@@ -42,7 +42,7 @@ endforeach ()
 # Disallow in-source build
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
   message(FATAL_ERROR
-    "Visocyte requires an out-of-source build. Please create a separate "
+    "ParaView requires an out-of-source build. Please create a separate "
     "binary directory and run CMake there.")
 endif ()
 
@@ -61,7 +61,7 @@ endif ()
 
 #------------------------------------------------------------------------------
 # Choose static or shared libraries.
-option(VISOCYTE_BUILD_SHARED_LIBS "Build Visocyte with shared libraries" ON)
+option(VISOCYTE_BUILD_SHARED_LIBS "Build ParaView with shared libraries" ON)
 set(BUILD_SHARED_LIBS "${VISOCYTE_BUILD_SHARED_LIBS}")
 set(CMAKE_CXX_VISIBILITY_PRESET "hidden")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
@@ -91,10 +91,10 @@ set(vtk_cmake_dir "${CMAKE_CURRENT_SOURCE_DIR}/VTK/CMake")
 list(APPEND CMAKE_MODULE_PATH
   "${visocyte_cmake_dir}"
   "${vtk_cmake_dir}")
-include(VisocyteServerManager)
-include(VisocyteTesting)
-include(VisocyteClient)
-include(VisocytePlugin)
+include(ParaViewServerManager)
+include(ParaViewTesting)
+include(ParaViewClient)
+include(ParaViewPlugin)
 include(vtkModuleWrapClientServer)
 include(CTest)
 set_property(CACHE BUILD_TESTING
@@ -125,15 +125,15 @@ mark_as_advanced(VTK_LEGACY_REMOVE VTK_LEGACY_SILENT)
 
 # Setup external data. this will automatically download the test data and
 # baseline files to the build tree and set VISOCYTE_DATA_ROOT.
-include(VisocyteExternalData)
+include(ParaViewExternalData)
 
 find_package(Git QUIET)
-include(VisocyteDetermineVersion)
+include(ParaViewDetermineVersion)
 
 #------------------------------------------------------------------------------
-# Setup Visocyte Environment
+# Setup ParaView Environment
 #------------------------------------------------------------------------------
-# Determine Visocyte Source Version
+# Determine ParaView Source Version
 # Hardcoded version variables are readin from a separate file. This makes it
 # easier to have a script to update version numbers automatically.
 file(STRINGS version.txt version_txt)
@@ -142,7 +142,7 @@ determine_version("${CMAKE_CURRENT_SOURCE_DIR}" "${GIT_EXECUTABLE}" "VISOCYTE")
 
 # Setting this ensures that "make install" will leave rpaths to external
 # libraries (not part of the build-tree e.g. Qt, ffmpeg, etc.) intact on
-# "make install". This ensures that one can install a version of Visocyte on the
+# "make install". This ensures that one can install a version of ParaView on the
 # build machine without any issues. If this not desired, simply specify
 # CMAKE_INSTALL_RPATH_USE_LINK_PATH when configuring Visocyte and
 # "make install" will strip all rpaths, which is default behavior.
@@ -161,12 +161,12 @@ if (DEFINED VISOCYTE_BUILD_EXAMPLES)
   unset(VISOCYTE_BUILD_EXAMPLES)
   unset(VISOCYTE_BUILD_EXAMPLES CACHE)
 endif ()
-option(VISOCYTE_ENABLE_EXAMPLES "Enable Visocyte examples" "${examples_default}")
-option(VISOCYTE_BUILD_DEVELOPER_DOCUMENTATION "Build Visocyte C++/Python docs" OFF)
-option(VISOCYTE_BUILD_QT_GUI "Enable Visocyte Qt-based client" ON)
+option(VISOCYTE_ENABLE_EXAMPLES "Enable ParaView examples" "${examples_default}")
+option(VISOCYTE_BUILD_DEVELOPER_DOCUMENTATION "Build ParaView C++/Python docs" OFF)
+option(VISOCYTE_BUILD_QT_GUI "Enable ParaView Qt-based client" ON)
 option(VISOCYTE_USE_MPI "Enable MPI support for parallel computing" OFF)
 option(VISOCYTE_USE_VTKM "Enable VTK-m accelerated algorithms" ON)
-option(VISOCYTE_USE_OSPRAY "Build Visocyte with OSPRay Ray Traced rendering" OFF)
+option(VISOCYTE_USE_OSPRAY "Build ParaView with OSPRay Ray Traced rendering" OFF)
 option(VISOCYTE_ENABLE_LOGGING "Enable logging support." ON)
 mark_as_advanced(VISOCYTE_ENABLE_LOGGING)
 
@@ -187,7 +187,7 @@ cmake_dependent_option(VISOCYTE_ENABLE_WEB "Enable/Disable web support" "${visoc
 mark_as_advanced(VISOCYTE_ENABLE_WEB)
 
 # NvPipe requires an NVIDIA GPU.
-option(VISOCYTE_ENABLE_NVPIPE "Build Visocyte with NvPipe remoting. Requires CUDA and an NVIDIA GPU" OFF)
+option(VISOCYTE_ENABLE_NVPIPE "Build ParaView with NvPipe remoting. Requires CUDA and an NVIDIA GPU" OFF)
 
 option(VISOCYTE_ENABLE_GDAL "Enable GDAL support." OFF)
 mark_as_advanced(VISOCYTE_ENABLE_GDAL)
@@ -232,7 +232,7 @@ mark_as_advanced(
   VISOCYTE_INITIALIZE_MPI_ON_CLIENT)
 
 cmake_dependent_option(VISOCYTE_ENABLE_QT_SUPPORT
-  "Build Visocyte with Qt support (without GUI)" OFF
+  "Build ParaView with Qt support (without GUI)" OFF
   "NOT VISOCYTE_BUILD_QT_GUI" ON)
 
 # Add an option to enable using Qt Webkit for widgets, as needed.
@@ -253,16 +253,16 @@ mark_as_advanced(VISOCYTE_USE_QTHELP)
 # If VISOCYTE_BUILD_QT_GUI is OFF, provide an option to the user to turn other
 # command line executables ON/OFF.
 cmake_dependent_option(VISOCYTE_ENABLE_COMMANDLINE_TOOLS
-  "Build Visocyte command-line tools" ON
+  "Build ParaView command-line tools" ON
   "NOT VISOCYTE_BUILD_QT_GUI" ON)
 
 option(VISOCYTE_ENABLE_PYTHON "Enable/Disable Python scripting support" OFF)
 
 # If building on Unix with MPI enabled, we will present another option to
 # enable building of CosmoTools VTK extensions. This option is by default
-# OFF and set to OFF if Visocyte is not built with MPI.
+# OFF and set to OFF if ParaView is not built with MPI.
 cmake_dependent_option(VISOCYTE_ENABLE_COSMOTOOLS
-  "Build Visocyte with CosmoTools VTK Extensions" OFF
+  "Build ParaView with CosmoTools VTK Extensions" OFF
   "UNIX;VISOCYTE_USE_MPI" OFF)
 mark_as_advanced(VISOCYTE_ENABLE_COSMOTOOLS)
 
@@ -283,7 +283,7 @@ endif ()
 
 # Kits bundle multiple modules together into a single library, this
 # is used to dramatically reduce the number of generated libraries.
-option(VISOCYTE_ENABLE_KITS "Build Visocyte using kits instead of modules." OFF)
+option(VISOCYTE_ENABLE_KITS "Build ParaView using kits instead of modules." OFF)
 mark_as_advanced(VISOCYTE_ENABLE_KITS)
 
 option(VISOCYTE_USE_EXTERNAL "Use external copies of third party libraries by default" OFF)
@@ -294,7 +294,7 @@ set(visocyte_rejected_modules)
 
 if (VISOCYTE_ENABLE_COMMANDLINE_TOOLS)
   list(APPEND visocyte_requested_modules
-    Visocyte::ServerManagerApplication)
+    ParaView::ServerManagerApplication)
 endif ()
 
 if (VISOCYTE_ENABLE_COMMANDLINE_TOOLS AND VISOCYTE_ENABLE_PYTHON)
@@ -316,13 +316,13 @@ if (VISOCYTE_ENABLE_PYTHON)
   set(VTK_PYTHON_VERSION "${VISOCYTE_PYTHON_VERSION}")
 
   list(APPEND visocyte_requested_modules
-    Visocyte::PythonAlgorithm
-    Visocyte::PythonInitializer
+    ParaView::PythonAlgorithm
+    ParaView::PythonInitializer
     VTK::RenderingMatplotlib)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::PythonAlgorithm
-    Visocyte::PythonInitializer
+    ParaView::PythonAlgorithm
+    ParaView::PythonInitializer
     VTK::RenderingMatplotlib)
 endif ()
 
@@ -330,12 +330,12 @@ if (VISOCYTE_ENABLE_PYTHON AND (NOT VISOCYTE_PYTHON_VERSION STREQUAL "3"))
   # cinema_python doesn't support Python 3 yet
   # visocyte/visocyte#17353
   list(APPEND visocyte_requested_modules
-    Visocyte::CinemaPython
-    Visocyte::CinemaReader)
+    ParaView::CinemaPython
+    ParaView::CinemaReader)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::CinemaPython
-    Visocyte::CinemaReader)
+    ParaView::CinemaPython
+    ParaView::CinemaReader)
 endif()
 
 if (VISOCYTE_ENABLE_PYTHON AND VISOCYTE_BUILD_TESTING)
@@ -348,25 +348,25 @@ endif()
 
 if (VISOCYTE_BUILD_QT_GUI)
   list(APPEND visocyte_requested_modules
-    Visocyte::Core
-    Visocyte::ServerManagerApplication
-    Visocyte::ServerManagerCore
-    Visocyte::ServerManagerDefault
-    Visocyte::pqApplicationComponents
-    Visocyte::pqComponents
-    Visocyte::pqCore)
+    ParaView::Core
+    ParaView::ServerManagerApplication
+    ParaView::ServerManagerCore
+    ParaView::ServerManagerDefault
+    ParaView::pqApplicationComponents
+    ParaView::pqComponents
+    ParaView::pqCore)
 
   if (VISOCYTE_ENABLE_PYTHON)
     list(APPEND visocyte_requested_modules
-      Visocyte::pqPython)
+      ParaView::pqPython)
   endif ()
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::pqApplicationComponents
-    Visocyte::pqComponents
-    Visocyte::pqCore
-    Visocyte::pqWidgets
-    Visocyte::qttesting
+    ParaView::pqApplicationComponents
+    ParaView::pqComponents
+    ParaView::pqCore
+    ParaView::pqWidgets
+    ParaView::qttesting
     VTK::GUISupportQt)
 endif ()
 
@@ -375,13 +375,13 @@ if (VISOCYTE_USE_MPI)
     VTK::FiltersParallelFlowPaths
     VTK::FiltersParallelGeometry
     VTK::FiltersParallelMPI
-    # Required because of Visocyte::VTKExtensionsDefault having an optional dependency.
+    # Required because of ParaView::VTKExtensionsDefault having an optional dependency.
     VTK::IOMPIImage
     VTK::IOParallelLSDyna
     VTK::IOParallelNetCDF
     VTK::ParallelMPI
-    Visocyte::VTKExtensionsDefaultParallel
-    Visocyte::icet)
+    ParaView::VTKExtensionsDefaultParallel
+    ParaView::icet)
 else ()
   list(APPEND visocyte_rejected_modules
     VTK::mpi)
@@ -407,10 +407,10 @@ endif ()
 
 if (VISOCYTE_ENABLE_NVPIPE)
   list(APPEND visocyte_requested_modules
-    Visocyte::nvpipe)
+    ParaView::nvpipe)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::nvpipe)
+    ParaView::nvpipe)
 endif ()
 
 if (VISOCYTE_ENABLE_GDAL)
@@ -440,12 +440,12 @@ endif ()
 
 if (VISOCYTE_ENABLE_VISITBRIDGE)
   list(APPEND visocyte_requested_modules
-    Visocyte::IOVisItBridge
-    Visocyte::VisItLib)
+    ParaView::IOVisItBridge
+    ParaView::VisItLib)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::IOVisItBridge
-    Visocyte::VisItLib)
+    ParaView::IOVisItBridge
+    ParaView::VisItLib)
 endif ()
 
 if (VISOCYTE_ENABLE_XDMF2)
@@ -465,29 +465,29 @@ endif ()
 
 if (VISOCYTE_USE_ICE_T)
   list(APPEND visocyte_requested_modules
-    Visocyte::icet)
+    ParaView::icet)
 endif ()
 
 if (VISOCYTE_ENABLE_COSMOTOOLS)
   list(APPEND visocyte_requested_modules
-    Visocyte::VTKExtensionsCosmoTools)
+    ParaView::VTKExtensionsCosmoTools)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::VTKExtensionsCosmoTools)
+    ParaView::VTKExtensionsCosmoTools)
 endif ()
 
 if (VISOCYTE_ENABLE_CATALYST)
   list(APPEND visocyte_requested_modules
-    Visocyte::Catalyst)
+    ParaView::Catalyst)
 
   if (VISOCYTE_ENABLE_PYTHON)
     list(APPEND visocyte_requested_modules
-      Visocyte::PythonCatalyst)
+      ParaView::PythonCatalyst)
   endif ()
 
   if (BUILD_TESTING)
     list(APPEND visocyte_requested_modules
-      Visocyte::CatalystTestDriver)
+      ParaView::CatalystTestDriver)
   endif ()
 
   # When Catalyst is enabled, Fortran is optionally needed. Hence we enable
@@ -508,15 +508,15 @@ endif ()
 
 if (VISOCYTE_BUILD_TESTING)
   list(APPEND visocyte_requested_modules
-    Visocyte::smTestDriver)
+    ParaView::smTestDriver)
 endif ()
 
 list(APPEND visocyte_requested_modules
-  Visocyte::ProcessXML
-  Visocyte::VTKExtensionsCGNSReader
-  Visocyte::VTKExtensionsH5PartReader
-  Visocyte::VTKExtensionsPoints
-  Visocyte::WrapClientServer
+  ParaView::ProcessXML
+  ParaView::VTKExtensionsCGNSReader
+  ParaView::VTKExtensionsH5PartReader
+  ParaView::VTKExtensionsPoints
+  ParaView::WrapClientServer
   VTK::FiltersFlowPaths
   VTK::FiltersVerdict
   VTK::IOAMR
@@ -530,25 +530,25 @@ list(APPEND visocyte_requested_modules
 
 if (VISOCYTE_ENABLE_WEB)
   list(APPEND visocyte_requested_modules
-    Visocyte::PVWebCore
-    Visocyte::PVWebPython
+    ParaView::PVWebCore
+    ParaView::PVWebPython
     VTK::WebCore
     VTK::WebPython
   )
   if (VISOCYTE_PYTHON_VERSION STREQUAL "2")
     list(APPEND visocyte_requested_modules
-      Visocyte::PVWebPython2
+      ParaView::PVWebPython2
     )
   else ()
     list(APPEND visocyte_rejected_modules
-      Visocyte::PVWebPython2
+      ParaView::PVWebPython2
     )
   endif ()
 else()
   list(APPEND visocyte_rejected_modules
-    Visocyte::PVWebCore
-    Visocyte::PVWebPython
-    Visocyte::PVWebPython2
+    ParaView::PVWebCore
+    ParaView::PVWebPython
+    ParaView::PVWebPython2
     VTK::WebCore
     VTK::WebPython
   )
@@ -625,12 +625,12 @@ visocyte_plugin_scan(
   PROVIDES_PLUGINS  visocyte_plugins
   REQUIRES_MODULES  visocyte_plugin_required_modules)
 
-set(_vtk_module_group_default_VisocyteCore "WANT")
-set(_vtk_module_group_default_VisocyteRendering "WANT")
+set(_vtk_module_group_default_ParaViewCore "WANT")
+set(_vtk_module_group_default_ParaViewRendering "WANT")
 
 set(visocyte_source_directories
   "${CMAKE_CURRENT_SOURCE_DIR}/CoProcessing"
-  "${CMAKE_CURRENT_SOURCE_DIR}/VisocyteCore"
+  "${CMAKE_CURRENT_SOURCE_DIR}/ParaViewCore"
   "${CMAKE_CURRENT_SOURCE_DIR}/Qt"
   "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty"
   "${CMAKE_CURRENT_SOURCE_DIR}/Utilities"
@@ -652,7 +652,7 @@ vtk_module_scan(
 
 set(visocyte_unrecognized_visocyte_modules)
 foreach (visocyte_module IN LISTS visocyte_unrecognized_modules)
-  if (visocyte_module MATCHES "Visocyte::")
+  if (visocyte_module MATCHES "ParaView::")
     list(APPEND visocyte_unrecognized_visocyte_modules
       "${visocyte_module}")
   endif ()
@@ -682,7 +682,7 @@ if (VISOCYTE_USE_EXTERNAL_VTK)
 else ()
   set(vtk_requested_modules)
   foreach (vtk_module IN LISTS visocyte_requested_modules visocyte_plugin_required_modules)
-    if (vtk_module MATCHES "Visocyte::")
+    if (vtk_module MATCHES "ParaView::")
       continue ()
     endif ()
     list(APPEND vtk_requested_modules
@@ -690,7 +690,7 @@ else ()
   endforeach ()
   set(vtk_rejected_modules)
   foreach (vtk_module IN LISTS visocyte_rejected_modules)
-    if (vtk_module MATCHES "Visocyte::")
+    if (vtk_module MATCHES "ParaView::")
       continue ()
     endif ()
     list(APPEND vtk_rejected_modules
@@ -769,7 +769,7 @@ else ()
     LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
     VERSION             "${VISOCYTE_VERSION}"
     SOVERSION           "1"
-    TEST_DATA_TARGET    VisocyteData
+    TEST_DATA_TARGET    ParaViewData
     BUILD_WITH_KITS     "${VISOCYTE_ENABLE_KITS}"
     USE_EXTERNAL        "${VISOCYTE_USE_EXTERNAL}"
     TEST_INPUT_DATA_DIRECTORY   "${CMAKE_CURRENT_SOURCE_DIR}/VTK/Testing"
@@ -793,19 +793,19 @@ set(visocyte_test_data_directory_output
 set(_visocyte_add_tests_default_data_directory
   "${visocyte_test_data_directory_output}")
 set(_visocyte_add_tests_default_test_data_target
-  "VisocyteData")
+  "ParaViewData")
 
 vtk_module_build(
   MODULES             ${visocyte_modules}
   KITS                ${visocyte_kits}
-  INSTALL_EXPORT      Visocyte
+  INSTALL_EXPORT      ParaView
   HEADERS_DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/visocyte-${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
   CMAKE_DESTINATION   "${visocyte_cmake_destination}"
   HIERARCHY_DESTINATION "${CMAKE_INSTALL_LIBDIR}/vtk/hierarchy/${CMAKE_PROJECT_NAME}"
   LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
   VERSION             "${VISOCYTE_VERSION}"
   SOVERSION           "1"
-  TEST_DATA_TARGET    VisocyteData
+  TEST_DATA_TARGET    ParaViewData
   BUILD_WITH_KITS     "${VISOCYTE_ENABLE_KITS}"
   USE_EXTERNAL        "${VISOCYTE_USE_EXTERNAL}"
   TEST_INPUT_DATA_DIRECTORY   "${visocyte_test_data_directory_input}"
@@ -831,7 +831,7 @@ vtk_module_wrap_client_server(
   MODULES   ${visocyte_modules}
             ${vtk_modules}
   TARGET    visocyte_client_server
-  INSTALL_EXPORT Visocyte)
+  INSTALL_EXPORT ParaView)
 
 visocyte_server_manager_process(
   MODULES   ${visocyte_modules}
@@ -867,12 +867,12 @@ if (VISOCYTE_ENABLE_PYTHON)
 
   vtk_module_wrap_python(
     MODULES         ${visocyte_modules}
-    INSTALL_EXPORT  Visocyte
+    INSTALL_EXPORT  ParaView
     PYTHON_PACKAGE  "visocyte.modules"
     MODULE_DESTINATION  "${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}"
     CMAKE_DESTINATION   "${visocyte_cmake_destination}"
     WRAPPED_MODULES visocyte_python_wrapped_modules
-    TARGET          Visocyte::pvpythonmodules)
+    TARGET          ParaView::pvpythonmodules)
 endif ()
 
 if (VISOCYTE_ENABLE_WEB)
@@ -905,11 +905,11 @@ configure_file(
   "${CMAKE_CURRENT_BINARY_DIR}/CTestCustom.cmake"
   @ONLY)
 
-ExternalData_Add_Target(VisocyteData)
+ExternalData_Add_Target(ParaViewData)
 
 set(visocyte_cmake_build_dir
   "${CMAKE_CURRENT_BINARY_DIR}/${visocyte_cmake_destination}")
-include("${CMAKE_CURRENT_SOURCE_DIR}/CMake/VisocyteInstallCMakePackage.cmake")
+include("${CMAKE_CURRENT_SOURCE_DIR}/CMake/ParaViewInstallCMakePackage.cmake")
 
 set(is_git FALSE)
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
@@ -931,7 +931,7 @@ if (NOT WIN32 AND is_git AND Git_FOUND AND NOT GIT_VERSION_STRING VERSION_LESS "
               "${CMAKE_CURRENT_BINARY_DIR}"
       COMMENT "Creating source tarball in ${format} format")
     add_dependencies("visocyte-source-${format}"
-      VisocyteData)
+      ParaViewData)
     add_dependencies(visocyte-source
       "visocyte-source-${format}")
   endforeach ()
@@ -967,7 +967,7 @@ if (BUILD_TESTING AND VISOCYTE_INSTALL_DEVELOPMENT_FILES)
     -DVISOCYTE_SOURCE_DIR:PATH=${CMAKE_SOURCE_DIR}
     -DVISOCYTE_TEST_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
     -DVISOCYTE_VERSION:STRING=${VISOCYTE_VERSION}
-    -P ${CMAKE_CURRENT_SOURCE_DIR}/CMake/VisocyteTestInstall.cmake)
+    -P ${CMAKE_CURRENT_SOURCE_DIR}/CMake/ParaViewTestInstall.cmake)
   set_tests_properties(pv.TestDevelopmentInstall PROPERTIES
     LABELS "visocyte"
     ENVIRONMENT "DESTDIR=${CMAKE_BINARY_DIR}/test-install")
@@ -985,7 +985,7 @@ if (FALSE) # XXX(FIXME)
     -DPYTHON_EXECUTABLE:FILEPATH=${PYTHON_EXECUTABLE}
     -DVISOCYTE_SOURCE_DIR:PATH=${CMAKE_SOURCE_DIR}
     -DVISOCYTE_TEST_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
-    -P ${CMAKE_SOURCE_DIR}/CMake/VisocyteTestCatalystCodeGeneration.cmake)
+    -P ${CMAKE_SOURCE_DIR}/CMake/ParaViewTestCatalystCodeGeneration.cmake)
   set_tests_properties(GenerateCatalystEditions PROPERTIES
     LABELS "visocyte;catalyst")
 endif()

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    TestImageCompressors.cxx
 
   Copyright (c) Kitware, Inc.

@@ -77,7 +77,7 @@
 #if defined(MI_VERSION_STRING) && defined(MI_DATE_STRING)
 // Embed version string in output binary.
 const static volatile std::string NVINDEX_VERSION_STRING(
-  "==@@== NVIDIA IndeX for Visocyte Plug-In, "
+  "==@@== NVIDIA IndeX for ParaView Plug-In, "
   "r" MI_VERSION_STRING ", " MI_DATE_STRING "\n");
 #endif
 
@@ -115,7 +115,7 @@ vtknvindex_irregular_volume_mapper::~vtknvindex_irregular_volume_mapper()
 double* vtknvindex_irregular_volume_mapper::GetBounds()
 {
   // Return the whole volume bounds instead of the local one to avoid that
-  // Visocyte culls off any rank
+  // ParaView culls off any rank
 
   return m_whole_bounds;
 }
@@ -228,7 +228,7 @@ bool vtknvindex_irregular_volume_mapper::initialize_mapper(vtkRenderer* /*ren*/,
 {
 
 #if defined(MI_VERSION_STRING) && defined(MI_DATE_STRING)
-  INFO_LOG << "NVIDIA IndeX for Visocyte Plugin "
+  INFO_LOG << "NVIDIA IndeX for ParaView Plugin "
            << "(build " << MI_VERSION_STRING << ", " << MI_DATE_STRING ").";
 #endif
 
@@ -714,7 +714,7 @@ void vtknvindex_irregular_volume_mapper::Render(vtkRenderer* ren, vtkVolume* vol
           0,    // No Frame information
           true, // = g_immediate_final_parallel_compositing
           ren->GetNumberOfPropsRendered() ? &(m_application_context.m_opengl_app_buffer)
-                                          : NULL) // Visocyte depth buffer, if present.
+                                          : NULL) // ParaView depth buffer, if present.
         );
 
       const mi::base::Handle<nv::index::IError_set> err_set(frame_results->get_error_set());

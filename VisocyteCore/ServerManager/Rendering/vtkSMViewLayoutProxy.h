@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -14,11 +14,11 @@
 =========================================================================*/
 /**
  * @class   vtkSMViewLayoutProxy
- * @brief   vtkSMViewLayoutProxy is used by Visocyte to layout
+ * @brief   vtkSMViewLayoutProxy is used by ParaView to layout
  * multiple views in a 2D KD-Tree layout.
  *
  *
- * vtkSMViewLayoutProxy is used by Visocyte to layout multiple views in a 2D
+ * vtkSMViewLayoutProxy is used by ParaView to layout multiple views in a 2D
  * KD-Tree layout. This is proxy, hence can be registered with the proxy manager
  * just like other regular proxies; participates in xml state saving/restoring,
  * undo-redo, etc. Users can affects the GUI layout using this proxy instance

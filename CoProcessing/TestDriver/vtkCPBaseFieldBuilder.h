@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPBaseFieldBuilder.h
 
   Copyright (c) Kitware, Inc.

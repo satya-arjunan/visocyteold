@@ -18,7 +18,7 @@ if (VISOCYTE_USE_MPI)
     SurfaceLIC-OfficeContour
     )
   FOREACH (tfile ${PVBATCH_TESTS})
-    ExternalData_add_test(VisocyteData
+    ExternalData_add_test(ParaViewData
       NAME ${tfile}-Batch
       COMMAND ${VTK_MPIRUN_EXE} ${VTK_MPI_PRENUMPROC_FLAGS} ${VTK_MPI_NUMPROC_FLAG} ${NP} ${VTK_MPI_PREFLAGS}
         $<TARGET_FILE:pvbatch>
@@ -35,7 +35,7 @@ if (VISOCYTE_USE_MPI)
 ELSE()
   # run the test serially
   FOREACH (tfile ${PVBATCH_TESTS})
-    ExternalData_add_test(VisocyteData
+    ExternalData_add_test(ParaViewData
       NAME ${tfile}-Batch
       COMMAND $<TARGET_FILE:pvbatch>
         --enable-bt

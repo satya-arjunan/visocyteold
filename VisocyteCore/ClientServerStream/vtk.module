@@ -1,9 +1,9 @@
 NAME
-  Visocyte::ClientServer
+  ParaView::ClientServer
 LIBRARY_NAME
   vtkClientServer
 KIT
-  Visocyte::CoreKit
+  ParaView::CoreKit
 DEPENDS
   VTK::CommonCore
 PRIVATE_DEPENDS
@@ -16,4 +16,4 @@ TEST_DEPENDS
   VTK::CommonCore
   VTK::TestingCore
 TEST_LABELS
-  Visocyte
+  ParaView

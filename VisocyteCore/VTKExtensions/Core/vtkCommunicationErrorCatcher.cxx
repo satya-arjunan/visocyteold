@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCommunicationErrorCatcher.cxx
 
   Copyright (c) Kitware, Inc.

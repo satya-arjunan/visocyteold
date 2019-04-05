@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVRepresentedDataInformation.h
 
   Copyright (c) Kitware, Inc.

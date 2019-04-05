@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMChartUseIndexForAxisDomain.h
 
   Copyright (c) Kitware, Inc.

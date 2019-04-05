@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVRenderView.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class   vtkPVRenderView
- * @brief   Render View for Visocyte.
+ * @brief   Render View for ParaView.
  *
- * vtkRenderView equivalent that is specialized for Visocyte. vtkRenderView
- * handles polygonal rendering for Visocyte in all the different modes of
+ * vtkRenderView equivalent that is specialized for ParaView. vtkRenderView
+ * handles polygonal rendering for ParaView in all the different modes of
  * operation. vtkPVRenderView instance must be created on all involved
  * processes. vtkPVRenderView uses the information about what process it has
  * been created on to decide what part of the "rendering" happens on the
@@ -492,7 +492,7 @@ public:
   //@{
   /**
    * Used by Cinema to enforce a consistent viewpoint and depth scaling.
-   * Prevents Visocyte from changing depth scaling over course of an export.
+   * Prevents ParaView from changing depth scaling over course of an export.
    */
   void SetLockBounds(bool nv);
   vtkGetMacro(LockBounds, bool);
@@ -954,8 +954,8 @@ public:
    * before the pass is triggered.
    *
    * @warning This is a new/experimental feature that was added to support
-   * viewing of Cinema databases in Visocyte. As the support for Cinema in
-   * Visocyte improve, this is likely to change.
+   * viewing of Cinema databases in ParaView. As the support for Cinema in
+   * ParaView improve, this is likely to change.
    */
   static vtkPVCameraCollection* GetDiscreteCameras(
     vtkInformation* info, vtkPVDataRepresentation* repr);

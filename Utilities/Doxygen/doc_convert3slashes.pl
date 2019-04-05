@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 #
 # This program converts the /// style doxygen comments to /**  */ style comments.
-# This is being used on the Qt subdirectory of the Visocyte source tree for consistency
-# with the rest of Visocyte which is being changed to match VTK.
+# This is being used on the Qt subdirectory of the ParaView source tree for consistency
+# with the rest of ParaView which is being changed to match VTK.
 #
 
 use Carp;

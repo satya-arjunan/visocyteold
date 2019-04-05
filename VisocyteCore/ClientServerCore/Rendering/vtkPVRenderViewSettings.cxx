@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVRenderViewSettings.cxx
 
   Copyright (c) Kitware, Inc.

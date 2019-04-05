@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqObjectBuilder.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMDomain.h"
 #include "vtkSMDomainIterator.h"
 #include "vtkSMInputProperty.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMPropertyIterator.h"
 #include "vtkSMRenderViewProxy.h"
@@ -91,13 +91,13 @@ static bool processEvents()
 }
 
 //-----------------------------------------------------------------------------
-bool preCreatePipelineProxy(vtkSMVisocytePipelineController* controller, vtkSMProxy* proxy)
+bool preCreatePipelineProxy(vtkSMParaViewPipelineController* controller, vtkSMProxy* proxy)
 {
   return controller->PreInitializeProxy(proxy);
 }
 
 //-----------------------------------------------------------------------------
-pqPipelineSource* postCreatePipelineProxy(vtkSMVisocytePipelineController* controller,
+pqPipelineSource* postCreatePipelineProxy(vtkSMParaViewPipelineController* controller,
   vtkSMProxy* proxy, pqServer* server, const QString& regName = QString())
 {
   // since there are no properties to set, nothing to do here.
@@ -150,7 +150,7 @@ pqObjectBuilder::~pqObjectBuilder()
 pqPipelineSource* pqObjectBuilder::createSource(
   const QString& sm_group, const QString& sm_name, pqServer* server)
 {
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   vtkSMSessionProxyManager* pxm = server->proxyManager();
   vtkSmartPointer<vtkSMProxy> proxy;
   proxy.TakeReference(pxm->NewProxy(sm_group.toLocal8Bit().data(), sm_name.toLocal8Bit().data()));
@@ -169,7 +169,7 @@ pqPipelineSource* pqObjectBuilder::createSource(
 pqPipelineSource* pqObjectBuilder::createFilter(const QString& sm_group, const QString& sm_name,
   QMap<QString, QList<pqOutputPort*> > namedInputs, pqServer* server)
 {
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   vtkSMSessionProxyManager* pxm = server->proxyManager();
   vtkSmartPointer<vtkSMProxy> proxy;
   proxy.TakeReference(pxm->NewProxy(sm_group.toLocal8Bit().data(), sm_name.toLocal8Bit().data()));
@@ -261,7 +261,7 @@ pqPipelineSource* pqObjectBuilder::createReader(
     reg_name += '*';
   }
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   vtkSMSessionProxyManager* pxm = server->proxyManager();
   vtkSmartPointer<vtkSMProxy> proxy;
   proxy.TakeReference(pxm->NewProxy(sm_group.toUtf8().data(), sm_name.toUtf8().data()));
@@ -329,7 +329,7 @@ void pqObjectBuilder::destroy(pqPipelineSource* source)
 
   emit this->destroying(source);
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->UnRegisterProxy(source->getProxy());
 }
 
@@ -352,14 +352,14 @@ pqView* pqObjectBuilder::createView(const QString& type, pqServer* server, bool 
   }
   if (detachedFromLayout)
   {
-    proxy->SetAnnotation("Visocyte::DetachedFromLayout", "true");
+    proxy->SetAnnotation("ParaView::DetachedFromLayout", "true");
   }
 
   // notify the world that we may create a new view. applications may handle
   // this by setting up layouts, etc.
   emit this->aboutToCreateView(server);
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->PreInitializeProxy(proxy);
   controller->PostInitializeProxy(proxy);
   controller->RegisterViewProxy(proxy);
@@ -387,7 +387,7 @@ void pqObjectBuilder::destroy(pqView* view)
   }
 
   emit this->destroying(view);
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->UnRegisterProxy(view->getProxy());
 }
 
@@ -431,7 +431,7 @@ pqDataRepresentation* pqObjectBuilder::createDataRepresentation(
     return NULL;
   }
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->PreInitializeProxy(reprProxy);
 
   // Set the reprProxy's input.

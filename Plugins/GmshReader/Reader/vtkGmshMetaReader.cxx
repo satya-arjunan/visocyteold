@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkGmshMetaReader.cxx
 
   Copyright (c) Kitware, Inc.
@@ -13,10 +13,10 @@
 
 =========================================================================*/
 // -------------------------------------------------------------------
-// VisocyteGmshReaderPlugin - Copyright (C) 2015 Cenaero
+// ParaViewGmshReaderPlugin - Copyright (C) 2015 Cenaero
 //
 // See the Copyright.txt and License.txt files provided
-// with VisocyteGmshReaderPlugin for license information.
+// with ParaViewGmshReaderPlugin for license information.
 //
 // -------------------------------------------------------------------
 

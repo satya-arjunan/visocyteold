@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkKdTreeManager.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  * @brief   class used to generate KdTree from unstructured or
  * structured data.
  *
- * Visocyte needs to build a KdTree when ordered compositing. The KdTree is
+ * ParaView needs to build a KdTree when ordered compositing. The KdTree is
  * either built using the all data in the pipeline when on structure data is
  * present, or using the partitions provided by the structure data's extent
  * translator. This class manages this logic. When structure data's extent

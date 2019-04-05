@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
-   Module:    VisocyteMainWindow.cxx
+   Program: ParaView
+   Module:    ParaViewMainWindow.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -36,8 +36,8 @@ void vtkPVInitializePythonModules();
 }
 #endif
 
-#include "VisocyteMainWindow.h"
-#include "ui_VisocyteMainWindow.h"
+#include "ParaViewMainWindow.h"
+#include "ui_ParaViewMainWindow.h"
 
 #include "pqActiveObjects.h"
 #include "pqApplicationCore.h"
@@ -45,8 +45,8 @@ void vtkPVInitializePythonModules();
 #include "pqDeleteReaction.h"
 #include "pqMainWindowEventManager.h"
 #include "pqOptions.h"
-#include "pqVisocyteBehaviors.h"
-#include "pqVisocyteMenuBuilders.h"
+#include "pqParaViewBehaviors.h"
+#include "pqParaViewMenuBuilders.h"
 #include "pqSaveStateReaction.h"
 #include "pqSettings.h"
 #include "pqTimer.h"
@@ -73,7 +73,7 @@ void vtkPVInitializePythonModules();
 #include <QtDebug>
 
 #ifdef VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
-#include "VisocyteDocumentationInitializer.h"
+#include "ParaViewDocumentationInitializer.h"
 #endif
 
 #ifdef VISOCYTE_ENABLE_PYTHON
@@ -86,7 +86,7 @@ typedef pqPythonDebugLeaksView DebugLeaksViewType;
 typedef vtkQtDebugLeaksView DebugLeaksViewType;
 #endif
 
-class VisocyteMainWindow::pqInternals : public Ui::pqClientMainWindow
+class ParaViewMainWindow::pqInternals : public Ui::pqClientMainWindow
 {
 public:
   bool FirstShow;
@@ -103,7 +103,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------
-VisocyteMainWindow::VisocyteMainWindow()
+ParaViewMainWindow::ParaViewMainWindow()
 {
   // the debug leaks view should be constructed as early as possible
   // so that it can monitor vtk objects created at application startup.
@@ -120,7 +120,7 @@ VisocyteMainWindow::VisocyteMainWindow()
 #endif
 
 #ifdef VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
-  // init the Visocyte embedded documentation.
+  // init the ParaView embedded documentation.
   visocyte_documentation_initialize();
 #endif
 
@@ -257,52 +257,52 @@ VisocyteMainWindow::VisocyteMainWindow()
     "COLOR_EDITOR_PANEL", this->Internals->colorMapEditorDock);
 
   // Populate application menus with actions.
-  pqVisocyteMenuBuilders::buildFileMenu(*this->Internals->menu_File);
-  pqVisocyteMenuBuilders::buildEditMenu(
+  pqParaViewMenuBuilders::buildFileMenu(*this->Internals->menu_File);
+  pqParaViewMenuBuilders::buildEditMenu(
     *this->Internals->menu_Edit, this->Internals->propertiesPanel);
 
   // Populate sources menu.
-  pqVisocyteMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
+  pqParaViewMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
 
   // Populate filters menu.
-  pqVisocyteMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
+  pqParaViewMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
 
   // Populate Tools menu.
-  pqVisocyteMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
+  pqParaViewMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
 
   // Populate Catalyst menu.
-  pqVisocyteMenuBuilders::buildCatalystMenu(
+  pqParaViewMenuBuilders::buildCatalystMenu(
     *this->Internals->menu_Catalyst, this->Internals->catalystInspectorDock);
 
   // setup the context menu for the pipeline browser.
-  pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(
+  pqParaViewMenuBuilders::buildPipelineBrowserContextMenu(
     *this->Internals->pipelineBrowser->contextMenu());
 
-  pqVisocyteMenuBuilders::buildToolbars(*this);
+  pqParaViewMenuBuilders::buildToolbars(*this);
 
   // Setup the View menu. This must be setup after all toolbars and dockwidgets
   // have been created.
-  pqVisocyteMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
+  pqParaViewMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
 
   // Setup the menu to show macros.
-  pqVisocyteMenuBuilders::buildMacrosMenu(*this->Internals->menu_Macros);
+  pqParaViewMenuBuilders::buildMacrosMenu(*this->Internals->menu_Macros);
 
   // Setup the help menu.
-  pqVisocyteMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
+  pqParaViewMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
 
-  // Final step, define application behaviors. Since we want all Visocyte
+  // Final step, define application behaviors. Since we want all ParaView
   // behaviors, we use this convenience method.
-  new pqVisocyteBehaviors(this, this);
+  new pqParaViewBehaviors(this, this);
 }
 
 //-----------------------------------------------------------------------------
-VisocyteMainWindow::~VisocyteMainWindow()
+ParaViewMainWindow::~ParaViewMainWindow()
 {
   delete this->Internals;
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::showHelpForProxy(const QString& groupname, const QString& proxyname)
+void ParaViewMainWindow::showHelpForProxy(const QString& groupname, const QString& proxyname)
 {
 #ifdef VISOCYTE_USE_QTHELP
   pqHelpReaction::showProxyHelp(groupname, proxyname);
@@ -310,19 +310,19 @@ void VisocyteMainWindow::showHelpForProxy(const QString& groupname, const QStrin
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::dragEnterEvent(QDragEnterEvent* evt)
+void ParaViewMainWindow::dragEnterEvent(QDragEnterEvent* evt)
 {
   pqApplicationCore::instance()->getMainWindowEventManager()->dragEnterEvent(evt);
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::dropEvent(QDropEvent* evt)
+void ParaViewMainWindow::dropEvent(QDropEvent* evt)
 {
   pqApplicationCore::instance()->getMainWindowEventManager()->dropEvent(evt);
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::showEvent(QShowEvent* evt)
+void ParaViewMainWindow::showEvent(QShowEvent* evt)
 {
   this->Superclass::showEvent(evt);
 
@@ -345,20 +345,20 @@ void VisocyteMainWindow::showEvent(QShowEvent* evt)
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::closeEvent(QCloseEvent* evt)
+void ParaViewMainWindow::closeEvent(QCloseEvent* evt)
 {
   pqApplicationCore::instance()->getMainWindowEventManager()->closeEvent(evt);
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::showWelcomeDialog()
+void ParaViewMainWindow::showWelcomeDialog()
 {
   pqWelcomeDialog dialog(this);
   dialog.exec();
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::updateFontSize()
+void ParaViewMainWindow::updateFontSize()
 {
   auto& internals = *this->Internals;
   vtkPVGeneralSettings* gsSettings = vtkPVGeneralSettings::GetInstance();
@@ -392,7 +392,7 @@ void VisocyteMainWindow::updateFontSize()
 }
 
 //-----------------------------------------------------------------------------
-void VisocyteMainWindow::handleMessage(const QString&, int type)
+void ParaViewMainWindow::handleMessage(const QString&, int type)
 {
   QDockWidget* dock = this->Internals->outputWidgetDock;
   if (!dock->isVisible() && (type == QtCriticalMsg || type == QtFatalMsg || type == QtWarningMsg))

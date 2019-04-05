@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkH5PartReader.h
 
   Copyright (c) Kitware, Inc.
@@ -94,7 +94,7 @@ public:
    * for each point/particle read. When using the points directly
    * this is unnecessary and time can be saved by omitting cell generation
    * vtkPointSpriteMapper does not require them.
-   * When using Visocyte, cell generation is recommended, without them
+   * When using ParaView, cell generation is recommended, without them
    * many filter operations are unavailable
    */
   vtkSetMacro(GenerateVertexCells, int);

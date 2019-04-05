@@ -3,7 +3,7 @@ NAME
 DESCRIPTION
   Embossing representations
 REQUIRES_MODULES
-  Visocyte::ClientServerCoreRendering
+  ParaView::ClientServerCoreRendering
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::FiltersCore

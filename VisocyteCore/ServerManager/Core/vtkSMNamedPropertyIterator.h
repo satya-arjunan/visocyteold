@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMNamedPropertyIterator.h
 
   Copyright (c) Kitware, Inc.

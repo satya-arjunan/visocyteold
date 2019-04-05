@@ -40,7 +40,7 @@ pqWelcomeDialog::~pqWelcomeDialog()
 //-----------------------------------------------------------------------------
 void pqWelcomeDialog::onGettingStartedGuideClicked()
 {
-  QString documentationPath(vtkPVFileInformation::GetVisocyteDocDirectory().c_str());
+  QString documentationPath(vtkPVFileInformation::GetParaViewDocDirectory().c_str());
   QString paraViewGettingStartedFile = documentationPath + "/GettingStarted.pdf";
   QUrl gettingStartedURL = QUrl::fromLocalFile(paraViewGettingStartedFile);
   if (pqDesktopServicesReaction::openUrl(gettingStartedURL))

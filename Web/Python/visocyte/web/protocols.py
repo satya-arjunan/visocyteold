@@ -1,4 +1,4 @@
-r"""visocyteweb_protocols is a module that contains a set of VisocyteWeb related
+r"""visocyteweb_protocols is a module that contains a set of ParaViewWeb related
 protocols that can be combined together to provide a flexible way to define
 very specific web application.
 """
@@ -65,11 +65,11 @@ def sanitizeKeys(mapObj):
 
 # =============================================================================
 #
-# Base class for any Visocyte based protocol
+# Base class for any ParaView based protocol
 #
 # =============================================================================
 
-class VisocyteWebProtocol(vtk_protocols.vtkWebProtocol):
+class ParaViewWebProtocol(vtk_protocols.vtkWebProtocol):
 
     def __init__(self):
         # self.Application = None
@@ -191,10 +191,10 @@ class VisocyteWebProtocol(vtk_protocols.vtkWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebMouseHandler(VisocyteWebProtocol):
+class ParaViewWebMouseHandler(ParaViewWebProtocol):
 
     def __init__(self, **kwargs):
-        super(VisocyteWebMouseHandler, self).__init__()
+        super(ParaViewWebMouseHandler, self).__init__()
         self.lastAction = 'up'
 
     # RpcName: mouseInteraction => viewport.mouse.interaction
@@ -258,10 +258,10 @@ class VisocyteWebMouseHandler(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebViewPort(VisocyteWebProtocol):
+class ParaViewWebViewPort(ParaViewWebProtocol):
 
     def __init__(self, scale=1.0, maxWidth=2560, maxHeight=1440, **kwargs):
-        super(VisocyteWebViewPort, self).__init__()
+        super(ParaViewWebViewPort, self).__init__()
         self.scale = scale
         self.maxWidth = maxWidth
         self.maxHeight = maxHeight
@@ -366,7 +366,7 @@ class VisocyteWebViewPort(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebViewPortImageDelivery(VisocyteWebProtocol):
+class ParaViewWebViewPortImageDelivery(ParaViewWebProtocol):
 
     # RpcName: stillRender => viewport.image.render
     @exportRpc("viewport.image.render")
@@ -425,9 +425,9 @@ class VisocyteWebViewPortImageDelivery(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebPublishImageDelivery(VisocyteWebProtocol):
+class ParaViewWebPublishImageDelivery(ParaViewWebProtocol):
     def __init__(self, decode=True, **kwargs):
-        VisocyteWebProtocol.__init__(self)
+        ParaViewWebProtocol.__init__(self)
         self.trackingViews = {}
         self.lastStaleTime = 0
         self.staleHandlerCount = 0
@@ -778,17 +778,17 @@ class VisocyteWebPublishImageDelivery(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebProgressUpdate(VisocyteWebProtocol):
+class ParaViewWebProgressUpdate(ParaViewWebProtocol):
     progressObserverTag = None
 
     def __init__(self, **kwargs):
-        super(VisocyteWebProgressUpdate, self).__init__()
+        super(ParaViewWebProgressUpdate, self).__init__()
         self.listenToProgress()
 
     def listenToProgress(self):
         progressHandler = simple.servermanager.ActiveConnection.Session.GetProgressHandler()
-        if not VisocyteWebProgressUpdate.progressObserverTag:
-            VisocyteWebProgressUpdate.progressObserverTag = progressHandler.AddObserver(
+        if not ParaViewWebProgressUpdate.progressObserverTag:
+            ParaViewWebProgressUpdate.progressObserverTag = progressHandler.AddObserver(
                 'ProgressEvent',
                 lambda handler, event: self.updateProgress(handler))
 
@@ -803,10 +803,10 @@ class VisocyteWebProgressUpdate(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebViewPortGeometryDelivery(VisocyteWebProtocol):
+class ParaViewWebViewPortGeometryDelivery(ParaViewWebProtocol):
 
     def __init__(self, **kwargs):
-        super(VisocyteWebViewPortGeometryDelivery, self).__init__()
+        super(ParaViewWebViewPortGeometryDelivery, self).__init__()
 
         self.dataCache = {}
 
@@ -901,9 +901,9 @@ class VisocyteWebViewPortGeometryDelivery(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebLocalRendering(VisocyteWebProtocol):
+class ParaViewWebLocalRendering(ParaViewWebProtocol):
     def __init__(self, **kwargs):
-        super(VisocyteWebLocalRendering, self).__init__()
+        super(ParaViewWebLocalRendering, self).__init__()
         self.context = SynchronizationContext()
         self.trackingViews = {}
         self.mtime = 0
@@ -1002,10 +1002,10 @@ class VisocyteWebLocalRendering(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebTimeHandler(VisocyteWebProtocol):
+class ParaViewWebTimeHandler(ParaViewWebProtocol):
 
     def __init__(self, **kwargs):
-        super(VisocyteWebTimeHandler, self).__init__()
+        super(ParaViewWebTimeHandler, self).__init__()
         # setup animation scene
         self.scene = simple.GetAnimationScene()
         simple.GetTimeTrack()
@@ -1103,10 +1103,10 @@ class VisocyteWebTimeHandler(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebColorManager(VisocyteWebProtocol):
+class ParaViewWebColorManager(ParaViewWebProtocol):
 
     def __init__(self, pathToColorMaps=None, showBuiltin=True, **kwargs):
-        super(VisocyteWebColorManager, self).__init__()
+        super(ParaViewWebColorManager, self).__init__()
         if pathToColorMaps:
             simple.ImportPresets(filename=pathToColorMaps)
         self.presets = servermanager.vtkSMTransferFunctionPresets()
@@ -1585,7 +1585,7 @@ class VisocyteWebColorManager(VisocyteWebProtocol):
 # Proxy management protocol
 #
 # =============================================================================
-class VisocyteWebProxyManager(VisocyteWebProtocol):
+class ParaViewWebProxyManager(ParaViewWebProtocol):
 
     VTK_DATA_TYPES = [ 'void',            # 0
                        'bit',             # 1
@@ -1611,7 +1611,7 @@ class VisocyteWebProxyManager(VisocyteWebProtocol):
         case where multiple data directories are required.  In this case, each top-level directory
         will be given the name associated with the directory in the argument.
         """
-        super(VisocyteWebProxyManager, self).__init__()
+        super(ParaViewWebProxyManager, self).__init__()
         self.debugMode = False
         self.groupProxyEditorPropertyWidget = groupProxyEditorWidgets
         self.respectPropertyGroups = respectPropertyGroups
@@ -2202,7 +2202,7 @@ class VisocyteWebProxyManager(VisocyteWebProtocol):
         for idx in xrange(numberOfPointArrays):
             array = pdInfo.GetArray(idx)
             numComps = array.GetNumberOfComponents()
-            typeStr = VisocyteWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
+            typeStr = ParaViewWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
             data = { 'name': array.Name, 'size': numComps, 'location': 'POINTS', 'type': typeStr }
             magRange = array.GetRange(-1)
             rangeList = []
@@ -2225,7 +2225,7 @@ class VisocyteWebProxyManager(VisocyteWebProtocol):
         for idx in xrange(numberOfCellArrays):
             array = cdInfo.GetArray(idx)
             numComps = array.GetNumberOfComponents()
-            typeStr = VisocyteWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
+            typeStr = ParaViewWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
             data = { 'name': array.Name, 'size': numComps, 'location': 'CELLS', 'type': typeStr }
             magRange = array.GetRange(-1)
             rangeList = []
@@ -2248,7 +2248,7 @@ class VisocyteWebProxyManager(VisocyteWebProtocol):
         for idx in xrange(numFieldDataArrays):
             array = fdInfo.GetArrayInformation(idx)
             numComps = array.GetNumberOfComponents()
-            typeStr = VisocyteWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
+            typeStr = ParaViewWebProxyManager.VTK_DATA_TYPES[array.GetDataType()]
             data = { 'name': array.GetName(), 'size': numComps, 'location': 'FIELDS', 'type': typeStr }
             rangeList = []
             for i in range(numComps):
@@ -2800,10 +2800,10 @@ class VisocyteWebProxyManager(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebKeyValuePairStore(VisocyteWebProtocol):
+class ParaViewWebKeyValuePairStore(ParaViewWebProtocol):
 
     def __init__(self, **kwargs):
-        super(VisocyteWebKeyValuePairStore, self).__init__()
+        super(ParaViewWebKeyValuePairStore, self).__init__()
         self.keyValStore = {}
 
     # RpcName: storeKeyPair => 'pv.keyvaluepair.store'
@@ -2826,10 +2826,10 @@ class VisocyteWebKeyValuePairStore(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebSaveData(VisocyteWebProtocol):
+class ParaViewWebSaveData(ParaViewWebProtocol):
 
     def __init__(self, baseSavePath='', **kwargs):
-        super(VisocyteWebSaveData, self).__init__()
+        super(ParaViewWebSaveData, self).__init__()
 
         savePath = baseSavePath
 
@@ -2914,7 +2914,7 @@ class VisocyteWebSaveData(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebRemoteConnection(VisocyteWebProtocol):
+class ParaViewWebRemoteConnection(ParaViewWebProtocol):
 
     # RpcName: connect => pv.remote.connect
     @exportRpc("pv.remote.connect")
@@ -2972,17 +2972,17 @@ class VisocyteWebRemoteConnection(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebStartupRemoteConnection(VisocyteWebProtocol):
+class ParaViewWebStartupRemoteConnection(ParaViewWebProtocol):
 
     connected = False
 
     def __init__(self, dsHost = None, dsPort = 11111, rsHost=None, rsPort=22222, rcPort=-1, **kwargs):
-        super(VisocyteWebStartupRemoteConnection, self).__init__()
-        if not VisocyteWebStartupRemoteConnection.connected and dsHost:
-            VisocyteWebStartupRemoteConnection.connected = True
+        super(ParaViewWebStartupRemoteConnection, self).__init__()
+        if not ParaViewWebStartupRemoteConnection.connected and dsHost:
+            ParaViewWebStartupRemoteConnection.connected = True
             simple.Connect(dsHost, dsPort, rsHost, rsPort)
-        elif not VisocyteWebStartupRemoteConnection.connected and rcPort >= 0:
-            VisocyteWebStartupRemoteConnection.connected = True
+        elif not ParaViewWebStartupRemoteConnection.connected and rcPort >= 0:
+            ParaViewWebStartupRemoteConnection.connected = True
             simple.ReverseConnect(str(rcPort))
 
 
@@ -2992,14 +2992,14 @@ class VisocyteWebStartupRemoteConnection(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebStartupPluginLoader(VisocyteWebProtocol):
+class ParaViewWebStartupPluginLoader(ParaViewWebProtocol):
 
     loaded = False
 
     def __init__(self, plugins=None, pathSeparator=':', **kwargs):
-        super(VisocyteWebStartupPluginLoader, self).__init__()
-        if not VisocyteWebStartupPluginLoader.loaded and plugins:
-            VisocyteWebStartupPluginLoader.loaded = True
+        super(ParaViewWebStartupPluginLoader, self).__init__()
+        if not ParaViewWebStartupPluginLoader.loaded and plugins:
+            ParaViewWebStartupPluginLoader.loaded = True
             for path in plugins.split(pathSeparator):
                 simple.LoadPlugin(path, ns=globals())
 
@@ -3009,10 +3009,10 @@ class VisocyteWebStartupPluginLoader(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebStateLoader(VisocyteWebProtocol):
+class ParaViewWebStateLoader(ParaViewWebProtocol):
 
     def __init__(self, state_path = None, **kwargs):
-        super(VisocyteWebStateLoader, self).__init__()
+        super(ParaViewWebStateLoader, self).__init__()
         if state_path and state_path[-5:] == '.pvsm':
             self.loadState(state_path)
 
@@ -3037,7 +3037,7 @@ class VisocyteWebStateLoader(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebFileListing(VisocyteWebProtocol):
+class ParaViewWebFileListing(ParaViewWebProtocol):
 
     def __init__(self, basePath, name, excludeRegex=r"^\.|~$|^\$", groupRegex=r"[0-9]+\.", **kwargs):
         """
@@ -3156,7 +3156,7 @@ class VisocyteWebFileListing(VisocyteWebProtocol):
 from visocyte.modules.vtkPVClientServerCoreRendering import *
 from vtkmodules.vtkCommonCore import *
 
-class VisocyteWebSelectionHandler(VisocyteWebProtocol):
+class ParaViewWebSelectionHandler(ParaViewWebProtocol):
 
     def __init__(self, **kwargs):
         self.active_view = None
@@ -3217,7 +3217,7 @@ class VisocyteWebSelectionHandler(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebExportData(VisocyteWebProtocol):
+class ParaViewWebExportData(ParaViewWebProtocol):
 
     def __init__(self, basePath, **kwargs):
         self.base_export_path = basePath
@@ -3243,7 +3243,7 @@ class VisocyteWebExportData(VisocyteWebProtocol):
 #
 # =============================================================================
 
-class VisocyteWebTestProtocols(VisocyteWebProtocol):
+class ParaViewWebTestProtocols(ParaViewWebProtocol):
 
     # RpcName: clearAll => pv.test.reset
     @exportRpc("pv.test.reset")
@@ -3310,7 +3310,7 @@ def _hide_plane(obj):
     obj.GetProperty('DrawPlane').SetElement(0,0)
     obj.UpdateVTKObjects()
 
-class VisocyteWebWidgetManager(VisocyteWebProtocol):
+class ParaViewWebWidgetManager(ParaViewWebProtocol):
 
     # RpcName: addRuler => pv.widgets.ruler.add
     @exportRpc("pv.widgets.ruler.add")

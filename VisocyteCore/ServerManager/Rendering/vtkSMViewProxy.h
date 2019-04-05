@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMViewProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -223,9 +223,9 @@ public:
    * update the value of the "FieldAssociation" when a new data representation
    * is being shown in the view. Subclasses can override this method to perform
    * such updates to View properties. This is called explicitly by the
-   * `vtkSMVisocytePipelineControllerWithRendering` after changing
+   * `vtkSMParaViewPipelineControllerWithRendering` after changing
    * representation visibility. Changes to representation visibility outside of
-   * `vtkSMVisocytePipelineControllerWithRendering` will require calling this
+   * `vtkSMParaViewPipelineControllerWithRendering` will require calling this
    * method explicitly.
    *
    * Default implementation does not do anything.

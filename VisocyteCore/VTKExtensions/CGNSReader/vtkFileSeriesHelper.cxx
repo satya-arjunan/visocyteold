@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkFileSeriesHelper.cxx
 
   Copyright (c) Kitware, Inc.

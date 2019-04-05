@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMDiscreteDoubleDomain.h
 
   Copyright (c) Kitware, Inc.

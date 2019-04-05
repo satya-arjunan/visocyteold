@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCameraAnimationCue.cxx
 
   Copyright (c) Kitware, Inc.

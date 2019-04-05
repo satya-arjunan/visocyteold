@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVTemporalDataInformation.h
 
   Copyright (c) Kitware, Inc.

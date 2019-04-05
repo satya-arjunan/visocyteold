@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqLoadStateReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -44,7 +44,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "pqProxyWidgetDialog.h"
 #include "vtkSMLoadStateOptionsProxy.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSessionProxyManager.h"
 #include "vtksys/SystemTools.hxx"
@@ -94,7 +94,7 @@ void pqLoadStateReaction::loadState(const QString& filename, bool dialogBlocked,
 
     if (proxy && proxy->PrepareToLoad(filename.toLocal8Bit().data()))
     {
-      vtkNew<vtkSMVisocytePipelineController> controller;
+      vtkNew<vtkSMParaViewPipelineController> controller;
       controller->InitializeProxy(proxy);
 
       if (proxy->HasDataFiles() && !dialogBlocked)
@@ -120,12 +120,12 @@ void pqLoadStateReaction::loadState(const QString& filename, bool dialogBlocked,
   }
   else
   { // python file
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
     pqPVApplicationCore::instance()->loadStateFromPythonFile(filename, server);
     pqStandardRecentlyUsedResourceLoaderImplementation::addStateFileToRecentResources(
       server, filename);
 #else
-    qWarning("Visocyte was not built with Python support so it cannot open a python file");
+    qWarning("ParaView was not built with Python support so it cannot open a python file");
 #endif
   }
 }
@@ -134,8 +134,8 @@ void pqLoadStateReaction::loadState(const QString& filename, bool dialogBlocked,
 void pqLoadStateReaction::loadState()
 {
   pqFileDialog fileDialog(NULL, pqCoreUtilities::mainWidget(), tr("Load State File"), QString(),
-    "Visocyte state file (*.pvsm"
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+    "ParaView state file (*.pvsm"
+#if VTK_MODULE_ENABLE_ParaView_pqPython
     " *.py"
 #endif
     ");;All files (*)");

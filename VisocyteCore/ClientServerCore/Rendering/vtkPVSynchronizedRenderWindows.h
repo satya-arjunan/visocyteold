@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVSynchronizedRenderWindows.h
 
   Copyright (c) Kitware, Inc.
@@ -15,10 +15,10 @@
 /**
  * @class   vtkPVSynchronizedRenderWindows
  * @brief   synchronizes render-windows among
- * processes in Visocyte configurations.
+ * processes in ParaView configurations.
  *
  * vtkPVSynchronizedRenderWindows is the class used to synchronize render
- * windows in Visocyte. This class can be instantiated on all processes in all
+ * windows in ParaView. This class can be instantiated on all processes in all
  * modes, it automatically discovers the configuration and adapts its behavior
  * accordingly. The role of this class is to set up the render windows on all
  * processes and then synchronize renders. It does not manage compositing or
@@ -88,7 +88,7 @@ public:
    * The views are not supposed to updated the render window position or size
    * directly. They should always go through this API to update the window sizes
    * and positions. This makes it possible to provide a consistent API
-   * irrespective of the mode Visocyte is running in.
+   * irrespective of the mode ParaView is running in.
    * These methods only need to be called on the "driver" node. (No harm in
    * calling on all nodes). By driver node, we mean the CLIENT in
    * client-server mode and the root node in batch mode.

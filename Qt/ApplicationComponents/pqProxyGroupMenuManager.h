@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqProxyGroupMenuManager.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -41,7 +41,7 @@ class vtkSMProxy;
 /**
 * pqProxyGroupMenuManager is a menu-populator that fills up a menu with
 * proxies defined in an XML configuration file. This is use to automatically
-* build the sources and filters menu in Visocyte.
+* build the sources and filters menu in ParaView.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqProxyGroupMenuManager : public QObject
 {
@@ -52,7 +52,7 @@ public:
   /**
   * Constructor.
   * \c menu is the Menu to be populated.
-  * \c resourceTagName is the tag name eg. "VisocyteSources" in the client
+  * \c resourceTagName is the tag name eg. "ParaViewSources" in the client
   *    configuration files which contains lists the items shown by this menu.
   * \c supportsQuickLaunch, set to false if quick-launch is not to be supported
   *    for this menu.

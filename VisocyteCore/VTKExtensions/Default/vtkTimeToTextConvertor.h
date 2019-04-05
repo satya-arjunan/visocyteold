@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTimeToTextConvertor.h
 
   Copyright (c) Kitware, Inc.

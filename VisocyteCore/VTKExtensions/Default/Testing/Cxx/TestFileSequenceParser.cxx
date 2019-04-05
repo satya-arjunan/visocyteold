@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    TestFileSequenceParser.cxx
 
   Copyright (c) Menno Deij - van Rijswijk, MARIN, The Netherlands

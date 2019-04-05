@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMTransferFunctionPresets.h
 
   Copyright (c) Kitware, Inc.

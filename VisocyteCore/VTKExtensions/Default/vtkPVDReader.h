@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDReader.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class   vtkPVDReader
- * @brief   Visocyte-specific vtkXMLCollectionReader subclass
+ * @brief   ParaView-specific vtkXMLCollectionReader subclass
  *
  * vtkPVDReader subclasses vtkXMLCollectionReader to add
- * Visocyte-specific methods.
+ * ParaView-specific methods.
 */
 
 #ifndef vtkPVDReader_h

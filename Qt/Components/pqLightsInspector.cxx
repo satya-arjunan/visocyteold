@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqLightsInspector.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "vtkCamera.h"
 #include "vtkPVLight.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyGroup.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMRenderViewProxy.h"
@@ -278,7 +278,7 @@ void pqLightsInspector::addLight()
   vtkSMProxy* light = pxm->NewProxy("additional_lights", "Light");
 
   // standard application level logic
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->InitializeProxy(light);
   // registration, python tracing handled here:
   controller->RegisterLightProxy(light, view);
@@ -361,7 +361,7 @@ void pqLightsInspector::removeLight(vtkSMProxy* lightProxy)
   vtkSMPropertyHelper(view, "AdditionalLights").Remove(lightProxy);
 
   // this prevents undo of the remove
-  // vtkNew<vtkSMVisocytePipelineController> controller;
+  // vtkNew<vtkSMParaViewPipelineController> controller;
   // controller->UnRegisterProxy(lightProxy);
 
   // modification of AdditionalLights already calls this:

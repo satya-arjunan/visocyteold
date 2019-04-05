@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    CPXMLPWriterPipeline.cxx
 
   Copyright (c) Kitware, Inc.

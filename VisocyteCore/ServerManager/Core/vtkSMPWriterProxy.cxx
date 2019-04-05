@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    vtkSMPWriterProxy.cxx
 
 Copyright (c) Kitware, Inc.

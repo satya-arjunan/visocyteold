@@ -1,22 +1,22 @@
 NAME
-  Visocyte::pqCore
+  ParaView::pqCore
 LIBRARY_NAME
   pqCore
 GROUPS
-  VisocyteQt
+  ParaViewQt
 DEPENDS
-  Visocyte::ClientServerCoreDefault
-  Visocyte::pqWidgets
-  Visocyte::qttesting
+  ParaView::ClientServerCoreDefault
+  ParaView::pqWidgets
+  ParaView::qttesting
   VTK::GUISupportQt
 PRIVATE_DEPENDS
-  Visocyte::Animation
-  Visocyte::ServerManagerApplication
-  Visocyte::ServerManagerDefault
+  ParaView::Animation
+  ParaView::ServerManagerApplication
+  ParaView::ServerManagerDefault
   VTK::TestingRendering
   VTK::vtksys
 TEST_DEPENDS
-  Visocyte::ServerManagerRendering
+  ParaView::ServerManagerRendering
 TEST_LABELS
-  Visocyte
+  ParaView
 EXCLUDE_WRAP

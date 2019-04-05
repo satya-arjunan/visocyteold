@@ -2,7 +2,7 @@
 <pqevents>
   <pqevent object="pqClientMainWindow/MainControlsToolbar/actionServerConnect" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_choose/load" command="activate" arguments="" />
-  <pqevent object="pqClientMainWindow/pqServerConnectDialog/LoadServerConfigurationDialog" command="filesSelected" arguments="@Visocyte_BINARY_DIR@/Applications/Visocyte/Testing/XML/sshServers.pvsc" />
+  <pqevent object="pqClientMainWindow/pqServerConnectDialog/LoadServerConfigurationDialog" command="filesSelected" arguments="@ParaView_BINARY_DIR@/Applications/ParaView/Testing/XML/sshServers.pvsc" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_choose/servers" command="setCurrent" arguments="1.0" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_choose/servers" command="setCheckState" arguments="1.0,0" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_choose/connect" command="activate" arguments="" />

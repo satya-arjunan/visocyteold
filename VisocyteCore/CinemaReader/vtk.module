@@ -1,18 +1,18 @@
 NAME
-  Visocyte::CinemaReader
+  ParaView::CinemaReader
 LIBRARY_NAME
   vtkPVCinemaReader
 DEPENDS
-  Visocyte::ClientServerCoreRendering
-  Visocyte::ServerManagerCore
+  ParaView::ClientServerCoreRendering
+  ParaView::ServerManagerCore
   VTK::CommonExecutionModel
   VTK::RenderingCore
 PRIVATE_DEPENDS
-  Visocyte::Animation
-  Visocyte::ServerManagerRendering
+  ParaView::Animation
+  ParaView::ServerManagerRendering
   VTK::PythonInterpreter
   VTK::RenderingOpenGL2
   VTK::WrappingPythonCore
   VTK::opengl
 TEST_LABELS
-  Visocyte
+  ParaView

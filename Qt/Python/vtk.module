@@ -1,13 +1,13 @@
 NAME
-  Visocyte::pqPython
+  ParaView::pqPython
 LIBRARY_NAME
   pqPython
 CONDITION
   VISOCYTE_ENABLE_PYTHON
 DEPENDS
-  Visocyte::pqCore
+  ParaView::pqCore
   VTK::PythonInterpreter
   VTK::WrappingPythonCore
 TEST_LABELS
-  Visocyte
+  ParaView
 EXCLUDE_WRAP

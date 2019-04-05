@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    pqProxyModifiedStateUndoElement.h
 
   Copyright (c) Kitware, Inc.

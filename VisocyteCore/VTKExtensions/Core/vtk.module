@@ -1,13 +1,13 @@
 NAME
-  Visocyte::VTKExtensionsCore
+  ParaView::VTKExtensionsCore
 LIBRARY_NAME
   vtkPVVTKExtensionsCore
 GROUPS
-  VisocyteCore
+  ParaViewCore
 KIT
-  Visocyte::CoreKit
+  ParaView::CoreKit
 DEPENDS
-  Visocyte::Core
+  ParaView::Core
   VTK::CommonMisc
   VTK::FiltersCore
   VTK::FiltersSources
@@ -18,4 +18,4 @@ PRIVATE_DEPENDS
   VTK::jsoncpp
   VTK::vtksys
 TEST_LABELS
-  Visocyte
+  ParaView

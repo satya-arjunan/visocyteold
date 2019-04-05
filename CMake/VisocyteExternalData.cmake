@@ -3,21 +3,21 @@ include(ExternalData)
 if(NOT VISOCYTE_DATA_STORE)
   # Select a default from the following.
   set(VISOCYTE_DATA_STORE_DEFAULT "")
-  if(EXISTS "${Visocyte_SOURCE_DIR}/.ExternalData/config/store")
+  if(EXISTS "${ParaView_SOURCE_DIR}/.ExternalData/config/store")
     # Configuration left by developer setup script.
-    file(STRINGS "${Visocyte_SOURCE_DIR}/.ExternalData/config/store"
+    file(STRINGS "${ParaView_SOURCE_DIR}/.ExternalData/config/store"
       VISOCYTE_DATA_STORE_DEFAULT LIMIT_COUNT 1 LIMIT_INPUT 1024)
-  elseif(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/../VisocyteExternalData")
+  elseif(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/../ParaViewExternalData")
     # Adjacent directory created by user.
     get_filename_component(VISOCYTE_DATA_STORE_DEFAULT
-      "${CMAKE_SOURCE_DIR}/../VisocyteExternalData" ABSOLUTE)
+      "${CMAKE_SOURCE_DIR}/../ParaViewExternalData" ABSOLUTE)
   elseif(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/../ExternalData")
     # Generic adjacent directory created by user.
     get_filename_component(VISOCYTE_DATA_STORE_DEFAULT
       "${CMAKE_SOURCE_DIR}/../ExternalData" ABSOLUTE)
-  elseif(DEFINED "ENV{VisocyteExternalData_OBJECT_STORES}")
-    # The VisocyteExternalData environment variable.
-    file(TO_CMAKE_PATH "$ENV{VisocyteExternalData_OBJECT_STORES}" VISOCYTE_DATA_STORE_DEFAULT)
+  elseif(DEFINED "ENV{ParaViewExternalData_OBJECT_STORES}")
+    # The ParaViewExternalData environment variable.
+    file(TO_CMAKE_PATH "$ENV{ParaViewExternalData_OBJECT_STORES}" VISOCYTE_DATA_STORE_DEFAULT)
   elseif(DEFINED "ENV{ExternalData_OBJECT_STORES}")
     # Generic ExternalData environment variable.
     file(TO_CMAKE_PATH "$ENV{ExternalData_OBJECT_STORES}" VISOCYTE_DATA_STORE_DEFAULT)
@@ -42,10 +42,10 @@ endif()
 
 # Tell ExternalData module about selected object stores.
 list(APPEND ExternalData_OBJECT_STORES
-  # Store selected by Visocyte-specific configuration above.
+  # Store selected by ParaView-specific configuration above.
   ${VISOCYTE_DATA_STORE}
 
-  # Local data store populated by the Visocyte pre-commit hook
+  # Local data store populated by the ParaView pre-commit hook
   "${CMAKE_SOURCE_DIR}/.ExternalData"
   )
 
@@ -78,9 +78,9 @@ if(DEFINED ENV{DASHBOARD_TEST_FROM_CTEST})
 endif()
 
 if(NOT DEFINED VISOCYTE_DATA_EXCLUDE_FROM_ALL)
-  if(EXISTS "${Visocyte_SOURCE_DIR}/.ExternalData/config/exclude-from-all")
+  if(EXISTS "${ParaView_SOURCE_DIR}/.ExternalData/config/exclude-from-all")
     # Configuration left by developer setup script.
-    file(STRINGS "${Visocyte_SOURCE_DIR}/.ExternalData/config/exclude-from-all"
+    file(STRINGS "${ParaView_SOURCE_DIR}/.ExternalData/config/exclude-from-all"
       VISOCYTE_DATA_EXCLUDE_FROM_ALL_DEFAULT LIMIT_COUNT 1 LIMIT_INPUT 1024)
   elseif(DEFINED "ENV{VISOCYTE_DATA_EXCLUDE_FROM_ALL}")
     set(VISOCYTE_DATA_EXCLUDE_FROM_ALL_DEFAULT

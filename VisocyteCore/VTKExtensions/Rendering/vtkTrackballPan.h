@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkTrackballPan.h
 
   Copyright (c) Kitware, Inc.

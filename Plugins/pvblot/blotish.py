@@ -1,6 +1,6 @@
 """
 
-The blotish module provides a set of commands that control batch Visocyte
+The blotish module provides a set of commands that control batch ParaView
 visualization using semantics similar to the blot program.
 
 Instead of calling the public methods of blotish directly this module is
@@ -11,7 +11,7 @@ blot syntax to botish method calls.  See pvblot.
 
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    blotish.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -180,7 +180,7 @@ class _State(object):
 
         return self._reader
 
-    reader = property(_getReader, doc="Visocyte Exodus reader pipeline object.")
+    reader = property(_getReader, doc="ParaView Exodus reader pipeline object.")
 
     _surface = None
     def _getSurface(self):
@@ -188,19 +188,19 @@ class _State(object):
                                        visocyte.simple.ExtractSurface,
                                        Input=self.reader)
     surface = property(_getSurface,
-                       doc="Visocyte surface extract pipeline object.")
+                       doc="ParaView surface extract pipeline object.")
 
     _glyph = None
     def _getGlyph(self):
         return self._getPipelineObject('glyph', visocyte.simple.Glyph,
                                        Input=self.surface)
-    glyph = property(_getGlyph, doc="Visocyte glyph pipeline object.")
+    glyph = property(_getGlyph, doc="ParaView glyph pipeline object.")
 
     _contour = None
     def _getContour(self):
         return self._getPipelineObject('contour', visocyte.simple.Contour,
                                        Input=self.reader)
-    contour = property(_getContour, doc="Visocyte contour pipeline object.")
+    contour = property(_getContour, doc="ParaView contour pipeline object.")
 
     def resetPipeline(self):
         for obj in self._pipelineObjects.values():

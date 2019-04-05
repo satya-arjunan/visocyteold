@@ -1,17 +1,17 @@
 NAME
-  Visocyte::Catalyst
+  ParaView::Catalyst
 LIBRARY_NAME
   vtkPVCatalyst
 DEPENDS
   VTK::CommonCore
 PRIVATE_DEPENDS
-  Visocyte::ServerManagerApplication
+  ParaView::ServerManagerApplication
   VTK::FiltersGeneral
   VTK::vtksys
 OPTIONAL_DEPENDS
   VTK::ParallelMPI
 TEST_DEPENDS
-  Visocyte::CatalystTestDriver
+  ParaView::CatalystTestDriver
   VTK::FiltersSources
   VTK::IOXML
   VTK::TestingCore
@@ -19,4 +19,4 @@ TEST_OPTIONAL_DEPENDS
   VTK::ParallelMPI
 TEST_LABELS
   Catalyst
-  Visocyte
+  ParaView

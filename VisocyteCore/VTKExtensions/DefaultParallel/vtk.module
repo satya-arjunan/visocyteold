@@ -1,5 +1,5 @@
 NAME
-  Visocyte::VTKExtensionsDefaultParallel
+  ParaView::VTKExtensionsDefaultParallel
 LIBRARY_NAME
   vtkPVVTKExtensionsDefaultParallel
 CONDITION

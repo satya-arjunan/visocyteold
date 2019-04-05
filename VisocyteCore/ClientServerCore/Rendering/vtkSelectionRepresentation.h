@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSelectionRepresentation.h
 
   Copyright (c) Kitware, Inc.

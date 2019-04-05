@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMStateVersionController.cxx
 
   Copyright (c) Kitware, Inc.
@@ -613,7 +613,7 @@ struct Process_5_5_to_5_6
     {
       vtkGenericWarningMacro(
         "The state file uses the old 'Glyph' filter implementation. "
-        "The implementation has changed in Visocyte 5.6. "
+        "The implementation has changed in ParaView 5.6. "
         "Consider replacing the Glyph filter with a new Glyph filter. The old implementation "
         "is still available as 'Glyph Legacy' and will be used for loading this state file.");
     }
@@ -716,9 +716,9 @@ bool vtkSMStateVersionController::Process(vtkPVXMLElement* parent, vtkSMSession*
     vtkWarningMacro(
       "State file version is less than 4.2.0. "
       "We will try to load the state file. It's recommended, however, "
-      "that you load the state in Visocyte 4.2.0 (up to 5.5.2) and save a newer version "
+      "that you load the state in ParaView 4.2.0 (up to 5.5.2) and save a newer version "
       "so that it can be loaded more faithfully. "
-      "Loading state files generated from Visocyte versions older than 4.2.0 "
+      "Loading state files generated from ParaView versions older than 4.2.0 "
       "is no longer supported.");
 
     version = vtkSMVersion(4, 2, 0);

@@ -26,7 +26,7 @@ visocyte_add_plugin(NonOrthogonalSource
 if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(NonOrthogonalSource
     PRIVATE
-      Visocyte::pqApplicationComponents)
+      ParaView::pqApplicationComponents)
 endif ()
 
 if (BUILD_TESTING)

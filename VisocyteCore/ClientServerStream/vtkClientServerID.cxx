@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkClientServerID.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   Visocyte
-  Module:    VisocyteCore
+  Program:   ParaView
+  Module:    ParaViewCore
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -13,7 +13,7 @@
 
 =========================================================================*/
 
-The VisocyteCore directory aims to gather all the core components of Visocyte.
+The ParaViewCore directory aims to gather all the core components of ParaView.
 Those components are divided in several groups.
 
 --------------------
@@ -22,11 +22,11 @@ Common
 
 The Common directory represent the basic package that provide classes that
 may be used by any other package. It provides classes for XML management,
-and Visocyte specific command line arguments, test utility and interpreter
+and ParaView specific command line arguments, test utility and interpreter
 initializer.
 Common should contain the very core classes such as the Interpreter and
 related classes that are needed by VTKExtensions. These have nothing to do
-with Visocyte or Visocyte client-server per-say. The only things that this kit
+with ParaView or ParaView client-server per-say. The only things that this kit
 can depend on are VTK and the Interpreter.
 
 --------------------
@@ -34,13 +34,13 @@ ClientServerCore
 --------------------
 
 The ClientServerCore directory provides all the VTK classes that build
-and define all the infrastructure of Visocyte that will be used on the
+and define all the infrastructure of ParaView that will be used on the
 client and server side. In this package the abstract session is defined
 as well as some utility networking and plugin classes. It also contains
 a set of specific representation that are used on both the client and server
 side.
 ClientServerCore contains classes essential for client-server mechanisms in
-Visocyte. This also includes additional extensions to VTK that depend on
+ParaView. This also includes additional extensions to VTK that depend on
 ProcessModule or sessions.
 
 --------------------

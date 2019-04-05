@@ -1,15 +1,15 @@
 /*=========================================================================
 
-  Program: Visocyte
+  Program: ParaView
   Module:    pqShowHideAllReaction.cxx
 
   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
   All rights reserved.
 
-  Visocyte is a free software; you can redistribute it and/or modify it
-  under the terms of the Visocyte license version 1.2.
+  ParaView is a free software; you can redistribute it and/or modify it
+  under the terms of the ParaView license version 1.2.
 
-  See License_v1.2.txt for the full Visocyte license.
+  See License_v1.2.txt for the full ParaView license.
   A copy of this license can be obtained by contacting
   Kitware Inc.
   28 Corporate Drive
@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqUndoStack.h"
 #include "pqView.h"
 #include "vtkNew.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMViewProxy.h"
 
 //-----------------------------------------------------------------------------
@@ -54,14 +54,14 @@ void pqShowHideAllReaction::act(ActionType action)
   if (action == ActionType::Show)
   {
     BEGIN_UNDO_SET("Show All");
-    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
     controller->ShowAll(viewProxy);
     END_UNDO_SET();
   }
   else
   {
     BEGIN_UNDO_SET("Hide All");
-    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
     controller->HideAll(viewProxy);
     END_UNDO_SET();
   }

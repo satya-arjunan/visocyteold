@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkDistributedTrivialProducer.h
 
   Copyright (c) Kitware, Inc.

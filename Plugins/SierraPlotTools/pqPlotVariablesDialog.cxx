@@ -707,8 +707,8 @@ pqPlotVariablesDialog::pqPlotVariablesDialog(QWidget* p, Qt::WindowFlags f /*=0*
   QObject::connect(
     this->ui->okCancelButtonBox, SIGNAL(rejected(void)), this, SLOT(slotCancel(void)));
 
-  QObject::connect(this->ui->useVisocyteGUIToSelectNodesCheckBox, SIGNAL(toggled(bool)), this,
-    SLOT(slotUseVisocyteGUIToSelectNodesCheckBox(bool)));
+  QObject::connect(this->ui->useParaViewGUIToSelectNodesCheckBox, SIGNAL(toggled(bool)), this,
+    SLOT(slotUseParaViewGUIToSelectNodesCheckBox(bool)));
 
   // set up some parameters for the scroll area
   // scroll area height should not be more than 60% of desktop main screen
@@ -854,9 +854,9 @@ void pqPlotVariablesDialog::allocSetRange(
 }
 
 //-----------------------------------------------------------------------------
-bool pqPlotVariablesDialog::getUseVisocyteGUIToSelectNodesCheckBoxState()
+bool pqPlotVariablesDialog::getUseParaViewGUIToSelectNodesCheckBoxState()
 {
-  return this->ui->useVisocyteGUIToSelectNodesCheckBox->isChecked();
+  return this->ui->useParaViewGUIToSelectNodesCheckBox->isChecked();
 }
 
 //-----------------------------------------------------------------------------
@@ -965,9 +965,9 @@ QList<int> pqPlotVariablesDialog::determineSelectedItemsList(bool& errFlag)
 }
 
 //-----------------------------------------------------------------------------
-void pqPlotVariablesDialog::slotUseVisocyteGUIToSelectNodesCheckBox(bool /*checked*/)
+void pqPlotVariablesDialog::slotUseParaViewGUIToSelectNodesCheckBox(bool /*checked*/)
 {
-  emit this->useVisocyteGUIToSelectNodesCheck();
+  emit this->useParaViewGUIToSelectNodesCheck();
 }
 
 //-----------------------------------------------------------------------------

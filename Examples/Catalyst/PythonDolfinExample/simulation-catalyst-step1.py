@@ -30,7 +30,7 @@ on an L-shaped domain using Chorin's splitting method."""
 # Step 1 : initialization
 #
 
-# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and Visocyte
+# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and ParaView
 execfile("simulation-env.py")
 
 # [SC14-Catalyst] import visocyte, vtk and visocyte's simple API

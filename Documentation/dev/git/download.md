@@ -1,7 +1,7 @@
-Download Visocyte with Git
+Download ParaView with Git
 ==========================
 
-This page documents how to download Visocyte source code through [Git][].
+This page documents how to download ParaView source code through [Git][].
 See the [README](README.md) for more information.
 
 [Git]: http://git-scm.com
@@ -11,10 +11,10 @@ Clone
 
 Optionally configure Git to [use SSH instead of HTTPS](#use-ssh-instead-of-https).
 
-Clone Visocyte using the commands:
+Clone ParaView using the commands:
 
-    $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git Visocyte
-    $ cd Visocyte
+    $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git ParaView
+    $ cd ParaView
 
 Update
 ------

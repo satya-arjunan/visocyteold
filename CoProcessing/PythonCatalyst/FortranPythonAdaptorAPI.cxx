@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    FortranPythonAdaptorAPI.cxx
 
   Copyright (c) Kitware, Inc.

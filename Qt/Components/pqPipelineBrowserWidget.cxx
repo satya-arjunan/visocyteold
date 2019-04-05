@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqPipelineBrowserWidget.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkNew.h"
 #include "vtkPVGeneralSettings.h"
 #include "vtkSMPVRepresentationProxy.h"
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMTransferFunctionManager.h"
 #include "vtkSMViewProxy.h"
@@ -101,7 +101,7 @@ void pqPipelineBrowserWidget::configureModel()
   // We connect to `preServerAdded` instead of `serverAdded` signal.
   // This makes it possible for the pqPipelineModel to become aware of a new
   // server connection before the
-  // vtkSMVisocytePipelineController::InitializeSession is called by
+  // vtkSMParaViewPipelineController::InitializeSession is called by
   // pqServerManagerModel. Thus if any proxies are created during that call, the
   // pqPipelineModel knows which session they belong to.
   QObject::connect(
@@ -170,7 +170,7 @@ void pqPipelineBrowserWidget::handleIndexClicked(const QModelIndex& index_)
   // we make sure we are only clicking on an eye
   if (index_.column() == 1)
   {
-    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
 
     // Get object relative to pqPipelineModel
     const pqPipelineModel* model = this->getPipelineModel(index_);
@@ -296,7 +296,7 @@ void pqPipelineBrowserWidget::setVisibility(bool visible, pqOutputPort* port)
 {
   if (port)
   {
-    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
+    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
     pqView* activeView = pqActiveObjects::instance().activeView();
     vtkSMViewProxy* viewProxy = activeView ? activeView->getViewProxy() : NULL;
     int scalarBarMode = vtkPVGeneralSettings::GetInstance()->GetScalarBarMode();
@@ -325,7 +325,7 @@ void pqPipelineBrowserWidget::setVisibility(bool visible, pqOutputPort* port)
       vtkSMProxy* repr = controller->SetVisibility(
         port->getSourceProxy(), port->getPortNumber(), viewProxy, visible);
       // update scalar bars: show new ones if needed. Hiding of scalar bars is
-      // taken care of by vtkSMVisocytePipelineControllerWithRendering (I still
+      // taken care of by vtkSMParaViewPipelineControllerWithRendering (I still
       // wonder if that's the best thing to do).
       if (repr && visible &&
         scalarBarMode == vtkPVGeneralSettings::AUTOMATICALLY_SHOW_AND_HIDE_SCALAR_BARS &&

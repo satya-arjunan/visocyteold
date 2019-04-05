@@ -89,9 +89,9 @@ function(visocyte_protobuf_generate)
 
     add_custom_command(
       OUTPUT ${_generated_srcs}
-      COMMAND  $<TARGET_FILE:Visocyte::protoc>
+      COMMAND  $<TARGET_FILE:ParaView::protoc>
       ARGS --${protobuf_generate_LANGUAGE}_out ${_dll_export_decl}${CMAKE_CURRENT_BINARY_DIR} ${_protobuf_include_path} ${_abs_file}
-      DEPENDS ${_abs_file} Visocyte::protoc
+      DEPENDS ${_abs_file} ParaView::protoc
       COMMENT "Running ${protobuf_generate_LANGUAGE} protocol buffer compiler on ${_proto}"
       VERBATIM )
   endforeach()

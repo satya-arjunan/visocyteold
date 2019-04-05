@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVClipDataSet.cxx
 
   Copyright (c) Kitware, Inc.
@@ -44,7 +44,7 @@ vtkStandardNewMacro(vtkPVClipDataSet);
 //----------------------------------------------------------------------------
 vtkPVClipDataSet::vtkPVClipDataSet(vtkImplicitFunction* vtkNotUsed(cf))
 {
-  // setting NumberOfOutputPorts to 1 because Visocyte does not allow you to
+  // setting NumberOfOutputPorts to 1 because ParaView does not allow you to
   // generate the clipped output
   this->SetNumberOfOutputPorts(1);
 

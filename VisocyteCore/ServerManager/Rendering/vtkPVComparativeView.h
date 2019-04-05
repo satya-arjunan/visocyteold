@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVComparativeView.h
 
   Copyright (c) Kitware, Inc.

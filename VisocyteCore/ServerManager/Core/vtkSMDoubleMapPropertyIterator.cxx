@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMDoubleMapPropertyIteratorIterator.cxx
 
   Copyright (c) Kitware, Inc.

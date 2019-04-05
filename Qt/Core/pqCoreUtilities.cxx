@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqCoreUtilities.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -79,14 +79,14 @@ QWidget* pqCoreUtilities::findMainWindow()
 }
 
 //-----------------------------------------------------------------------------
-QString pqCoreUtilities::getVisocyteUserDirectory()
+QString pqCoreUtilities::getParaViewUserDirectory()
 {
   pqSettings* settings = pqApplicationCore::instance()->settings();
   return QFileInfo(settings->fileName()).path();
 }
 
 //-----------------------------------------------------------------------------
-QString pqCoreUtilities::getVisocyteApplicationDirectory()
+QString pqCoreUtilities::getParaViewApplicationDirectory()
 {
   return QApplication::applicationDirPath();
 }
@@ -99,22 +99,22 @@ QStringList pqCoreUtilities::findVisocytePaths(
   if (lookupInAppDir)
   {
     allPossibleDirs.push_back(
-      getVisocyteApplicationDirectory() + QDir::separator() + directoryOrFileName);
-    allPossibleDirs.push_back(getVisocyteApplicationDirectory() + "/../" + directoryOrFileName);
+      getParaViewApplicationDirectory() + QDir::separator() + directoryOrFileName);
+    allPossibleDirs.push_back(getParaViewApplicationDirectory() + "/../" + directoryOrFileName);
     // Mac specific begin
     allPossibleDirs.push_back(
-      getVisocyteApplicationDirectory() + "/../Support/" + directoryOrFileName);
+      getParaViewApplicationDirectory() + "/../Support/" + directoryOrFileName);
     allPossibleDirs.push_back(
-      getVisocyteApplicationDirectory() + "/../../../Support/" + directoryOrFileName);
+      getParaViewApplicationDirectory() + "/../../../Support/" + directoryOrFileName);
     // This one's for when running from the build directory.
     allPossibleDirs.push_back(
-      getVisocyteApplicationDirectory() + "/../../../" + directoryOrFileName);
+      getParaViewApplicationDirectory() + "/../../../" + directoryOrFileName);
     // Mac specific end
   }
 
   if (lookupInUserDir)
   {
-    allPossibleDirs.push_back(getVisocyteUserDirectory() + QDir::separator() + directoryOrFileName);
+    allPossibleDirs.push_back(getParaViewUserDirectory() + QDir::separator() + directoryOrFileName);
   }
 
   // Filter with only existing ones

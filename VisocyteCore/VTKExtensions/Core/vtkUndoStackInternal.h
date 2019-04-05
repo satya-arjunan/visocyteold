@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkUndoStackInternal.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSciVizStatisticsPrivate.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkSciVizStatisticsPrivate
  * @brief   Private class for scientific viz statistics classes.
  *
- * This class handles array selection in a way that makes Visocyte happy.
+ * This class handles array selection in a way that makes ParaView happy.
 */
 
 #ifndef vtkSciVizStatisticsPrivate_h

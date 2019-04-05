@@ -18,7 +18,7 @@
  *
  *
  * A writer for XML camera configuration. Writes camera configuration files
- * using Visocyte state file machinery.
+ * using ParaView state file machinery.
  *
  * @sa
  * vtkSMCameraConfigurationReader, vtkSMProxyConfigurationWriter

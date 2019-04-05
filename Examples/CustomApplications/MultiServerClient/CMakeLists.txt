@@ -1,15 +1,15 @@
 #=========================================================================
 #
-#   Program: Visocyte
+#   Program: ParaView
 #   Module:  CMakeLists.txt
 #
 #   Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
 #   All rights reserved.
 #
-#   Visocyte is a free software; you can redistribute it and/or modify it
-#   under the terms of the Visocyte license version 1.2.
+#   ParaView is a free software; you can redistribute it and/or modify it
+#   under the terms of the ParaView license version 1.2.
 #
-#   See License_v1.2.txt for the full Visocyte license.
+#   See License_v1.2.txt for the full ParaView license.
 #   A copy of this license can be obtained by contacting
 #   Kitware Inc.
 #   28 Corporate Drive
@@ -32,13 +32,13 @@
 cmake_minimum_required(VERSION 3.8)
 project(MultiServerClient)
 
-find_package(Visocyte REQUIRED)
+find_package(ParaView REQUIRED)
 
 if (NOT VISOCYTE_BUILD_QT_GUI)
   message(STATUS
     "${CMAKE_PROJECT_NAME} example requires VISOCYTE_BUILD_QT_GUI to be "
-    "enabled. Please rebuild Visocyte (or point to a different build of "
-    "Visocyte) with VISOCYTE_BUILD_QT_GUI set to TRUE")
+    "enabled. Please rebuild ParaView (or point to a different build of "
+    "ParaView) with VISOCYTE_BUILD_QT_GUI set to TRUE")
   return ()
 endif()
 
@@ -67,4 +67,4 @@ visocyte_client_add(
   MAIN_WINDOW_CLASS MultiServerClientMainWindow
 
   ORGANIZATION "Kitware, Inc."
-  TITLE "Multi-Server Client (Visocyte-based Example Application)")
+  TITLE "Multi-Server Client (ParaView-based Example Application)")

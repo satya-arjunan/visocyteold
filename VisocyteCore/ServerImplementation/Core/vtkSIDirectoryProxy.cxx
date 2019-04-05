@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSIDirectoryProxy.cxx
 
   Copyright (c) Kitware, Inc.

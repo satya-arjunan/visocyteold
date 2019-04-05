@@ -509,7 +509,7 @@
                          name="UseNativeCutter"
                          number_of_elements="1">
         <BooleanDomain name="bool" />
-        <Documentation>This property specifies whether the Visocyte's generic
+        <Documentation>This property specifies whether the ParaView's generic
         dataset cutter is used instead of the specialized AMR
         cutter.</Documentation>
       </IntVectorProperty>
@@ -1373,7 +1373,7 @@
         piece at a time, so it is not necessary for the entire data set to fit
         into memory; however the results are not guaranteed to be the same as
         they would be if the Piece invariant option was on. Setting this option
-        to 0 may produce seams in the output dataset when Visocyte is run in
+        to 0 may produce seams in the output dataset when ParaView is run in
         parallel.</Documentation>
       </IntVectorProperty>
       <DoubleVectorProperty animateable="1"
@@ -4760,7 +4760,7 @@ array.
                      Process Id Scalars filter assigns a unique scalar value to
                      each piece of the input according to which processor it
                      resides on. This filter operates on any type of data when
-                     Visocyte is run in parallel. It is useful for determining
+                     ParaView is run in parallel. It is useful for determining
                      whether your data is load-balanced across the processors
                      being used. The output data set type is the same as that
                      of the input.</Documentation>
@@ -4995,11 +4995,11 @@ array.
     <SourceProxy class="vtkQuadricClustering"
                  label="Quadric Clustering"
                  name="QuadricClustering">
-      <Documentation long_help="This filter is the same filter used to generate level of detail for Visocyte.  It uses a structured grid of bins and merges all points contained in each bin."
+      <Documentation long_help="This filter is the same filter used to generate level of detail for ParaView.  It uses a structured grid of bins and merges all points contained in each bin."
                      short_help="Simplify polygonal models.">The Quadric
                      Clustering filter produces a reduced-resolution polygonal
                      approximation of the input polygonal dataset. This filter
-                     is the one used by Visocyte for computing LODs. It uses
+                     is the one used by ParaView for computing LODs. It uses
                      spatial binning to reduce the number of points in the data
                      set; points that lie within the same spatial bin are
                      collapsed into one representative point.</Documentation>
@@ -5659,7 +5659,7 @@ array.
                  name="PlotOnSortedLines">
       <Documentation long_help="The Plot on Sorted Lines filter sorts and orders polylines for graph visualization."
       short_help="">The Plot on Sorted Lines filter sorts and orders
-      polylines for graph visualization. See http://www.visocyte.org/Visocyte3/index.php/Plotting_Over_Curves for more information.</Documentation>
+      polylines for graph visualization. See http://www.visocyte.org/ParaView3/index.php/Plotting_Over_Curves for more information.</Documentation>
       <InputProperty command="SetInputConnection"
                      name="Input">
         <ProxyGroupDomain name="groups">
@@ -7137,7 +7137,7 @@ array.
         (See SelectInputScalars.) If clipping with a clip function, this
         property specifies an offset from the clip function to use in the
         clipping operation. Neither functionality is currently available in
-        Visocyte's user interface.</Documentation>
+        ParaView's user interface.</Documentation>
         <Hints>
           <PropertyWidgetDecorator type="GenericDecorator"
                                    mode="visibility"
@@ -9110,7 +9110,7 @@ Every Nth Point.
                      of the same name exists both in Input's point and cell
                      data, only the one from the point data is
                      probed. This is the implementation of the
-                     'Resample With Dataset' filter available in Visocyte
+                     'Resample With Dataset' filter available in ParaView
                      version 5.1 and earlier. </Documentation>
       <Deprecated deprecated_in="5.2" to_remove_in="5.3">
         This has been replaced by 'Resample With Dataset'. Please consider
@@ -16393,7 +16393,7 @@ Every Nth Point.
                  name="D3">
       <Documentation long_help="Repartition a data set into load-balanced spatially convex regions.  Create ghost cells if requested."
                      short_help="Repartition a data set.">The D3 filter is
-                     available when Visocyte is run in parallel. It operates on
+                     available when ParaView is run in parallel. It operates on
                      any type of data set to evenly divide it across the
                      processors into spatially contiguous regions. The output
                      of this filter is of type unstructured

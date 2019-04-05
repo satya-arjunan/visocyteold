@@ -1,18 +1,18 @@
 NAME
-  Visocyte::pqComponents
+  ParaView::pqComponents
 LIBRARY_NAME
   pqComponents
 GROUPS
-  VisocyteQt
+  ParaViewQt
 DEPENDS
-  Visocyte::pqCore
-  Visocyte::qttesting
+  ParaView::pqCore
+  ParaView::qttesting
   VTK::jsoncpp
 PRIVATE_DEPENDS
-  Visocyte::Animation
-  Visocyte::ClientServerCoreDefault
-  Visocyte::ServerManagerDefault
-  Visocyte::ServerManagerRendering
+  ParaView::Animation
+  ParaView::ClientServerCoreDefault
+  ParaView::ServerManagerDefault
+  ParaView::ServerManagerRendering
   VTK::ChartsCore
   VTK::IOImage
   VTK::pugixml
@@ -21,7 +21,7 @@ OPTIONAL_DEPENDS
   VTK::ParallelMPI
 
   # These affect the public API.
-  Visocyte::pqPython
+  ParaView::pqPython
 TEST_LABELS
-  Visocyte
+  ParaView
 EXCLUDE_WRAP

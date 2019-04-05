@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkImageSliceRepresentation.h
 
   Copyright (c) Kitware, Inc.

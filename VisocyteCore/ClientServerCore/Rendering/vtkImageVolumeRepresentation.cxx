@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkImageVolumeRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

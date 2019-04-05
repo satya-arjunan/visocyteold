@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqTemporalExportReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -171,13 +171,13 @@ class WriterAccessor(smtrace.RealProxyAccessor):
             # this stub must have the proper name in the coprocessing hints
             print("WARNING: Could not find %s writer in %s" \
                 "XML group. This is not a problem as long as the writer is available with " \
-                "the Visocyte build used by the simulation code." % (xmlname, xmlgroup))
+                "the ParaView build used by the simulation code." % (xmlname, xmlgroup))
             ctor = servermanager._make_name_valid(xmlname)
         else:
             ctor = servermanager._make_name_valid(prototype.GetXMLLabel())
         # TODO: use servermanager.ProxyManager().NewProxy() instead
         # we create the writer proxy such that it is not registered with the
-        # VisocytePipelineController, so its state is not sent to Visocyte Live.
+        # ParaViewPipelineController, so its state is not sent to ParaView Live.
         return "servermanager.%s.%s" % (xmlgroup, ctor)
 
     def trace_ctor(self, ctor, filter, ctor_args=None, skip_assignment=False):
@@ -375,7 +375,7 @@ void pqTemporalExportReaction::onTriggered()
   }
   else
   {
-    QString filters = "Visocyte Python State Files (*.py);;All files (*)";
+    QString filters = "ParaView Python State Files (*.py);;All files (*)";
 
     pqFileDialog file_dialog(
       NULL, parentAction()->parentWidget(), tr("Save Server State:"), QString(), filters);

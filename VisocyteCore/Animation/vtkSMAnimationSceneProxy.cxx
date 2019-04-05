@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMAnimationScene.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyIterator.h"
 #include "vtkSMTimeKeeperProxy.h"
@@ -235,7 +235,7 @@ vtkSMProxy* vtkSMAnimationSceneProxy::FindAnimationCue(
   }
 
   // Check if we're animating a helper proxy on the proxy.
-  std::string groupname = vtkSMVisocytePipelineController::GetHelperProxyGroupName(animatedProxy);
+  std::string groupname = vtkSMParaViewPipelineController::GetHelperProxyGroupName(animatedProxy);
 
   vtkNew<vtkSMProxyIterator> iter;
   iter->SetSessionProxyManager(animatedProxy->GetSessionProxyManager());

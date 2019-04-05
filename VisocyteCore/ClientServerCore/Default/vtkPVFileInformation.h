@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVFileInformation.h
 
   Copyright (c) Kitware, Inc.
@@ -131,19 +131,19 @@ public:
 
   /**
   * Returns the path to the base data directory path holding various files
-  * packaged with Visocyte.
+  * packaged with ParaView.
   */
-  static std::string GetVisocyteSharedResourcesDirectory();
+  static std::string GetParaViewSharedResourcesDirectory();
 
   /**
-  * Return the path of the example data packaged with Visocyte.
+  * Return the path of the example data packaged with ParaView.
   */
-  static std::string GetVisocyteExampleFilesDirectory();
+  static std::string GetParaViewExampleFilesDirectory();
 
   /**
-  * Return the path of the documents packaged with Visocyte.
+  * Return the path of the documents packaged with ParaView.
   */
-  static std::string GetVisocyteDocDirectory();
+  static std::string GetParaViewDocDirectory();
 
 protected:
   vtkPVFileInformation();

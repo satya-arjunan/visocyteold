@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVOptions.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVOptions
- * @brief   Visocyte options storage
+ * @brief   ParaView options storage
  *
- * An object of this class represents a storage for Visocyte options
+ * An object of this class represents a storage for ParaView options
  *
  * These options can be retrieved during run-time, set using configuration file
  * or using Command Line Arguments.
@@ -70,7 +70,7 @@ public:
    * this can also correspond to the last argument specified on the command
    * line if the argument is unknown.
    */
-  vtkGetStringMacro(VisocyteDataName);
+  vtkGetStringMacro(ParaViewDataName);
   //@}
 
   //@{
@@ -169,7 +169,7 @@ public:
   /**
    * This is used when user want to open a file at startup
    */
-  vtkSetStringMacro(VisocyteDataName);
+  vtkSetStringMacro(ParaViewDataName);
   //@}
 
   //@{
@@ -224,21 +224,21 @@ public:
   /**
    * XDisplay test on server processes during initialization sometimes happens
    * too early and may result in remote rendering prematurely disabled. When
-   * this flag is set, Visocyte will skip such X-display tests. Note, if the
-   * display is truly inaccessible when Visocyte tries to connect to the server,
+   * this flag is set, ParaView will skip such X-display tests. Note, if the
+   * display is truly inaccessible when ParaView tries to connect to the server,
    * we will indeed get runtimes errors, including segfaults.
    */
   vtkGetMacro(DisableXDisplayTests, int);
   //@}
 
   /**
-   * When set to true, Visocyte will create headless only render windows on the
+   * When set to true, ParaView will create headless only render windows on the
    * current process.
    */
   vtkGetMacro(ForceOffscreenRendering, int);
 
   /**
-   * When set to true, Visocyte will create on-screen render windows.
+   * When set to true, ParaView will create on-screen render windows.
    */
   vtkGetMacro(ForceOnscreenRendering, int);
 
@@ -316,7 +316,7 @@ protected:
   /**
    * Subclasses may need to access these
    */
-  char* VisocyteDataName;
+  char* ParaViewDataName;
   char* ServerURL; // server URL information
   int ServerMode;
   int ClientMode;

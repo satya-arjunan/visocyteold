@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkSMSession
  *
- * vtkSMSession is the default Visocyte session. This class can be used as the
+ * vtkSMSession is the default ParaView session. This class can be used as the
  * session for non-client-server configurations eg. builtin mode or batch.
 */
 
@@ -167,7 +167,7 @@ public:
   //---------------------------------------------------------------------------
 
   /**
-   * These are static helper methods that help create Catalyst Visocyte
+   * These are static helper methods that help create Catalyst ParaView
    * sessions. They register the session with the process module and return the
    * session id. Returns 0 on failure.
    * This overload is used to create a catalyst built-in session.
@@ -175,7 +175,7 @@ public:
   static vtkIdType ConnectToCatalyst();
 
   /**
-   * These are static helper methods that help create standard Visocyte
+   * These are static helper methods that help create standard ParaView
    * sessions. They register the session with the process module and return the
    * session id. It will try to connect for timeout seconds, -1 meaning infinite retries.
    * and 0 means no retry. Returns 0 on failure.
@@ -184,7 +184,7 @@ public:
   static vtkIdType ConnectToSelf(int timeout = 60);
 
   /**
-   * These are static helper methods that help create standard Visocyte
+   * These are static helper methods that help create standard ParaView
    * sessions. They register the session with the process module and return the
    * session id. It will try to connect for timeout seconds, -1 meaning infinite retries.
    * and 0 means no retry. Returns 0 on failure. Returns 0 on failure.
@@ -206,7 +206,7 @@ public:
   static vtkIdType ReverseConnectToRemote(int port, bool (*callback)());
 
   /**
-   * These are static helper methods that help create standard Visocyte
+   * These are static helper methods that help create standard ParaView
    * sessions. They register the session with the process module and return the
    * session id. It will try to connect for timeout seconds, -1 meaning infinite retries.
    * and 0 means no retry. Returns 0 on failure.

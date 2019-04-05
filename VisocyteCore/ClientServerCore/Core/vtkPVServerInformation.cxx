@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVServerInformation.cxx
 
   Copyright (c) Kitware, Inc.
@@ -26,7 +26,7 @@
 #include "vtkPVServerOptionsInternals.h"
 #include "vtkPVSession.h"
 #include "vtkProcessModule.h"
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
 #include <nvpipe.h>
 #endif
 
@@ -41,7 +41,7 @@
 // reasonably safe to assume OGGTHEORA is always enabled here.
 // #include "vtkIOMovieConfigure.h"
 
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
 //----------------------------------------------------------------------------
 // NVPipe requires Kepler-class (or newer) NVIDIA hardware at runtime.  This
 // verifies that such hardware is available.
@@ -72,7 +72,7 @@ vtkPVServerInformation::vtkPVServerInformation()
   this->TileDimensions[0] = this->TileDimensions[1] = 0;
   this->TileMullions[0] = this->TileMullions[1] = 0;
   this->Timeout = 0;
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
   this->UseIceT = 1;
 #else
   this->UseIceT = 0;
@@ -88,7 +88,7 @@ vtkPVServerInformation::vtkPVServerInformation()
 #endif
 
   this->NVPipeSupport = false;
-#if VTK_MODULE_ENABLE_Visocyte_nvpipe
+#if VTK_MODULE_ENABLE_ParaView_nvpipe
   if (NVPipeAvailable())
   {
     this->NVPipeSupport = true;

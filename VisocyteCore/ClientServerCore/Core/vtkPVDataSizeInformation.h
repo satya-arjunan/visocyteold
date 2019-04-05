@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDataSizeInformation.h
 
   Copyright (c) Kitware, Inc.

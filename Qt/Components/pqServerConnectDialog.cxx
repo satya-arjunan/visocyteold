@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -648,7 +648,7 @@ void pqServerConnectDialog::deleteServer()
 void pqServerConnectDialog::saveServers()
 {
   QString filters;
-  filters += "Visocyte server configuration file (*.pvsc)";
+  filters += "ParaView server configuration file (*.pvsc)";
 
   pqFileDialog dialog(NULL, this, tr("Save Server Configuration File"), QString(), filters);
   dialog.setObjectName("SaveServerConfigurationDialog");
@@ -664,7 +664,7 @@ void pqServerConnectDialog::saveServers()
 void pqServerConnectDialog::loadServers()
 {
   QString filters;
-  filters += "Visocyte server configuration file (*.pvsc)";
+  filters += "ParaView server configuration file (*.pvsc)";
   filters += ";;All files (*)";
 
   pqFileDialog dialog(NULL, this, tr("Load Server Configuration File"), QString(), filters);

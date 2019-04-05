@@ -1,5 +1,5 @@
 NAME
-  Visocyte::qttesting
+  ParaView::qttesting
 LIBRARY_NAME
   vtkqttesting
 THIRD_PARTY

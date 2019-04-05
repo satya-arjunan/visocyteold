@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Visocyte Example Visualizations</string>
+   <string>ParaView Example Visualizations</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0" colspan="2">
@@ -65,7 +65,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Visocyte Example Visualizations</string>
+      <string>ParaView Example Visualizations</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

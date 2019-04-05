@@ -5,7 +5,7 @@ and removed."""
 
 __colorMapsXML = """
 <ColorMaps>
-  <!-- Visocyte Default Color Maps -->
+  <!-- ParaView Default Color Maps -->
   <ColorMap name="Cool to Warm" space="Diverging">
     <Point x="0.0" r="0.23137254902" g="0.298039215686" b="0.752941176471" o="0.0"/>
     <Point x="0.5" r="0.865" g="0.865" b="0.865" o="0.0"/>

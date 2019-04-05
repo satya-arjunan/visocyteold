@@ -1,5 +1,5 @@
 """smtrace module is used along with vtkSMTrace to generate Python trace for
-Visocyte. While this module is primarily designed to be used from the Visocyte
+ParaView. While this module is primarily designed to be used from the ParaView
 GUI, Python scripts can use this module too to generate trace from the script
 executed.
 
@@ -40,7 +40,7 @@ action such as :class:`.Show`, or those that trace any modified properties
 called on vtkObject instances or functions in the global namespace.
 
 TraceItems create or use :class:`.Accessor` instances. Accessors are objects
-created for Proxies and Properties in Visocyte. Accessor knows how to access
+created for Proxies and Properties in ParaView. Accessor knows how to access
 that proxy or property in the Python trace. TraceItems that create new proxies
 such as :class:`.RegisterPipelineProxy` and :class:`.RegisterViewProxy`, create
 new :class:`.ProxyAccessor` instances. Other such as
@@ -574,7 +574,7 @@ class PropertyTraceHelper(object):
         if self.HasProxyListDomain:
             # register accessors for proxies in the proxy list domain.
             # This is cheating. Since there's no accessor for a proxy in the domain
-            # unless the proxy is "active" in the property. However, since Visocyte
+            # unless the proxy is "active" in the property. However, since ParaView
             # UI never modifies the other properties, we cheat
             for i in xrange(pld_domain.GetNumberOfProxies()):
                 domain_proxy = pld_domain.GetProxy(i)
@@ -706,7 +706,7 @@ class ProxyFilter(object):
 
         setting = sm.vtkSMTrace.GetActiveTracer().GetPropertiesToTraceOnCreate()
         if setting == sm.vtkSMTrace.RECORD_USER_MODIFIED_PROPERTIES and not user_can_modify_in_create:
-            # In Visocyte, user never changes properties in Create. It's only
+            # In ParaView, user never changes properties in Create. It's only
             # afterwords, so skip all properties.
             return False
         trace_props_with_default_values = True \
@@ -1101,7 +1101,7 @@ class SetScalarColoring(TraceItem):
           Trace.get_accessor(self.Lut)
 
 class RegisterViewProxy(TraceItem):
-    """Traces creation of a new view (vtkSMVisocytePipelineController::RegisterViewProxy)."""
+    """Traces creation of a new view (vtkSMParaViewPipelineController::RegisterViewProxy)."""
     def __init__(self, proxy):
         TraceItem.__init__(self)
         self.Proxy = sm._getPyProxy(proxy)
@@ -1148,7 +1148,7 @@ class RegisterViewProxy(TraceItem):
         TraceItem.finalize(self)
 
 class RegisterLightProxy(TraceItem):
-    """Traces creation of a new light (vtkSMVisocytePipelineController::RegisterLightProxy)."""
+    """Traces creation of a new light (vtkSMParaViewPipelineController::RegisterLightProxy)."""
     def __init__(self, proxy, view=None):
         TraceItem.__init__(self)
         self.Proxy = sm._getPyProxy(proxy)

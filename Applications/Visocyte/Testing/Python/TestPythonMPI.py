@@ -3,8 +3,8 @@
 # Global python import
 import exceptions, logging, random, sys, threading, time, os
 
-# Update python path to have Visocyte libs
-build_path='/Volumes/SebKitSSD/Kitware/code/Visocyte/build-ninja'
+# Update python path to have ParaView libs
+build_path='/Volumes/SebKitSSD/Kitware/code/ParaView/build-ninja'
 sys.path.append('%s/lib'%build_path)
 sys.path.append('%s/lib/site-packages'%build_path)
 
@@ -16,7 +16,7 @@ from visocyte.web import ipython as pv_ipython
 from vtk import *
 
 iPythonClient = None
-visocyteHelper = pv_ipython.VisocyteIPython()
+visocyteHelper = pv_ipython.ParaViewIPython()
 webArguments = pv_ipython.WebArguments('/.../path-to-web-directory')
 
 def _start_visocyte():
@@ -40,7 +40,7 @@ def _push_new_timestep():
     IPythonProtocol.RegisterDataSet('iPython-demo', newDataset)
 
 
-def StartVisocyte(height=600, path='/apps/WebVisualizer/'):
+def StartParaView(height=600, path='/apps/WebVisualizer/'):
     global iPythonClient, visocyteHelper
     if not iPythonClient:
         iPythonClient = Client()
@@ -52,7 +52,7 @@ def StartVisocyte(height=600, path='/apps/WebVisualizer/'):
     return  HTML("<iframe src='%s/%s' width='100%%' height='%i'></iframe>"%(url, path, height))
 
 
-def StopVisocyte():
+def StopParaView():
     global iPythonClient, visocyteHelper
     iPythonClient[:].apply_sync(lambda:_stop_visocyte())
 

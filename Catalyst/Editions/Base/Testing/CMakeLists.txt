@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.3)
 include(CTest)
 enable_testing()
 
-find_package(Visocyte REQUIRED)
+find_package(ParaView REQUIRED)
 include("${VISOCYTE_USE_FILE}")
 include_directories(${VISOCYTE_INCLUDE_DIRS})
 

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVTimerInformation.cxx
 
   Copyright (c) Kitware, Inc.

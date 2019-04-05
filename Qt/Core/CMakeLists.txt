@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -161,23 +161,23 @@ source_group("Resources" FILES
   ${ui_files}
   ${resource_files})
 
-vtk_module_add_module(Visocyte::pqCore
+vtk_module_add_module(ParaView::pqCore
   CLASSES ${classes}
   SOURCES ${ui_files}
           ${resource_files})
-vtk_module_link(Visocyte::pqCore
+vtk_module_link(ParaView::pqCore
   PRIVATE
     Qt5::Widgets)
 if (VISOCYTE_USE_QTHELP)
-  vtk_module_link(Visocyte::pqCore
+  vtk_module_link(ParaView::pqCore
     PRIVATE
       Qt5::Help)
 endif ()
 
 if (VISOCYTE_ENABLE_PYTHON)
-  vtk_module_definitions(Visocyte::pqCore
+  vtk_module_definitions(ParaView::pqCore
     PRIVATE VISOCYTE_PQCORE_ENABLE_PYTHON=1)
 else ()
-  vtk_module_definitions(Visocyte::pqCore
+  vtk_module_definitions(ParaView::pqCore
     PRIVATE VISOCYTE_PQCORE_ENABLE_PYTHON=0)
 endif()

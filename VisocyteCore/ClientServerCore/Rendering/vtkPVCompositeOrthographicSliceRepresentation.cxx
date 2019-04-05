@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCompositeOrthographicSliceRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

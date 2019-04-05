@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:  pqLoadRestoreWindowLayoutReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -56,7 +56,7 @@ void pqLoadRestoreWindowLayoutReaction::onTriggered()
   QMainWindow* window = qobject_cast<QMainWindow*>(pqCoreUtilities::mainWidget());
 
   pqFileDialog fileDialog(NULL, window, this->parentAction()->text(), QString(),
-    "Visocyte Window Layout (*.pwin);;All files (*)");
+    "ParaView Window Layout (*.pwin);;All files (*)");
   fileDialog.setFileMode(this->Load ? pqFileDialog::ExistingFile : pqFileDialog::AnyFile);
   fileDialog.setObjectName("LoadRestoreWindowLayout");
 

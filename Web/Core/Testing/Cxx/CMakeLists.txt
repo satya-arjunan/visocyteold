@@ -1,4 +1,4 @@
-ExternalData_Expand_Arguments(VisocyteData _
+ExternalData_Expand_Arguments(ParaViewData _
   # Baselines
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Clip.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/EnSight.png}"

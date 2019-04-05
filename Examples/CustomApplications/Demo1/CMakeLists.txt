@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.8)
 project(Demo1)
 
-find_package(Visocyte REQUIRED)
+find_package(ParaView REQUIRED)
 
 if (NOT VISOCYTE_BUILD_QT_GUI)
   message(STATUS
     "${CMAKE_PROJECT_NAME} example requires VISOCYTE_BUILD_QT_GUI to be "
-    "enabled. Please rebuild Visocyte (or point to a different build of "
-    "Visocyte) with VISOCYTE_BUILD_QT_GUI set to TRUE")
+    "enabled. Please rebuild ParaView (or point to a different build of "
+    "ParaView) with VISOCYTE_BUILD_QT_GUI set to TRUE")
   return ()
 endif()
 
@@ -29,5 +29,5 @@ set(sources
 add_executable(DemoApp1 DemoApp1.cxx ${sources})
 target_link_libraries(DemoApp1
   PRIVATE
-    Visocyte::pqApplicationComponents
+    ParaView::pqApplicationComponents
     Qt5::Widgets)

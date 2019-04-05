@@ -9,7 +9,7 @@ A simple example:
 """
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    collaboration.py
 #
 #  Copyright (c) Kitware, Inc.

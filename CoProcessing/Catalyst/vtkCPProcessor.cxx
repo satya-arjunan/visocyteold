@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPProcessor.cxx
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 #include "vtkCPProcessor.h"
 
-#include "vtkPVConfig.h" // need Visocyte defines before MPI stuff
+#include "vtkPVConfig.h" // need ParaView defines before MPI stuff
 
 #include "vtkCPCxxHelper.h"
 #include "vtkCPDataDescription.h"

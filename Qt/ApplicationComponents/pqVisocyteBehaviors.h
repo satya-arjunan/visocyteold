@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
-   Module:    pqVisocyteBehaviors.h
+   Program: ParaView
+   Module:    pqParaViewBehaviors.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,8 +29,8 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#ifndef pqVisocyteBehaviors_h
-#define pqVisocyteBehaviors_h
+#ifndef pqParaViewBehaviors_h
+#define pqParaViewBehaviors_h
 
 #include "pqApplicationComponentsModule.h"
 
@@ -42,40 +42,40 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class QMainWindow;
 
 /**
-* @defgroup Behaviors Visocyte Behaviors
+* @defgroup Behaviors ParaView Behaviors
 * Behaviors are classes that manage certain behaviors in the application.
 * Developers should simply instantiate behaviors if the expect that
 * behavior in their client.
 */
 
 /**
-* @class pqVisocyteBehaviors
-* @brief creates all standard Visocyte behaviours
+* @class pqParaViewBehaviors
+* @brief creates all standard ParaView behaviours
 * @ingroup Behaviors
 *
-* pqVisocyteBehaviors creates all the behaviors used by Visocyte. If your
-* client is merely a branded version of Visocyte, then you may want to simply
+* pqParaViewBehaviors creates all the behaviors used by ParaView. If your
+* client is merely a branded version of ParaView, then you may want to simply
 * use this behavior. You can also enable/disable behaviors created by
-* pqVisocyteBehaviors before instantiating the pqVisocyteBehaviors instance by
-* using static methods of the form pqVisocyteBehaviors::set<behavior name>(bool)
-* e.g. pqVisocyteBehaviors::setStandardPropertyWidgets(false).
+* pqParaViewBehaviors before instantiating the pqParaViewBehaviors instance by
+* using static methods of the form pqParaViewBehaviors::set<behavior name>(bool)
+* e.g. pqParaViewBehaviors::setStandardPropertyWidgets(false).
 *
-* Since Visocyte 5.1, ObjectPickingBehavior is disabled by default in
-* Visocyte.
+* Since ParaView 5.1, ObjectPickingBehavior is disabled by default in
+* ParaView.
 *
 */
 
 #define PQ_BEHAVIOR_DEFINE_METHODS(_name)                                                          \
-  static void setEnable##_name(bool val) { pqVisocyteBehaviors::_name = val; }                     \
-  static bool enable##_name() { return pqVisocyteBehaviors::_name; }
+  static void setEnable##_name(bool val) { pqParaViewBehaviors::_name = val; }                     \
+  static bool enable##_name() { return pqParaViewBehaviors::_name; }
 
 #define PQ_BEHAVIOR_DEFINE_METHODS_LEGACY(_name)                                                   \
-  VTK_LEGACY(static void setEnable##_name(bool val) { pqVisocyteBehaviors::_name = val; });        \
-  VTK_LEGACY(static bool enable##_name() { return pqVisocyteBehaviors::_name; });
+  VTK_LEGACY(static void setEnable##_name(bool val) { pqParaViewBehaviors::_name = val; });        \
+  VTK_LEGACY(static bool enable##_name() { return pqParaViewBehaviors::_name; });
 
 #define PQ_BEHAVIOR_DECLARE_FLAG(_name) static bool _name;
 
-class PQAPPLICATIONCOMPONENTS_EXPORT pqVisocyteBehaviors : public QObject
+class PQAPPLICATIONCOMPONENTS_EXPORT pqParaViewBehaviors : public QObject
 {
   Q_OBJECT
   typedef QObject Superclass;
@@ -123,17 +123,17 @@ public:
    * the widget doesn't have the focus. While that's handy, in many use-cases,
    * in several where these are embedded in scrollable panels, they can
    * interrupt the scrolling of the panel. Hence, this behavior has been added
-   * since Visocyte 5.5 default. When enabled, this is enabled for QComboBox,
+   * since ParaView 5.5 default. When enabled, this is enabled for QComboBox,
    * QSlider, QAbstractSpinBox and subclasses.
    */
   PQ_BEHAVIOR_DEFINE_METHODS(WheelNeedsFocusBehavior);
   //@}
 
-  pqVisocyteBehaviors(QMainWindow* window, QObject* parent = NULL);
-  ~pqVisocyteBehaviors() override;
+  pqParaViewBehaviors(QMainWindow* window, QObject* parent = NULL);
+  ~pqParaViewBehaviors() override;
 
 private:
-  Q_DISABLE_COPY(pqVisocyteBehaviors)
+  Q_DISABLE_COPY(pqParaViewBehaviors)
 
   PQ_BEHAVIOR_DECLARE_FLAG(StandardPropertyWidgets);
   PQ_BEHAVIOR_DECLARE_FLAG(StandardViewFrameActions);

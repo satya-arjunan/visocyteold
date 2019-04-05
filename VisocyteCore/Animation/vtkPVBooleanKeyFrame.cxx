@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVBooleanKeyFrame.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVRenderView.cxx
 
   Copyright (c) Kitware, Inc.
@@ -98,7 +98,7 @@
 #include "vtkLightingMapPass.h"
 #include "vtkValuePass.h"
 
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
 #include "vtkIceTSynchronizedRenderers.h"
 #endif
 
@@ -263,7 +263,7 @@ private:
 };
 vtkStandardNewMacro(vtkPVRendererCuller);
 
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
 //------------------------------------------------------------------------------
 // vtkIceTCompositePass needs to know the set RenderPass will read from its
 // internal float FBO in order to setup an adequate context.
@@ -1124,7 +1124,7 @@ bool vtkPVRenderView::TestCollaborationCounter()
   if (d_controller != NULL)
   {
     vtkErrorMacro("RenderServer-DataServer configuration is not supported in "
-                  "multi-clients mode. Please restart Visocyte in the right mode. "
+                  "multi-clients mode. Please restart ParaView in the right mode. "
                   "Aborting since this could cause deadlocks and other issues.");
     abort();
   }
@@ -1577,7 +1577,7 @@ void vtkPVRenderView::Render(bool interactive, bool skip_rendering)
   // 1: Local process is the driver OR
   // 2: RenderEventPropagation is Off and we are doing distributed rendering.
   // 3: In tile-display mode or cave-mode.
-  // Note, Visocyte no longer has RenderEventPropagation ON. It's set to off
+  // Note, ParaView no longer has RenderEventPropagation ON. It's set to off
   // always.
   if ((this->SynchronizedWindows->GetLocalProcessIsDriver() ||
         (!this->SynchronizedWindows->GetRenderEventPropagation() && use_distributed_rendering) ||
@@ -2823,7 +2823,7 @@ void vtkPVRenderView::SetValueRenderingModeCommand(int mode)
   {
     case vtkValuePass::FLOATING_POINT:
     {
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
       IceTPassEnableFloatPass(true, this->SynchronizedRenderers);
 #endif
       this->Internals->ValuePasses->SetRenderingMode(mode);
@@ -2833,7 +2833,7 @@ void vtkPVRenderView::SetValueRenderingModeCommand(int mode)
     case vtkValuePass::INVERTIBLE_LUT:
     default:
     {
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
       IceTPassEnableFloatPass(false, this->SynchronizedRenderers);
 #endif
       this->Internals->ValuePasses->SetRenderingMode(mode);
@@ -2878,7 +2878,7 @@ void vtkPVRenderView::BeginValueCapture()
 {
   if (!this->Internals->IsInCapture)
   {
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
     if (vtkValuePass::FLOATING_POINT == this->Internals->ValuePasses->GetRenderingMode())
     {
       // Let the IceTPass know FLOATING_POINT is already enabled.
@@ -2911,7 +2911,7 @@ void vtkPVRenderView::BeginValueCapture()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::EndValueCapture()
 {
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
   if (vtkValuePass::FLOATING_POINT == this->Internals->ValuePasses->GetRenderingMode())
   {
     // Let the IceTPass know vtkValuePass will be removed.
@@ -2954,7 +2954,7 @@ void vtkPVRenderView::StopCaptureLuminance()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::CaptureZBuffer()
 {
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
   vtkIceTSynchronizedRenderers* IceTSynchronizedRenderers =
     vtkIceTSynchronizedRenderers::SafeDownCast(
       this->SynchronizedRenderers->GetParallelSynchronizer());
@@ -2992,7 +2992,7 @@ vtkFloatArray* vtkPVRenderView::GetCapturedZBuffer()
 void vtkPVRenderView::CaptureValuesFloat()
 {
   vtkFloatArray* values = NULL;
-#if VTK_MODULE_ENABLE_Visocyte_icet
+#if VTK_MODULE_ENABLE_ParaView_icet
   vtkIceTSynchronizedRenderers* IceTSynchronizedRenderers =
     vtkIceTSynchronizedRenderers::SafeDownCast(
       this->SynchronizedRenderers->GetParallelSynchronizer());

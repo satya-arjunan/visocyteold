@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMCompoundProxyDefinitionLoader.cxx
 
   Copyright (c) Kitware, Inc.

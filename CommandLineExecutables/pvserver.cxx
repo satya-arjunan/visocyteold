@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    pvserver.cxx
 
 Copyright (c) Kitware, Inc.

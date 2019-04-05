@@ -3,7 +3,7 @@ if (NOT (DEFINED visocyte_cmake_dir AND
          DEFINED visocyte_cmake_destination AND
          DEFINED visocyte_modules))
   message(FATAL_ERROR
-    "VisocyteInstallCMakePackage is missing input variables.")
+    "ParaViewInstallCMakePackage is missing input variables.")
 endif ()
 
 configure_file(
@@ -33,7 +33,7 @@ set(visocyte_cmake_module_files
   visocyte_client_initializer.h.in
   visocyte_launcher.c.in
   visocyte_client_main.cxx.in
-  VisocyteClient.cmake
+  ParaViewClient.cmake
   visocyte_servermanager_convert_categoryindex.xsl
   visocyte_servermanager_convert_html.xsl
   visocyte_servermanager_convert_wiki.xsl.in
@@ -42,7 +42,7 @@ set(visocyte_cmake_module_files
   # Plugin API
   visocyte_plugin.cxx.in
   visocyte_plugin.h.in
-  VisocytePlugin.cmake
+  ParaViewPlugin.cmake
   pqActionGroupImplementation.cxx.in
   pqActionGroupImplementation.h.in
   pqAutoStartImplementation.cxx.in
@@ -63,10 +63,10 @@ set(visocyte_cmake_module_files
   pqViewFrameActionGroupImplementation.h.in
 
   # ServerManager API
-  VisocyteServerManager.cmake
+  ParaViewServerManager.cmake
 
   # Testing
-  VisocyteTesting.cmake
+  ParaViewTesting.cmake
 
   # Client Server
   vtkModuleWrapClientServer.cmake)
@@ -97,5 +97,5 @@ install(
 
 vtk_module_export_find_packages(
   CMAKE_DESTINATION "${visocyte_cmake_destination}"
-  FILE_NAME         "Visocyte-vtk-module-find-packages.cmake"
+  FILE_NAME         "ParaView-vtk-module-find-packages.cmake"
   MODULES           ${visocyte_modules})

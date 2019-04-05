@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMCompositeTreeDomain.h
 
   Copyright (c) Kitware, Inc.
@@ -54,7 +54,7 @@
  *     This can be specified in XML using the `mode="amr"`.
  *
  *  -# vtkSMCompositeTreeDomain::NON_LEAVES: (deprecated)\n
- *     No longer supported (as of Visocyte 5.4) and simply interpreted as
+ *     No longer supported (as of ParaView 5.4) and simply interpreted as
  *     vtkSMCompositeTreeDomain::ALL.
  *     This used to be specified in XML using the `mode="non-leaves"`.
  *

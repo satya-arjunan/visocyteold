@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   Visocyte
-  Module:    vtkSMVisocytePipelineControllerWithRendering.cxx
+  Program:   ParaView
+  Module:    vtkSMParaViewPipelineControllerWithRendering.cxx
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkSMVisocytePipelineControllerWithRendering.h"
+#include "vtkSMParaViewPipelineControllerWithRendering.h"
 
 #include "vtkCollection.h"
 #include "vtkErrorCode.h"
@@ -166,7 +166,7 @@ void vtkInheritRepresentationProperties(vtkSMRepresentationProxy* repr, vtkSMSou
   }
   iter->Delete();
 
-  if (!vtkSMVisocytePipelineControllerWithRendering::GetInheritRepresentationProperties())
+  if (!vtkSMParaViewPipelineControllerWithRendering::GetInheritRepresentationProperties())
   {
     return;
   }
@@ -245,40 +245,40 @@ void vtkPickRepresentationType(vtkSMRepresentationProxy* repr, vtkSMSourceProxy*
 }
 }
 
-bool vtkSMVisocytePipelineControllerWithRendering::HideScalarBarOnHide = true;
-bool vtkSMVisocytePipelineControllerWithRendering::InheritRepresentationProperties = false;
+bool vtkSMParaViewPipelineControllerWithRendering::HideScalarBarOnHide = true;
+bool vtkSMParaViewPipelineControllerWithRendering::InheritRepresentationProperties = false;
 
-vtkObjectFactoryNewMacro(vtkSMVisocytePipelineControllerWithRendering);
+vtkObjectFactoryNewMacro(vtkSMParaViewPipelineControllerWithRendering);
 //----------------------------------------------------------------------------
-vtkSMVisocytePipelineControllerWithRendering::vtkSMVisocytePipelineControllerWithRendering()
+vtkSMParaViewPipelineControllerWithRendering::vtkSMParaViewPipelineControllerWithRendering()
 {
 }
 
 //----------------------------------------------------------------------------
-vtkSMVisocytePipelineControllerWithRendering::~vtkSMVisocytePipelineControllerWithRendering()
+vtkSMParaViewPipelineControllerWithRendering::~vtkSMParaViewPipelineControllerWithRendering()
 {
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::SetHideScalarBarOnHide(bool val)
+void vtkSMParaViewPipelineControllerWithRendering::SetHideScalarBarOnHide(bool val)
 {
-  vtkSMVisocytePipelineControllerWithRendering::HideScalarBarOnHide = val;
+  vtkSMParaViewPipelineControllerWithRendering::HideScalarBarOnHide = val;
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::SetInheritRepresentationProperties(bool val)
+void vtkSMParaViewPipelineControllerWithRendering::SetInheritRepresentationProperties(bool val)
 {
-  vtkSMVisocytePipelineControllerWithRendering::InheritRepresentationProperties = val;
+  vtkSMParaViewPipelineControllerWithRendering::InheritRepresentationProperties = val;
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::GetInheritRepresentationProperties()
+bool vtkSMParaViewPipelineControllerWithRendering::GetInheritRepresentationProperties()
 {
-  return vtkSMVisocytePipelineControllerWithRendering::InheritRepresentationProperties;
+  return vtkSMParaViewPipelineControllerWithRendering::InheritRepresentationProperties;
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::PostInitializeProxy(vtkSMProxy* proxy)
+bool vtkSMParaViewPipelineControllerWithRendering::PostInitializeProxy(vtkSMProxy* proxy)
 {
   // save current time, we can check is a property is modified by the superclass
   // call.
@@ -313,7 +313,7 @@ bool vtkSMVisocytePipelineControllerWithRendering::PostInitializeProxy(vtkSMProx
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::RegisterRepresentationProxy(vtkSMProxy* proxy)
+bool vtkSMParaViewPipelineControllerWithRendering::RegisterRepresentationProxy(vtkSMProxy* proxy)
 {
   if (!this->Superclass::RegisterRepresentationProxy(proxy))
   {
@@ -353,10 +353,10 @@ bool vtkSMVisocytePipelineControllerWithRendering::RegisterRepresentationProxy(v
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMVisocytePipelineControllerWithRendering::Show(
+vtkSMProxy* vtkSMParaViewPipelineControllerWithRendering::Show(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view)
 {
-  vtkTimerLogScope scopeTimer("VisocytePipelineControllerWithRendering::Show");
+  vtkTimerLogScope scopeTimer("ParaViewPipelineControllerWithRendering::Show");
   if (producer == nullptr || static_cast<int>(producer->GetNumberOfOutputPorts()) <= outputPort)
   {
     vtkErrorMacro("Invalid producer (" << producer << ") or outputPort (" << outputPort << ")");
@@ -392,7 +392,7 @@ vtkSMProxy* vtkSMVisocytePipelineControllerWithRendering::Show(
   if (vtkSMRepresentationProxy* repr = view->CreateDefaultRepresentation(producer, outputPort))
   {
     vtkTimerLogScope scopeTimer2(
-      "VisocytePipelineControllerWithRendering::Show::CreatingRepresentation");
+      "ParaViewPipelineControllerWithRendering::Show::CreatingRepresentation");
     SM_SCOPED_TRACE(Show)
       .arg("producer", producer)
       .arg("port", outputPort)
@@ -439,7 +439,7 @@ vtkSMProxy* vtkSMVisocytePipelineControllerWithRendering::Show(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::ShowAll(vtkSMViewProxy* view)
+void vtkSMParaViewPipelineControllerWithRendering::ShowAll(vtkSMViewProxy* view)
 {
   if (view == nullptr)
   {
@@ -463,7 +463,7 @@ void vtkSMVisocytePipelineControllerWithRendering::ShowAll(vtkSMViewProxy* view)
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMVisocytePipelineControllerWithRendering::Hide(
+vtkSMProxy* vtkSMParaViewPipelineControllerWithRendering::Hide(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view)
 {
   if (producer == nullptr || static_cast<int>(producer->GetNumberOfOutputPorts()) <= outputPort)
@@ -490,7 +490,7 @@ vtkSMProxy* vtkSMVisocytePipelineControllerWithRendering::Hide(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::Hide(vtkSMProxy* repr, vtkSMViewProxy* view)
+void vtkSMParaViewPipelineControllerWithRendering::Hide(vtkSMProxy* repr, vtkSMViewProxy* view)
 {
   if (repr)
   {
@@ -498,7 +498,7 @@ void vtkSMVisocytePipelineControllerWithRendering::Hide(vtkSMProxy* repr, vtkSMV
     repr->UpdateVTKObjects();
     vtkSMViewProxy::RepresentationVisibilityChanged(view, repr, false);
 
-    if (vtkSMVisocytePipelineControllerWithRendering::HideScalarBarOnHide)
+    if (vtkSMParaViewPipelineControllerWithRendering::HideScalarBarOnHide)
     {
       vtkSMPVRepresentationProxy::HideScalarBarIfNotNeeded(repr, view);
     }
@@ -506,7 +506,7 @@ void vtkSMVisocytePipelineControllerWithRendering::Hide(vtkSMProxy* repr, vtkSMV
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::HideAll(vtkSMViewProxy* view)
+void vtkSMParaViewPipelineControllerWithRendering::HideAll(vtkSMViewProxy* view)
 {
   if (view == nullptr)
   {
@@ -528,7 +528,7 @@ void vtkSMVisocytePipelineControllerWithRendering::HideAll(vtkSMViewProxy* view)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::GetVisibility(
+bool vtkSMParaViewPipelineControllerWithRendering::GetVisibility(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view)
 {
   if (producer == nullptr || static_cast<int>(producer->GetNumberOfOutputPorts()) <= outputPort)
@@ -547,7 +547,7 @@ bool vtkSMVisocytePipelineControllerWithRendering::GetVisibility(
 }
 
 //----------------------------------------------------------------------------
-vtkSMViewProxy* vtkSMVisocytePipelineControllerWithRendering::ShowInPreferredView(
+vtkSMViewProxy* vtkSMParaViewPipelineControllerWithRendering::ShowInPreferredView(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view)
 {
   if (producer == nullptr || static_cast<int>(producer->GetNumberOfOutputPorts()) <= outputPort)
@@ -645,7 +645,7 @@ vtkSMViewProxy* vtkSMVisocytePipelineControllerWithRendering::ShowInPreferredVie
 }
 
 //----------------------------------------------------------------------------
-const char* vtkSMVisocytePipelineControllerWithRendering::GetPreferredViewType(
+const char* vtkSMParaViewPipelineControllerWithRendering::GetPreferredViewType(
   vtkSMSourceProxy* producer, int outputPort)
 {
   // 1. Check if there's a hint for the producer. If so, use that.
@@ -666,7 +666,7 @@ const char* vtkSMVisocytePipelineControllerWithRendering::GetPreferredViewType(
 }
 
 //----------------------------------------------------------------------------
-const char* vtkSMVisocytePipelineControllerWithRendering::GetPipelineIcon(
+const char* vtkSMParaViewPipelineControllerWithRendering::GetPipelineIcon(
   vtkSMSourceProxy* producer, int outputPort)
 {
   // 1. Check if there's a hint for the producer. If so, use that.
@@ -681,7 +681,7 @@ const char* vtkSMVisocytePipelineControllerWithRendering::GetPipelineIcon(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::AlsoShowInCurrentView(
+bool vtkSMParaViewPipelineControllerWithRendering::AlsoShowInCurrentView(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* vtkNotUsed(currentView))
 {
   vtkPVXMLElement* hint = vtkFindChildFromHints(producer->GetHints(), outputPort, "View");
@@ -695,7 +695,7 @@ bool vtkSMVisocytePipelineControllerWithRendering::AlsoShowInCurrentView(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::UpdatePipelineBeforeDisplay(
+void vtkSMParaViewPipelineControllerWithRendering::UpdatePipelineBeforeDisplay(
   vtkSMSourceProxy* producer, int outputPort, vtkSMViewProxy* view)
 {
   (void)outputPort;
@@ -706,7 +706,7 @@ void vtkSMVisocytePipelineControllerWithRendering::UpdatePipelineBeforeDisplay(
 
   // Update using view time, or timekeeper time.
   vtkTimerLogScope scopeTimer(
-    "VisocytePipelineControllerWithRendering::UpdatePipelineBeforeDisplay");
+    "ParaViewPipelineControllerWithRendering::UpdatePipelineBeforeDisplay");
   double time = view
     ? vtkSMPropertyHelper(view, "ViewTime").GetAsDouble()
     : vtkSMPropertyHelper(this->FindTimeKeeper(producer->GetSession()), "Time").GetAsDouble();
@@ -714,7 +714,7 @@ void vtkSMVisocytePipelineControllerWithRendering::UpdatePipelineBeforeDisplay(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::RegisterViewProxy(
+bool vtkSMParaViewPipelineControllerWithRendering::RegisterViewProxy(
   vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
@@ -723,8 +723,8 @@ bool vtkSMVisocytePipelineControllerWithRendering::RegisterViewProxy(
   }
 
   bool retval = this->Superclass::RegisterViewProxy(proxy, proxyname);
-  if (proxy->HasAnnotation("Visocyte::DetachedFromLayout") &&
-    strcmp(proxy->GetAnnotation("Visocyte::DetachedFromLayout"), "true") == 0)
+  if (proxy->HasAnnotation("ParaView::DetachedFromLayout") &&
+    strcmp(proxy->GetAnnotation("ParaView::DetachedFromLayout"), "true") == 0)
   {
     return retval;
   }
@@ -761,7 +761,7 @@ bool vtkSMVisocytePipelineControllerWithRendering::RegisterViewProxy(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMVisocytePipelineControllerWithRendering::RegisterLayoutProxy(
+bool vtkSMParaViewPipelineControllerWithRendering::RegisterLayoutProxy(
   vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
@@ -777,13 +777,13 @@ bool vtkSMVisocytePipelineControllerWithRendering::RegisterLayoutProxy(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSMParaViewPipelineControllerWithRendering::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }
 
 //----------------------------------------------------------------------------
-void vtkSMVisocytePipelineControllerWithRendering::DoMaterialSetup(vtkSMProxy* prox)
+void vtkSMParaViewPipelineControllerWithRendering::DoMaterialSetup(vtkSMProxy* prox)
 {
   vtkSMMaterialLibraryProxy* mlp = vtkSMMaterialLibraryProxy::SafeDownCast(prox);
   mlp->LoadDefaultMaterials();

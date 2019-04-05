@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMRepresentedArrayListDomain.cxx
 
   Copyright (c) Kitware, Inc.

@@ -11,7 +11,7 @@ in the visocyte binary directory and python modules in the visocyte directory:
 visocyte/simple.py, visocyte/vtk.py etc. You can also use either pvpython (for
 stand-alone or client/server execution), pvbatch (for non-interactive,
 distributed batch processing) or the python shell invoked from Tools|Python
-Shell using the Visocyte client to execute Python scripts. You do not have to
+Shell using the ParaView client to execute Python scripts. You do not have to
 set PYTHONPATH when using these.
 
 This tutorial will be using the python integrated development environment IDLE.
@@ -42,13 +42,13 @@ Importing the visocyte module directly is deprecated, although still
 possible for backwards compatibility. This document refers to the simple module
 alone.
 
-In this example, we will use Visocyte in the stand-alone mode. Connecting to a
-Visocyte server running on a cluster is covered later in this document.
+In this example, we will use ParaView in the stand-alone mode. Connecting to a
+ParaView server running on a cluster is covered later in this document.
 
 Tab-completion
 ~~~~~~~~~~~~~~
 
-The Python shell in the Visocyte Qt client provides auto-completion. One can
+The Python shell in the ParaView Qt client provides auto-completion. One can
 also use IDLE, for example to enable auto-completion. To use auto-completion in
 pvpython, one can use the tips provided at TabCompletion_.
 
@@ -81,7 +81,7 @@ Creating a Pipeline
 
 The simple module contains many functions to instantiate sources, filters, and
 other related objects. You can get a list of objects this module can create from
-Visocyte's online help (from help menu or here:
+ParaView's online help (from help menu or here:
 http://visocyte.org/OnlineHelpCurrent/)
 
 Start by creating a Cone object:
@@ -172,7 +172,7 @@ Next, apply a shrink filter to the cone:
 At this point, if you are interested in getting some information about the
 output of the shrink filter, you can force it to update (which will also cause
 the execution of the cone source). For details about VTK's demand-driven
-pipeline model used by Visocyte, see one of the VTK books.
+pipeline model used by ParaView, see one of the VTK books.
 
     >>> shrinkFilter.UpdatePipeline()
     >>> shrinkFilter.GetDataInformation().GetNumberOfCells()
@@ -197,7 +197,7 @@ is created automatically with Show().
     >>> Render()
 
 In this example the value returned by Cone() and Shrink() was assigned
-to Python variables and used to build the pipeline. Visocyte keeps track of the
+to Python variables and used to build the pipeline. ParaView keeps track of the
 last pipeline object created by the user. This allows you to accomplish
 everything you did above using the following code:
 

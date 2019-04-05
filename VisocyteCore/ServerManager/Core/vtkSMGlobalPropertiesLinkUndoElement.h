@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMGlobalPropertiesLinkUndoElement.h
 
   Copyright (c) Kitware, Inc.

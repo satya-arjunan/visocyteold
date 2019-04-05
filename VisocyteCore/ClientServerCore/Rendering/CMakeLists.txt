@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: Visocyte
+#     Program: ParaView
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     Visocyte is a free software; you can redistribute it and/or modify it
-#     under the terms of the Visocyte license version 1.2.
+#     ParaView is a free software; you can redistribute it and/or modify it
+#     under the terms of the ParaView license version 1.2.
 #
-#     See License_v1.2.txt for the full Visocyte license.
+#     See License_v1.2.txt for the full ParaView license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -115,7 +115,7 @@ if (TARGET VTK::WrappingPythonCore AND TARGET VTK::PythonInterpreter)
     vtkPythonView)
 endif ()
 
-if (TARGET VTK::ParallelMPI AND TARGET Visocyte::icet)
+if (TARGET VTK::ParallelMPI AND TARGET ParaView::icet)
   # TODO: Split these into a separate module so that there isn't a public
   # optional dependency.
   list(APPEND classes
@@ -128,7 +128,7 @@ set(headers
 set(private_headers
   vtkGeometryRepresentationInternal.h)
 
-vtk_module_add_module(Visocyte::ClientServerCoreRendering
+vtk_module_add_module(ParaView::ClientServerCoreRendering
   CLASSES ${classes}
   HEADERS ${headers}
   PRIVATE_HEADERS ${private_headers})

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMMultiServerSourceProxy.cxx
 
   Copyright (c) Kitware, Inc.

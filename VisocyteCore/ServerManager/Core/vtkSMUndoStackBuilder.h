@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMUndoStackBuilder.h
 
   Copyright (c) Kitware, Inc.

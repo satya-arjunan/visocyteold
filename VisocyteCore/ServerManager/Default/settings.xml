@@ -5,7 +5,7 @@
       processes="client|dataserver|renderserver"
       class="vtkPVGeneralSettings">
       <Documentation>
-        Collection of general setting for Visocyte.
+        Collection of general setting for ParaView.
       </Documentation>
 
       <IntVectorProperty name="ShowWelcomeDialog"
@@ -26,7 +26,7 @@
         default_values="0"
         panel_visibility="advanced">
         <Documentation>
-          Prompt to save state when exiting Visocyte.
+          Prompt to save state when exiting ParaView.
         </Documentation>
         <BooleanDomain name="bool" />
         <Hints>
@@ -97,7 +97,7 @@
         panel_widget="viewtype_selector"
         panel_visibility="advanced">
         <Documentation>
-          Set the view to create when Visocyte starts up.
+          Set the view to create when ParaView starts up.
         </Documentation>
       </StringVectorProperty>
 
@@ -228,7 +228,7 @@
         command="SetTransferFunctionResetMode">
         <Documentation>
           Color transfer functions (or color maps) are used to map data values to colors
-          for pseudo coloring. Set the default way Visocyte decides to update the data
+          for pseudo coloring. Set the default way ParaView decides to update the data
           range used for this mapping. Newly created transfer functions will update
           the range according to this setting, but it can later be changed per
           transfer function via the transfer function's 'Automatic Rescale Range Mode'
@@ -247,7 +247,7 @@
         number_of_elements="1"
         default_values="0">
         <Documentation>
-          Set how Visocyte manages showing of color legend bars (or scalar bars) in render views.
+          Set how ParaView manages showing of color legend bars (or scalar bars) in render views.
         </Documentation>
         <EnumerationDomain name="enum">
           <Entry text="Automatically show and/or hide color bars" value="0" />
@@ -294,7 +294,7 @@
         <BooleanDomain name="bool" />
         <Documentation>
           <!--
-          When playing an animation, Visocyte can attempt to cache processed geometries
+          When playing an animation, ParaView can attempt to cache processed geometries
           to attempt to speed up animation play back in a loop by avoiding I/O and data
           processing. Set whether caching should be use, when possible.
           -->
@@ -500,7 +500,7 @@
 
       <PropertyGroup label="Multicore Support">
         <Documentation>
-          On multicore systems, Visocyte can run parallel pvserver processes automatically,
+          On multicore systems, ParaView can run parallel pvserver processes automatically,
           without you having to launch them manually for processing data in parallel.
         </Documentation>
         <Property name="EnableAutoMPI" />

@@ -45,7 +45,7 @@ endif ()
 vtk_module(vtkPVVTKExtensionsRendering
   GROUPS
     Qt
-    VisocyteRendering
+    ParaViewRendering
   DEPENDS
     vtkFiltersExtraction
     vtkFiltersSources

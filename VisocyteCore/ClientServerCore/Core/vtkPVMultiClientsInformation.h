@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVMultiClientsInformation.h
 
   Copyright (c) Kitware, Inc.

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    myMainWindow.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -35,8 +35,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifdef VISOCYTE_USE_QTHELP
 #include "pqHelpReaction.h"
 #endif
-#include "pqVisocyteBehaviors.h"
-#include "pqVisocyteMenuBuilders.h"
+#include "pqParaViewBehaviors.h"
+#include "pqParaViewMenuBuilders.h"
 
 class myMainWindow::pqInternals : public Ui::pqClientMainWindow
 {
@@ -65,37 +65,37 @@ myMainWindow::myMainWindow()
     SLOT(showHelpForProxy(const QString&, const QString&)));
 
   // Populate application menus with actions.
-  pqVisocyteMenuBuilders::buildFileMenu(*this->Internals->menu_File);
-  pqVisocyteMenuBuilders::buildEditMenu(*this->Internals->menu_Edit);
+  pqParaViewMenuBuilders::buildFileMenu(*this->Internals->menu_File);
+  pqParaViewMenuBuilders::buildEditMenu(*this->Internals->menu_Edit);
 
   // Populate sources menu.
-  pqVisocyteMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
+  pqParaViewMenuBuilders::buildSourcesMenu(*this->Internals->menuSources, this);
 
   // Populate filters menu.
-  pqVisocyteMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
+  pqParaViewMenuBuilders::buildFiltersMenu(*this->Internals->menuFilters, this);
 
   // Populate Tools menu.
-  pqVisocyteMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
+  pqParaViewMenuBuilders::buildToolsMenu(*this->Internals->menuTools);
 
   // setup the context menu for the pipeline browser.
-  pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(
+  pqParaViewMenuBuilders::buildPipelineBrowserContextMenu(
     *this->Internals->pipelineBrowser->contextMenu());
 
-  pqVisocyteMenuBuilders::buildToolbars(*this);
+  pqParaViewMenuBuilders::buildToolbars(*this);
 
   // Setup the View menu. This must be setup after all toolbars and dockwidgets
   // have been created.
-  pqVisocyteMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
+  pqParaViewMenuBuilders::buildViewMenu(*this->Internals->menu_View, *this);
 
   // Setup the menu to show macros.
-  pqVisocyteMenuBuilders::buildMacrosMenu(*this->Internals->menu_Macros);
+  pqParaViewMenuBuilders::buildMacrosMenu(*this->Internals->menu_Macros);
 
   // Setup the help menu.
-  pqVisocyteMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
+  pqParaViewMenuBuilders::buildHelpMenu(*this->Internals->menu_Help);
 
-  // Final step, define application behaviors. Since we want all Visocyte
+  // Final step, define application behaviors. Since we want all ParaView
   // behaviors, we use this convenience method.
-  new pqVisocyteBehaviors(this, this);
+  new pqParaViewBehaviors(this, this);
 }
 
 //-----------------------------------------------------------------------------

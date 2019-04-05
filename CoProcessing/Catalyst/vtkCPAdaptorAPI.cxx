@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCPAdaptorAPI.cxx
 
   Copyright (c) Kitware, Inc.
@@ -26,7 +26,7 @@
 #include <iostream>
 
 // This code is meant as an API for Fortran and C simulation codes.
-namespace VisocyteCoProcessing
+namespace ParaViewCoProcessing
 {
 
 /// Clear all of the field data from the grids.
@@ -125,7 +125,7 @@ void vtkCPAdaptorAPI::NeedToCreateGrid(int* needGrid)
     if (vtkDataSet* grid = vtkDataSet::SafeDownCast(
           vtkCPAdaptorAPI::CoProcessorData->GetInputDescriptionByName("input")->GetGrid()))
     {
-      VisocyteCoProcessing::ClearFieldDataFromGrid(grid);
+      ParaViewCoProcessing::ClearFieldDataFromGrid(grid);
     }
     else
     {
@@ -137,7 +137,7 @@ void vtkCPAdaptorAPI::NeedToCreateGrid(int* needGrid)
         iter->InitTraversal();
         for (iter->GoToFirstItem(); !iter->IsDoneWithTraversal(); iter->GoToNextItem())
         {
-          VisocyteCoProcessing::ClearFieldDataFromGrid(
+          ParaViewCoProcessing::ClearFieldDataFromGrid(
             vtkDataSet::SafeDownCast(iter->GetCurrentDataObject()));
         }
         iter->Delete();

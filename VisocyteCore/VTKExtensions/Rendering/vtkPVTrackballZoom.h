@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVTrackballZoom.h
 
   Copyright (c) Kitware, Inc.

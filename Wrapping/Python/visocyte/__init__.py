@@ -1,13 +1,13 @@
 r"""
-The visocyte package provides modules used to script Visocyte. Generally, users
+The visocyte package provides modules used to script ParaView. Generally, users
 should import the modules of interest directly e.g.::
 
   from visocyte.simple import *
 
 However, one may want to import visocyte package before importing any of the
-Visocyte modules to force backwards compatibility to an older version::
+ParaView modules to force backwards compatibility to an older version::
 
-  # To run scripts written for Visocyte 4.0 in newer versions, you can use the
+  # To run scripts written for ParaView 4.0 in newer versions, you can use the
   # following.
   import visocyte
   visocyte.compatibility.major = 4
@@ -19,7 +19,7 @@ Visocyte modules to force backwards compatibility to an older version::
 
 #==============================================================================
 #
-#  Program:   Visocyte
+#  Program:   ParaView
 #  Module:    __init__.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -158,7 +158,7 @@ class NotSupportedException(Exception):
         return "%s" % (self.msg)
 
 
-"""This variable is set whenever Python is initialized within a Visocyte
+"""This variable is set whenever Python is initialized within a ParaView
 Qt-based application. Modules within the 'visocyte' package often use this to
 taylor their behaviour based on whether the Python environment is embedded
 within an application or not."""

@@ -3181,7 +3181,7 @@
       <StringVectorProperty command="SetTitle"
                             name="SetTitle"
                             label="Plot title"
-                            default_values="Visocyte GL2PS Export"
+                            default_values="ParaView GL2PS Export"
                             number_of_elements="1">
       </StringVectorProperty>
       <IntVectorProperty command="SetCompress"
@@ -3575,8 +3575,8 @@
                              number_of_elements="1">
           <Documentation>Name of the file to write into</Documentation>
        </StringVectorProperty>
-       <StringVectorProperty name="VisocyteGlanceHTML"
-                             command="SetVisocyteGlanceHTML"
+       <StringVectorProperty name="ParaViewGlanceHTML"
+                             command="SetParaViewGlanceHTML"
                              number_of_elements="1"
                              panel_visibility="advanced">
           <Documentation>Filepath to the HTML viewer to embed data in</Documentation>
@@ -3848,7 +3848,7 @@
   </ProxyGroup>
 
   <!-- Catalyst client only proxies, used to generate a coprocessing script
-       and to modify writer filename and frequency through Visocyte Live
+       and to modify writer filename and frequency through ParaView Live
   -->
   <!-- ================================================================= -->
   <ProxyGroup name="insitu_writer_parameters">
@@ -4430,7 +4430,7 @@
 
   <ProxyGroup name="screenshot_writers">
     <Documentation>
-      This group includes all writers which can be used to write screenshots in Visocyte.
+      This group includes all writers which can be used to write screenshots in ParaView.
     </Documentation>
 
     <Proxy name="PNG" class="vtkPNGWriter" processes="client">

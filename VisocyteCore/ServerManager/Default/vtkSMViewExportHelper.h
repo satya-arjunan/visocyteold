@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMViewExportHelper.h
 
   Copyright (c) Kitware, Inc.

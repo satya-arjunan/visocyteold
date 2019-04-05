@@ -170,7 +170,7 @@ def main():
                         default=os.path.join(os.path.dirname(__file__), '..',
                             '..'),
                         help='path to local target folder')
-    # Default is Visocyte/ExernalData/Development
+    # Default is ParaView/ExernalData/Development
     parser.add_argument('--parent-id', required=False,
                         default='5afda5a58d777f15ebe1d38c',
                         help='id of Girder parent target')

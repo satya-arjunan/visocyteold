@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDiscretizableColorTransferFunction.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkWeightedRedistributePolyData.cxx
 
   Copyright (c) Kitware, Inc.

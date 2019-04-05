@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqServer.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkProcessModule.h"
 #include "vtkSMCollaborationManager.h"
 #include "vtkSMMessage.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxy.h"
@@ -205,7 +205,7 @@ pqTimeKeeper* pqServer::getTimeKeeper() const
 {
   if (!this->Internals->TimeKeeper)
   {
-    vtkNew<vtkSMVisocytePipelineController> controller;
+    vtkNew<vtkSMParaViewPipelineController> controller;
     vtkSMProxy* proxy = controller->FindTimeKeeper(this->session());
     pqServerManagerModel* smmodel = pqApplicationCore::instance()->getServerManagerModel();
     this->Internals->TimeKeeper = smmodel->findItem<pqTimeKeeper*>(proxy);

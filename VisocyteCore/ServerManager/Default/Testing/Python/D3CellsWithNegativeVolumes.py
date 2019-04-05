@@ -1,5 +1,5 @@
 # There were issues with D3 and/or Python calculator which
-# caused the following to generated cells with negative volumes in Visocyte 5.2.
+# caused the following to generated cells with negative volumes in ParaView 5.2.
 # It has been since fixed. This test will ensure it stays fixed.
 # Ref: Helpdesk Ticket #KW00001698.
 

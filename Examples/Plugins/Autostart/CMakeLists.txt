@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(Autostart)
 
-find_package(Visocyte REQUIRED)
+find_package(ParaView REQUIRED)
 
 include(GNUInstallDirs)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")

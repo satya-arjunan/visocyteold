@@ -1,4 +1,4 @@
-# Note: this actually only requires Visocyte::Catalyst.
+# Note: this actually only requires ParaView::Catalyst.
 if (USE_CATALYST)
   add_library(CxxVTKPipelineExampleAdaptor
     FEAdaptor.cxx
@@ -7,10 +7,10 @@ if (USE_CATALYST)
     vtkCPVTKPipeline.h)
   target_link_libraries(CxxVTKPipelineExampleAdaptor
     PRIVATE
-      Visocyte::Catalyst
-      Visocyte::ClientServerCoreCore
-      Visocyte::VTKExtensionsDefault
-      Visocyte::ServerManagerCore)
+      ParaView::Catalyst
+      ParaView::ClientServerCoreCore
+      ParaView::VTKExtensionsDefault
+      ParaView::ServerManagerCore)
 endif ()
 
 add_executable(CxxVTKPipelineExample

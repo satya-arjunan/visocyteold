@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVServerOptions.h
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 /**
  * @class   vtkPVServerOptions
- * @brief   Visocyte options for server executables.
+ * @brief   ParaView options for server executables.
  *
  * An object of this class represents a storage for command line options for
  * various server executables.

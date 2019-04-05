@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMTransferFunctionManager.h
 
   Copyright (c) Kitware, Inc.
@@ -15,11 +15,11 @@
 /**
  * @class   vtkSMTransferFunctionManager
  * @brief   manages transfer functions i.e. color
- * lookuptables and opacity piecewise functions for Visocyte applications.
+ * lookuptables and opacity piecewise functions for ParaView applications.
  *
  * vtkSMTransferFunctionManager manages transfer functions i.e. color
- * lookuptables and opacity piecewise functions for Visocyte applications.
- * vtkSMTransferFunctionManager implements the Visocyte specific mechanism for
+ * lookuptables and opacity piecewise functions for ParaView applications.
+ * vtkSMTransferFunctionManager implements the ParaView specific mechanism for
  * managing such transfer function proxies where there's one transfer function
  * created and maintained per data array name.
  *

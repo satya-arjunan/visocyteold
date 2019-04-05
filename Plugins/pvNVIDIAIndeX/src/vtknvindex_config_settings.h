@@ -100,7 +100,7 @@ private:
 };
 
 // Class vtknvindex_config_settings represents general volume and rendering settings
-// from Visocyte's GUI for setting up NVIDIA IndeX.
+// from ParaView's GUI for setting up NVIDIA IndeX.
 
 class vtknvindex_config_settings
 {

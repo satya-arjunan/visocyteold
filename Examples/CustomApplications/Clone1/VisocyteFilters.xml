@@ -1,4 +1,4 @@
-<VisocyteFilters>
+<ParaViewFilters>
   <Category name="Common" menu_label="&amp;Common" preserve_order="1"
     show_in_toolbar="1">
     <Proxy group="filters" name="Calculator" icon=":/pqWidgets/Icons/pqCalculator24.png"/>
@@ -157,4 +157,4 @@
   <Proxy group="filters" name="NormalGlyphs" />
   <Proxy group="filters" name="TableToPolyData" />
   <Proxy group="filters" name="TableToStructuredGrid" />
-</VisocyteFilters>
+</ParaViewFilters>

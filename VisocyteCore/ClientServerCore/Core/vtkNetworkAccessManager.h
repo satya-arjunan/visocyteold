@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkNetworkAccessManager.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVPythonPluginInterface.h
 
   Copyright (c) Kitware, Inc.
@@ -15,8 +15,8 @@
 /**
  * @class   vtkPVPythonPluginInterface
  *
- * vtkPVPythonPluginInterface defines the interface required by Visocyte plugins
- * that add python modules to Visocyte.
+ * vtkPVPythonPluginInterface defines the interface required by ParaView plugins
+ * that add python modules to ParaView.
 */
 
 #ifndef vtkPVPythonPluginInterface_h

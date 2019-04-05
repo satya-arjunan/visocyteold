@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkCameraManipulatorGUIHelper.cxx
 
   Copyright (c) Kitware, Inc.

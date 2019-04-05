@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkRulerLineForInput.cxx
 
   This software is distributed WITHOUT ANY WARRANTY; without even

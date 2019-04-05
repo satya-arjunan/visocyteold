@@ -201,7 +201,7 @@ protected:
   }
   ~vtknvindex_cache_keeper() {}
   // Overridden to avoid caching the data object. We don't cache in
-  // Visocyte because NVIDIA IndeX will cache the data internally.
+  // ParaView because NVIDIA IndeX will cache the data internally.
   bool SaveData(vtkDataObject* dobj) override
   {
     vtkDataObject* dNew = dobj->NewInstance();
@@ -273,7 +273,7 @@ vtknvindex_representation::vtknvindex_representation()
   static_cast<vtknvindex_volumemapper*>(this->VolumeMapper)
     ->set_cluster_properties(m_cluster_properties);
 
-  // TODO: These values should be communicated by Visocyte.
+  // TODO: These values should be communicated by ParaView.
   //       Currently there is no way to do this.
   m_roi_range_I[0] = -100.0;
   m_roi_range_I[1] = 100.0;
@@ -670,7 +670,7 @@ int vtknvindex_representation::RequestUpdateExtent(
 
   int ghost_levels = inInfo->Get(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_GHOST_LEVELS());
 
-  // Visocyte's ghost cells must be equal to NVIDIA IndeX's border size.
+  // ParaView's ghost cells must be equal to NVIDIA IndeX's border size.
   ghost_levels += m_app_config_settings->get_subcube_border();
 
   inInfo->Set(vtkStreamingDemandDrivenPipeline::UPDATE_NUMBER_OF_GHOST_LEVELS(), ghost_levels);
@@ -713,7 +713,7 @@ mi::Sint32 vtknvindex_representation::find_time_step(
 }
 
 //
-// Configuration options set by Visocyte GUI.
+// Configuration options set by ParaView GUI.
 //-------------------------------------------------------------------------------------------------
 void vtknvindex_representation::set_subcube_size(unsigned x, unsigned y, unsigned z)
 {

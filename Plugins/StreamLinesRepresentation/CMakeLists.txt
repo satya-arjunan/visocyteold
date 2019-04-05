@@ -29,8 +29,8 @@ visocyte_add_plugin(StreamLinesRepresentation
 if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(StreamLinesRepresentation
     PRIVATE
-      Visocyte::ServerManagerCore
-      Visocyte::ServerManagerRendering)
+      ParaView::ServerManagerCore
+      ParaView::ServerManagerRendering)
 endif ()
 
 if (BUILD_TESTING)

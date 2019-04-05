@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMEnumerationDomain.cxx
 
   Copyright (c) Kitware, Inc.

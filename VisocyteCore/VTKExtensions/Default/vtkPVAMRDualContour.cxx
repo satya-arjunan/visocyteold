@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVAMRDualContour.cxx
 
   Copyright (c) Kitware, Inc.

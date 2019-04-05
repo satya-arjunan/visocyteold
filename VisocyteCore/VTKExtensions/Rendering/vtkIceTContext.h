@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkIceTContext.h
 
   Copyright (c) Kitware, Inc.

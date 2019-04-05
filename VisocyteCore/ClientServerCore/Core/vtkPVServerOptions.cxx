@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVServerOptions.cxx
 
   Copyright (c) Kitware, Inc.
@@ -174,7 +174,7 @@ int vtkPVServerOptions::AddMachineInformation(const char** atts)
       {
         vtkErrorMacro("Only 'Left' or 'Right' can be used as the StereoType. "
                       "For all other modes, please use the command line arguments for the "
-                      "Visocyte client.");
+                      "ParaView client.");
         info.StereoType = -1;
       }
     }

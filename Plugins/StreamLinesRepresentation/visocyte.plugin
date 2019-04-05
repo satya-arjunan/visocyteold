@@ -3,10 +3,10 @@ NAME
 DESCRIPTION
   Add animated Stream Lines representation for any type of dataset
 REQUIRES_MODULES
-  Visocyte::ClientServerCoreRendering
-  Visocyte::ServerManagerCore
-  Visocyte::ServerManagerRendering
-  Visocyte::VTKExtensionsRendering
+  ParaView::ClientServerCoreRendering
+  ParaView::ServerManagerCore
+  ParaView::ServerManagerRendering
+  ParaView::VTKExtensionsRendering
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

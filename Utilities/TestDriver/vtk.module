@@ -1,12 +1,12 @@
 NAME
-  Visocyte::smTestDriver
+  ParaView::smTestDriver
 LIBRARY_NAME
   smTestDriver
 GROUPS
-  VisocyteCore
+  ParaViewCore
 PRIVATE_DEPENDS
   VTK::CommonCore
   VTK::vtksys
 TEST_LABELS
-  Visocyte
+  ParaView
 EXCLUDE_WRAP

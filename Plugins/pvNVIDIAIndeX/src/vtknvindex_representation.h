@@ -90,7 +90,7 @@ public:
     vtkInformationVector* outputVector) override;
 
   //
-  // Configuration options set by Visocyte GUI.
+  // Configuration options set by ParaView GUI.
   // These values are stored in an instance of the vtknvindex_config_settings class.
   //
 
@@ -204,7 +204,7 @@ private:
   double m_roi_range_J[2];
   double m_roi_range_K[2];
 
-  vtkMultiProcessController* m_controller;           // MPI controller from Visocyte.
+  vtkMultiProcessController* m_controller;           // MPI controller from ParaView.
   vtknvindex_config_settings* m_app_config_settings; // Application side config settings.
   vtknvindex_cluster_properties*
     m_cluster_properties; // Cluster wide properties, refer class documentation.

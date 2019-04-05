@@ -53,7 +53,7 @@
 class vtknvindex_cluster_properties;
 class vtkPKdTree;
 
-// The class vtknvindex_irregular_volume_mapper maps Visocyte's data to NVIDIA IndeX's data
+// The class vtknvindex_irregular_volume_mapper maps ParaView's data to NVIDIA IndeX's data
 // representations.
 // All NVIDIA IndeX data preparation, scene creation,
 // update and rendering for irregular volumes is triggered by an instance of this class.
@@ -97,7 +97,7 @@ public:
   // Cluster properties from Representation.
   void set_cluster_properties(vtknvindex_cluster_properties* cluster_properties);
 
-  // Set Visocyte domain subdivision KD-Tree.
+  // Set ParaView domain subdivision KD-Tree.
   void set_domain_kdtree(vtkPKdTree* kd_tree);
 
   // The CUDA code need to be updated on changes applied in the GUI.
@@ -141,13 +141,13 @@ private:
 
   vtknvindex_application m_application_context;        // NVIDIA IndeX application context.
   vtknvindex_scene m_scene;                            // NVIDIA IndeX scene.
-  vtknvindex_cluster_properties* m_cluster_properties; // Cluster properties gathered from Visocyte.
+  vtknvindex_cluster_properties* m_cluster_properties; // Cluster properties gathered from ParaView.
   vtknvindex_performance_values m_performance_values;  // Performance values logger.
-  vtkMultiProcessController* m_controller;             // MPI controller from Visocyte.
+  vtkMultiProcessController* m_controller;             // MPI controller from ParaView.
   vtkDataArray* m_scalar_array;                        // Scalar array containing actual data.
   vtknvindex_irregular_volume_data m_volume_data;      // Tetrahedral volume data.
 
-  vtkPKdTree* m_kd_tree; // Visocyte domain subdivision.
+  vtkPKdTree* m_kd_tree; // ParaView domain subdivision.
 
   mi::Float64 m_whole_bounds[6]; // whole volume bounds.
 

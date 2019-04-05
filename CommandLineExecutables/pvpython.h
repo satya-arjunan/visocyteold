@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    pvpython.cxx
 
 Copyright (c) Kitware, Inc.
@@ -29,7 +29,7 @@ void vtkPVInitializePythonModules();
 #include <vector>
 #include <vtksys/SystemTools.hxx>
 
-namespace VisocytePython
+namespace ParaViewPython
 {
 
 //---------------------------------------------------------------------------
@@ -62,7 +62,7 @@ int Run(int processType, int argc, char* argv[])
   // main processes waits in MPI_Init() and calls exit() when
   // the others are done, causing apparent memory leaks for any non-static objects
   // created before MPI_Init().
-  vtkInitializationHelper::SetApplicationName("Visocyte");
+  vtkInitializationHelper::SetApplicationName("ParaView");
   static vtkSmartPointer<vtkPVPythonOptions> options = vtkSmartPointer<vtkPVPythonOptions>::New();
   vtkInitializationHelper::Initialize(argc, argv, processType, options);
   if (options->GetTellVersion() || options->GetHelpSelected() || options->GetPrintMonitors())

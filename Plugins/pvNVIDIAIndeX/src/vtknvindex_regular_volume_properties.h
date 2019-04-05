@@ -119,7 +119,7 @@ private:
   vtknvindex_regular_volume_properties(const vtknvindex_regular_volume_properties&) = delete;
   void operator=(const vtknvindex_regular_volume_properties&) = delete;
 
-  // Converts volume data from Visocyte's zyx format to Index's xyz format
+  // Converts volume data from ParaView's zyx format to Index's xyz format
   template <typename T>
   void transform_zyx_to_xyz(T* pv_volume, T* shm_volume, mi::Sint32* bounds) const;
 
@@ -130,8 +130,8 @@ private:
   mi::Uint32 m_time_step_start;    // Starting timestep.
 
   std::string m_scalar_type;                             // Volume's scalar type as string.
-  mi::math::Bbox<mi::Sint32, 3> m_volume_extents;        // Visocyte volume extents.
-  mi::math::Bbox<mi::Float32, 3> m_ivol_volume_extents;  // Visocyte irregular volume extents.
+  mi::math::Bbox<mi::Sint32, 3> m_volume_extents;        // ParaView volume extents.
+  mi::math::Bbox<mi::Float32, 3> m_ivol_volume_extents;  // ParaView irregular volume extents.
   mi::math::Vector<mi::Float32, 2> m_voxel_range;        // Voxel range of the Volume data.
   mi::math::Vector<mi::Float32, 2> m_scalar_range;       // Scalar range of the Volume data.
   mi::math::Vector_struct<mi::Uint32, 3> m_volume_size;  // Entire volume size.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMOutputPort.h
 
   Copyright (c) Kitware, Inc.

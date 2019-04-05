@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVProgressHandler.h
 
   Copyright (c) Kitware, Inc.
@@ -37,7 +37,7 @@
  * \li fired to indicate end of progress handling
  * \li \c calldata: vtkPVProgressHandler*
  *
- * Starting Visocyte 5.5, vtkCommand::MessageEvent is no longer fired.
+ * Starting ParaView 5.5, vtkCommand::MessageEvent is no longer fired.
 */
 
 #ifndef vtkPVProgressHandler_h

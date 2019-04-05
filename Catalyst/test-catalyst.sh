@@ -131,7 +131,7 @@ if [ -z "$no_test" ]; then
     cd "$bin_output/Testing"
     cmake "$@" \
         "-DPVPYTHON_EXE=$bin_output/bin/pvpython" \
-        "-DVisocyte_DIR=$bin_output" \
+        "-DParaView_DIR=$bin_output" \
         "$src_output/Testing" || \
         die "Failed to configure tests"
 

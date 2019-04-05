@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVCenterAxesActor
  *
- * vtkPVCenterAxesActor is an actor for the center-axes used in Visocyte. It
+ * vtkPVCenterAxesActor is an actor for the center-axes used in ParaView. It
  * merely uses vtkAxes as the poly data source.
 */
 

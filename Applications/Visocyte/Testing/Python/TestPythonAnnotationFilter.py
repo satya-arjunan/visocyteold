@@ -40,7 +40,7 @@ reader.GlobalVariables = ['KE', 'XMOM', 'YMOM', 'ZMOM', 'NSTEPS', 'TMSTEP']
 reader.UpdatePipeline()
 
 # Time management
-controller = servermanager.VisocytePipelineController()
+controller = servermanager.ParaViewPipelineController()
 timekeeper = controller.FindTimeKeeper(servermanager.ActiveConnection.Session)
 timesteps = timekeeper.TimestepValues
 time = timesteps[5]

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkVRMLSource.cxx
 
   Copyright (c) Kitware, Inc.

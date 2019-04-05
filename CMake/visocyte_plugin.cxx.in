@@ -152,5 +152,5 @@ const char* @_visocyte_build_plugin@Plugin::GetEULA()
 }
 
 //-----------------------------------------------------------------------------
-// Mark this as a Visocyte-ServerManager plugin.
+// Mark this as a ParaView-ServerManager plugin.
 PV_PLUGIN_EXPORT(@_visocyte_build_plugin@, @_visocyte_build_plugin@Plugin)

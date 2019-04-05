@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMTransferFunctionManager.cxx
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkSMCoreUtilities.h"
 #include "vtkSMPVRepresentationProxy.h"
-#include "vtkSMVisocytePipelineController.h"
+#include "vtkSMParaViewPipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyIterator.h"
 #include "vtkSMScalarBarWidgetRepresentationProxy.h"
@@ -97,7 +97,7 @@ vtkSMProxy* vtkSMTransferFunctionManager::GetColorTransferFunction(
 
   proxy->SetLogName((std::string("lut-for-") + std::string(arrayName)).c_str());
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->PreInitializeProxy(proxy);
 
   // Set the range reset mode based on the global setting
@@ -164,7 +164,7 @@ vtkSMProxy* vtkSMTransferFunctionManager::GetOpacityTransferFunction(
     return NULL;
   }
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   controller->PreInitializeProxy(proxy);
   controller->PostInitializeProxy(proxy);
 
@@ -202,7 +202,7 @@ vtkSMProxy* vtkSMTransferFunctionManager::GetScalarBarRepresentation(
     return NULL;
   }
 
-  vtkNew<vtkSMVisocytePipelineController> controller;
+  vtkNew<vtkSMParaViewPipelineController> controller;
   // we set these values before PreInitializeProxy() so that can be overridden
   // by user settings, if needed.
   // vtkSMPropertyHelper(scalarBarProxy, "TitleFontSize").Set(6);

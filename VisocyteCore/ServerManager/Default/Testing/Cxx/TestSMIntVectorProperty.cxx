@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   Visocyte
+Program:   ParaView
 Module:    vtkSMIntVectorPropertyTest.cxx
 
 Copyright (c) Kitware, Inc.

@@ -1,4 +1,4 @@
-PanoramicProjectionView plugin for Visocyte
+PanoramicProjectionView plugin for ParaView
 ===========================================
 
 by M.Migliore & J.Pouderoux, Kitware SAS 2018

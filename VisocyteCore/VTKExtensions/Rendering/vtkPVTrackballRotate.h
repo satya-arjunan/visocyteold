@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVTrackballRotate.h
 
   Copyright (c) Kitware, Inc.

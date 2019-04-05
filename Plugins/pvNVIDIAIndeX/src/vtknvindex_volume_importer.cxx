@@ -160,7 +160,7 @@ bool resolve_voxel_type(T* shmem_volume, T* voxel_data_storage,
   max_y = (shmbbox.max.y < bounds.max.y) ? shmbbox.max.y : bounds.max.y;
   max_z = (shmbbox.max.z < bounds.max.z) ? shmbbox.max.z : bounds.max.z;
 
-  // Transform volume data from Visocyte zyx format to IndeX xyz format.
+  // Transform volume data from ParaView zyx format to IndeX xyz format.
   if (zyx_to_xyz)
   {
     mi::Uint64 x_dst = X_DST;

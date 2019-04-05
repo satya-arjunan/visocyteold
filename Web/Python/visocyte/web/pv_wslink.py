@@ -12,7 +12,7 @@ class PVServerProtocol(vtk_wslink.ServerProtocol):
         vtk_wslink.ServerProtocol.__init__(self)
         # if (vtk_wslink.imageCapture):
         #   self.unregisterLinkProtocol(vtk_wslink.imageCapture)
-        # vtk_wslink.imageCapture = pv_protocols.VisocyteWebViewPortImageDelivery()
+        # vtk_wslink.imageCapture = pv_protocols.ParaViewWebViewPortImageDelivery()
         # self.registerLinkProtocol(vtk_wslink.imageCapture)
         # vtk_wslink.imageCapture.setApplication(self.getApplication())
 

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVProgressHandler.cxx
 
   Copyright (c) Kitware, Inc.
@@ -245,7 +245,7 @@ void vtkPVProgressHandler::CleanupPendingProgress()
   {
 #ifndef NDEBUG
     // warn only in debug builds.
-    vtkWarningMacro("Non-critical internal Visocyte Error: "
+    vtkWarningMacro("Non-critical internal ParaView Error: "
                     "Got request for cleanup pending progress after being cleaned up");
 #endif
     return;

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVCameraCollection.h
 
   Copyright (c) Kitware, Inc.

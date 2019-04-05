@@ -1,9 +1,9 @@
 NAME
-  Visocyte::VTKExtensionsSIL
+  ParaView::VTKExtensionsSIL
 LIBRARY_NAME
   vtkPVVTKExtensionsSIL
 KIT
-  Visocyte::CoreKit
+  ParaView::CoreKit
 DEPENDS
   VTK::CommonCore
 PRIVATE_DEPENDS
@@ -12,4 +12,4 @@ PRIVATE_DEPENDS
 TEST_DEPENDS
   VTK::TestingCore
 TEST_LABELS
-  Visocyte
+  ParaView

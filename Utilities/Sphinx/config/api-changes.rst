@@ -1,4 +1,4 @@
-API Changes between Visocyte versions
+API Changes between ParaView versions
 =====================================
 
 
@@ -17,7 +17,7 @@ number.
 Offscreen rendering
 ~~~~~~~~~~~~~~~~~~~
 
-Visocyte executables now automatically choose to use offscreen rendering, if
+ParaView executables now automatically choose to use offscreen rendering, if
 appropriate. For Python executables, `pvbatch` automatically uses offscreen by
 default (even headless i.e.  using EGL or OSMesa if built with support for the
 same), and `pvpython` opts for onscreen. You can override the same by passing
@@ -28,7 +28,7 @@ As a result `view.UseOffscreenRendering` property has been removed
 to avoid conflicting with this automatic logic.
 
 Likewise, `view.UseOffscreenRenderingForScreenshots` has been removed too. That
-option is no longer needed as Visocyte is no longer affected by overlapping
+option is no longer needed as ParaView is no longer affected by overlapping
 windows when capturing screenshots.
 
 Changes in 5.1
@@ -36,7 +36,7 @@ Changes in 5.1
 
 Cube Axes no longer available
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Cube axes is no longer supported by Visocyte. Hence all calls to display
+Cube axes is no longer supported by ParaView. Hence all calls to display
 properties for the same should now be simply removed from your Python code. e.g.
 ``display.CubeAxesVisibility = ..`` and other such properties that began with
 ``CubeAxes`` are no longer available and should be removed.
@@ -71,11 +71,11 @@ Changes in 4.2
 
 Changes to defaults
 ~~~~~~~~~~~~~~~~~~~
-This version includes major overhaul of the Visocyte's Python internals towards
-one main goal: making the results consistent between Visocyte UI and Python
+This version includes major overhaul of the ParaView's Python internals towards
+one main goal: making the results consistent between ParaView UI and Python
 applications e.g. when you create a RenderView, the defaults are setup
 consistently irrespective of which interface you are using. Thus, scripts
-generated from Visocyte's trace which don't describe all property values may
+generated from ParaView's trace which don't describe all property values may
 produce different results from previous versions.
 
 
@@ -91,7 +91,7 @@ with was as follows:
     # OR
     disp.ColorArrayName = ("CELL_DATA", "Pressure")
 
-However, scripts generated from Visocyte's trace, would result in the following:
+However, scripts generated from ParaView's trace, would result in the following:
 
 ::
 

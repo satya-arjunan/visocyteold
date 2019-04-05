@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVDataRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVDataRepresentation
  *
- * vtkPVDataRepresentation adds some Visocyte specific API to data
+ * vtkPVDataRepresentation adds some ParaView specific API to data
  * representations.
  * @sa
  * vtkPVDataRepresentationPipeline

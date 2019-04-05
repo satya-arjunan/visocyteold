@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkProcessModuleAutoMPI.h
 
   Copyright (c) Kitware, Inc.

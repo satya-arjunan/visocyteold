@@ -21,7 +21,7 @@
 // spherical (standard), as well as equidistant cylindrical and Cassini projection.
 // 3D data can be visualized using slices, as well as 3D unstructured mesh. If
 // bathymetry information (wet_c) is present in the data, this can be used for
-// masking out continents. For more information, also check out our Visocyte tutorial:
+// masking out continents. For more information, also check out our ParaView tutorial:
 // https://www.dkrz.de/Nutzerportal-en/doku/vis/sw/visocyte
 //
 // .SECTION Caveats

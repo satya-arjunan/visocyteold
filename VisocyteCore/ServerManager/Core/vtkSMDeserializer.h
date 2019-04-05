@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMDeserializer.h
 
   Copyright (c) Kitware, Inc.

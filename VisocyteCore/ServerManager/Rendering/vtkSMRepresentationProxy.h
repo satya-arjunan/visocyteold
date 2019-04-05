@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -22,7 +22,7 @@
  *
  * @section RepresentationMarkDirty Special handling of `MarkDirty`
  *
- * `vtkSMProxy::MarkDirty` is a mechanism that Visocyte uses to know on the
+ * `vtkSMProxy::MarkDirty` is a mechanism that ParaView uses to know on the
  * client side (i.e. in the server-manager layer) when a pipeline on the server side
  * is "dirty" or has potential to execute on an update causing things like data
  * information to be invalidated. Simply speaking, when a property on a
@@ -163,7 +163,7 @@ public:
 
   //@{
   /**
-   * @deprecated in Visocyte 5.7. Use
+   * @deprecated in ParaView 5.7. Use
    * vtkSMProxy::SetLogName/vtkSMProxy::GetLogName instead.
    */
   VTK_LEGACY(void SetDebugName(const char* name));

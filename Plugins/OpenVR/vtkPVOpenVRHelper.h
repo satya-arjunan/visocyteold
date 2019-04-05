@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
 
   Copyright (c) Kitware, Inc.
   All rights reserved.

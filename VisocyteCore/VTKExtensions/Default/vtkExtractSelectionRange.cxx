@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkExtractSelectionRange.cxx
 
   Copyright (c) Kitware, Inc.

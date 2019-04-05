@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
+   Program: ParaView
    Module:    pqMasterOnlyReaction.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -37,8 +37,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QAction>
 
 /**
-* @defgroup Reactions Visocyte Reactions
-* Visocyte client relies of a collection of reactions that autonomous entities
+* @defgroup Reactions ParaView Reactions
+* ParaView client relies of a collection of reactions that autonomous entities
 * that use pqApplicationCore and other core components to get their work done which
 * keeping track for their own enabled state without any external input. To
 * use, simple create this reaction and assign it to a menu

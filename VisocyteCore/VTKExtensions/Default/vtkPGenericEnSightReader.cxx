@@ -128,7 +128,7 @@ int vtkPGenericEnSightReader::RequestInformation(
   // a consequence, little-endian files such as the one mentioned in
   // bug #0008237 would not be loadable. The following line might be
   // removed ONLY WHEN the combobox is removed through
-  // Visocytes\Servers\ServerManager\Resources\readers.xml.
+  // ParaViews\Servers\ServerManager\Resources\readers.xml.
   // Thus it is highly suggested that the following line be retained
   // to guarantee the fix to bug #0007424 -- automatic determination
   // of the endian type.

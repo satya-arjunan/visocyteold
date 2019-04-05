@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: Visocyte
-   Module:    pqVisocyteMenuBuilders.cxx
+   Program: ParaView
+   Module:    pqParaViewMenuBuilders.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   Visocyte is a free software; you can redistribute it and/or modify it
-   under the terms of the Visocyte license version 1.2.
+   ParaView is a free software; you can redistribute it and/or modify it
+   under the terms of the ParaView license version 1.2.
 
-   See License_v1.2.txt for the full Visocyte license.
+   See License_v1.2.txt for the full ParaView license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,7 +29,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#include "pqVisocyteMenuBuilders.h"
+#include "pqParaViewMenuBuilders.h"
 #include "vtkPVConfig.h"
 
 #include "ui_pqEditMenuBuilder.h"
@@ -104,7 +104,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqVCRToolbar.h"
 #include "pqViewMenuManager.h"
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
 #include "pqMacroReaction.h"
 #include "pqPythonManager.h"
 #include "pqSGWritersMenuManager.h"
@@ -123,7 +123,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMProxyManager.h"
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildFileMenu(QMenu& menu)
+void pqParaViewMenuBuilders::buildFileMenu(QMenu& menu)
 {
   QString objectName = menu.objectName();
   Ui::pqFileMenuBuilder ui;
@@ -163,7 +163,7 @@ void pqVisocyteMenuBuilders::buildFileMenu(QMenu& menu)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildEditMenu(QMenu& menu, pqPropertiesPanel* propertiesPanel)
+void pqParaViewMenuBuilders::buildEditMenu(QMenu& menu, pqPropertiesPanel* propertiesPanel)
 {
   QString objectName = menu.objectName();
   Ui::pqEditMenuBuilder ui;
@@ -204,9 +204,9 @@ void pqVisocyteMenuBuilders::buildEditMenu(QMenu& menu, pqPropertiesPanel* prope
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildSourcesMenu(QMenu& menu, QMainWindow* mainWindow)
+void pqParaViewMenuBuilders::buildSourcesMenu(QMenu& menu, QMainWindow* mainWindow)
 {
-  pqProxyGroupMenuManager* mgr = new pqProxyGroupMenuManager(&menu, "VisocyteSources");
+  pqProxyGroupMenuManager* mgr = new pqProxyGroupMenuManager(&menu, "ParaViewSources");
   mgr->addProxyDefinitionUpdateListener("sources");
   mgr->setRecentlyUsedMenuSize(10);
   new pqSourcesMenuReaction(mgr);
@@ -218,11 +218,11 @@ void pqVisocyteMenuBuilders::buildSourcesMenu(QMenu& menu, QMainWindow* mainWind
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildFiltersMenu(
+void pqParaViewMenuBuilders::buildFiltersMenu(
   QMenu& menu, QMainWindow* mainWindow, bool hideDisabled, bool quickLaunchable)
 {
   pqProxyGroupMenuManager* mgr =
-    new pqProxyGroupMenuManager(&menu, "VisocyteFilters", quickLaunchable);
+    new pqProxyGroupMenuManager(&menu, "ParaViewFilters", quickLaunchable);
   mgr->addProxyDefinitionUpdateListener("filters");
   mgr->setRecentlyUsedMenuSize(10);
   mgr->setEnableFavorites(true);
@@ -247,7 +247,7 @@ void pqVisocyteMenuBuilders::buildFiltersMenu(
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildToolsMenu(QMenu& menu)
+void pqParaViewMenuBuilders::buildToolsMenu(QMenu& menu)
 {
   new pqCreateCustomFilterReaction(
     menu.addAction("Create Custom Filter...") << pqSetName("actionToolsCreateCustomFilter"));
@@ -261,12 +261,12 @@ void pqVisocyteMenuBuilders::buildToolsMenu(QMenu& menu)
   new pqManageLinksReaction(
     menu.addAction("Manage Links...") << pqSetName("actionToolsManageLinks"));
   //<addaction name="actionToolsAddCameraLink" />
-  // Add support for importing plugins only if Visocyte was built shared.
+  // Add support for importing plugins only if ParaView was built shared.
   new pqManagePluginsReaction(
     menu.addAction("Manage Plugins...") << pqSetName("actionManage_Plugins"));
 
   QMenu* dummyMenu = new QMenu();
-  pqProxyGroupMenuManager* mgr = new pqProxyGroupMenuManager(dummyMenu, "VisocyteFilters", false);
+  pqProxyGroupMenuManager* mgr = new pqProxyGroupMenuManager(dummyMenu, "ParaViewFilters", false);
   mgr->addProxyDefinitionUpdateListener("filters");
 
   QAction* manageFavoritesAction = menu.addAction("Manage Favorites...")
@@ -292,7 +292,7 @@ void pqVisocyteMenuBuilders::buildToolsMenu(QMenu& menu)
   new pqTimerLogReaction(menu.addAction("Timer Log") << pqSetName("actionToolsTimerLog"));
   menu.addSeparator(); // --------------------------------------------------
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   menu.addSeparator(); // --------------------------------------------------
   new pqTraceReaction(menu.addAction("Start Trace") << pqSetName("actionToolsStartStopTrace"),
     "Start Trace", "Stop Trace");
@@ -300,13 +300,13 @@ void pqVisocyteMenuBuilders::buildToolsMenu(QMenu& menu)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildViewMenu(QMenu& menu, QMainWindow& mainWindow)
+void pqParaViewMenuBuilders::buildViewMenu(QMenu& menu, QMainWindow& mainWindow)
 {
   new pqViewMenuManager(&mainWindow, &menu);
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(QMenu& menu)
+void pqParaViewMenuBuilders::buildPipelineBrowserContextMenu(QMenu& menu)
 {
   // Build the context menu manually so we can insert submenus where needed.
   QAction* actionPBOpen = new QAction(menu.parent());
@@ -463,7 +463,7 @@ void pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(QMenu& menu)
   menu.addAction(actionPBPaste);
   menu.addAction(actionPBChangeInput);
   QMenu* addFilterMenu = menu.addMenu("Add Filter");
-  pqVisocyteMenuBuilders::buildFiltersMenu(
+  pqParaViewMenuBuilders::buildFiltersMenu(
     *addFilterMenu, nullptr, true /*hide disabled*/, false /*quickLaunchable*/);
   menu.addAction(actionPBReloadFiles);
   menu.addAction(actionPBIgnoreTime);
@@ -487,10 +487,10 @@ void pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(QMenu& menu)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildMacrosMenu(QMenu& menu)
+void pqParaViewMenuBuilders::buildMacrosMenu(QMenu& menu)
 {
   Q_UNUSED(menu);
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   // Give the macros menu to the pqPythonMacroSupervisor
   pqPythonManager* manager = pqPVApplicationCore::instance()->pythonManager();
   if (manager)
@@ -507,23 +507,23 @@ void pqVisocyteMenuBuilders::buildMacrosMenu(QMenu& menu)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
+void pqParaViewMenuBuilders::buildHelpMenu(QMenu& menu)
 {
-  QString documentationPath(vtkPVFileInformation::GetVisocyteDocDirectory().c_str());
+  QString documentationPath(vtkPVFileInformation::GetParaViewDocDirectory().c_str());
   QString paraViewGettingStartedFile = documentationPath + "/GettingStarted.pdf";
 
-  // Getting Started with Visocyte
+  // Getting Started with ParaView
   new pqDesktopServicesReaction(QUrl::fromLocalFile(paraViewGettingStartedFile),
-    (menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "Getting Started with Visocyte")
+    (menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "Getting Started with ParaView")
                                   << pqSetName("actionGettingStarted")));
 
-  // Visocyte Guide
-  QAction* guide = menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "Visocyte Guide");
+  // ParaView Guide
+  QAction* guide = menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "ParaView Guide");
   guide->setObjectName("actionGuide");
   guide->setShortcut(QKeySequence::HelpContents);
   QString guideURL = QString("https://www.visocyte.org/visocyte-downloads/"
                              "download.php?submit=Download&version=v%1.%2&type=binary&os="
-                             "Sources&downloadFile=VisocyteGuide-%1.%2.%3.pdf")
+                             "Sources&downloadFile=ParaViewGuide-%1.%2.%3.pdf")
                        .arg(vtkSMProxyManager::GetVersionMajor())
                        .arg(vtkSMProxyManager::GetVersionMinor())
                        .arg(vtkSMProxyManager::GetVersionPatch());
@@ -538,19 +538,19 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
   // -----------------
   menu.addSeparator();
 
-  // Visocyte Tutorial
+  // ParaView Tutorial
   QString tutorialURL = QString("https://www.visocyte.org/visocyte-downloads/"
                                 "download.php?submit=Download&version=v%1.%2&type=binary&os="
-                                "Sources&downloadFile=VisocyteTutorial-%1.%2.%3.pdf")
+                                "Sources&downloadFile=ParaViewTutorial-%1.%2.%3.pdf")
                           .arg(vtkSMProxyManager::GetVersionMajor())
                           .arg(vtkSMProxyManager::GetVersionMinor())
                           .arg(vtkSMProxyManager::GetVersionPatch());
   new pqDesktopServicesReaction(
-    QUrl(tutorialURL), (menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "Visocyte Tutorial")
+    QUrl(tutorialURL), (menu.addAction(QIcon(":/pqWidgets/Icons/pdf.png"), "ParaView Tutorial")
                          << pqSetName("actionTutorialNotes")));
 
   // Sandia National Labs Tutorials
-  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/Wiki/SNL_Visocyte_4_Tutorials"),
+  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/Wiki/SNL_ParaView_4_Tutorials"),
     (menu.addAction("Sandia National Labs Tutorials") << pqSetName("actionSNLTutorial")));
 
   // Example Data Sets
@@ -562,19 +562,19 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
   // -----------------
   menu.addSeparator();
 
-  // Visocyte Web Site
+  // ParaView Web Site
   new pqDesktopServicesReaction(QUrl("http://www.visocyte.org"),
-    (menu.addAction("Visocyte Web Site") << pqSetName("actionWebSite")));
+    (menu.addAction("ParaView Web Site") << pqSetName("actionWebSite")));
 
-  // Visocyte Wiki
-  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/Wiki/Visocyte"),
-    (menu.addAction("Visocyte Wiki") << pqSetName("actionWiki")));
+  // ParaView Wiki
+  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/Wiki/ParaView"),
+    (menu.addAction("ParaView Wiki") << pqSetName("actionWiki")));
 
-  // Visocyte Community Support
+  // ParaView Community Support
   new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/community-support/"),
-    (menu.addAction("Visocyte Community Support") << pqSetName("actionCommunitySupport")));
+    (menu.addAction("ParaView Community Support") << pqSetName("actionCommunitySupport")));
 
-  // Visocyte Release Notes
+  // ParaView Release Notes
   QString versionString(VISOCYTE_VERSION_FULL);
   int indexOfHyphen = versionString.indexOf('-');
   if (indexOfHyphen > -1)
@@ -602,7 +602,7 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
     (menu.addAction("Online Tutorials") << pqSetName("actionTutorials")));
 
   // Online Blogs
-  new pqDesktopServicesReaction(QUrl("https://blog.kitware.com/tag/Visocyte/"),
+  new pqDesktopServicesReaction(QUrl("https://blog.kitware.com/tag/ParaView/"),
     (menu.addAction("Online Blogs") << pqSetName("actionBlogs")));
 
 #if !defined(__APPLE__)
@@ -615,7 +615,7 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildToolbars(QMainWindow& mainWindow)
+void pqParaViewMenuBuilders::buildToolbars(QMainWindow& mainWindow)
 {
   QToolBar* mainToolBar = new pqMainControlsToolbar(&mainWindow)
     << pqSetName("MainControlsToolbar");
@@ -655,7 +655,7 @@ void pqVisocyteMenuBuilders::buildToolbars(QMainWindow& mainWindow)
   axesToolbar->layout()->setSpacing(0);
   mainWindow.addToolBar(Qt::TopToolBarArea, axesToolbar);
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
   // Give the macros menu to the pqPythonMacroSupervisor
   pqPythonManager* manager =
     qobject_cast<pqPythonManager*>(pqApplicationCore::instance()->manager("PYTHON_MANAGER"));
@@ -670,7 +670,7 @@ void pqVisocyteMenuBuilders::buildToolbars(QMainWindow& mainWindow)
 }
 
 //-----------------------------------------------------------------------------
-void pqVisocyteMenuBuilders::buildCatalystMenu(QMenu& menu, QWidget* exportConfiguration)
+void pqParaViewMenuBuilders::buildCatalystMenu(QMenu& menu, QWidget* exportConfiguration)
 {
   new pqCatalystConnectReaction(menu.addAction("Connect...") << pqSetName("actionCatalystConnect"));
   new pqCatalystPauseSimulationReaction(
@@ -684,7 +684,7 @@ void pqVisocyteMenuBuilders::buildCatalystMenu(QMenu& menu, QWidget* exportConfi
   new pqCatalystRemoveBreakpointReaction(
     menu.addAction("Remove Breakpoint") << pqSetName("actionCatalystRemoveBreakpoint"));
 
-#if VTK_MODULE_ENABLE_Visocyte_pqPython
+#if VTK_MODULE_ENABLE_ParaView_pqPython
 #define SHOWNEWCATALYSTGUI 1
 #if SHOWNEWCATALYSTGUI
   menu.addSeparator(); // --------------------------------------------------

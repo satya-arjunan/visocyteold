@@ -74,9 +74,9 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QCheckBox" name="useVisocyteGUIToSelectNodesCheckBox">
+         <widget class="QCheckBox" name="useParaViewGUIToSelectNodesCheckBox">
           <property name="text">
-           <string>use Visocyte GUI to Select Nodes</string>
+           <string>use ParaView GUI to Select Nodes</string>
           </property>
          </widget>
         </item>

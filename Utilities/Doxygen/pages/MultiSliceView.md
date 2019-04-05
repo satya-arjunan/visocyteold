@@ -1,11 +1,11 @@
 Implementation Details: Slice View    {#DesignSliceView}
 ===================================
 
-![Slice View in Visocyte](sliceview.png)
+![Slice View in ParaView](sliceview.png)
 
 [TOC]
 
-This page summarizes the design details of what Visocyte calls the **Slice
+This page summarizes the design details of what ParaView calls the **Slice
 View** (sometimes called the **Multi-Slice View** since it allows the users to
 add multiple slices).
 
@@ -69,7 +69,7 @@ that vtkSMRepresentationTypeDomain picks.
 
 **Solution (HACK)**: vtkSMMultiSliceViewProxy::CreateDefaultRepresentation()
 changes the *Representation* property's value to *Slices*. Further more, to
-avoid vtkSMVisocytePipelineController::PostInitializeProxy() from resetting the
+avoid vtkSMParaViewPipelineController::PostInitializeProxy() from resetting the
 property value to domain-defaults (using
 vtkSMProperty::ResetToDomainDefaults()), we add an XML hint to the property.
 This is done in vtkSMMultiSliceViewProxy::ForceRepresentationType().

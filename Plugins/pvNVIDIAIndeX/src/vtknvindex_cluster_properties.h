@@ -49,7 +49,7 @@ struct vtknvindex_regular_volume_data
 // Representing irregular volume data.
 struct vtknvindex_irregular_volume_data
 {
-  // Subregion info on Visocyte's domain subdivision kd-tree.
+  // Subregion info on ParaView's domain subdivision kd-tree.
   mi::Sint32 subregion_id;
   mi::math::Bbox<mi::Float32, 3> subregion_bbox;
 
@@ -90,7 +90,7 @@ public:
   // Get general config settings.
   vtknvindex_config_settings* get_config_settings() const;
 
-  // Get Visocyte's domain subdivision affinity.
+  // Get ParaView's domain subdivision affinity.
   mi::base::Handle<vtknvindex_affinity> get_affinity() const;
 
   // Get regular (and irregular) volume general properties.
@@ -144,7 +144,7 @@ private:
   vtknvindex_regular_volume_properties*
     m_regular_vol_properties;                             // Regular/irregular volume properties.
   mi::Uint32 m_num_ranks;                                 // Total number of MPI ranks.
-  std::vector<mi::Sint32> m_all_rank_ids;                 // All the MPI rank ids from Visocyte.
+  std::vector<mi::Sint32> m_all_rank_ids;                 // All the MPI rank ids from ParaView.
   std::vector<std::string> m_host_names;                  // Host names for the whole cluster
   std::map<std::string, mi::Uint32> m_hostname_to_hostid; // Host names to host ids.
   std::map<mi::Sint32, mi::Uint32> m_rankid_to_hostid;    // Rank_id to host id.

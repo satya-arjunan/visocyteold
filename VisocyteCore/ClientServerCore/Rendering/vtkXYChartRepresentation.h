@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkXYChartRepresentation.h
 
   Copyright (c) Kitware, Inc.

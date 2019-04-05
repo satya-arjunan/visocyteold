@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSMTrace.cxx
 
   Copyright (c) Kitware, Inc.
@@ -166,7 +166,7 @@ vtkSMTrace* vtkSMTrace::StartTrace(const char* preamble)
     {
       vtkPythonScopeGilEnsurer gilEnsurer;
       std::ostringstream str;
-      str << "# trace generated using " << vtkSMProxyManager::GetVisocyteSourceVersion() << "\n"
+      str << "# trace generated using " << vtkSMProxyManager::GetParaViewSourceVersion() << "\n"
           << "#"
           << "\n"
           << "# To ensure correct image size when batch processing, please search \n"

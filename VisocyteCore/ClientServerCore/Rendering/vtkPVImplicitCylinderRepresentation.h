@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVImplicitCylinderRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  * @brief   extends vtkImplicitCylinderRepresentation
  *
  * vtkPVImplicitCylinderRepresentation extends vtkImplicitCylinderRepresentation
- * to add Visocyte proper initialisation values
+ * to add ParaView proper initialisation values
 */
 
 #ifndef vtkPVImplicitCylinderRepresentation_h

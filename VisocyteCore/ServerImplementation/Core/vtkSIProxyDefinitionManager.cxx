@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkSIProxyDefinitionManager.cxx
 
   Copyright (c) Kitware, Inc.
@@ -1195,7 +1195,7 @@ void vtkSIProxyDefinitionManager::HandlePlugin(vtkPVPlugin* plugin)
       {
         this->LoadConfigurationXMLFromString(xmls[cc].c_str(),
           // if GetPluginName() == vtkPVInitializerPlugin, it implies that it's
-          // the Visocyte core and should not be treated as plugin.
+          // the ParaView core and should not be treated as plugin.
           strcmp(plugin->GetPluginName(), "vtkPVInitializerPlugin") != 0);
       }
 

@@ -43,7 +43,7 @@ ReaderFactory
 Mark a proxy as reader proxy so that it's used to open files from the **File |
 Open** dialog.
 
-This hint is used to mark a proxy as a reader. It provides the Visocyte
+This hint is used to mark a proxy as a reader. It provides the ParaView
 application with information about extensions supported by this reader.
 **extensions** attribute to list the supported extensions e.g. "foo foo.bar" for
 files named as `somename.foo` or `somename.foo.bar`.
@@ -169,7 +169,7 @@ If the desired icon is not present in the list, it is possible to use a Qt resou
       </Hints>
     </SourceProxy>
 
-Available icons are visible in the sources of Visocyte
+Available icons are visible in the sources of ParaView
 
 If the desired icon is not present, it can be added, for example in the context of a plugin, using
 GUI_RESOURCES in your ADD_VISOCYTE_PLUGIN macro, a .qrc file and your own icon file.
@@ -185,7 +185,7 @@ Plotable
 --------
 Mark output data as plotable in 2D chart views.
 
-Chart views in Visocyte e.g. **Bar Chart View**, **Line Chart View**, support
+Chart views in ParaView e.g. **Bar Chart View**, **Line Chart View**, support
 plotting data of any type. However, since such plots don't use distributed
 rendering techniques, to avoid accidentally plotting large datasets, the plots
 by default can only show sources/filters that produce `vtkTable` as the output.
@@ -275,7 +275,7 @@ Indicate the property on a reader to use to refresh (or reload) the reader to
 make it re-read the data files.
 
 This hint can be used for readers that support "smart refresh" to re-read files
-when they are changed. Otherwise, Visocyte will use the default mechanism which
+when they are changed. Otherwise, ParaView will use the default mechanism which
 simply recreated the reader thus forgoing any previous data cached by the
 reader. The attribute **property** indicates the name of the property on the
 reader proxy to invoke to make the reader refresh.
@@ -290,7 +290,7 @@ reader proxy to invoke to make the reader refresh.
 View Annotations
 ----------------
 Views support the following annotations:
-1. **Visocyte::DetachedFromLayout**: If set to "True", this annotation will prevent the
+1. **ParaView::DetachedFromLayout**: If set to "True", this annotation will prevent the
 layout from grabbing the view, enabling custom application developers to assign or
 position the view themselves. Use `pqObjectBuilder::createView(viewType, server, true)`
 to create a new view with this annotation added.
@@ -298,7 +298,7 @@ to create a new view with this annotation added.
 Live Source
 ------------
 Certain algorithms can generate new data autonomously, e.g. a source that reads
-data from the network. The **LiveSource** hint allows Visocyte to periodically
+data from the network. The **LiveSource** hint allows ParaView to periodically
 check with the algorithm if it has new data and update the application, if so.
 
 For that, one simply adds a hint to the proxy as follows:

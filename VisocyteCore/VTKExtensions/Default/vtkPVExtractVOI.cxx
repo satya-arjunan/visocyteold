@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   Visocyte
+  Program:   ParaView
   Module:    vtkPVExtractVOI.cxx
 
   Copyright (c) Kitware, Inc.

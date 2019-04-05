@@ -3,8 +3,8 @@ NAME
 DESCRIPTION
   Non Orthogonal Source code sample
 REQUIRES_MODULES
-  Visocyte::VTKExtensionsCore
-  Visocyte::pqApplicationComponents
+  ParaView::VTKExtensionsCore
+  ParaView::pqApplicationComponents
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

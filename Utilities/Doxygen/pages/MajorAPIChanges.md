@@ -18,7 +18,7 @@ sufficient to enable selection of array name and its association.
 ###Changes to vtkSMFieldDataDomain###
 
 vtkSMFieldDataDomain no longer updates the domain based on the type of the
-input. The domain will always list the attribute types known to VTK/Visocyte. As
+input. The domain will always list the attribute types known to VTK/ParaView. As
 a result, XML attributes `force_point_cell_data` and
 `disable_update_domain_entries` for the XML definition of vtkSMFieldDataDomain
 have been deprecated and should simply be removed from the XML as they are no
@@ -28,10 +28,10 @@ longer relevant.
 
 `pqDoubleLineEdit` now is simply a `pqLineEdit` with no signficant API differences
 as far as setting and getting text values is concerned. This implies, however, that
-tests that were updated in Visocyte 5.6 to use `set_full_precision_text` instead of
+tests that were updated in ParaView 5.6 to use `set_full_precision_text` instead of
 `set_string` must now be reverted back to use `set_string`.
 
-The following command was adequate for Visocyte test changes:
+The following command was adequate for ParaView test changes:
 `git grep -l set_full_ | xargs sed -i 's/set_full_precision_text/set_string/g'`.
 
 Changes in 5.6
@@ -74,7 +74,7 @@ supported.
 
 ###Changes to offscreen rendering options###
 
-Visocyte executables now automatically choose to create on-screen or off-screen
+ParaView executables now automatically choose to create on-screen or off-screen
 render windows for rendering based on the executable type and current
 configuration. As a result **"UseOffscreenRendering"** property on views has
 been removed to avoid conflicting with the new approach. Executables have new
@@ -85,7 +85,7 @@ for the process.
 ###Changes to vtkArrayCalculator
 `vtkArrayCalculator::SetAttributeMode` is deprecated in favor of `vtkArrayCalculator::SetAttributeType`
 which takes vtkDataObject attribute modes instead of custom constants as its parameter value.
-The Visocyte calculator filter's AttributeMode property's values changed as a result of this.
+The ParaView calculator filter's AttributeMode property's values changed as a result of this.
 
 ###Changes to vtkSMViewProxy::CaptureWindowInternal###
 
@@ -100,7 +100,7 @@ has been replaced by the `AutomaticRescaleRangeMode` property. When
 `AutomaticRescaleRangeMode` is set to `vtkSMTransferFunctionManager::Never`,
 the transfer function minimum and maximum value is never updated, no matter what
 event occurs. This corresponds to when `LockScalarRange` was set to "on" in
-previous versions of Visocyte. When `AutomaticRescaleRangeMode` is set to a
+previous versions of ParaView. When `AutomaticRescaleRangeMode` is set to a
 different option, that option governs how and when the transfer function is
 reset. This option overrides whichever option is set in the `GeneralSettings`
 property `TransferFunctionResetMode`.
@@ -126,15 +126,15 @@ have been moved from `vtkPVGeneralSettings.h` to `vtkSMTransferFunctionManager.h
 ###Deprecated pqDisplayPolicy###
 
 `pqDisplayPolicy`, a class that has been unofficially deprecated since
-`vtkSMVisocytePipelineControllerWithRendering` was introduced is now officially
+`vtkSMParaViewPipelineControllerWithRendering` was introduced is now officially
 deprecated and will be removed in future. Use
-`vtkSMVisocytePipelineControllerWithRendering` to show/hide data in views
+`vtkSMParaViewPipelineControllerWithRendering` to show/hide data in views
 instead of `pqDisplayPolicy`.
 
-###Changes to pqVisocyteMenuBuilders###
+###Changes to pqParaViewMenuBuilders###
 
-The signature of `pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(QWidget&)`
-has changed to `pqVisocyteMenuBuilders::buildPipelineBrowserContextMenu(QMenu&)` and
+The signature of `pqParaViewMenuBuilders::buildPipelineBrowserContextMenu(QWidget&)`
+has changed to `pqParaViewMenuBuilders::buildPipelineBrowserContextMenu(QMenu&)` and
 now requires a `QMenu` to populate rather than populating the implicitly created context
 menu in a widget.
 
@@ -184,21 +184,21 @@ to`pqResetScalarRangeReaction::CUSTOM` when instantiating
 ###Dropped support for pqProxyPanel and subclasses (Legacy Panels)###
 
 `pqProxyPanel` and its subclasses that formed the default mechanism for providing
-custom panels for filters, displays, views, etc. before Visocyte 3.98 has now
+custom panels for filters, displays, views, etc. before ParaView 3.98 has now
 been removed. Refer to the
-[wiki](http://www.visocyte.org/Wiki/Visocyte/Properties_Panel) for getting
+[wiki](http://www.visocyte.org/Wiki/ParaView/Properties_Panel) for getting
 oriented with the currently supported way for customizing the properties panel.
 This also removes plugin macros `ADD_VISOCYTE_OBJECT_PANEL()`, and
 `ADD_VISOCYTE_DISPLAY_PANEL()`.
 
 ###Qt 5 Support (replacing QVTKWidget)###
 
-Visocyte has switched over to using Qt 5 by default. While for most cases the
+ParaView has switched over to using Qt 5 by default. While for most cases the
 application code should be unaffected, if your app was directly creating (or
 using) `QVTKWidget` however, you will need to change it. When
 building with Qt 5, you are expected to use `QVTKOpenGLWidget` instead of
 `QVTKWidget` (which is still needed when building with Qt 4).
-Since Visocyte supports building with Qt 4 and 5 for this release, to make it
+Since ParaView supports building with Qt 4 and 5 for this release, to make it
 easier, we have the following solution.
 
 A new header **pqQVTKWidgetBase.h** defines a new typedef `pqQVTKWidgetBase`.
@@ -235,7 +235,7 @@ future releases.
 
 ###Removed ctkRangeSlider and ctkDoubleRangeSlider###
 
-These classes were not used by Visocyte. Use pqDoubleRangeSliderPropertyWidget
+These classes were not used by ParaView. Use pqDoubleRangeSliderPropertyWidget
 instead.
 
 Changes in 5.2
@@ -244,7 +244,7 @@ Changes in 5.2
 ###Removed pqStandardArrayColorMapsBehavior###
 
 Setting the default colormaps from a Qt Behavior was causing inconsistent results
-between the Visocyte UI and pvpython/pvbatch.  Adding these default settings was
+between the ParaView UI and pvpython/pvbatch.  Adding these default settings was
 moved into the server manager.  To override these defaults, use
 vtkSMSettings::AddCollectionFromX with a priority greater than 0.  The settings
 affected are the default colormap for arrays with names vtkBlockColors and
@@ -253,8 +253,8 @@ pqStandardArrayColorMapsBehavior no longer does anything and so it has been remo
 
 ###Qt dependencies###
 
-Starting with 5.2, Visocyte natively supports Qt 4 and Qt 5. To simplify writing
-code with either dependency, we now have a new CMake file `VisocyteQt.cmake`
+Starting with 5.2, ParaView natively supports Qt 4 and Qt 5. To simplify writing
+code with either dependency, we now have a new CMake file `ParaViewQt.cmake`
 that gets included by `VISOCYTE_USE_FILE`. This provides new macros that be used
 to find qt (`pv_find_package_qt`), wrap cpp (`pv_qt_wrap_cpp`), ui
 (`pv_qt_wrap_ui`), or add resources (`pv_qt_add_resources`) instead of using
@@ -263,7 +263,7 @@ Qt4 or Qt5. `pv_find_package_qt` accepts optional `QT5_COMPONENTS` and
 `QT4_COMPONENTS` which can be used to list the Qt component dependencies for
 each of the versions. e.g.
 
-    include(VisocyteQt) # generally not needed, since auto-included
+    include(ParaViewQt) # generally not needed, since auto-included
     pv_find_package_qt(qt_targets
       QT4_COMPONENTS QtGui
       QT5_COMPONENTS Widgets)
@@ -295,7 +295,7 @@ Changes in 5.1
 
 ###Removed Cube Axes###
 
-Cube axes, including support in UI, Python as well as the related Visocyte
+Cube axes, including support in UI, Python as well as the related ParaView
 specific classes e.g. `vtkCubeAxesRepresentation`, `pqCubeAxesEditorDialog`, and
 `pqCubeAxesPropertyWidget` have been removed. The cube
 axes was replaced by a generally preferred axes annotation implementation called
@@ -449,7 +449,7 @@ now includes field data arrays. To exclude field data arrays from the field
 selection, change this to  **"any-except-field"**. This is also the default for
 vtkSMInputArrayDomain, hence simply removing the `attribute_type` field is also
 an acceptable solution and is the recommended approach so that the XML can work
-without changes in earlier versions of Visocyte as well.
+without changes in earlier versions of ParaView as well.
 
 Changes in 5.0
 --------------
@@ -496,15 +496,15 @@ appropriate.
 
 ###Removed vtkPVGenericRenderWindowInteractor, vtkPVRenderViewProxy###
 
-Visocyte was subclassing vtkRenderWindowInteractor to create
+ParaView was subclassing vtkRenderWindowInteractor to create
 `vtkPVGenericRenderWindowInteractor` to handle interaction. That piece of code
 was potentially derived from an older implementation of
 vtkRenderWindowInteractor and hence did what it did. Current implementation of
 vtkRenderWindowInteractor lets the vtkInteractionStyle (and subclasses) do all
-the heavy lifting. Visocyte did that to some extent (since it has a
+the heavy lifting. ParaView did that to some extent (since it has a
 vtkPVInteractorStyle), but will was relying on
 `vtkPVGenericRenderWindowInteractor`, `vtkPVRenderViewProxy` to propagate
-interaction/still renders and other things. This has been refactored. Visocyte
+interaction/still renders and other things. This has been refactored. ParaView
 no longer uses a special vtkRenderWindowInteractor. All logic is handled by
 observers on the standard vtkRenderWindowInteractor.
 

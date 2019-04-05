@@ -1,5 +1,5 @@
 NAME
-  Visocyte::protobuf
+  ParaView::protobuf
 LIBRARY_NAME
   vtkprotobuf
 THIRD_PARTY
