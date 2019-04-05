@@ -1,6 +1,6 @@
 /*****************************************************************************
 *
-* Copyright (c) 2000 - 2017, Lawrence Livermore National Security, LLC
+* Copyright (c) 2000 - 2018, Lawrence Livermore National Security, LLC
 * Produced at the Lawrence Livermore National Laboratory
 * LLNL-CODE-442911
 * All rights reserved.
@@ -964,7 +964,7 @@ avtMFIXFileFormat::ReadInformation()
 // ******************************************************************
 //
 // The file-parsing and mesh-building code which follows has been
-// imported from vtkMFIXReader.c, an MFIX-to-ParaView reader written
+// imported from vtkMFIXReader.c, an MFIX-to-Visocyte reader written
 // by Phil Nicoletti and Brian Dotson of NETL.  The code was taken
 // from revision 1.2 of vtkMFIXReader.  The original code produces
 // several unstructured meshes; it has been modified to produce a

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    vtkAvtSTMDFileFormatAlgorithm.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -317,7 +317,7 @@ int vtkAvtSTMDFileFormatAlgorithm::FillAMR(
   const int &timestep, const int &domain)
 {
   //we first need to determine if this AMR can be safely converted to a
-  //ParaView AMR. What this means is that every dataset needs to have regular spacing
+  //Visocyte AMR. What this means is that every dataset needs to have regular spacing
   bool valid  = this->ValidAMR( meshMetaData );
   if ( !valid )
     {
@@ -661,7 +661,7 @@ bool vtkAvtSTMDFileFormatAlgorithm::ValidAMR( const avtMeshMetaData *meshMetaDat
       this->AvtFile->GetMesh(0, i, name.c_str()) ) );
     if ( !rgrid )
       {
-      //this is not an AMR that ParaView supports
+      //this is not an AMR that Visocyte supports
       return false;
       }
 

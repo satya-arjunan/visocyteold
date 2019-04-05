@@ -8,7 +8,7 @@ readonly name="visit-databases"
 readonly ownership="VisIt Upstream <kwrobot@kitware.com>"
 readonly subtree="databases/readers"
 readonly repo="https://gitlab.kitware.com/third-party/visit.git"
-readonly tag="for/paraview-20181206-trunk-r30784"
+readonly tag="for/visocyte-20190320-trunk-r34006"
 
 readonly paths="
 COPYRIGHT
@@ -87,7 +87,7 @@ database_cleanup () {
         Chombo|FLASH|GGCM|M3DC1|MFIXCDF|MFIX|Miranda|NASTRAN|Nek5000|OpenFOAM|paraDIS|Pixie|PLOT3D|ProteinDataBank|Vs)
             kind="reader_options"
             ;;
-        ExtrudedVol|Image|Silo|Tecplot|Xmdv)
+        BOV|Curve2D|ExtrudedVol|Image|Silo|Tecplot|Xmdv)
             kind="writer"
             ;;
         *)
@@ -162,7 +162,7 @@ extract_source () {
     for reader in *; do
         [ -d "$reader" ] || continue
         pushd "$reader"
-        mv "CMakeLists.paraview.txt" "CMakeLists.txt"
+        mv "CMakeLists.visocyte.txt" "CMakeLists.txt"
         database_cleanup "$reader"
         if type "cleanup_$reader" >/dev/null 2>/dev/null; then
             "cleanup_$reader"

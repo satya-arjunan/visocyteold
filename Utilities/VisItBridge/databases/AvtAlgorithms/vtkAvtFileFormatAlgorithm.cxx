@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    vtkAvtFileFormatAlgorithm.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -623,7 +623,7 @@ void vtkAvtFileFormatAlgorithm::SetupTemporalInformation(
   //or everything but the first time step have are zero values
   //This is caused by a file reader that generates the time value
   //once the reader moves to that timestep.
-  //That kind of behavior is not possible currently in ParaView. Instead
+  //That kind of behavior is not possible currently in Visocyte. Instead
   //we will force the reader to generate the time values for each timestep
   //by cycling through everytime step but not requesting any data.
   bool needs_manual_query = false;

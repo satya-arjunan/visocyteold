@@ -8,14 +8,13 @@ readonly name="visit"
 readonly ownership="VisIt Upstream <kwrobot@kitware.com>"
 readonly subtree="Library/VisItLib"
 readonly repo="https://gitlab.kitware.com/third-party/visit.git"
-readonly tag="for/paraview-20181206-trunk-r30784"
+readonly tag="for/visocyte-20190320-trunk-r34006"
 
 readonly paths="
 COPYRIGHT
 .gitattributes
 README.kitware.md
-CMakeLists.paraview.txt
-VisItBridgeUse.cmake.in
+CMakeLists.visocyte.txt
 
 CMake/FindBoxlib.cmake
 CMake/FindGFortran.cmake
@@ -23,7 +22,6 @@ CMake/FindMili.cmake
 CMake/testFStream.cxx
 CMake/TestSocklenT.c
 CMake/VisItCommon.cmake
-CMake/VisIt*.in
 
 avt/Database/Database/avtDatabase.*
 avt/Database/Database/avtDatabaseFactory.*
@@ -442,7 +440,7 @@ extract_source () {
     pushd "$extractdir/$name-reduced"
     find -name "*.code" -delete
     find -name "*.xml" -delete
-    mv CMakeLists.paraview.txt CMakeLists.txt
+    mv CMakeLists.visocyte.txt CMakeLists.txt
     popd
 }
 

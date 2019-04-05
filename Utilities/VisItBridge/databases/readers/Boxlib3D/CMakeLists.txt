@@ -4,7 +4,7 @@ SET(SOURCES
   )
 
 set(defines)
-if (PARAVIEW_USE_MPI)
+if (VISOCYTE_USE_MPI)
   list(APPEND defines
     BL_USE_MPI)
 endif ()
