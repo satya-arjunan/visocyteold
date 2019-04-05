@@ -2,7 +2,6 @@
 add_test(NAME pvweb-StartTest
   COMMAND
     "$<TARGET_FILE:Visocyte::pvpython>"
-    -m visocyte.web.test_server
+    "${CMAKE_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/visocyte/web/test_server.py"
     --port 9739
     --timeout 1)
-set_tests_properties(pvweb-StartTest PROPERTIES LABELS "VISOCYTE")

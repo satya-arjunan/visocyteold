@@ -46,6 +46,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqTreeViewExpandState.h"
 #include "pqUndoStack.h"
 #include "pqView.h"
+#include "vtkPVLogger.h"
 #include "vtkSMDoubleMapProperty.h"
 #include "vtkSMDoubleMapPropertyIterator.h"
 #include "vtkSMPropertyHelper.h"
@@ -53,7 +54,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMSourceProxy.h"
 #include "vtkScalarsToColors.h"
 #include "vtkSmartPointer.h"
-#include "vtkTimerLog.h"
 
 #include <QColorDialog>
 #include <QIdentityProxyModel>
@@ -64,6 +64,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QScopedValueRollback>
 #include <QSignalBlocker>
 #include <QStyle>
+
+#include <cassert>
 
 namespace
 {
@@ -262,7 +264,7 @@ public:
 
   QColor color(const QModelIndex& idx) const
   {
-    Q_ASSERT(idx.column() == this->ColorColumn);
+    assert(idx.column() == this->ColorColumn);
 
     const QModelIndex srcIdx = this->mapToSource(idx);
     QColor dcolor = this->sourceModel()->data(srcIdx, Qt::DisplayRole).value<QColor>();
@@ -283,7 +285,7 @@ public:
 
   QPixmap colorPixmap(const QModelIndex& idx) const
   {
-    Q_ASSERT(idx.column() == this->ColorColumn);
+    assert(idx.column() == this->ColorColumn);
 
     const QModelIndex srcIdx = this->mapToSource(idx);
     QColor dcolor = this->sourceModel()->data(srcIdx, Qt::DisplayRole).value<QColor>();
@@ -311,19 +313,19 @@ public:
 
   void setColor(const QModelIndex& idx, const QColor& acolor)
   {
-    Q_ASSERT(idx.column() == this->ColorColumn);
+    assert(idx.column() == this->ColorColumn);
     this->sourceModel()->setData(this->mapToSource(idx), acolor, Qt::DisplayRole);
   }
 
   void setColor(const QModelIndex& idx, const QVariant& acolor)
   {
-    Q_ASSERT(idx.column() == this->ColorColumn);
+    assert(idx.column() == this->ColorColumn);
     this->sourceModel()->setData(this->mapToSource(idx), acolor, Qt::DisplayRole);
   }
 
   double opacity(const QModelIndex& idx) const
   {
-    Q_ASSERT(idx.column() == this->OpacityColumn);
+    assert(idx.column() == this->OpacityColumn);
     const QModelIndex srcIdx = this->mapToSource(idx);
     const QVariant vval = this->sourceModel()->data(srcIdx, Qt::DisplayRole);
     return vval.isValid() ? vval.toDouble() : 1.0;
@@ -331,7 +333,7 @@ public:
 
   QPixmap opacityPixmap(const QModelIndex& idx) const
   {
-    Q_ASSERT(idx.column() == this->OpacityColumn);
+    assert(idx.column() == this->OpacityColumn);
     const QModelIndex srcIdx = this->mapToSource(idx);
     const QVariant vval = this->sourceModel()->data(srcIdx, Qt::DisplayRole);
     double dval = vval.isValid() ? vval.toDouble() : -1.0;
@@ -343,13 +345,13 @@ public:
 
   void setOpacity(const QModelIndex& idx, double aopacity)
   {
-    Q_ASSERT(idx.column() == this->OpacityColumn);
+    assert(idx.column() == this->OpacityColumn);
     this->sourceModel()->setData(this->mapToSource(idx), aopacity, Qt::DisplayRole);
   }
 
   void setOpacity(const QModelIndex& idx, const QVariant& aopacity)
   {
-    Q_ASSERT(idx.column() == this->OpacityColumn);
+    assert(idx.column() == this->OpacityColumn);
     this->sourceModel()->setData(this->mapToSource(idx), aopacity, Qt::DisplayRole);
   }
 
@@ -546,7 +548,7 @@ public:
 private:
   void selectBlocks(const std::vector<vtkIdType>& ids)
   {
-    Q_ASSERT(this->BlockSelectionPropagation == false);
+    assert(this->BlockSelectionPropagation == false);
     QScopedValueRollback<bool> r(this->BlockSelectionPropagation, true);
 
     pqOutputPort* port = this->MBWidget->outputPort();
@@ -694,28 +696,30 @@ public:
 
   void resetModel()
   {
-    vtkTimerLogScope mark("resetModel");
-    (void)mark;
+    vtkVLogScopeFunction(VISOCYTE_LOG_APPLICATION_VERBOSITY());
 
     pqTreeViewExpandState expandState;
-
-    vtkTimerLog::MarkStartEvent("Expand state: save");
     expandState.save(this->Ui.treeView);
-    vtkTimerLog::MarkEndEvent("Expand state: save");
 
     bool prev = this->SelectionModel->blockSelectionPropagation(true);
     pqOutputPort* port = this->OutputPort;
     this->CDTModel->clearColumns();
     this->CDTModel->setUserCheckable(this->UserCheckable);
-    if (this->HasColors)
+    if (this->HasColors && this->Representation != nullptr)
     {
-      Q_ASSERT(this->Representation != nullptr);
       this->ProxyModel->setColorColumn(this->CDTModel->addColumn("color"));
     }
-    if (this->HasOpacities)
+    else
     {
-      Q_ASSERT(this->Representation != nullptr);
+      this->HasColors = false;
+    }
+    if (this->HasOpacities && this->Representation != nullptr)
+    {
       this->ProxyModel->setOpacityColumn(this->CDTModel->addColumn("opacity"));
+    }
+    else
+    {
+      this->HasOpacities = false;
     }
     this->updateRootLabel();
     bool is_composite =
@@ -727,9 +731,7 @@ public:
     else
     {
       this->ProxyModel->setSourceModel(this->CDTModel);
-      vtkTimerLog::MarkStartEvent("QTreeView::expandToDepth");
       this->Ui.treeView->expandToDepth(1);
-      vtkTimerLog::MarkEndEvent("QTreeView::expandToDepth");
 
       QHeaderView* header = this->Ui.treeView->header();
       if (header->count() == 3 && header->logicalIndex(2) != 0)
@@ -738,9 +740,7 @@ public:
       }
     }
 
-    vtkTimerLog::MarkStartEvent("Expand state: restore");
     expandState.restore(this->Ui.treeView);
-    vtkTimerLog::MarkEndEvent("Expand state: restore");
     this->SelectionModel->blockSelectionPropagation(prev);
   }
 
@@ -755,24 +755,23 @@ public:
 
   void restoreCachedValues()
   {
-    vtkTimerLogScope mark("restoreCachedValues");
-    (void)mark;
+    vtkVLogScopeFunction(VISOCYTE_LOG_APPLICATION_VERBOSITY());
     if (this->Representation)
     {
       // restore check-state, property state, if possible.
       if (this->UserCheckable)
       {
-        Q_ASSERT(this->CDTModel->userCheckable());
+        assert(this->CDTModel->userCheckable());
         this->CDTModel->setCheckStates(this->BlockVisibilities);
       }
       if (this->HasColors)
       {
-        Q_ASSERT(this->CDTModel->columnIndex("color") != -1);
+        assert(this->CDTModel->columnIndex("color") != -1);
         this->CDTModel->setColumnStates("color", this->BlockColors);
       }
       if (this->HasOpacities)
       {
-        Q_ASSERT(this->CDTModel->columnIndex("opacity") != -1);
+        assert(this->CDTModel->columnIndex("opacity") != -1);
         this->CDTModel->setColumnStates("opacity", this->BlockOpacities);
       }
     }
@@ -1047,8 +1046,7 @@ void pqMultiBlockInspectorWidget::resetEventually()
 //-----------------------------------------------------------------------------
 void pqMultiBlockInspectorWidget::resetNow()
 {
-  vtkTimerLogScope mark("pqMultiBlockInspectorWidget::resetNow");
-  (void)mark;
+  vtkVLogScopeFunction(VISOCYTE_LOG_APPLICATION_VERBOSITY());
 
   QSignalBlocker b(this);
   pqInternals& internals = (*this->Internals);

@@ -212,6 +212,9 @@ function (visocyte_plugin_scan)
         "_visocyte_plugin_${_visocyte_scan_plugin_name}_file" "${_visocyte_scan_plugin_file}")
     set_property(GLOBAL
       PROPERTY
+        "_visocyte_plugin_${_visocyte_scan_plugin_name}_description" "${${_visocyte_scan_plugin_name}_DESCRIPTION}")
+    set_property(GLOBAL
+      PROPERTY
       "_visocyte_plugin_${_visocyte_scan_plugin_name}_required_modules" "${${_visocyte_scan_plugin_name}_REQUIRES_MODULES}")
   endforeach ()
 
@@ -237,6 +240,7 @@ visocyte_plugin_build(
   [TARGET <target>]
   [AUTOLOAD <plugin>...]
 
+  [RUNTIME_DESTINATION <destination>]
   [LIBRARY_DESTINATION <destination>]
   [LIBRARY_SUBDIRECTORY <subdirectory>]
 
@@ -249,11 +253,14 @@ visocyte_plugin_build(
     initializes static plugins. The function is provided, but is a no-op for
     shared plugin builds.
   * `AUTOLOAD`: A list of plugins to mark for autoloading.
+  * `RUNTIME_DESTINATION`: (Defaults to `${CMAKE_INSTALL_BINDIR}`) Where to
+    install runtime files.
   * `LIBRARY_DESTINATION`: (Defaults to `${CMAKE_INSTALL_LIBDIR}`) Where to
     install modules built by plugins.
   * `LIBRARY_SUBDIRECTORY`: (Defaults to `""`) Where to install the plugins
     themselves. Each plugin lives in a directory of its name in
-    `<LIBRARY_DESTINATION>/<LIBRARY_SUBDIRECTORY>`.
+    `<RUNTIME_DESTINATION>/<LIBRARY_SUBDIRECTORY>` (for Windows) or
+    `<LIBRARY_DESTINATION>/<LIBRARY_SUBDIRECTORY>` for other platforms.
   * `PLUGINS_FILE_NAME`: The name of the XML plugin file to generate for the
     built plugins. This file will be placed under
     `<LIBRARY_DESTINATION>/<LIBRARY_SUBDIRECTORY>`. It will be installed with
@@ -262,7 +269,7 @@ visocyte_plugin_build(
 function (visocyte_plugin_build)
   cmake_parse_arguments(_visocyte_build
     ""
-    "LIBRARY_DESTINATION;LIBRARY_SUBDIRECTORY;TARGET;PLUGINS_FILE_NAME"
+    "RUNTIME_DESTINATION;LIBRARY_DESTINATION;LIBRARY_SUBDIRECTORY;TARGET;PLUGINS_FILE_NAME"
     "PLUGINS;AUTOLOAD"
     ${ARGN})
 
@@ -272,6 +279,10 @@ function (visocyte_plugin_build)
       "${_visocyte_build_UNPARSED_ARGUMENTS}")
   endif ()
 
+  if (NOT DEFINED _visocyte_build_RUNTIME_DESTINATION)
+    set(_visocyte_build_RUNTIME_DESTINATION "${CMAKE_INSTALL_BINDIR}")
+  endif ()
+
   if (NOT DEFINED _visocyte_build_LIBRARY_DESTINATION)
     set(_visocyte_build_LIBRARY_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
   endif ()
@@ -279,6 +290,13 @@ function (visocyte_plugin_build)
   if (NOT DEFINED _visocyte_build_LIBRARY_SUBDIRECTORY)
     set(_visocyte_build_LIBRARY_SUBDIRECTORY "")
   endif ()
+
+  if (WIN32)
+    set(_visocyte_build_plugin_destination "${_visocyte_build_RUNTIME_DESTINATION}")
+  else ()
+    set(_visocyte_build_plugin_destination "${_visocyte_build_LIBRARY_DESTINATION}")
+  endif ()
+  string(APPEND _visocyte_build_plugin_destination "/${_visocyte_build_LIBRARY_SUBDIRECTORY}")
 
   foreach (_visocyte_build_plugin IN LISTS _visocyte_build_PLUGINS)
     get_property(_visocyte_build_plugin_file GLOBAL
@@ -389,11 +407,7 @@ bool ${_visocyte_build_TARGET}_static_plugins_func(const char* name, bool load)
 
   if (DEFINED _visocyte_build_PLUGINS_FILE_NAME)
     set(_visocyte_build_xml_file
-      "${CMAKE_BINARY_DIR}/${_visocyte_build_LIBRARY_DESTINATION}")
-    if (DEFINED _visocyte_build_LIBRARY_SUBDIRECTORY)
-      string(APPEND _visocyte_build_xml_file "/${_visocyte_build_LIBRARY_SUBDIRECTORY}")
-    endif ()
-    string(APPEND _visocyte_build_xml_file "/${_visocyte_build_PLUGINS_FILE_NAME}")
+      "${CMAKE_BINARY_DIR}/${_visocyte_build_plugin_destination}/${_visocyte_build_PLUGINS_FILE_NAME}")
     set(_visocyte_build_xml_content
       "<?xml version=\"1.0\"?>\n<Plugins>\n")
     foreach (_visocyte_build_plugin IN LISTS _visocyte_build_PLUGINS)
@@ -413,7 +427,7 @@ bool ${_visocyte_build_TARGET}_static_plugins_func(const char* name, bool load)
       CONTENT "${_visocyte_build_xml_content}")
     install(
       FILES       "${_visocyte_build_xml_file}"
-      DESTINATION "${_visocyte_build_LIBRARY_DESTINATION}/${_visocyte_build_LIBRARY_SUBDIRECTORY}"
+      DESTINATION "${_visocyte_build_plugin_destination}"
       COMPONENT   "plugin")
   endif ()
 endfunction ()
@@ -430,6 +444,8 @@ visocyte_add_plugin(<name>
   [REQUIRED_ON_SERVER] [REQUIRED_ON_CLIENT]
   VERSION <version>
 
+  [MODULE_FILES <vtk.module>...]
+  [MODULE_ARGS <arg>...]
   [MODULES <module>...]
   [SOURCES <source>...]
   [SERVER_MANAGER_XML <xml>...]
@@ -454,6 +470,9 @@ visocyte_add_plugin(<name>
   * `REQUIRED_ON_CLIENT`: The plugin is required to be loaded on the client for
     proper functionality.
   * `VERSION`: (Required) The version number of the plugin.
+  * `MODULE_FILES`: Paths to `vtk.module` files describing modules to include
+    in the plugin.
+  * `MODULE_ARGS`: Arguments to pass to `vtk_module_build` for included modules.
   * `MODULES`: Modules to include in the plugin. These modules will be wrapped
     using client server and have their server manager XML files processed.
   * `SOURCES`: Source files for the plugin.
@@ -470,8 +489,9 @@ visocyte_add_plugin(<name>
     before the plugin is initialized at runtime.
   * `XML_DOCUMENTATION`: (Defaults to `ON`) If set, documentation will be
     generated for the associated XML files.
-  * `DOCUMENTATION_DIR`: (Defaults to `${CMAKE_CURRENT_SOURCE_DIR}`) Where to
-    look for documentation files.
+  * `DOCUMENTATION_DIR`: If specified, `*.html`, `*.css`, `*.png`, and `*.jpg`
+    files in this directory will be copied and made available to the
+    documentation.
   * `EXPORT`: If provided, the plugin will be added to the given export set.
 #]==]
 function (visocyte_add_plugin name)
@@ -484,7 +504,7 @@ function (visocyte_add_plugin name)
   cmake_parse_arguments(_visocyte_add_plugin
     "REQUIRED_ON_SERVER;REQUIRED_ON_CLIENT"
     "VERSION;EULA;EXPORT;XML_DOCUMENTATION;DOCUMENTATION_DIR"
-    "REQUIRED_PLUGINS;SERVER_MANAGER_XML;SOURCES;MODULES;UI_INTERFACES;UI_RESOURCES;UI_FILES;PYTHON_MODULES"
+    "REQUIRED_PLUGINS;SERVER_MANAGER_XML;SOURCES;MODULES;UI_INTERFACES;UI_RESOURCES;UI_FILES;PYTHON_MODULES;MODULE_FILES;MODULE_ARGS"
     ${ARGN})
 
   if (_visocyte_add_plugin_UNPARSED_ARGUMENTS)
@@ -502,13 +522,48 @@ function (visocyte_add_plugin name)
     set(_visocyte_add_plugin_XML_DOCUMENTATION ON)
   endif ()
 
-  if (NOT DEFINED _visocyte_add_plugin_DOCUMENTATION_DIR)
-    set(_visocyte_add_plugin_DOCUMENTATION_DIR
-      "${CMAKE_CURRENT_SOURCE_DIR}")
-  elseif (NOT _visocyte_add_plugin_XML_DOCUMENTATION)
+  if (DEFINED _visocyte_add_plugin_DOCUMENTATION_DIR AND
+      NOT _visocyte_add_plugin_XML_DOCUMENTATION)
     message(FATAL_ERROR
       "Specifying `DOCUMENTATION_DIR` and turning off `XML_DOCUMENTATION` "
       "makes no sense.")
+  endif ()
+
+  if (_visocyte_add_plugin_MODULE_ARGS)
+    if (NOT _visocyte_add_plugin_MODULES_FILES OR
+        NOT _visocyte_add_plugin_MODULES)
+      message(FATAL_ERROR
+        "The `MODULE_ARGS` argument requires `MODULE_FILES` and `MODULES` to be provided.")
+    endif ()
+  endif ()
+
+  if (_visocyte_add_plugin_MODULE_FILES)
+    if (NOT _visocyte_add_plugin_MODULES)
+      message(FATAL_ERROR
+        "The `MODULE_FILES` argument requires `MODULES` to be provided.")
+    endif ()
+
+    vtk_module_scan(
+      MODULE_FILES      ${_visocyte_add_plugin_MODULE_FILES}
+      REQUEST_MODULES   ${_visocyte_add_plugin_MODULES}
+      PROVIDES_MODULES  plugin_modules
+      REQUIRES_MODULES  required_modules
+      HIDE_MODULES_FROM_CACHE ON)
+
+    if (required_modules)
+      foreach (required_module IN LISTS required_modules)
+        if (NOT TARGET "${required_module}")
+          message(FATAL_ERROR
+            "Failed to find the required module ${required_module}.")
+        endif ()
+      endforeach ()
+    endif ()
+
+    vtk_module_build(
+      MODULES             ${plugin_modules}
+      PACKAGE             "${_visocyte_build_plugin}"
+      INSTALL_HEADERS     OFF
+      ${_visocyte_add_plugin_MODULE_ARGS})
   endif ()
 
   # TODO: resource initialization for static builds
@@ -581,14 +636,27 @@ function (visocyte_add_plugin name)
 
   if ((_visocyte_add_plugin_module_xmls OR _visocyte_add_plugin_xmls) AND
       VISOCYTE_BUILD_QT_GUI AND _visocyte_add_plugin_XML_DOCUMENTATION)
+    set(_visocyte_build_plugin_docdir
+      "${CMAKE_CURRENT_BINARY_DIR}/visocyte_help")
+
     visocyte_client_documentation(
-      TARGET  "${_visocyte_build_plugin}_doc"
-      XMLS    ${_visocyte_add_plugin_module_xmls}
-              ${_visocyte_add_plugin_xmls})
+      TARGET      "${_visocyte_build_plugin}_doc"
+      OUTPUT_DIR  "${_visocyte_build_plugin_docdir}"
+      XMLS        ${_visocyte_add_plugin_module_xmls}
+                  ${_visocyte_add_plugin_xmls})
+
+    set(_visocyte_build_plugin_doc_source_args)
+    if (DEFINED _visocyte_add_plugin_DOCUMENTATION_DIR)
+      set(_visocyte_build_plugin_doc_source_args
+        SOURCE_DIR "${_visocyte_add_plugin_DOCUMENTATION_DIR}")
+    endif ()
+
     visocyte_client_generate_help(
       NAME        "${_visocyte_build_plugin}"
+      OUTPUT_PATH _visocyte_build_plugin_qch_path
+      OUTPUT_DIR  "${_visocyte_build_plugin_docdir}"
       TARGET      "${_visocyte_build_plugin}_qch"
-      SOURCE_DIR  "${_visocyte_add_plugin_DOCUMENTATION_DIR}"
+      ${_visocyte_build_plugin_doc_source_args}
       DEPENDS     "${_visocyte_build_plugin}_doc"
       PATTERNS    "*.html" "*.css" "*.png" "*.jpg")
 
@@ -606,11 +674,14 @@ function (visocyte_add_plugin name)
               \"\"
               "_qch"
               "_qch"
-              "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_build_plugin}.qch"
-      DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_build_plugin}.qch"
+              "${_visocyte_build_plugin_qch_path}"
+      DEPENDS "${_visocyte_build_plugin_qch_path}"
               "${_visocyte_build_plugin}_qch"
               Visocyte::ProcessXML
       COMMENT "Generating header for ${_visocyte_build_plugin} documentation")
+    set_property(SOURCE "${_visocyte_add_plugin_qch_output}"
+      PROPERTY
+        SKIP_AUTOMOC 1)
 
     string(APPEND _visocyte_add_plugin_includes
       "#include \"${_visocyte_build_plugin}_qch.h\"\n")
@@ -653,9 +724,10 @@ function (visocyte_add_plugin name)
       Visocyte::pqComponents)
   endif ()
 
+  set(_visocyte_add_plugin_with_resources 0)
   set(_visocyte_add_plugin_resources_init)
   if (_visocyte_add_plugin_UI_RESOURCES)
-    set(_visocyte_add_plugin_with_ui 1)
+    set(_visocyte_add_plugin_with_resources 1)
     set(CMAKE_AUTORCC 1)
     if (NOT BUILD_SHARED_LIBS)
       foreach (_visocyte_add_plugin_ui_resource IN LISTS _visocyte_add_plugin_UI_RESOURCES)
@@ -680,11 +752,32 @@ function (visocyte_add_plugin name)
       ${_visocyte_add_plugin_UI_FILES})
   endif ()
 
-  if (_visocyte_add_plugin_with_ui)
+  if (_visocyte_add_plugin_with_ui OR _visocyte_add_plugin_with_resources)
     find_package(Qt5 QUIET REQUIRED COMPONENTS Core ${_visocyte_add_plugin_qt_extra_components})
     list(APPEND _visocyte_add_plugin_required_libraries
-      Visocyte::pqCore
       Qt5::Core)
+    if (_visocyte_add_plugin_with_ui)
+      list(APPEND _visocyte_add_plugin_required_libraries
+        Visocyte::pqCore)
+    endif ()
+
+    # CMake 3.13 started using Qt5's version variables to detect what version
+    # of Qt's tools to run for automoc, autouic, and autorcc. However, they are
+    # looked up using the target's directory scope, but these are here in a
+    # local scope and unset when AutoGen gets around to asking about the
+    # variables at generate time.
+
+    # Fix for 3.13.0–3.13.3. Does not work if `visocyte_add_plugin` is called
+    # from another function.
+    set(Qt5Core_VERSION_MAJOR "${Qt5Core_VERSION_MAJOR}" PARENT_SCOPE)
+    set(Qt5Core_VERSION_MINOR "${Qt5Core_VERSION_MINOR}" PARENT_SCOPE)
+    # Fix for 3.13.4+.
+    set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      PROPERTY
+        Qt5Core_VERSION_MAJOR "${Qt5Core_VERSION_MAJOR}")
+    set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      PROPERTY
+        Qt5Core_VERSION_MINOR "${Qt5Core_VERSION_MAJOR}")
   endif ()
 
   set(_visocyte_add_plugin_with_python 0)
@@ -757,6 +850,9 @@ function (visocyte_add_plugin name)
   set(_visocyte_add_plugin_source
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_build_plugin}Plugin.cxx")
 
+  get_property(_visocyte_add_plugin_description GLOBAL
+    PROPERTY "_visocyte_plugin_${_visocyte_build_plugin}_description")
+
   configure_file(
     "${_visocyte_plugin_source_dir}/visocyte_plugin.h.in"
     "${_visocyte_add_plugin_header}")
@@ -764,6 +860,11 @@ function (visocyte_add_plugin name)
     "${_visocyte_plugin_source_dir}/visocyte_plugin.cxx.in"
     "${_visocyte_add_plugin_source}")
 
+  if (WIN32)
+    # On Windows, we want `MODULE` libraries to go to the runtime directory,
+    # but CMake always uses `CMAKE_LIBRARY_OUTPUT_DIRECTORY`.
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+  endif ()
   if (DEFINED _visocyte_build_LIBRARY_SUBDIRECTORY)
     string(APPEND CMAKE_LIBRARY_OUTPUT_DIRECTORY "/${_visocyte_build_LIBRARY_SUBDIRECTORY}")
   endif ()
@@ -791,11 +892,6 @@ function (visocyte_add_plugin name)
     PRIVATE
       Visocyte::ClientServerCoreCore
       ${_visocyte_add_plugin_required_libraries})
-  if (_visocyte_add_plugin_UI_INTERFACES)
-    target_include_directories("${_visocyte_build_plugin}"
-      PRIVATE
-        "${CMAKE_CURRENT_SOURCE_DIR}")
-  endif ()
   target_include_directories("${_visocyte_build_plugin}"
     PRIVATE
       "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -805,7 +901,7 @@ function (visocyte_add_plugin name)
       PREFIX "")
 
   set(_visocyte_add_plugin_destination
-    "${_visocyte_build_LIBRARY_DESTINATION}/${_visocyte_build_LIBRARY_SUBDIRECTORY}/${_visocyte_build_plugin}")
+    "${_visocyte_build_plugin_destination}/${_visocyte_build_plugin}")
   install(
     TARGETS "${_visocyte_build_plugin}"
     COMPONENT "plugin"
@@ -830,7 +926,7 @@ TODO: What is a property widget?
 ```
 visocyte_plugin_add_property_widget(
   KIND  <WIDGET|GROUP_WIDGET|WIDGET_DECORATOR>
-  TYPE <type> 
+  TYPE <type>
   CLASS_NAME <name>
   INTERFACES <variable>
   SOURCES <variable>)
@@ -917,18 +1013,21 @@ TODO: What is a dock window?
 ```
 visocyte_plugin_add_dock_window(
   CLASS_NAME <name>
+  [DOCK_AREA <Right|Left|Top|Bottom>]
   INTERFACES <variable>
   SOURCES <variable>)
 ```
 
   * `CLASS_NAME`: The name of the dock window class.
+  * `DOCK_AREA`: (Default `Left`) Where to dock the window within the
+    application.
   * `INTERFACES`: The name of the generated interface.
   * `SOURCES`: The source files generated by the interface.
 #]==]
 function (visocyte_plugin_add_dock_window)
   cmake_parse_arguments(_visocyte_dock_window
     ""
-    "CLASS_NAME;INTERFACES;SOURCES"
+    "DOCK_AREA;CLASS_NAME;INTERFACES;SOURCES"
     ""
     ${ARGN})
 
@@ -951,6 +1050,19 @@ function (visocyte_plugin_add_dock_window)
   if (NOT DEFINED _visocyte_dock_window_SOURCES)
     message(FATAL_ERROR
       "The `SOURCES` argument is required.")
+  endif ()
+
+  if (NOT DEFINED _visocyte_dock_window_DOCK_AREA)
+    set(_visocyte_dock_window_DOCK_AREA "Left")
+  endif ()
+
+  if (NOT _visocyte_dock_window_DOCK_AREA STREQUAL "Left" AND
+      NOT _visocyte_dock_window_DOCK_AREA STREQUAL "Right" AND
+      NOT _visocyte_dock_window_DOCK_AREA STREQUAL "Top" AND
+      NOT _visocyte_dock_window_DOCK_AREA STREQUAL "Bottom")
+    message(FATAL_ERROR
+      "`DOCK_AREA` must be one of `Left`, `Right`, `Top`, or `Bottom`. Got "
+      "`${_visocyte_dock_window_DOCK_AREA}`.")
   endif ()
 
   configure_file(
@@ -1387,7 +1499,7 @@ function (visocyte_plugin_add_proxy)
           "Missing `PROXY_TYPE` for `XML_NAME`")
       endif ()
       if (DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_name" OR
-          DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_nam_regex")
+          DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_name_regex")
         message(FATAL_ERROR
           "Duplicate `XML_NAME` or `XML_NAME_REGEX` for `${_visocyte_proxy_type}`")
       endif ()
@@ -1400,7 +1512,7 @@ function (visocyte_plugin_add_proxy)
           "Missing `PROXY_TYPE` for `XML_NAME_REGEX`")
       endif ()
       if (DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_name" OR
-          DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_nam_regex")
+          DEFINED "_visocyte_proxy_type_${_visocyte_proxy_type}_xml_name_regex")
         message(FATAL_ERROR
           "Duplicate `XML_NAME` or `XML_NAME_REGEX` for `${_visocyte_proxy_type}`")
       endif ()

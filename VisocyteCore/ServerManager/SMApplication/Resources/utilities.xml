@@ -1353,7 +1353,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="X Title Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="X Title Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="XTitleColor" function="Color"/>
         <Property name="XTitleFontFamily" function="Family"/>
         <Property name="XTitleFontFile" function="File"/>
@@ -1378,7 +1378,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="Y Title Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="Y Title Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="YTitleColor" function="Color"/>
         <Property name="YTitleFontFamily" function="Family"/>
         <Property name="YTitleFontFile" function="File"/>
@@ -1403,7 +1403,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="Z Title Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="Z Title Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="ZTitleColor" function="Color"/>
         <Property name="ZTitleFontFamily" function="Family"/>
         <Property name="ZTitleFontFile" function="File"/>
@@ -1582,7 +1582,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="X Axis Label Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="X Axis Label Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="XLabelColor" function="Color"/>
         <Property name="XLabelFontFamily" function="Family"/>
         <Property name="XLabelFontFile" function="File"/>
@@ -1607,7 +1607,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="Y Axis Label Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="Y Axis Label Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="YLabelColor" function="Color"/>
         <Property name="YLabelFontFamily" function="Family"/>
         <Property name="YLabelFontFile" function="File"/>
@@ -1632,7 +1632,7 @@
         </ExposedProperties>
       </SubProxy>
 
-      <PropertyGroup label="Z Axis Label Font Properties" panel_widget="FontEditor">
+      <PropertyGroup label="Z Axis Label Font Properties" panel_widget="FontEditor" panel_visibility="advanced">
         <Property name="ZLabelColor" function="Color"/>
         <Property name="ZLabelFontFamily" function="Family"/>
         <Property name="ZLabelFontFile" function="File"/>
@@ -1820,6 +1820,38 @@
         <Property name="ZAxisLabels" />
       </PropertyGroup>
 
+      <IntVectorProperty name="UseCustomBounds"
+                         command="SetUseCustomTransformedBounds"
+                         number_of_elements="1"
+                         default_values="0">
+        <BooleanDomain name="bool" />
+        <Documentation>
+          If set, the axes will use explicitly specified bounds rather than using the bounds
+          computed from datasets currently visible in the view.
+        </Documentation>
+      </IntVectorProperty>
+
+      <DoubleVectorProperty name="CustomBounds"
+                            command="SetCustomTransformedBounds"
+                            number_of_elements="6"
+                            default_values="0 1 0 1 0 1 0 1">
+        <DoubleRangeDomain name="range" />
+        <Documentation>
+          Specify the explicit bounds to use when **UseCustomBounds** is checked.
+        </Documentation>
+        <Hints>
+          <!-- show only when UseCustomBounds is true -->
+          <PropertyWidgetDecorator type="GenericDecorator"
+                                   mode="visibility"
+                                   property="UseCustomBounds"
+                                   value="1"/>
+          <DoubleVectorPropertyWidget>
+            <!-- add buttons to reset using active bounds -->
+            <Button type="use_active_source_bounds" />
+          </DoubleVectorPropertyWidget>
+        </Hints>
+      </DoubleVectorProperty>
+
       <DoubleVectorProperty name="DataScale"
                             command="SetDataScale"
                             number_of_elements="3"
@@ -1881,8 +1913,13 @@
                                    value="0"/>
           <!-- disable this when UseModelTransform is true -->
         </Hints>
-
       </DoubleVectorProperty>
+
+      <PropertyGroup label="Bounds">
+        <Property name="UseCustomBounds" />
+        <Property name="CustomBounds" />
+      </PropertyGroup>
+
       <PropertyGroup label="Data Transform">
         <Property name="DataScale" />
         <Property name="DataPosition" />
@@ -3067,6 +3104,20 @@
         <ExporterFactory extensions="vtp" />
       </Hints>
     </RenderViewExporterProxy>
+    <RenderViewExporterProxy class="vtkGLTFExporter"
+                             name="GLTFExporter">
+      <Documentation>Exporter to export a single render view to gltf.
+      </Documentation>
+      <StringVectorProperty command="SetFileName"
+                            name="FileName"
+                            panel_visibility="never"
+                            number_of_elements="1">
+        <Documentation>Name of the file to be written.</Documentation>
+      </StringVectorProperty>
+      <Hints>
+        <ExporterFactory extensions="gltf" />
+      </Hints>
+    </RenderViewExporterProxy>
     <RenderViewExporterProxy class="vtkVRMLExporter"
                              name="VRMLExporter">
       <Documentation>Exporter to export a single render view to an VRML
@@ -3519,13 +3570,20 @@
       <!-- End of GL2PSContextViewExporterSVG -->
     </GL2PSExporterProxy>
 
-    <RenderViewExporterProxy name="WebGLExporter" class="vtkPVWebGLExporter">
+    <RenderViewExporterProxy name="WebExporter" class="vtkPVWebExporter">
        <StringVectorProperty name="FileName" command="SetFileName"
                              number_of_elements="1">
           <Documentation>Name of the file to write into</Documentation>
        </StringVectorProperty>
+       <StringVectorProperty name="VisocyteGlanceHTML"
+                             command="SetVisocyteGlanceHTML"
+                             number_of_elements="1"
+                             panel_visibility="advanced">
+          <Documentation>Filepath to the HTML viewer to embed data in</Documentation>
+          <FileListDomain name="files" />
+       </StringVectorProperty>
       <Hints>
-        <ExporterFactory extensions="webgl" />
+        <ExporterFactory extensions="vtkjs" />
       </Hints>
       <!-- End of WebGLExporter -->
     </RenderViewExporterProxy>

@@ -6,6 +6,7 @@ GROUPS
   VisocyteQt
 DEPENDS
   Visocyte::pqCore
+  Visocyte::qttesting
   VTK::jsoncpp
 PRIVATE_DEPENDS
   Visocyte::Animation

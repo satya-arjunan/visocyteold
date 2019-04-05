@@ -76,6 +76,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkCommand.h"
 #include "vtkInitializationHelper.h"
 #include "vtkPVGeneralSettings.h"
+#include "vtkPVLogger.h"
 #include "vtkPVPluginTracker.h"
 #include "vtkPVSynchronizedRenderWindows.h"
 #include "vtkPVXMLElement.h"
@@ -93,11 +94,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMWriterFactory.h"
 #include "vtkSmartPointer.h"
 
-// Do this after all above includes. On a VS2015 with Qt 5,
-// these includes cause build errors with pqRenderView etc.
-// due to some leaked through #define's (is my guess).
-#include "pqQVTKWidgetBase.h"
-#include <QSurfaceFormat>
+#include <cassert>
 
 //-----------------------------------------------------------------------------
 class pqApplicationCore::pqInternals
@@ -133,19 +130,6 @@ pqApplicationCore::pqApplicationCore(
   vtkInitializationHelper::SetOrganizationName(QApplication::organizationName().toStdString());
   vtkInitializationHelper::SetApplicationName(QApplication::applicationName().toStdString());
   vtkInitializationHelper::Initialize(argc, argv, vtkProcessModule::PROCESS_CLIENT, options);
-
-  // Setup the default format.
-  QSurfaceFormat fmt = pqQVTKWidgetBase::defaultFormat();
-
-  // Request quad-buffered stereo format only for Crystal Eyes
-  std::string stereoType = options->GetStereoType();
-  fmt.setStereo(stereoType == "Crystal Eyes");
-
-  // Visocyte does not support multisamples.
-  fmt.setSamples(0);
-
-  QSurfaceFormat::setDefaultFormat(fmt);
-
   this->constructor();
 }
 
@@ -153,7 +137,7 @@ pqApplicationCore::pqApplicationCore(
 void pqApplicationCore::constructor()
 {
   // Only 1 pqApplicationCore instance can be created.
-  Q_ASSERT(pqApplicationCore::Instance == NULL);
+  assert(pqApplicationCore::Instance == NULL);
   pqApplicationCore::Instance = this;
 
   this->UndoStack = NULL;
@@ -528,7 +512,13 @@ pqSettings* pqApplicationCore::settings()
       QSettings::IniFormat, QSettings::UserScope, settingsOrg, settingsApp + suffix, this);
     if (disable_settings || settings->value("pqApplicationCore.DisableSettings", false).toBool())
     {
+      vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "loading of Qt settings skipped (disabled).");
       settings->clear();
+    }
+    else
+    {
+      vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "loading Qt settings from '%s'",
+        settings->fileName().toLocal8Bit().data());
     }
     // now settings are ready!
 

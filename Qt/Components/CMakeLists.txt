@@ -157,7 +157,6 @@ set(classes
   pqSignalAdaptorKeyFrameType
   pqSignalAdaptorSelectionTreeWidget
   pqSignalAdaptorTreeWidget
-  pqSplitter
   pqStringVectorPropertyWidget
   pqSubsetInclusionLatticeTreeModel
   pqSubsetInclusionLatticeWidget
@@ -171,8 +170,6 @@ set(classes
   pqTriggerOnIdleHelper
   pqUndoStackBuilder
   pqVCRController
-  pqViewContextMenuHandler
-  pqViewContextMenuManager
   pqViewFrame
   pqViewFrameActionsInterface
   pqViewManager
@@ -215,6 +212,7 @@ set(ui_files
   Resources/UI/pqOrbitCreatorDialog.ui
   Resources/UI/pqPipelineTimeKeyFrameEditor.ui
   Resources/UI/pqPluginDialog.ui
+  Resources/UI/pqPopoutPlaceholder.ui
   Resources/UI/pqPresetDialog.ui
   Resources/UI/pqPropertiesPanel.ui
   Resources/UI/pqProxyInformationWidget.ui

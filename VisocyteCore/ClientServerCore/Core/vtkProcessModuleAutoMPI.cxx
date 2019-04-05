@@ -348,7 +348,7 @@ bool vtkProcessModuleAutoMPIInternals::CollectConfiguredOptions()
     this->SeparateArguments(VISOCYTE_MPI_POSTFLAGS, this->MPIPostFlags);
 #endif
     char buf[1024];
-    sprintf(buf, "%d", serverNumProc);
+    snprintf(buf, sizeof(buf), "%d", serverNumProc);
     this->MPIServerNumProcessFlag = buf;
   }
 #endif

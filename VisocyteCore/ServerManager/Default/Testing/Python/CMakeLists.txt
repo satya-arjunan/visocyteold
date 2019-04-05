@@ -10,8 +10,10 @@ set(PY_TESTS
   ChangeTimeSteps.py
   ColorAttributeTypeBackwardsCompatibility.py,NO_VALID
   CSVWriterReader.py,NO_VALID
+  GenerateIdScalarsBackwardsCompatibility.py,NO_VALID
   GhostCellsInMergeBlocks.py
   IntegrateAttributes.py,NO_VALID
+  LookupTable.py,NO_VALID
   MultiServer.py,NO_VALID
   PointGaussianProperties.py
   CompositeDataFieldArraysInformation.py,NO_VALID
@@ -90,7 +92,7 @@ endif()
 set(PVBATCH_NO_SYMMETRIC_TESTS
   SaveAnimation.py
   )
-IF (VTK_MPIRUN_EXE AND VTK_MPI_MAX_NUMPROCS GREATER 1)
+IF (MPIEXEC_EXECUTABLE)
   set(vtkPVServerManagerDefault_NUMPROCS 2)
   visocyte_add_test_pvbatch_mpi(
     JUST_VALID
@@ -141,8 +143,8 @@ if (numpy_found)
   # set_tests_properties(vtkPVServerManagerDefaultPython-SymmetricPythonFilters PROPERTIES FAIL_REGULAR_EXPRESSION "Error")
 endif()
 
-if (VISOCYTE_USE_MPI AND VTK_MPIRUN_EXE AND NOT WIN32)
-  set(Visocyte::ServerManagerDefault_ARGS
+if (VISOCYTE_USE_MPI AND MPIEXEC_EXECUTABLE AND NOT WIN32)
+  set(visocyte_pvbatch_args
     --symmetric)
   visocyte_add_test_pvbatch_mpi(
     NO_DATA NO_OUTPUT NO_VALID
@@ -150,7 +152,7 @@ if (VISOCYTE_USE_MPI AND VTK_MPIRUN_EXE AND NOT WIN32)
     TestMPI4PY.py
     ParallelPythonImport.py
     )
-  set(Visocyte::ServerManagerDefault_ARGS)
+  unset(visocyte_pvbatch_args)
 endif()
 
 # Python state tests. Each test executes an XML test in the Visocyte UI, saves
@@ -164,19 +166,19 @@ set(visocyte_python_state_tests
 )
 foreach(python_state_test ${visocyte_python_state_tests})
   if (VISOCYTE_BUILD_QT_GUI)
-    if(BUILD_SHARED_LIBS)
-      add_test(NAME ${python_state_test}
-        COMMAND ${CMAKE_COMMAND}
-        -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:visocyte>
-        -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:pvpython>
-        -DVISOCYTE_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
-        -DVISOCYTE_TEST_OUTPUT_BASELINE_DIR:PATH=${visocyte_test_data_directory_output}/Testing/Data/Baseline
-        -DTEST_DRIVER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.py
-        -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${python_state_test}.xml
-        -DTEMPORARY_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
-        -DPYTHON_STATE_TEST_NAME:STRING=${python_state_test}
-        -P ${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.cmake)
-      set_tests_properties(${python_state_test} PROPERTIES LABELS "VISOCYTE")
-    endif()
+    set(tname "Visocyte::ServerManagerDefaultPython-${python_state_test}")
+    ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}" NAME ${tname}
+      COMMAND ${CMAKE_COMMAND}
+      -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:visocyte>
+      -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:pvpython>
+      -DVISOCYTE_TEST_OUTPUT_BASELINE_DIR:PATH=${visocyte_test_data_directory_output}/Testing/Data/Baseline
+      -DTEST_DRIVER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.py
+      -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${python_state_test}.xml
+      -DTEMPORARY_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
+      -DPYTHON_STATE_TEST_NAME:STRING=${python_state_test}
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/PythonStateTestDriver.cmake
+      DATA{${_vtk_build_TEST_INPUT_DATA_DIRECTORY}/Data/Baseline/${python_state_test}.png}
+      )
+    set_tests_properties(${tname} PROPERTIES LABELS "VISOCYTE")
   endif()
 endforeach()

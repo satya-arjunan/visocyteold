@@ -7,9 +7,6 @@ vtk_add_test_cxx(vtkPVServerManagerCoreCxxTests tests
   TestRecreateVTKObjects.cxx
   )
 
-if(NOT VISOCYTE_BUILD_QT_GUI)
-  visocyte_test_load_data("" can.ex2)
-endif()
 vtk_add_test_cxx(vtkPVServerManagerCoreCxxTests tmp_tests
   NO_VALID
   TestVisocytePipelineController.cxx

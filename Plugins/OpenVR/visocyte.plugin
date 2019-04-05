@@ -6,10 +6,11 @@ CONDITION
   VISOCYTE_BUILD_QT_GUI
 REQUIRES_MODULES
   Visocyte::ClientServerCoreRendering
-  Visocyte::Common
+  Visocyte::Core
   Visocyte::ServerManagerCore
   Visocyte::ServerManagerRendering
   Visocyte::VTKExtensionsRendering
+  Visocyte::pqApplicationComponents
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::IOCore

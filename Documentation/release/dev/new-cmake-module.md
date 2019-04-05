@@ -4,8 +4,8 @@ VTK's module system has been updated and Visocyte now works with it. CMake
 variables have changed names:
 
   - `Module_X` becomes `VTK_MODULE_ENABLE_M` where X is the "library name"
-    (e.g., `vtkPVCommon` and `M` is the sanitized module name (e.g.,
-    `Visocyte::Common`'s sanitized name is `Visocyte_Common`).
+    (e.g., `vtkPVCore` and `M` is the sanitized module name (e.g.,
+    `Visocyte::Core`'s sanitized name is `Visocyte_Core`).
   - `VISOCYTE_BUILD_PLUGIN_P` becomes `VISOCYTE_PLUGIN_ENABLE_P`. Enabling a
     plugin now requests that its required modules are built.
   - Visocyte's flags forcefully disable some modules. For example, Visocyte

@@ -182,6 +182,7 @@ void pqVisocyteMenuBuilders::buildEditMenu(QMenu& menu, pqPropertiesPanel* prope
   new pqDeleteReaction(ui.actionDelete_All, true);
   new pqShowHideAllReaction(ui.actionShow_All, pqShowHideAllReaction::ActionType::Show);
   new pqShowHideAllReaction(ui.actionHide_All, pqShowHideAllReaction::ActionType::Hide);
+  new pqSaveScreenshotReaction(ui.actionCopyScreenshotToClipboard, true);
   new pqCopyReaction(ui.actionCopy);
   new pqCopyReaction(ui.actionPaste, true);
   new pqApplicationSettingsReaction(ui.actionEditSettings);
@@ -569,9 +570,9 @@ void pqVisocyteMenuBuilders::buildHelpMenu(QMenu& menu)
   new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/Wiki/Visocyte"),
     (menu.addAction("Visocyte Wiki") << pqSetName("actionWiki")));
 
-  // Visocyte Mailing Lists
-  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/mailing-lists/"),
-    (menu.addAction("Visocyte Mailing Lists") << pqSetName("actionMailingLists")));
+  // Visocyte Community Support
+  new pqDesktopServicesReaction(QUrl("http://www.visocyte.org/community-support/"),
+    (menu.addAction("Visocyte Community Support") << pqSetName("actionCommunitySupport")));
 
   // Visocyte Release Notes
   QString versionString(VISOCYTE_VERSION_FULL);

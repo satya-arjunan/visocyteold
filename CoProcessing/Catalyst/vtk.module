@@ -3,12 +3,16 @@ NAME
 LIBRARY_NAME
   vtkPVCatalyst
 DEPENDS
-  Visocyte::ServerManagerApplication
+  VTK::CommonCore
 PRIVATE_DEPENDS
+  Visocyte::ServerManagerApplication
   VTK::FiltersGeneral
   VTK::vtksys
+OPTIONAL_DEPENDS
+  VTK::ParallelMPI
 TEST_DEPENDS
   Visocyte::CatalystTestDriver
+  VTK::FiltersSources
   VTK::IOXML
   VTK::TestingCore
 TEST_OPTIONAL_DEPENDS

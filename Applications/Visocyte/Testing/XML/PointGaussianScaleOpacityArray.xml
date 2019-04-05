@@ -19,13 +19,13 @@
   <pqevent object="pqClientMainWindow/variableToolbar/displayColor/Components" command="activated" arguments="Magnitude" />
   <pqevent object="pqClientMainWindow/variableToolbar/actionScalarBarVisibility" command="set_boolean" arguments="false" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/OpacityByArray/CheckBox" command="set_boolean" arguments="true" />
-  <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/GaussianRadius/DoubleRangeWidget/DoubleLineEdit" command="set_full_precision_text" arguments="2.4" />
+  <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/GaussianRadius/DoubleRangeWidget/DoubleLineEdit" command="set_string" arguments="2.4" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/OpacityArray/ComboBox" command="activated" arguments="thickness9" />
   <pqcheck object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/OpacityArrayComponent/ComboBox" property="currentText" arguments="" />
   <pqcheck object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/ScaleArrayComponent/ComboBox" property="currentText" arguments="Y" />
   <pqcheck object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/SetScaleArray/ComboBox" property="currentText" arguments="displacement9" />
   <pqcheck object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/OpacityArray/ComboBox" property="currentText" arguments="thickness9" />
-  <pqcompareview object="pqClientMainWindow/centralwidget/MultiViewWidget/CoreWidget/qt_tabwidget_stackedwidget/MultiViewWidget1/Frame.0/CentralWidgetFrame/Viewport" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/PointGaussianScaleOpacityArrayA.png" threshold="5" />
+  <pqcompareview object="pqClientMainWindow/centralwidget/MultiViewWidget/CoreWidget/qt_tabwidget_stackedwidget/MultiViewWidget1/Container/Frame.0/CentralWidgetFrame/Viewport" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/PointGaussianScaleOpacityArrayA.png" threshold="5" />
   <pqevent object="pqClientMainWindow/propertiesDock/propertiesPanel/scrollArea/qt_scrollarea_viewport/scrollAreaWidgetContents/DisplayFrame/ProxyPanel/ScaleTransferFunction/1QPushButton0" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/ScaleTransferFunction/groupBox/resetButton/QAction0" command="activate" arguments="" />
   <pqcheck object="pqClientMainWindow/ScaleTransferFunction/groupBox/minX" property="text" arguments="-2.02298" />

@@ -7,7 +7,11 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00000/Level_0/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00000/particles/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00000/particles/Level_0/,REGEX:.*}"
-  "DATA{${visocyte_test_data_directory_input}/Data/ANALYZE/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00005/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00005/Level_0/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00005/particles/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00005/particles/Level_0/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/can-restarts/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/CompositeGlyphInput.vtp}"
   "DATA{${visocyte_test_data_directory_input}/Data/CompositeGlyphTree.vtm}"
   "DATA{${visocyte_test_data_directory_input}/Data/CompositeGlyphTree/,REGEX:.*}"
@@ -17,10 +21,6 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/FieldDataBlocks/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/FieldDataBlocks/FieldDataBlocks/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/FileSeries/,REGEX:.*}"
-  "DATA{${visocyte_test_data_directory_input}/Data/GMV/,REGEX:.*}"
-  "DATA{${visocyte_test_data_directory_input}/Data/GMV/invalid/,REGEX:.*}"
-  "DATA{${visocyte_test_data_directory_input}/Data/GMV/partial-pyramid/,REGEX:.*}"
-  "DATA{${visocyte_test_data_directory_input}/Data/GMV/quadratic_cells/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/GenericIOReader/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/Iron_Xdmf/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/LoadState.pvsm}"
@@ -69,7 +69,6 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/iron_protein.vtk}"
   "DATA{${visocyte_test_data_directory_input}/Data/linesPolydata.vtk}"
   "DATA{${visocyte_test_data_directory_input}/Data/manyTypes.vtu}"
-  "DATA{${visocyte_test_data_directory_input}/Data/minimal.nii}"
   "DATA{${visocyte_test_data_directory_input}/Data/multicomb_0.vts}"
   "DATA{${visocyte_test_data_directory_input}/Data/multicomb_1.vts}"
   "DATA{${visocyte_test_data_directory_input}/Data/multicomb_2.vts}"
@@ -87,6 +86,10 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/singleSphereAnimation.pvd}"
   "DATA{${visocyte_test_data_directory_input}/Data/singleSphereAnimation/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/tensors.pvti}"
+  "DATA{${visocyte_test_data_directory_input}/Data/testxmlpartdscol.vtpc}"
+  "DATA{${visocyte_test_data_directory_input}/Data/testxmlpartdscol/,REGEX:.*}"
+  "DATA{${visocyte_test_data_directory_input}/Data/testxmlpartds.vtpd}"
+  "DATA{${visocyte_test_data_directory_input}/Data/testxmlpartds/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/timestep_0_15.vts}"
   "DATA{${visocyte_test_data_directory_input}/Data/tube.exo}"
   "DATA{${visocyte_test_data_directory_input}/Data/vehicle_data.csv}"
@@ -138,13 +141,18 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ConnectivityCountDescending.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Contour1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Contour2.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Contour3.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ConvertToMoleculeBonds.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/CustomViewpoints.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/CustomViewpoints_A.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/CustomViewpoints_B.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/DataAxesGrid2X.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/DataAxesGrid-Custom.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/DataAxesGrid-CustomWithReset.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/EnsembleT0.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/EnsembleT1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/EnsembleT3.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ExodusModeShapes.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FastUniformGridSource1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FastUniformGridSource2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FastUniformGridSource3.png}"
@@ -166,6 +174,9 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FindDataDialog7.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FindDataDialog8.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FindDataDialog9.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FindDataSelectLocation.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/FindDataSelectLocationMultiblock.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ForceTimeDiamond.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Glyph3DRepresentation_Cylinder.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Glyph3DRepresentation_Cylinder_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/GlyphWithEmptyCells_A.png}"
@@ -188,6 +199,10 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/HyperTreeGridPlaneCutter.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/HyperTreeGridThreshold-DepthOne.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/HyperTreeGridThreshold-DepthTwo.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ImportCinema.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ImportCinemaSpecA.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/IndexedLookupInitialization.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/IndexedLookupInitialization_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LightAddRemove1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LightAddRemove2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LineChartSelection1.png}"
@@ -197,8 +212,6 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LineChartSelection4.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LineChartSelection4_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LoadStateMultiView.png}"
-  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LoadStateMultiView_1.png}"
-  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LoadStateMultiView_2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LogColorMap1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LogColorMap2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/LogColorMap3.png}"
@@ -224,9 +237,15 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/OBBMajorAxis.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/OBBMediumAxis.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/OBBMinorAxis.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PartitionedDataSet_Slice.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PartitionedDataSet_Surface.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PartitionedDataSetCollection_Slice.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PartitionedDataSetCollection_Surface.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PLYWriter.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PointGaussianScaleOpacityArrayA.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PolyLineSourceInterA.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PythonAlgorithmPlugin.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/PythonAlgorithmReadersAndWriters.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/QuartilePlotArea.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/QuartilePlotArea_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/QuartilePlotLines.png}"
@@ -275,6 +294,7 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SaveLargeScreenshot.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SaveLargeScreenshot_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SaveSmallScreenshot.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SaveSmallScreenshot_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SeparatedColorMapA.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SeparatedColorMapB.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Slice.png}"
@@ -287,11 +307,13 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SpherePointSource_InterA.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/SpherePointSource_InterB.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/StepColorSpaceA.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/StructuredGridCellBlanking.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/StructuredGridVolumeRendering.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestClipCylinder.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestColorHistogram.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestColorHistogram_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestCompositedGeometryCulling.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestFindDataMax.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestGeometryBoundsClobber.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestIsoVolume1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestIsoVolume2.png}"
@@ -304,6 +326,8 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestMultiServer2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestMultiServer3.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestMultiServer4.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestPythonView.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestPythonView_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestPythonViewScript.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/Threshold.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/ThresholdInvert.png}"
@@ -339,6 +363,9 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TransferFunctionResetOnVisibilityChange_AllBlocks.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TransferFunctionResetOnVisibilityChange_OneBlock.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TransferFunctionResetOnVisibilityChange_TwoBlocks.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UniformInverseTransformSamplingGlyph_A.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UniformInverseTransformSamplingGlyph_B.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UniformInverseTransformSamplingGlyph_C.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UpdateTransferFunctionRanges1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UpdateTransferFunctionRanges2.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UpdateTransferFunctionRanges3.png}"
@@ -354,9 +381,9 @@ ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UseDataPartitions3.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/UseDataPartitions4.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/VolumeCellSelection.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/VolumeNoMapScalars.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYChart_ChangeParameters.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYChart_Default.png}"
-  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYChart_Default_1.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYChart_DisableBlocks.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYChart_EnableBlocks.png}"
   "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/XYHistogram_Default.png}"
@@ -373,6 +400,7 @@ SET (TESTS_WITHOUT_BASELINES
   FavoritesFilters.xml
   CustomOutputFormat.xml
   DelimitedTextReader.xml
+  DynamicFieldDataDomain.xml
   ExportFilteredColumnsSpreadsheet.xml
   FindWidget.xml
   ModifyGUIWindowTitle.xml
@@ -413,6 +441,7 @@ SET (TESTS_WITH_INLINE_COMPARES
   ClampAndUpdateColorMap.xml
   Connectivity.xml
   Contour.xml
+  DataAxesGrid2X.xml
   Ensemble.xml
   FastUniformGridSource.xml
   FileSeries.xml
@@ -430,6 +459,8 @@ SET (TESTS_WITH_INLINE_COMPARES
   MemoryInspectorPanel.xml
   Molecule.xml
   NonlinearSubdivisionDisplay.xml
+  PartitionedDataSet.xml
+  PartitionedDataSetCollection.xml
   QuartilePlot.xml
   ReadPartitionedCGNS.xml
   RectilinearFractal.xml
@@ -468,13 +499,13 @@ if(NOT APPLE)
 endif()
 
 SET(TESTS_WITH_BASELINES
+  DataAxesGrid.xml
   MoleculeScalarBar.xml
-  TestDataGridAxes.xml
   TestHiddenLineRemoval.xml
   TestOpacityRendering.xml
 )
 
-if(VISOCYTE_USE_VISITBRIDGE)
+if(VISOCYTE_ENABLE_VISITBRIDGE)
   list(APPEND TESTS_WITH_BASELINES
     VisItBridgeChombo.xml
     VisItBridgeLAMMPSDump.xml
@@ -502,7 +533,7 @@ if(VISOCYTE_USE_OSPRAY)
     OSPRay.xml)
 endif()
 
-if(VISOCYTE_USE_OPENTURNS)
+if(VISOCYTE_ENABLE_OPENTURNS)
   list(APPEND TESTS_WITH_BASELINES
     HistogramKernelSmoothing.xml)
   list(APPEND TESTS_WITH_BASELINES
@@ -535,7 +566,7 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
     --test-directory=${VISOCYTE_TEST_DIR}
     BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${test_name}.xml
-    EXTRA_LABELS "CATALYST")
+    EXTRA_LABELS "catalyst")
 
   add_pv_test(pvcs "_DISABLE_CS"
     COMMAND
@@ -554,7 +585,7 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
     --test-directory=${VISOCYTE_TEST_DIR}
     BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${test_name}.xml
-    EXTRA_LABELS "CATALYST")
+    EXTRA_LABELS "catalyst")
 
 endmacro(ADD_CATALYST_LIVE_TEST)
 
@@ -565,9 +596,12 @@ if(VISOCYTE_ENABLE_CATALYST AND VISOCYTE_ENABLE_PYTHON)
   visocyte_add_client_tests(
     FORCE_SERIAL
     TEST_SCRIPTS CatalystGUI.xml )
-  visocyte_add_client_tests(
-    FORCE_SERIAL
-    TEST_SCRIPTS CatalystCinemaGUI.xml )
+
+  if (TARGET Visocyte::CinemaPython)
+    visocyte_add_client_tests(
+      FORCE_SERIAL
+      TEST_SCRIPTS CatalystCinemaGUI.xml )
+  endif ()
 
   #add_catalyst_live_test(CatalystLiveSetBreakpoint 222 "")
   # the CatalystLivePause test uses the --live=22222 command line option to automatically
@@ -621,8 +655,6 @@ list(APPEND TESTS_WITH_BASELINES
   AddActiveValuesFromVisibleObjects.xml
   AnimatePipelineTime.xml
   AngularPeriodicFilter.xml
-  BagPlots.xml
-  BagPlotsSelection.xml
   3DWidgetInCustomFilter.xml
   CalcParens.xml
   Calculator.xml
@@ -655,6 +687,7 @@ list(APPEND TESTS_WITH_BASELINES
   EnSightTensorInversion.xml
   EnSightTensorInversionBin.xml
   ExodusXML.xml
+  ExodusGlobalDataWithRestarts.xml
   ExportLinePlotToCSV.xml
   ExportLinePlotToTSV.xml
   ExportSceneSpreadSheetView2.xml
@@ -672,7 +705,6 @@ list(APPEND TESTS_WITH_BASELINES
   FollowHiddenData.xml
   ForceTime.xml
   Fractal2D.xml
-  FunctionalBagPlots.xml
   Glyph3DCullingAndLOD.xml
   Glyph3DRepresentation.xml
   GlyphUseCellCenters.xml
@@ -807,11 +839,6 @@ list(APPEND TESTS_WITH_BASELINES
   RandomAttributes.xml
 )
 
-if (VISOCYTE_PLUGIN_ENABLE_AnalyzeNIfTIIO)
-  list(APPEND TESTS_WITH_BASELINES
-    NiftiReaderWriterPlugin.xml)
-endif ()
-
 if (TARGET VTK::IOParallelLSDyna)
   list(APPEND TESTS_WITH_BASELINES
     Plot3DReader.xml
@@ -819,28 +846,9 @@ if (TARGET VTK::IOParallelLSDyna)
     )
 endif ()
 
-if (VISOCYTE_PLUGIN_ENABLE_pvNVIDIAIndeX)
-  list(APPEND TESTS_WITH_BASELINES
-    IndeXRepresentation.xml)
-  set(IndeXRepresentation_DISABLE_CS TRUE)
-  set(IndeXRepresentation_DISABLE_CRS TRUE)
-
-  # The embedded free IndeX license doesn't support parallel processing.
-  # Disable the test on MPI builds.
-  if (NOT VISOCYTE_USE_MPI)
-    list(APPEND TESTS_WITH_BASELINES
-      IndeXRepresentationServer.xml)
-    set(IndeXRepresentationServer_DISABLE_C TRUE)
-    # This won't work until image delivery for the render server is
-    # implemented.
-    set(IndeXRepresentationServer_DISABLE_CRS TRUE)
-  endif ()
-endif ()
-
 if(VTK_USE_LARGE_DATA)
-  visocyte_test_load_data_dirs(""
-    bake
-  )
+  ExternalData_Expand_Arguments(VisocyteData _
+    "DATA{${visocyte_test_data_directory_input}/Data/bake/bake.e}")
   list(APPEND TESTS_WITH_BASELINES
     CheckSelectedBlocks.xml
     RestoreBlockColorDefaultTransferFunction.xml
@@ -926,6 +934,8 @@ if (VISOCYTE_USE_MPI)
 
   if (VISOCYTE_ENABLE_COSMOTOOLS)
     # Test the Generic IO file writer in VTKExtensions/CosmoTools
+    ExternalData_Expand_Arguments(VisocyteData _
+      "DATA{${visocyte_test_data_directory_input}/Data/genericio/m000.499.allparticles}")
     visocyte_add_client_tests(
       ARGS --mpi
       BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
@@ -973,7 +983,7 @@ if(VISOCYTE_ENABLE_PYTHON)
   # Check that matplotlib is available
   include(FindPythonModules)
   find_python_module(matplotlib matplotlib_found)
-  if (VISOCYTE_ENABLE_MATPLOTLIB AND matplotlib_found)
+  if (matplotlib_found)
     list(APPEND TESTS_WITH_BASELINES TestPythonView.xml)
   endif()
 
@@ -992,39 +1002,41 @@ if(VISOCYTE_ENABLE_PYTHON)
     list(APPEND TESTS_WITH_INLINE_COMPARES
       FindDataDialog.xml)
 
-    # Cinema importing capabilities are only available in Python + OpenGL2
-    # add the cinema database files.
-    set(cinema_data
-      "cinema-composite.cdb/image/info.json")
-    foreach(poseidx RANGE 0 17)
-      foreach(visidx RANGE 0 1)
-        list(APPEND cinema_data
-          "cinema-composite.cdb/image/pose=${poseidx}/vis=${visidx}/,REGEX:.*")
+    if (TARGET Visocyte::CinemaReader)
+      # Cinema importing capabilities are only available in Python + OpenGL2
+      # add the cinema database files.
+      set(cinema_data
+        "cinema-composite.cdb/image/info.json")
+      foreach(poseidx RANGE 0 17)
+        foreach(visidx RANGE 0 1)
+          list(APPEND cinema_data
+            "cinema-composite.cdb/image/pose=${poseidx}/vis=${visidx}/,REGEX:.*")
+        endforeach()
       endforeach()
-    endforeach()
-    list(APPEND cinema_data
-      "cinema-non-composite.cdb/image/info.json")
-    foreach(phi 0 90 180)
       list(APPEND cinema_data
-        "cinema-non-composite.cdb/image/${phi}/0/,REGEX:.*")
-    endforeach()
-    set(cinema_data_refs)
-    foreach (cinema_data_file IN LISTS cinema_data)
-      list(APPEND cinema_data_refs
-        "DATA{${visocyte_test_data_directory_input}/Data/${cinema_data_file}}")
-    endforeach ()
-    ExternalData_Expand_Arguments(VisocyteData _
-      ${cinema_data_refs})
+        "cinema-non-composite.cdb/image/info.json")
+      foreach(phi 0 90 180)
+        list(APPEND cinema_data
+          "cinema-non-composite.cdb/image/${phi}/0/,REGEX:.*")
+      endforeach()
+      set(cinema_data_refs)
+      foreach (cinema_data_file IN LISTS cinema_data)
+        list(APPEND cinema_data_refs
+          "DATA{${visocyte_test_data_directory_input}/Data/${cinema_data_file}}")
+      endforeach ()
+      ExternalData_Expand_Arguments(VisocyteData _
+        ${cinema_data_refs})
 
-    list(APPEND TESTS_WITH_BASELINES
-      ImportCinema.xml
-      ImportCinemaSpecA.xml)
+      list(APPEND TESTS_WITH_BASELINES
+        ImportCinema.xml
+        ImportCinemaSpecA.xml)
 
-    # presently, we don't support client-server configurations.
-    set(ImportCinema_DISABLE_CS TRUE)
-    set(ImportCinema_DISABLE_CRS TRUE)
-    set(ImportCinemaSpecA_DISABLE_CS TRUE)
-    set(ImportCinemaSpecA_DISABLE_CRS TRUE)
+      # presently, we don't support client-server configurations.
+      set(ImportCinema_DISABLE_CS TRUE)
+      set(ImportCinema_DISABLE_CRS TRUE)
+      set(ImportCinemaSpecA_DISABLE_CS TRUE)
+      set(ImportCinemaSpecA_DISABLE_CRS TRUE)
+    endif ()
 
 
     # PythonAlgorithm plugin tests.
@@ -1181,6 +1193,7 @@ set(ExportSelectionToCSV_DISABLE_CRS TRUE)
 # These tests cannot be run using ctest -j since they are affected by focus
 # changed events.
 set (AnimatePipelineTime_FORCE_SERIAL TRUE)
+set (FavoritesFilters_FORCE_SERIAL TRUE)
 set (PolygonCellSelection_FORCE_SERIAL TRUE)
 set (PolygonPointSelection_FORCE_SERIAL TRUE)
 set (Contour_FORCE_SERIAL TRUE) # since this uses popup-menu
@@ -1295,15 +1308,6 @@ IF (VISOCYTE_USE_MPI)
   set (LineChartSelection_DISABLE_CS TRUE)
   set (LineChartSelection_DISABLE_CRS TRUE)
 
-  # Selections end up highlighting different set of ID based points in parallel.
-  # Hence disable them.
-  set (BagPlots_DISABLE_CS TRUE)
-  set (BagPlots_DISABLE_CRS TRUE)
-  set (BagPlotsSelection_DISABLE_CS TRUE)
-  set (BagPlotsSelection_DISABLE_CRS TRUE)
-  set (FunctionalBagPlots_DISABLE_CS TRUE)
-  set (FunctionalBagPlots_DISABLE_CRS TRUE)
-
   # Selection link may highlight incorrect ID in parallel,
   # hence disable them.
   set(SelectionLinkBasic_DISABLE_CS TRUE)
@@ -1390,7 +1394,6 @@ SET (CutMulti_REVERSE_CONNECT TRUE)
 # Since this involves charts.
 SET(HistogramSelection_THRESHOLD 40)
 SET(LineChartSelection_THRESHOLD 40)
-SET(FunctionalBagPlots_THRESHOLD 40)
 
 # Increate threshold for this one since the chart axes
 # tends to render slightly differently.
@@ -1566,22 +1569,22 @@ visocyte_add_multi_server_tests(3
 #   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
 #   TEST_SCRIPTS TileDisplayScatterPlot-2x2.xml)
 
-# This test has been behaving badly across many platforms and needs to be fixed
-# before it can be useful. Disabling for now, see bug #15424.
+# These tests have been behaving badly across many platforms and needs to be
+# fixed before it can be useful. Disabling for now, see bug #15424.
 #set (TileDisplay3DTesting-1x2_THRESHOLD 270)
 #add_tile_display_tests("pvcs-tile-display" 1 2
 #   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
 #   TEST_SCRIPTS TileDisplay3DTesting-1x2.xml)
 
+#set (TileDisplay3DTesting-2x2_THRESHOLD 270)
+#visocyte_add_tile_display_tests(2 2
+#   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
+#   TEST_SCRIPTS TileDisplay3DTesting-2x2.xml)
+
 set (TileDisplay3DTesting-2x1_THRESHOLD 270)
 visocyte_add_tile_display_tests(2 1
    BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
    TEST_SCRIPTS TileDisplay3DTesting-2x1.xml)
-
-set (TileDisplay3DTesting-2x2_THRESHOLD 270)
-visocyte_add_tile_display_tests(2 2
-   BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
-   TEST_SCRIPTS TileDisplay3DTesting-2x2.xml)
 
 
 #------------------------------------------------------------------
@@ -1605,13 +1608,13 @@ if (TARGET visocyte)
     # on backwards compatibility.
     set (Calculator54State_THRESHOLD 100)
     visocyte_add_client_tests(
-      ARGS "--state=${CMAKE_CURRENT_BINARY_DIR}/Calculator54State.py"
+      ARGS "--state=${CMAKE_CURRENT_SOURCE_DIR}/Calculator54State.py"
       BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS Calculator54State.xml)
 
     # Test backwards compatibility for Glyph filter change in Visocyte 5.6
     visocyte_add_client_tests(
-      ARGS "--state=${CMAKE_CURRENT_BINARY_DIR}/Glyph56State.py"
+      ARGS "--state=${CMAKE_CURRENT_SOURCE_DIR}/Glyph56State.py"
       BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS Glyph56State.xml
     )
@@ -1663,17 +1666,18 @@ set(visocyte_python_verify_tests
 
 if (VISOCYTE_ENABLE_PYTHON)
   foreach(test_name ${visocyte_python_verify_tests})
-    add_test(NAME ${test_name}
+    set(tname "Visocyte::Applications::${test_name}")
+    add_test(NAME ${tname}
       COMMAND ${CMAKE_COMMAND}
       -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
       -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::pvpython>
-      -DVISOCYTE_TEST_OUTPUT_DIR:PATH=${visocyte_test_data_directory_output}
+      -DDATA_DIR:PATH=${visocyte_test_data_directory_output}
       -DTEST_NAME:STRING=${test_name}
       -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}.xml
-      -DTEST_DRIVER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}Verify.py
+      -DTEST_VERIFIER:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}Verify.py
       -DTEMPORARY_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
       -P ${CMAKE_CURRENT_SOURCE_DIR}/PythonScriptTestDriver.cmake
     )
-    set_tests_properties(${python_state_test} PROPERTIES LABELS "VISOCYTE")
+    set_tests_properties(${tname} PROPERTIES LABELS "visocyte")
   endforeach()
 endif()

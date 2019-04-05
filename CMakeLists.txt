@@ -75,6 +75,7 @@ if (NOT BUILD_SHARED_LIBS)
 endif ()
 
 # Set up our directory structure for output libraries and binaries
+include(GNUInstallDirs)
 if (NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}")
 endif ()
@@ -86,15 +87,41 @@ if (NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
 endif ()
 
 set(visocyte_cmake_dir "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
+set(vtk_cmake_dir "${CMAKE_CURRENT_SOURCE_DIR}/VTK/CMake")
 list(APPEND CMAKE_MODULE_PATH
-  "${visocyte_cmake_dir}")
+  "${visocyte_cmake_dir}"
+  "${vtk_cmake_dir}")
 include(VisocyteServerManager)
 include(VisocyteTesting)
 include(VisocyteClient)
 include(VisocytePlugin)
 include(vtkModuleWrapClientServer)
 include(CTest)
-include(GNUInstallDirs)
+set_property(CACHE BUILD_TESTING
+  PROPERTY
+    TYPE INTERNAL)
+
+include(vtkCompilerChecks)
+include(vtkCompilerPlatformFlags)
+include(vtkCompilerExtraFlags)
+include(vtkInitializeBuildType)
+include(vtkSupportMacros)
+include(vtkDirectories)
+
+#-----------------------------------------------------------------------------
+# Does VTK require support for 64 bit file systems
+include(CheckCXXSourceRuns)
+file(READ "${vtk_cmake_dir}/vtkRequireLargeFilesSupport.cxx"
+  VTK_REQUIRE_LARGE_FILE_SUPPORT_FILE)
+check_cxx_source_runs("${VTK_REQUIRE_LARGE_FILE_SUPPORT_FILE}"
+  CMAKE_REQUIRE_LARGE_FILE_SUPPORT "Support for 64 bit file systems")
+set(VTK_REQUIRE_LARGE_FILE_SUPPORT ${CMAKE_REQUIRE_LARGE_FILE_SUPPORT})
+
+#-----------------------------------------------------------------------------
+# Provide compatibility options.
+option(VTK_LEGACY_REMOVE "Remove all legacy code completely." OFF)
+option(VTK_LEGACY_SILENT "Silence all legacy code messages." OFF)
+mark_as_advanced(VTK_LEGACY_REMOVE VTK_LEGACY_SILENT)
 
 # Setup external data. this will automatically download the test data and
 # baseline files to the build tree and set VISOCYTE_DATA_ROOT.
@@ -124,11 +151,24 @@ if (NOT DEFINED CMAKE_INSTALL_RPATH_USE_LINK_PATH)
 endif ()
 
 include(CMakeDependentOption)
-option(VISOCYTE_BUILD_EXAMPLES "Build Visocyte examples" ON)
+set(examples_default OFF)
+if (DEFINED VISOCYTE_BUILD_EXAMPLES)
+  message(DEPRECATION
+    "VISOCYTE_BUILD_EXAMPLES has been renamed to VISOCYTE_ENABLE_EXAMPLES.")
+  # Use the old variable as the default for the new variable if present.
+  set(examples_default "${VISOCYTE_BUILD_EXAMPLES}")
+  # Remove the old setting from the cache and local scope.
+  unset(VISOCYTE_BUILD_EXAMPLES)
+  unset(VISOCYTE_BUILD_EXAMPLES CACHE)
+endif ()
+option(VISOCYTE_ENABLE_EXAMPLES "Enable Visocyte examples" "${examples_default}")
+option(VISOCYTE_BUILD_DEVELOPER_DOCUMENTATION "Build Visocyte C++/Python docs" OFF)
 option(VISOCYTE_BUILD_QT_GUI "Enable Visocyte Qt-based client" ON)
-option(VISOCYTE_USE_MPI "Enable MPI support for parallel computing" ON)
+option(VISOCYTE_USE_MPI "Enable MPI support for parallel computing" OFF)
 option(VISOCYTE_USE_VTKM "Enable VTK-m accelerated algorithms" ON)
-option(VISOCYTE_USE_OSPRAY "Build Visocyte with OSPRay Ray Traced rendering" ON)
+option(VISOCYTE_USE_OSPRAY "Build Visocyte with OSPRay Ray Traced rendering" OFF)
+option(VISOCYTE_ENABLE_LOGGING "Enable logging support." ON)
+mark_as_advanced(VISOCYTE_ENABLE_LOGGING)
 
 set(visocyte_web_default ON)
 if (VISOCYTE_ENABLE_PYTHON AND WIN32)
@@ -161,7 +201,17 @@ mark_as_advanced(VISOCYTE_ENABLE_MOTIONFX)
 option(VISOCYTE_ENABLE_VISITBRIDGE "Enable VisIt readers." OFF)
 option(VISOCYTE_ENABLE_XDMF2 "Enable Xdmf2 support." ON)
 mark_as_advanced(VISOCYTE_ENABLE_XDMF2)
-option(VISOCYTE_ENABLE_XDMF3 "Enable Xdmf3 support." ON)
+option(VISOCYTE_ENABLE_XDMF3 "Enable Xdmf3 support." OFF)
+
+set(VISOCYTE_BUILD_TESTING "OFF"
+  CACHE STRING "Build module testing directories")
+set_property(CACHE VISOCYTE_BUILD_TESTING
+  PROPERTY
+    STRINGS "ON;OFF;WANT")
+set(BUILD_TESTING OFF)
+if (VISOCYTE_BUILD_TESTING)
+  set(BUILD_TESTING ON)
+endif ()
 
 if (UNIX)
   option(VISOCYTE_ENABLE_FFMPEG "Enable FFMPEG Support." OFF)
@@ -207,10 +257,6 @@ cmake_dependent_option(VISOCYTE_ENABLE_COMMANDLINE_TOOLS
   "NOT VISOCYTE_BUILD_QT_GUI" ON)
 
 option(VISOCYTE_ENABLE_PYTHON "Enable/Disable Python scripting support" OFF)
-cmake_dependent_option(VISOCYTE_ENABLE_MATPLOTLIB
-  "Enable/Disable Python scripting support" ON
-  "VISOCYTE_ENABLE_PYTHON" OFF)
-mark_as_advanced(VISOCYTE_ENABLE_MATPLOTLIB)
 
 # If building on Unix with MPI enabled, we will present another option to
 # enable building of CosmoTools VTK extensions. This option is by default
@@ -223,7 +269,8 @@ mark_as_advanced(VISOCYTE_ENABLE_COSMOTOOLS)
 option(VISOCYTE_ENABLE_CATALYST "Enable Catalyst CoProcessing modules" ON)
 cmake_dependent_option(VISOCYTE_BUILD_CATALYST_ADAPTORS
   "Build Adaptors for various simulation codes" OFF
-  "VISOCYTE_ENABLE_CATALYST;NOT WIN32" OFF)
+  # XXX: Adaptors need some work yet.
+  "FALSE;VISOCYTE_ENABLE_CATALYST;NOT WIN32" OFF)
 mark_as_advanced(VISOCYTE_BUILD_CATALYST_ADAPTORS)
 
 # XXX(VTK): External VTK is not yet actually supported.
@@ -269,15 +316,39 @@ if (VISOCYTE_ENABLE_PYTHON)
   set(VTK_PYTHON_VERSION "${VISOCYTE_PYTHON_VERSION}")
 
   list(APPEND visocyte_requested_modules
-    Visocyte::PythonInitializer)
+    Visocyte::PythonAlgorithm
+    Visocyte::PythonInitializer
+    VTK::RenderingMatplotlib)
 else ()
   list(APPEND visocyte_rejected_modules
-    Visocyte::PythonInitializer)
+    Visocyte::PythonAlgorithm
+    Visocyte::PythonInitializer
+    VTK::RenderingMatplotlib)
 endif ()
+
+if (VISOCYTE_ENABLE_PYTHON AND (NOT VISOCYTE_PYTHON_VERSION STREQUAL "3"))
+  # cinema_python doesn't support Python 3 yet
+  # visocyte/visocyte#17353
+  list(APPEND visocyte_requested_modules
+    Visocyte::CinemaPython
+    Visocyte::CinemaReader)
+else ()
+  list(APPEND visocyte_rejected_modules
+    Visocyte::CinemaPython
+    Visocyte::CinemaReader)
+endif()
+
+if (VISOCYTE_ENABLE_PYTHON AND VISOCYTE_BUILD_TESTING)
+  # testing needs Python interpreter i.e. `PYTHON_EXECUTABLE` without which
+  # our `find_python_module` checks to determine which tests to add or exclude
+  # will fail. We find it here.
+  find_package(PythonInterp "${VISOCYTE_PYTHON_VERSION}" QUIET)
+  mark_as_advanced(PYTHON_EXECUTABLE)
+endif()
 
 if (VISOCYTE_BUILD_QT_GUI)
   list(APPEND visocyte_requested_modules
-    Visocyte::Common
+    Visocyte::Core
     Visocyte::ServerManagerApplication
     Visocyte::ServerManagerCore
     Visocyte::ServerManagerDefault
@@ -289,36 +360,40 @@ if (VISOCYTE_BUILD_QT_GUI)
     list(APPEND visocyte_requested_modules
       Visocyte::pqPython)
   endif ()
-
-  if (APPLE)
-    # Enable high resolution when using Qt5
-    # This configuring of MacOSXBundleInfo may no longer be needed, but I am
-    # leaving it in since in future we could build the supported extensions list
-    # more exhaustively here.
-    set(high_resolution_capable "true")
-    configure_file(
-      "${visocyte_cmake_dir}/MacOSXBundleInfo.plist.in.in"
-      "${CMAKE_CURRENT_BINARY_DIR}/MacOSXBundleInfo.plist.in"
-      @ONLY)
-    unset(high_resolution_capable)
-  endif ()
+else ()
+  list(APPEND visocyte_rejected_modules
+    Visocyte::pqApplicationComponents
+    Visocyte::pqComponents
+    Visocyte::pqCore
+    Visocyte::pqWidgets
+    Visocyte::qttesting
+    VTK::GUISupportQt)
 endif ()
 
 if (VISOCYTE_USE_MPI)
   list(APPEND visocyte_requested_modules
     VTK::FiltersParallelFlowPaths
+    VTK::FiltersParallelGeometry
     VTK::FiltersParallelMPI
     # Required because of Visocyte::VTKExtensionsDefault having an optional dependency.
     VTK::IOMPIImage
     VTK::IOParallelLSDyna
     VTK::IOParallelNetCDF
-    VTK::IOVPIC
     VTK::ParallelMPI
+    Visocyte::VTKExtensionsDefaultParallel
     Visocyte::icet)
 else ()
   list(APPEND visocyte_rejected_modules
     VTK::mpi)
 endif ()
+
+if (VISOCYTE_USE_MPI AND VISOCYTE_ENABLE_PYTHON)
+  list(APPEND visocyte_requested_modules
+    VTK::ParallelMPI4Py)
+else ()
+  list(APPEND visocyte_rejected_modules
+    VTK::ParallelMPI4Py)
+endif()
 
 if (VISOCYTE_USE_VTKM)
   list(APPEND visocyte_requested_modules
@@ -332,6 +407,9 @@ endif ()
 
 if (VISOCYTE_ENABLE_NVPIPE)
   list(APPEND visocyte_requested_modules
+    Visocyte::nvpipe)
+else ()
+  list(APPEND visocyte_rejected_modules
     Visocyte::nvpipe)
 endif ()
 
@@ -362,7 +440,12 @@ endif ()
 
 if (VISOCYTE_ENABLE_VISITBRIDGE)
   list(APPEND visocyte_requested_modules
-    VTK::IOVisItBridge)
+    Visocyte::IOVisItBridge
+    Visocyte::VisItLib)
+else ()
+  list(APPEND visocyte_rejected_modules
+    Visocyte::IOVisItBridge
+    Visocyte::VisItLib)
 endif ()
 
 if (VISOCYTE_ENABLE_XDMF2)
@@ -385,14 +468,12 @@ if (VISOCYTE_USE_ICE_T)
     Visocyte::icet)
 endif ()
 
-if (VISOCYTE_ENABLE_MATPLOTLIB)
-  list(APPEND visocyte_requested_modules
-    VTK::RenderingMatplotlib)
-endif ()
-
 if (VISOCYTE_ENABLE_COSMOTOOLS)
   list(APPEND visocyte_requested_modules
-    Visocyte::PVVTKExtensionsCosmoTools)
+    Visocyte::VTKExtensionsCosmoTools)
+else ()
+  list(APPEND visocyte_rejected_modules
+    Visocyte::VTKExtensionsCosmoTools)
 endif ()
 
 if (VISOCYTE_ENABLE_CATALYST)
@@ -425,17 +506,60 @@ if (VISOCYTE_ENABLE_CATALYST)
   endif ()
 endif ()
 
+if (VISOCYTE_BUILD_TESTING)
+  list(APPEND visocyte_requested_modules
+    Visocyte::smTestDriver)
+endif ()
+
 list(APPEND visocyte_requested_modules
   Visocyte::ProcessXML
+  Visocyte::VTKExtensionsCGNSReader
+  Visocyte::VTKExtensionsH5PartReader
+  Visocyte::VTKExtensionsPoints
   Visocyte::WrapClientServer
   VTK::FiltersFlowPaths
-  VTK::IOTRUCHAS
+  VTK::FiltersVerdict
+  VTK::IOAMR
+  VTK::IOAsynchronous # needed for cinema, but no harm adding always.
+  VTK::IOParallelLSDyna
   VTK::IOTecplotTable
-  VTK::IOVeraOut)
+  VTK::IOTRUCHAS
+  VTK::IOVeraOut
+  VTK::IOVPIC
+  )
+
+if (VISOCYTE_ENABLE_WEB)
+  list(APPEND visocyte_requested_modules
+    Visocyte::PVWebCore
+    Visocyte::PVWebPython
+    VTK::WebCore
+    VTK::WebPython
+  )
+  if (VISOCYTE_PYTHON_VERSION STREQUAL "2")
+    list(APPEND visocyte_requested_modules
+      Visocyte::PVWebPython2
+    )
+  else ()
+    list(APPEND visocyte_rejected_modules
+      Visocyte::PVWebPython2
+    )
+  endif ()
+else()
+  list(APPEND visocyte_rejected_modules
+    Visocyte::PVWebCore
+    Visocyte::PVWebPython
+    Visocyte::PVWebPython2
+    VTK::WebCore
+    VTK::WebPython
+  )
+endif ()
 
 if (visocyte_requested_modules)
   list(REMOVE_DUPLICATES visocyte_requested_modules)
 endif ()
+
+option(VISOCYTE_BUILD_ALL_MODULES "Build all modules by default" OFF)
+mark_as_advanced(VISOCYTE_BUILD_ALL_MODULES)
 
 if (VISOCYTE_USE_EXTERNAL_VTK)
   find_package(VTK REQUIRED)
@@ -461,17 +585,18 @@ set_property(GLOBAL
     "_vtk_module_autoinit_include" "\"vtkAutoInit.h\"")
 
 set(visocyte_default_plugins
-  # These plugins have not yet been updated.
-  #GenericIOReader
-  #GeodesicMeasurementPlugin
   AcceleratedAlgorithms
   AnalyzeNIfTIReaderWriter
   ArrowGlyph
+  BagPlotViewsAndFilters
   CDIReader
   DigitalRockPhysics
   EULATestPlugin
   EmbossingRepresentations
   EyeDomeLighting
+  ExplicitStructuredGrid
+  GenericIOReader
+  GeodesicMeasurement
   GMVReader
   LagrangianParticleTracker
   Moments
@@ -518,14 +643,12 @@ vtk_module_scan(
   REQUEST_MODULES     ${visocyte_requested_modules}
                       ${visocyte_plugin_required_modules}
   REJECT_MODULES      ${visocyte_rejected_modules}
-                      Visocyte::nvpipe
-                      Visocyte::cosmohalofinder
   PROVIDES_MODULES    visocyte_modules
   PROVIDES_KITS       visocyte_kits
   REQUIRES_MODULES    visocyte_required_modules
   UNRECOGNIZED_MODULES visocyte_unrecognized_modules
-  WANT_BY_DEFAULT     ON
-  ENABLE_TESTS        ON)
+  WANT_BY_DEFAULT     "${VISOCYTE_BUILD_ALL_MODULES}"
+  ENABLE_TESTS        "${VISOCYTE_BUILD_TESTING}")
 
 set(visocyte_unrecognized_visocyte_modules)
 foreach (visocyte_module IN LISTS visocyte_unrecognized_modules)
@@ -574,6 +697,25 @@ else ()
       "${vtk_module}")
   endforeach ()
 
+  cmake_dependent_option(VISOCYTE_BUILD_VTK_TESTING "" OFF
+    "VISOCYTE_BUILD_TESTING" OFF)
+  set(vtk_enable_tests "OFF")
+  if (VISOCYTE_BUILD_VTK_TESTING)
+    set(vtk_enable_tests "${VISOCYTE_BUILD_TESTING}")
+    # Needed for `rtImageTest.py` tests to work. See note in `vtkModuleTesting`
+    # about this.
+    set(VTK_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/VTK")
+  endif ()
+
+  # Forward Python option to VTK.
+  set(VTK_WRAP_PYTHON "${VISOCYTE_ENABLE_PYTHON}")
+
+  # Forward logging option to VTK.
+  set(VTK_ENABLE_LOGGING "${VISOCYTE_ENABLE_LOGGING}")
+  if (VISOCYTE_ENABLE_LOGGING)
+    list(APPEND vtk_requested_modules VTK::loguru)
+  endif()
+
   vtk_module_find_modules(vtk_module_files "${CMAKE_CURRENT_SOURCE_DIR}/VTK")
   vtk_module_find_kits(vtk_kit_files "${CMAKE_CURRENT_SOURCE_DIR}/VTK")
   vtk_module_scan(
@@ -587,7 +729,7 @@ else ()
     REQUIRES_MODULES    vtk_required_modules
     UNRECOGNIZED_MODULES vtk_unrecognized_modules
     WANT_BY_DEFAULT     OFF
-    ENABLE_TESTS        OFF
+    ENABLE_TESTS        "${vtk_enable_tests}"
     HIDE_MODULES_FROM_CACHE ON)
 
   if (vtk_required_modules OR vtk_unrecognized_modules)
@@ -631,7 +773,7 @@ else ()
     BUILD_WITH_KITS     "${VISOCYTE_ENABLE_KITS}"
     USE_EXTERNAL        "${VISOCYTE_USE_EXTERNAL}"
     TEST_INPUT_DATA_DIRECTORY   "${CMAKE_CURRENT_SOURCE_DIR}/VTK/Testing"
-    TEST_OUTPUT_DATA_DIRECTORY  "${CMAKE_CURRENT_BINARY_DIR}/VTK/ExternalData/Testing")
+    TEST_OUTPUT_DATA_DIRECTORY  "${CMAKE_CURRENT_BINARY_DIR}/ExternalData/VTK/Testing")
 
   if (NOT VISOCYTE_USE_EXTERNAL_VTK)
     set(vtk_cmake_dir
@@ -669,7 +811,16 @@ vtk_module_build(
   TEST_INPUT_DATA_DIRECTORY   "${visocyte_test_data_directory_input}"
   TEST_OUTPUT_DATA_DIRECTORY  "${visocyte_test_data_directory_output}")
 
+include(vtkModuleJson)
+vtk_module_json(
+  MODULES "${vtk_modules}"
+  OUTPUT "vtk-modules.json")
+vtk_module_json(
+  MODULES "${visocyte_modules}"
+  OUTPUT "visocyte-modules.json")
+
 visocyte_plugin_build(
+  RUNTIME_DESTINATION   "${CMAKE_INSTALL_BINDIR}"
   LIBRARY_DESTINATION   "${CMAKE_INSTALL_LIBDIR}"
   LIBRARY_SUBDIRECTORY  "visocyte-${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}/plugins"
   PLUGINS_FILE_NAME ".plugins"
@@ -765,7 +916,7 @@ if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
   set(is_git TRUE)
 endif ()
 
-if (NOT WIN32 AND is_git)
+if (NOT WIN32 AND is_git AND Git_FOUND AND NOT GIT_VERSION_STRING VERSION_LESS "2.18.0")
   set(source_all)
   if (VISOCYTE_SOURCE_TARBALL_TARGETS)
     set(source_all ALL)
@@ -799,7 +950,7 @@ endif ()
 
 #-----------------------------------------------------------------------------
 # Build doxygen documentation.
-if (BUILD_DOCUMENTATION)
+if (VISOCYTE_BUILD_DEVELOPER_DOCUMENTATION)
   add_subdirectory(Utilities/Doxygen)
   add_subdirectory(Utilities/Sphinx)
   add_subdirectory(Documentation)
@@ -818,7 +969,7 @@ if (BUILD_TESTING AND VISOCYTE_INSTALL_DEVELOPMENT_FILES)
     -DVISOCYTE_VERSION:STRING=${VISOCYTE_VERSION}
     -P ${CMAKE_CURRENT_SOURCE_DIR}/CMake/VisocyteTestInstall.cmake)
   set_tests_properties(pv.TestDevelopmentInstall PROPERTIES
-    LABELS "VISOCYTE"
+    LABELS "visocyte"
     ENVIRONMENT "DESTDIR=${CMAKE_BINARY_DIR}/test-install")
 endif()
 #------------------------------------------------------------------------------
@@ -827,6 +978,8 @@ endif()
 # Test to check that we can process all of the Catalyst editions
 #------------------------------------------------------------------------------
 if (BUILD_TESTING AND VISOCYTE_ENABLE_PYTHON AND UNIX AND NOT APPLE)
+if (FALSE) # XXX(FIXME)
+  # disabling till we Catalyst editions are fixed post modularization
   add_test( NAME GenerateCatalystEditions
     COMMAND ${CMAKE_COMMAND}
     -DPYTHON_EXECUTABLE:FILEPATH=${PYTHON_EXECUTABLE}
@@ -834,7 +987,8 @@ if (BUILD_TESTING AND VISOCYTE_ENABLE_PYTHON AND UNIX AND NOT APPLE)
     -DVISOCYTE_TEST_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
     -P ${CMAKE_SOURCE_DIR}/CMake/VisocyteTestCatalystCodeGeneration.cmake)
   set_tests_properties(GenerateCatalystEditions PROPERTIES
-    LABELS "VISOCYTE;CATALYST")
+    LABELS "visocyte;catalyst")
+endif()
 endif()
 #------------------------------------------------------------------------------
 
@@ -847,18 +1001,6 @@ if (VISOCYTE_BUILD_CATALYST_ADAPTORS)
 endif()
 
 #-----------------------------------------------------------------------------
-if (BUILD_EXAMPLES)
-        # Don't do parallel make when cross compiling.
-  # BuildExamples.cmake builds the examples as a separate project. This ensures
-  # that examples can be built by themselves as well as avoiding pollution of
-  # the Visocyte target space with targets (and other things) from examples.
-  include(${CMAKE_CURRENT_SOURCE_DIR}/Examples/BuildExamples.cmake)
-  if (BUILD_TESTING AND VISOCYTE_ENABLE_PYTHON AND VISOCYTE_USE_MPI AND VISOCYTE_ENABLE_CATALYST)
-    set_property(
-      DIRECTORY "${CMAKE_CURRENT_LIST_DIR}"
-      APPEND
-      PROPERTY
-      TEST_INCLUDE_FILE "${CMAKE_CURRENT_BINARY_DIR}/CatalystExamples.cmake")
-    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/CatalystExamples.cmake" "subdirs(${CMAKE_CURRENT_BINARY_DIR}/Examples/All/Catalyst/)")
-  ENDIF ()
-endif()
+if (VISOCYTE_ENABLE_EXAMPLES)
+  add_subdirectory(Examples)
+endif ()

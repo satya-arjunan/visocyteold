@@ -5,6 +5,6 @@ DESCRIPTION
 CONDITION
   VISOCYTE_BUILD_QT_GUI AND VISOCYTE_ENABLE_PYTHON
 REQUIRES_MODULES
-  Visocyte::Common
+  Visocyte::Core
   Visocyte::ServerManagerCore
   Visocyte::ServerManagerRendering

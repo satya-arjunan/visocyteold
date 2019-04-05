@@ -29,6 +29,7 @@ visocyte_client_add(
 
   [APPLICATION_ICON <icon>]
   [BUNDLE_ICON      <icon>]
+  [BUNDLE_PLIST     <plist>]
   [SPLASH_IMAGE     <image>]
 
   [NAMESPACE            <namespace>]
@@ -64,6 +65,7 @@ visocyte_client_add(
     application.
   * `APPLICATION_ICON`: The path to the icon for the Windows application.
   * `BUNDLE_ICON`: The path to the icon for the macOS bundle.
+  * `BUNDLE_PLIST`: The path to the `Info.plist.in` template.
   * `SPLASH_IMAGE`: The image to display upon startup.
   * `NAMESPACE`: If provided, an alias target `<NAMESPACE>::<NAME>` will be
     created.
@@ -71,8 +73,7 @@ visocyte_client_add(
   * `FORCE_UNIX_LAYOUT`: (Defaults to `OFF`) Forces a Unix-style layout even on
     platforms for which they are not the norm for GUI applications (e.g.,
     macOS).
-  * `BUNDLE_DESTINATION`: (Defaults to
-    `<RUNTIME_DESTINATION>/<NAME>.app/Contents/MacOS`) Where to place the
+  * `BUNDLE_DESTINATION`: (Defaults to `Applications`) Where to place the
     bundle executable.
   * `RUNTIME_DESTINATION`: (Defaults to `${CMAKE_INSTALL_BINDIR}`) Where to
     place the binary.
@@ -85,7 +86,7 @@ visocyte_client_add(
 function (visocyte_client_add)
   cmake_parse_arguments(_visocyte_client
     ""
-    "NAME;APPLICATION_NAME;ORGANIZATION;TITLE;SPLASH_IMAGE;BUNDLE_DESTINATION;BUNDLE_ICON;APPLICATION_ICON;MAIN_WINDOW_CLASS;MAIN_WINDOW_INCLUDE;VERSION;FORCE_UNIX_LAYOUT;PLUGINS_TARGET;DEFAULT_STYLE;FORWARD_EXECUTABLE;RUNTIME_DESTINATION;LIBRARY_DESTINATION;NAMESPACE;EXPORT"
+    "NAME;APPLICATION_NAME;ORGANIZATION;TITLE;SPLASH_IMAGE;BUNDLE_DESTINATION;BUNDLE_ICON;BUNDLE_PLIST;APPLICATION_ICON;MAIN_WINDOW_CLASS;MAIN_WINDOW_INCLUDE;VERSION;FORCE_UNIX_LAYOUT;PLUGINS_TARGET;DEFAULT_STYLE;FORWARD_EXECUTABLE;RUNTIME_DESTINATION;LIBRARY_DESTINATION;NAMESPACE;EXPORT"
     "REQUIRED_PLUGINS;OPTIONAL_PLUGINS;APPLICATION_XMLS;SOURCES;QCH_FILE"
     ${ARGN})
 
@@ -130,6 +131,11 @@ function (visocyte_client_add)
   if (NOT DEFINED _visocyte_client_DEFAULT_STYLE)
     set(_visocyte_client_DEFAULT_STYLE
       "plastique")
+  endif ()
+
+  if (NOT DEFINED _visocyte_client_BUNDLE_DESTINATION)
+    set(_visocyte_client_BUNDLE_DESTINATION
+      "Applications")
   endif ()
 
   if (NOT DEFINED _visocyte_client_RUNTIME_DESTINATION)
@@ -190,12 +196,7 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
     set(_visocyte_client_executable_flags
       WIN32)
   elseif (APPLE)
-    # TODO: bundle icon
     # TODO: nib files
-
-    if (NOT DEFINED _visocyte_client_BUNDLE_DESTINATION)
-      set(_visocyte_client_BUNDLE_DESTINATION "${_visocyte_client_RUNTIME_DESTINATION}/${_visocyte_client_NAME}.app/Contents/MacOS")
-    endif ()
 
     set(_visocyte_client_bundle_args
       BUNDLE DESTINATION "${_visocyte_client_BUNDLE_DESTINATION}")
@@ -270,7 +271,24 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
     set(CMAKE_AUTORCC 1)
   endif ()
 
-  find_package(Qt5 REQUIRED QUIET COMPONENTS Widgets)
+  find_package(Qt5 REQUIRED QUIET COMPONENTS Core Widgets)
+
+  # CMake 3.13 started using Qt5's version variables to detect what version
+  # of Qt's tools to run for autorcc. However, they are looked up using the
+  # target's directory scope, but these are here in a local scope and unset
+  # when AutoGen gets around to asking about the variables at generate time.
+
+  # Fix for 3.13.0–3.13.3. Does not work if `visocyte_client_add` is called
+  # from another function.
+  set(Qt5Core_VERSION_MAJOR "${Qt5Core_VERSION_MAJOR}" PARENT_SCOPE)
+  set(Qt5Core_VERSION_MINOR "${Qt5Core_VERSION_MINOR}" PARENT_SCOPE)
+  # Fix for 3.13.4+.
+  set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    PROPERTY
+      Qt5Core_VERSION_MAJOR "${Qt5Core_VERSION_MAJOR}")
+  set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    PROPERTY
+      Qt5Core_VERSION_MINOR "${Qt5Core_VERSION_MAJOR}")
 
   set(_visocyte_client_source_files
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_client_NAME}_main.cxx"
@@ -320,7 +338,7 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
         "${_visocyte_client_PLUGINS_TARGET}")
   endif ()
 
-  # XXX(deprecated): Visocyte should not need to use this.
+  # Set up the forwarding executable
   set(_visocyte_client_destination "${_visocyte_client_RUNTIME_DESTINATION}")
   if (BUILD_SHARED_LIBS AND UNIX AND NOT APPLE AND _visocyte_client_FORWARD_EXECUTABLE)
     set(_visocyte_client_build_dir "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
@@ -336,9 +354,13 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
         ",\"${_visocyte_client_install_path_dir}\"")
     endforeach ()
 
-    # TODO: Set variables for the file.
+    # Set up variables expected in visocyte_launcher.c.in
+    foreach(suffix build_dir build_path install_dir install_path NAME)
+      set(_visocyte_launcher_${suffix} ${_visocyte_client_${suffix}})
+    endforeach ()
+
     configure_file(
-      "${_VisocyteClient_cmake_dir}/visocyte_client_launcher.c.in"
+      "${_VisocyteClient_cmake_dir}/visocyte_launcher.c.in"
       "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_client_NAME}_launcher.c"
       @ONLY)
     add_executable("${_visocyte_client_NAME}-launcher"
@@ -379,7 +401,15 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
     if (DEFINED _visocyte_client_BUNDLE_ICON)
       set_property(TARGET "${_visocyte_client_NAME}"
         PROPERTY
-          MACOSX_BUNDLE_ICON_FILE "${_visocyte_client_bundle_icon}")
+          MACOSX_BUNDLE_ICON_FILE "${_visocyte_client_BUNDLE_ICON}")
+      install(
+        FILES       "${_visocyte_client_BUNDLE_ICON}"
+        DESTINATION "${_visocyte_client_BUNDLE_DESTINATION}/${_visocyte_client_APPLICATION_NAME}.app/Contents/Resources")
+    endif ()
+    if (DEFINED _visocyte_client_BUNDLE_PLIST)
+      set_property(TARGET "${_visocyte_client_NAME}"
+        PROPERTY
+          MACOSX_BUNDLE_INFO_PLIST "${_visocyte_client_BUNDLE_PLIST}")
     endif ()
     string(TOLOWER "${_visocyte_client_ORGANIZATION}" _visocyte_client_organization)
     set_target_properties("${_visocyte_client_NAME}"
@@ -524,10 +554,11 @@ if (_visocyte_generate_proxy_documentation_run AND CMAKE_SCRIPT_MODE_FILE)
               "${_visocyte_gpd_to_xml}"
               "${_visocyte_gpd_xml}"
       OUTPUT_VARIABLE _visocyte_gpd_output
+      ERROR_VARIABLE  _visocyte_gpd_error
       RESULT_VARIABLE _visocyte_gpd_result)
     if (_visocyte_gpd_result)
       message(FATAL_ERROR
-        "Failed to convert servermanager XML")
+        "Failed to convert servermanager XML: ${_visocyte_gpd_error}")
     endif ()
 
     string(APPEND _visocyte_gpd_xslt
@@ -638,6 +669,8 @@ visocyte_client_generate_help(
   NAME    <name>
   [TARGET <target>]
 
+  OUTPUT_PATH <var>
+
   [OUTPUT_DIR <directory>]
   [SOURCE_DIR <directory>]
   [PATTERNS   <pattern>...]
@@ -655,6 +688,8 @@ visocyte_client_generate_help(
 
   * `NAME`: (Required) The basename of the generated `.qch` file.
   * `TARGET`: (Defaults to `<NAME>`) The name of the generated target.
+  * `OUTPUT_PATH`: (Required) This variable is set to the output path of the
+    generated `.qch` file.
   * `OUTPUT_DIR`: (Defaults to `${CMAKE_CURRENT_BINARY_DIR}`) Where to place
     generated files.
   * `SOURCE_DIR`: Where to copy input files from.
@@ -678,7 +713,7 @@ visocyte_client_generate_help(
 function (visocyte_client_generate_help)
   cmake_parse_arguments(_visocyte_client_help
     ""
-    "NAME;TARGET;OUTPUT_DIR;SOURCE_DIR;NAMESPACE;FOLDER;TABLE_OF_CONTENTS;TABLE_OF_CONTENTS_FILE;RESOURCE_FILE;RESOURCE_PREFIX"
+    "NAME;TARGET;OUTPUT_DIR;SOURCE_DIR;NAMESPACE;FOLDER;TABLE_OF_CONTENTS;TABLE_OF_CONTENTS_FILE;RESOURCE_FILE;RESOURCE_PREFIX;OUTPUT_PATH"
     "PATTERNS;DEPENDS"
     ${ARGN})
 
@@ -693,6 +728,11 @@ function (visocyte_client_generate_help)
       "The `NAME` argument is required.")
   endif ()
 
+  if (NOT DEFINED _visocyte_client_help_OUTPUT_PATH)
+    message(FATAL_ERROR
+      "The `OUTPUT_PATH` argument is required.")
+  endif ()
+
   if (NOT DEFINED _visocyte_client_help_TARGET)
     set(_visocyte_client_help_TARGET
       "${_visocyte_client_help_NAME}")
@@ -700,7 +740,7 @@ function (visocyte_client_generate_help)
 
   if (NOT DEFINED _visocyte_client_help_OUTPUT_DIR)
     set(_visocyte_client_help_OUTPUT_DIR
-      "${CMAKE_CURRENT_BINARY_DIR}")
+      "${CMAKE_CURRENT_BINARY_DIR}/visocyte_help")
   endif ()
 
   if (NOT DEFINED _visocyte_client_help_NAMESPACE)
@@ -742,6 +782,8 @@ function (visocyte_client_generate_help)
     file(GLOB _visocyte_client_help_copied_sources
       ${_visocyte_client_help_PATTERNS})
   endif ()
+
+  file(MAKE_DIRECTORY "${_visocyte_client_help_OUTPUT_DIR}")
 
   set(_visocyte_client_help_patterns "${_visocyte_client_help_PATTERNS}")
   _visocyte_client_escape_cmake_list(_visocyte_client_help_patterns)
@@ -791,6 +833,10 @@ function (visocyte_client_generate_help)
       PROPERTY
         OBJECT_DEPENDS "${_visocyte_client_help_output}")
   endif ()
+
+  set("${_visocyte_client_help_OUTPUT_PATH}"
+    "${_visocyte_client_help_output}"
+    PARENT_SCOPE)
 endfunction ()
 
 # Handle the generation of the help file.
@@ -932,9 +978,11 @@ function (visocyte_client_qt_resource)
   get_filename_component(_visocyte_client_resource_file_path
     "${_visocyte_client_resource_file_path}"
     REALPATH)
-  file(TO_NATIVE_PATH
-    "${_visocyte_client_resource_file_path}"
-    _visocyte_client_resource_file_path)
+  if (WIN32)
+    file(TO_NATIVE_PATH
+      "${_visocyte_client_resource_file_path}"
+      _visocyte_client_resource_file_path)
+  endif ()
 
   # We cannot use file(GENERATE) because automoc doesn't like when generated
   # sources are in the source list.
@@ -1007,9 +1055,11 @@ function (visocyte_client_qt_resources)
     get_filename_component(_visocyte_client_resources_file_path
       "${_visocyte_client_resources_file_path}"
       REALPATH)
-    file(TO_NATIVE_PATH
-      "${_visocyte_client_resources_file_path}"
-      _visocyte_client_resources_file_path)
+    if (WIN32)
+      file(TO_NATIVE_PATH
+        "${_visocyte_client_resources_file_path}"
+        _visocyte_client_resources_file_path)
+    endif ()
     string(APPEND _visocyte_client_resources_contents
       "    <file alias=\"${_visocyte_client_resources_alias}\">${_visocyte_client_resources_file_path}</file>\n")
   endforeach ()

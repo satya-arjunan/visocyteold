@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkPVVTKExtensionsSIL
 KIT
-  Visocyte::Extensions
+  Visocyte::CoreKit
 DEPENDS
   VTK::CommonCore
 PRIVATE_DEPENDS

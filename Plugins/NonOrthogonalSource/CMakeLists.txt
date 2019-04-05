@@ -1,33 +1,11 @@
-vtk_module_scan(
-  MODULE_FILES      "${CMAKE_CURRENT_SOURCE_DIR}/Sources/vtk.module"
-  REQUEST_MODULES   NonOrthogonalSource::vtkNonOrthogonalSources
-  PROVIDES_MODULES  sources_modules
-  REQUIRES_MODULES  required_modules
-  HIDE_MODULES_FROM_CACHE ON)
-
-if (required_modules)
-  foreach (required_module IN LISTS required_modules)
-    if (NOT TARGET "${required_module}")
-      message(FATAL_ERROR
-        "Failed to find the required module ${required_module}.")
-    endif ()
-  endforeach ()
-endif ()
-
-vtk_module_build(
-  MODULES             ${sources_modules}
-  PACKAGE             NonOrthogonalSource
-  INSTALL_HEADERS     OFF
-  LIBRARY_NAME_SUFFIX "pv${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}"
-  VERSION             "${VISOCYTE_VERSION}"
-  SOVERSION           "1")
-
 set(interfaces)
-set(sources
-  pqNonOrthogonalAutoStart.cxx
-  pqNonOrthogonalAutoStart.h
-  pqSetupModelTransformBehavior.h)
+set(sources)
 if (VISOCYTE_BUILD_QT_GUI)
+  list(APPEND sources
+    pqNonOrthogonalAutoStart.cxx
+    pqNonOrthogonalAutoStart.h
+    pqSetupModelTransformBehavior.cxx
+    pqSetupModelTransformBehavior.h)
   visocyte_plugin_add_auto_start(
     CLASS_NAME pqNonOrthogonalAutoStart
     INTERFACES autostart_interface
@@ -42,7 +20,8 @@ visocyte_add_plugin(NonOrthogonalSource
   VERSION       "1.0"
   UI_INTERFACES ${interfaces}
   SOURCES       ${sources}
-  MODULES       NonOrthogonalSource::vtkNonOrthogonalSources)
+  MODULES       NonOrthogonalSource::vtkNonOrthogonalSources
+  MODULE_FILES  "${CMAKE_CURRENT_SOURCE_DIR}/Sources/vtk.module")
 
 if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(NonOrthogonalSource

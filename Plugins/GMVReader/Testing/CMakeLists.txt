@@ -9,6 +9,13 @@ set(GMV_READER_TESTS
 )
 
 if (VISOCYTE_BUILD_QT_GUI)
+  set(_visocyte_add_tests_default_test_data_target VisocyteData)
+  ExternalData_Expand_Arguments(VisocyteData _
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/GMV/,REGEX:.*}"
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/GMV/invalid/,REGEX:.*}"
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/GMV/partial-pyramid/,REGEX:.*}"
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/GMV/quadratic_cells/,REGEX:.*}")
+
   visocyte_add_client_tests(
     BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
     TEST_SCRIPTS ${GMV_READER_TESTS}

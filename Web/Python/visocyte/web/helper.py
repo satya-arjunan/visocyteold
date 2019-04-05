@@ -12,8 +12,7 @@ import visocyte
 
 from visocyte import simple, servermanager
 from visocyte.servermanager import ProxyProperty, InputProperty
-
-from vtkmodules.vtkPVServerManagerRendering import vtkSMPVRepresentationProxy
+from visocyte.modules.vtkPVServerManagerRendering import vtkSMPVRepresentationProxy
 
 PY3 = False
 if sys.version_info >= (3,):

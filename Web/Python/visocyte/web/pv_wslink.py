@@ -3,7 +3,7 @@ r"""visocyteweb_wslink is the visocyte-specific subclass
 """
 
 from vtkmodules.web import wslink as vtk_wslink
-from vtkmodules.vtkVisocyteWebCore import vtkPVWebApplication
+from visocyte.modules.vtkPVWebCore import vtkPVWebApplication
 from visocyte.web import protocols as pv_protocols
 
 class PVServerProtocol(vtk_wslink.ServerProtocol):

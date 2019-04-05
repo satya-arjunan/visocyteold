@@ -151,11 +151,6 @@ function (visocyte_server_manager_process_files)
       "${_visocyte_sm_process_files_UNPARSED_ARGUMENTS}")
   endif ()
 
-  if (NOT _visocyte_sm_process_files_FILES)
-    message(FATAL_ERROR
-      "The `FILES` argument is required.")
-  endif ()
-
   if (NOT DEFINED _visocyte_sm_process_files_TARGET)
     message(FATAL_ERROR
       "The `TARGET` argument is required.")
@@ -189,7 +184,7 @@ function (visocyte_server_manager_process_files)
 #include <vector>
 
 void ${_visocyte_sm_process_files_TARGET}_initialize(std::vector<std::string>& xmls)
-{\n")
+{\n  (void)xmls;\n")
   foreach (_visocyte_sm_process_files_file IN LISTS _visocyte_sm_process_files_FILES)
     get_filename_component(_visocyte_sm_process_files_name "${_visocyte_sm_process_files_file}" NAME_WE)
     string(APPEND _visocyte_sm_process_files_init_content

@@ -5,7 +5,16 @@ if (NOT visocyte_use_external_vtk)
 endif ()
 
 # Regular expression for warning exception during build process
-list(APPEND CTEST_CUSTOM_WARNING_EXCEPTION)
+list(APPEND CTEST_CUSTOM_WARNING_EXCEPTION
+  # Ignore `getenv` "deprecation" with MSVC.
+  "vtknvindex_utilities.h.*: warning C4996: 'getenv'"
+
+  # Ignore protobuf-generated source file warnings.
+  "vtkPVMessage.pb.cc"
+
+  # Unreachable code in xutility causes C4702 warnings in MSVC.
+  "xutility.*unreachable code"
+  )
 
 # Regular expression for excluding files from coverage testing
 list(APPEND CTEST_CUSTOM_COVERAGE_EXCLUDE

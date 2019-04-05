@@ -67,6 +67,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QTimer>
 #include <QtDebug>
 
+#include <cassert>
+
 //----------------------------------------------------------------------------
 const QMetaObject* pqServerLauncher::DefaultServerLauncherType = NULL;
 const QMetaObject* pqServerLauncher::setServerDefaultLauncherType(const QMetaObject* other)
@@ -237,7 +239,7 @@ bool createWidgets(QMap<QString, pqWidget*>& widgets, QDialog& dialog,
   const pqServerConfiguration& configuration, QProcessEnvironment& options)
 {
   vtkPVXMLElement* optionsXML = configuration.optionsXML();
-  Q_ASSERT(optionsXML != NULL);
+  assert(optionsXML != NULL);
 
   QFormLayout* formLayout = new QFormLayout();
   dialog.setLayout(formLayout);
@@ -341,6 +343,12 @@ bool createWidgets(QMap<QString, pqWidget*>& widgets, QDialog& dialog,
       else if (strcmp(typeNode->GetName(), "String") == 0)
       {
         QLineEdit* widget = new QLineEdit(QString(), &dialog);
+        widgets[name] = new pqWidget(widget, "text");
+      }
+      else if (strcmp(typeNode->GetName(), "Password") == 0)
+      {
+        QLineEdit* widget = new QLineEdit(QString(), &dialog);
+        widget->setEchoMode(QLineEdit::Password);
         widgets[name] = new pqWidget(widget, "text");
       }
       else if (strcmp(typeNode->GetName(), "File") == 0)

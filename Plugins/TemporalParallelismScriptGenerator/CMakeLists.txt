@@ -45,7 +45,7 @@ visocyte_add_plugin(TemporalParallelismScriptGenerator
   SOURCES ${sources})
 target_link_libraries(TemporalParallelismScriptGenerator
   PRIVATE
-    Visocyte::Common
+    Visocyte::Core
     Visocyte::ServerManagerCore
     Visocyte::ServerManagerRendering)
 

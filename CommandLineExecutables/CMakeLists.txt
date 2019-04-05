@@ -47,3 +47,12 @@ if (VISOCYTE_ENABLE_PYTHON)
         VTK::PythonInterpreter)
   endforeach ()
 endif ()
+
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/visocyte-config"
+  "${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/visocyte-config"
+  COPYONLY)
+install(
+  PROGRAMS    "${CMAKE_CURRENT_SOURCE_DIR}/visocyte-config"
+  DESTINATION "${CMAKE_INSTALL_BINDIR}"
+  COMPONENT   development)

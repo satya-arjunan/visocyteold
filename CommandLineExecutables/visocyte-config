@@ -9,7 +9,7 @@ import tempfile
 
 
 CMAKELISTS = """
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.8)
 project(find_visocyte CXX)
 
 find_package(Visocyte REQUIRED COMPONENTS %(components)s)

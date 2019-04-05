@@ -21,9 +21,12 @@ set(classes
 
 vtk_module_add_module(Visocyte::VTKExtensionsCosmoTools
   CLASSES ${classes})
+vtk_module_include(Visocyte::VTKExtensionsCosmoTools
+  PRIVATE
+    ${GENERIC_IO_INCLUDE_DIR})
 vtk_module_link(Visocyte::VTKExtensionsCosmoTools
   PRIVATE
-    )
+    ${GENERIC_IO_LIBRARIES})
 
 visocyte_add_server_manager_xmls(
   XMLS  ## CosmoTools Readers

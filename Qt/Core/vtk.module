@@ -7,6 +7,7 @@ GROUPS
 DEPENDS
   Visocyte::ClientServerCoreDefault
   Visocyte::pqWidgets
+  Visocyte::qttesting
   VTK::GUISupportQt
 PRIVATE_DEPENDS
   Visocyte::Animation
@@ -14,9 +15,6 @@ PRIVATE_DEPENDS
   Visocyte::ServerManagerDefault
   VTK::TestingRendering
   VTK::vtksys
-OPTIONAL_DEPENDS
-  # These affect the public API.
-  #Visocyte::pqCorePython
 TEST_DEPENDS
   Visocyte::ServerManagerRendering
 TEST_LABELS

@@ -45,6 +45,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqRenameProxyReaction.h"
 #include "pqRenderView.h"
 #include "pqRenderViewSelectionReaction.h"
+#include "pqSaveScreenshotReaction.h"
 #include "pqServer.h"
 #include "pqSpreadSheetView.h"
 #include "pqSpreadSheetViewDecorator.h"
@@ -64,12 +65,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMTooltipSelectionPipeline.h"
 #include "vtkSmartPointer.h"
 
+#include <QGuiApplication>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QPushButton>
 #include <QSet>
 #include <QShortcut>
 #include <QStyle>
+
+#include <cassert>
 
 //-----------------------------------------------------------------------------
 pqStandardViewFrameActionsImplementation::pqStandardViewFrameActionsImplementation(
@@ -111,7 +115,7 @@ pqStandardViewFrameActionsImplementation::~pqStandardViewFrameActionsImplementat
 //-----------------------------------------------------------------------------
 void pqStandardViewFrameActionsImplementation::frameConnected(pqViewFrame* frame, pqView* view)
 {
-  Q_ASSERT(frame != NULL);
+  assert(frame != NULL);
   if (view == NULL)
   {
     // Setup the UI shown when no view is present in the frame.
@@ -144,8 +148,8 @@ void pqStandardViewFrameActionsImplementation::addContextViewActions(
   pqViewFrame* frame, pqContextView* chart_view)
 {
   // Adding special selection controls for chart/context view
-  Q_ASSERT(chart_view);
-  Q_ASSERT(frame);
+  assert(chart_view);
+  assert(frame);
 
   QActionGroup* modeGroup = this->addSelectionModifierActions(frame, chart_view);
   QActionGroup* group = new QActionGroup(frame);
@@ -190,8 +194,8 @@ void pqStandardViewFrameActionsImplementation::addContextViewActions(
 QActionGroup* pqStandardViewFrameActionsImplementation::addSelectionModifierActions(
   pqViewFrame* frame, pqView* view)
 {
-  Q_ASSERT(view);
-  Q_ASSERT(frame);
+  assert(view);
+  assert(frame);
 
   QAction* toggleAction = NULL;
   QAction* minusAction = NULL;
@@ -262,8 +266,8 @@ void pqStandardViewFrameActionsImplementation::addSeparator(pqViewFrame* frame, 
 //-----------------------------------------------------------------------------
 void pqStandardViewFrameActionsImplementation::addGenericActions(pqViewFrame* frame, pqView* view)
 {
-  Q_ASSERT(frame);
-  Q_ASSERT(view);
+  assert(frame);
+  assert(view);
 
   /// Add convert-to menu.
   frame->contextMenu()->addSeparator();
@@ -292,6 +296,21 @@ void pqStandardViewFrameActionsImplementation::addGenericActions(pqViewFrame* fr
       forwardAction->setObjectName("actionForwardButton");
       new pqCameraUndoRedoReaction(forwardAction, false, view);
     }
+
+    this->addSeparator(frame, view);
+  }
+
+  if (view->supportsCapture())
+  {
+    if (this->isButtonVisible("captureViewAction", view))
+    {
+      QAction* captureViewAction = frame->addTitleBarAction(
+        QIcon(":/pqWidgets/Icons/pqCaptureScreenshot24.png"), "Capture to Clipboard or File");
+      captureViewAction->setObjectName("actionCaptureView");
+      captureViewAction->setToolTip("Capture screenshot to the clipboard or to a file if a "
+                                    "modifier key (Ctrl, Alt or Shift) is pressed.");
+      this->connect(captureViewAction, SIGNAL(triggered(bool)), SLOT(captureViewTriggered()));
+    }
   }
 }
 
@@ -299,8 +318,8 @@ void pqStandardViewFrameActionsImplementation::addGenericActions(pqViewFrame* fr
 void pqStandardViewFrameActionsImplementation::addRenderViewActions(
   pqViewFrame* frame, pqRenderView* renderView)
 {
-  Q_ASSERT(renderView);
-  Q_ASSERT(frame);
+  assert(renderView);
+  assert(frame);
 
   this->addSeparator(frame, renderView);
 
@@ -480,8 +499,8 @@ void pqStandardViewFrameActionsImplementation::addRenderViewActions(
 void pqStandardViewFrameActionsImplementation::addSpreadSheetViewActions(
   pqViewFrame* frame, pqSpreadSheetView* spreadSheet)
 {
-  Q_ASSERT(frame);
-  Q_ASSERT(spreadSheet);
+  assert(frame);
+  assert(spreadSheet);
   Q_UNUSED(frame);
   new pqSpreadSheetViewDecorator(spreadSheet);
 }
@@ -536,7 +555,7 @@ bool pqStandardViewFrameActionsImplementation::ViewTypeComparator(
   {
     return one.Label.toLower() < two.Label.toLower();
   }
-  Q_ASSERT(inone || intwo);
+  assert(inone || intwo);
   // one is less if it has "Render View", else two is less.
   return inone;
 }
@@ -788,7 +807,7 @@ void pqStandardViewFrameActionsImplementation::escapeableActionToggled(bool chec
 
   // User has entered into a selection mode. Let's add a shortcut to "catch" the
   // Esc key.
-  Q_ASSERT(checked && actn->isCheckable());
+  assert(checked && actn->isCheckable());
   this->ShortCutEsc->setEnabled(true);
   this->ShortCutEsc->setProperty("PV_ACTION", QVariant::fromValue<QObject*>(actn));
 }
@@ -802,5 +821,18 @@ void pqStandardViewFrameActionsImplementation::interactiveSelectionToggled(bool 
       vtkSMRenderViewProxy::SafeDownCast(pqActiveObjects::instance().activeView()->getViewProxy()));
     vtkSMTooltipSelectionPipeline::GetInstance()->Hide(
       vtkSMRenderViewProxy::SafeDownCast(pqActiveObjects::instance().activeView()->getViewProxy()));
+  }
+}
+
+//-----------------------------------------------------------------------------
+void pqStandardViewFrameActionsImplementation::captureViewTriggered()
+{
+  pqView* activeView = pqActiveObjects::instance().activeView();
+  if (activeView)
+  {
+    // If a modifier key is enabled, let's save screenshot to a file, otherwise
+    // copy the screenshot to the clipboard.
+    bool clipboardMode = QGuiApplication::queryKeyboardModifiers() == 0;
+    pqSaveScreenshotReaction::saveScreenshot(clipboardMode);
   }
 }

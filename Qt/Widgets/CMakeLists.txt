@@ -49,8 +49,6 @@ set(classes
   pqDelimitedTextParser
   pqDiscreteDoubleWidget
   pqDoubleLineEdit
-  pqDoubleLineEditEventPlayer
-  pqDoubleLineEditEventTranslator
   pqDoubleRangeDialog
   pqDoubleRangeWidget
   pqDoubleSliderWidget
@@ -59,6 +57,8 @@ set(classes
   pqExpanderButton
   pqFlatTreeView
   pqHeaderView
+  pqHierarchicalGridLayout
+  pqHierarchicalGridWidget
   pqHighlightablePushButton
   pqHighlightableToolButton
   pqLineEdit

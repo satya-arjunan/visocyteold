@@ -134,11 +134,13 @@ function (_visocyte_add_tests function)
     if (DEFINED _visocyte_add_tests_BASELINE_DIR)
       if (DEFINED "${_visocyte_add_tests_name}_BASELINE")
         list(APPEND _visocyte_add_tests_client_args
-          "--test-baseline=DATA{${_visocyte_add_tests_BASELINE_DIR}/${${_visocyte_add_tests_name}_BASELINE}}")
+          "--test-baseline=DATA{${_visocyte_add_tests_BASELINE_DIR}/${${_visocyte_add_tests_name_base}_BASELINE}}")
       else ()
         list(APPEND _visocyte_add_tests_client_args
-          "--test-baseline=DATA{${_visocyte_add_tests_BASELINE_DIR}/${_visocyte_add_tests_name}.png}")
+          "--test-baseline=DATA{${_visocyte_add_tests_BASELINE_DIR}/${_visocyte_add_tests_name_base}.png}")
       endif ()
+      ExternalData_Expand_Arguments("${_visocyte_add_tests_TEST_DATA_TARGET}" _
+        "DATA{${_visocyte_add_tests_BASELINE_DIR}/,REGEX:${_visocyte_add_tests_name_base}(-.*)?(_[0-9]+)?.png}")
     endif ()
     if (DEFINED "${_visocyte_add_tests_name}_BASELINE")
       list(APPEND _visocyte_add_tests_client_args

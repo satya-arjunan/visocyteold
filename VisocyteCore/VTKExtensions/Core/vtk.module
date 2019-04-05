@@ -5,9 +5,9 @@ LIBRARY_NAME
 GROUPS
   VisocyteCore
 KIT
-  Visocyte::Extensions
+  Visocyte::CoreKit
 DEPENDS
-  Visocyte::Common
+  Visocyte::Core
   VTK::CommonMisc
   VTK::FiltersCore
   VTK::FiltersSources

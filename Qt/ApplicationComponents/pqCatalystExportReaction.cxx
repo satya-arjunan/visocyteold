@@ -62,7 +62,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <sstream>
 #include <string>
 
-#ifdef VISOCYTE_ENABLE_PYTHON
+#if VTK_MODULE_ENABLE_VTK_PythonInterpreter
 #include "vtkPythonInterpreter.h"
 #endif
 
@@ -100,7 +100,7 @@ pqCatalystExportReaction::~pqCatalystExportReaction()
 //-----------------------------------------------------------------------------
 void pqCatalystExportReaction::onTriggered()
 {
-#ifdef VISOCYTE_ENABLE_PYTHON
+#if VTK_MODULE_ENABLE_VTK_PythonInterpreter
 
   // We populate these from information from the export proxies
   QString live_visualization = "True";
@@ -128,7 +128,8 @@ void pqCatalystExportReaction::onTriggered()
     pqApplicationCore::instance()->getServerManagerModel()->findItems<pqPipelineSource*>();
   foreach (pqPipelineSource* source, sources)
   {
-    if (qobject_cast<pqPipelineFilter*>(source))
+    if (qobject_cast<pqPipelineFilter*>(source) ||
+      vtkSMCoreUtilities::GetFileNameProperty(source->getProxy()) == nullptr)
     {
       continue;
     }

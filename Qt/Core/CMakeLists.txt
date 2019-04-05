@@ -46,7 +46,6 @@ set(classes
   pqCoreTestUtility
   pqCoreUtilities
   pqDataRepresentation
-  pqDebug
   pqFileDialog
   pqFileDialogEventPlayer
   pqFileDialogEventTranslator
@@ -116,12 +115,15 @@ set(classes
   pqXMLEventObserver
   pqXMLEventSource
   pqXMLUtil
-  pqXYBagChartView
   pqXYBarChartView
   pqXYChartView
-  pqXYFunctionalBagChartView
   pqXYHistogramChartView
   vtkPVGUIPluginInterface)
+
+if (NOT VTK_LEGACY_REMOVE)
+  list(APPEND classes
+    pqDebug)
+endif()
 
 set(ui_files
   Resources/UI/pqFileDialog.ui
@@ -171,3 +173,11 @@ if (VISOCYTE_USE_QTHELP)
     PRIVATE
       Qt5::Help)
 endif ()
+
+if (VISOCYTE_ENABLE_PYTHON)
+  vtk_module_definitions(Visocyte::pqCore
+    PRIVATE VISOCYTE_PQCORE_ENABLE_PYTHON=1)
+else ()
+  vtk_module_definitions(Visocyte::pqCore
+    PRIVATE VISOCYTE_PQCORE_ENABLE_PYTHON=0)
+endif()

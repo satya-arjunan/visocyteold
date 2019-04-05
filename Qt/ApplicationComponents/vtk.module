@@ -6,6 +6,7 @@ GROUPS
   VisocyteQt
 DEPENDS
   Visocyte::pqComponents
+  Visocyte::qttesting
   VTK::GUISupportQt
 PRIVATE_DEPENDS
   Visocyte::Animation
@@ -19,6 +20,7 @@ OPTIONAL_DEPENDS
   Visocyte::CinemaReader
   Visocyte::nvpipe
   VTK::PythonInterpreter
+  VTK::RenderingOSPRay
 
   # These affect the public API.
   #Visocyte::pqComponentsPython

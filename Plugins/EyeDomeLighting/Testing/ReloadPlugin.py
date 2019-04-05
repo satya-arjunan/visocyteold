@@ -4,7 +4,7 @@ from __future__ import print_function
 import sys
 import visocyte.simple
 
-visocyte.simple.LoadDistributedPlugin("EyeDomeLightingView", True, globals())
+visocyte.simple.LoadDistributedPlugin("EyeDomeLighting", True, globals())
 print('loaded the first time successfully')
-visocyte.simple.LoadDistributedPlugin("EyeDomeLightingView", True, globals())
+visocyte.simple.LoadDistributedPlugin("EyeDomeLighting", True, globals())
 print('loaded the second time successfully')

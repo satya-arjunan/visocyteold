@@ -1,14 +1,12 @@
-include(VisocyteTestingMacros)
+if (VISOCYTE_BUILD_QT_GUI AND BUILD_SHARED_LIBS)
+  set(_visocyte_add_tests_default_test_data_target VisocyteData)
+  ExternalData_Expand_Arguments(VisocyteData _
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/Gmsh/,REGEX:viz_*}"
+    "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/Gmsh/naca0012/,REGEX:.*}")
 
-set(GenericIO_TESTS_WITH_BASELINES
-  ${CMAKE_CURRENT_SOURCE_DIR}/GenericIOTest.xml
-)
-
-if(VISOCYTE_DATA_ROOT AND BUILD_SHARED_LIBS)
-  add_client_tests("pv"
+  visocyte_add_client_tests(
     LOAD_PLUGIN "GenericIOReader"
     BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
-    TEST_SCRIPTS ${GenericIO_TESTS_WITH_BASELINES}
-  )
-
-endif(VISOCYTE_DATA_ROOT AND BUILD_SHARED_LIBS)
+    TEST_DATA_TARGET VisocyteData
+    TEST_SCRIPTS ${CMAKE_CURRENT_SOURCE_DIR}/GenericIOTest.xml)
+endif ()

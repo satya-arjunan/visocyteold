@@ -15,6 +15,7 @@ PRIVATE_DEPENDS
 TEST_DEPENDS
   Visocyte::Animation
   Visocyte::ServerManagerApplication
+  VTK::FiltersVerdict
   VTK::TestingRendering
 TEST_LABELS
   Visocyte

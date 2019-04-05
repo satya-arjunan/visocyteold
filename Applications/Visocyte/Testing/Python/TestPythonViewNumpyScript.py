@@ -35,6 +35,7 @@ except:
 
 import os
 baseline_file = os.path.join(baselinePath, "TestPythonViewNumpyScript.png")
+print("baseline_file == ", baseline_file)
 
 from visocyte.vtk.test import Testing
 from visocyte.vtk.util.misc import vtkGetTempDir

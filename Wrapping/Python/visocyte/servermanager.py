@@ -73,7 +73,7 @@ try:
   from visocyte.modules.vtkPVAnimation import *
 except:
   visocyte.print_error("Error: Cannot import vtkPVAnimation")
-from visocyte.modules.vtkPVCommon import *
+from visocyte.modules.vtkPVCore import *
 
 def _wrap_property(proxy, smproperty):
     """ Internal function.

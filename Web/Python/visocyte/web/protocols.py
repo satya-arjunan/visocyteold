@@ -24,14 +24,14 @@ from vtkmodules.web import iteritems
 from vtkmodules.web.render_window_serializer import SynchronizationContext, initializeSerializers, serializeInstance, getReferenceId
 from visocyte.web.decorators import *
 
-from vtkmodules.vtkCommonDataModel             import vtkImageData
-from vtkmodules.vtkCommonCore                  import vtkUnsignedCharArray, vtkCollection
-from vtkmodules.vtkWebCore                     import vtkDataEncoder, vtkWebInteractionEvent
-from vtkmodules.vtkPVServerManagerRendering    import vtkSMPVRepresentationProxy, vtkSMTransferFunctionProxy, vtkSMTransferFunctionManager
-from vtkmodules.vtkPVServerManagerCore         import vtkSMProxyManager
-from vtkmodules.vtkCommonDataModel             import vtkDataObject
-from vtkmodules.vtkPVClientServerCoreCore      import vtkProcessModule
-from vtkmodules.vtkPVClientServerCoreRendering import vtkPVRenderView
+from vtkmodules.vtkCommonDataModel import vtkImageData, vtkDataObject
+from vtkmodules.vtkCommonCore      import vtkUnsignedCharArray, vtkCollection
+from vtkmodules.vtkWebCore         import vtkDataEncoder, vtkWebInteractionEvent
+
+from visocyte.modules.vtkPVServerManagerRendering    import vtkSMPVRepresentationProxy, vtkSMTransferFunctionProxy, vtkSMTransferFunctionManager
+from visocyte.modules.vtkPVServerManagerCore         import vtkSMProxyManager
+from visocyte.modules.vtkPVClientServerCoreCore      import vtkProcessModule
+from visocyte.modules.vtkPVClientServerCoreRendering import vtkPVRenderView
 
 if sys.version_info >= (3,):
     xrange = range
@@ -3153,7 +3153,7 @@ class VisocyteWebFileListing(VisocyteWebProtocol):
 # Handle Data Selection
 #
 # =============================================================================
-from vtkmodules.vtkPVClientServerCoreRendering import *
+from visocyte.modules.vtkPVClientServerCoreRendering import *
 from vtkmodules.vtkCommonCore import *
 
 class VisocyteWebSelectionHandler(VisocyteWebProtocol):

@@ -58,11 +58,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <QWidget>
 
+#include <cassert>
 #include <iostream>
 #include <sstream>
 #include <string>
 
-#ifdef VISOCYTE_ENABLE_PYTHON
+#if VTK_MODULE_ENABLE_VTK_PythonInterpreter
 #include "vtkPythonInterpreter.h"
 #endif
 
@@ -283,7 +284,7 @@ pqTemporalExportReaction::~pqTemporalExportReaction()
 //-----------------------------------------------------------------------------
 void pqTemporalExportReaction::onTriggered()
 {
-#ifdef VISOCYTE_ENABLE_PYTHON
+#if VTK_MODULE_ENABLE_VTK_PythonInterpreter
   vtkSMSessionProxyManager* pxm =
     vtkSMProxyManager::GetProxyManager()->GetActiveSessionProxyManager();
   vtkSMExportProxyDepot* ed = pxm->GetExportDepot();

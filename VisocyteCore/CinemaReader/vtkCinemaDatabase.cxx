@@ -126,11 +126,11 @@ public:
       vtkPythonInterpreter::Initialize();
       vtkPythonScopeGilEnsurer gilEnsurer;
       this->CinemaReaderModule.TakeReference(
-        PyImport_ImportModule("cinema_python.adaptors.visocyte.cinemareader"));
+        PyImport_ImportModule("visocyte.tpl.cinema_python.adaptors.visocyte.cinemareader"));
       if (!this->CinemaReaderModule)
       {
         vtkGenericWarningMacro(
-          "Failed to import 'cinema_python.adaptors.visocyte.cinemareader' module.");
+          "Failed to import 'visocyte.tpl.cinema_python.adaptors.visocyte.cinemareader' module.");
         if (PyErr_Occurred())
         {
           PyErr_Print();

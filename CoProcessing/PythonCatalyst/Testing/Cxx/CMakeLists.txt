@@ -1,7 +1,16 @@
 include_directories(
   ${TestDriver_SOURCE_DIR})
 
-set(CP_LABELS VISOCYTE CATALYST)
+function (_set_standard_test_properties test_name)
+  set(_vtk_fail_regex "(\n|^)ERROR: " "instance(s)? still around")
+  set_tests_properties("${test_name}"
+    PROPERTIES
+      LABELS "${_vtk_build_test_labels}"
+      FAIL_REGULAR_EXPRESSION "${_vtk_fail_regex}"
+      # This must match VTK_SKIP_RETURN_CODE in vtkTestingObjectFactory.h"
+      SKIP_RETURN_CODE 125
+    )
+endfunction ()
 
 #------------------------------------------------------------------------------
 vtk_module_test_executable(CoProcessingPythonScriptExample
@@ -20,7 +29,7 @@ add_test(NAME CoProcessingTestInput
   COMMAND pvbatch -sym ${CMAKE_CURRENT_SOURCE_DIR}/waveletdriver.py
   ${CMAKE_CURRENT_SOURCE_DIR}/TestInput.py 4
   )
-set_tests_properties(CoProcessingTestInput PROPERTIES LABELS "${CP_LABELS}")
+_set_standard_test_properties(CoProcessingTestInput)
 
 
 
@@ -51,8 +60,8 @@ else()
     -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingTestPythonScript.cmake)
 endif()
 
-set_tests_properties(CoProcessingImport PROPERTIES LABELS "${CP_LABELS}")
 set_tests_properties(CoProcessingImport PROPERTIES PASS_REGULAR_EXPRESSION "in DoCoProcessing")
+_set_standard_test_properties(CoProcessingImport)
 
 # test if we can use a Python programmable filter in a Catalyst Python script
 if (NOT VISOCYTE_USE_MPI)
@@ -77,8 +86,9 @@ else()
     -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingTestPythonScript.cmake)
 endif()
 
-set_tests_properties(CoProcessingProgrammableFilter PROPERTIES LABELS "${CP_LABELS}")
 set_tests_properties(CoProcessingProgrammableFilter PROPERTIES PASS_REGULAR_EXPRESSION "in DoCoProcessing")
+_set_standard_test_properties(CoProcessingProgrammableFilter)
+
 #-  add_test(NAME CoProcessingProgrammableFilter
 #-    COMMAND CoProcessingProgrammableFilter
 #-    ${CMAKE_CURRENT_SOURCE_DIR}/cpprogrammablefilter.py)
@@ -109,8 +119,8 @@ else()
     -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingTestPythonScript.cmake)
 endif()
 
-set_tests_properties(CoProcessingTestPythonScript PROPERTIES LABELS "${CP_LABELS}")
 set_tests_properties(CoProcessingTestPythonScript PROPERTIES PASS_REGULAR_EXPRESSION "in DoCoProcessing")
+_set_standard_test_properties(CoProcessingTestPythonScript)
 
 if (VISOCYTE_USE_MPI)
   add_test(NAME PCoProcessingTestPythonScript
@@ -130,8 +140,8 @@ if (VISOCYTE_USE_MPI)
   # both the parallel and the serial tests create the same output images
   # so we run this one serially so that they don't interfere.
   set_tests_properties(PCoProcessingTestPythonScript PROPERTIES RUN_SERIAL ON)
-  set_tests_properties(PCoProcessingTestPythonScript PROPERTIES LABELS "${CP_LABELS}")
   set_tests_properties(PCoProcessingTestPythonScript PROPERTIES PASS_REGULAR_EXPRESSION "in DoCoProcessing")
+  _set_standard_test_properties(PCoProcessingTestPythonScript)
 endif()
 
 if (VISOCYTE_BUILD_QT_GUI)
@@ -141,7 +151,7 @@ if (VISOCYTE_BUILD_QT_GUI)
   # which can't be used when running the 'simulation' since those same
   # plugins won't be loaded then.
   IF ( BUILD_SHARED_LIBS )
-    add_test(NAME CoProcessingFullWorkflow
+    ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}" NAME CoProcessingFullWorkflow
       COMMAND ${CMAKE_COMMAND}
       -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
       -DCOPROCESSING_TEST_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
@@ -152,9 +162,10 @@ if (VISOCYTE_BUILD_QT_GUI)
       -DCOPROCESSING_DATA_DIR:PATH=${visocyte_test_data_directory_output}/Testing/Data/Baseline
       -DCOPROCESSING_OUTPUTCHECK_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/outputcheck.py
       -DTEST_NAME:STRING=CoProcessingFullWorkflow
-      -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
+      -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake
+      DATA{${_vtk_build_TEST_INPUT_DATA_DIRECTORY}/Data/Baseline/CPFullWorkflow.png})
     set_tests_properties(CoProcessingFullWorkflow PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(CoProcessingFullWorkflow PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(CoProcessingFullWorkflow)
 
     add_test(NAME CoProcessingFullWorkflowNewUI
       COMMAND ${CMAKE_COMMAND}
@@ -169,7 +180,7 @@ if (VISOCYTE_BUILD_QT_GUI)
       -DTEST_NAME:STRING=CoProcessingFullWorkflowNewUI
       -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
     set_tests_properties(CoProcessingFullWorkflowNewUI PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(CoProcessingFullWorkflowNewUI PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(CoProcessingFullWorkflowNewUI)
 
     add_test(NAME CoProcessingFullWorkflowWithOnlyExtracts
       COMMAND ${CMAKE_COMMAND}
@@ -184,7 +195,7 @@ if (VISOCYTE_BUILD_QT_GUI)
       -DTEST_NAME:STRING=CoProcessingFullWorkflowWithOnlyExtracts
       -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
     set_tests_properties(CoProcessingFullWorkflowWithOnlyExtracts PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(CoProcessingFullWorkflowWithOnlyExtracts PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(CoProcessingFullWorkflowWithOnlyExtracts)
 
     ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}" NAME CoProcessingFullWorkflowWithPlots
       COMMAND ${CMAKE_COMMAND}
@@ -201,7 +212,7 @@ if (VISOCYTE_BUILD_QT_GUI)
       DATA{${_vtk_build_TEST_INPUT_DATA_DIRECTORY}/Data/Baseline/CPFullWorkflowPlot1.png}
       DATA{${_vtk_build_TEST_INPUT_DATA_DIRECTORY}/Data/Baseline/CPFullWorkflowPlot2.png} )
     set_tests_properties(CoProcessingFullWorkflowWithPlots PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(CoProcessingFullWorkflowWithPlots PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(CoProcessingFullWorkflowWithPlots)
 
     ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}" NAME CoProcessingFullWorkflowWithOnlyPlots
       COMMAND ${CMAKE_COMMAND}
@@ -217,10 +228,10 @@ if (VISOCYTE_BUILD_QT_GUI)
       -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake
       DATA{${_vtk_build_TEST_INPUT_DATA_DIRECTORY}/Data/Baseline/CPFullWorkflowPlot2.png} )
     set_tests_properties(CoProcessingFullWorkflowWithOnlyPlots PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(CoProcessingFullWorkflowWithOnlyPlots PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(CoProcessingFullWorkflowWithOnlyPlots)
 
     find_python_module(numpy numpy_found)
-    if (numpy_found)
+    if (numpy_found AND TARGET Visocyte::CinemaReader)
       add_test(NAME CoProcessingFullWorkflowCinema
         COMMAND ${CMAKE_COMMAND}
         -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
@@ -231,7 +242,7 @@ if (VISOCYTE_BUILD_QT_GUI)
         -DTEST_NAME:STRING=CoProcessingFullWorkflowCinema
         -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
       set_tests_properties(CoProcessingFullWorkflowCinema PROPERTIES RUN_SERIAL ON)
-      set_tests_properties(CoProcessingFullWorkflowCinema PROPERTIES LABELS "${CP_LABELS}")
+      _set_standard_test_properties(CoProcessingFullWorkflowCinema)
 
       add_test(NAME CoProcessingFullWorkflowCinemaComposite
         COMMAND ${CMAKE_COMMAND}
@@ -243,7 +254,7 @@ if (VISOCYTE_BUILD_QT_GUI)
         -DTEST_NAME:STRING=CoProcessingFullWorkflowCinemaComposite
         -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
       set_tests_properties(CoProcessingFullWorkflowCinemaComposite PROPERTIES RUN_SERIAL ON)
-      set_tests_properties(CoProcessingFullWorkflowCinemaComposite PROPERTIES LABELS "${CP_LABELS}")
+      _set_standard_test_properties(CoProcessingFullWorkflowCinemaComposite)
 
       add_test(NAME CoProcessingFullWorkflowCinemaCompositeFloat
         COMMAND ${CMAKE_COMMAND}
@@ -255,7 +266,7 @@ if (VISOCYTE_BUILD_QT_GUI)
         -DTEST_NAME:STRING=CoProcessingFullWorkflowCinemaCompositeFloat
         -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
       set_tests_properties(CoProcessingFullWorkflowCinemaCompositeFloat PROPERTIES RUN_SERIAL ON)
-      set_tests_properties(CoProcessingFullWorkflowCinemaCompositeFloat PROPERTIES LABELS "${CP_LABELS}")
+      _set_standard_test_properties(CoProcessingFullWorkflowCinemaCompositeFloat)
 
     endif()
 
@@ -270,7 +281,7 @@ if (VISOCYTE_BUILD_QT_GUI)
       -DTEST_NAME:STRING=TemporalScriptFullWorkflow
       -P ${CMAKE_CURRENT_SOURCE_DIR}/CoProcessingFullWorkflowTest.cmake)
     set_tests_properties(TemporalScriptFullWorkflow PROPERTIES RUN_SERIAL ON)
-    set_tests_properties(TemporalScriptFullWorkflow PROPERTIES LABELS "${CP_LABELS}")
+    _set_standard_test_properties(TemporalScriptFullWorkflow)
 
   ENDIF ()
 endif()

@@ -50,7 +50,7 @@ bool vtkPythonSelector::ComputeSelectedElements(vtkDataObject* input, vtkDataObj
   vtkPythonScopeGilEnsurer gilEnsurer;
 
   vtkSmartPyObject psModule;
-  psModule.TakeReference(PyImport_ImportModule("visocyte.python_selector"));
+  psModule.TakeReference(PyImport_ImportModule("visocyte.detail.python_selector"));
   if (!psModule)
   {
     vtkWarningMacro("Failed to import 'visocyte.python_selector'");

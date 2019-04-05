@@ -3,5 +3,4 @@ if(VISOCYTE_ENABLE_PYTHON AND VTK_PYTHON_FULL_THREADSAFE)
   ExternalData_add_test("${_vtk_build_TEST_DATA_TARGET}"
     NAME pqApplicationComponentsTestVtkPythonScopeGilEnsurer
     COMMAND pqApplicationComponentsTestVtkPythonScopeGilEnsurer)
-  set_tests_properties(pqApplicationComponentsTestVtkPythonScopeGilEnsurer PROPERTIES LABELS "VISOCYTE")
 endif()

@@ -51,6 +51,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqTimer.h"
 #include "vtkCollection.h"
 #include "vtkNew.h"
+#include "vtkPVLogger.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMCompoundSourceProxy.h"
 #include "vtkSMDocumentation.h"
@@ -135,7 +136,7 @@ void add_decorators(pqPropertyWidget* widget, vtkPVXMLElement* hints)
     auto xmls = get_decorators(hints);
     for (auto xml : xmls)
     {
-      Q_ASSERT(xml && xml->GetAttribute("type"));
+      assert(xml && xml->GetAttribute("type"));
       pqPropertyWidgetDecorator::create(xml, widget);
     }
   }
@@ -194,6 +195,7 @@ class pqProxyWidgetItem : public QObject
     , Group(false)
     , GroupTag()
     , Advanced(false)
+    , InformationOnly(false)
   {
   }
 
@@ -201,6 +203,7 @@ public:
   // Regular expression with tags used to match search text.
   QStringList SearchTags;
   bool Advanced;
+  bool InformationOnly;
 
   ~pqProxyWidgetItem() override
   {
@@ -326,6 +329,10 @@ public:
 
   bool enableWidget() const
   {
+    if (this->InformationOnly)
+    {
+      return false;
+    }
     foreach (const pqPropertyWidgetDecorator* decorator, this->PropertyWidget->decorators())
     {
       if (decorator && !decorator->enableWidget())
@@ -446,42 +453,26 @@ bool skip_property(vtkSMProperty* smproperty, const std::string& key,
 {
   const QString skey = QString(key.c_str());
   const QString simplifiedKey = QString(key.c_str()).remove(' ');
-  auto xmllabel = smproperty->GetXMLLabel();
 
   if (!chosenProperties.isEmpty() &&
     !(chosenProperties.contains(simplifiedKey) || chosenProperties.contains(skey)))
   {
-    PV_DEBUG_PANELS() << "Property:" << skey << " (" << xmllabel << ")"
-                      << " gets skipped because it is not listed in the properties argument";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
-    return true;
-  }
-
-  if (smproperty->GetInformationOnly())
-  {
-    // skip information only properties
-    PV_DEBUG_PANELS() << "Property:" << skey << " (" << xmllabel << ")"
-                      << " gets skipped because it is an information only property";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
+    vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since not in chosen properties set.");
     return true;
   }
 
   if (smproperty->GetIsInternal())
   {
     // skip internal properties
-    PV_DEBUG_PANELS() << "Property:" << skey << " (" << xmllabel << ")"
-                      << " gets skipped because it is an internal property";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
+    vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since internal.");
     return true;
   }
 
   if (smproperty->GetPanelVisibility() && strcmp(smproperty->GetPanelVisibility(), "never") == 0 &&
     chosenProperties.size() == 0)
   {
-    // skip properties marked as never show (unless it was explicitly 'chosen').
-    PV_DEBUG_PANELS() << "Property:" << skey << " (" << xmllabel << ")"
-                      << " gets skipped because it has panel_visibility of \"never\"";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
+    vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(),
+      "skip since marked as never show (unless it was explicitly 'chosen').");
     return true;
   }
 
@@ -489,11 +480,11 @@ bool skip_property(vtkSMProperty* smproperty, const std::string& key,
     (legacyHiddenProperties.contains(skey) || legacyHiddenProperties.contains(simplifiedKey)))
   {
     // skipping properties marked with "show=0" in the hints section.
-    PV_DEBUG_PANELS() << "Property:" << skey << " (" << xmllabel << ")"
-                      << " gets skipped because is has show='0' specified in the Hints.";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
+    vtkVLogF(
+      VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since legacy hint with `show=0` specified.");
     return true;
   }
+
   return false;
 }
 
@@ -503,6 +494,7 @@ bool skip_group(vtkSMPropertyGroup* smgroup, const QStringList& chosenProperties
 {
   if (!chosenProperties.empty() && !chosenProperties.contains(smgroup->GetXMLLabel()))
   {
+    vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since group not chosen.");
     return true;
   }
 
@@ -510,10 +502,7 @@ bool skip_group(vtkSMPropertyGroup* smgroup, const QStringList& chosenProperties
     chosenProperties.size() == 0)
   {
     // skip property groups marked as never show
-    PV_DEBUG_PANELS() << "  - Group "
-                      << (smgroup->GetXMLLabel() ? smgroup->GetXMLLabel() : "(null)")
-                      << " gets skipped because it has panel_visibility of \"never\"";
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
+    vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since group visibility is set to `never`");
     return true;
   }
   return false;
@@ -594,7 +583,7 @@ public:
 
     // Add widget to the layout.
     QGridLayout* gridLayout = qobject_cast<QGridLayout*>(self->layout());
-    Q_ASSERT(gridLayout);
+    assert(gridLayout);
     item->appendToLayout(gridLayout, self->useDocumentationForLabels());
 
     foreach (pqPropertyWidgetDecorator* decorator, item->propertyWidget()->decorators())
@@ -625,7 +614,7 @@ pqProxyWidget::pqProxyWidget(
 void pqProxyWidget::constructor(
   vtkSMProxy* smproxy, const QStringList& properties, QWidget* parentObject, Qt::WindowFlags wflags)
 {
-  Q_ASSERT(smproxy);
+  assert(smproxy);
   (void)parentObject;
   (void)wflags;
 
@@ -825,13 +814,11 @@ void pqProxyWidget::createWidgets(const QStringList& properties)
 {
   vtkSMProxy* smproxy = this->proxy();
 
-  PV_DEBUG_PANELS() << "------------------------------------------------------";
-  PV_DEBUG_PANELS() << "Creating Properties Panel for" << smproxy->GetXMLLabel() << "("
-                    << smproxy->GetXMLGroup() << "," << smproxy->GetXMLName() << ")";
-  PV_DEBUG_PANELS() << "------------------------------------------------------";
+  vtkVLogScopeF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "creating widgets for `%s`",
+    smproxy->GetLogNameOrDefault());
 
   QGridLayout* gridLayout = qobject_cast<QGridLayout*>(this->layout());
-  Q_ASSERT(gridLayout);
+  assert(gridLayout);
 
   DocumentationType dtype = this->showProxyDocumentationInPanel(smproxy);
   if (dtype != NONE)
@@ -947,6 +934,8 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
   {
     auto smproperty = apair.first;
     const std::string& smkey = apair.second;
+    vtkVLogScopeF(
+      VISOCYTE_LOG_APPLICATION_VERBOSITY(), "create property widget for  `%s`", smkey.c_str());
     if (smproperty == nullptr ||
       ::skip_property(smproperty, smkey, properties, legacyHiddenProperties))
     {
@@ -960,6 +949,10 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
     catch (std::out_of_range&)
     {
     }
+
+    vtkVLogIfF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), smgroup != nullptr,
+      "part of property-group with label `%s`",
+      (smgroup->GetXMLLabel() ? smgroup->GetXMLLabel() : "(unspecified)"));
     if (smgroup != nullptr && ::skip_group(smgroup, properties))
     {
       if (properties.size() > 0)
@@ -971,7 +964,8 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
         // i.e. just create the widget for this property as if it was not part
         // of the group at all.
         smgroup = nullptr;
-        PV_DEBUG_PANELS() << "Ignoring property group for explicitly selected property: " << smkey;
+        vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(),
+          "treat as a non-group property since explicitly selected in isolation.");
       }
       else
       {
@@ -986,6 +980,8 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
       {
         // already created a custom widget for this group, skip
         // the property.
+        vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(),
+          "skip since already handled in custom group widget");
         continue;
       }
 
@@ -1000,9 +996,8 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
         {
           if (auto gwidget = iface->createWidgetForPropertyGroup(smproxy, smgroup, this))
           {
-            PV_DEBUG_PANELS() << "Group `"
-                              << (smgroup->GetXMLLabel() ? smgroup->GetXMLLabel() : "(null)")
-                              << "` is controlled by widget " << gwidget->metaObject()->className();
+            vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "created group widget `%s`",
+              gwidget->metaObject()->className());
 
             // handle group decorators for custom widget, if any.
             ::add_decorators(gwidget, smgroup->GetHints());
@@ -1024,7 +1019,6 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
 
             this->Internals->appendToItems(item, this);
             group_widget_status[smgroup] = EnumState::Custom;
-            PV_DEBUG_PANELS() << ""; // this adds a newline.
             break;
           }
         } // for ()
@@ -1043,7 +1037,7 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
       }
     }
 
-    Q_ASSERT(smgroup == nullptr || group_widget_status[smgroup] == EnumState::Collection);
+    assert(smgroup == nullptr || group_widget_status[smgroup] == EnumState::Collection);
 
     const bool isCompoundProxy = vtkSMCompoundSourceProxy::SafeDownCast(smproxy) != nullptr;
     const char* xmllabel =
@@ -1052,14 +1046,13 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
     const QString xmlDocumentation = pqProxyWidget::documentationText(smproperty);
 
     // create property widget
-    PV_DEBUG_PANELS() << "Property:" << smkey << "(" << xmllabel << ")";
     pqPropertyWidget* pwidget = this->createWidgetForProperty(smproperty, smproxy, this);
     if (!pwidget)
     {
-      PV_DEBUG_PANELS() << "Property:" << smkey << "(" << xmllabel << ")"
-                        << " gets skipped as we could not determine the widget type to create.";
+      vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(), "skip since failed to determine widget type.");
       continue;
     }
+
     pwidget->setObjectName(QString(smkey.c_str()).remove(' '));
 
     const QString itemLabel = this->UseDocumentationForLabels
@@ -1072,6 +1065,7 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
 
     // save record of the property widget and containing widget
     item->SearchTags << xmllabel << xmlDocumentation << smkey.c_str();
+    item->InformationOnly = smproperty->GetInformationOnly();
     item->Advanced =
       smproperty->GetPanelVisibility() && strcmp(smproperty->GetPanelVisibility(), "advanced") == 0;
     if (smproperty->GetPanelVisibilityDefaultForRepresentation())
@@ -1094,7 +1088,6 @@ void pqProxyWidget::createPropertyWidgets(const QStringList& properties)
     }
 
     this->Internals->appendToItems(item, this);
-    PV_DEBUG_PANELS() << ""; // this adds a newline.
   }
 }
 
@@ -1170,17 +1163,19 @@ pqPropertyWidget* pqProxyWidget::createWidgetForProperty(
 
   if (widget)
   {
+    vtkVLogF(
+      VISOCYTE_LOG_APPLICATION_VERBOSITY(), "created `%s`", widget->metaObject()->className());
     widget->setProperty(smproperty);
-  }
 
-  // Create decorators, if any.
-  ::add_decorators(widget, smproperty->GetHints());
+    // Create decorators, if any.
+    ::add_decorators(widget, smproperty->GetHints());
 
-  // Create all default decorators
-  for (int cc = 0; cc < interfaces.size(); cc++)
-  {
-    pqPropertyWidgetInterface* interface = interfaces[cc];
-    interface->createDefaultWidgetDecorators(widget);
+    // Create all default decorators
+    for (int cc = 0; cc < interfaces.size(); cc++)
+    {
+      pqPropertyWidgetInterface* interface = interfaces[cc];
+      interface->createDefaultWidgetDecorators(widget);
+    }
   }
 
   return widget;

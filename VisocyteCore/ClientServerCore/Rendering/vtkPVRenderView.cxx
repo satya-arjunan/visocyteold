@@ -60,6 +60,7 @@
 #include "vtkPVGridAxes3DActor.h"
 #include "vtkPVHardwareSelector.h"
 #include "vtkPVInteractorStyle.h"
+#include "vtkPVLogger.h"
 #include "vtkPVMaterialLibrary.h"
 #include "vtkPVOptions.h"
 #include "vtkPVServerInformation.h"
@@ -137,6 +138,7 @@ public:
   bool IsInCapture;
   bool IsInOSPRay;
   bool OSPRayShadows;
+  bool OSPRayDenoise;
   int OSPRayCount;
   vtkNew<vtkFloatArray> ArrayHolder;
   vtkNew<vtkWindowToImageFilter> ZGrabber;
@@ -337,6 +339,7 @@ vtkPVRenderView::vtkPVRenderView()
   this->Internals->IsInCapture = false;
   this->Internals->IsInOSPRay = false;
   this->Internals->OSPRayShadows = false;
+  this->Internals->OSPRayDenoise = true;
   this->Internals->OSPRayCount = 0;
 
   // non-reference counted, so no worries about reference loops.
@@ -467,7 +470,6 @@ vtkPVRenderView::vtkPVRenderView()
 
     this->RubberBandZoom = vtkInteractorStyleRubberBandZoom::New();
     this->RubberBandZoom->SetLockAspectToViewport(true);
-    this->RubberBandZoom->SetCenterAtStartPosition(true);
     this->RubberBandZoom->SetUseDollyForPerspectiveProjection(false);
     this->PolygonStyle = vtkInteractorStyleDrawPolygon::New();
     vtkCommand* observer3 =
@@ -1205,6 +1207,8 @@ void vtkPVRenderView::SynchronizeForCollaboration()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::Update()
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   vtkTimerLog::MarkStartEvent("RenderView::Update");
 
   // reset the bounds, so that representations can provide us with bounds
@@ -1301,6 +1305,8 @@ void vtkPVRenderView::CopyViewUpdateOptions(vtkPVRenderView* otherView)
 //----------------------------------------------------------------------------
 void vtkPVRenderView::UpdateLOD()
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   vtkTimerLog::MarkStartEvent("RenderView::UpdateLOD");
 
   // Update LOD geometry.
@@ -1339,6 +1345,8 @@ void vtkPVRenderView::UpdateLOD()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::StillRender()
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   vtkTimerLog::MarkStartEvent("Still Render");
   this->GetRenderWindow()->SetDesiredUpdateRate(0.002);
 
@@ -1352,6 +1360,8 @@ void vtkPVRenderView::StillRender()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::InteractiveRender()
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   vtkTimerLog::MarkStartEvent("Interactive Render");
   this->GetRenderWindow()->SetDesiredUpdateRate(5.0);
 
@@ -1366,6 +1376,9 @@ void vtkPVRenderView::InteractiveRender()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::Render(bool interactive, bool skip_rendering)
 {
+  vtkVLogScopeF(VISOCYTE_LOG_RENDERING_VERBOSITY(), "Render(interactive=%s, skip_rendering=%s)",
+    (interactive ? "true" : "false"), (skip_rendering ? "true" : "false"));
+
   this->UpdateStereoProperties();
 
   if (this->SynchronizedWindows->GetMode() != vtkPVSynchronizedRenderWindows::CLIENT ||
@@ -1440,6 +1453,10 @@ void vtkPVRenderView::Render(bool interactive, bool skip_rendering)
     "Render (use_lod: %d), (use_distributed_rendering: %d), (use_ordered_compositing: %d)",
     use_lod_rendering, use_distributed_rendering, use_ordered_compositing);
 
+  vtkVLogF(VISOCYTE_LOG_RENDERING_VERBOSITY(),
+    "use_lod=%d, use_distributed_rendering=%d, use_ordered_compositing=%d", use_lod_rendering,
+    use_distributed_rendering, use_ordered_compositing);
+
   // If ordered compositing is needed, we have two options: either we're
   // supposed to (i) build a KdTree and redistribute data or we are expected to (ii) use
   // a custom partition provided via `vtkPartitionOrder` built using local data
@@ -1452,6 +1469,8 @@ void vtkPVRenderView::Render(bool interactive, bool skip_rendering)
     {
       vtkTimerLog::FormatAndMarkEvent(
         "Using ordered compositing w/ data redistribution, if needed");
+      vtkVLogF(VISOCYTE_LOG_RENDERING_VERBOSITY(),
+        "Using ordered compositing w/ data redistribution, if needed");
       // not using a custom (bounds-based ordering) i.e. we use in path (i). Let
       // the delivery manager redistrbute data as it deems necessary.
       this->Internals->DeliveryManager->RedistributeDataForOrderedCompositing(use_lod_rendering);
@@ -1460,6 +1479,8 @@ void vtkPVRenderView::Render(bool interactive, bool skip_rendering)
     else
     {
       vtkTimerLog::FormatAndMarkEvent("Using ordered compositing with w/o data redistribution");
+      vtkVLogF(VISOCYTE_LOG_RENDERING_VERBOSITY(),
+        "Using ordered compositing with w/o data redistribution");
       // using custom rendering ordering without any data redistribution i.e.
       // path (ii).
 
@@ -2181,6 +2202,8 @@ double vtkPVRenderView::GetZbufferDataAtPoint(int x, int y)
 //----------------------------------------------------------------------------
 void vtkPVRenderView::StreamingUpdate(const double view_planes[24])
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   vtkTimerLog::MarkStartEvent("vtkPVRenderView::StreamingUpdate");
 
   // Provide information about the view planes to the representations.
@@ -2200,6 +2223,8 @@ void vtkPVRenderView::StreamingUpdate(const double view_planes[24])
 //----------------------------------------------------------------------------
 void vtkPVRenderView::DeliverStreamedPieces(unsigned int size, unsigned int* representation_ids)
 {
+  vtkVLogScopeFunction(VISOCYTE_LOG_RENDERING_VERBOSITY());
+
   // the plan now is to fetch the piece and then simply give it to the
   // representation as "next piece". Representation can decide what to do with
   // it, including adding to the existing datastructure.
@@ -3015,7 +3040,7 @@ vtkFloatArray* vtkPVRenderView::GetCapturedValuesFloat()
 //----------------------------------------------------------------------------
 void vtkPVRenderView::SetViewTime(double value)
 {
-#if VTK_MODULE_VTK_RenderingOSPRay
+#if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
   vtkRenderer* ren = this->GetRenderer();
   vtkOSPRayRendererNode::SetViewTime(value, ren);
 #endif
@@ -3102,14 +3127,7 @@ bool vtkPVRenderView::GetShadows()
 {
 #if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
   vtkRenderer* ren = this->GetRenderer();
-  if (ren->GetUseShadows() == 1)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (ren->GetUseShadows() == 1);
 #else
   return false;
 #endif
@@ -3178,6 +3196,29 @@ int vtkPVRenderView::GetMaxFrames()
   return vtkOSPRayRendererNode::GetMaxFrames(ren);
 #else
   return 1;
+#endif
+}
+
+//----------------------------------------------------------------------------
+void vtkPVRenderView::SetDenoise(bool v)
+{
+#if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
+  this->Internals->OSPRayDenoise = v;
+  vtkRenderer* ren = this->GetRenderer();
+  vtkOSPRayRendererNode::SetEnableDenoiser(v, ren);
+#else
+  (void)v;
+#endif
+}
+
+//----------------------------------------------------------------------------
+bool vtkPVRenderView::GetDenoise()
+{
+#if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
+  vtkRenderer* ren = this->GetRenderer();
+  return (vtkOSPRayRendererNode::GetEnableDenoiser(ren) == 1);
+#else
+  return false;
 #endif
 }
 
@@ -3252,7 +3293,7 @@ void vtkPVRenderView::SetBackgroundEast(double x, double y, double z)
 //----------------------------------------------------------------------------
 void vtkPVRenderView::SetTimeCacheSize(int v)
 {
-#if VTK_MODULE_VTK_RenderingOSPRay
+#if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
   vtkRenderer* ren = this->GetRenderer();
   vtkOSPRayRendererNode::SetTimeCacheSize(v, ren);
 #else
@@ -3263,7 +3304,7 @@ void vtkPVRenderView::SetTimeCacheSize(int v)
 //----------------------------------------------------------------------------
 int vtkPVRenderView::GetTimeCacheSize()
 {
-#if VTK_MODULE_VTK_RenderingOSPRay
+#if VTK_MODULE_ENABLE_VTK_RenderingOSPRay
   vtkRenderer* ren = this->GetRenderer();
   return vtkOSPRayRendererNode::GetTimeCacheSize(ren);
 #else

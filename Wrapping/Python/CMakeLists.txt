@@ -1,30 +1,31 @@
 set(python_files
-  visocyte/annotation.py
+  visocyte/__init__.py
   visocyte/_backwardscompatibilityhelper.py
-  visocyte/benchmark/basic.py
+  visocyte/_colorMaps.py
   visocyte/benchmark/__init__.py
+  visocyte/benchmark/basic.py
   visocyte/benchmark/logbase.py
   visocyte/benchmark/logparser.py
   visocyte/benchmark/manyspheres.py
   visocyte/benchmark/waveletcontour.py
   visocyte/benchmark/waveletvolume.py
-  visocyte/calculator.py
   visocyte/collaboration.py
-  visocyte/_colorMaps.py
   visocyte/coprocessing.py
   visocyte/cpexport.py
   visocyte/cpstate.py
   visocyte/demos/demo1.py
   visocyte/demos/show_grid_as_background.py
   visocyte/detail/__init__.py
+  visocyte/detail/annotation.py
+  visocyte/detail/calculator.py
+  visocyte/detail/extract_selection.py
   visocyte/detail/pythonalgorithm.py
-  visocyte/extract_selection.py
-  visocyte/__init__.py
+  visocyte/detail/python_selector.py
   visocyte/lookuptable.py
+  visocyte/modules/__init__.py
   visocyte/numeric.py
   visocyte/numpy_support.py
   visocyte/pv-vtk-all.py
-  visocyte/python_selector.py
   visocyte/python_view.py
   visocyte/servermanager.py
   visocyte/simple.py
@@ -32,6 +33,7 @@ set(python_files
   visocyte/smtesting.py
   visocyte/smtrace.py
   visocyte/spatiotemporalparallelism.py
+  visocyte/tpl/__init__.py
   visocyte/util/__init__.py
   visocyte/util/vtkAlgorithm.py
   visocyte/variant.py

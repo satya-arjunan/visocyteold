@@ -50,6 +50,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QTimer>
 #include <QtDebug>
 
+#include <cassert>
+
 class pqVRQueueHandler::pqInternals
 {
 public:
@@ -155,7 +157,7 @@ void pqVRQueueHandler::stop()
 //----------------------------------------------------------------------------
 void pqVRQueueHandler::processEvents()
 {
-  Q_ASSERT(this->Internals->Queue != NULL);
+  assert(this->Internals->Queue != NULL);
   std::queue<vtkVREventData> events;
   this->Internals->Queue->TryDequeue(events);
 
@@ -259,7 +261,7 @@ void pqVRQueueHandler::configureStyles(vtkPVXMLElement* xml, vtkSMProxyLocator* 
 //----------------------------------------------------------------------------
 void pqVRQueueHandler::saveStylesConfiguration(vtkPVXMLElement* root)
 {
-  Q_ASSERT(root != NULL);
+  assert(root != NULL);
 
   vtkPVXMLElement* tempParent = vtkPVXMLElement::New();
   tempParent->SetName("VRInteractorStyles");

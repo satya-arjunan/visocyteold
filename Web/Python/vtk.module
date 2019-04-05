@@ -1,5 +1,5 @@
 NAME
-  Visocyte::WebPython
+  Visocyte::PVWebPython
 LIBRARY_NAME
   vtkPVWebPython
 CONDITION

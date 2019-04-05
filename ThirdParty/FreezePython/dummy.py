@@ -5,15 +5,15 @@ except:
     pass
 
 import visocyte
-import visocyte.annotation
+import visocyte.detail.annotation
 import visocyte.benchmark
-import visocyte.calculator
+import visocyte.detail.calculator
 import visocyte.collaboration
 import visocyte.compile_all_pv
 import visocyte.coprocessing
 import visocyte.cpexport
 import visocyte.cpstate
-import visocyte.extract_selection
+import visocyte.detail.extract_selection
 import visocyte.lookuptable
 import visocyte.numeric
 import visocyte.python_view

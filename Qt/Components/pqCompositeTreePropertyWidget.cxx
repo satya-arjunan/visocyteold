@@ -35,6 +35,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqTreeView.h"
 #include "pqTreeViewSelectionHelper.h"
 #include "vtkEventQtSlotConnect.h"
+#include "vtkPVLogger.h"
 #include "vtkPVXMLElement.h"
 #include "vtkSMCompositeTreeDomain.h"
 #include "vtkSMIntVectorProperty.h"
@@ -42,6 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QSignalBlocker>
+
+#include <cassert>
 
 namespace
 {
@@ -102,7 +105,7 @@ pqCompositeTreePropertyWidget::pqCompositeTreePropertyWidget(
 
   vtkSMCompositeTreeDomain* ctd =
     vtkSMCompositeTreeDomain::SafeDownCast(smproperty->FindDomain("vtkSMCompositeTreeDomain"));
-  Q_ASSERT(ctd);
+  assert(ctd);
   this->Domain = ctd;
 
   this->VTKConnect->Connect(ctd, vtkCommand::DomainModifiedEvent, &this->Timer, SLOT(start()));
@@ -149,6 +152,8 @@ pqCompositeTreePropertyWidget::pqCompositeTreePropertyWidget(
       if (elem->GetScalarAttribute("number_of_rows", &row_count))
       {
         treeView->setMaximumRowCountBeforeScrolling(row_count);
+        vtkVLogF(VISOCYTE_LOG_APPLICATION_VERBOSITY(),
+          "widget height limited to %d rows using `WidgetHeight` hint.", row_count);
       }
     }
   }
@@ -160,9 +165,6 @@ pqCompositeTreePropertyWidget::pqCompositeTreePropertyWidget(
   this->addPropertyLink(this, "values", SIGNAL(valuesChanged()), smproperty);
   this->connect(
     dmodel, SIGNAL(dataChanged(const QModelIndex&, const QModelIndex&)), SIGNAL(valuesChanged()));
-
-  PV_DEBUG_PANELS() << "pqCompositeTreePropertyWidget for an IntVectorPropertyWidget with a "
-                    << "CompositeTreeDomain";
 }
 
 //-----------------------------------------------------------------------------
@@ -193,7 +195,7 @@ void pqCompositeTreePropertyWidget::domainModified()
 //-----------------------------------------------------------------------------
 QList<QVariant> pqCompositeTreePropertyWidget::values() const
 {
-  Q_ASSERT(this->Model && this->Property && this->Domain);
+  assert(this->Model && this->Property && this->Domain);
   switch (this->Domain->GetMode())
   {
     case vtkSMCompositeTreeDomain::ALL:
@@ -221,7 +223,7 @@ QList<QVariant> pqCompositeTreePropertyWidget::values() const
 //-----------------------------------------------------------------------------
 void pqCompositeTreePropertyWidget::setValues(const QList<QVariant>& values)
 {
-  Q_ASSERT(this->Model && this->Property && this->Domain);
+  assert(this->Model && this->Property && this->Domain);
   switch (this->Domain->GetMode())
   {
     case vtkSMCompositeTreeDomain::ALL:

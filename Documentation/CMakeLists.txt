@@ -18,4 +18,8 @@ add_custom_target(VisocyteDoc-TGZ
     ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}
   WORKING_DIRECTORY ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/..
   COMMENT "Generate VisocyteGeneratedDocs.tar.gz")
-add_dependencies(VisocyteDoc-TGZ VisocyteDoc)
+
+add_dependencies(VisocyteDoc-TGZ VisocyteDoxygenDoc)
+if (VISOCYTE_ENABLE_PYTHON)
+  add_dependencies(VisocyteDoc-TGZ VisocytePythonDoc)
+endif ()

@@ -16,9 +16,9 @@
 #define vtk_cgns_h
 
 /* Use the cgns library configured for Visocyte.  */
-#cmakedefine01 VTK_MODULE_USE_EXTERNAL_vtkcgns
+#cmakedefine01 VTK_MODULE_USE_EXTERNAL_Visocyte_cgns
 
-#if VTK_MODULE_USE_EXTERNAL_vtkcgns
+#if VTK_MODULE_USE_EXTERNAL_Visocyte_cgns
 # include <cgnslib.h>
 # include <cgns_io.h>
 #else

@@ -5,7 +5,7 @@ DESCRIPTION
 REQUIRES_MODULES
   Visocyte::ClientServerCoreCore
   Visocyte::ClientServerCoreRendering
-  Visocyte::Common
+  Visocyte::Core
   Visocyte::ServerManagerDefault
   Visocyte::VTKExtensionsRendering
   VTK::CommonCore

@@ -58,7 +58,8 @@
 #include "vtkPVPluginLoader.h"
 
 #include <assert.h>
-#include <clocale>   // needed for setlocale()
+#include <clocale> // needed for setlocale()
+#include <sstream>
 #include <stdexcept> // for runtime_error
 
 namespace
@@ -201,8 +202,9 @@ bool vtkProcessModule::Initialize(ProcessTypes type, int& argc, char**& argv)
   {
     if (strcmp(argv[i], "-display") == 0)
     {
-      char* displayenv = new char[strlen(argv[i + 1]) + 10];
-      sprintf(displayenv, "DISPLAY=%s", argv[i + 1]);
+      size_t size = strlen(argv[i + 1]) + 10;
+      char* displayenv = new char[size];
+      snprintf(displayenv, size, "DISPLAY=%s", argv[i + 1]);
       vtksys::SystemTools::PutEnv(displayenv);
       delete[] displayenv;
       // safe to delete since PutEnv keeps a copy of the string.
@@ -580,7 +582,26 @@ bool vtkProcessModule::InitializePythonEnvironment()
     // where Visocyte modules are directly imported in python (not pvpython).
     vtkProcessModule::FinalizePython = true;
   }
-#endif
+
+#if defined(_WIN32)
+  // Visocyte executables generally link with all modules built except a few
+  // such as the Catalyst libraries e.g. vtkPVCatalyst.dll. Now, when importing its
+  // Python module `vtkPVCatalystPython.pyd` for example, it will need to load
+  // vtkPVCatalyst.dll from its standard load paths which do not include the
+  // executable path where the vtkPVCatalyst.dll actually exists. Hence we
+  // manually extend the PATH to include it. This is not an issue on unixes
+  // since rpath (or LD_LIBRARY_PATH set by shared forwarding executables) takes
+  // care of it.
+  std::ostringstream stream;
+  stream << "PATH=" << this->SelfDir;
+  if (const char* oldpath = vtksys::SystemTools::GetEnv("PATH"))
+  {
+    stream << ";" << oldpath;
+  }
+  vtksys::SystemTools::PutEnv(stream.str());
+#endif // defined(_WIN32)
+
+#endif // VTK_MODULE_ENABLE_VTK_PythonInterpreter
   return true;
 }
 
@@ -636,13 +657,18 @@ int vtkProcessModule::GetNumberOfGhostLevelsToRequest(vtkInformation* info)
     return 0;
   }
 
-  if (vtkDataSet::GetData(info) != nullptr || vtkCompositeDataSet::GetData(info) != nullptr)
+  vtkDataSet* ds = vtkDataSet::GetData(info);
+  if (ds || vtkCompositeDataSet::GetData(info) != nullptr)
   {
     // Check if this is structured-pipeline, this includes unstructured pipelines
     // downstream from structured source e.g. Wavelet - > Clip.
     // To do that, we use a trick. If WHOLE_EXTENT() key us present, it must have
     // started as a structured dataset.
-    const bool is_structured = (info->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()) != 0);
+    // The is one exception to this for ExplicitStructuredGrid data, their
+    // behavior is both structured and unstructured but regarding ghost cells
+    // they have the behavior of an unstructured dataset.
+    const bool is_structured = (info->Has(vtkStreamingDemandDrivenPipeline::WHOLE_EXTENT()) != 0) &&
+      (!ds || (ds && !ds->IsA("vtkExplicitStructuredGrid")));
     return is_structured
       ? vtkProcessModule::GetDefaultMinimumGhostLevelsToRequestForStructuredPipelines()
       : vtkProcessModule::GetDefaultMinimumGhostLevelsToRequestForUnstructuredPipelines();

@@ -155,8 +155,8 @@ Typically, one addresses issues by writing code. To start contributing to Visocy
     the customer with any details necessary to test the fix.
 
 Our [Wiki][] is used to document features, flesh out designs and host other
-documentation. We have several [Mailing Lists][] to coordinate development and
-to provide support.
+documentation. We have a [Visocyte Discourse][] forum to coordinate development
+and to provide support.
 
 [Visocyte Git README]: Documentation/dev/git/README.md
 [developer instructions]: Documentation/dev/git/develop.md
@@ -176,7 +176,7 @@ to provide support.
 [Labels]: https://gitlab.kitware.com/visocyte/visocyte/labels
 [Milestones]: https://gitlab.kitware.com/visocyte/visocyte/milestones
 [Wiki]: http://www.visocyte.org/Wiki/Visocyte
-[Mailing Lists]: http://www.visocyte.org/mailing-lists/
+[Visocyte Discourse]: https://discourse.visocyte.org/
 [Gitlab Markdown]: https://gitlab.kitware.com/help/markdown/markdown
 [new issue]: https://gitlab.kitware.com/visocyte/visocyte/issues/new
 [Labels Glossary]: Documentation/dev/git/labels.md

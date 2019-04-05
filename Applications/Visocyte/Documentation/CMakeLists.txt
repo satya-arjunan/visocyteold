@@ -27,6 +27,7 @@ set(visocyte_documentation_qrc
   "${CMAKE_CURRENT_BINARY_DIR}/visocyte_documentation.qrc")
 visocyte_client_generate_help(
   NAME        visocyte
+  OUTPUT_PATH visocyte_qch
   TARGET      visocyte_qhp
   OUTPUT_DIR  "${CMAKE_CURRENT_BINARY_DIR}"
   SOURCE_DIR  "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -56,6 +57,6 @@ target_link_libraries(vtkVisocyteDocumentation
     Qt5::Core)
 
 install(
-  FILES       "${CMAKE_CURRENT_BINARY_DIR}/visocyte.qch"
+  FILES       "${visocyte_qch}"
   DESTINATION "${CMAKE_INSTALL_DOCDIR}"
   COMPONENT   doc)

@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkPVClientServerCoreDefault
 KIT
-  Visocyte::ClientServer
+  Visocyte::ClientServerKit
 DEPENDS
   Visocyte::ClientServerCoreRendering
   Visocyte::VTKExtensionsDefault

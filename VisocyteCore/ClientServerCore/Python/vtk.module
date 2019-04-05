@@ -7,7 +7,7 @@ CONDITION
 GROUPS
   VisocyteCore
 KIT
-  Visocyte::ClientServer
+  Visocyte::ClientServerKit
 DEPENDS
   VTK::CommonExecutionModel
   VTK::FiltersProgrammable
@@ -15,8 +15,9 @@ DEPENDS
 PRIVATE_DEPENDS
   Visocyte::ClientServerCoreCore
   VTK::ParallelCore
+  VTK::WrappingPythonCore
 TEST_DEPENDS
-  Visocyte::Common
+  Visocyte::Core
   VTK::TestingCore
 TEST_LABELS
   Visocyte

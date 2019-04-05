@@ -63,8 +63,8 @@ void pqDataQueryReaction::showQueryDialog()
   pqFindDataSingleton->raise();
 #else
   QMessageBox::warning(0, "Selection Not Supported",
-    "Error: Find Data requires that Visocyte be built with "
-    "Python enabled. To enable Python set the CMake flag '"
-    "VISOCYTE_ENABLE_PYTHON' to True.");
+    "Error: Find Data requires that Visocyte be built with Python enabled. "
+    "To enable Python set the CMake flag 'VISOCYTE_ENABLE_PYTHON' to True "
+    "and ensure that the 'Visocyte::pqPython'module is available.");
 #endif
 }

@@ -12,8 +12,18 @@ configure_file(
   @ONLY)
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file("${visocyte_cmake_build_dir}/visocyte-config-version.cmake"
-  VERSION "${VISOCYTE_MAJOR_VERSION}.${VISOCYTE_MINOR_VERSION}.${VISOCYTE_BUILD_VERSION}"
-  COMPATIBILITY SameMinorVersion)
+  VERSION "${VISOCYTE_VERSION_FULL}"
+  COMPATIBILITY AnyNewerVersion)
+
+# For convenience, a package is written to the top of the build tree. At some
+# point, this should probably be deprecated and warn when it is used.
+file(GENERATE
+  OUTPUT  "${CMAKE_BINARY_DIR}/visocyte-config.cmake"
+  CONTENT "include(\"${visocyte_cmake_build_dir}/visocyte-config.cmake\")\n")
+configure_file(
+  "${visocyte_cmake_build_dir}/visocyte-config-version.cmake"
+  "${CMAKE_BINARY_DIR}/visocyte-config-version.cmake"
+  COPYONLY)
 
 set(visocyte_cmake_module_files
   FindCGNS.cmake
@@ -21,7 +31,7 @@ set(visocyte_cmake_module_files
   # Client API
   visocyte_client_initializer.cxx.in
   visocyte_client_initializer.h.in
-  visocyte_client_launcher.c.in
+  visocyte_launcher.c.in
   visocyte_client_main.cxx.in
   VisocyteClient.cmake
   visocyte_servermanager_convert_categoryindex.xsl

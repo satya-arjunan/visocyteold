@@ -44,7 +44,7 @@ if (CMAKE_Fortran_COMPILER_WORKS)
   set(catalyst_fortran_using_mangling "${FortranCInterface_GLOBAL_FOUND}")
 
   list(APPEND classes
-    FortranPythonAdaptorAPI.cxx)
+    FortranPythonAdaptorAPI)
   list(APPEND headers
     "${CMAKE_CURRENT_BINARY_DIR}/FortranPythonAdaptorAPIMangling.h")
 endif ()
@@ -55,7 +55,7 @@ vtk_module_add_module(Visocyte::PythonCatalyst
 vtk_module_client_server_exclude()
 
 if (catalyst_fortran_using_mangling)
-  vtk_module_define(Visocyte::PythonCatalyst
+  vtk_module_definitions(Visocyte::PythonCatalyst
     PRIVATE
       CATALYST_FORTRAN_USING_MANGLING=1)
 endif ()

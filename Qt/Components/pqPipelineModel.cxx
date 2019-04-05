@@ -43,10 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqServerManagerObserver.h"
 #include "pqSpreadSheetView.h"
 #include "pqUndoStack.h"
-#include "pqXYBagChartView.h"
 #include "pqXYBarChartView.h"
 #include "pqXYChartView.h"
-#include "pqXYFunctionalBagChartView.h"
 #include "pqXYHistogramChartView.h"
 #include "vtkCommand.h"
 #include "vtkNew.h"
@@ -63,6 +61,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QString>
 #include <QStyle>
 #include <QtDebug>
+
+#include <cassert>
 
 class ModifiedLiveInsituLink : public vtkCommand
 {
@@ -88,11 +88,8 @@ static const QString SERVER = "SERVER";
 static const QString SECURE_SERVER = "SECURE_SERVER";
 static const QString LINK = "LINK";
 static const QString GEOMETRY = "GEOMETRY";
-static const QString BAGCHART = pqXYBagChartView::XYBagChartViewType();
 static const QString BARCHART = pqXYBarChartView::XYBarChartViewType();
 static const QString BOXCHART = pqBoxChartView::chartViewType();
-static const QString FUNCTIONALBAGCHART =
-  pqXYFunctionalBagChartView::XYFunctionalBagChartViewType();
 static const QString HISTOGRAMCHART = pqXYHistogramChartView::XYHistogramChartViewType();
 static const QString LINECHART = pqXYChartView::XYChartViewType();
 static const QString TABLE = pqSpreadSheetView::spreadsheetViewType();
@@ -147,7 +144,7 @@ public:
     if (itemType == pqPipelineModel::Link)
     {
       pqPipelineModelDataItem* proxyItem = model->getDataItem(object, NULL, pqPipelineModel::Proxy);
-      Q_ASSERT(proxyItem != 0);
+      assert(proxyItem != 0);
       proxyItem->Links.push_back(this);
     }
     if (this->Object)
@@ -191,7 +188,7 @@ public:
     {
       pqPipelineModelDataItem* proxyItem =
         this->Model->getDataItem(this->Object, NULL, pqPipelineModel::Proxy);
-      Q_ASSERT(proxyItem != 0);
+      assert(proxyItem != 0);
       proxyItem->Links.push_back(this);
     }
     foreach (pqPipelineModelDataItem* child, this->Children)
@@ -455,11 +452,8 @@ void pqPipelineModel::constructor()
     ":/pqWidgets/Icons/pqSecureServer16.png");
   this->PixmapMap[PipelineModelIconType::LINK].load(":/pqWidgets/Icons/pqLinkBack16.png");
   this->PixmapMap[PipelineModelIconType::GEOMETRY].load(":/pqWidgets/Icons/pq3DView16.png");
-  this->PixmapMap[PipelineModelIconType::BAGCHART].load(":/pqWidgets/Icons/pqBagChart16.png");
   this->PixmapMap[PipelineModelIconType::BARCHART].load(":/pqWidgets/Icons/pqHistogram16.png");
   this->PixmapMap[PipelineModelIconType::BOXCHART].load(":/pqWidgets/Icons/pqBoxChart16.png");
-  this->PixmapMap[PipelineModelIconType::FUNCTIONALBAGCHART].load(
-    ":/pqWidgets/Icons/pqFunctionalBagChart16.png");
   this->PixmapMap[PipelineModelIconType::HISTOGRAMCHART].load(
     ":/pqWidgets/Icons/pqHistogram16.png");
   this->PixmapMap[PipelineModelIconType::LINECHART].load(":/pqWidgets/Icons/pqLineChart16.png");
@@ -1306,7 +1300,7 @@ void pqPipelineModel::removeConnection(
   // Has a fan-in for sure.
   // Remove the link item under the source.
   pqPipelineModelDataItem* linkItem = this->getDataItem(sink, srcItem, pqPipelineModel::Link);
-  Q_ASSERT(linkItem != 0);
+  assert(linkItem != 0);
   this->removeChildFromParent(linkItem);
   delete linkItem;
 

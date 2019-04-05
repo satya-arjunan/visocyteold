@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqAnimationTimeWidget.h"
 #include "ui_pqAnimationTimeWidget.h"
 
+#include "pqDoubleLineEdit.h"
 #include "pqPropertyLinks.h"
 #include "pqPropertyLinksConnection.h"
 #include "pqTimer.h"
@@ -40,6 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkWeakPointer.h"
 
 #include <QDoubleValidator>
+
+#include <cassert>
 
 class pqAnimationTimeWidget::pqInternals
 {
@@ -83,7 +86,7 @@ public:
 protected:
   QVariant currentServerManagerValue(bool use_unchecked) const override
   {
-    Q_ASSERT(use_unchecked == false);
+    assert(use_unchecked == false);
     Q_UNUSED(use_unchecked);
     unsigned int count = vtkSMPropertyHelper(this->propertySM()).GetNumberOfElements();
     return QVariant(static_cast<int>(count));
@@ -150,7 +153,7 @@ void pqAnimationTimeWidget::setAnimationScene(vtkSMProxy* ascene)
   // In a Visocyte application, it's safe to assume that the timekeeper an
   // animation scene is using doesn't change in the life span of the scene.
   vtkSMProxy* atimekeeper = vtkSMPropertyHelper(ascene, "TimeKeeper").GetAsProxy();
-  Q_ASSERT(atimekeeper != NULL);
+  assert(atimekeeper != NULL);
 
   internals.Links.addPropertyLink<pqAnimationTimeWidgetLinks>(this, "timeStepCount",
     SIGNAL(dummySignal()), atimekeeper, atimekeeper->GetProperty("TimestepValues"));
@@ -179,8 +182,9 @@ void pqAnimationTimeWidget::setTimeValue(double time)
 {
   Ui::AnimationTimeWidget& ui = this->Internals->Ui;
   ui.timeValue->setProperty("PQ_DOUBLE_VALUE", QVariant(time));
-  QString textValue =
-    QString::number(time, this->Internals->TimeNotation.toLatin1(), this->Internals->Precision);
+
+  QString textValue = this->formatDouble(time);
+
   ui.timeValue->setTextAndResetCursor(textValue);
 
   for (int index = 0; index < ui.timeValueComboBox->count(); index++)
@@ -373,15 +377,34 @@ void pqAnimationTimeWidget::repopulateTimeComboBox()
   vtkSMPropertyHelper helper(this->timeKeeper(), "TimestepValues");
   bool prev = ui.timeValueComboBox->blockSignals(true);
   ui.timeValueComboBox->clear();
+
   for (unsigned int index = 0; index < helper.GetNumberOfElements(); index++)
   {
-    QString textValue = QString::number(helper.GetAsDouble(index),
-      this->Internals->TimeNotation.toLatin1(), this->Internals->Precision);
+    QString textValue = this->formatDouble(helper.GetAsDouble(index));
     ui.timeValueComboBox->addItem(textValue, helper.GetAsDouble(index));
   }
   ui.timeValueComboBox->blockSignals(prev);
 
   this->setTimeValue(currentTimeValue);
+}
+
+//-----------------------------------------------------------------------------
+QString pqAnimationTimeWidget::formatDouble(double value)
+{
+  QChar format = this->Internals->TimeNotation.toUpper();
+  QTextStream::RealNumberNotation notation = QTextStream::ScientificNotation;
+  if (format == QChar('F'))
+  {
+    notation = QTextStream::FixedNotation;
+  }
+  else if (format == QChar('G'))
+  {
+    notation = QTextStream::SmartNotation;
+  }
+
+  QString textValue = pqDoubleLineEdit::formatDouble(value, notation, this->Internals->Precision);
+
+  return textValue;
 }
 
 //-----------------------------------------------------------------------------

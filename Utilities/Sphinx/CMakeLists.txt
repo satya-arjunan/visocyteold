@@ -1,5 +1,5 @@
 # Build Sphinx documentation for Python modules.
-if (NOT VISOCYTE_ENABLE_PYTHON OR NOT BUILD_DOCUMENTATION)
+if (NOT VISOCYTE_ENABLE_PYTHON)
   return()
 endif()
 
@@ -22,7 +22,7 @@ file(COPY config
      PATTERN "*.in" EXCLUDE)
 
 set (visocyte_paths
-  "['${VTK_BUILD_PYTHON_MODULES_DIR}',
+  "['${Visocyte_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}',
     '${CMAKE_RUNTIME_OUTPUT_DIRECTORY}',
     '${CMAKE_LIBRARY_OUTPUT_DIRECTORY}']")
 configure_file(config/conf.py.in config/conf.py @ONLY)
@@ -35,7 +35,7 @@ add_custom_target(VisocytePythonDoc
   COMMAND $<TARGET_FILE:pvpython>
           "${CMAKE_CURRENT_SOURCE_DIR}/sphinx_apidoc.py"
           -o "${CMAKE_CURRENT_BINARY_DIR}/config"
-          "${VTK_BUILD_PYTHON_MODULES_DIR}/visocyte"
+          "${Visocyte_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/visocyte"
   COMMAND ${sphinx-build}
           -b html "${CMAKE_CURRENT_BINARY_DIR}/config"
           "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/python"
@@ -44,5 +44,3 @@ add_custom_target(VisocytePythonDoc
           config/quick-start.rst
           config/api-changes.rst
           config/conf.py.in)
-
-add_dependencies(VisocyteDoc VisocytePythonDoc)

@@ -27,6 +27,8 @@
 #include "vtkCompositeDataSet.h"
 #include "vtkDataObjectTreeIterator.h"
 #include "vtkDataSetSurfaceFilter.h"
+#include "vtkExplicitStructuredGrid.h"
+#include "vtkExplicitStructuredGridSurfaceFilter.h"
 #include "vtkFeatureEdges.h"
 #include "vtkFloatArray.h"
 #include "vtkGarbageCollector.h"
@@ -507,6 +509,12 @@ void vtkPVGeometryFilter::ExecuteBlock(vtkDataObject* input, vtkPolyData* output
   if (input->IsA("vtkHyperTreeGrid"))
   {
     this->HyperTreeGridExecute(static_cast<vtkHyperTreeGrid*>(input), output, doCommunicate);
+    return;
+  }
+  if (input->IsA("vtkExplicitStructuredGrid"))
+  {
+    this->ExplicitStructuredGridExecute(
+      static_cast<vtkExplicitStructuredGrid*>(input), output, doCommunicate, wholeExtent);
     return;
   }
   if (input->IsA("vtkDataSet"))
@@ -1627,7 +1635,7 @@ void vtkPVGeometryFilter::PolyDataExecute(
 
 //----------------------------------------------------------------------------
 void vtkPVGeometryFilter::HyperTreeGridExecute(
-  vtkHyperTreeGrid* input, vtkPolyData* out, int doCommunicate)
+  vtkHyperTreeGrid* input, vtkPolyData* output, int doCommunicate)
 {
   if (!this->UseOutline)
   {
@@ -1640,14 +1648,81 @@ void vtkPVGeometryFilter::HyperTreeGridExecute(
     htgCopy->ShallowCopy(input);
     internalFilter->SetInputData(htgCopy);
     internalFilter->Update();
-    out->ShallowCopy(internalFilter->GetOutput());
+    output->ShallowCopy(internalFilter->GetOutput());
     htgCopy->Delete();
     internalFilter->Delete();
     return;
   }
 
   this->OutlineFlag = 1;
-  this->DataSetExecute(input, out, doCommunicate);
+  double bds[6];
+  int procid = 0;
+  if (!doCommunicate && input->GetNumberOfVertices() == 0)
+  {
+    return;
+  }
+
+  if (this->Controller)
+  {
+    procid = this->Controller->GetLocalProcessId();
+  }
+
+  input->GetBounds(bds);
+
+  vtkPVGeometryFilter::BoundsReductionOperation operation;
+  if (procid && doCommunicate)
+  {
+    // Satellite node
+    this->Controller->Reduce(bds, NULL, 6, &operation, 0);
+  }
+  else
+  {
+    if (this->Controller && doCommunicate)
+    {
+      double tmp[6];
+      this->Controller->Reduce(bds, tmp, 6, &operation, 0);
+      memcpy(bds, tmp, 6 * sizeof(double));
+    }
+
+    if (bds[1] >= bds[0] && bds[3] >= bds[2] && bds[5] >= bds[4])
+    {
+      // only output in process 0.
+      this->OutlineSource->SetBounds(bds);
+      this->OutlineSource->Update();
+
+      output->SetPoints(this->OutlineSource->GetOutput()->GetPoints());
+      output->SetLines(this->OutlineSource->GetOutput()->GetLines());
+    }
+  }
+}
+
+//----------------------------------------------------------------------------
+void vtkPVGeometryFilter::ExplicitStructuredGridExecute(
+  vtkExplicitStructuredGrid* input, vtkPolyData* out, int doCommunicate, const int* wholeExtent)
+{
+  vtkNew<vtkPVTrivialProducer> producer;
+  producer->SetOutput(input);
+  producer->SetWholeExtent(
+    wholeExtent[0], wholeExtent[1], wholeExtent[2], wholeExtent[3], wholeExtent[4], wholeExtent[5]);
+  producer->Update();
+
+  if (!this->UseOutline)
+  {
+    this->OutlineFlag = 0;
+
+    vtkNew<vtkExplicitStructuredGridSurfaceFilter> internalFilter;
+    internalFilter->SetPassThroughPointIds(this->PassThroughPointIds);
+    internalFilter->SetPassThroughCellIds(this->PassThroughCellIds);
+    internalFilter->SetInputConnection(producer->GetOutputPort());
+    internalFilter->Update();
+    out->ShallowCopy(internalFilter->GetOutput());
+    return;
+  }
+  vtkExplicitStructuredGrid* in =
+    vtkExplicitStructuredGrid::SafeDownCast(producer->GetOutputDataObject(0));
+
+  this->OutlineFlag = 1;
+  this->DataSetExecute(in, out, doCommunicate);
 }
 
 //----------------------------------------------------------------------------
@@ -1661,6 +1736,7 @@ int vtkPVGeometryFilter::FillInputPortInformation(int port, vtkInformation* info
   info->Set(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkDataSet");
   info->Append(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkGenericDataSet");
   info->Append(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkCompositeDataSet");
+  info->Append(vtkAlgorithm::INPUT_REQUIRED_DATA_TYPE(), "vtkHyperTreeGrid");
   return 1;
 }
 

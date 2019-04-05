@@ -83,7 +83,7 @@ const vtkStdString vtkCinemaExporter::GetPythonScript()
   script += "ready=True\n";
   script += "try:\n";
   script += "    import visocyte.simple\n";
-  script += "    import cinema_python.adaptors.visocyte.pv_introspect as pvi\n";
+  script += "    import visocyte.tpl.cinema_python.adaptors.visocyte.pv_introspect as pvi\n";
   script += "except ImportError as e:\n";
   script += "    visocyte.print_error('Cannot import cinema')\n";
   script += "    visocyte.print_error(e)\n";

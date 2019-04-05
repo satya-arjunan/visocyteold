@@ -49,6 +49,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QList>
 #include <QtDebug>
 
+#include <cassert>
+
 // ----------------------------------------------------------------------------
 QPointer<pqVRConnectionManager> pqVRConnectionManager::Instance;
 void pqVRConnectionManager::setInstance(pqVRConnectionManager* mgr)
@@ -339,7 +341,7 @@ void pqVRConnectionManager::configureConnections(vtkPVXMLElement* xml, vtkSMProx
 // ----------------------------------------------------------------------------
 void pqVRConnectionManager::saveConnectionsConfiguration(vtkPVXMLElement* root)
 {
-  Q_ASSERT(root != NULL);
+  assert(root != NULL);
   vtkPVXMLElement* tempParent = vtkPVXMLElement::New();
   tempParent->SetName("VRConnectionManager");
 #if VISOCYTE_PLUGIN_VRPlugin_USE_VRPN

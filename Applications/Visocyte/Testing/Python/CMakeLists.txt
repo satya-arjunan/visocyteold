@@ -4,48 +4,54 @@ find_python_module(matplotlib matplotlib_found)
 
 # Set variables to make the testing functions.
 set(_vtk_build_test "visocyte")
-set(${_vtk_build_test}_TEST_LABELS VISOCYTE)
+set(${_vtk_build_test}_TEST_LABELS visocyte)
 
 ExternalData_Expand_Arguments(VisocyteData _
+  # data files
   "DATA{${visocyte_test_data_directory_input}/Data/can.ex2}"
-  "DATA{${visocyte_test_data_directory_input}/Data/multicomb_0.vts}")
+  "DATA{${visocyte_test_data_directory_input}/Data/multicomb_0.vts}"
+
+  # baselines
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestPythonViewMatplotlibScript.png}"
+  "DATA{${CMAKE_CURRENT_SOURCE_DIR}/../Data/Baseline/TestPythonViewNumpyScript.png}"
+  )
 
 # only enable TestPythonAnnotationFilter test if numpy is available
 find_python_module(numpy numpy_found)
 if (numpy_found)
-  set(visocyte_python_args
-    --data=${visocyte_test_data_directory_output}/can.ex2)
-  # Add pvpython tests
   visocyte_add_test_python(
-    NO_DATA NO_VALID NO_OUTPUT NO_RT
-    TestPythonAnnotationFilter.py
-    TestPythonAnnotationFilterNoMerge.py
+    NO_DATA NO_VALID NO_RT
     TestAnnotateAttributeData.py
-    CinemaAERTest.py
     )
+
+  if (TARGET Visocyte::CinemaPython)
+    visocyte_add_test_python(
+      NO_DATA NO_VALID NO_RT
+      CinemaAERTest.py
+      )
+  endif ()
+
   visocyte_add_test_python(
-    NO_VALID NO_OUTPUT NO_RT
-    AppendAttributes.py
-    UnstructuredCellTypePythonCalculator.py
+    NO_DATA NO_RT
+    TestPythonViewNumpyScript.py
     )
+
   visocyte_add_test_python(
     NO_VALID NO_RT
+    AppendAttributes.py
     FileSeriesWriterSubTimeSteps.py
+    TestPythonAnnotationFilterNoMerge.py
+    TestPythonAnnotationFilter.py
+    UnstructuredCellTypePythonCalculator.py
     )
-  unset(visocyte_python_args)
 
-  if (VISOCYTE_ENABLE_MATPLOTLIB AND matplotlib_found)
+  if (matplotlib_found)
     # add Matplotlib tests only if matplotlib was found at configure time.
     visocyte_add_test_python(
       NO_DATA NO_RT
       TestPythonViewMatplotlibScript.py
       )
   endif()
-
-  visocyte_add_test_python(
-    NO_DATA NO_RT
-    TestPythonViewNumpyScript.py
-    )
 endif()
 
 visocyte_add_test_python(
@@ -92,9 +98,9 @@ foreach (tfile IN LISTS PVBATCH_TESTS)
   set(${test}_ARGS
     --state ${CMAKE_CURRENT_SOURCE_DIR}/${test}.pvsm)
 endforeach ()
-if (VISOCYTE_USE_MPI AND VTK_MPIRUN_EXE)
+if (VISOCYTE_USE_MPI AND MPIEXEC_EXECUTABLE)
   # run the tests in parallel
-  set(${}_NUMPROCS 3)
+  set(${_vtk_build_test}_NUMPROCS 3)
   visocyte_add_test_pvbatch_mpi(
     JUST_VALID
     ${PVBATCH_TESTS}
@@ -135,7 +141,7 @@ if(BUILD_SHARED_LIBS)
   set(TestMultiServersRemoteProxy_ARGS
     --test-multi-servers 3
     )
-  set(${_vtk_build_test}_TEST_LABELS VISOCYTE)
+  set(${_vtk_build_test}_TEST_LABELS visocyte)
 
   visocyte_add_test_driven(
     NO_DATA NO_VALID NO_OUTPUT NO_RT

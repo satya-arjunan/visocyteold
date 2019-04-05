@@ -1,21 +1,21 @@
-cmake_minimum_required(VERSION 3.3)
-project(CxxGhostCellsExample)
+if (NOT USE_CATALYST)
+  message(STATUS
+    "Skipping CxxHyperTreeGridExample because `USE_CATALYST` is not set.")
+  return ()
+endif ()
 
-# For this example we use the vtkExtentTranslator to compute the partitioning
-# and ghost cells so Visocyte is always required.
-find_package(Visocyte 5.4 REQUIRED COMPONENTS vtkPVPythonCatalyst)
-include("${VISOCYTE_USE_FILE}")
+add_executable(CxxGhostCellsExample
+  FEDataStructures.cxx
+  FEDataStructures.h
+  FEDriver.cxx)
+target_link_libraries(CxxGhostCellsExample
+  PRIVATE
+    Visocyte::PythonCatalyst
+    VTK::CommonDataModel
+    VTK::CommonExecutionModel
+    VTK::mpi
+    VTK::ParallelMPI)
 
-add_executable(CxxGhostCellsExample FEDriver.cxx FEDataStructures.cxx)
-target_link_libraries(CxxGhostCellsExample LINK_PRIVATE vtkPVPythonCatalyst vtkParallelMPI)
-include(vtkModuleMacros)
-include(vtkMPI)
-vtk_mpi_link(CxxGhostCellsExample)
-
-option(BUILD_TESTING "Build Testing" OFF)
-# Setup testing.
 if (BUILD_TESTING)
-  include(CTest)
   add_test(NAME CxxGhostCellsExampleTest COMMAND CxxGhostCellsExample -s ${CMAKE_CURRENT_SOURCE_DIR}/../SampleScripts/gridwriter.py)
-  set_tests_properties(CxxGhostCellsExampleTest PROPERTIES LABELS "VISOCYTE;CATALYST")
 endif()

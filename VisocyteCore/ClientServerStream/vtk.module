@@ -3,7 +3,7 @@ NAME
 LIBRARY_NAME
   vtkClientServer
 KIT
-  Visocyte::Core
+  Visocyte::CoreKit
 DEPENDS
   VTK::CommonCore
 PRIVATE_DEPENDS

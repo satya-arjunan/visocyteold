@@ -62,13 +62,17 @@ vtk_module_add_executable(Visocyte::smTestDriver
 
 set(mpi_defines)
 if (VISOCYTE_USE_MPI)
-  find_package(MPI QUIET REQUIRED)
+  find_package(MPI QUIET REQUIRED COMPONENTS C)
 
   list(APPEND mpi_defines
     VISOCYTE_USE_MPI
     "VISOCYTE_MPIEXEC_EXECUTABLE=\"${MPIEXEC_EXECUTABLE}\""
     "VISOCYTE_MPI_NUMPROC_FLAG=\"${MPIEXEC_NUMPROC_FLAG}\""
-    "VISOCYTE_MPI_MAX_NUMPROCS=${VTK_MPI_MAX_NUMPROCS}")
+    # FIXME: This is currently hard-coded to 2 since the maximum isn't
+    # sensible. However, there is no command line flag to override the number
+    # of processes to use for a given test, so instead, just use 2 for now.
+    "VISOCYTE_MPI_MAX_NUMPROCS=2")
+    #"VISOCYTE_MPI_MAX_NUMPROCS=${MPIEXEC_MAX_NUMPROCS}")
 
   if (MPI_PREFLAGS)
     list(APPEND mpi_defines

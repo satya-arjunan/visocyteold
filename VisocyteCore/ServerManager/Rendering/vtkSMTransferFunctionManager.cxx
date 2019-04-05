@@ -95,6 +95,8 @@ vtkSMProxy* vtkSMTransferFunctionManager::GetColorTransferFunction(
     return NULL;
   }
 
+  proxy->SetLogName((std::string("lut-for-") + std::string(arrayName)).c_str());
+
   vtkNew<vtkSMVisocytePipelineController> controller;
   controller->PreInitializeProxy(proxy);
 

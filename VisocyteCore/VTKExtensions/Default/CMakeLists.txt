@@ -76,7 +76,6 @@ set(classes
   vtkPEnSightGoldReader
   vtkPEnSightReader
   vtkPEquivalenceSet
-  vtkPExtractTemporalFieldData
   vtkPGenericEnSightReader
   vtkPPhastaReader
   vtkPSciVizContingencyStats
@@ -99,7 +98,6 @@ set(classes
   vtkPVEnSightMasterServerReader
   vtkPVEnSightMasterServerReader2
   vtkPVEnSightMasterServerTranslator
-  vtkPVExtractBagPlots
   vtkPVExtractComponent
   vtkPVExtractVOI
   vtkPVFrustumActor
