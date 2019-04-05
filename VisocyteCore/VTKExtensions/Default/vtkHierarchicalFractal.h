@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkHierarchicalFractal.h
 
   Copyright (c) Kitware, Inc.

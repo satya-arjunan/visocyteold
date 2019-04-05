@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVWebApplication
- * @brief   defines ParaViewWeb application interface.
+ * @brief   defines VisocyteWeb application interface.
  *
- * vtkPVWebApplication defines the core interface for a ParaViewWeb application.
+ * vtkPVWebApplication defines the core interface for a VisocyteWeb application.
  * This exposes methods that make it easier to manage views and rendered images
  * from views.
 */

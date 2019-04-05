@@ -16,6 +16,6 @@ set(classes
   vtkCPUnstructuredGridBuilder
   vtkCPVector3FieldFunction)
 
-vtk_module_add_module(ParaView::CatalystTestDriver
+vtk_module_add_module(Visocyte::CatalystTestDriver
   CLASSES ${classes})
 vtk_module_client_server_exclude()

@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: ParaView
+#     Program: Visocyte
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     ParaView is a free software; you can redistribute it and/or modify it
-#     under the terms of the ParaView license version 1.2.
+#     Visocyte is a free software; you can redistribute it and/or modify it
+#     under the terms of the Visocyte license version 1.2.
 #
-#     See License_v1.2.txt for the full ParaView license.
+#     See License_v1.2.txt for the full Visocyte license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -108,7 +108,7 @@ if (TARGET VTK::ParallelMPI)
     vtkRedistributePolyData
     vtkWeightedRedistributePolyData)
 
-  if (TARGET ParaView::icet)
+  if (TARGET Visocyte::icet)
     # TODO: Split these into a separate module so that there isn't a public
     # optional dependency.
     list(APPEND classes
@@ -139,7 +139,7 @@ foreach (file vtkIceTCompositeZPassShader_fs.glsl)
   list(APPEND private_headers ${header})
 endforeach ()
 
-vtk_module_add_module(ParaView::VTKExtensionsRendering
+vtk_module_add_module(Visocyte::VTKExtensionsRendering
   CLASSES ${classes}
   SOURCES ${sources}
   PRIVATE_HEADERS ${private_headers})

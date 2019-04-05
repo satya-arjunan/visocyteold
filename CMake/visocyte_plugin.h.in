@@ -107,7 +107,7 @@ public:
 
 #if _visocyte_add_plugin_with_ui
   /**
-   * Returns the list of ParaView-Interfaces provided by this plugin.
+   * Returns the list of Visocyte-Interfaces provided by this plugin.
    */
   QObjectList interfaces() override;
 #endif

@@ -1,5 +1,5 @@
-GmshReader Plugin for ParaView
-ParaView/VTK reader for visualization of high-order polynomial solutions under the Gmsh format.
+GmshReader Plugin for Visocyte
+Visocyte/VTK reader for visualization of high-order polynomial solutions under the Gmsh format.
 Version: 1.0
 
 Copyright (C) 2015 Cenaero, Belgium,
@@ -27,10 +27,10 @@ this software for any purpose. It is provided "as is" without express or implied
 
 Report all bugs, problems and suggestions to <michel.rasquin@cenaero.be>
 
-License Impact on ParaView
+License Impact on Visocyte
 --------------------------
-This module is based on the Gmsh library, which is GPLv2 licensed, so this plugin is GPLv2 licensed as well. This plugin is an optional build and should not be activated by default in the release of ParaView.
-Activating this plugin and, hence, using the Gmsh library is the user responsibility, which does not impact ParaView license.
+This module is based on the Gmsh library, which is GPLv2 licensed, so this plugin is GPLv2 licensed as well. This plugin is an optional build and should not be activated by default in the release of Visocyte.
+Activating this plugin and, hence, using the Gmsh library is the user responsibility, which does not impact Visocyte license.
 
 Authors
 -------

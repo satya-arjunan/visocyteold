@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPythonAlgorithmPlugin.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class vtkPVPythonAlgorithmPlugin
- * @brief packages a Python module into a ParaView plugin.
+ * @brief packages a Python module into a Visocyte plugin.
  *
  * vtkPVPythonAlgorithmPlugin helps us support loading a Python module as a
- * ParaView `plugin`. The only supported type of plugin is a server-manager
+ * Visocyte `plugin`. The only supported type of plugin is a server-manager
  * plugin that adds support for algorithm proxies i.e. readers, filters, and
  * writers.
  */

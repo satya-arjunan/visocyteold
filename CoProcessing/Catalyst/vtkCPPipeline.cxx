@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPPipeline.cxx
 
   Copyright (c) Kitware, Inc.

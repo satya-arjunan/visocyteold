@@ -44,7 +44,7 @@ class IScene;
 }
 
 // The class vtknvindex_colormap utility is used to create/update IndeX's scene colormap
-// based on ParaView's current dataset transfer function.
+// based on Visocyte's current dataset transfer function.
 
 class vtknvindex_colormap
 {
@@ -68,7 +68,7 @@ public:
     const mi::base::Handle<mi::neuraylib::IDice_transaction>& dice_transaction,
     vtknvindex_regular_volume_properties* regular_volume_properties);
 
-  // Check for any changes on ParaView's transfer function.
+  // Check for any changes on Visocyte's transfer function.
   bool changed() const;
 
 private:
@@ -80,12 +80,12 @@ private:
     const mi::math::Vector<mi::Float32, 2>& scale_range,
     mi::math::Vector<mi::Float32, 2>& output_range);
 
-  // Get ParaView's transfer function and write it to an IndeX colormap.
+  // Get Visocyte's transfer function and write it to an IndeX colormap.
   void get_visocyte_colormap(vtkVolume* vol,
     vtknvindex_regular_volume_properties* regular_volume_properties,
     mi::base::Handle<nv::index::IColormap>& colormap);
 
-  // Get ParaView's transfer function and write it to an IndeX colormap including slices.
+  // Get Visocyte's transfer function and write it to an IndeX colormap including slices.
   void get_visocyte_colormaps(vtkVolume* vol,
     vtknvindex_regular_volume_properties* regular_volume_properties,
     mi::base::Handle<nv::index::IColormap>& volume_colormap,

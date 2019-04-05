@@ -69,6 +69,6 @@
 <pqevent object="pqClientMainWindow/cameraToolbar/actionResetCamera" command="activate" arguments="" />
 <pqevent object="pqClientMainWindow/cameraToolbar/actionResetCamera" command="activate" arguments="" />
 
-<pqcompareimage image="$VISOCYTE_TEST_ROOT/TileDisplay3DTesting-1x2-Tile0.png" baseline="$VISOCYTE_DATA_ROOT/Applications/ParaView/Testing/Data/Baseline/TileDisplay3DTesting-1x2-Tile0.png" />
-<pqcompareimage image="$VISOCYTE_TEST_ROOT/TileDisplay3DTesting-1x2-Tile1.png" baseline="$VISOCYTE_DATA_ROOT/Applications/ParaView/Testing/Data/Baseline/TileDisplay3DTesting-1x2-Tile1.png" />
+<pqcompareimage image="$VISOCYTE_TEST_ROOT/TileDisplay3DTesting-1x2-Tile0.png" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/TileDisplay3DTesting-1x2-Tile0.png" />
+<pqcompareimage image="$VISOCYTE_TEST_ROOT/TileDisplay3DTesting-1x2-Tile1.png" baseline="$VISOCYTE_DATA_ROOT/Applications/Visocyte/Testing/Data/Baseline/TileDisplay3DTesting-1x2-Tile1.png" />
 </pqevents>

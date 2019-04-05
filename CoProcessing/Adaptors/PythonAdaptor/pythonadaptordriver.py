@@ -2,8 +2,8 @@
 # from a python code.  The user must properly set PYTHONPATH and LD_LIBRARY_PATH
 # based on the installation on their machine.  Examples below are for a
 # Linux machine.
-# export PYTHONPATH=${PYTHONPATH}:<ParaView build directory>/Utilities/VTKPythonWrapping:<ParaView build directory>/VTK/Wrapping/Python:<ParaView build directory>/debuginstall/bin
-#export LD_LIBRARY_PATH=<ParaView build directory>/bin:<Qt library directory>
+# export PYTHONPATH=${PYTHONPATH}:<Visocyte build directory>/Utilities/VTKPythonWrapping:<Visocyte build directory>/VTK/Wrapping/Python:<Visocyte build directory>/debuginstall/bin
+#export LD_LIBRARY_PATH=<Visocyte build directory>/bin:<Qt library directory>
 
 import mpi  # available through pyMPI
 print 'process ', mpi.rank, ' is running!'
@@ -25,7 +25,7 @@ timestep = (endtime-starttime)/numtimesteps
 # importing the coprocessing libraries needed for the adaptor
 import vtkCoProcessorPython
 
-# this is the actual coprocessing script created from the ParaView plugin
+# this is the actual coprocessing script created from the Visocyte plugin
 import cp_pythonadaptorscript
 
 for step in range(numtimesteps):

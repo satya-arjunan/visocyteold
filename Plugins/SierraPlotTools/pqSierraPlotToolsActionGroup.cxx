@@ -42,10 +42,10 @@ pqSierraPlotToolsActionGroup::pqSierraPlotToolsActionGroup(QObject* p)
 
   * * * _AND_ * * *
 
-  TELLS the ParaView plugin architecture to add a button on to the toolbar for
+  TELLS the Visocyte plugin architecture to add a button on to the toolbar for
   this toolbar plugin.
 
-  Some doucumentation from the ParaView Wiki,
+  Some doucumentation from the Visocyte Wiki,
   From: http://www.visocyte.org/Wiki/Plugin_HowTo
 
     Please refer to Examples/Plugins/SourceToolbar for this section. There we

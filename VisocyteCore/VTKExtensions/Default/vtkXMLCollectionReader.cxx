@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkXMLCollectionReader.cxx
 
   Copyright (c) Kitware, Inc.

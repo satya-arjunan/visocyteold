@@ -1,7 +1,7 @@
 
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMTestDriver.cxx
 
   Copyright (c) Kitware, Inc.

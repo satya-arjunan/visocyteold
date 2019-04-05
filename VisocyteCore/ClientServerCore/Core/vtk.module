@@ -1,15 +1,15 @@
 NAME
-  ParaView::ClientServerCoreCore
+  Visocyte::ClientServerCoreCore
 LIBRARY_NAME
   vtkPVClientServerCoreCore
 GROUPS
-  ParaViewCore
+  VisocyteCore
 KIT
-  ParaView::CoreKit
+  Visocyte::CoreKit
 DEPENDS
-  ParaView::Core
-  ParaView::VTKExtensionsCore
-  ParaView::VTKExtensionsSIL
+  Visocyte::Core
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsSIL
   VTK::CommonCore
   VTK::CommonSystem
   VTK::FiltersExtraction
@@ -20,8 +20,8 @@ PRIVATE_DEPENDS
   VTK::CommonMisc
   VTK::vtksys
 OPTIONAL_DEPENDS
-  ParaView::icet
-  ParaView::nvpipe
+  Visocyte::icet
+  Visocyte::nvpipe
   VTK::IOFFMPEG
   VTK::ParallelMPI
   VTK::WrappingPythonCore
@@ -29,4 +29,4 @@ OPTIONAL_DEPENDS
   # These affect the public API.
   VTK::PythonInterpreter
 TEST_LABELS
-  ParaView
+  Visocyte

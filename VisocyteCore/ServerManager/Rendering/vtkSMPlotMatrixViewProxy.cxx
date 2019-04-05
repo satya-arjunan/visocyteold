@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMPlotMatrixViewProxy.cxx
 
   Copyright (c) Kitware, Inc.

@@ -4,7 +4,7 @@
 # root element and parses it, removing duplicate elements in the list.
 # The new list of unique elements is written out to a given output file.
 
-# Used to prune duplicates from the ParaView color map list
+# Used to prune duplicates from the Visocyte color map list
 if __name__ == '__main__':
     import sys
     import os.path

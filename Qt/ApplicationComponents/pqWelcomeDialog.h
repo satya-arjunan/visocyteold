@@ -12,7 +12,7 @@ class pqWelcomeDialog;
 /**
 * This class provides a welcome dialog screen that you see in many applications.
 * The intent is to provide an on-ramp with a lower learning curve than the blank
-* ParaView screen.
+* Visocyte screen.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqWelcomeDialog : public QDialog
 {

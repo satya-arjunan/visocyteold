@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestSimple.cxx
 
   Copyright (c) Kitware, Inc.

@@ -34,7 +34,7 @@
 class vtknvindex_cluster_properties;
 
 // The class vtknvindex_volume_importer represents a distributed data importer for NVIDIA IndeX.
-// It load ParaView's subsets of a irregular volume dataset based shared memory.
+// It load Visocyte's subsets of a irregular volume dataset based shared memory.
 class vtknvindex_irregular_volume_importer
   : public nv::index::Distributed_continuous_data_import_callback<0xa034b89a, 0xdd90, 0x464d, 0x85,
       0x9, 0x5f, 0xef, 0x93, 0xb8, 0x2d, 0x96>
@@ -52,10 +52,10 @@ public:
   using nv::index::Distributed_continuous_data_import_callback<0xa034b89a, 0xdd90, 0x464d, 0x85,
     0x9, 0x5f, 0xef, 0x93, 0xb8, 0x2d, 0x96>::estimate;
 
-  // Sets the cluster properties triggered by ParaView.
+  // Sets the cluster properties triggered by Visocyte.
   void set_cluster_properties(vtknvindex_cluster_properties* host_properties);
 
-  // Create the internal storage of ParaView's subset inside bounding box.
+  // Create the internal storage of Visocyte's subset inside bounding box.
   nv::index::IDistributed_data_subset* create(
     const mi::math::Bbox_struct<mi::Float32, 3>& bounding_box,
     nv::index::IData_subset_factory* factory,

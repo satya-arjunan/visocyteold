@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqAutoLoadPluginXMLBehavior.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -39,9 +39,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /**
 * @ingroup Behaviors
 *
-* ParaView plugins can load gui configuration xmls eg. xmls for defining the
+* Visocyte plugins can load gui configuration xmls eg. xmls for defining the
 * filters menu, readers etc. This behavior ensures that as soon as such
-* plugins are loaded if they provide any XMLs in the ":/.{*}/ParaViewResources/"
+* plugins are loaded if they provide any XMLs in the ":/.{*}/VisocyteResources/"
 * resource location, then such xmls are parsed and an attempt is made to load
 * them (by calling pqApplicationCore::loadConfiguration()).
 *

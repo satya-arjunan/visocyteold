@@ -1,18 +1,18 @@
-ParaView 5.6.0 Release Notes
+Visocyte 5.6.0 Release Notes
 ============================
 
-Major changes made since ParaView 5.5.2 are listed in this document. The full list of issues addressed by this release is available
+Major changes made since Visocyte 5.5.2 are listed in this document. The full list of issues addressed by this release is available
 [here](https://gitlab.kitware.com/visocyte/visocyte/milestones/8).
 
 # General Notes
 
-## State file compatibility with ParaView 4.2
+## State file compatibility with Visocyte 4.2
 
-State files from ParaView 4.1 or earlier are no longer supported. To update state files from ParaView 4.1 or earlier, please use ParaView 5.5, open the state file, then save a new copy of the state file. The saved version will be readable by ParaView 5.6.
+State files from Visocyte 4.1 or earlier are no longer supported. To update state files from Visocyte 4.1 or earlier, please use Visocyte 5.5, open the state file, then save a new copy of the state file. The saved version will be readable by Visocyte 5.6.
 
 # Community
 
-ParaView community support has moved to http://discourse.visocyte.org. The archives of the
+Visocyte community support has moved to http://discourse.visocyte.org. The archives of the
 mailing lists visocyte@visocyte.org and visocyte-developers@visocyte.org will be preserved,
 but no new emails to these lists will be accepted.
 
@@ -24,15 +24,15 @@ Available under the **General** settings tab, the new **Reset Display Empty View
 controls whether to reset the camera in a render view when showing a representation in a
 previously empty view.
 
-Previously, ParaView always reset the camera in the view. The default setting value keeps
+Previously, Visocyte always reset the camera in the view. The default setting value keeps
 it this way, but it is now possible to disable that behavior to preserve the camera view.
 
 ## Annotations automatically initialized when categorical coloring is enabled
 
-ParaView will now attempt to automatically initialize colors and annotations when the
+Visocyte will now attempt to automatically initialize colors and annotations when the
 **Interpret Values as Categories** setting is enabled for a color map. It will determine the
 categories from the currently selected source in the **Pipeline Browser**. If unsuccessful,
-ParaView will report an error.
+Visocyte will report an error.
 
 ## Connection server timeout
 
@@ -46,9 +46,9 @@ as an optional parameter to the different `Connect` methods.
 
 Support for developing filters, readers, writers in Python and distributing them
 as plugins has been improved. `visocyte.util.vtkAlgorithm` module provides
-decorators to expose `VTKPythonAlgorithmBase`-based VTK algorithms in ParaView.
+decorators to expose `VTKPythonAlgorithmBase`-based VTK algorithms in Visocyte.
 A Python module that provides such decorated algorithms can now be directly loaded
-in ParaView as plugins.
+in Visocyte as plugins.
 
 ## Added molecule filters
 
@@ -64,7 +64,7 @@ Several filters that involve Molecule data sets have been added:
 
 ## Added point distribution filter
 
-To complement the new Molecule data set filters, ParaView now has a filter named
+To complement the new Molecule data set filters, Visocyte now has a filter named
 **Distribute Points** that distributes point sets over MPI processes.
 
 |![Point Distribution](img/5.6.0/pointsDistribution.png)|
@@ -75,7 +75,7 @@ To complement the new Molecule data set filters, ParaView now has a filter named
 
 The **Glyph** filter has been revised with more meaningful properties, and a streamlined
 user interface. Care has been taken to provide backwards compatibility for state files
-saved from and Python scripts developed for ParaView versions 4.2 and later.
+saved from and Python scripts developed for Visocyte versions 4.2 and later.
 
 |![New Glyph UI](img/5.6.0/GlyphFilterUI.png)|
 |:--:|
@@ -95,7 +95,7 @@ for bad partitions was corrected.
 
 Added moment invariants filters from the VTK remote module. These filters are
 available only if the CMake option `Module_vtkFiltersMomentInvariants` is enabled
-when configuring ParaView. The filters available are **Compute Moments**,
+when configuring Visocyte. The filters available are **Compute Moments**,
 **Parallel Compute Moments**, and **Moment Invariants**.
 
 The theory and the algorithm are described in [Roxana Bujack and
@@ -119,7 +119,7 @@ In addition to measuring the X, Y, or Z axis of the axis-aligned bounding box
 of a data set, the **Bounding Ruler** filter can now measure the Major, Medium,
 and Minor axes of the data set's oriented bounding box. These axes are new options
 in the **Axis** property of the **Bounding Ruler** filter. As an example, one
-can use ParaView's selection capabilities to extract two points of interest and
+can use Visocyte's selection capabilities to extract two points of interest and
 then apply the **Bounding Ruler** with the **Axis** property set to
 **Oriented Bounding Box Major Axis** to measure how the distance between these
 points changes over time. [Read more...](https://blog.kitware.com/measuring-oriented-bounding-box-axes-visocyte/)
@@ -160,7 +160,7 @@ pvts, pvtr, pvtk, ply, stl
 
 The name of the series file must follow the format \<filename\>.\<format\>.series,
 e.g., `images.vti.series`. More information about the content of the file can be
-found [here](https://gitlab.kitware.com/visocyte/visocyte/blob/v5.5.0/Documentation/release/ParaView-5.5.0.md).
+found [here](https://gitlab.kitware.com/visocyte/visocyte/blob/v5.5.0/Documentation/release/Visocyte-5.5.0.md).
 
 ## Tecplot reader
 
@@ -172,12 +172,12 @@ A reader for 2.5D and 3D SEG-Y data files is now available. [Read more...](https
 
 ## MotionFX CFG files readers
 
-ParaView includes a reader to read MotionFX CFG files that describe various types
+Visocyte includes a reader to read MotionFX CFG files that describe various types
 of motions on STL geometries. The reader can animate the geometries as described in the CFG file without having to re-read the geometry files on each timestep.
 
 ## Gmsh Reader Plugin
 
-ParaView has a reader for visualization of high-order polynomial solutions in
+Visocyte has a reader for visualization of high-order polynomial solutions in
 the Gmsh format.
 
 ## Wavefront OBJ reader
@@ -216,18 +216,18 @@ To support use cases where one wants to develop a programmable source that is
 automatically *refreshed* periodically, we have added
 **Live Programmable Source**. With this source, one can provide a
 Python script for **CheckNeedsUpdateScript** that can indicate that the source
-may have new data and hence should be updated. The ParaView client application
+may have new data and hence should be updated. The Visocyte client application
 can periodically check such sources and update them, if needed.
 
 ## Fast Uniform Grid source
 
-To enable testing ParaView with large image data sets, the **Fast Uniform Grid**
+To enable testing Visocyte with large image data sets, the **Fast Uniform Grid**
 image data source as been added. This source generates point data fields with simple, fast-to-compute functions.
 
 ## Test data source for plotting global variables
 
 Added a Python plugin that acts as a test data source for data sets with global
-temporal data made for testing the ParaView module "Plot Global Temporal Data".
+temporal data made for testing the Visocyte module "Plot Global Temporal Data".
 The plugin creates a MultiBlockDataSet with a dummy uniform grid (vtkImageData).
 Multiple global data arrays are added based on provided input parameters:
 - Number of time steps in the temporal data.
@@ -242,7 +242,7 @@ The size of the font in the Python Shell and Output Window now follow the **Font
 
 ## Customizable shortcuts
 
-ParaView now provides customizable keyboard shortcuts for menu items. Shortcuts
+Visocyte now provides customizable keyboard shortcuts for menu items. Shortcuts
 can be set through a dialog box accessed from the `Tools` -> `Customize Shortcuts...` menu item.
 
 ## Custom Viewpoints Toolbar
@@ -268,7 +268,7 @@ context menu contains an **Add current filter** menu item as a convenience.
 
 New application settings `Real Number Displayed Notation`
 and `Real Number Displayed Precision` enable control of how real-number properties
-are displayed in the ParaView client user interface. These settings control how the
+are displayed in the Visocyte client user interface. These settings control how the
 property values are displayed, but the actual property values are stored in full
 precision. Regardless of the real number display settings, the full precision text
 is displayed when editing the property.
@@ -297,7 +297,7 @@ so switching to a specific time is easier and faster.
 ## Redo command keyboard shortcut changed from Ctrl-R to Ctrl-Y
 
 Ctrl-Y (or Command-Y on macOS) is a common keyboard shortcut for the redo command in many
-applications, so we have made it the same in ParaView. In addition, we added a keyboard
+applications, so we have made it the same in Visocyte. In addition, we added a keyboard
 shortcut (Ctrl-R or Command-R on macOS) for the **Reset Session** command to the `Edit`
 menu entry.
 
@@ -330,14 +330,14 @@ Points selection now works with the **Point Gaussian** representation.
 
 When creating a 2D plot of data and enabling log scaling on the left or right axis, a warning
 would appear if the plotted data had negative values explaining that the log of a negative
-value is undefined. ParaView now has an application setting to bypass the negative log axis
+value is undefined. Visocyte now has an application setting to bypass the negative log axis
 warning by instead clipping the axis range to show only log-scaled positive values when
 log scaling is active.
 
 ## zSpace support
 
 zSpace devices are now configurable through a zSpace configuration file (.pvx). Examples of
-.pvx files are now located in the `Examples/VR` directory in the ParaView source directory.
+.pvx files are now located in the `Examples/VR` directory in the Visocyte source directory.
 Additionally, camera angles have been synchronized between the Visocyte client and zSpace
 screens.
 
@@ -359,7 +359,7 @@ bounding box outline. [Read more...](https://blog.kitware.com/new-in-visocyte-fe
 
 ## OSPRay version update
 
-ParaView 5.6 updates its version of OSPRay to 1.6.1 and includes a number of
+Visocyte 5.6 updates its version of OSPRay to 1.6.1 and includes a number of
 OSPRay-related fixes and improvements. These include better memory management,
 more volume rendering controls and unstructured cell types, direct isosurface
 volume rendering, and new path tracer materials like the principled material
@@ -375,7 +375,7 @@ as exemplified with the "scratched" sample material.
 
 * New render engine provides optimized memory usage and faster initialization times.
 * Added Catalyst support for In-Situ visualizations.
-* Added support for all ParaView's playback modes when using time series datasets.
+* Added support for all Visocyte's playback modes when using time series datasets.
 * Added support for interactive changes of scalar values/properties.
 * Added support to render volume combined geometry in cluster mode.
 * Added support for datasets with signed types sint8 and sint16.
@@ -461,7 +461,7 @@ not have been (this affected Catalyst as well).
 ## Temporal Parallelism Script Generator
 
 Updated the **Temporal Parallelism Script Generator** plugin to produce valid
-ParaView Python scripts.
+Visocyte Python scripts.
 
 ## Gradient filter
 
@@ -506,7 +506,7 @@ WebKit).
 There is a new streamlined process for defining and exporting
 Catalyst scripts. The **Catalyst Export Inspector** panel is the new
 place to define everything you want Catalyst to eventually export.
-Your choices are saveable in ParaView state files and match the
+Your choices are saveable in Visocyte state files and match the
 normal user interface for exporting data files and screenshots. There
 are some new options too, including choices to export Cinema Spec D tables
 and to place all Catalyst output inside a specific directory. To
@@ -519,7 +519,7 @@ there, too, but they are deprecated and will be removed soon.
 
 ## --live option
 
-The ParaView client now has a `--live=<port>` option to automatically connect to a
+The Visocyte client now has a `--live=<port>` option to automatically connect to a
 Catalyst-enabled simulation that is expecting a **Live** connection.
 
 ## Simulating a Catalyst run

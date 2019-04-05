@@ -95,13 +95,13 @@ class WriterAccessor(smtrace.RealProxyAccessor):
             # this stub must have the proper name in the coprocessing hints
             print("WARNING: Could not find %s writer in %s" \
                 "XML group. This is not a problem as long as the writer is available with " \
-                "the ParaView build used by the simulation code." % (xmlname, xmlgroup))
+                "the Visocyte build used by the simulation code." % (xmlname, xmlgroup))
             ctor = servermanager._make_name_valid(xmlname)
         else:
             ctor = servermanager._make_name_valid(prototype.GetXMLLabel())
         # TODO: use servermanager.ProxyManager().NewProxy() instead
         # we create the writer proxy such that it is not registered with the
-        # ParaViewPipelineController, so its state is not sent to ParaView Live.
+        # VisocytePipelineController, so its state is not sent to Visocyte Live.
         return "servermanager.%s.%s" % (xmlgroup, ctor)
 
     def trace_ctor(self, ctor, filter, ctor_args=None, skip_assignment=False):

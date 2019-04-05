@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCompositeDataToUnstructuredGridFilter.h
 
   Copyright (c) Kitware, Inc.

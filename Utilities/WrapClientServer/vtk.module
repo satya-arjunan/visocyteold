@@ -1,5 +1,5 @@
 NAME
-  ParaView::WrapClientServer
+  Visocyte::WrapClientServer
 LIBRARY_NAME
   vtkWrapClientServer
 PRIVATE_DEPENDS

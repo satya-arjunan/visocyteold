@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program:   ParaView
+   Program:   Visocyte
    Module:    pqApplicationCore.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QTemporaryFile>
 #include <QtDebug>
 
-// ParaView includes.
+// Visocyte includes.
 #include "pqAnimationScene.h"
 #include "pqCoreInit.h"
 #include "pqCoreTestUtility.h"
@@ -620,14 +620,14 @@ void pqApplicationCore::loadConfigurationXML(const char* xmldata)
   vtkSMProxyManager::GetProxyManager()->GetReaderFactory()->UpdateAvailableReaders();
   vtkSMProxyManager::GetProxyManager()->GetWriterFactory()->UpdateAvailableWriters();
 
-  // Give a warning that if there is ParaViewReaders or ParaViewWriters in root
+  // Give a warning that if there is VisocyteReaders or VisocyteWriters in root
   // that it has been changed and people should change their code accordingly.
-  if (strcmp(root->GetName(), "ParaViewReaders") == 0)
+  if (strcmp(root->GetName(), "VisocyteReaders") == 0)
   {
     vtkGenericWarningMacro("Readers have been changed such that the GUI definition is not needed."
       << " This should now be specified in the Hints section of the XML definition.");
   }
-  else if (strcmp(root->GetName(), "ParaViewWriters") == 0)
+  else if (strcmp(root->GetName(), "VisocyteWriters") == 0)
   {
     vtkGenericWarningMacro("Writers have been changed such that the GUI definition is not needed."
       << " This should now be specified in the Hints section of the XML definition.");

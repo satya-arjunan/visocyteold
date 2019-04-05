@@ -30,7 +30,7 @@
     <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>This wizard will guide you through the steps required to export the current visualization state as a Python script that can be run in the co-processing component of ParaView.  Make sure to add appropriate writers for the desired pipelines to be used in the Writers menu.</string>
+       <string>This wizard will guide you through the steps required to export the current visualization state as a Python script that can be run in the co-processing component of Visocyte.  Make sure to add appropriate writers for the desired pipelines to be used in the Writers menu.</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -63,7 +63,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Please note - this wizard is deprecated in favor of the Catalyst Export Inspector as of ParaView 5.6 and will be removed in a future version.</string>
+       <string>Please note - this wizard is deprecated in favor of the Catalyst Export Inspector as of Visocyte 5.6 and will be removed in a future version.</string>
       </property>
       <property name="wordWrap">
        <bool>true</bool>

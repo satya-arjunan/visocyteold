@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVCueManipulator.h
 
   Copyright (c) Kitware, Inc.

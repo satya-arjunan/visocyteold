@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkAllToNRedistributePolyData.cxx
 
   Copyright (c) Kitware, Inc.

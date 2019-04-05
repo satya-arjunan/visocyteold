@@ -14,7 +14,7 @@
 =========================================================================*/
 /*=========================================================================
 
-  Program:   VTK/ParaView Los Alamos National Laboratory Modules (PVLANL)
+  Program:   VTK/Visocyte Los Alamos National Laboratory Modules (PVLANL)
   Module:    vtkACosmoReader.h
 
 Copyright (c) 2007, 2009 Los Alamos National Security, LLC

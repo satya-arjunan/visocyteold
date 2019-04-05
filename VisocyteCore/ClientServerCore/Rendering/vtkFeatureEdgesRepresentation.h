@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkFeatureEdgesRepresentation.h
 
   Copyright (c) Kitware, Inc.

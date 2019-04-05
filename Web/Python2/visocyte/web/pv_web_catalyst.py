@@ -1,12 +1,12 @@
 r"""
-    This module is a ParaViewWeb server application.
+    This module is a VisocyteWeb server application.
     The following command line illustrate how to use it::
 
         $ pvpython .../pv_web_catalyst.py --data-dir /.../path-to-your-data-directory
 
         --data-dir is used to list that directory on the server and let the client choose a file to load.
 
-    Any ParaViewWeb executable script come with a set of standard arguments that
+    Any VisocyteWeb executable script come with a set of standard arguments that
     can be overridden if need be::
 
         --port 8080
@@ -183,11 +183,11 @@ class _PVCatalystManager(pv_wamp.PVServerProtocol):
 
     def initialize(self):
         # Bring used components
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebStartupPluginLoader(_PVCatalystManager.plugins))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebMouseHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPort())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortImageDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortGeometryDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebStartupPluginLoader(_PVCatalystManager.plugins))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebMouseHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPort())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortImageDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortGeometryDelivery())
 
         # Update authentication key to use
         self.updateSecret(_PVCatalystManager.authKey)
@@ -242,7 +242,7 @@ class _PVCatalystManager(pv_wamp.PVServerProtocol):
 
 if __name__ == "__main__":
     # Create argument parser
-    parser = argparse.ArgumentParser(description="ParaView/Web Pipeline Manager web-application")
+    parser = argparse.ArgumentParser(description="Visocyte/Web Pipeline Manager web-application")
 
     # Add arguments
     server.add_arguments(parser)

@@ -1265,7 +1265,7 @@ void SubHaloFinder::unbindParticles(int cIndx)
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Write a .cosmo file for ParaView with location, velocity and subhalo
+// Write a .cosmo file for Visocyte with location, velocity and subhalo
 // candidate number in place of the mass variable
 //
 /////////////////////////////////////////////////////////////////////////////

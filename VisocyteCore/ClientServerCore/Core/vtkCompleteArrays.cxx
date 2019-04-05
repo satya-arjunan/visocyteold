@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCompleteArrays.cxx
 
   Copyright (c) Kitware, Inc.

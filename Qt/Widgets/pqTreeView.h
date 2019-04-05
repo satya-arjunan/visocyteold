@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqTreeView.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -37,9 +37,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /**
  * @class: pqTreeView
- * @brief: QTreeView subclass that add ParaView specific customizations.
+ * @brief: QTreeView subclass that add Visocyte specific customizations.
  *
- * pqTreeView adds ParaView specific customizations to the QTreeView. These
+ * pqTreeView adds Visocyte specific customizations to the QTreeView. These
  * include the following:
  *
  * * **Auto-resize**: Oftentimes we want the view to as compact as possible, but

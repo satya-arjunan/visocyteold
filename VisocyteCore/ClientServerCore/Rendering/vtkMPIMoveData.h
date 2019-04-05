@@ -43,10 +43,10 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   /**
-   * Use this method to initialize all communicators/sockets using ParaView
+   * Use this method to initialize all communicators/sockets using Visocyte
    * defaults.
    */
-  virtual void InitializeForCommunicationForParaView();
+  virtual void InitializeForCommunicationForVisocyte();
 
   //@{
   /**

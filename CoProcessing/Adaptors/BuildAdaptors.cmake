@@ -1,8 +1,8 @@
-# Specific simulation adaptors are typically built separately from the ParaView
-# build. The ParaView build will generally including the vtkPVCatalyst library,
+# Specific simulation adaptors are typically built separately from the Visocyte
+# build. The Visocyte build will generally including the vtkPVCatalyst library,
 # which is all anyone needs to write adaptors. However, to keep all
 # open-adaptors in one place, we place them under this directory and build them
-# using a pattern similar to the ParaView/Examples so that each one of the
+# using a pattern similar to the Visocyte/Examples so that each one of the
 # adaptors can be built separately if the user wants.
 if (NOT VISOCYTE_ENABLE_CATALYST)
   # sanity check.
@@ -10,7 +10,7 @@ if (NOT VISOCYTE_ENABLE_CATALYST)
 endif()
 
 #------------------------------------------------------------------------------
-# Make sure it uses the same build configuration as ParaView.
+# Make sure it uses the same build configuration as Visocyte.
 if (CMAKE_CONFIGURATION_TYPES)
   set(build_config_arg -C "${CMAKE_CFG_INTDIR}")
 else()
@@ -34,8 +34,8 @@ foreach (flag CMAKE_C_FLAGS_DEBUG
 endforeach()
 
 #------------------------------------------------------------------------------
-set (SOURCE_DIR "${ParaView_SOURCE_DIR}/CoProcessing/Adaptors")
-set (BINARY_DIR "${ParaView_BINARY_DIR}/CoProcessing/Adaptors")
+set (SOURCE_DIR "${Visocyte_SOURCE_DIR}/CoProcessing/Adaptors")
+set (BINARY_DIR "${Visocyte_BINARY_DIR}/CoProcessing/Adaptors")
 make_directory("${BINARY_DIR}")
 
 #------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ function(build_adaptor name languages)
             --build-project ${name}
             --build-generator ${CMAKE_GENERATOR}
             --build-makeprogram ${CMAKE_MAKE_PROGRAM}
-            --build-options -DParaView_DIR:PATH=${CMAKE_BINARY_DIR}/${visocyte_cmake_destination}
+            --build-options -DVisocyte_DIR:PATH=${CMAKE_BINARY_DIR}/${visocyte_cmake_destination}
                             -DQT_QMAKE_EXECUTABLE:FILEPATH=${QT_QMAKE_EXECUTABLE}
                             -DQt5_DIR:PATH=${Qt5_DIR}
                             -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
@@ -94,7 +94,7 @@ if(BUILD_NPIC_ADAPTOR)
   build_adaptor(NPICAdaptor
     "C"
     COMMENT "Building NPIC Adaptor"
-    DEPENDS ParaView::Catalyst)
+    DEPENDS Visocyte::Catalyst)
 endif()
 
 if (VISOCYTE_USE_MPI)
@@ -106,7 +106,7 @@ if (VISOCYTE_USE_MPI)
     build_adaptor(ParticleAdaptor
       "C"
       COMMENT "Building Particle Adaptor"
-      DEPENDS ParaView::Catalyst)
+      DEPENDS Visocyte::Catalyst)
   endif()
 endif()
 
@@ -123,7 +123,7 @@ if (CMAKE_Fortran_COMPILER_WORKS)
     build_adaptor(PhastaAdaptor
       "C;Fortran"
       COMMENT "Building Phasta Adaptor"
-      DEPENDS ParaView::Catalyst)
+      DEPENDS Visocyte::Catalyst)
   endif()
 endif()
 
@@ -135,18 +135,18 @@ if (VISOCYTE_ENABLE_PYTHON AND NOT WIN32)
   build_adaptor(CTHAdaptor
     "C"
     COMMENT "Building CTH Adaptor"
-    DEPENDS ParaView::PythonCatalyst)
+    DEPENDS Visocyte::PythonCatalyst)
 
   if (VISOCYTE_USE_MPI)
       build_adaptor(CamAdaptor
                     ""
                     COMMENT "Building Cam Adaptor"
-                    DEPENDS ParaView::Catalyst)
+                    DEPENDS Visocyte::Catalyst)
   endif()
 
   #------------------------------------------------------------------------------
   # Adaptors that need Python and Fortran
-  # The Pagosa adaptor is done as part of the normal ParaView CMake configuration
+  # The Pagosa adaptor is done as part of the normal Visocyte CMake configuration
   # so that the library can be installed.
   #------------------------------------------------------------------------------
   cmake_dependent_option(VISOCYTE_BUILD_PAGOSA_ADAPTOR

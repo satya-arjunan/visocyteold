@@ -1,10 +1,10 @@
 function (visocyte_add_executable name)
   add_executable("${name}" ${ARGN})
-  add_executable("ParaView::${name}" ALIAS "${name}")
+  add_executable("Visocyte::${name}" ALIAS "${name}")
 
   target_link_libraries("${name}"
     PRIVATE
-      ParaView::ServerManagerApplication)
+      Visocyte::ServerManagerApplication)
 
   if (NOT BUILD_SHARED_LIBS)
     target_link_libraries("${name}"
@@ -15,8 +15,8 @@ function (visocyte_add_executable name)
   if (VISOCYTE_ENABLE_PYTHON)
     target_link_libraries("${name}"
       PRIVATE
-        ParaView::pvpythonmodules
-        ParaView::PythonInitializer)
+        Visocyte::pvpythonmodules
+        Visocyte::PythonInitializer)
   endif ()
 
   if (visocyte_exe_job_link_pool)
@@ -34,7 +34,7 @@ function (visocyte_add_executable name)
     TARGETS     "${name}"
     DESTINATION bin
     COMPONENT   runtime
-    EXPORT      ParaView)
+    EXPORT      Visocyte)
   
   # set up forwarding executables
   set(_visocyte_launcher_destination "${_visocyte_launcher_RUNTIME_DESTINATION}")
@@ -44,7 +44,7 @@ function (visocyte_add_executable name)
     set(_visocyte_launcher_install_dir "../${_visocyte_launcher_LIBRARY_DESTINATION}")
     set(_visocyte_launcher_install_path "\"${_visocyte_launcher_install_dir}\"")
     set(_visocyte_launcher_NAME ${name})
-    set(_executable_cmake_dir "${ParaView_SOURCE_DIR}/CMake")
+    set(_executable_cmake_dir "${Visocyte_SOURCE_DIR}/CMake")
     configure_file(
       "${_executable_cmake_dir}/visocyte_launcher.c.in"
       "${CMAKE_CURRENT_BINARY_DIR}/${name}_launcher.c"

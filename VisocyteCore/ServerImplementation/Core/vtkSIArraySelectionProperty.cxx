@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIArraySelectionProperty.cxx
 
   Copyright (c) Kitware, Inc.

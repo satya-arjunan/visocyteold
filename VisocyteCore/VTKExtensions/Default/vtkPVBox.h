@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVBox
- * @brief   extends vtkBox to add ParaView specific API.
+ * @brief   extends vtkBox to add Visocyte specific API.
  *
- * vtkPVBox extends vtkBox to add ParaView specific API.
+ * vtkPVBox extends vtkBox to add Visocyte specific API.
 */
 
 #ifndef vtkPVBox_h

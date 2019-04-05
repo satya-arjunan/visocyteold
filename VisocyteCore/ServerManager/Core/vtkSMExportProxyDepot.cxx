@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    vtkSMExportProxyDepot.cxx
 
 Copyright (c) Kitware, Inc.
@@ -19,7 +19,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkNew.h"
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxy.h"
 #include "vtkSMSessionProxyManager.h"
@@ -88,7 +88,7 @@ vtkSMProxy* vtkSMExportProxyDepot::GetGlobalOptions()
   if (!globalProxy)
   {
     globalProxy = this->Session->NewProxy("coprocessing", "CatalystGlobalOptions");
-    vtkNew<vtkSMParaViewPipelineController> controller;
+    vtkNew<vtkSMVisocytePipelineController> controller;
     controller->PreInitializeProxy(globalProxy);
     controller->PostInitializeProxy(globalProxy);
     this->Session->RegisterProxy("export_global", "catalyst", globalProxy);
@@ -246,7 +246,7 @@ vtkSMProxy* vtkSMExportProxyDepot::GetScreenshotProxy(
     size_t rparenP = formatS.find_last_of(")");
     std::string extension = formatS.substr(dotP, rparenP - dotP);
 
-    vtkNew<vtkSMParaViewPipelineController> controller;
+    vtkNew<vtkSMVisocytePipelineController> controller;
     controller->PreInitializeProxy(ssProxy);
     vtkSMPropertyHelper(ssProxy, "View").Set(view);
 

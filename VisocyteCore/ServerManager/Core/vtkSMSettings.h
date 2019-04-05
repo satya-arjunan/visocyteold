@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -15,7 +15,7 @@
  * @class   vtkSMSettings
  *
  * vtkSMSettings provides the underlying mechanism for setting default property
- * values in ParaView.
+ * values in Visocyte.
  *
  * This class is a singleton class. Instances should be retrieved with the
  * GetInstance() method.

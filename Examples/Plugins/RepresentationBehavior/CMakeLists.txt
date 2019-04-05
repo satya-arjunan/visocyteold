@@ -5,8 +5,8 @@
 
 cmake_minimum_required(VERSION 3.3)
 
-IF(NOT ParaView_BINARY_DIR)
-  FIND_PACKAGE(ParaView REQUIRED)
+IF(NOT Visocyte_BINARY_DIR)
+  FIND_PACKAGE(Visocyte REQUIRED)
   INCLUDE(${VISOCYTE_USE_FILE})
 ENDIF()
 

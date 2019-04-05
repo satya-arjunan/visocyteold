@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPDataDescription.h
 
   Copyright (c) Kitware, Inc.

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqAutoLoadPluginXMLBehavior.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -40,14 +40,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkObject.h"
 #include <QDir>
 
-void getAllParaViewResourcesDirs(const QString& prefix, QSet<QString>& set)
+void getAllVisocyteResourcesDirs(const QString& prefix, QSet<QString>& set)
 {
   QDir dir(prefix);
   if (!dir.exists())
   {
     return;
   }
-  if (prefix.endsWith("/ParaViewResources"))
+  if (prefix.endsWith("/VisocyteResources"))
   {
     QStringList contents = dir.entryList(QDir::Files);
     foreach (QString file, contents)
@@ -59,7 +59,7 @@ void getAllParaViewResourcesDirs(const QString& prefix, QSet<QString>& set)
   QStringList contents = dir.entryList(QDir::AllDirs);
   foreach (QString sub_dir, contents)
   {
-    getAllParaViewResourcesDirs(prefix + "/" + sub_dir, set);
+    getAllVisocyteResourcesDirs(prefix + "/" + sub_dir, set);
   }
 }
 
@@ -76,7 +76,7 @@ pqAutoLoadPluginXMLBehavior::pqAutoLoadPluginXMLBehavior(QObject* parentObject)
 void pqAutoLoadPluginXMLBehavior::updateResources()
 {
   QSet<QString> xml_files;
-  ::getAllParaViewResourcesDirs(":", xml_files);
+  ::getAllVisocyteResourcesDirs(":", xml_files);
 
   foreach (QString dir, xml_files)
   {

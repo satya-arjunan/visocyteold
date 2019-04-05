@@ -19,7 +19,7 @@
         { "path":"Testing" }
       ]
     },
-    { "path":"ParaViewCore/ClientServerCore/Core",
+    { "path":"VisocyteCore/ClientServerCore/Core",
       "patches": [
         { "path": "ClientServerCore-remove-extraction.patch" }
       ]
@@ -35,7 +35,7 @@
     { "path":"VTK/Utilities/PythonInterpreter" },
     { "path":"VTK/Utilities/Python" },
     { "path":"VTK/Wrapping/PythonCore" },
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/pythonfilter.xml" },
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/pythonfilter.xml" },
     { "path":"ThirdParty/FreezePython" }
   ]
 }

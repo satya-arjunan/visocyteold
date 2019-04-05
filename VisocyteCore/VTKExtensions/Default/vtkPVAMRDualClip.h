@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVAMRDualClip.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    pqDoubleSliderWidget.h
 
   Copyright (c) Kitware, Inc.

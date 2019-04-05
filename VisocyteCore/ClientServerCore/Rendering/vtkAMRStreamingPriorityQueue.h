@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -49,7 +49,7 @@ public:
    * If the controller is specified, the queue can be used in parallel. So long
    * as Initialize(), Update() and Pop() methods are called on all processes
    * (need not be synchronized) and all process get the same amr tree and
-   * view_planes (which is generally true with ParaView), the blocks are
+   * view_planes (which is generally true with Visocyte), the blocks are
    * distributed among the processes.
    * By default, this is set to the
    * vtkMultiProcessController::GetGlobalController();

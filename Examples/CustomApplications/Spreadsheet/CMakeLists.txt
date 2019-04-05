@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.3)
 project(SpreadSheet)
 
-find_package(ParaView REQUIRED)
+find_package(Visocyte REQUIRED)
 include(${VISOCYTE_USE_FILE})
 if (NOT VISOCYTE_BUILD_QT_GUI)
   message(FATAL_ERROR
     "SpreadSheet example requires VISOCYTE_BUILD_QT_GUI to be enabled. "
-    "Please rebuild ParaView (or point to a different build of ParaView) "
+    "Please rebuild Visocyte (or point to a different build of Visocyte) "
     "with VISOCYTE_BUILD_QT_GUI set to TRUE")
 endif()
 
@@ -44,11 +44,11 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}
 
 
 #------------------------------------------------------------------------------
-include(ParaViewBranding)
+include(VisocyteBranding)
 
 # Build the client
 build_visocyte_client(spreadsheet
-    TITLE "Raw Data Viewer (ParaView-based Example Application)"
+    TITLE "Raw Data Viewer (Visocyte-based Example Application)"
     ORGANIZATION  "Kitware Inc"
     VERSION_MAJOR 1
     VERSION_MINOR 0

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    CAdaptorAPI.h
 
   Copyright (c) Kitware, Inc.

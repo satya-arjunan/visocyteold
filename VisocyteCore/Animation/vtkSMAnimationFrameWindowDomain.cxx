@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMAnimationFrameWindowDomain.cxx
 
   Copyright (c) Kitware, Inc.

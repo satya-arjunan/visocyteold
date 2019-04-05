@@ -1,6 +1,6 @@
 PROGRAM coproc
 #ifdef USE_CATALYST
-  use CoProcessor               ! ParaView Catalyst adaptor
+  use CoProcessor               ! Visocyte Catalyst adaptor
 #endif
   use SparseMatrix              ! contains initialize() and finalize()
   use PoissonDiscretization     ! contains fillmatrixandrhs()

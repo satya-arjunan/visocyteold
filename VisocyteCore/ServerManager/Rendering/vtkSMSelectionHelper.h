@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSelectionHelper.h
 
   Copyright (c) Kitware, Inc.

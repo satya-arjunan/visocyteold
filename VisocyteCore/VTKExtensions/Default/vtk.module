@@ -1,9 +1,9 @@
 NAME
-  ParaView::VTKExtensionsDefault
+  Visocyte::VTKExtensionsDefault
 LIBRARY_NAME
   vtkPVVTKExtensionsDefault
 KIT
-  ParaView::Extensions
+  Visocyte::Extensions
 DEPENDS
   VTK::FiltersAMR
   VTK::FiltersExtraction
@@ -18,8 +18,8 @@ DEPENDS
   VTK::ImagingFourier
   VTK::ImagingSources
   VTK::InteractionWidgets
-  ParaView::VTKExtensionsCore
-  ParaView::VTKExtensionsRendering
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsRendering
 PRIVATE_DEPENDS
   VTK::ChartsCore
   VTK::IOInfovis
@@ -32,4 +32,4 @@ OPTIONAL_DEPENDS
 TEST_DEPENDS
   VTK::TestingCore
 TEST_LABELS
-  ParaView
+  Visocyte

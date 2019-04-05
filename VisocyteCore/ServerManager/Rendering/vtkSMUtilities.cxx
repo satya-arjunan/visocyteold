@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMUtilities.cxx
 
   Copyright (c) Kitware, Inc.

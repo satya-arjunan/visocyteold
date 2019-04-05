@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVX3DExporter.h
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 /**
  * @class   vtkPVX3DExporter
- * @brief   ParaView-specific X3D exporter that handles export of color legends
+ * @brief   Visocyte-specific X3D exporter that handles export of color legends
  *          in addition to the items exported by vtkX3DExporter.
  */
 

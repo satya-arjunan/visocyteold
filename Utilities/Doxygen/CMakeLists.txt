@@ -29,17 +29,17 @@ endif()
 # all source directories and so does not use the normal variables.
 unset(PV_MODULE_DIRS_DOXYGEN)
 unset(PV_MODULE_DIRS_DOXYGEN_ESCAPED)
-file(GLOB_RECURSE src RELATIVE "${ParaView_SOURCE_DIR}"
-    "${ParaView_SOURCE_DIR}/vtk.module")
+file(GLOB_RECURSE src RELATIVE "${Visocyte_SOURCE_DIR}"
+    "${Visocyte_SOURCE_DIR}/vtk.module")
 foreach(module ${src})
   get_filename_component(module_BASE ${module} PATH)
   if("${module_BASE}" MATCHES "^Utilities" OR ${module_BASE} MATCHES "^Third" OR
       "${module_BASE}" MATCHES "^VTK" OR "${module_BASE}" MATCHES "^Plugins")
   else()
     set(PV_MODULE_DIRS_DOXYGEN
-      "${PV_MODULE_DIRS_DOXYGEN}  \"${ParaView_SOURCE_DIR}/${module_BASE}\"\n")
+      "${PV_MODULE_DIRS_DOXYGEN}  \"${Visocyte_SOURCE_DIR}/${module_BASE}\"\n")
     set(PV_MODULE_DIRS_DOXYGEN_ESCAPED
-      "${PV_MODULE_DIRS_DOXYGEN_ESCAPED} \"${ParaView_SOURCE_DIR}/${module_BASE}\"\\\n")
+      "${PV_MODULE_DIRS_DOXYGEN_ESCAPED} \"${Visocyte_SOURCE_DIR}/${module_BASE}\"\\\n")
   endif()
 endforeach()
 
@@ -56,15 +56,15 @@ set(DOCUMENTATION_OUTPUT_DIRECTORY
   "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}")
 
 configure_file(
-  ${ParaView_SOURCE_DIR}/Utilities/Doxygen/doxyfile.in
-  ${ParaView_BINARY_DIR}/Utilities/Doxygen/doxyfile)
+  ${Visocyte_SOURCE_DIR}/Utilities/Doxygen/doxyfile.in
+  ${Visocyte_BINARY_DIR}/Utilities/Doxygen/doxyfile)
 
 configure_file(
-  ${ParaView_SOURCE_DIR}/Utilities/Doxygen/doc_makeall.cmake.in
-  ${ParaView_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake
+  ${Visocyte_SOURCE_DIR}/Utilities/Doxygen/doc_makeall.cmake.in
+  ${Visocyte_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake
   @ONLY)
 
-add_custom_target(ParaViewDoxygenDoc
+add_custom_target(VisocyteDoxygenDoc
   ${CMAKE_COMMAND}
-  -P ${ParaView_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake
-  DEPENDS ${ParaView_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake)
+  -P ${Visocyte_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake
+  DEPENDS ${Visocyte_BINARY_DIR}/Utilities/Doxygen/doc_makeall.cmake)

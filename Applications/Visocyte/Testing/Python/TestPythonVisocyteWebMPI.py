@@ -3,12 +3,12 @@
 # Global python import
 import exceptions, traceback, logging, random, sys, threading, time, os
 
-# Update python path to have ParaView libs
-build_path='/Volumes/SebKitSSD/Kitware/code/ParaView/build-ninja'
+# Update python path to have Visocyte libs
+build_path='/Volumes/SebKitSSD/Kitware/code/Visocyte/build-ninja'
 sys.path.append('%s/lib'%build_path)
 sys.path.append('%s/lib/site-packages'%build_path)
 
-# ParaView import
+# Visocyte import
 from vtk.web import server
 from visocyte.vtk import *
 from visocyte.web import wamp as pv_wamp
@@ -19,7 +19,7 @@ from vtk.vtkCommonDataModel import *
 from vtk.vtkCommonExecutionModel import *
 from vtk.vtkFiltersSources import *
 from vtk.vtkParallelCore import *
-from vtk.vtkParaViewWebCore import *
+from vtk.vtkVisocyteWebCore import *
 from vtk.vtkPVClientServerCoreCore import *
 from vtk.vtkPVServerManagerApplication import *
 from vtk.vtkPVServerManagerCore import *
@@ -50,15 +50,15 @@ class TestProtocol(pv_wamp.PVServerProtocol):
         from visocyte.web import protocols as pv_protocols
 
         # Bring used components
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebFileListing(TestProtocol.dataDir, "Home", TestProtocol.excludeRegex, TestProtocol.groupRegex))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebPipelineManager(TestProtocol.dataDir, TestProtocol.fileToLoad))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebMouseHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPort())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortImageDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortGeometryDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebTimeHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebRemoteConnection())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebFileManager(TestProtocol.dataDir))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebFileListing(TestProtocol.dataDir, "Home", TestProtocol.excludeRegex, TestProtocol.groupRegex))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebPipelineManager(TestProtocol.dataDir, TestProtocol.fileToLoad))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebMouseHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPort())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortImageDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortGeometryDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebTimeHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebRemoteConnection())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebFileManager(TestProtocol.dataDir))
 
         # Update authentication key to use
         self.updateSecret(TestProtocol.authKey)
@@ -68,7 +68,7 @@ class TestProtocol(pv_wamp.PVServerProtocol):
 # Start server
 #------------------------------------------------------------------------------
 
-visocyteHelper = pv_ipython.ParaViewIPython()
+visocyteHelper = pv_ipython.VisocyteIPython()
 webArguments   = pv_ipython.WebArguments('%s/www' % build_path)
 
 def start():

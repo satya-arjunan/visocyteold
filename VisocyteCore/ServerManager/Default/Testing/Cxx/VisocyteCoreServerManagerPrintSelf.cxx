@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    ServersServerManagerPrintSelf.cxx
 
   Copyright (c) Kitware, Inc.
@@ -135,7 +135,7 @@
   c->Print(cout);                                                                                  \
   c->Delete();
 
-int ParaViewCoreServerManagerPrintSelf(int, char* [])
+int VisocyteCoreServerManagerPrintSelf(int, char* [])
 {
   vtkObject* c;
 

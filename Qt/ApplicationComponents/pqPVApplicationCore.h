@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqPVApplicationCore.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -46,8 +46,8 @@ class QMenu;
 class QWidget;
 
 /**
-* pqPVApplicationCore is the application code used by ParaView-based
-* applications that use more of ParaView's functionality than that provided by
+* pqPVApplicationCore is the application code used by Visocyte-based
+* applications that use more of Visocyte's functionality than that provided by
 * pqApplicationCore such as the the selection manager, animation  manager etc.
 */
 class PQAPPLICATIONCOMPONENTS_EXPORT pqPVApplicationCore : public pqApplicationCore
@@ -70,7 +70,7 @@ public:
 
   /**
   * Provides access to the selection manager. Selection manager provides
-  * access to the ParaView wide data selection mechanism. This must not be
+  * access to the Visocyte wide data selection mechanism. This must not be
   * confused with the active-object selection.
   */
   pqSelectionManager* selectionManager() const;
@@ -93,7 +93,7 @@ public:
   pqPythonManager* pythonManager() const;
 
   /**
-  * ParaView provides a mechanism to trigger menu actions using a quick-launch
+  * Visocyte provides a mechanism to trigger menu actions using a quick-launch
   * dialog. Applications can register menus action from which should be
   * launch-able from the quick-launch dialog. Typical candidates are the
   * sources menu, filters menu etc.

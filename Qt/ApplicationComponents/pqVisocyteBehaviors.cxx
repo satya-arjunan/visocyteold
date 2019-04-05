@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
-   Module:    pqParaViewBehaviors.cxx
+   Program: Visocyte
+   Module:    pqVisocyteBehaviors.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,7 +29,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#include "pqParaViewBehaviors.h"
+#include "pqVisocyteBehaviors.h"
 
 #include "pqAlwaysConnectedBehavior.h"
 #include "pqApplicationCore.h"
@@ -65,7 +65,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqVerifyRequiredPluginBehavior.h"
 #include "pqViewStreamingBehavior.h"
 
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
 #include "pqPythonShell.h"
 #endif
 
@@ -127,7 +127,7 @@ public:
 };
 }
 
-#define PQ_BEHAVIOR_DEFINE_FLAG(_name, _default) bool pqParaViewBehaviors::_name = _default;
+#define PQ_BEHAVIOR_DEFINE_FLAG(_name, _default) bool pqVisocyteBehaviors::_name = _default;
 PQ_BEHAVIOR_DEFINE_FLAG(StandardPropertyWidgets, true);
 PQ_BEHAVIOR_DEFINE_FLAG(StandardViewFrameActions, true);
 PQ_BEHAVIOR_DEFINE_FLAG(StandardRecentlyUsedResourceLoader, true);
@@ -162,10 +162,10 @@ PQ_BEHAVIOR_DEFINE_FLAG(MainWindowEventBehavior, true);
 #define PQ_IS_BEHAVIOR_ENABLED(_name) enable##_name()
 
 //-----------------------------------------------------------------------------
-pqParaViewBehaviors::pqParaViewBehaviors(QMainWindow* mainWindow, QObject* parentObject)
+pqVisocyteBehaviors::pqVisocyteBehaviors(QMainWindow* mainWindow, QObject* parentObject)
   : Superclass(parentObject)
 {
-  // Register ParaView interfaces.
+  // Register Visocyte interfaces.
   pqInterfaceTracker* pgm = pqApplicationCore::instance()->interfaceTracker();
 
   if (PQ_IS_BEHAVIOR_ENABLED(StandardPropertyWidgets))
@@ -316,7 +316,7 @@ pqParaViewBehaviors::pqParaViewBehaviors(QMainWindow* mainWindow, QObject* paren
     new pqLockPanelsBehavior(mainWindow);
   }
 
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   if (PQ_IS_BEHAVIOR_ENABLED(PythonShellResetBehavior))
   {
     pqServerManagerModel* smmodel = pqApplicationCore::instance()->getServerManagerModel();
@@ -344,7 +344,7 @@ pqParaViewBehaviors::pqParaViewBehaviors(QMainWindow* mainWindow, QObject* paren
 }
 
 //-----------------------------------------------------------------------------
-pqParaViewBehaviors::~pqParaViewBehaviors()
+pqVisocyteBehaviors::~pqVisocyteBehaviors()
 {
 }
 

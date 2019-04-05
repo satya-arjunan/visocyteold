@@ -1,6 +1,6 @@
 vtk_add_test_cxx(vtkPVClientServerCoreDefaultCxxTests tests
   NO_DATA NO_VALID NO_OUTPUT
-  ParaViewCoreClientServerCorePrintSelf.cxx
+  VisocyteCoreClientServerCorePrintSelf.cxx
   TestPVArrayInformation.cxx
   TestPartialArraysInformation.cxx
   TestSpecialDirectories.cxx

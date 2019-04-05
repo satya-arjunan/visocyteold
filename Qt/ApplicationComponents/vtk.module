@@ -1,30 +1,30 @@
 NAME
-  ParaView::pqApplicationComponents
+  Visocyte::pqApplicationComponents
 LIBRARY_NAME
   pqApplicationComponents
 GROUPS
-  ParaViewQt
+  VisocyteQt
 DEPENDS
-  ParaView::pqComponents
-  ParaView::qttesting
+  Visocyte::pqComponents
+  Visocyte::qttesting
   VTK::GUISupportQt
 PRIVATE_DEPENDS
-  ParaView::Animation
-  ParaView::ClientServerCoreDefault
-  ParaView::ServerManagerApplication
-  ParaView::ServerManagerDefault
-  ParaView::ServerManagerRendering
+  Visocyte::Animation
+  Visocyte::ClientServerCoreDefault
+  Visocyte::ServerManagerApplication
+  Visocyte::ServerManagerDefault
+  Visocyte::ServerManagerRendering
   VTK::jsoncpp
   VTK::vtksys
 OPTIONAL_DEPENDS
-  ParaView::CinemaReader
-  ParaView::nvpipe
+  Visocyte::CinemaReader
+  Visocyte::nvpipe
   VTK::PythonInterpreter
   VTK::RenderingOSPRay
 
   # These affect the public API.
-  #ParaView::pqComponentsPython
-  ParaView::pqPython
+  #Visocyte::pqComponentsPython
+  Visocyte::pqPython
 TEST_LABELS
-  ParaView
+  Visocyte
 EXCLUDE_WRAP

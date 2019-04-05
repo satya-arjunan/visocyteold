@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMFieldDataDomain.cxx
 
   Copyright (c) Kitware, Inc.

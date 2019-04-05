@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkAMRFragmentsFilter.h
 
   This software is distributed WITHOUT ANY WARRANTY; without even

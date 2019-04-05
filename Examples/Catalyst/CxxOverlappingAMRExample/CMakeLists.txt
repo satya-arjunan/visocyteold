@@ -9,7 +9,7 @@ add_library(CxxOverlappingAMRExampleAdaptor
   FEAdaptor.h)
 target_link_libraries(CxxOverlappingAMRExampleAdaptor
   PRIVATE
-    ParaView::PythonCatalyst
+    Visocyte::PythonCatalyst
     VTK::CommonDataModel
     VTK::ParallelCore)
 

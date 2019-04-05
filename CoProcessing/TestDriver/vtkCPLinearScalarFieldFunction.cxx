@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPLinearScalarFieldFunction.cxx
 
   Copyright (c) Kitware, Inc.

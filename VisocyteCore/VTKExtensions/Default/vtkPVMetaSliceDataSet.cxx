@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVMetaSliceDataSet.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVUpdateSuppressor.cxx
 
   Copyright (c) Kitware, Inc.

@@ -40,8 +40,8 @@ visocyte_add_plugin(LagrangianParticleTracker
 
 target_link_libraries(LagrangianParticleTracker
   PRIVATE
-    ParaView::ClientServerCoreCore
-    ParaView::ServerManagerCore
+    Visocyte::ClientServerCoreCore
+    Visocyte::ServerManagerCore
     VTK::CommonCore
     VTK::GUISupportQt)
 

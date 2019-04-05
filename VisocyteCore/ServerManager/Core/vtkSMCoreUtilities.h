@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMCoreUtilities.h
 
   Copyright (c) Kitware, Inc.
@@ -37,7 +37,7 @@ public:
 
   /**
    * Given a proxy (or proxy prototype), returns the name of the property that
-   * ParaView application will be use as the default FileName property.
+   * Visocyte application will be use as the default FileName property.
    * Returns the name of the property or NULL when no such property is found.
    */
   static const char* GetFileNameProperty(vtkSMProxy*);
@@ -111,7 +111,7 @@ public:
 
   /**
    * Given a VTK cell type value from the enum in vtkCellTypes.h,
-   * returns a string describing that cell type for use if ParaView's GUI.
+   * returns a string describing that cell type for use if Visocyte's GUI.
    * For example it pasesd VTK_TRIANGLE it will return "Triangle".
    * If an unknown cell type is passed to this it returns the string "Unknown".
    */

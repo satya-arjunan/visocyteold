@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVFileInformation.cxx
 
   Copyright (c) Kitware, Inc.
@@ -479,7 +479,7 @@ void vtkPVFileInformation::CopyFromObject(vtkObject* object)
 //-----------------------------------------------------------------------------
 void vtkPVFileInformation::GetSpecialDirectories()
 {
-  std::string examplesPath = vtkPVFileInformation::GetParaViewExampleFilesDirectory();
+  std::string examplesPath = vtkPVFileInformation::GetVisocyteExampleFilesDirectory();
   if (vtksys::SystemTools::FileIsDirectory(examplesPath))
   {
     vtkNew<vtkPVFileInformation> info;
@@ -1199,7 +1199,7 @@ void vtkPVFileInformation::Initialize()
 }
 
 //-----------------------------------------------------------------------------
-std::string vtkPVFileInformation::GetParaViewSharedResourcesDirectory()
+std::string vtkPVFileInformation::GetVisocyteSharedResourcesDirectory()
 {
   // Look for where the function "GetVTKVersion." lives.
   auto vtk_libs = vtkGetLibraryPathForSymbol(GetVTKVersion);
@@ -1225,15 +1225,15 @@ std::string vtkPVFileInformation::GetParaViewSharedResourcesDirectory()
 }
 
 //-----------------------------------------------------------------------------
-std::string vtkPVFileInformation::GetParaViewExampleFilesDirectory()
+std::string vtkPVFileInformation::GetVisocyteExampleFilesDirectory()
 {
-  return vtkPVFileInformation::GetParaViewSharedResourcesDirectory() + "/examples";
+  return vtkPVFileInformation::GetVisocyteSharedResourcesDirectory() + "/examples";
 }
 
 //-----------------------------------------------------------------------------
-std::string vtkPVFileInformation::GetParaViewDocDirectory()
+std::string vtkPVFileInformation::GetVisocyteDocDirectory()
 {
-  return vtkPVFileInformation::GetParaViewSharedResourcesDirectory() + "/doc";
+  return vtkPVFileInformation::GetVisocyteSharedResourcesDirectory() + "/doc";
 }
 
 //-----------------------------------------------------------------------------

@@ -1,8 +1,8 @@
-![ParaView](Documentation/img/visocyte.png)
+![Visocyte](Documentation/img/visocyte.png)
 
 Introduction
 ============
-[ParaView][] is an open-source, multi-platform data analysis and
+[Visocyte][] is an open-source, multi-platform data analysis and
 visualization application based on
 [Visualization Toolkit (VTK)][VTK].
 
@@ -13,7 +13,7 @@ has grown through collaborative efforts between [Kitware Inc.][Kitware],
 [Army Research Laboratory][ARL], and various other
 government and commercial institutions, and academic partners.
 
-[ParaView]: http://www.visocyte.org
+[Visocyte]: http://www.visocyte.org
 [VTK]: http://www.vtk.org
 [Kitware]: http://www.kitware.com
 [Sandia]: http://www.sandia.gov/
@@ -23,11 +23,11 @@ government and commercial institutions, and academic partners.
 Learning Resources
 ==================
 
-* General information is available at the [ParaView Homepage][].
+* General information is available at the [Visocyte Homepage][].
 
-* [The ParaView Guide][Guide] can be downloaded (as PDF) or purchased (in print).
+* [The Visocyte Guide][Guide] can be downloaded (as PDF) or purchased (in print).
 
-* Community discussion takes place on the [ParaView Discourse][] forum.
+* Community discussion takes place on the [Visocyte Discourse][] forum.
 
 * Commercial [support][Kitware Support] and [training][Kitware Training]
   are available from [Kitware][].
@@ -35,9 +35,9 @@ Learning Resources
 * Additional documentation, including Doxygen-generated nightly
   reference documentation, is available [online][Documentation].
 
-[ParaView Homepage]: http://www.visocyte.org
+[Visocyte Homepage]: http://www.visocyte.org
 [Documentation]: http://www.visocyte.org/documentation/
-[ParaView Discourse]: https://discourse.visocyte.org/
+[Visocyte Discourse]: https://discourse.visocyte.org/
 [Kitware]: http://www.kitware.com/
 [Kitware Support]: http://www.kitware.com/products/support.html
 [Kitware Training]: http://www.kitware.com/products/protraining.php
@@ -47,14 +47,14 @@ Learning Resources
 Building
 ========
 
-There are two ways to build ParaView:
+There are two ways to build Visocyte:
 
-* Perhaps the easiest method for beginners to build ParaView from source is
-using the [ParaView Superbuild][sbrepo]. The superbuild downloads and builds all
-of ParaView's dependencies as well as ParaView itself.
+* Perhaps the easiest method for beginners to build Visocyte from source is
+using the [Visocyte Superbuild][sbrepo]. The superbuild downloads and builds all
+of Visocyte's dependencies as well as Visocyte itself.
 
-* It is also possible to [build ParaView][build] without using the superbuild.
-ParaView's dependencies must be available on the system.
+* It is also possible to [build Visocyte][build] without using the superbuild.
+Visocyte's dependencies must be available on the system.
 
 [sbrepo]: https://gitlab.kitware.com/visocyte/visocyte-superbuild
 [build]: Documentation/dev/build.md
@@ -66,13 +66,13 @@ If you have found a bug:
 
 1. If you have a source-code fix, please read the [CONTRIBUTING.md][] document.
 
-2. Otherwise, please join the [ParaView Discourse][] forum and ask about
+2. Otherwise, please join the [Visocyte Discourse][] forum and ask about
    the expected and observed behaviors to determine if it is really a bug.
 
 3. Finally, if the issue is not resolved by the above steps, open
-   an entry in the [ParaView Issue Tracker][].
+   an entry in the [Visocyte Issue Tracker][].
 
-[ParaView Issue Tracker]: https://gitlab.kitware.com/visocyte/visocyte/issues
+[Visocyte Issue Tracker]: https://gitlab.kitware.com/visocyte/visocyte/issues
 
 Contributing
 ============
@@ -86,16 +86,16 @@ For Github users
 pull requests on Github. Please use the [official repository][repo] to report issues or contribute
 fixes.
 
-[Github]: https://github.com/Kitware/ParaView
+[Github]: https://github.com/Kitware/Visocyte
 [repo]: https://gitlab.kitware.com/visocyte/visocyte
 [CONTRIBUTING.md]: CONTRIBUTING.md
 
 License
 =======
 
-ParaView is distributed under the OSI-approved BSD 3-clause License.
+Visocyte is distributed under the OSI-approved BSD 3-clause License.
 See [Copyright.txt][] for details. For additional licenses, refer to
-[ParaView Licenses][].
+[Visocyte Licenses][].
 
 [Copyright.txt]: Copyright.txt
-[ParaView Licenses]: http://www.visocyte.org/visocyte-license/
+[Visocyte Licenses]: http://www.visocyte.org/visocyte-license/

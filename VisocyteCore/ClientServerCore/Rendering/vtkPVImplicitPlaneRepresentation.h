@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVImplicitPlaneRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  * @brief   extends vtkImplicitPlaneRepresentation
  *
  * vtkPVImplicitPlaneRepresentation extends vtkImplicitPlaneRepresentation to
- * add ParaView proper initialisation values
+ * add Visocyte proper initialisation values
 */
 
 #ifndef vtkPVImplicitPlaneRepresentation_h

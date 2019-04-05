@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMPVRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkSMPVRepresentationProxy
  * @brief   representation for "Render View" like
- * views in ParaView.
+ * views in Visocyte.
  *
  * vtkSMPVRepresentationProxy combines surface representation and volume
  * representation proxies typically used for displaying data.

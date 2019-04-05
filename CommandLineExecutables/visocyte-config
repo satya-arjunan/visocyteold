@@ -12,7 +12,7 @@ CMAKELISTS = """
 cmake_minimum_required(VERSION 3.8)
 project(find_visocyte CXX)
 
-find_package(ParaView REQUIRED COMPONENTS %(components)s)
+find_package(Visocyte REQUIRED COMPONENTS %(components)s)
 set(vtk_components %(vtk_components)s)
 if (vtk_components)
   find_package(VTK REQUIRED COMPONENTS ${vtk_components})
@@ -151,7 +151,7 @@ def extract_visocyte_flags(components, cmake='cmake',
         ]
 
         if visocyte_dir is not None:
-            configure_cmd.append('-DParaView_DIR:PATH=' + visocyte_dir)
+            configure_cmd.append('-DVisocyte_DIR:PATH=' + visocyte_dir)
         if sys.version_info.major == 3:
             stdout = subprocess.DEVNULL
         else:
@@ -215,7 +215,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Extract required flags for linking to ParaView')
+        description='Extract required flags for linking to Visocyte')
     parser.add_argument(
         '-c', '--component', metavar='COMPONENT', action='append',
         default=[], dest='components',

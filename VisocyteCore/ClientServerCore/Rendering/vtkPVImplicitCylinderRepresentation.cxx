@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVImplicitCylinderRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

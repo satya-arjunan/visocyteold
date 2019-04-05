@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkMPICompositeManager.cxx
 
   Copyright (c) Kitware, Inc.

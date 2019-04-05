@@ -1,14 +1,14 @@
 NAME
-  ParaView::ServerManagerCore
+  Visocyte::ServerManagerCore
 LIBRARY_NAME
   vtkPVServerManagerCore
 GROUPS
-  ParaViewCore
+  VisocyteCore
 KIT
-  ParaView::ServerManager
+  Visocyte::ServerManager
 IMPLEMENTABLE
 DEPENDS
-  ParaView::ServerImplementationCore
+  Visocyte::ServerImplementationCore
   VTK::jsoncpp
 PRIVATE_DEPENDS
   VTK::IOMovie
@@ -20,8 +20,8 @@ OPTIONAL_DEPENDS
   VTK::RenderingOSPRay
   VTK::WrappingPythonCore
 TEST_DEPENDS
-  ParaView::ServerManagerApplication
-  ParaView::ServerManagerRendering
+  Visocyte::ServerManagerApplication
+  Visocyte::ServerManagerRendering
   VTK::TestingCore
 TEST_LABELS
-  ParaView
+  Visocyte

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkUndoElement.cxx
 
   Copyright (c) Kitware, Inc.

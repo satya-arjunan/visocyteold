@@ -21,7 +21,7 @@
 // spherical (standard), as well as equidistant cylindrical and Cassini projection.
 // 3D data can be visualized using slices, as well as 3D unstructured mesh. If
 // bathymetry information (wet_c) is present in the data, this can be used for
-// masking out continents. For more information, also check out our ParaView tutorial:
+// masking out continents. For more information, also check out our Visocyte tutorial:
 // https://www.dkrz.de/Nutzerportal-en/doku/vis/sw/visocyte
 //
 // .SECTION Caveats
@@ -872,7 +872,7 @@ int vtkCDIReader::RegenerateVariables()
     return 0;
   }
 
-  // Allocate the ParaView data arrays which will hold the variables
+  // Allocate the Visocyte data arrays which will hold the variables
   delete[] this->PointVarDataArray;
 
   this->PointVarDataArray = new vtkDataArray*[this->NumberOfPointVars];

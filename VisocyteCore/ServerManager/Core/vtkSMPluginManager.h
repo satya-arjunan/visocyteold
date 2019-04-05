@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 /**
  * @class   vtkSMPluginManager
- * @brief   manages ParaView plugins.
+ * @brief   manages Visocyte plugins.
  *
  * vtkSMPluginManager is used to load plugins as well as discover information
  * about currently loaded and available plugins.
@@ -81,10 +81,10 @@ public:
   //@}
 
   /**
-   * Plugin configuration XML is a simple XML that makes ParaView aware of the
+   * Plugin configuration XML is a simple XML that makes Visocyte aware of the
    * plugins available and may result in loading of those plugins that are
-   * marked for auto-loading. In ParaView application there are two uses for this:
-   * \li .plugins - used to notify ParaView of the distributed plugins
+   * marked for auto-loading. In Visocyte application there are two uses for this:
+   * \li .plugins - used to notify Visocyte of the distributed plugins
    * \li session - used to save/restore the plugins loaded by the users.
 
    * This method loads the plugin configuration xml either on the local process or the

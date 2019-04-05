@@ -11,15 +11,15 @@ unset(CMAKE_CONFIGURABLE_FILE_CONTENT)
 #---------------------------------------------------------------------------------
 # add a custom command to package the documentations into a tarball that's
 # easy to move around.
-add_custom_target(ParaViewDoc-TGZ
+add_custom_target(VisocyteDoc-TGZ
   COMMAND
     ${CMAKE_COMMAND} -E tar cfz
-    ${CMAKE_CURRENT_BINARY_DIR}/ParaViewGeneratedDocs.tar.gz
+    ${CMAKE_CURRENT_BINARY_DIR}/VisocyteGeneratedDocs.tar.gz
     ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}
   WORKING_DIRECTORY ${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/..
-  COMMENT "Generate ParaViewGeneratedDocs.tar.gz")
+  COMMENT "Generate VisocyteGeneratedDocs.tar.gz")
 
-add_dependencies(ParaViewDoc-TGZ ParaViewDoxygenDoc)
+add_dependencies(VisocyteDoc-TGZ VisocyteDoxygenDoc)
 if (VISOCYTE_ENABLE_PYTHON)
-  add_dependencies(ParaViewDoc-TGZ ParaViewPythonDoc)
+  add_dependencies(VisocyteDoc-TGZ VisocytePythonDoc)
 endif ()

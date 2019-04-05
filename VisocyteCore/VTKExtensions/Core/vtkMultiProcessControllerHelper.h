@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkMultiProcessControllerHelper.h
 
   Copyright (c) Kitware, Inc.

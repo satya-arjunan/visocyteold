@@ -63,7 +63,7 @@
 #include "vtkSMIdTypeVectorProperty.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMOutputPort.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxy.h"
 #include "vtkSMSourceProxy.h"
@@ -575,9 +575,9 @@ pqSierraPlotToolsManager::~pqSierraPlotToolsManager()
 }
 
 //-----------------------------------------------------------------------------
-void pqSierraPlotToolsManager::slotUseParaViewGUIToSelectNodesCheck()
+void pqSierraPlotToolsManager::slotUseVisocyteGUIToSelectNodesCheck()
 {
-  bool checkState = this->Internal->plotGUI->getUseParaViewGUIToSelectNodesCheckBoxState();
+  bool checkState = this->Internal->plotGUI->getUseVisocyteGUIToSelectNodesCheckBoxState();
 
   if (checkState)
   {
@@ -979,9 +979,9 @@ void pqSierraPlotToolsManager::showPlotGUI(pqPlotVariablesDialog* plotGUI)
   QObject::connect(this->Internal->plotGUI, SIGNAL(variableSelectionByName(QString)), this,
     SLOT(slotVariableSelectionByName(QString)));
 
-  // connect slot, for when the "use ParaView GUI to Select Nodes" check box is checked
-  QObject::connect(this->Internal->plotGUI, SIGNAL(useParaViewGUIToSelectNodesCheck()), this,
-    SLOT(slotUseParaViewGUIToSelectNodesCheck()));
+  // connect slot, for when the "use Visocyte GUI to Select Nodes" check box is checked
+  QObject::connect(this->Internal->plotGUI, SIGNAL(useVisocyteGUIToSelectNodesCheck()), this,
+    SLOT(slotUseVisocyteGUIToSelectNodesCheck()));
 }
 
 //-----------------------------------------------------------------------------
@@ -1160,7 +1160,7 @@ bool pqSierraPlotToolsManager::setupGUIForVars()
       {
         qWarning() << "* WARNING * " << this->Internal->whoAmI << ": "
                    << "That's odd! pqSierraPlotToolsManager::setupGUIForVars Expected a valid "
-                      "ParaView information object on the mesh reader output port";
+                      "Visocyte information object on the mesh reader output port";
         // return;
         return false;
       }
@@ -1351,7 +1351,7 @@ bool pqSierraPlotToolsManager::createPlotOverTime()
   pqObjectBuilder* builder = core->getObjectBuilder();
   pqUndoStack* stack = core->getUndoStack();
 
-  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
 
   pqPipelineSource* meshReader = this->getMeshReader();
   if (!meshReader)
@@ -1385,9 +1385,9 @@ bool pqSierraPlotToolsManager::createPlotOverTime()
 
   pqPipelineSource* plotFilter = NULL;
   QStringList::const_iterator constIter;
-  // bool checkState = this->Internal->plotGUI->getUseParaViewGUIToSelectNodesCheckBoxState();
+  // bool checkState = this->Internal->plotGUI->getUseVisocyteGUIToSelectNodesCheckBoxState();
   //#pragma message (__FILE__ "[" STRING(__LINE__) "]: pqSierraPlotToolsManager::createPlotOverTime:
-  // NOTE: Not currently handing plotGUI->getUseParaViewGUIToSelectNodesCheckBoxState()")
+  // NOTE: Not currently handing plotGUI->getUseVisocyteGUIToSelectNodesCheckBoxState()")
 
   //
   // This section of code first toggles all the variables off for this plotter, then...

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPythonSelector.h
 
   Copyright (c) Kitware, Inc.

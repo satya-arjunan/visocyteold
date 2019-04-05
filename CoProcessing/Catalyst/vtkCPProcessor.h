@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPProcessor.h
 
   Copyright (c) Kitware, Inc.
@@ -24,7 +24,7 @@ class vtkCPPipeline;
 class vtkMPICommunicatorOpaqueComm;
 class vtkMultiProcessController;
 
-/// @defgroup CoProcessing ParaView CoProcessing
+/// @defgroup CoProcessing Visocyte CoProcessing
 /// The CoProcessing library is designed to be called from parallel
 /// simulation codes to reduce the size of the information that is saved
 /// while also keeping the important information available as results.

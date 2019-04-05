@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMReaderReloadHelper.h
 
   Copyright (c) Kitware, Inc.

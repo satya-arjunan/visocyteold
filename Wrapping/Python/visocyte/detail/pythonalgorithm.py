@@ -88,8 +88,8 @@ def _create_decorator(kwargs={}, update_func=None, generate_xml_func=None):
 class smproperty(object):
     """
     Provides decorators for class methods that are to be exposed as
-    server-manager properties in ParaView. Only methods that are decorated
-    using one of the available decorators will be exposed be accessible to ParaView
+    server-manager properties in Visocyte. Only methods that are decorated
+    using one of the available decorators will be exposed be accessible to Visocyte
     UI or client-side Python scripting API.
     """
     @staticmethod
@@ -343,7 +343,7 @@ def get_qualified_classname(classobj):
 class smproxy(object):
     """
     Provides decorators for class objects that should be exposed to
-    ParaView.
+    Visocyte.
     """
     @staticmethod
     def _update_proxy_defaults(classobj, attrs):
@@ -457,7 +457,7 @@ def get_plugin_xmls(module_or_package):
     """helper function called by vtkPVPythonAlgorithmPlugin to discover
     all "proxy" decorated classes in the module or package. We don't recurse
     into the package, on simply needs to export all classes that form the
-    ParaView plugin in the __init__.py for the package."""
+    Visocyte plugin in the __init__.py for the package."""
     from inspect import ismodule, isclass
     items = []
     if ismodule(module_or_package):
@@ -474,7 +474,7 @@ def get_plugin_xmls(module_or_package):
 
 def get_plugin_name(module_or_package):
     """helper function called by vtkPVPythonAlgorithmPlugin to discover
-    ParaView plugin name, if any."""
+    Visocyte plugin name, if any."""
     from inspect import ismodule, isclass
     if ismodule(module_or_package) and hasattr(module_or_package, "visocyte_plugin_name"):
         return str(getattr(module_or_package, "visocyte_plugin_name"))
@@ -483,7 +483,7 @@ def get_plugin_name(module_or_package):
 
 def get_plugin_version(module_or_package):
     """helper function called by vtkPVPythonAlgorithmPlugin to discover
-    ParaView plugin version, if any."""
+    Visocyte plugin version, if any."""
     from inspect import ismodule, isclass
     if ismodule(module_or_package) and hasattr(module_or_package, "visocyte_plugin_version"):
         return str(getattr(module_or_package, "visocyte_plugin_version"))

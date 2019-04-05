@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestReadCGNSFiles.cxx
 
   Copyright (c) Menno Deij - van Rijswijk, MARIN, The Netherlands

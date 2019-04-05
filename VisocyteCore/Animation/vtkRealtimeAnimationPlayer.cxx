@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkRealtimeAnimationPlayer.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkGmshReader.cxx
 
   Copyright (c) Kitware, Inc.
@@ -13,10 +13,10 @@
 
 =========================================================================*/
 // -------------------------------------------------------------------
-// ParaViewGmshReaderPlugin - Copyright (C) 2015 Cenaero
+// VisocyteGmshReaderPlugin - Copyright (C) 2015 Cenaero
 //
 // See the Copyright.txt and License.txt files provided
-// with ParaViewGmshReaderPlugin for license information.
+// with VisocyteGmshReaderPlugin for license information.
 //
 // -------------------------------------------------------------------
 
@@ -258,7 +258,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
 
     for (; itfieldpath != itfieldpathend; ++itfieldpath)
     {
-      // ParaView sorts the fields by alphabetical order
+      // Visocyte sorts the fields by alphabetical order
       char* field_name;
       int field_name_size;
 
@@ -703,7 +703,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
     delete[] nPViewPerScheme;
 
     // Find common substrings from PViewData names and store them in a vector
-    // This will be used as a mapping in ParaView so that the same fields (if several different
+    // This will be used as a mapping in Visocyte so that the same fields (if several different
     // order) have the same name
     std::vector<std::string> fieldNameMapping;
     fieldNameMapping.resize(nFields);
@@ -766,7 +766,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
       int localFirstVertexNo = 0;
       int num_nodes_field = 0;
       int num_cells_field = 0;
-      std::string fieldNameParaView = fieldNameMapping[iField];
+      std::string fieldNameVisocyte = fieldNameMapping[iField];
 
       // Loop over the interpolation orders (pressure_p_4, pressure_p_3, etc)
       for (std::map<std::string, stringvect>::iterator it = schemeAndPviewMapVect.begin();
@@ -793,7 +793,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
             {
               debugmsg = "\nName of the view in Gmsh: " + PViewName + " - number of components: " +
                 ToString(numOfComps) + " - interpolation schme: " + interpolationSchemeName +
-                "\nName of the view in ParaView: " + fieldNameParaView;
+                "\nName of the view in Visocyte: " + fieldNameVisocyte;
             }
 
             int timestep = -1; // Initialization to -1 very important
@@ -906,7 +906,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
       }     // Loop over interplation schemes
 
       // From here, the field (pressure, velocity, etc) should be complete
-      // Add it now to the ParaView data structure
+      // Add it now to the Visocyte data structure
       if (iField == 0)
       {
         // Insert coordinates
@@ -948,7 +948,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
         this->Internal->ClearCellType();
       }
 
-      const char* visocyteFieldTag = fieldNameParaView.c_str();
+      const char* visocyteFieldTag = fieldNameVisocyte.c_str();
 
       vtkDataSetAttributes* field;
       field = output->GetPointData();
@@ -962,7 +962,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
       dataArray->SetNumberOfComponents(numOfComps);
       dataArray->SetNumberOfTuples(noOfDatas);
 
-      vtkDebugMacro("\nInserting data in ParaView:"
+      vtkDebugMacro("\nInserting data in Visocyte:"
         << "\n Name of the field: " << visocyteFieldTag << "\n Number of nodes in the field: "
         << num_nodes_field << "\n Number of elements in the field: " << num_cells_field
         << "\n Number of components in the field: " << numOfComps
@@ -1031,7 +1031,7 @@ int vtkGmshReader::ReadGeomAndFieldFile(int& firstVertexNo, vtkUnstructuredGrid*
         }
         default:
         {
-          vtkErrorMacro("number of components [" << numOfComps << "] NOT supported in ParaView");
+          vtkErrorMacro("number of components [" << numOfComps << "] NOT supported in Visocyte");
           dataArray->Delete();
           dataArray = nullptr;
           break;

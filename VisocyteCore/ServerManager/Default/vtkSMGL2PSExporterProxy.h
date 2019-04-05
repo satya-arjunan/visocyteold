@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMGL2PSExporterProxy.h
 
   Copyright (c) Kitware, Inc.

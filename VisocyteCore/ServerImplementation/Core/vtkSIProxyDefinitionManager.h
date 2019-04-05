@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIProxyDefinitionManager.h
 
   Copyright (c) Kitware, Inc.

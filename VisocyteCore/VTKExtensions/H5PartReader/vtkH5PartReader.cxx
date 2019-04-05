@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkH5PartReader.cxx
 
   Copyright (c) Kitware, Inc.

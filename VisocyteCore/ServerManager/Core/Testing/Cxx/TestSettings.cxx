@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    TestSettings.cxx
 
 Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkNew.h"
 #include "vtkProcessModule.h"
 #include "vtkSMDoubleVectorProperty.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxy.h"
 #include "vtkSMSession.h"
@@ -56,14 +56,14 @@ int TestSettings(int argc, char* argv[])
 
   settings->AddCollectionFromString(higherPrioritySettingsString, 2.0);
 
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
 
   // Create a new session.
   vtkSMSession* session = vtkSMSession::New();
   vtkSMSessionProxyManager* pxm = session->GetSessionProxyManager();
   if (!controller->InitializeSession(session))
   {
-    cerr << "Failed to initialize ParaView session." << endl;
+    cerr << "Failed to initialize Visocyte session." << endl;
     return EXIT_FAILURE;
   }
 

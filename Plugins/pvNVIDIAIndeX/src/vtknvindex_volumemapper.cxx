@@ -78,7 +78,7 @@
 #if defined(MI_VERSION_STRING) && defined(MI_DATE_STRING)
 // Embed version string in output binary.
 const static volatile std::string NVINDEX_VERSION_STRING(
-  "==@@== NVIDIA IndeX for ParaView Plug-In, "
+  "==@@== NVIDIA IndeX for Visocyte Plug-In, "
   "r" MI_VERSION_STRING ", " MI_DATE_STRING "\n");
 #endif
 
@@ -118,7 +118,7 @@ vtknvindex_volumemapper::~vtknvindex_volumemapper()
 double* vtknvindex_volumemapper::GetBounds()
 {
   // Return the whole volume bounds instead of the local one to avoid that
-  // ParaView culls off any rank
+  // Visocyte culls off any rank
 
   return m_whole_bounds;
 }
@@ -204,7 +204,7 @@ bool vtknvindex_volumemapper::prepare_data(mi::Sint32 time_step, vtkVolume* /*vo
   ;
   this->GetInput()->GetExtent(extent);
 
-  // Get ParaView's volume data
+  // Get Visocyte's volume data
   vtkDataArray* scalar_array = m_scalar_array;
   if (m_cluster_properties->get_regular_volume_properties()->is_timeseries_data())
   {
@@ -244,7 +244,7 @@ bool vtknvindex_volumemapper::initialize_mapper(vtkRenderer* /*ren*/, vtkVolume*
 {
 
 #if defined(MI_VERSION_STRING) && defined(MI_DATE_STRING)
-  INFO_LOG << "NVIDIA IndeX for ParaView Plug-In "
+  INFO_LOG << "NVIDIA IndeX for Visocyte Plug-In "
            << "(build " << MI_VERSION_STRING << ", " << MI_DATE_STRING ").";
 #endif
 
@@ -574,7 +574,7 @@ void vtknvindex_volumemapper::Render(vtkRenderer* ren, vtkVolume* vol)
           0,    // No Frame information.
           true, // = g_immediate_final_parallel_compositing
           ren->GetNumberOfPropsRendered() ? &(m_application_context.m_opengl_app_buffer)
-                                          : NULL) // ParaView depth buffer, if present.
+                                          : NULL) // Visocyte depth buffer, if present.
         );
 
       // check for errors during rendering

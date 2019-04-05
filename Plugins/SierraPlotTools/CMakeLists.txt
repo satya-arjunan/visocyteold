@@ -63,10 +63,10 @@ visocyte_add_plugin(SierraPlotTools
 
 target_link_libraries(SierraPlotTools
   PRIVATE
-    ParaView::ClientServerCoreCore
-    ParaView::ServerManagerCore
-    ParaView::ServerManagerRendering
-    ParaView::VTKExtensionsDefault
+    Visocyte::ClientServerCoreCore
+    Visocyte::ServerManagerCore
+    Visocyte::ServerManagerRendering
+    Visocyte::VTKExtensionsDefault
     VTK::CommonCore
     VTK::CommonDataModel
     VTK::IOExodus)

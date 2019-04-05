@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMRepresentationTypeDomain.h
 
   Copyright (c) Kitware, Inc.

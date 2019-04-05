@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -14,12 +14,12 @@
 =========================================================================*/
 /**
  * @class   vtkSMAnimationScene
- * @brief   animation scene for ParaView.
+ * @brief   animation scene for Visocyte.
  *
  * vtkSMAnimationScene extends vtkAnimationCue to add support for a scene in
- * ParaView.
+ * Visocyte.
  *
- * We don't use vtkAnimationScene since ParaView has more elaborate playback
+ * We don't use vtkAnimationScene since Visocyte has more elaborate playback
  * requirements. To support that, this class delegates playback
  * responsibility to vtkAnimationPlayer and subclasses.
  *

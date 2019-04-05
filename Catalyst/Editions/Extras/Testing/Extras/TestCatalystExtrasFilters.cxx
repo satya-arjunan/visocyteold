@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    TestCatalystExtrasFilters.cxx
 
 Copyright (c) Kitware, Inc.

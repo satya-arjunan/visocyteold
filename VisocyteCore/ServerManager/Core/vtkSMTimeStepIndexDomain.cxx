@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMTimeStepIndexDomain.cxx
 
   Copyright (c) Kitware, Inc.

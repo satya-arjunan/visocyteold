@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkContext2DScalarBarActor.h
 
   Copyright (c) Kitware, Inc.
@@ -13,7 +13,7 @@
 
 =========================================================================*/
 /** @class   vtkContext2DScalarBarActor
- *  @brief   Custom scalar bar actor for ParaView that uses the Charts API.
+ *  @brief   Custom scalar bar actor for Visocyte that uses the Charts API.
  *
  * .SECTION Description
  *

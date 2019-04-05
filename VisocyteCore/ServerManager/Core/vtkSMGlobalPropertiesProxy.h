@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMGlobalPropertiesProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -26,11 +26,11 @@
  * This is suitable adding ability for color palettes. Using XML hints in the
  * proxy definition, one can write application code that setups links with a
  * proxy and the color palette proxy (as done in
- * vtkSMParaViewPipelineController). Now as long as the user doesn't modify
+ * vtkSMVisocytePipelineController). Now as long as the user doesn't modify
  * the linked properties, the color palette can be changed and it will reflect
  * on all linked properties.
  *
- * vtkSMParaViewPipelineController uses the property level hint
+ * vtkSMVisocytePipelineController uses the property level hint
  * \c \<GlobalPropertyLink/\> to define such links e.g.
  *    \code{.xml}
  *    <DoubleVectorProperty name="Background" ... >
@@ -41,7 +41,7 @@
  *    </DoubleVectorProperty>
  *    \endcode
  *
- * While vtkSMParaViewPipelineController currently only respects
+ * While vtkSMVisocytePipelineController currently only respects
  * hints on the property, we can in future add support for respecting hints at
  * the proxy level if needed.
 */

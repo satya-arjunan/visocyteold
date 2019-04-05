@@ -1,4 +1,4 @@
-EmbossingRepresentations plugin for ParaView
+EmbossingRepresentations plugin for Visocyte
 ===========================================
 
 by M.Migliore & J.Pouderoux, Kitware SAS 2017
@@ -9,7 +9,7 @@ Description
 -----------
 
 This plugin provides two new representations called "Bump Mapped Surface" and
-"Extrusion Surface" in ParaView.
+"Extrusion Surface" in Visocyte.
 The "Bump Mapped Surface" computes normals in fragment shader based on variation
 of selected scalar point data.
 The "Extrusion Surface" behaves differently depending on the type of selected

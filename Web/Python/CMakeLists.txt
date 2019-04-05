@@ -11,10 +11,10 @@ set(files
   visocyte/web/pv_wslink.py
   visocyte/web/test_server.py)
 
-vtk_module_add_python_package(ParaView::PVWebPython
+vtk_module_add_python_package(Visocyte::PVWebPython
   FILES               ${files}
   PACKAGE             "visocyte.web"
   MODULE_DESTINATION  "${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}")
 
-vtk_module_add_python_module(ParaView::PVWebPython
+vtk_module_add_python_module(Visocyte::PVWebPython
   PACKAGES "visocyte.web")

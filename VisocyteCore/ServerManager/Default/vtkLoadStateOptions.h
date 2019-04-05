@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkLoadStateOptions.h
 
   Copyright (c) Kitware, Inc.

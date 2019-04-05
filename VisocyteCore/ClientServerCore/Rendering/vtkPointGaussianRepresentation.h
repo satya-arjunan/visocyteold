@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPointGaussianRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -126,7 +126,7 @@ public:
   /**
    * Sets the point array to scale the guassians by.  The array should be a
    * float array.  The first four parameters are unused and only needed for
-   * the ParaView GUI's signature recognition.
+   * the Visocyte GUI's signature recognition.
    */
   void SelectScaleArray(int, int, int, int, const char* name);
 
@@ -157,7 +157,7 @@ public:
   /**
    * Sets the point array to use in calculating point sprite opacities.
    * The array should be a float or double array.  The first four
-   * parameters are unused and only needed for the ParaView GUI's
+   * parameters are unused and only needed for the Visocyte GUI's
    * signature recognition.
    */
   void SelectOpacityArray(int, int, int, int, const char* name);

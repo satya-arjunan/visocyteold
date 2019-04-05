@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVView.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVView
- * @brief   baseclass for all ParaView views.
+ * @brief   baseclass for all Visocyte views.
  *
- * vtkPVView adds API to vtkView for ParaView specific views. Typically, one
+ * vtkPVView adds API to vtkView for Visocyte specific views. Typically, one
  * writes a simple vtkView subclass for their custom view. Then one subclasses
  * vtkPVView to use their own vtkView subclass with added support for
  * parallel rendering, tile-displays and client-server. Even if the view is
@@ -225,7 +225,7 @@ public:
    * this method can be used to get the render window associated with this view
    * on the current process. Note that this window may be shared with other
    * views depending on the process on which this is called and the
-   * configuration ParaView is running under.
+   * configuration Visocyte is running under.
    */
   virtual vtkRenderWindow* GetRenderWindow();
 

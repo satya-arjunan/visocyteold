@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkMergeArrays.h
 
   Copyright (c) Kitware, Inc.

@@ -4,18 +4,18 @@
  <id>org.visocyte.visocyte</id>
  <metadata_license>CC-BY-4.0</metadata_license>
  <project_license>BSD</project_license>
- <name>ParaView</name>
+ <name>Visocyte</name>
  <summary>Data analysis and visualization</summary>
  <description>
   <p>
-   ParaView is an open-source, multi-platform data analysis and visualization
-   application. ParaView users can quickly build visualizations to analyze
+   Visocyte is an open-source, multi-platform data analysis and visualization
+   application. Visocyte users can quickly build visualizations to analyze
    their data using qualitative and quantitative techniques. The data
    exploration can be done interactively in 3D or programmatically using
-   ParaView’s batch processing capabilities.
+   Visocyte’s batch processing capabilities.
   </p>
   <p>
-   ParaView was developed to analyze extremely large datasets using distributed
+   Visocyte was developed to analyze extremely large datasets using distributed
    memory computing resources. It can be run on supercomputers to analyze
    datasets of exascale size as well as on laptops for smaller data.
   </p>
@@ -25,7 +25,7 @@
  </categories>
  <screenshots>
   <screenshot type="default">
-   <caption>Using ParaView to compare simulated and analytical results (Image courtesy of Sandia National Labs)</caption>
+   <caption>Using Visocyte to compare simulated and analytical results (Image courtesy of Sandia National Labs)</caption>
    <image width="902" height="677">http://www.visocyte.org/wp-content/uploads/2014/04/full_AlegraVV.png</image>
   </screenshot>
   <screenshot>
@@ -45,10 +45,10 @@
    <image width="902" height="609">http://www.visocyte.org/wp-content/uploads/2014/04/0_full_Fire.png</image>
   </screenshot>
  </screenshots>
- <launchable type="desktop-id">org.visocyte.ParaView.desktop</launchable>
+ <launchable type="desktop-id">org.visocyte.Visocyte.desktop</launchable>
  <url type="homepage">http://visocyte.org/</url>
  <url type="bugtracker">https://gitlab.kitware.com/visocyte/visocyte/issues</url>
- <url type="faq">https://www.visocyte.org/Wiki/ParaView:FAQ</url>
+ <url type="faq">https://www.visocyte.org/Wiki/Visocyte:FAQ</url>
  <url type="help">https://www.visocyte.org/documentation/</url>
  <update_contact>visocyte+visocyte-support@discourse.visocyte.org</update_contact>
 </component>

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqPluginPathBehavior.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -40,7 +40,7 @@ class pqServer;
 /**
 * @ingroup Behaviors
 * Applications may want to support auto-loading of plugins from certain
-* locations when a client-server connection is made. In case of ParaView,
+* locations when a client-server connection is made. In case of Visocyte,
 * PV_PLUGIN_PATH environment variable is used to locate such auto-load plugin
 * locations. This behavior encapsulates this functionality.
 * Currently, besides the environment_variable specified in the constructor,

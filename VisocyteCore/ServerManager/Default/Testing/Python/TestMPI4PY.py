@@ -1,7 +1,7 @@
 from visocyte.servermanager import vtkProcessModule
 pvoptions = vtkProcessModule.GetProcessModule().GetOptions()
 if pvoptions.GetSymmetricMPIMode() == False:
-    print("ERROR: Please run ParaView in SymmetricMPI mode.")
+    print("ERROR: Please run Visocyte in SymmetricMPI mode.")
     import sys
     sys.exit(1)
 

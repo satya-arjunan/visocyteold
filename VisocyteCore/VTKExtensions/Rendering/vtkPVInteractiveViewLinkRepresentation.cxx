@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVInteractiveViewLinkRepresentation.h
 
   Copyright (c) Kitware, Inc.

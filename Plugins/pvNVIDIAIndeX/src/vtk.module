@@ -3,8 +3,8 @@ NAME
 LIBRARY_NAME
   vtkIndeXRepresentations
 DEPENDS
-  ParaView::ClientServerCoreRendering
-  ParaView::Core
+  Visocyte::ClientServerCoreRendering
+  Visocyte::Core
   VTK::CommonCore
   VTK::CommonTransforms
   VTK::IOXMLParser
@@ -14,9 +14,9 @@ DEPENDS
   VTK::RenderingVolume
   VTK::RenderingVolumeOpenGL2
 PRIVATE_DEPENDS
-  ParaView::ClientServerCoreCore
-  ParaView::ServerManagerDefault
-  ParaView::VTKExtensionsRendering
+  Visocyte::ClientServerCoreCore
+  Visocyte::ServerManagerDefault
+  Visocyte::VTKExtensionsRendering
   VTK::CommonDataModel
   VTK::CommonExecutionModel
   VTK::CommonMath

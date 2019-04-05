@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMFixedTypeDomain.h
 
   Copyright (c) Kitware, Inc.

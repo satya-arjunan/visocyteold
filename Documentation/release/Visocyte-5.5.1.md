@@ -1,7 +1,7 @@
-ParaView 5.5.1 Release Notes
+Visocyte 5.5.1 Release Notes
 ============================
 
-ParaView 5.5.1 is a patch release. It addresses the following issues:
+Visocyte 5.5.1 is a patch release. It addresses the following issues:
 
 
 * The [Exodus library](https://github.com/gsjaardema/seacas/tree/master/packages/seacas/libraries/exodus)

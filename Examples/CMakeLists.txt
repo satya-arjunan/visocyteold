@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(ParaViewExamples)
+project(VisocyteExamples)
 
 if (CMAKE_VERSION VERSION_LESS "3.11" AND
     CMAKE_GENERATOR STREQUAL "Ninja")
@@ -9,10 +9,10 @@ if (CMAKE_VERSION VERSION_LESS "3.11" AND
   return ()
 endif ()
 
-if (ParaView_BINARY_DIR)
+if (Visocyte_BINARY_DIR)
   function (add_example dir)
     add_test(
-      NAME    "ParaViewExample-${dir}"
+      NAME    "VisocyteExample-${dir}"
       COMMAND "${CMAKE_CTEST_COMMAND}"
               --build-generator
                 "${CMAKE_GENERATOR}"
@@ -23,8 +23,8 @@ if (ParaView_BINARY_DIR)
                 "-DBUILD_TESTING=ON"
                 "-DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}"
                 "-DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}"
-                "-DParaView_DIR=${visocyte_cmake_build_dir}"
-                # XXX(visocyte-config): `find_package(ParaView)` should provide
+                "-DVisocyte_DIR=${visocyte_cmake_build_dir}"
+                # XXX(visocyte-config): `find_package(Visocyte)` should provide
                 # this information automatically. In this case, VTK should be
                 # providing this information.
                 # https://gitlab.kitware.com/vtk/vtk/issues/17503
@@ -35,13 +35,13 @@ if (ParaView_BINARY_DIR)
     if (WIN32)
       set(example_path "$ENV{PATH};${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
       string(REPLACE ";" "\;" example_path "${example_path}")
-      set_property(TEST "ParaViewExample-${dir}" APPEND
+      set_property(TEST "VisocyteExample-${dir}" APPEND
         PROPERTY
           ENVIRONMENT "PATH=${example_path}")
     endif ()
   endfunction ()
 else ()
-  find_package(ParaView REQUIRED)
+  find_package(Visocyte REQUIRED)
 
   macro (add_example dir)
     add_subdirectory("${dir}")

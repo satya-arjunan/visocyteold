@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMPipelineState.cxx
 
   Copyright (c) Kitware, Inc.

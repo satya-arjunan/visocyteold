@@ -29,7 +29,7 @@ set(private_headers
   Timer.h
   Timings.h)
 
-vtk_module_add_module(ParaView::cosmohalofinder
+vtk_module_add_module(Visocyte::cosmohalofinder
   CLASSES ${classes}
   HEADERS ${headers}
   PRIVATE_HEADERS ${private_headers}

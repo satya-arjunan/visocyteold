@@ -1,5 +1,5 @@
 r"""web_helper is a module that provides access to functions that helps to build
-new protocols and process ParaView data structure into web friendly ones.
+new protocols and process Visocyte data structure into web friendly ones.
 """
 
 import types

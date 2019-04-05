@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSpyPlotFileSeriesReader.cxx
 
   Copyright (c) Kitware, Inc.

@@ -22,7 +22,7 @@ execute_process(
   RESULT_VARIABLE rv
 )
 if (NOT rv EQUAL 0)
-  message(FATAL_ERROR "ParaView return value was ${rv}")
+  message(FATAL_ERROR "Visocyte return value was ${rv}")
 endif()
 
 message(

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqReaction.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -37,12 +37,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QObject>
 
 /**
-* @defgroup Reactions ParaView Reactions
-* ParaView client relies on a collection of reactions that are autonomous
+* @defgroup Reactions Visocyte Reactions
+* Visocyte client relies on a collection of reactions that are autonomous
 * entities that use pqApplicationCore and other core components to get their
 * work done. To use, simply attach an instance of pqReaction subclass to a
 * QAction. The reaction then monitors events from the QAction. Additionally, the
-* reaction can monitor the ParaView application state to update things like
+* reaction can monitor the Visocyte application state to update things like
 * enable state, label, etc. for the QAction itself.
 */
 

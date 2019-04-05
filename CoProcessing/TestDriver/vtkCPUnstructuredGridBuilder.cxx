@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPUnstructuredGridBuilder.cxx
 
   Copyright (c) Kitware, Inc.

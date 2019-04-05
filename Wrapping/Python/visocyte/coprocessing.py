@@ -21,7 +21,7 @@ createDirectoriesIfNeeded = True
 class CoProcessor(object):
     """Base class for co-processing Pipelines.
 
-    visocyte.cpstate Module can be used to dump out ParaView states as
+    visocyte.cpstate Module can be used to dump out Visocyte states as
     co-processing pipelines. Those are typically subclasses of this. The
     subclasses must provide an implementation for the CreatePipeline() method.
 
@@ -108,7 +108,7 @@ class CoProcessor(object):
 
     def EnableLiveVisualization(self, enable, frequency = 1):
         """Call this method to enable live-visualization. When enabled,
-        DoLiveVisualization() will communicate with ParaView server if possible
+        DoLiveVisualization() will communicate with Visocyte server if possible
         for live visualization. Frequency specifies how often the
         communication happens (default is every second)."""
         self.__EnableLiveVisualization = enable
@@ -364,7 +364,7 @@ class CoProcessor(object):
 
 
     def DoLiveVisualization(self, datadescription, hostname, port):
-        """This method execute the code-stub needed to communicate with ParaView
+        """This method execute the code-stub needed to communicate with Visocyte
            for live-visualization. Call this method only if you want to support
            live-visualization with your co-processing module."""
 
@@ -394,7 +394,7 @@ class CoProcessor(object):
         # stay in the loop while the simulation is paused
         while True:
             # Update the simulation state, extracts and simulationPaused
-            # from ParaView Live
+            # from Visocyte Live
             self.__LiveVisualizationLink.InsituUpdate(time, timeStep)
 
             # sources need to be updated by insitu
@@ -408,7 +408,7 @@ class CoProcessor(object):
             self.__LiveVisualizationLink.InsituPostProcess(time, timeStep)
 
             if (self.__LiveVisualizationLink.GetSimulationPaused()):
-                # This blocks until something changes on ParaView Live
+                # This blocks until something changes on Visocyte Live
                 # and then it continues the loop. Returns != 0 if LIVE side
                 # disconnects
                 if (self.__LiveVisualizationLink.WaitForLiveChange()):
@@ -488,10 +488,10 @@ class CoProcessor(object):
         return writer
 
     def WriterParametersProxy(self, writer, filename, freq, paddingamount):
-        """Creates a client only proxy that will be synchronized with ParaView
+        """Creates a client only proxy that will be synchronized with Visocyte
         Live, allowing a user to set the filename and frequency.
         """
-        controller = servermanager.ParaViewPipelineController()
+        controller = servermanager.VisocytePipelineController()
         # assume that a client only proxy with the same name as a writer
         # is available in "insitu_writer_parameters"
 

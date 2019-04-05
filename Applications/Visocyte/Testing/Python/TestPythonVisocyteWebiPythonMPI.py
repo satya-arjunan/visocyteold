@@ -3,12 +3,12 @@
 # Global python import
 import exceptions, traceback, logging, random, sys, threading, time, os
 
-# Update python path to have ParaView libs
-build_path='/Volumes/SebKitSSD/Kitware/code/ParaView/build-ninja'
+# Update python path to have Visocyte libs
+build_path='/Volumes/SebKitSSD/Kitware/code/Visocyte/build-ninja'
 sys.path.append('%s/lib'%build_path)
 sys.path.append('%s/lib/site-packages'%build_path)
 
-# ParaView import
+# Visocyte import
 from vtk.web import server
 from visocyte.vtk import *
 from visocyte.web import wamp as pv_wamp
@@ -19,7 +19,7 @@ from vtk.vtkCommonDataModel import *
 from vtk.vtkCommonExecutionModel import *
 from vtk.vtkFiltersSources import *
 from vtk.vtkParallelCore import *
-from vtk.vtkParaViewWebCore import *
+from vtk.vtkVisocyteWebCore import *
 from vtk.vtkPVClientServerCoreCore import *
 from vtk.vtkPVServerManagerApplication import *
 from vtk.vtkPVServerManagerCore import *
@@ -30,7 +30,7 @@ from vtk import *
 # Start server
 #------------------------------------------------------------------------------
 
-visocyteHelper = pv_ipython.ParaViewIPython()
+visocyteHelper = pv_ipython.VisocyteIPython()
 webArguments   = pv_ipython.WebArguments('%s/www' % build_path)
 sphere = None
 

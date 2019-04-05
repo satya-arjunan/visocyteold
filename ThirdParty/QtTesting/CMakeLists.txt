@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: ParaView
+#     Program: Visocyte
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     ParaView is a free software; you can redistribute it and/or modify it
-#     under the terms of the ParaView license version 1.2.
+#     Visocyte is a free software; you can redistribute it and/or modify it
+#     under the terms of the Visocyte license version 1.2.
 #
-#     See License_v1.2.txt for the full ParaView license.
+#     See License_v1.2.txt for the full Visocyte license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -33,7 +33,7 @@
 set(CMAKE_CXX_VISIBILITY_PRESET "default")
 set(CMAKE_VISIBILITY_INLINES_HIDDEN 0)
 
-# ParaView can no longer support QT_TESTING_WITH_PYTHON due to Matplotlib
+# Visocyte can no longer support QT_TESTING_WITH_PYTHON due to Matplotlib
 # initializing Python.
 set(QT_TESTING_WITH_PYTHON FALSE)
 
@@ -46,7 +46,7 @@ set(QtTesting_INSTALL_NO_DEVELOPMENT TRUE)
 set(QT_TESTING_EVENT_PLAYBACK_DELAY 100)
 set(QtTesting_ENABLE_EXAMPLES OFF)
 set(QtTesting_ENABLE_TESTING OFF)
-set(QT_TESTING_INSTALL_EXPORT_NAME "ParaView")
+set(QT_TESTING_INSTALL_EXPORT_NAME "Visocyte")
 set(BUILD_TESTING OFF)
 
 vtk_module_third_party_internal(

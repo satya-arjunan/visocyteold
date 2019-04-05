@@ -12,7 +12,7 @@ add_executable(MPISubCommunicatorExample
   FEDriver.cxx)
 target_link_libraries(MPISubCommunicatorExample
   PRIVATE
-    ParaView::PythonCatalyst
+    Visocyte::PythonCatalyst
     VTK::CommonDataModel
     VTK::ParallelMPI)
 

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module: pqStandardPropertyWidgetInterface.cxx
 
    Copyright (c) 2012 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -84,7 +84,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyGroup.h"
 
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
 #include "pqCinemaConfiguration.h"
 #endif
 
@@ -295,7 +295,7 @@ pqPropertyWidget* pqStandardPropertyWidgetInterface::createWidgetForPropertyGrou
   }
   else if (panelWidget == "cinema_export_selector")
   {
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
     return new pqCinemaConfiguration(proxy, group, parentWidget);
 #else
     return NULL;

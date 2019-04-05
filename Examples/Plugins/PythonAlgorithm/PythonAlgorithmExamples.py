@@ -1,11 +1,11 @@
 """This module demonstrates various ways of adding
 VTKPythonAlgorithmBase subclasses as filters, sources, readers,
-and writers in ParaView"""
+and writers in Visocyte"""
 
 
 # This is module to import. It provides VTKPythonAlgorithmBase, the base class
 # for all python-based vtkAlgorithm subclasses in VTK and decorators used to
-# 'register' the algorithm with ParaView along with information about UI.
+# 'register' the algorithm with Visocyte along with information about UI.
 from visocyte.util.vtkAlgorithm import *
 
 #------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ class PythonCSVReader(VTKPythonAlgorithmBase):
 
     # Array selection API is typical with readers in VTK
     # This is intended to allow ability for users to choose which arrays to
-    # load. To expose that in ParaView, simply use the
+    # load. To expose that in Visocyte, simply use the
     # smproperty.dataarrayselection().
     # This method **must** return a `vtkDataArraySelection` instance.
     @smproperty.dataarrayselection(name="Arrays")

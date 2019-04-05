@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqFavoritesDialog.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -267,7 +267,7 @@ void pqFavoritesDialog::populateFavoritesTree()
 {
   this->Ui->favorites->clear();
   pqSettings* settings = pqApplicationCore::instance()->settings();
-  QString key = QStringLiteral("favorites.ParaViewFilters/");
+  QString key = QStringLiteral("favorites.VisocyteFilters/");
   if (settings->contains(key))
   {
     QString settingValue = settings->value(key).toString();
@@ -443,7 +443,7 @@ void pqFavoritesDialog::onAccepted()
   QString value;
   value = this->populateSettingsValue(value, item);
   pqSettings* settings = pqApplicationCore::instance()->settings();
-  QString key = QStringLiteral("favorites.ParaViewFilters/");
+  QString key = QStringLiteral("favorites.VisocyteFilters/");
   settings->setValue(key, value);
 }
 

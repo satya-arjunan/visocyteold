@@ -2673,7 +2673,7 @@
             min="1"
             name="range"/>
         <Documentation>Set the number of render passes OSPRay takes to
-        improve image quality. Has no effect unless ParaView
+        improve image quality. Has no effect unless Visocyte
         is started with the --enable-streaming option.</Documentation>
         <Hints>
           <PropertyWidgetDecorator type="OSPRayHidingDecorator" />
@@ -2953,7 +2953,7 @@
       <Documentation>This is the proxy for the histogram chart view.</Documentation>
       <Hints>
         <ShowOneRepresentationAtATime type="HistogramChartRepresentation" />
-        <!-- When present, vtkSMParaViewPipelineController::Show() will
+        <!-- When present, vtkSMVisocytePipelineController::Show() will
              result in hiding other representations that are currently visible
              -->
       </Hints>
@@ -2990,7 +2990,7 @@
       view.</Documentation>
       <Hints>
         <ShowOneRepresentationAtATime />
-        <!-- When present, vtkSMParaViewPipelineController::Show() will
+        <!-- When present, vtkSMVisocytePipelineController::Show() will
              result in hiding other representations that are currently visible
              -->
       </Hints>
@@ -3494,7 +3494,7 @@
 
       <Hints>
         <ShowOneRepresentationAtATime />
-        <!-- When present, vtkSMParaViewPipelineController::Show() will
+        <!-- When present, vtkSMVisocytePipelineController::Show() will
              result in hiding other representations that are currently visible
              -->
       </Hints>
@@ -3586,7 +3586,7 @@
 
       <Hints>
         <ShowOneRepresentationAtATime />
-        <!-- When present, vtkSMParaViewPipelineController::Show() will
+        <!-- When present, vtkSMVisocytePipelineController::Show() will
              result in hiding other representations that are currently visible
              -->
       </Hints>
@@ -3600,7 +3600,7 @@
     <PVRepresentationProxy class="vtkPVCompositeRepresentation"
                            name="PVRepresentationBase"
                            processes="client|renderserver|dataserver">
-      <Documentation>ParaView's default representation for showing any type of
+      <Documentation>Visocyte's default representation for showing any type of
       dataset in the render view.</Documentation>
       <IntVectorProperty command="SetVisibility"
                          default_values="1"
@@ -4041,7 +4041,7 @@
                            class="vtkPVCompositeRepresentation"
                            name="GeometryRepresentation"
                            processes="client|renderserver|dataserver">
-      <Documentation>ParaView's default representation for showing any type of
+      <Documentation>Visocyte's default representation for showing any type of
       dataset in the render view.</Documentation>
       <InputProperty command="SetInputConnection"
                      name="Input">
@@ -10654,7 +10654,7 @@
                          number_of_elements="1"
                          panel_visibility="never">
         <BooleanDomain name="bool" />
-        <Documentation>By default, ParaView shares a single color map among all datasets colored
+        <Documentation>By default, Visocyte shares a single color map among all datasets colored
         by arrays that have the same name. When this option is enabled, the active dataset will
         be assigned a separate color map not shared by other datasets.</Documentation>
       </IntVectorProperty>

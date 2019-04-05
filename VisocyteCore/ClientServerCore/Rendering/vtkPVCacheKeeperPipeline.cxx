@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVCacheKeeperPipeline.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVFrustumActor
  *
- * vtkPVFrustumActor is an actor that renders a frustum. Used in ParaView to
+ * vtkPVFrustumActor is an actor that renders a frustum. Used in Visocyte to
  * show the frustum used for frustum selection extraction.
 */
 

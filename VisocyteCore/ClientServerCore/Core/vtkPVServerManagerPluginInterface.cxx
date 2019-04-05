@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVServerManagerPluginInterface.cxx
 
   Copyright (c) Kitware, Inc.

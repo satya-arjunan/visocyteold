@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkMetaReader.h
 
   Copyright (c) Kitware, Inc.

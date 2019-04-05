@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMExtentDomain.cxx
 
   Copyright (c) Kitware, Inc.

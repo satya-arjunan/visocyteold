@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCinemaDatabaseReader.cxx
 
   Copyright (c) Kitware, Inc.
@@ -66,7 +66,7 @@ int vtkCinemaDatabaseReader::RequestInformation(
   }
 
   // Announce timesteps available, if any.
-  // For Cinema, timesteps are simply strings, while in ParaView they are
+  // For Cinema, timesteps are simply strings, while in Visocyte they are
   // doubles.
   vtkInformation* outInfo = outputVector->GetInformationObject(0);
 

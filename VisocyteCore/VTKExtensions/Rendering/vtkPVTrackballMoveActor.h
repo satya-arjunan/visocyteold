@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVTrackballMoveActor.h
 
   Copyright (c) Kitware, Inc.

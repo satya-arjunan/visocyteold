@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMBoxRepresentationProxy.cxx
 
   Copyright (c) Kitware, Inc.

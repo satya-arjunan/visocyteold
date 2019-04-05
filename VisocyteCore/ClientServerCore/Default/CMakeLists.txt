@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: ParaView
+#     Program: Visocyte
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     ParaView is a free software; you can redistribute it and/or modify it
-#     under the terms of the ParaView license version 1.2.
+#     Visocyte is a free software; you can redistribute it and/or modify it
+#     under the terms of the Visocyte license version 1.2.
 #
-#     See License_v1.2.txt for the full ParaView license.
+#     See License_v1.2.txt for the full Visocyte license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -49,14 +49,14 @@ if (APPLE)
     vtkPVMacFileInformationHelper.h)
 endif ()
 
-vtk_module_add_module(ParaView::ClientServerCoreDefault
+vtk_module_add_module(Visocyte::ClientServerCoreDefault
   CLASSES ${classes}
   SOURCES ${sources}
   PRIVATE_HEADERS ${private_headers})
 
 # for vtkPVFileInformation
 if (WIN32)
-  vtk_module_link(ParaView::ClientServerCoreDefault
+  vtk_module_link(Visocyte::ClientServerCoreDefault
     PRIVATE
       mpr)
 endif ()

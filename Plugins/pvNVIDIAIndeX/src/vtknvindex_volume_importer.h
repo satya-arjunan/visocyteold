@@ -59,7 +59,7 @@ public:
   using nv::index::Distributed_discrete_data_import_callback<0xecac5c8d, 0x46d6, 0x43a5, 0xab, 0xa3,
     0x4, 0xa0, 0xa4, 0xd2, 0x48, 0xa1>::estimate;
 
-  // The cluster properties triggered by ParaView.
+  // The cluster properties triggered by Visocyte.
   void set_cluster_properties(vtknvindex_cluster_properties* host_properties);
 
   // NVIDIA IndeX triggers this callback if time varying data shall be imported.
@@ -67,7 +67,7 @@ public:
     mi::Uint32 time_step, nv::index::IData_subset_factory* factory,
     mi::neuraylib::IDice_transaction* dice_transaction) const override;
 
-  // Create internal storage of ParaView's subset inside bounding box.
+  // Create internal storage of Visocyte's subset inside bounding box.
   nv::index::IDistributed_data_subset* create(
     const mi::math::Bbox_struct<mi::Sint32, 3>& bounding_box,
     nv::index::IData_subset_factory* factory,

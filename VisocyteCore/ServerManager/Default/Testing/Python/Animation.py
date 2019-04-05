@@ -1,4 +1,4 @@
-# Test to exercise the ParaView Python Animation API
+# Test to exercise the Visocyte Python Animation API
 
 from visocyte.simple import *
 

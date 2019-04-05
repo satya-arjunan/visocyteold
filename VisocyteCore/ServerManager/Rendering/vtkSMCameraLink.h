@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMCameraLink.h
 
   Copyright (c) Kitware, Inc.

@@ -32,9 +32,9 @@ int main(int argc, char** argv)
   // Now the Qt part:
   QApplication qtapp(argc, argv);
 
-  // And finally the ParaView part:
+  // And finally the Visocyte part:
   pqPVApplicationCore* myCoreApp = new pqPVApplicationCore(argc, argv);
-  // Make sure compilation of ParaView was made with Python support:
+  // Make sure compilation of Visocyte was made with Python support:
   if (!myCoreApp->pythonManager())
   {
     std::cerr << "PV init error" << std::endl;

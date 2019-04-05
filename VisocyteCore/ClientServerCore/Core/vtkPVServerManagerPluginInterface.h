@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVServerManagerPluginInterface.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  *
  * vtkPVServerManagerPluginInterface defines the interface needed to be
  * implemented by a server-manager plugin i.e. a plugin that adds new
- * filters/readers/proxies etc. to ParaView.
+ * filters/readers/proxies etc. to Visocyte.
 */
 
 #ifndef vtkPVServerManagerPluginInterface_h

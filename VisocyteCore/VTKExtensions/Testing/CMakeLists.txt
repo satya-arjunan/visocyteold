@@ -1,6 +1,6 @@
 INCLUDE_DIRECTORIES(
-  ${ParaView_SOURCE_DIR}/VTK/Common/Testing/Cxx/
-  ${ParaView_SOURCE_DIR}/VTK/Rendering/Testing/Cxx/
+  ${Visocyte_SOURCE_DIR}/VTK/Common/Testing/Cxx/
+  ${Visocyte_SOURCE_DIR}/VTK/Rendering/Testing/Cxx/
   )
 
 set(vtk-module VTKExtensions)
@@ -8,7 +8,7 @@ set(${vtk-module}_TEST_LABELS VISOCYTE)
 
 vtk_add_test_cxx(${vtk-modules}ServerFilterTests tests
   NO_VALID NO_OUTPUT
-  ParaViewCoreVTKExtensionsPrintSelf.cxx,NO_DATA
+  VisocyteCoreVTKExtensionsPrintSelf.cxx,NO_DATA
   TestExtractHistogram.cxx,NO_DATA
   TestExtractScatterPlot.cxx,NO_DATA
   TestTilesHelper.cxx,NO_DATA

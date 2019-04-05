@@ -22,7 +22,7 @@ A simple example::
 """
 #==============================================================================
 #
-#  Program:   ParaView
+#  Program:   Visocyte
 #  Module:    simple.py
 #
 #  Copyright (c) Kitware, Inc.
@@ -49,14 +49,14 @@ import sys
 if sys.version_info >= (3,):
     xrange = range
 
-def GetParaViewVersion():
-    """Returns the version of the ParaView build"""
+def GetVisocyteVersion():
+    """Returns the version of the Visocyte build"""
     return visocyte._version(servermanager.vtkSMProxyManager.GetVersionMajor(),
                              servermanager.vtkSMProxyManager.GetVersionMinor())
-def GetParaViewSourceVersion():
+def GetVisocyteSourceVersion():
     """Returns the visocyte source version string e.g.
     'visocyte version x.x.x, Date: YYYY-MM-DD'."""
-    return servermanager.vtkSMProxyManager.GetParaViewSourceVersion()
+    return servermanager.vtkSMProxyManager.GetVisocyteSourceVersion()
 
 #==============================================================================
 # Client/Server Connection methods
@@ -154,12 +154,12 @@ def CreateView(view_xml_name, detachedFromLayout=False, **params):
         except KeyError:
             registrationName = None
 
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.PreInitializeProxy(view)
     SetProperties(view, **params)
     controller.PostInitializeProxy(view)
     if detachedFromLayout:
-      view.SMProxy.SetAnnotation("ParaView::DetachedFromLayout", "true")
+      view.SMProxy.SetAnnotation("Visocyte::DetachedFromLayout", "true")
     controller.RegisterViewProxy(view, registrationName)
 
     # setup an interactor if current process support interaction if an
@@ -456,7 +456,7 @@ def GetRepresentation(proxy=None, view=None):
         raise ValueError ("proxy argument cannot be None.")
     rep = servermanager.GetRepresentation(proxy, view)
     if not rep:
-        controller = servermanager.ParaViewPipelineController()
+        controller = servermanager.VisocytePipelineController()
         return controller.Show(proxy, proxy.Port, view)
     return rep
 
@@ -480,7 +480,7 @@ def Show(proxy=None, view=None, **params):
         # it here's now active view, controller.Show() will create a new preferred view.
         # if possible.
         view = active_objects.view
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     rep = controller.Show(proxy, proxy.Port, view)
     if rep == None:
         raise RuntimeError ("Could not create a representation object for proxy %s" % proxy.GetXMLLabel())
@@ -494,7 +494,7 @@ def ShowAll(view=None):
     If view is not specified, active view is used."""
     if not view:
         view = active_objects.view
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.ShowAll(view)
 
 # -----------------------------------------------------------------------------
@@ -507,7 +507,7 @@ def Hide(proxy=None, view=None):
         view = active_objects.view
     if not proxy:
         raise ValueError ("proxy argument cannot be None when no active source is present.")
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.Hide(proxy, proxy.Port, view)
 
 # -----------------------------------------------------------------------------
@@ -516,7 +516,7 @@ def HideAll(view=None):
     If view is not specified, active view is used."""
     if not view:
         view = active_objects.view
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.HideAll(view)
 
 # -----------------------------------------------------------------------------
@@ -700,7 +700,7 @@ def GetViewProperties(view=None):
 # -----------------------------------------------------------------------------
 def LoadPalette(paletteName):
     """Load a color palette to override the default foreground and background
-    colors used by ParaView views.  The current global palette's colors are set
+    colors used by Visocyte views.  The current global palette's colors are set
     to the colors in the loaded palette."""
     pxm = servermanager.ProxyManager()
     palette = pxm.GetProxy("global_properties", "ColorPalette")
@@ -846,7 +846,7 @@ def Delete(proxy=None):
         proxy = active_objects.source
     if not proxy:
         raise RuntimeError ("Could not locate proxy to 'Delete'")
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.UnRegisterProxy(proxy)
 
 #==============================================================================
@@ -1113,7 +1113,7 @@ def SaveScreenshot(filename, viewOrLayout=None, **params):
 
     **Legacy Parameters**
 
-        Prior to ParaView version 5.4, the following parameters were available
+        Prior to Visocyte version 5.4, the following parameters were available
         and are still supported. However, they cannot be used together with
         other keyword parameters documented earlier.
 
@@ -1131,8 +1131,8 @@ def SaveScreenshot(filename, viewOrLayout=None, **params):
           Output image quality, a number in the range [0, 100].
 
         ImageQuality (int)
-            For ParaView 5.4, the following parameters were available, however
-            it is ignored starting with ParaView 5.5. Instead, it is recommended
+            For Visocyte 5.4, the following parameters were available, however
+            it is ignored starting with Visocyte 5.5. Instead, it is recommended
             to use format-specific quality parameters based on the file format being used.
     """
     # Let's handle backwards compatibility.
@@ -1157,7 +1157,7 @@ def SaveScreenshot(filename, viewOrLayout=None, **params):
     if not viewOrLayout:
         raise ValueError("A view or layout must be specified.")
 
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     options = servermanager.misc.SaveScreenshot()
     controller.PreInitializeProxy(options)
 
@@ -1263,12 +1263,12 @@ def SaveAnimation(filename, viewOrLayout=None, scene=None, **params):
     **Obsolete Parameters**
 
         DisconnectAndSave (int):
-          This mode is no longer supported as of ParaView 5.5, and will be
+          This mode is no longer supported as of Visocyte 5.5, and will be
           ignored.
 
         ImageQuality (int)
-            For ParaView 5.4, the following parameters were available, however
-            it is ignored starting with ParaView 5.5. Instead, it is recommended
+            For Visocyte 5.4, the following parameters were available, however
+            it is ignored starting with Visocyte 5.5. Instead, it is recommended
             to use format-specific quality parameters based on the file format being used.
     """
     # use active view if no view or layout is specified.
@@ -1286,7 +1286,7 @@ def SaveAnimation(filename, viewOrLayout=None, scene=None, **params):
         warnings.warn("'DisconnectAndSave' is deprecated and will be ignored.", DeprecationWarning)
         del params["DisconnectAndSave"]
 
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     options = servermanager.misc.SaveAnimation()
     controller.PreInitializeProxy(options)
 
@@ -1507,7 +1507,7 @@ def CreateLookupTable(**params):
     to assign to the lookup table.
     """
     lt = servermanager.rendering.PVLookupTable()
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.InitializeProxy(lt)
     SetProperties(lt, **params)
     controller.RegisterColorTransferFunctionProxy(lt)
@@ -1520,7 +1520,7 @@ def CreatePiecewiseFunction(**params):
     given to assign to the piecewise function.
     """
     pfunc = servermanager.piecewise_functions.PiecewiseFunction()
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.InitializeProxy(pfunc)
     SetProperties(pfunc, **params)
     controller.RegisterOpacityTransferFunction(pfunc)
@@ -1650,22 +1650,22 @@ def RemoveCameraLink(linkName):
 
 def GetTimeKeeper():
     """Returns the time-keeper for the active session. Timekeeper is often used
-    to manage time step information known to the ParaView application."""
+    to manage time step information known to the Visocyte application."""
     if not servermanager.ActiveConnection:
         raise RuntimeError ("Missing active session")
     session = servermanager.ActiveConnection.Session
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     return controller.FindTimeKeeper(session)
 
 def GetAnimationScene():
-    """Returns the application-wide animation scene. ParaView has only one
+    """Returns the application-wide animation scene. Visocyte has only one
     global animation scene. This method provides access to that. Users are
     free to create additional animation scenes directly, but those scenes
-    won't be shown in the ParaView GUI."""
+    won't be shown in the Visocyte GUI."""
     if not servermanager.ActiveConnection:
         raise RuntimeError ("Missing active session")
     session = servermanager.ActiveConnection.Session
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     return controller.GetAnimationScene(session)
 
 # -----------------------------------------------------------------------------
@@ -1783,11 +1783,11 @@ def GetCameraTrack(view=None):
 def GetTimeTrack():
     """Returns the animation track used to control the time requested from all
     readers/filters during playback.
-    This is the "TimeKeeper - Time" track shown in ParaView's 'Animation View'."""
+    This is the "TimeKeeper - Time" track shown in Visocyte's 'Animation View'."""
     scene = GetAnimationScene()
     if not scene:
         raise RuntimeError ("Missing animation scene")
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     return controller.GetTimeAnimationTrack(scene)
 
 #==============================================================================
@@ -1810,7 +1810,7 @@ def LoadXML(xmlstring, ns=None):
 # -----------------------------------------------------------------------------
 
 def LoadPlugin(filename, remote=True, ns=None):
-    """Loads a ParaView plugin and updates this module with new constructors
+    """Loads a Visocyte plugin and updates this module with new constructors
     if any. The remote argument (default to ``True``) is to specify whether
     the plugin will be loaded on client (``remote=False``) or on server
     (``remote=True``).
@@ -1832,7 +1832,7 @@ def LoadPlugin(filename, remote=True, ns=None):
 
 def LoadDistributedPlugin(pluginname, remote=True, ns=None):
     """Loads a plugin that's distributed with the executable. This uses the
-    information known about plugins distributed with ParaView to locate the
+    information known about plugins distributed with Visocyte to locate the
     shared library for the plugin to load. Raises a RuntimeError if the plugin
     was not found."""
     if not servermanager.ActiveConnection:
@@ -1916,7 +1916,7 @@ def CreateLight():
     pxm = servermanager.ProxyManager()
     lightproxy = pxm.NewProxy("additional_lights", "Light")
 
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.SMController.RegisterLightProxy(lightproxy, None)
 
     return servermanager._getPyProxy(lightproxy)
@@ -1950,7 +1950,7 @@ def RemoveLight(light):
         nowlights = [l for l in view.AdditionalLights if l != light]
         view.AdditionalLights = nowlights
 
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.SMController.UnRegisterProxy(light.SMProxy)
 
 def GetLight(number, view=None):
@@ -1981,7 +1981,7 @@ def GetMaterialLibrary():
     if not servermanager.ActiveConnection:
         raise RuntimeError ("Missing active session")
     session = servermanager.ActiveConnection.Session
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     return controller.FindMaterialLibrary(session)
 
 #==============================================================================
@@ -2083,7 +2083,7 @@ def demo1():
 
 # -----------------------------------------------------------------------------
 
-def demo2(fname="/Users/berk/Work/ParaView/ParaViewData/Data/disk_out_ref.ex2"):
+def demo2(fname="/Users/berk/Work/Visocyte/VisocyteData/Data/disk_out_ref.ex2"):
     """This demo shows the use of readers, data information and display
     properties."""
 
@@ -2141,7 +2141,7 @@ def _initializeSession(connection):
     by API in this module."""
     if not connection:
       raise RuntimeError ("'connection' cannot be empty.")
-    controller = servermanager.ParaViewPipelineController()
+    controller = servermanager.VisocytePipelineController()
     controller.InitializeSession(connection.Session)
 
 def _create_func(key, module, skipRegisteration=False):
@@ -2153,7 +2153,7 @@ def _create_func(key, module, skipRegisteration=False):
         assumed to be property,value pairs and are passed to the new proxy."""
 
         # Create a controller instance.
-        controller = servermanager.ParaViewPipelineController()
+        controller = servermanager.VisocytePipelineController()
 
         # Instantiate the actual object from the given module.
         px = visocyte._backwardscompatibilityhelper.GetProxy(module, key)

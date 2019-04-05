@@ -1,7 +1,7 @@
 r"""This module is used to by the CoProcessingScriptGenerator plugin to aid in
-capturing ParaView state as CoProcessing python script.
+capturing Visocyte state as CoProcessing python script.
 
-This can capture the ParaView state in a Pipeline object that can then be used
+This can capture the Visocyte state in a Pipeline object that can then be used
 in CoProcessing scripts. The entry point into this module is the function
 DumpPipeline() which returns the Python trace script. Most of the other
 functions can be considered internal.
@@ -257,13 +257,13 @@ class WriterAccessor(smtrace.RealProxyAccessor):
             # this stub must have the proper name in the coprocessing hints
             print ("WARNING: Could not find", xmlname, "writer in", xmlgroup, \
                    "XML group. This is not a problem as long as the writer is available with " \
-                   "the ParaView build used by the simulation code.")
+                   "the Visocyte build used by the simulation code.")
             ctor = servermanager._make_name_valid(xmlname)
         else:
             ctor = servermanager._make_name_valid(prototype.GetXMLLabel())
         # TODO: use servermanager.ProxyManager().NewProxy() instead
         # we create the writer proxy such that it is not registered with the
-        # ParaViewPipelineController, so its state is not sent to ParaView Live.
+        # VisocytePipelineController, so its state is not sent to Visocyte Live.
         return "servermanager.%s.%s" % (xmlgroup, ctor)
 
     def trace_ctor(self, ctor, filter, ctor_args=None, skip_assignment=False):

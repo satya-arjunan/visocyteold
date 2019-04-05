@@ -37,7 +37,7 @@ Index: bld/configure
  
       -cache <file>      Name of output cache file (default: config_cache.xml).
       -cachedir <file>   Name of directory where output cache file is written (default: CAM build directory).
-+     -catalyst          Link with ParaView Catalyst.
++     -catalyst          Link with Visocyte Catalyst.
       -ccsm_seq          Switch to specify that CAM is being built from within sequential CCSM scripts.
       -help [or -h]      Print usage to STDOUT.
       -silent [or -s]    Turns on silent mode - only fatal messages issued.

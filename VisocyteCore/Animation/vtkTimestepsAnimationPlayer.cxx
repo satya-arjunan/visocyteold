@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkTimestepsAnimationPlayer.cxx
 
   Copyright (c) Kitware, Inc.

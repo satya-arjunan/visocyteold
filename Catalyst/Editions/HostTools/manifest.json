@@ -86,12 +86,12 @@
     { "path":"vtkPVConfig.h.in" },
     { "path":"Applications",
       "exclude":[
-        { "path":"ParaView" }
+        { "path":"Visocyte" }
       ]
     },
-    { "path":"ParaViewConfigVersion.cmake.in" },
-    { "path":"ParaViewConfig.cmake.in" },
-    { "path":"ParaViewCore/README.txt" },
+    { "path":"VisocyteConfigVersion.cmake.in" },
+    { "path":"VisocyteConfig.cmake.in" },
+    { "path":"VisocyteCore/README.txt" },
     { "path":"VTK/vtkLogo.ico" },
     { "path":"VTK/README.md" },
     { "path":"VTK/ThirdParty/utf8" }

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkRulerSourceRepresentation.h
 
   Copyright (c) Kitware, Inc.

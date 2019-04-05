@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVSynchronizedRenderWindows.cxx
 
   Copyright (c) Kitware, Inc.
@@ -101,7 +101,7 @@ vtkRenderWindow* vtkPVSynchronizedRenderWindows::NewRenderWindowInternal()
 
   if (force_offscreen)
   {
-    // this may be a headless window if ParaView was built with headless
+    // this may be a headless window if Visocyte was built with headless
     // capabilities.
     vtkSmartPointer<vtkRenderWindow> renWindow =
       vtkPVRenderingCapabilitiesInformation::NewOffscreenRenderWindow();
@@ -645,7 +645,7 @@ vtkRenderWindow* vtkPVSynchronizedRenderWindows::NewRenderWindow()
     {
       // we could very return a dummy window here.
       vtkRenderWindow* window = vtkPVSynchronizedRenderWindows::NewRenderWindowInternal();
-      window->SetWindowName("ParaView Data-Server");
+      window->SetWindowName("Visocyte Data-Server");
       return window;
     }
 
@@ -657,7 +657,7 @@ vtkRenderWindow* vtkPVSynchronizedRenderWindows::NewRenderWindow()
       vtkRenderWindow* window = vtkPVSynchronizedRenderWindows::NewRenderWindowInternal();
       window->DoubleBufferOn();
       window->AlphaBitPlanesOn();
-      window->SetWindowName("ParaView");
+      window->SetWindowName("Visocyte");
       window->SetSize(400, 400); // set some default size for the window.
       return window;
     }
@@ -673,11 +673,11 @@ vtkRenderWindow* vtkPVSynchronizedRenderWindows::NewRenderWindow()
         std::ostringstream name_stream;
         if (this->Mode == BATCH)
         {
-          name_stream << "ParaView (batch)";
+          name_stream << "Visocyte (batch)";
         }
         else
         {
-          name_stream << "ParaView Server";
+          name_stream << "Visocyte Server";
         }
         if (this->ParallelController->GetNumberOfProcesses() > 1)
         {
@@ -1398,7 +1398,7 @@ void vtkPVSynchronizedRenderWindows::UpdateWindowLayout()
 // We use the following approach:
 // "Top-left corner for every box is moved up-and-left till it intersects
 // another box"
-// This works well for the way ParaView splits view.
+// This works well for the way Visocyte splits view.
 void vtkPVSynchronizedRenderWindows::ShinkGaps()
 {
   bool something_expanded;

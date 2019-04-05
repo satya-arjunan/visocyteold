@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkWrapClientServer.c
 
   Copyright (c) Kitware, Inc.

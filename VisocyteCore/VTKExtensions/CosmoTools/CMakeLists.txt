@@ -19,12 +19,12 @@ set(classes
   vtkPLANLHaloFinder
   vtkPMergeConnected)
 
-vtk_module_add_module(ParaView::VTKExtensionsCosmoTools
+vtk_module_add_module(Visocyte::VTKExtensionsCosmoTools
   CLASSES ${classes})
-vtk_module_include(ParaView::VTKExtensionsCosmoTools
+vtk_module_include(Visocyte::VTKExtensionsCosmoTools
   PRIVATE
     ${GENERIC_IO_INCLUDE_DIR})
-vtk_module_link(ParaView::VTKExtensionsCosmoTools
+vtk_module_link(Visocyte::VTKExtensionsCosmoTools
   PRIVATE
     ${GENERIC_IO_LIBRARIES})
 

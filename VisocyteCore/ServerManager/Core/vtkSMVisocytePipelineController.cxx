@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   ParaView
-  Module:    vtkSMParaViewPipelineController.cxx
+  Program:   Visocyte
+  Module:    vtkSMVisocytePipelineController.cxx
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -12,7 +12,7 @@
      PURPOSE.  See the above copyright notice for more information.
 
 =========================================================================*/
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 
 #include "vtkCommand.h"
 #include "vtkNew.h"
@@ -47,7 +47,7 @@
 #include <sstream>
 #include <vector>
 
-class vtkSMParaViewPipelineController::vtkInternals
+class vtkSMVisocytePipelineController::vtkInternals
 {
 public:
   typedef std::map<void*, vtkTimeStamp> TimeStampsMap;
@@ -142,22 +142,22 @@ private:
   }                                                                                                \
   vtkPrepareForUnregisteringScopedObj __tmp(arg, this->Internals->ProxiesBeingUnRegistered);
 
-vtkObjectFactoryNewMacro(vtkSMParaViewPipelineController);
+vtkObjectFactoryNewMacro(vtkSMVisocytePipelineController);
 //----------------------------------------------------------------------------
-vtkSMParaViewPipelineController::vtkSMParaViewPipelineController()
-  : Internals(new vtkSMParaViewPipelineController::vtkInternals())
+vtkSMVisocytePipelineController::vtkSMVisocytePipelineController()
+  : Internals(new vtkSMVisocytePipelineController::vtkInternals())
 {
 }
 
 //----------------------------------------------------------------------------
-vtkSMParaViewPipelineController::~vtkSMParaViewPipelineController()
+vtkSMVisocytePipelineController::~vtkSMVisocytePipelineController()
 {
   delete this->Internals;
   this->Internals = NULL;
 }
 
 //----------------------------------------------------------------------------
-vtkStdString vtkSMParaViewPipelineController::GetHelperProxyGroupName(vtkSMProxy* proxy)
+vtkStdString vtkSMVisocytePipelineController::GetHelperProxyGroupName(vtkSMProxy* proxy)
 {
   assert(proxy != NULL);
   std::ostringstream groupnamestr;
@@ -166,14 +166,14 @@ vtkStdString vtkSMParaViewPipelineController::GetHelperProxyGroupName(vtkSMProxy
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::FindProxy(
+vtkSMProxy* vtkSMVisocytePipelineController::FindProxy(
   vtkSMSessionProxyManager* pxm, const char* reggroup, const char* xmlgroup, const char* xmltype)
 {
   return pxm ? pxm->FindProxy(reggroup, xmlgroup, xmltype) : NULL;
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::CreateProxiesForProxyListDomains(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::CreateProxiesForProxyListDomains(vtkSMProxy* proxy)
 {
   assert(proxy != NULL);
   vtkSmartPointer<vtkSMPropertyIterator> iter;
@@ -210,7 +210,7 @@ bool vtkSMParaViewPipelineController::CreateProxiesForProxyListDomains(vtkSMProx
 }
 
 //----------------------------------------------------------------------------
-void vtkSMParaViewPipelineController::RegisterProxiesForProxyListDomains(vtkSMProxy* proxy)
+void vtkSMVisocytePipelineController::RegisterProxiesForProxyListDomains(vtkSMProxy* proxy)
 {
   assert(proxy != NULL);
   vtkSMSessionProxyManager* pxm = proxy->GetSessionProxyManager();
@@ -238,7 +238,7 @@ void vtkSMParaViewPipelineController::RegisterProxiesForProxyListDomains(vtkSMPr
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::SetupGlobalPropertiesLinks(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::SetupGlobalPropertiesLinks(vtkSMProxy* proxy)
 {
   assert(proxy != NULL);
 
@@ -310,7 +310,7 @@ bool vtkSMParaViewPipelineController::SetupGlobalPropertiesLinks(vtkSMProxy* pro
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::CreateAnimationHelpers(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::CreateAnimationHelpers(vtkSMProxy* proxy)
 {
   vtkSMSourceProxy* source = vtkSMSourceProxy::SafeDownCast(proxy);
   if (!source)
@@ -342,13 +342,13 @@ bool vtkSMParaViewPipelineController::CreateAnimationHelpers(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMParaViewPipelineController::DoMaterialSetup(vtkSMProxy* vtkNotUsed(proxy))
+void vtkSMVisocytePipelineController::DoMaterialSetup(vtkSMProxy* vtkNotUsed(proxy))
 {
   // expected to be overridden by rendering capable subclass
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::InitializeSession(vtkSMSession* session)
+bool vtkSMVisocytePipelineController::InitializeSession(vtkSMSession* session)
 {
   assert(session != NULL);
 
@@ -444,7 +444,7 @@ bool vtkSMParaViewPipelineController::InitializeSession(vtkSMSession* session)
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::FindTimeKeeper(vtkSMSession* session)
+vtkSMProxy* vtkSMVisocytePipelineController::FindTimeKeeper(vtkSMSession* session)
 {
   assert(session != NULL);
 
@@ -455,7 +455,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::FindTimeKeeper(vtkSMSession* sessio
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::FindMaterialLibrary(vtkSMSession* session)
+vtkSMProxy* vtkSMVisocytePipelineController::FindMaterialLibrary(vtkSMSession* session)
 {
   assert(session != NULL);
 
@@ -466,7 +466,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::FindMaterialLibrary(vtkSMSession* s
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::FindAnimationScene(vtkSMSession* session)
+vtkSMProxy* vtkSMVisocytePipelineController::FindAnimationScene(vtkSMSession* session)
 {
   assert(session != NULL);
 
@@ -477,7 +477,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::FindAnimationScene(vtkSMSession* se
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::GetAnimationScene(vtkSMSession* session)
+vtkSMProxy* vtkSMVisocytePipelineController::GetAnimationScene(vtkSMSession* session)
 {
   assert(session != NULL);
 
@@ -507,7 +507,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::GetAnimationScene(vtkSMSession* ses
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::FindTimeAnimationTrack(vtkSMProxy* scene)
+vtkSMProxy* vtkSMVisocytePipelineController::FindTimeAnimationTrack(vtkSMProxy* scene)
 {
   if (!scene)
   {
@@ -538,7 +538,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::FindTimeAnimationTrack(vtkSMProxy* 
 }
 
 //----------------------------------------------------------------------------
-vtkSMProxy* vtkSMParaViewPipelineController::GetTimeAnimationTrack(vtkSMProxy* scene)
+vtkSMProxy* vtkSMVisocytePipelineController::GetTimeAnimationTrack(vtkSMProxy* scene)
 {
   vtkSmartPointer<vtkSMProxy> cue = this->FindTimeAnimationTrack(scene);
   if (cue || !scene)
@@ -575,7 +575,7 @@ vtkSMProxy* vtkSMParaViewPipelineController::GetTimeAnimationTrack(vtkSMProxy* s
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterPipelineProxy(
+bool vtkSMVisocytePipelineController::RegisterPipelineProxy(
   vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
@@ -624,7 +624,7 @@ bool vtkSMParaViewPipelineController::RegisterPipelineProxy(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterPipelineProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::UnRegisterPipelineProxy(vtkSMProxy* proxy)
 {
   PREPARE_FOR_UNREGISTERING(proxy);
 
@@ -665,7 +665,7 @@ bool vtkSMParaViewPipelineController::UnRegisterPipelineProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterViewProxy(vtkSMProxy* proxy, const char* proxyname)
+bool vtkSMVisocytePipelineController::RegisterViewProxy(vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
   {
@@ -710,7 +710,7 @@ bool vtkSMParaViewPipelineController::RegisterViewProxy(vtkSMProxy* proxy, const
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterViewProxy(
+bool vtkSMVisocytePipelineController::UnRegisterViewProxy(
   vtkSMProxy* proxy, bool unregister_representations /*=true*/)
 {
   PREPARE_FOR_UNREGISTERING(proxy);
@@ -787,7 +787,7 @@ bool vtkSMParaViewPipelineController::UnRegisterViewProxy(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterRepresentationProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::RegisterRepresentationProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -803,7 +803,7 @@ bool vtkSMParaViewPipelineController::RegisterRepresentationProxy(vtkSMProxy* pr
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterRepresentationProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::UnRegisterRepresentationProxy(vtkSMProxy* proxy)
 {
   PREPARE_FOR_UNREGISTERING(proxy);
 
@@ -856,7 +856,7 @@ bool vtkSMParaViewPipelineController::UnRegisterRepresentationProxy(vtkSMProxy* 
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterColorTransferFunctionProxy(
+bool vtkSMVisocytePipelineController::RegisterColorTransferFunctionProxy(
   vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
@@ -872,7 +872,7 @@ bool vtkSMParaViewPipelineController::RegisterColorTransferFunctionProxy(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterOpacityTransferFunction(
+bool vtkSMVisocytePipelineController::RegisterOpacityTransferFunction(
   vtkSMProxy* proxy, const char* proxyname)
 {
   if (!proxy)
@@ -888,7 +888,7 @@ bool vtkSMParaViewPipelineController::RegisterOpacityTransferFunction(
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterAnimationProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::RegisterAnimationProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -903,7 +903,7 @@ bool vtkSMParaViewPipelineController::RegisterAnimationProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterAnimationProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::UnRegisterAnimationProxy(vtkSMProxy* proxy)
 {
   PREPARE_FOR_UNREGISTERING(proxy);
 
@@ -976,7 +976,7 @@ bool vtkSMParaViewPipelineController::UnRegisterAnimationProxy(vtkSMProxy* proxy
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::RegisterLightProxy(
+bool vtkSMVisocytePipelineController::RegisterLightProxy(
   vtkSMProxy* proxy, vtkSMProxy* view, const char* proxyname)
 {
   if (!proxy)
@@ -999,7 +999,7 @@ bool vtkSMParaViewPipelineController::RegisterLightProxy(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMParaViewPipelineController::UpdateSettingsProxies(vtkSMSession* session)
+void vtkSMVisocytePipelineController::UpdateSettingsProxies(vtkSMSession* session)
 {
   // Set up the settings proxies
   vtkSMSessionProxyManager* pxm = session->GetSessionProxyManager();
@@ -1024,7 +1024,7 @@ void vtkSMParaViewPipelineController::UpdateSettingsProxies(vtkSMSession* sessio
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::PreInitializeProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::PreInitializeProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -1058,7 +1058,7 @@ bool vtkSMParaViewPipelineController::PreInitializeProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-vtkMTimeType vtkSMParaViewPipelineController::GetInitializationTime(vtkSMProxy* proxy)
+vtkMTimeType vtkSMVisocytePipelineController::GetInitializationTime(vtkSMProxy* proxy)
 {
   vtkInternals::TimeStampsMap::iterator titer =
     this->Internals->InitializationTimeStamps.find(proxy);
@@ -1066,7 +1066,7 @@ vtkMTimeType vtkSMParaViewPipelineController::GetInitializationTime(vtkSMProxy* 
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::PostInitializeProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::PostInitializeProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -1156,7 +1156,7 @@ bool vtkSMParaViewPipelineController::PostInitializeProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::FinalizeProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::FinalizeProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -1201,7 +1201,7 @@ bool vtkSMParaViewPipelineController::FinalizeProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterDependencies(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::UnRegisterDependencies(vtkSMProxy* proxy)
 {
   assert(proxy != NULL);
 
@@ -1252,7 +1252,7 @@ bool vtkSMParaViewPipelineController::UnRegisterDependencies(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-bool vtkSMParaViewPipelineController::UnRegisterProxy(vtkSMProxy* proxy)
+bool vtkSMVisocytePipelineController::UnRegisterProxy(vtkSMProxy* proxy)
 {
   if (!proxy)
   {
@@ -1314,7 +1314,7 @@ bool vtkSMParaViewPipelineController::UnRegisterProxy(vtkSMProxy* proxy)
 }
 
 //----------------------------------------------------------------------------
-void vtkSMParaViewPipelineController::ProcessInitializationHelper(
+void vtkSMVisocytePipelineController::ProcessInitializationHelper(
   vtkSMProxy* proxy, vtkMTimeType initializationTimeStamp)
 {
   vtkPVXMLElement* hints = proxy->GetHints();
@@ -1337,7 +1337,7 @@ void vtkSMParaViewPipelineController::ProcessInitializationHelper(
 }
 
 //----------------------------------------------------------------------------
-void vtkSMParaViewPipelineController::PrintSelf(ostream& os, vtkIndent indent)
+void vtkSMVisocytePipelineController::PrintSelf(ostream& os, vtkIndent indent)
 {
   this->Superclass::PrintSelf(os, indent);
 }

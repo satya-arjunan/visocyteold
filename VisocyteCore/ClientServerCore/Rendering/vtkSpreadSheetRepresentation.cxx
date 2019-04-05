@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSpreadSheetRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

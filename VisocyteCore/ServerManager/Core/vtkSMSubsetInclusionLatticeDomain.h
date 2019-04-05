@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSubsetInclusionLatticeDomain.h
 
   Copyright (c) Kitware, Inc.

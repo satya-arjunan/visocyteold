@@ -1,4 +1,4 @@
-<ParaViewSources>
+<VisocyteSources>
   <Proxy group="sources" name="GlyphSource2D" />
   <Proxy group="sources" name="VectorText" />
   <Proxy group="sources" name="TimeToTextConvertorSource" />
@@ -23,4 +23,4 @@
   <Proxy group="sources" name="TimeSource" />
   <Proxy group="sources" name="Ruler" />
   <Proxy group="sources" name="RTAnalyticSource" />
-</ParaViewSources>
+</VisocyteSources>

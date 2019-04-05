@@ -3,6 +3,6 @@ NAME
 DESCRIPTION
   Add 3D View with eye-dome Lighting support
 REQUIRES_MODULES
-  ParaView::ClientServerCoreRendering
+  Visocyte::ClientServerCoreRendering
   VTK::CommonCore
   VTK::RenderingOpenGL2

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqCoreTestUtility.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -47,7 +47,7 @@ class vtkImageData;
 class vtkRenderWindow;
 
 /**
-* Provides ParaView-specific functionality for regression testing
+* Provides Visocyte-specific functionality for regression testing
 */
 class PQCORE_EXPORT pqCoreTestUtility : public pqTestUtility
 {

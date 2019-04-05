@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIUnstructuredGridVolumeRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.

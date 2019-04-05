@@ -1,4 +1,4 @@
-<ParaViewSources>
+<VisocyteSources>
   <Category name="Annotation" menu_label="&amp;Annotation" preserve_order="1"
     show_in_toolbar="0">
     <Proxy group="sources" name="VectorText" />
@@ -42,4 +42,4 @@
   <Proxy group="sources" name="ProgrammableSource" />
   <Proxy group="sources" name="TimeSource" />
   <Proxy group="sources" name="UnstructuredCellTypes" />
-</ParaViewSources>
+</VisocyteSources>

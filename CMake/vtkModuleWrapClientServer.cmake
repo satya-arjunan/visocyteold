@@ -2,8 +2,8 @@
 # `vtkModuleWrapClientServer`
 
 This module includes logic necessary in order to wrap VTK modules using
-ParaView's ClientServer "language". This allows for classes in the module to be
-used as proxies between ParaView client and server programs.
+Visocyte's ClientServer "language". This allows for classes in the module to be
+used as proxies between Visocyte client and server programs.
 #]==]
 
 #[==[.md INTERNAL
@@ -79,7 +79,7 @@ $<$<BOOL:${_vtk_client_server_genex_include_directories}>:\n-I\'$<JOIN:${_vtk_cl
 
     add_custom_command(
       OUTPUT  "${_vtk_client_server_source_output}"
-      COMMAND ParaView::WrapClientServer
+      COMMAND Visocyte::WrapClientServer
               "@${_vtk_client_server_args_file}"
               -o "${_vtk_client_server_source_output}"
               "${_vtk_client_server_header}"
@@ -88,7 +88,7 @@ $<$<BOOL:${_vtk_client_server_genex_include_directories}>:\n-I\'$<JOIN:${_vtk_cl
               CXX "${_vtk_client_server_header}"
       COMMENT "Generating client_server wrapper sources for ${_vtk_client_server_basename}"
       DEPENDS
-        ParaView::WrapClientServer
+        Visocyte::WrapClientServer
         "${_vtk_client_server_header}"
         "${_vtk_client_server_args_file}"
         "${_vtk_client_server_command_depend}")
@@ -198,7 +198,7 @@ ${_vtk_client_server_calls}}\n")
   target_link_libraries("${name}"
     PRIVATE
       ${ARGN}
-      ParaView::ClientServer
+      Visocyte::ClientServer
       VTK::CommonCore)
 
   set(_vtk_client_server_export)

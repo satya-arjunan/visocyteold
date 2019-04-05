@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    pqPythonView.cxx
 
   Copyright (c) Kitware, Inc.
@@ -31,7 +31,7 @@
 #include <QPointer>
 #include <QtDebug>
 
-// ParaView Includes.
+// Visocyte Includes.
 #include "pqOutputPort.h"
 #include "pqPipelineSource.h"
 #include "pqQVTKWidget.h"

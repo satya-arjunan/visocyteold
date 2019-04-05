@@ -2,7 +2,7 @@
 This module has utilities to benchmark visocyte.
 
 You can set up arbitrary pipelines and this module helps you obtain,
-interpret and report the information recorded by ParaView's logs.
+interpret and report the information recorded by Visocyte's logs.
 Do that like so:
 
 1. Optionally, call maximize logs first

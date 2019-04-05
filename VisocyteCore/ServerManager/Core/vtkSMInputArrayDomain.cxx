@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMInputArrayDomain.cxx
 
   Copyright (c) Kitware, Inc.

@@ -126,7 +126,7 @@
    <item>
     <widget class="QPushButton" name="exportLocationsAsSkyboxesButton">
      <property name="toolTip">
-      <string extracomment="Export the saved locations from VR as skyboxes suitable for viewing with vtk.js. This option will produce a pv-skybox folder that can be zipped up for use by ParaView Glance or vtk.js."/>
+      <string extracomment="Export the saved locations from VR as skyboxes suitable for viewing with vtk.js. This option will produce a pv-skybox folder that can be zipped up for use by Visocyte Glance or vtk.js."/>
      </property>
      <property name="text">
       <string>Export Locations as Skyboxes</string>

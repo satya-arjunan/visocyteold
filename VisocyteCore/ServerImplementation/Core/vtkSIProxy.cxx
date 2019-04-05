@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -322,7 +322,7 @@ bool vtkSIProxy::InitializeAndCreateVTKObjects(vtkSMMessage* message)
     {
       // This code has been commented to support ImplicitPlaneWidgetRepresentation
       // which as a widget as SubProxy which stay on the client side.
-      // Therefore, when ParaView is running on Client/Server mode, that SubProxy
+      // Therefore, when Visocyte is running on Client/Server mode, that SubProxy
       // does NOT exist on the Server side. This case should not fail the current
       // proxy creation.
 
@@ -388,7 +388,7 @@ bool vtkSIProxy::CreateVTKObjects()
       vtkErrorMacro("Failed to create '"
         << this->VTKClassName
         << "'. "
-           "This typically means that ParaView does not know about the request class "
+           "This typically means that Visocyte does not know about the request class "
            "to create an instance of if. Ensure that it has been correctly wrapped "
            "using the client-server wrappers and the wrapping has been initialized. "
            "Note class names are case-sensitive. Check for typos. "

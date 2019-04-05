@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVContextView.h
 
   Copyright (c) Kitware, Inc.
@@ -15,7 +15,7 @@
 /**
  * @class   vtkPVContextView
  *
- * vtkPVContextView adopts vtkContextView so that it can be used in ParaView
+ * vtkPVContextView adopts vtkContextView so that it can be used in Visocyte
  * configurations.
 */
 

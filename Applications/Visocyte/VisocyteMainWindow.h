@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
-   Module:    ParaViewMainWindow.h
+   Program: Visocyte
+   Module:    VisocyteMainWindow.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,20 +29,20 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#ifndef ParaViewMainWindow_h
-#define ParaViewMainWindow_h
+#ifndef VisocyteMainWindow_h
+#define VisocyteMainWindow_h
 
 #include <QMainWindow>
 
-/// MainWindow for the default ParaView application.
-class ParaViewMainWindow : public QMainWindow
+/// MainWindow for the default Visocyte application.
+class VisocyteMainWindow : public QMainWindow
 {
   Q_OBJECT
   typedef QMainWindow Superclass;
 
 public:
-  ParaViewMainWindow();
-  ~ParaViewMainWindow() override;
+  VisocyteMainWindow();
+  ~VisocyteMainWindow() override;
 
 protected:
   void dragEnterEvent(QDragEnterEvent* evt) override;
@@ -57,7 +57,7 @@ protected slots:
   void updateFontSize();
 
 private:
-  Q_DISABLE_COPY(ParaViewMainWindow)
+  Q_DISABLE_COPY(VisocyteMainWindow)
 
   class pqInternals;
   pqInternals* Internals;

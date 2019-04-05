@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSelectionSerializer.cxx
 
   Copyright (c) Kitware, Inc.

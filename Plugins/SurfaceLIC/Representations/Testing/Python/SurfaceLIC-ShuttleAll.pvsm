@@ -1,4 +1,4 @@
-<ParaView>
+<Visocyte>
   <ServerManagerState version="4.3.1">
     <Proxy group="animation" type="AnimationScene" id="263" servers="16">
       <Property name="AnimationTime" id="263.AnimationTime" number_of_elements="1">
@@ -3015,4 +3015,4 @@
       <GlobalPropertyLink global_name="SurfaceColor" proxy="3843" property="BackfaceDiffuseColor"/>
     </Links>
   </ServerManagerState>
-</ParaView>
+</Visocyte>

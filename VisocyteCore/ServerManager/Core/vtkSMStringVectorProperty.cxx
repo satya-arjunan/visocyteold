@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMStringVectorProperty.cxx
 
   Copyright (c) Kitware, Inc.

@@ -10,7 +10,7 @@ add_executable(CxxGhostCellsExample
   FEDriver.cxx)
 target_link_libraries(CxxGhostCellsExample
   PRIVATE
-    ParaView::PythonCatalyst
+    Visocyte::PythonCatalyst
     VTK::CommonDataModel
     VTK::CommonExecutionModel
     VTK::mpi

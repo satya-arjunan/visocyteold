@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPConvertSelection.cxx
 
   Copyright (c) Kitware, Inc.

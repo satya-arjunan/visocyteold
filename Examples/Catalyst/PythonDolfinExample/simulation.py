@@ -23,7 +23,7 @@ on an L-shaped domain using Chorin's splitting method."""
 # First added:  2010-08-30
 # Last changed: 2011-06-30
 
-# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and ParaView
+# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and Visocyte
 execfile("simulation-env.py")
 
 # Begin demo

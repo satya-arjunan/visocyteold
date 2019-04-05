@@ -246,7 +246,7 @@ self.GetOutput().ShallowCopy(ap.GetOutput())
 def main(argv):
     import argparse
     parser = argparse.ArgumentParser(
-        description='Benchmark ParaView geometry rendering')
+        description='Benchmark Visocyte geometry rendering')
     parser.add_argument('-o', '--output-basename', default='log', type=str,
                         help='Basename to use for generated output files')
     parser.add_argument('-s', '--spheres', default=100, type=int,

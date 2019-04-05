@@ -98,11 +98,11 @@ void vtknvindex_colormap::get_visocyte_colormap(vtkVolume* vol,
   regular_volume_properties->get_voxel_range(voxel_range);
 
   // Normalize the range only if it is not floating point data.
-  // If float, then set the domain values as-is from ParaView.
+  // If float, then set the domain values as-is from Visocyte.
   std::string scalar_type;
   regular_volume_properties->get_scalar_type(scalar_type);
 
-  // Colormap size used by ParaView
+  // Colormap size used by Visocyte
   // (see vtkOpenGLVolumeRGBTable).
   const mi::Uint64 array_size = 256;
 
@@ -124,7 +124,7 @@ void vtknvindex_colormap::get_visocyte_colormap(vtkVolume* vol,
     domain_range.y = color_range[1];
   }
 
-  // Read color values from ParaView.
+  // Read color values from Visocyte.
   color_array.resize(3 * array_size);
   // using Logarithmic scale?
   if (app_color_transfer_function->GetScale())
@@ -146,7 +146,7 @@ void vtknvindex_colormap::get_visocyte_colormap(vtkVolume* vol,
       voxel_range.x, voxel_range.y, array_size, &color_array[0]);
   }
 
-  // Read opacity values from ParaView.
+  // Read opacity values from Visocyte.
   opacity_array.resize(array_size);
   app_opacity_transfer_function->GetTable(
     voxel_range.x, voxel_range.y, array_size, &opacity_array[0]);
@@ -185,11 +185,11 @@ void vtknvindex_colormap::get_visocyte_colormaps(vtkVolume* vol,
   regular_volume_properties->get_voxel_range(voxel_range);
 
   // Normalize the range only if it is not floating point data.
-  // If float, set the domain values as-is from ParaView.
+  // If float, set the domain values as-is from Visocyte.
   std::string scalar_type;
   regular_volume_properties->get_scalar_type(scalar_type);
 
-  // Colormap size used by ParaView
+  // Colormap size used by Visocyte
   // see vtkOpenGLVolumeRGBTable
   const mi::Uint64 array_size = 256;
 
@@ -211,7 +211,7 @@ void vtknvindex_colormap::get_visocyte_colormaps(vtkVolume* vol,
     domain_range.y = color_range[1];
   }
 
-  // Read color values from ParaView.
+  // Read color values from Visocyte.
   color_array.resize(3 * array_size);
 
   // using Logarithmic scale?
@@ -234,7 +234,7 @@ void vtknvindex_colormap::get_visocyte_colormaps(vtkVolume* vol,
       voxel_range.x, voxel_range.y, array_size, &color_array[0]);
   }
 
-  // Read opacity values from ParaView.
+  // Read opacity values from Visocyte.
   opacity_array.resize(array_size);
   app_opacity_transfer_function->GetTable(
     voxel_range.x, voxel_range.y, array_size, &opacity_array[0]);

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkTextSourceRepresentation.h
 
   Copyright (c) Kitware, Inc.

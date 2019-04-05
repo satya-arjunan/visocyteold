@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    TestCatalystServerManager.cxx
 
 Copyright (c) Kitware, Inc.

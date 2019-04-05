@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVSession.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVSession
- * @brief   extends vtkSession to add API for ParaView sessions.
+ * @brief   extends vtkSession to add API for Visocyte sessions.
  *
- * vtkPVSession adds APIs to vtkSession for ParaView-specific sessions, namely
+ * vtkPVSession adds APIs to vtkSession for Visocyte-specific sessions, namely
  * those that are used to communicate between data-server,render-server and
  * client. This is an abstract class.
 */

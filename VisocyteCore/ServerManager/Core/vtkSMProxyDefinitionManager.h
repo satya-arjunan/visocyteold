@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkSMProxyDefinitionManager
  *
  * vtkSMProxyDefinitionManager is a remote-object that represents the
- * vtkSIProxyDefinitionManager instance on all the processes. ParaView clients
+ * vtkSIProxyDefinitionManager instance on all the processes. Visocyte clients
  * should use API on this class to add/update xml definitions to ensure that
  * the xmls are processed/updated correctly on all the processes.
 */

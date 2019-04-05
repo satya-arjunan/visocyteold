@@ -10,7 +10,7 @@ add_executable(Fortran90FullExample
   FEFortranAdaptor.f90)
 target_link_libraries(Fortran90FullExample
   PRIVATE
-    ParaView::PythonCatalyst
+    Visocyte::PythonCatalyst
     MPI::MPI_Fortran)
 set_property(TARGET Fortran90FullExample
   PROPERTY

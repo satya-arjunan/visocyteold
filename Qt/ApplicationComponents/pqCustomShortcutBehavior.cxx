@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqCustomShortcutBehavior.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -70,7 +70,7 @@ void loadShortcuts(const QList<QAction*>& actions, pqSettings& settings)
       // store the default key sequence before overriding it with the
       // user specified one in the settings.
       QKeySequence defaultShortcut = action->shortcut();
-      action->setProperty("ParaViewDefaultKeySequence", defaultShortcut);
+      action->setProperty("VisocyteDefaultKeySequence", defaultShortcut);
       auto variant = settings.value(actionName, QVariant());
       if (variant.canConvert<QKeySequence>())
       {

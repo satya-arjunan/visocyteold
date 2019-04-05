@@ -1,7 +1,7 @@
 
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestPVThreshold.cxx
 
   Copyright (c) Kitware, Inc.

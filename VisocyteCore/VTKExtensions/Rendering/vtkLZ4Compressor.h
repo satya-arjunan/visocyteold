@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkLZ4Compressor.h
 
   Copyright (c) Kitware, Inc.

@@ -37,7 +37,7 @@ class vtkSMCameraConfigurationFileInfo
 public:
   vtkSMCameraConfigurationFileInfo()
     : FileIdentifier("PVCameraConfiguration")
-    , FileDescription("ParaView camera configuration")
+    , FileDescription("Visocyte camera configuration")
     , FileExtension(".pvcc")
   {
   }

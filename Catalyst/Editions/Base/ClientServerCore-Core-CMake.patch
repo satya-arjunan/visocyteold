@@ -1,7 +1,7 @@
-diff --git a/ParaViewCore/ClientServerCore/Core/CMakeLists.txt b/ParaViewCore/ClientServerCore/Core/CMakeLists.txt
+diff --git a/VisocyteCore/ClientServerCore/Core/CMakeLists.txt b/VisocyteCore/ClientServerCore/Core/CMakeLists.txt
 index 9b10ff8..f98b22e 100644
---- a/ParaViewCore/ClientServerCore/Core/CMakeLists.txt
-+++ b/ParaViewCore/ClientServerCore/Core/CMakeLists.txt
+--- a/VisocyteCore/ClientServerCore/Core/CMakeLists.txt
++++ b/VisocyteCore/ClientServerCore/Core/CMakeLists.txt
 @@ -34,7 +34,6 @@ set (Module_SRCS
    vtkMPIMToNSocketConnection.cxx
    vtkMPIMToNSocketConnectionPortInformation.cxx
@@ -26,12 +26,12 @@ index 9b10ff8..f98b22e 100644
      )
  endif()
 
-diff --git a/ParaViewCore/ClientServerCore/Core/module.cmake b/ParaViewCore/ClientServerCore/Core/module.cmake
+diff --git a/VisocyteCore/ClientServerCore/Core/module.cmake b/VisocyteCore/ClientServerCore/Core/module.cmake
 index f17c4df..f0db074 100644
---- a/ParaViewCore/ClientServerCore/Core/module.cmake
-+++ b/ParaViewCore/ClientServerCore/Core/module.cmake
+--- a/VisocyteCore/ClientServerCore/Core/module.cmake
++++ b/VisocyteCore/ClientServerCore/Core/module.cmake
 @@ -18,7 +18,5 @@ vtk_module(vtkPVClientServerCoreCore
-     ParaViewCore
+     VisocyteCore
    DEPENDS
 -    vtkFiltersExtraction
 -    vtkFiltersParallel

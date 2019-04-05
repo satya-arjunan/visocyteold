@@ -3,10 +3,10 @@
 # Bail out when commands fail.
 set -e
 
-# The URLs where data is stored for ParaView.
+# The URLs where data is stored for Visocyte.
 readonly urlbases="http://www.visocyte.org/files/ExternalData/ALGO/HASH http://www.vtk.org/files/ExternalData/ALGO/HASH https://data.kitware.com/api/v1/file/hashsum/ALGO/HASH/download"
 
-# Move to the top of the ParaView tree.
+# Move to the top of the Visocyte tree.
 readonly output_base="$( pwd )"
 cd "${BASH_SOURCE%/*}/../.."
 
@@ -366,7 +366,7 @@ tree="$( git write-tree )"
 
 info "Generating source archive(s)..."
 for format in $formats; do
-    git_archive "$format" "$tree" "ParaView-$version" || \
+    git_archive "$format" "$tree" "Visocyte-$version" || \
         result=1
 done
 
@@ -378,7 +378,7 @@ tree="$( git write-tree )"
 
 info "Generating testing data archive(s)..."
 for format in $formats; do
-    git_archive "$format" "$tree" "ParaViewTestingData-$version" "ParaView-$version" || \
+    git_archive "$format" "$tree" "VisocyteTestingData-$version" "Visocyte-$version" || \
         result=1
 done
 
@@ -390,7 +390,7 @@ tree="$( git write-tree )"
 
 info "Generating data archive(s)..."
 for format in $formats; do
-    git_archive "$format" "$tree" "ParaViewData-$version" "ParaView-$version" || \
+    git_archive "$format" "$tree" "VisocyteData-$version" "Visocyte-$version" || \
         result=1
 done
 

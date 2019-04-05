@@ -2769,7 +2769,7 @@
                          name="CellLayerRight"
                          number_of_elements="1"
                          panel_visibility="never">
-        <Documentation>**DEPRECATED in ParaView 4.4.** No longer needed/supported.</Documentation>
+        <Documentation>**DEPRECATED in Visocyte 4.4.** No longer needed/supported.</Documentation>
         <BooleanDomain name="bool" />
       </IntVectorProperty>
       <DoubleVectorProperty information_only="1"
@@ -3210,7 +3210,7 @@
                             repeatable="1">
         <TimeStepsInformationHelper />
         <Documentation>This magic property sends time information to the
-        animation panel. ParaView will then automatically set up the animation
+        animation panel. Visocyte will then automatically set up the animation
         to visit the time steps defined in the file.</Documentation>
       </DoubleVectorProperty>
     </Proxy>
@@ -3612,9 +3612,9 @@
     <SourceProxy class="vtkPVDReader"
                  label="PVD Reader"
                  name="PVDReader">
-      <Documentation long_help="Load a dataset stored in ParaView's PVD file format."
+      <Documentation long_help="Load a dataset stored in Visocyte's PVD file format."
                      short_help="Read a PVD file.">The PVD reader reads data
-                     stored in ParaView's PVD file format. The .pvd file is
+                     stored in Visocyte's PVD file format. The .pvd file is
                      essentially a header file that collects together other
                      data files stored in VTK's XML-based file
                      format.</Documentation>
@@ -3711,7 +3711,7 @@
       </PropertyGroup>
       <Hints>
         <ReaderFactory extensions="pvd"
-                       file_description="ParaView Data Files" />
+                       file_description="Visocyte Data Files" />
       </Hints>
       <!-- End PVDReader -->
     </SourceProxy>
@@ -5234,7 +5234,7 @@
                      short_help="Read PLY polygonal files.">The PLY reader
                      reads files stored in the PLY polygonal file format
                      developed at Stanford University. The PLY files that
-                     ParaView can read must have the elements "vertex" and
+                     Visocyte can read must have the elements "vertex" and
                      "face" defined. The "vertex" elements must have the
                      properties "x", "y", and "z". The "face" elements must have
                      the property "vertex_indices" defined. The default file
@@ -7001,7 +7001,7 @@
                             repeatable="1">
         <TimeStepsInformationHelper />
         <Documentation>This magic property sends time information to the
-        animation panel. ParaView will then automatically set up the animation
+        animation panel. Visocyte will then automatically set up the animation
         to visit the time steps defined in the file.</Documentation>
       </DoubleVectorProperty>
       <Hints>
@@ -7091,16 +7091,16 @@
                             repeatable="1">
         <TimeStepsInformationHelper />
         <Documentation>This magic property sends time information to the
-        animation panel. ParaView will then automatically set up the animation
+        animation panel. Visocyte will then automatically set up the animation
         to visit the time steps defined in the file.</Documentation>
       </DoubleVectorProperty>
       <DoubleVectorProperty information_only="1"
                             name="TimeRange">
         <TimeRangeInformationHelper />
         <Documentation>This magic property sends time range information to the
-        animation panel. ParaView uses this information to set the range of
+        animation panel. Visocyte uses this information to set the range of
         time for the animation. This property is important for when there are
-        no timesteps but you still want to give ParaView a range of values to
+        no timesteps but you still want to give Visocyte a range of values to
         use.</Documentation>
       </DoubleVectorProperty>
 
@@ -7485,7 +7485,7 @@
         <SimpleIntInformationHelper />
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Default extent is all files
         available.</Documentation>
       </IntVectorProperty>
@@ -7495,7 +7495,7 @@
         <SimpleIntInformationHelper />
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Default extent is all files
         available.</Documentation>
       </IntVectorProperty>
@@ -7505,7 +7505,7 @@
         <SimpleIntInformationHelper />
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Default extent is all files
         available.</Documentation>
       </IntVectorProperty>
@@ -7523,7 +7523,7 @@
         </IntRangeDomain>
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Ghost cell overlap is handled within the reader.
         To limit the View of VPIC information the extent in the X dimension of
         "files" can be specified. Only the files selected will be displayed and
@@ -7544,7 +7544,7 @@
         </IntRangeDomain>
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Ghost cell overlap is handled within the reader.
         To limit the View of VPIC information the extent in the Y dimension of
         "files" can be specified. Only the files selected will be displayed and
@@ -7565,7 +7565,7 @@
         </IntRangeDomain>
         <Documentation>VPIC data is written one file per simulation processor.
         This coarse map of files is used in partitioning files between
-        visualizing processors so that each ParaView processor has its own set
+        visualizing processors so that each Visocyte processor has its own set
         of files to display. Ghost cell overlap is handled within the reader.
         To limit the View of VPIC information the extent in the Z dimension of
         "files" can be specified. Only the files selected will be displayed and
@@ -7851,7 +7851,7 @@
                          panel_visibility="never">
         <BooleanDomain name="bool" />
         <Documentation>This property ensures that the dimension info is always
-        shown in the ParaView GUI.</Documentation>
+        shown in the Visocyte GUI.</Documentation>
       </IntVectorProperty>
       <StringVectorProperty information_only="1"
                             name="PointArrayInfo">
@@ -8396,7 +8396,7 @@ series.
       </DoubleVectorProperty>
       <Hints>
         <ReaderFactory extensions="pve"
-                       file_description="ParaView Ensemble Data" />
+                       file_description="Visocyte Ensemble Data" />
       </Hints>
     </EnsembleDataReaderProxy>
     <!-- End Ensemble Data Reader -->

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkBoundedPlaneSource.cxx
 
   Copyright (c) Kitware, Inc.

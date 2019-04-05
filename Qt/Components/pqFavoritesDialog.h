@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqFavoritesDialog.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -47,7 +47,7 @@ class pqFavoritesDialog;
 }
 
 /**
- * pqFavoritesDialog is the Manage Favorites dialog used by ParaView.
+ * pqFavoritesDialog is the Manage Favorites dialog used by Visocyte.
  * It allows to create Favorites and organize them under custom categories.
  */
 class PQCOMPONENTS_EXPORT pqFavoritesDialog : public QDialog

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqTimeInspectorWidget.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkNew.h"
 #include "vtkPVDataInformation.h"
 #include "vtkPVGeneralSettings.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSourceProxy.h"
 
@@ -326,7 +326,7 @@ void pqTimeInspectorWidget::updateScene()
   }
 
   vtkSMSession* session = curServer->session();
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
 
   vtkSMProxy* sceneProxy = controller->FindAnimationScene(session);
   if (!sceneProxy)

@@ -9,4 +9,4 @@ CONDITION
   # `vtkPythonInterpreter` provides today.
   FALSE AND VISOCYTE_ENABLE_PYTHON
 REQUIRES_MODULES
-  ParaView::ClientServerCoreCore
+  Visocyte::ClientServerCoreCore

@@ -1,4 +1,4 @@
-#include "ParaViewDocumentationInitializer.h"
+#include "VisocyteDocumentationInitializer.h"
 
 #include <QObject>
 #include <QtPlugin>

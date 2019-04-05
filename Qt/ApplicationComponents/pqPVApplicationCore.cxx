@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqPVApplicationCore.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqSpreadSheetViewModel.h"
 #include "vtkProcessModule.h"
 
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
 #include "pqPythonManager.h"
 #endif
 
@@ -91,7 +91,7 @@ pqPVApplicationCore::pqPVApplicationCore(int& argc, char** argv, pqOptions* opti
   pqApplicationCore::instance()->registerManager("PRESET_GROUP_MANAGER", presetGroupManager);
 
   this->PythonManager = 0;
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   this->PythonManager = new pqPythonManager(this);
 
 // Ensure that whenever Python is initialized, we tell visocyte.servermanager
@@ -107,7 +107,7 @@ pqPVApplicationCore::~pqPVApplicationCore()
 {
   delete this->AnimationManager;
   delete this->SelectionManager;
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   delete this->PythonManager;
 #endif
 }
@@ -195,7 +195,7 @@ pqAnimationManager* pqPVApplicationCore::animationManager() const
 //-----------------------------------------------------------------------------
 pqPythonManager* pqPVApplicationCore::pythonManager() const
 {
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   return this->PythonManager;
 #else
   return 0;
@@ -232,7 +232,7 @@ bool pqPVApplicationCore::eventFilter(QObject* obj, QEvent* event_)
       {
         // If the application has not yet started, treat it as a --data argument
         // to be processed after the application starts.
-        this->Options->SetParaViewDataName(files[0].toLocal8Bit().data());
+        this->Options->SetVisocyteDataName(files[0].toLocal8Bit().data());
       }
     }
     return false;
@@ -247,7 +247,7 @@ bool pqPVApplicationCore::eventFilter(QObject* obj, QEvent* event_)
 //-----------------------------------------------------------------------------
 void pqPVApplicationCore::loadStateFromPythonFile(const QString& filename, pqServer* server)
 {
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   pqPythonManager* pythonMgr = this->pythonManager();
   this->clearViewsForLoadingState(server);
   // comment in pqApplicationCore says this->LoadingState is unreliable, but it is still
@@ -259,6 +259,6 @@ void pqPVApplicationCore::loadStateFromPythonFile(const QString& filename, pqSer
   // Avoid unused parameter warnings
   (void)filename;
   (void)server;
-  qCritical() << "Cannot load a python state file since ParaView was not built with Python.";
+  qCritical() << "Cannot load a python state file since Visocyte was not built with Python.";
 #endif
 }

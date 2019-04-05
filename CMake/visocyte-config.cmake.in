@@ -1,19 +1,19 @@
 #[==[.md
 # visocyte-config.cmake
 
-This file is used by CMake when finding ParaView.
+This file is used by CMake when finding Visocyte.
 
 The following variables are provided by this module:
 
-  * `ParaView_VERSION`: The version of ParaView found.
-  * `VISOCYTE_BUILD_QT_GUI`: If ParaView's Qt GUI is available.
-  * `VISOCYTE_USE_MPI`: If ParaView is built with MPI support.
-  * `VISOCYTE_ENABLE_PYTHON`: If ParaView is built with Python support.
-  * `VISOCYTE_PYTHONPATH`: Where ParaView's Python modules live. Unset if
+  * `Visocyte_VERSION`: The version of Visocyte found.
+  * `VISOCYTE_BUILD_QT_GUI`: If Visocyte's Qt GUI is available.
+  * `VISOCYTE_USE_MPI`: If Visocyte is built with MPI support.
+  * `VISOCYTE_ENABLE_PYTHON`: If Visocyte is built with Python support.
+  * `VISOCYTE_PYTHONPATH`: Where Visocyte's Python modules live. Unset if
     Python is not available.
   * `VISOCYTE_PLUGIN_SUBDIR`: The subdirectory under the library directory for
     plugins.
-  * `ParaView_LIBRARIES`: The list of modules specified by `COMPONENTS` and
+  * `Visocyte_LIBRARIES`: The list of modules specified by `COMPONENTS` and
     `OPTIONAL_COMPONENTS`. This may be used in `MODULES` arguments in the API
     (e.g., `vtk_module_autoinit`). All modules are also targets and may be
     linked to using `target_link_libraries`.
@@ -50,9 +50,9 @@ include("${CMAKE_CURRENT_LIST_DIR}/${CMAKE_FIND_PACKAGE_NAME}-targets.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/${CMAKE_FIND_PACKAGE_NAME}-vtk-module-properties.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/${CMAKE_FIND_PACKAGE_NAME}-vtk-module-find-packages.cmake")
 
-include("${CMAKE_CURRENT_LIST_DIR}/ParaViewClient.cmake")
-include("${CMAKE_CURRENT_LIST_DIR}/ParaViewPlugin.cmake")
-include("${CMAKE_CURRENT_LIST_DIR}/ParaViewServerManager.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/VisocyteClient.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/VisocytePlugin.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/VisocyteServerManager.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/vtkModuleWrapClientServer.cmake")
 
 set(VISOCYTE_BUILD_QT_GUI "@VISOCYTE_BUILD_QT_GUI@")

@@ -4,7 +4,7 @@
  just got new properties to be able to only process certain arrays
  instead of systematically processing all arrays. We expose
  the properties in the xml of these filter so they can be used
- in ParaView.
+ in Visocyte.
 
  * Using these properties with AutoConvert properties
  AutoConvert properties settings allows user to use

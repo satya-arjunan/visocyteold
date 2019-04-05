@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSessionProxyManager.h
 
   Copyright (c) Kitware, Inc.
@@ -98,7 +98,7 @@
  * \endcode
  *
  * @sa
- *  - To show a source proxy or a filter inside the menu of ParaView we use a hint:
+ *  - To show a source proxy or a filter inside the menu of Visocyte we use a hint:
  * \code{.xml}
  *       <SourceProxy ...>
  *           <Hints>

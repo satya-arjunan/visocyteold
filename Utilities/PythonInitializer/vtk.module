@@ -1,5 +1,5 @@
 NAME
-  ParaView::PythonInitializer
+  Visocyte::PythonInitializer
 LIBRARY_NAME
   vtkUtilitiesPythonInitializer
 CONDITION

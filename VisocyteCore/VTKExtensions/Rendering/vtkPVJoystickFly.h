@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVJoystickFly.h
 
   Copyright (c) Kitware, Inc.

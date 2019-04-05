@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVGeometryFilter.cxx
 
   Copyright (c) Kitware, Inc.

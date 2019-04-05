@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPythonPluginInterface.cxx
 
   Copyright (c) Kitware, Inc.

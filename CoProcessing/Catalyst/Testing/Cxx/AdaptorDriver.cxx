@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    AdaptorDriver.cxx
 
   Copyright (c) Kitware, Inc.

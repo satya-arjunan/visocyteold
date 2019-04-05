@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVDReader.cxx
 
   Copyright (c) Kitware, Inc.

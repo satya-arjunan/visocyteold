@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMInputProperty.h
 
   Copyright (c) Kitware, Inc.

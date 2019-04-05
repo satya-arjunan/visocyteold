@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVMergeTables.h
 
   Copyright (c) Kitware, Inc.

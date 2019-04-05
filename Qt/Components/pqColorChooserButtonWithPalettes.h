@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqColorChooserButtonWithPalettes.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -45,13 +45,13 @@ class vtkSMProxy;
 /**
 * pqColorChooserButtonWithPalettes extends pqColorChooserButton to add support
 * for a menu that allows the user to connect the color to a color in the
-* ParaView application's color palettes.
+* Visocyte application's color palettes.
 *
 * When the user selects a color from the color palette, this class will get
 * the color value from the palette and simply apply it, as if the user
 * explicitly chose the color.
 *
-* However, in ParaView, when the user selects a color from the palette,
+* However, in Visocyte, when the user selects a color from the palette,
 * there's an expectation that the color stays "linked" with the color palette.
 * Thus, if the color palette is changed, the linked color is also updated.
 *
@@ -96,7 +96,7 @@ private:
 /**
 * pqColorPaletteLinkHelper is designed to be used with
 * pqColorChooserButtonWithPalettes to manage setting up of property links with
-* ParaView application's color palette.
+* Visocyte application's color palette.
 */
 class PQCOMPONENTS_EXPORT pqColorPaletteLinkHelper : public QObject
 {

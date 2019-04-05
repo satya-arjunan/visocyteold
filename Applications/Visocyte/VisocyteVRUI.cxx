@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
-   Module:    ParaViewVRUI.cxx
+   Program: Visocyte
+   Module:    VisocyteVRUI.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -29,7 +29,7 @@ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ========================================================================*/
-#include "ParaViewVRUI.h"
+#include "VisocyteVRUI.h"
 
 #include "pqActiveObjects.h"
 #include "pqView.h"
@@ -44,7 +44,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <vector>
 
-class ParaViewVRUI::pqInternals
+class VisocyteVRUI::pqInternals
 {
 public:
   pqInternals()
@@ -114,7 +114,7 @@ void VRUI_CALLBACK handleTrackerPosQuat(void *userdata,
 #endif
 
 // ----------------------------------------------------------------------------
-ParaViewVRUI::ParaViewVRUI()
+VisocyteVRUI::VisocyteVRUI()
 {
   this->Internals = new pqInternals();
   this->Name = 0;
@@ -123,7 +123,7 @@ ParaViewVRUI::ParaViewVRUI()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::SetName(const char* name)
+void VisocyteVRUI::SetName(const char* name)
 {
   if (this->Name != name)
   {
@@ -141,31 +141,31 @@ void ParaViewVRUI::SetName(const char* name)
 }
 
 // ----------------------------------------------------------------------------
-const char* ParaViewVRUI::GetName() const
+const char* VisocyteVRUI::GetName() const
 {
   return this->Name;
 }
 
 // ----------------------------------------------------------------------------
-int ParaViewVRUI::GetPort() const
+int VisocyteVRUI::GetPort() const
 {
   return this->Port;
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::SetPort(int port)
+void VisocyteVRUI::SetPort(int port)
 {
   this->Port = port;
 }
 
 // ----------------------------------------------------------------------------
-bool ParaViewVRUI::GetInitialized() const
+bool VisocyteVRUI::GetInitialized() const
 {
   return this->Initialized;
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::Init()
+void VisocyteVRUI::Init()
 {
   QTcpSocket* socket = new QTcpSocket;
   socket->connectToHost(QString(this->Name), this->Port); // ReadWrite?
@@ -199,7 +199,7 @@ void ParaViewVRUI::Init()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::Activate()
+void VisocyteVRUI::Activate()
 {
   if (!this->Internals->Active)
   {
@@ -209,7 +209,7 @@ void ParaViewVRUI::Activate()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::Deactivate()
+void VisocyteVRUI::Deactivate()
 {
   if (this->Internals->Active)
   {
@@ -219,7 +219,7 @@ void ParaViewVRUI::Deactivate()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::StartStream()
+void VisocyteVRUI::StartStream()
 {
   if (this->Internals->Active)
   {
@@ -243,7 +243,7 @@ void ParaViewVRUI::StartStream()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::StopStream()
+void VisocyteVRUI::StopStream()
 {
   if (this->Internals->Streaming)
   {
@@ -254,7 +254,7 @@ void ParaViewVRUI::StopStream()
 }
 
 // ----------------------------------------------------------------------------
-ParaViewVRUI::~ParaViewVRUI()
+VisocyteVRUI::~VisocyteVRUI()
 {
   this->StopStream();
 
@@ -268,7 +268,7 @@ ParaViewVRUI::~ParaViewVRUI()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::callback()
+void VisocyteVRUI::callback()
 {
   if (this->Initialized)
   {
@@ -285,7 +285,7 @@ void ParaViewVRUI::callback()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::GetNextPacket()
+void VisocyteVRUI::GetNextPacket()
 {
   if (this->Internals->Active)
   {
@@ -325,7 +325,7 @@ void ParaViewVRUI::GetNextPacket()
 }
 
 // ----------------------------------------------------------------------------
-void ParaViewVRUI::PrintPositionOrientation()
+void VisocyteVRUI::PrintPositionOrientation()
 {
   std::vector<vtkSmartPointer<vruiTrackerState> >* trackers =
     this->Internals->State->GetTrackerStates();

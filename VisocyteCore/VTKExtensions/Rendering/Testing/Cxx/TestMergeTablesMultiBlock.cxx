@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestMergeTablesMultiBlock.cxx
 
   Copyright (c) Kitware, Inc.

@@ -15,9 +15,9 @@
 /**
  * @class   vtkPVCompositeDataPipeline
  * @brief   executive to add support for
- * vtkPVPostFilter in ParaView data pipelines.
+ * vtkPVPostFilter in Visocyte data pipelines.
  *
- * vtkPVCompositeDataPipeline extends vtkCompositeDataPipeline to add ParaView
+ * vtkPVCompositeDataPipeline extends vtkCompositeDataPipeline to add Visocyte
  * specific extensions to the pipeline.
  * \li Post Filter :- it adds support to ensure that array requests made on
  *     algorithms are passed along to the input vtkPVPostFilter, if one exists.

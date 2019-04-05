@@ -1,15 +1,15 @@
 Implementation Details: String Encoding    {#DesignStringEncoding}
 =======================================
 
-This page summarizes the design details of string encoding in ParaView, which
+This page summarizes the design details of string encoding in Visocyte, which
 covers pq to SM string call and SI to VTK / VTK to SI string arguments passing.
 
 ##Motivation##
 
-For a long time, ParaView used a simple implementation when passing string
+For a long time, Visocyte used a simple implementation when passing string
 arguments. pq Classes handles QString, which are a vory robust implementation
 of string that need to be converted before being used as an actual c string.
-For this conversion, ParaView used to use QString::toLatin1(), which works fine,
+For this conversion, Visocyte used to use QString::toLatin1(), which works fine,
 in order to pass the String to SM level.
 Then on lower levels, all classes manipulate the same c string, without any
 reencoding.
@@ -22,7 +22,7 @@ is done via a library called protobuf, which support only UTF8 string.
 Second, Latin1 is a specific encoding, which can be different from the
 local 8 Bits encoding of strings.
 
-Special character are now supported in filenames in ParaView, and
+Special character are now supported in filenames in Visocyte, and
 one should take care of conversion when handling filenames.
 
 ##Design##

@@ -25,12 +25,12 @@ visocyte_add_plugin(OpenVR
 
 target_link_libraries(OpenVR
   PRIVATE
-    ParaView::ClientServerCoreRendering
-    ParaView::Core
-    ParaView::ServerManagerCore
-    ParaView::ServerManagerRendering
-    ParaView::VTKExtensionsRendering
-    ParaView::pqApplicationComponents
+    Visocyte::ClientServerCoreRendering
+    Visocyte::Core
+    Visocyte::ServerManagerCore
+    Visocyte::ServerManagerRendering
+    Visocyte::VTKExtensionsRendering
+    Visocyte::pqApplicationComponents
     VTK::CommonCore
     VTK::CommonDataModel
     VTK::IOCore

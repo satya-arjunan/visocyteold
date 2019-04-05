@@ -1,12 +1,12 @@
 NAME
-  ParaView::CatalystTestDriver
+  Visocyte::CatalystTestDriver
 LIBRARY_NAME
   vtkPVCatalystTestDriver
 DEPENDS
-  ParaView::Catalyst
+  Visocyte::Catalyst
 PRIVATE_DEPENDS
   VTK::CommonDataModel
   VTK::ParallelCore
 TEST_LABELS
   Catalyst
-  ParaView
+  Visocyte

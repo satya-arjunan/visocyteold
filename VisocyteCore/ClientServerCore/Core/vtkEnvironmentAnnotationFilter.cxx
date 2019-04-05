@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkEnvironmentAnnotationFilter.cxx
 
   Copyright (c) Kitware, Inc.

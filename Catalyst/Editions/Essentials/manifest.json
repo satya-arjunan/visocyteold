@@ -13,7 +13,7 @@
   },
   "modules":[
     { "name":"vtkPVVTKExtensionsDefault",
-      "path":"ParaViewCore/VTKExtensions/Default",
+      "path":"VisocyteCore/VTKExtensions/Default",
       "include":[
         { "class":"vtkAMRDualClip" },
         { "path":"vtkAMRDualClipTables.cxx" },
@@ -30,8 +30,8 @@
         { "class":"vtkPVPlane" }
       ],
       "replace":[
-        { "path":"ParaViewCore/VTKExtensions/Default/CMakeLists.txt" },
-        { "path":"ParaViewCore/VTKExtensions/Default/module.cmake" }
+        { "path":"VisocyteCore/VTKExtensions/Default/CMakeLists.txt" },
+        { "path":"VisocyteCore/VTKExtensions/Default/module.cmake" }
       ],
       "cswrap":true,
       "pythonwrap":true
@@ -89,7 +89,7 @@
     }
   ],
   "proxies":[
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/filters.xml",
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/filters.xml",
       "proxies":[
         "Calculator",
         "CellCenters",
@@ -101,13 +101,13 @@
         "PassArrays"
       ]
     },
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/sources.xml",
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/sources.xml",
       "proxies":[
         "TrivialProducer",
         "PVTrivialProducer"
       ]
     },
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/utilities.xml",
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/utilities.xml",
       "proxies":[
         "MergePoints",
         "IncrementalOctreeMergePoints",

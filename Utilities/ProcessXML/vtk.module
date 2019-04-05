@@ -1,10 +1,10 @@
 NAME
-  ParaView::ProcessXML
+  Visocyte::ProcessXML
 LIBRARY_NAME
   vtkProcessXML
 PRIVATE_DEPENDS
   VTK::CommonCore
   VTK::vtksys
 TEST_LABELS
-  ParaView
+  Visocyte
 EXCLUDE_WRAP

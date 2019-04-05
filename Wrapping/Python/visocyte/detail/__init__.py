@@ -1,5 +1,5 @@
 r'''
-This package provides modules used by ParaView internally and not meant for
+This package provides modules used by Visocyte internally and not meant for
 public consumption.
 
 This package was added after several internal modules had been directly added to

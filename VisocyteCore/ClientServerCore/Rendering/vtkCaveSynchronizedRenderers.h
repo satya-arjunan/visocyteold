@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCaveSynchronizedRenderers.h
 
   Copyright (c) Kitware, Inc.

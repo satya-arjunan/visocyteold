@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPCellFieldBuilder.cxx
 
   Copyright (c) Kitware, Inc.

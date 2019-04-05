@@ -102,7 +102,7 @@ public slots:
   void slotVariableDeselectionByName(QString varStr);
   void slotVariableSelectionByName(QString varStr);
   void slotPlotDialogAccepted();
-  void slotUseParaViewGUIToSelectNodesCheck();
+  void slotUseVisocyteGUIToSelectNodesCheck();
 
 protected:
   // Creates a plot over time.

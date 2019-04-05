@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkAttributeDataToTableFilter.cxx
 
   Copyright (c) Kitware, Inc.

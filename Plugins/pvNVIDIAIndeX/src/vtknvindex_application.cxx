@@ -243,7 +243,7 @@ bool vtknvindex_application::authenticate_nvindex_library()
   // No explicit license found, use default free license.
   if (!found_license)
   {
-    index_vendor_key = "NVIDIA IndeX License for ParaView - IndeX:PV:Free:v1 - 20180927 "
+    index_vendor_key = "NVIDIA IndeX License for Visocyte - IndeX:PV:Free:v1 - 20180927 "
                        "(oem:retail_cloud.20210904)";
     index_secret_key = "10aed4fb95a7fb230875decf11dd29c666612b4df39775df6256bc291bd0d346";
   }

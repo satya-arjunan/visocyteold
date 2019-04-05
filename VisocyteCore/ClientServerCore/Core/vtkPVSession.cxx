@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVSession.cxx
 
   Copyright (c) Kitware, Inc.
@@ -119,7 +119,7 @@ bool vtkPVSession::OnWrongTagEvent(vtkObject*, unsigned long, void* calldata)
   }
   else
   {
-    vtkErrorMacro("Internal ParaView Error: "
+    vtkErrorMacro("Internal Visocyte Error: "
                   "Socket Communicator received wrong tag: "
       << tag);
     // Treat as a socket error.

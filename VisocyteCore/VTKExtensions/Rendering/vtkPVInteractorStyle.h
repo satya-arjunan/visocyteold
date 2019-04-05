@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVInteractorStyle.h
 
   Copyright (c) Kitware, Inc.
@@ -67,7 +67,7 @@ public:
 
   /**
    * Overrides superclass behaviors to only support the key codes that make
-   * sense in a ParaView application.
+   * sense in a Visocyte application.
    */
   void OnChar() override;
 

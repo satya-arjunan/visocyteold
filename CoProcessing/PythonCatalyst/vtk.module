@@ -1,18 +1,18 @@
 NAME
-  ParaView::PythonCatalyst
+  Visocyte::PythonCatalyst
 LIBRARY_NAME
   vtkPVPythonCatalyst
 CONDITION
   VISOCYTE_ENABLE_PYTHON
 DEPENDS
-  ParaView::Catalyst
+  Visocyte::Catalyst
   VTK::PythonInterpreter
 PRIVATE_DEPENDS
-  ParaView::PythonInitializer
+  Visocyte::PythonInitializer
   VTK::ParallelCore
 TEST_DEPENDS
-  ParaView::CatalystTestDriver
-  ParaView::Core
+  Visocyte::CatalystTestDriver
+  Visocyte::Core
   VTK::IOImage
   VTK::ParallelCore
   VTK::TestingRendering
@@ -20,4 +20,4 @@ TEST_OPTIONAL_DEPENDS
   VTK::ParallelMPI
 TEST_LABELS
   Catalyst
-  ParaView
+  Visocyte

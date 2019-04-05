@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVEnvironmentInformation.h
 
   Copyright (c) Kitware, Inc.

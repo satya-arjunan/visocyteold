@@ -242,7 +242,7 @@ void vtknvindex_scene::create_scene(vtkRenderer* ren, vtkVolume* vol,
     // Dataset subcube border size.
     mi::Sint32 subcube_border = m_cluster_properties->get_config_settings()->get_subcube_border();
 
-    // Print cluster details in ParaView's console.
+    // Print cluster details in Visocyte's console.
     m_cluster_properties->print_info();
 
     vtknvindex_regular_volume_properties* regular_volume_properties =
@@ -317,7 +317,7 @@ void vtknvindex_scene::create_scene(vtkRenderer* ren, vtkVolume* vol,
       }
 
 #ifdef USE_SPARSE_VOLUME
-      // Load and create colormap from ParaView
+      // Load and create colormap from Visocyte
       m_nvindex_colormap.create_scene_colormaps(vol, m_volume_colormap_tag, m_colormap_plane_tags,
         scene.get(), regular_volume_properties, dice_transaction);
 
@@ -354,7 +354,7 @@ void vtknvindex_scene::create_scene(vtkRenderer* ren, vtkVolume* vol,
         ERROR_LOG << "Unable to create an irregular volume scene element.";
       }
 
-      // Load and create colormap from ParaView
+      // Load and create colormap from Visocyte
       m_nvindex_colormap.create_scene_colormaps(vol, m_volume_colormap_tag, m_colormap_plane_tags,
         scene.get(), regular_volume_properties, dice_transaction);
 
@@ -1226,7 +1226,7 @@ void vtknvindex_scene::update_camera(vtkRenderer* ren,
     mi::Float32 aperture = 0.033f;
     nvindex_camera->set_aperture(aperture);
 
-    // Focal distance is set to match ParaView's fixed vertical FOV of 30 deg.
+    // Focal distance is set to match Visocyte's fixed vertical FOV of 30 deg.
     mi::Float64 focal_distance = (aperture / (aspect_ratio * 0.53589838529));
     nvindex_camera->set_focal(focal_distance);
   }

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMTimeKeeper.h
 
   Copyright (c) Kitware, Inc.
@@ -17,7 +17,7 @@
  * @brief   a time keeper is used to keep track of the
  * pipeline time.
  *
- * TimeKeeper can be thought of as a application wide clock. In ParaView, all
+ * TimeKeeper can be thought of as a application wide clock. In Visocyte, all
  * views are registered with the TimeKeeper (using AddView()) so that all the
  * views render data at the same global time.
  *
@@ -26,7 +26,7 @@
  * "TimestepValues" and/or "TimeRange" properties from which the time steps and
  * time ranges provided by the reader can be obtained. All sources whose
  * time steps/time ranges must be noted by the time keeper need to be registered
- * with the time keeper using AddTimeSource(). ParaView automatically registers
+ * with the time keeper using AddTimeSource(). Visocyte automatically registers
  * all created sources/filters/readers with the time keeper. The time steps and
  * time ranges are made accessible by two information properties
  * "TimestepValues" and "TimeRange" on the TimeKeeper proxy.

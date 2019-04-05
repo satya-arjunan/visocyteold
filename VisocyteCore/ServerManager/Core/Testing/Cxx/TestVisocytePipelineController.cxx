@@ -1,7 +1,7 @@
 /*=========================================================================
 
-Program:   ParaView
-Module:    TestParaViewPipelineController.cxx
+Program:   Visocyte
+Module:    TestVisocytePipelineController.cxx
 
 Copyright (c) Kitware, Inc.
 All rights reserved.
@@ -15,7 +15,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkInitializationHelper.h"
 #include "vtkNew.h"
 #include "vtkProcessModule.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMRepresentationProxy.h"
 #include "vtkSMSession.h"
@@ -27,19 +27,19 @@ PURPOSE.  See the above copyright notice for more information.
 #include <assert.h>
 #include <sstream>
 
-int TestParaViewPipelineController(int argc, char* argv[])
+int TestVisocytePipelineController(int argc, char* argv[])
 {
   (void)argc;
   vtkInitializationHelper::Initialize(argv[0], vtkProcessModule::PROCESS_CLIENT);
 
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
 
   // Create a new session.
   vtkSMSession* session = vtkSMSession::New();
   vtkSMSessionProxyManager* pxm = session->GetSessionProxyManager();
   if (!controller->InitializeSession(session))
   {
-    cerr << "Failed to initialize ParaView session." << endl;
+    cerr << "Failed to initialize Visocyte session." << endl;
     return EXIT_FAILURE;
   }
 

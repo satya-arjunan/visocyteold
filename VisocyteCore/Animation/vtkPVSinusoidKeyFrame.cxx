@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVSinusoidKeyFrame.cxx
 
   Copyright (c) Kitware, Inc.

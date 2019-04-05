@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMTimeKeeper.cxx
 
   Copyright (c) Kitware, Inc.

@@ -40,9 +40,9 @@
 
 class vtknvindex_host_properties;
 
-// vtknvindex_affinity stores ParaView's spatial subdivision.
+// vtknvindex_affinity stores Visocyte's spatial subdivision.
 //
-// The affinity information is the mapping from ParaView's spatial subdivision subregions (bounding
+// The affinity information is the mapping from Visocyte's spatial subdivision subregions (bounding
 // boxes) to its
 // cluster location/resource, i.e., hosts (id), gpus (id). This information is used by NVIDIA IndeX
 // to distribute
@@ -88,7 +88,7 @@ public:
   // Reset all affinity information.
   void reset_affinity();
 
-  // Add ParaView's affinity information indicating where the data is located for a given bbox.
+  // Add Visocyte's affinity information indicating where the data is located for a given bbox.
   void add_affinity(
     const mi::math::Bbox<mi::Float32, 3>& bbox, mi::Uint32 host_id = ~0u, mi::Uint32 gpu_id = ~0u);
 
@@ -117,7 +117,7 @@ private:
     m_roundrobin_ids; // Used in around-robin scheme to return gpu ids.
   mutable std::vector<affinity_struct> m_final_spatial_subdivision; // Used only for the scene dump.
   std::vector<affinity_struct>
-    m_spatial_subdivision; // List of bbox to gpu id/host id mapping from ParaView.
+    m_spatial_subdivision; // List of bbox to gpu id/host id mapping from Visocyte.
   std::map<mi::Uint32, vtknvindex_host_properties*>
     m_host_info; // The host id to host properties mapping.
 };

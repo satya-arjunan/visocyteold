@@ -1,5 +1,5 @@
-#ifndef ParaViewDocumentationInitializer_h
-#define ParaViewDocumentationInitializer_h
+#ifndef VisocyteDocumentationInitializer_h
+#define VisocyteDocumentationInitializer_h
 
 void visocyte_documentation_initialize();
 

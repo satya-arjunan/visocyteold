@@ -1,7 +1,7 @@
 /*=========================================================================
 
-Program:   ParaView
-Module:    TestParaViewPipelineControllerWithRendering.cxx
+Program:   Visocyte
+Module:    TestVisocytePipelineControllerWithRendering.cxx
 
 Copyright (c) Kitware, Inc.
 All rights reserved.
@@ -16,7 +16,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include "vtkNew.h"
 #include "vtkProcessModule.h"
 #include "vtkRenderWindowInteractor.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMRenderViewProxy.h"
 #include "vtkSMRepresentationProxy.h"
@@ -30,7 +30,7 @@ PURPOSE.  See the above copyright notice for more information.
 #include <sstream>
 
 // This demonstrates how to put together a simple application with rendering
-// capabilities using the vtkSMParaViewPipelineControllerWithRendering.
+// capabilities using the vtkSMVisocytePipelineControllerWithRendering.
 
 namespace
 {
@@ -42,7 +42,7 @@ vtkSMRenderViewProxy* SetupView(vtkSMSession* session)
 
   // You can create as many controller instances as needed. Controllers have
   // no persistent state.
-  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
 
   // Initialize the view.
   controller->InitializeProxy(view.Get());
@@ -74,7 +74,7 @@ vtkSMSourceProxy* CreatePipelineProxy(
     abort();
   }
 
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
   controller->PreInitializeProxy(proxy.Get());
   if (input != NULL)
   {
@@ -88,13 +88,13 @@ vtkSMSourceProxy* CreatePipelineProxy(
 }
 }
 
-int TestParaViewPipelineControllerWithRendering(int argc, char* argv[])
+int TestVisocytePipelineControllerWithRendering(int argc, char* argv[])
 {
-  vtkInitializationHelper::SetApplicationName("TestParaViewPipelineControllerWithRendering");
+  vtkInitializationHelper::SetApplicationName("TestVisocytePipelineControllerWithRendering");
   vtkInitializationHelper::SetOrganizationName("Humanity");
   vtkInitializationHelper::Initialize(argv[0], vtkProcessModule::PROCESS_CLIENT);
 
-  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
 
   vtkNew<vtkSMSession> session;
 
@@ -102,7 +102,7 @@ int TestParaViewPipelineControllerWithRendering(int argc, char* argv[])
   vtkProcessModule::GetProcessModule()->RegisterSession(session.Get());
 
   // Initializes a session and setups all basic proxies that are needed for a
-  // ParaView-like application.
+  // Visocyte-like application.
   controller->InitializeSession(session.Get());
 
   // Create a setup a view.

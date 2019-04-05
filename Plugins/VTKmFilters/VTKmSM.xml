@@ -290,7 +290,7 @@
                      short_help="Simplify polygonal models.">The Level Of Detail
                      filter produces a reduced-resolution polygonal
                      approximation of the input polygonal dataset. This filter
-                     is the one used by ParaView for computing LODs. It uses
+                     is the one used by Visocyte for computing LODs. It uses
                      spatial binning to reduce the number of points in the data
                      set; points that lie within the same spatial bin are
                      collapsed into one representative point.</Documentation>

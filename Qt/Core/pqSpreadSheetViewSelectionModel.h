@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqSpreadSheetViewSelectionModel.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -43,7 +43,7 @@ class vtkSMSourceProxy;
 * operations:
 * \li When the QItemSelectionModel is updated by the QAbstractItemView
 *     due to user interaction, pqSpreadSheetViewModel::select() gets called.
-*     In that overload, this class creates a 'ParaView Selection' i.e. create a
+*     In that overload, this class creates a 'Visocyte Selection' i.e. create a
 *     selection source proxy for an ID based selection and set it as the
 *     selection-input (vtkSMSourceProxy::SetSelectionInput) on the
 *     data-source being shown in the view.

@@ -1,15 +1,15 @@
 cmake_dependent_option(VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION
-  "Build the ParaView help menu documentation for ParaView and its plugins" ON
+  "Build the Visocyte help menu documentation for Visocyte and its plugins" ON
   "VISOCYTE_BUILD_QT_GUI" ON)
 mark_as_advanced(VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
 
 set(xmls
-  "${CMAKE_CURRENT_SOURCE_DIR}/ParaViewFilters.xml"
-  "${CMAKE_CURRENT_SOURCE_DIR}/ParaViewSources.xml")
+  "${CMAKE_CURRENT_SOURCE_DIR}/VisocyteFilters.xml"
+  "${CMAKE_CURRENT_SOURCE_DIR}/VisocyteSources.xml")
 
 if (VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
   #------------------------------------------------------------------------------
-  # Build Online-Help (aka Embedded Help) for the ParaView application.
+  # Build Online-Help (aka Embedded Help) for the Visocyte application.
   # This is done after the above piece of code that sets the application_gui_xmls
   # variable. Documentation/CMakeLists.txt depends on it.
   add_subdirectory(Documentation)
@@ -26,9 +26,9 @@ set(CMAKE_AUTOMOC 1)
 set(CMAKE_AUTOUIC 1)
 
 set(sources
-  ParaViewMainWindow.cxx
-  ParaViewMainWindow.h
-  ParaViewMainWindow.ui)
+  VisocyteMainWindow.cxx
+  VisocyteMainWindow.h
+  VisocyteMainWindow.ui)
 
 set(visocyte_forward_executable OFF)
 if (UNIX AND NOT APPLE)
@@ -52,13 +52,13 @@ endif ()
 
 visocyte_client_add(
   NAME              visocyte
-  NAMESPACE         "ParaView"
-  EXPORT            "ParaView"
-  APPLICATION_NAME  "ParaView"
-  TITLE             "ParaView ${visocyte_version}"
-  ORGANIZATION      "ParaView"
+  NAMESPACE         "Visocyte"
+  EXPORT            "Visocyte"
+  APPLICATION_NAME  "Visocyte"
+  TITLE             "Visocyte ${visocyte_version}"
+  ORGANIZATION      "Visocyte"
   VERSION           "${VISOCYTE_VERSION_MAJOR}.${VISOCYTE_VERSION_MINOR}.${VISOCYTE_VERSION_PATCH}"
-  MAIN_WINDOW_CLASS "ParaViewMainWindow"
+  MAIN_WINDOW_CLASS "VisocyteMainWindow"
   BUNDLE_ICON       "${CMAKE_CURRENT_SOURCE_DIR}/pvIcon.icns"
   BUNDLE_PLIST      "${CMAKE_CURRENT_BINARY_DIR}/MacOSXBundleInfo.plist.in"
   APPLICATION_ICON  "${CMAKE_CURRENT_SOURCE_DIR}/pvIcon.ico"
@@ -71,7 +71,7 @@ find_package(Qt5 REQUIRED QUIET COMPONENTS Widgets)
 
 target_link_libraries(visocyte
   PRIVATE
-    ParaView::ServerManagerDefault
+    Visocyte::ServerManagerDefault
     Qt5::Core
     Qt5::Widgets)
 
@@ -81,14 +81,14 @@ if (VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
       VISOCYTE_ENABLE_EMBEDDED_DOCUMENTATION)
   target_link_libraries(visocyte
     PRIVATE
-      vtkParaViewDocumentation)
+      vtkVisocyteDocumentation)
 endif ()
 
 if (VISOCYTE_ENABLE_PYTHON)
   target_link_libraries(visocyte
     PRIVATE
-      ParaView::pqPython
-      ParaView::PythonInitializer)
+      Visocyte::pqPython
+      Visocyte::PythonInitializer)
 endif ()
 
 if (BUILD_TESTING)
@@ -97,11 +97,11 @@ endif ()
 
 if (UNIX AND NOT APPLE)
   configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/org.visocyte.ParaView.desktop.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/org.visocyte.ParaView.desktop"
+    "${CMAKE_CURRENT_SOURCE_DIR}/org.visocyte.Visocyte.desktop.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/org.visocyte.Visocyte.desktop"
     @ONLY)
   install(
-    FILES       "${CMAKE_CURRENT_BINARY_DIR}/org.visocyte.ParaView.desktop"
+    FILES       "${CMAKE_CURRENT_BINARY_DIR}/org.visocyte.Visocyte.desktop"
     DESTINATION share/applications
     COMPONENT   runtime)
   foreach (iconsize IN ITEMS 22x22 32x32 96x96)
@@ -112,7 +112,7 @@ if (UNIX AND NOT APPLE)
       COMPONENT   runtime)
   endforeach ()
   install(
-    FILES       org.visocyte.ParaView.appdata.xml
+    FILES       org.visocyte.Visocyte.appdata.xml
     DESTINATION share/metainfo
     COMPONENT   runtime)
 endif ()

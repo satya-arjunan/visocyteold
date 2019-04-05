@@ -1,18 +1,18 @@
 NAME
-  ParaView::VTKExtensionsCGNSReader
+  Visocyte::VTKExtensionsCGNSReader
 LIBRARY_NAME
   vtkPVVTKExtensionsCGNSReader
 KIT
-  ParaView::Extensions
+  Visocyte::Extensions
 DEPENDS
-  ParaView::VTKExtensionsCore
-  ParaView::VTKExtensionsSIL
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsSIL
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel
   VTK::ParallelCore
 PRIVATE_DEPENDS
-  ParaView::cgns
+  Visocyte::cgns
   VTK::FiltersExtraction
   VTK::ParallelCore
   VTK::hdf5
@@ -23,4 +23,4 @@ TEST_DEPENDS
   VTK::TestingCore
   VTK::TestingRendering
 TEST_LABELS
-  ParaView
+  Visocyte

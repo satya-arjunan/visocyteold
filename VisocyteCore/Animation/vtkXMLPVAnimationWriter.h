@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkXMLPVAnimationWriter.h
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 /**
  * @class   vtkXMLPVAnimationWriter
- * @brief   Data writer for ParaView
+ * @brief   Data writer for Visocyte
  *
  * vtkXMLPVAnimationWriter is used to save all parts of a current
  * source to a file with pieces spread across other server processes.

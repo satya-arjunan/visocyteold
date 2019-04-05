@@ -145,7 +145,7 @@ vtkMPIMoveData::~vtkMPIMoveData()
 }
 
 //----------------------------------------------------------------------------
-void vtkMPIMoveData::InitializeForCommunicationForParaView()
+void vtkMPIMoveData::InitializeForCommunicationForVisocyte()
 {
   vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
   if (pm == NULL)

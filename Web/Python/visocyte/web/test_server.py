@@ -1,5 +1,5 @@
 r"""
-    This module is a ParaViewWeb server application used only for automated testing
+    This module is a VisocyteWeb server application used only for automated testing
 """
 
 import os
@@ -46,20 +46,20 @@ class _TestServer(pv_wslink.PVServerProtocol):
 
     def initialize(self):
         # Bring used components
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebStartupRemoteConnection(_TestServer.dsHost, _TestServer.dsPort, _TestServer.rsHost, _TestServer.rsPort, _TestServer.rcPort))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebStartupPluginLoader(_TestServer.plugins))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebFileListing(_TestServer.dataDir, "Home", _TestServer.excludeRegex, _TestServer.groupRegex))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebProxyManager(allowedProxiesFile=_TestServer.proxies, baseDir=_TestServer.dataDir, fileToLoad=_TestServer.fileToLoad, allowUnconfiguredReaders=_TestServer.allReaders))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebColorManager(pathToColorMaps=_TestServer.colorPalette))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebMouseHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPort()) # _TestServer.viewportScale, _TestServer.viewportMaxWidth, _TestServer.viewportMaxHeight
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortImageDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortGeometryDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebTimeHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebSelectionHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebWidgetManager())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebKeyValuePairStore())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebSaveData(baseSavePath=_TestServer.saveDataDir))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebStartupRemoteConnection(_TestServer.dsHost, _TestServer.dsPort, _TestServer.rsHost, _TestServer.rsPort, _TestServer.rcPort))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebStartupPluginLoader(_TestServer.plugins))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebFileListing(_TestServer.dataDir, "Home", _TestServer.excludeRegex, _TestServer.groupRegex))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebProxyManager(allowedProxiesFile=_TestServer.proxies, baseDir=_TestServer.dataDir, fileToLoad=_TestServer.fileToLoad, allowUnconfiguredReaders=_TestServer.allReaders))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebColorManager(pathToColorMaps=_TestServer.colorPalette))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebMouseHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPort()) # _TestServer.viewportScale, _TestServer.viewportMaxWidth, _TestServer.viewportMaxHeight
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortImageDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortGeometryDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebTimeHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebSelectionHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebWidgetManager())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebKeyValuePairStore())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebSaveData(baseSavePath=_TestServer.saveDataDir))
 
         # Update authentication key to use
         self.updateSecret(_TestServer.authKey)
@@ -70,7 +70,7 @@ class _TestServer(pv_wslink.PVServerProtocol):
 
 if __name__ == "__main__":
     # Create argument parser
-    parser = argparse.ArgumentParser(description="ParaView Web Test Server")
+    parser = argparse.ArgumentParser(description="Visocyte Web Test Server")
 
     # Add arguments
     server.add_arguments(parser)

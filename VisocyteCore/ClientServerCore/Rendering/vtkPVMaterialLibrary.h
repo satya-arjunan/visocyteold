@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVMaterialLibrary.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkPVMaterialLibrary
  * @brief   manages visual material definitions
  *
- * vtkPVMaterialLibrary helps ParaView to load visual material definition
+ * vtkPVMaterialLibrary helps Visocyte to load visual material definition
  * files from known, generally process relative, locations on the sever.
 */
 

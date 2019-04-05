@@ -1,4 +1,4 @@
-<ParaView>
+<Visocyte>
   <ServerManagerState version="5.5.0">
     <Proxy group="animation" type="AnimationScene" id="28283" servers="16">
       <Property name="AnimationTime" id="28283.AnimationTime" number_of_elements="1">
@@ -13452,4 +13452,4 @@
     </Links>
   </ServerManagerState>
   <InteractiveViewLinks/>
-</ParaView>
+</Visocyte>

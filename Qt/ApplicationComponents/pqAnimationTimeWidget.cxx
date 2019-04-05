@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqAnimationTimeWidget.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -150,7 +150,7 @@ void pqAnimationTimeWidget::setAnimationScene(vtkSMProxy* ascene)
   internals.Links.addPropertyLink(
     this, "playMode", SIGNAL(playModeChanged()), ascene, ascene->GetProperty("PlayMode"));
 
-  // In a ParaView application, it's safe to assume that the timekeeper an
+  // In a Visocyte application, it's safe to assume that the timekeeper an
   // animation scene is using doesn't change in the life span of the scene.
   vtkSMProxy* atimekeeper = vtkSMPropertyHelper(ascene, "TimeKeeper").GetAsProxy();
   assert(atimekeeper != NULL);

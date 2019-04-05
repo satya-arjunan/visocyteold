@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPPythonStringPipeline.h
 
   Copyright (c) Kitware, Inc.

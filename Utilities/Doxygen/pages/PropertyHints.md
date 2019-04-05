@@ -13,7 +13,7 @@ Skip setting run-time defaults during initialization.
 Any property with a domain that is dynamic i.e. depends on run-time
 values such as data information or the information-only properties, often
 resets the property value during initialization of the newly created proxy
-(vtkSMParaViewPipelineController::PostInitializeProxy()). This, however, may
+(vtkSMVisocytePipelineController::PostInitializeProxy()). This, however, may
 be undesirable and one may want the property to simply use the XML default.
 In that case, use this property hint as follows.
 
@@ -63,7 +63,7 @@ Link properties to existing proxies at initialization time.
 PropertyLink hints is typically used to link a non-UI property to a
 property on some other proxy known to exist when this proxy is created.
 Consider this, we have a (settings, RenderViewSettings) proxy that created
-when a new session is initialized in vtkSMParaViewPipelineController::InitializeSession().
+when a new session is initialized in vtkSMVisocytePipelineController::InitializeSession().
 Now, when a new (views, RenderView) proxy is created, we'd like a few properties
 from the RenderView proxy to be linked to session wide instance of RenderViewSettings proxy.
 That way, when the properties on RenderViewSettings proxy are changed, those on all
@@ -84,11 +84,11 @@ For example, consider the following:
 
 Here, we want the UseOffscreenRenderingForScreenshots property linked with the corresponding
 property on the RenderViewSettings proxy. When this tag is encountered by
-vtkSMParaViewPipelineController::PostInitializeProxy(), it will try to locate an
+vtkSMVisocytePipelineController::PostInitializeProxy(), it will try to locate an
 existing proxy of registered as (settings, RenderViewSettings).
-vtkSMParaViewPipelineController::InitializeSession() ensures that all proxies encountered in
+vtkSMVisocytePipelineController::InitializeSession() ensures that all proxies encountered in
 \c settings group are created and registered using the same group. Thus, when the
-vtkSMParaViewPipelineController::PostInitializeProxy() looks for (settings, RenderViewSettings)
+vtkSMVisocytePipelineController::PostInitializeProxy() looks for (settings, RenderViewSettings)
 proxy, it will find one and then be able to setup a property link to ensure that the property
 on the RenderView proxy is kept in sync with the property on the RenderViewSettings proxy.
 
@@ -97,7 +97,7 @@ SelectionInput
 Mark a input as a one that accepts a vtkSelection.
 
 Sometimes an input to an algorithm is a vtkSelection, not any other dataset.
-In ParaView, vtkSelection inputs are treated specially to allow the user
+In Visocyte, vtkSelection inputs are treated specially to allow the user
 to copy active selection from the application. Also, it keeps the application
 from prompting the user to pick the second input when the filter is created.
 To indicate to the UI that this input is a selection input, use the
@@ -163,7 +163,7 @@ OmitFromLoadAllVariables
 ------------
 Specify that a dataset property be excluded when "Load All Variables" toggle is selected.
 
-ParaView has a global toggle named "Load All Variables" that
+Visocyte has a global toggle named "Load All Variables" that
 automatically selects all variables in a dataset when loading a
 file. This hint allows certain values to be omitted from that list
 (e.g. sidesets, edgesets) so they will not be included by default. The

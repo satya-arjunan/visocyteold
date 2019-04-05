@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVCompositeDataInformation.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPCxxHelper.cxx
 
   Copyright (c) Kitware, Inc.
@@ -21,7 +21,7 @@
 #include "vtkPVOptions.h"
 #include "vtkProcessModule.h"
 #include "vtkSMObject.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMProperty.h"
 #include "vtkSMProxyManager.h"
 #include "vtkSMSession.h"
@@ -97,8 +97,8 @@ vtkCPCxxHelper* vtkCPCxxHelper::New()
     vtkIdType connectionId = vtkSMSession::ConnectToSelf();
     assert(connectionId != 0);
 
-    // initialize the session for a ParaView session.
-    vtkNew<vtkSMParaViewPipelineController> controller;
+    // initialize the session for a Visocyte session.
+    vtkNew<vtkSMVisocytePipelineController> controller;
     vtkProcessModule* pm = vtkProcessModule::GetProcessModule();
     controller->InitializeSession(vtkSMSession::SafeDownCast(pm->GetSession(connectionId)));
 

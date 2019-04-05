@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVCacheSizeInformation.cxx
 
   Copyright (c) Kitware, Inc.

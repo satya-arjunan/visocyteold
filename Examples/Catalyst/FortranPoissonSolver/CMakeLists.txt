@@ -20,7 +20,7 @@ target_link_libraries(FortranPoissonSolver
 if (USE_CATALYST)
   target_link_libraries(FortranPoissonSolver
     PRIVATE
-      ParaView::PythonCatalyst
+      Visocyte::PythonCatalyst
       VTK::ParallelMPI)
 endif ()
 set_property(TARGET FortranPoissonSolver

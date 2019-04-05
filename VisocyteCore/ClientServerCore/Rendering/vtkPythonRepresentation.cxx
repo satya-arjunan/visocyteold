@@ -332,7 +332,7 @@ bool vtkPythonRepresentation::HasProcessRole(vtkTypeUInt32 role)
     vtkPVSession::SafeDownCast(vtkProcessModule::GetProcessModule()->GetSession());
   if (!session)
   {
-    vtkErrorMacro("No active ParaView session");
+    vtkErrorMacro("No active Visocyte session");
     return 0;
   }
 
@@ -366,7 +366,7 @@ int vtkPythonRepresentation::SendDataTypeToClient(int& dataType)
     vtkPVSession::SafeDownCast(vtkProcessModule::GetProcessModule()->GetSession());
   if (!session)
   {
-    vtkErrorMacro("No active ParaView session");
+    vtkErrorMacro("No active Visocyte session");
     return 0;
   }
   if (this->IsClientProcess())

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMDeserializerXMLCache.h
 
   Copyright (c) Kitware, Inc.

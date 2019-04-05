@@ -7,14 +7,14 @@ foreach (cmake_file IN LISTS cmake_files)
 endforeach ()
 
 #-----------------------------------------------------------------------------
-# Stuff for ObjectFactory override for vtkSMParaViewPipelineControllerWithRendering.
+# Stuff for ObjectFactory override for vtkSMVisocytePipelineControllerWithRendering.
 list(APPEND Module_SRCS
   ${CMAKE_CURRENT_BINARY_DIR}/${vtk-module}ObjectFactory.cxx)
 
 # Override some rendering classes. Create object factory:
-set(vtk_module_overrides "vtkSMParaViewPipelineController")
-set(vtk_module_vtkSMParaViewPipelineController_override
-  "vtkSMParaViewPipelineControllerWithRendering")
+set(vtk_module_overrides "vtkSMVisocytePipelineController")
+set(vtk_module_vtkSMVisocytePipelineController_override
+  "vtkSMVisocytePipelineControllerWithRendering")
 
 # Now we iterate and create that class file...
 foreach(_class ${vtk_module_overrides})

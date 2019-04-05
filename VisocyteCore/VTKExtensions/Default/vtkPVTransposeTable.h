@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVTransposeTable.h
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
  * columns of the input vtkTable and transpose it.
  *
  *
- * This ParaView filter allows to select the columns of the input table
+ * This Visocyte filter allows to select the columns of the input table
  * that must be included in the transposed table. This filter can also
  * be use to extract a non transposed table made by the selected columns.
 */
@@ -40,7 +40,7 @@ public:
 
   //@{
   /**
-   * Interface for preparing selection of arrays in ParaView.
+   * Interface for preparing selection of arrays in Visocyte.
    */
   void EnableAttributeArray(const char*);
   void ClearAttributeArrays();

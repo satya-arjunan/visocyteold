@@ -1,12 +1,12 @@
 NAME
-  ParaView::pqWidgets
+  Visocyte::pqWidgets
 GROUPS
-  ParaViewQt
+  VisocyteQt
   Qt
 DEPENDS
-  ParaView::ServerManagerCore
-  ParaView::qttesting
+  Visocyte::ServerManagerCore
+  Visocyte::qttesting
   VTK::GUISupportQt
 TEST_LABELS
-  ParaView
+  Visocyte
 EXCLUDE_WRAP

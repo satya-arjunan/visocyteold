@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    TestSessionProxyManager.cxx
 
 Copyright (c) Kitware, Inc.

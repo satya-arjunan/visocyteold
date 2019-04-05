@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkPVSingleOutputExtractSelection
  *
  * vtkPVSingleOutputExtractSelection extends to vtkPVExtractSelection to simply
- * hide the second output-port. This is the filter used in ParaView GUI.
+ * hide the second output-port. This is the filter used in Visocyte GUI.
 */
 
 #ifndef vtkPVSingleOutputExtractSelection_h

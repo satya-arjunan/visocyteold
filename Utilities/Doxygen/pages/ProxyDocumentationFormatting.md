@@ -18,6 +18,6 @@ Nested lists are not supported. Note that the text enclosed between
 **Documentation** tags has to be aligned at column 0, (space is
 significant in RST documents) and that we do not accept empty lines
 between items in an unordered list. Formatted output will be displayed
-in ParaView online help, ParaView Python documentation, and tooltips
-displayed in ParaView client. See the **Calculator** and **Glyph**
+in Visocyte online help, Visocyte Python documentation, and tooltips
+displayed in Visocyte client. See the **Calculator** and **Glyph**
 filters for examples on how to format other filters.

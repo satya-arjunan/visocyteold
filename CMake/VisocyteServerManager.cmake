@@ -1,7 +1,7 @@
 #[==[.md
 # Server Manager XMLs
 
-ParaView uses XML files to describe filters available in its user interface.
+Visocyte uses XML files to describe filters available in its user interface.
 Modules may add filters to the UI by providing XML files.
 
 TODO: Document the ServerManager XML format.
@@ -130,7 +130,7 @@ visocyte_server_manager_process_files(
 ```
 
 The files passed to the `FILES` argument will be processed in to functions
-which are then consumed by ParaView applications.
+which are then consumed by Visocyte applications.
 
 The name of the target is given to the `TARGET` argument. By default, the
 filename is `<TARGET>.h` and it contains a function named
@@ -163,8 +163,8 @@ function (visocyte_server_manager_process_files)
   add_custom_command(
     OUTPUT  "${_visocyte_sm_process_files_output}"
     DEPENDS ${_visocyte_sm_process_files_FILES}
-            ParaView::ProcessXML
-    COMMAND ParaView::ProcessXML
+            Visocyte::ProcessXML
+    COMMAND Visocyte::ProcessXML
             "${_visocyte_sm_process_files_output}"
             "${_visocyte_sm_process_files_TARGET}"
             "Interface"

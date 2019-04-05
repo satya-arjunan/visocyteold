@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestResampledAMRImageSourceWithPointData.cxx
 
   Copyright (c) Kitware, Inc.

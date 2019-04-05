@@ -5,7 +5,7 @@ if (VISOCYTE_BUILD_QT_GUI)
 
   visocyte_add_client_tests(
     BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
-    TEST_DATA_TARGET ParaViewData
+    TEST_DATA_TARGET VisocyteData
     TEST_SCRIPTS ${test_xmls}
     LOAD_PLUGIN "InSituExodus"
   )

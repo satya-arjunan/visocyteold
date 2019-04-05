@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqRecentFilesMenu.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -44,10 +44,10 @@ class QMenu;
 
 /**
  * @class pqRecentFilesMenu
- * @brief manages recent files menu used in ParaView.
+ * @brief manages recent files menu used in Visocyte.
  *
  * pqRecentFilesMenu manages the recent files (states, etc.) menu used in
- * ParaView. pqRecentFilesMenu uses implementations of
+ * Visocyte. pqRecentFilesMenu uses implementations of
  * `pqRecentlyUsedResourceLoaderInterface` to handle how to show (icon, label) a recent item
  * and how to handle user requesting to load that item.
  *
@@ -56,8 +56,8 @@ class QMenu;
  * `pqRecentlyUsedResourceLoaderInterface`.
  *
  * @sa pqStandardRecentlyUsedResourceLoaderImplementation
- * @sa pqParaViewBehaviors,
- * @sa pqParaViewMenuBuilders
+ * @sa pqVisocyteBehaviors,
+ * @sa pqVisocyteMenuBuilders
  */
 
 class PQCOMPONENTS_EXPORT pqRecentFilesMenu : public QObject

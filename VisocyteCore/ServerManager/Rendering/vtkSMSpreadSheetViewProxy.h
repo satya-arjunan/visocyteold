@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSpreadSheetViewProxy.h
 
   Copyright (c) Kitware, Inc.

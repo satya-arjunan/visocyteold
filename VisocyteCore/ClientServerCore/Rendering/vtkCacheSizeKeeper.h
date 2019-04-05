@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCacheSizeKeeper.h
 
   Copyright (c) Kitware, Inc.

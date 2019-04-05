@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -29,7 +29,7 @@
  * vtkLiveInsituLink manages the communication link between Insitu and
  * Live visualization servers. vtkLiveInsituLink is created on both
  * ends of the live-insitu channel i.e. in Insitu code (by
- * instantiating vtkLiveInsituLink directly) and in the Live ParaView
+ * instantiating vtkLiveInsituLink directly) and in the Live Visocyte
  * application (by using a proxy that instantiates the
  * vtkLiveInsituLink).
  * @ingroup LiveInsitu
@@ -91,7 +91,7 @@ public:
 
   //@{
   /**
-   * When instantiated on the ParaView visualization server side using a
+   * When instantiated on the Visocyte visualization server side using a
    * vtkSMProxy, ProxyId is used to identify the proxy corresponding to this
    * instance. That helps us construct notification messages that the
    * visualization server can send to the client.
@@ -120,22 +120,22 @@ public:
   //      *** API to be used from the insitu library ***
 
   /**
-   * Every time Insitu is ready to communicate with ParaView visualization
+   * Every time Insitu is ready to communicate with Visocyte visualization
    * engine call this method. The goal of this call is too get the latest
-   * updates from ParaView including changes to state for the co-processing
+   * updates from Visocyte including changes to state for the co-processing
    * pipeline or changes in what extract the visualization engine is expecting.
-   * This method's primary goal is to obtain information from ParaView vis
-   * engine. If no active connection to ParaView visualization engine exists,
-   * this will make an attempt to connect to ParaView.
+   * This method's primary goal is to obtain information from Visocyte vis
+   * engine. If no active connection to Visocyte visualization engine exists,
+   * this will make an attempt to connect to Visocyte.
    */
   void InsituUpdate(double time, vtkIdType timeStep);
 
   /**
-   * Every time Insitu is ready to push extracts to ParaView visualization
-   * engine, call this method. If no active ParaView visualization engine
+   * Every time Insitu is ready to push extracts to Visocyte visualization
+   * engine, call this method. If no active Visocyte visualization engine
    * connection exists (or the connection dies), then this method does nothing
    * (besides some bookkeeping).  Otherwise, this will push any extracts
-   * requested to the ParaView visualization engine.
+   * requested to the Visocyte visualization engine.
    */
   void InsituPostProcess(double time, vtkIdType timeStep);
 
@@ -163,7 +163,7 @@ public:
   void OnInsituUpdate(double time, vtkIdType timeStep);
   void OnInsituPostProcess(double time, vtkIdType timeStep);
   /**
-   * Signal a change on the ParaView Live side and transmit it to the Insitu
+   * Signal a change on the Visocyte Live side and transmit it to the Insitu
    * side. This is called when the state or extracts are changed or when
    * the simulation is continued.
    */
@@ -180,7 +180,7 @@ public:
   void UpdateInsituXMLState(const char* txt);
 
   /**
-   * This method will remove references to proxy that shouldn't be shared with ParaView
+   * This method will remove references to proxy that shouldn't be shared with Visocyte
    * Return true if something has been removed
    */
   static bool FilterXMLState(vtkPVXMLElement* xmlState);
@@ -190,7 +190,7 @@ public:
   void InsituConnect(vtkMultiProcessController* proc0NodesController);
 
   /**
-   * Called to drop the connection between Insitu and ParaView Live.
+   * Called to drop the connection between Insitu and Visocyte Live.
    */
   void DropLiveInsituConnection();
 
@@ -212,7 +212,7 @@ protected:
   };
 
   /**
-   * Called by Initialize() to initialize on a ParaView Live process.
+   * Called by Initialize() to initialize on a Visocyte Live process.
    */
   void InitializeLive();
 

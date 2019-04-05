@@ -3,9 +3,9 @@ NAME
 DESCRIPTION
   Render Particles with Streaming
 REQUIRES_MODULES
-  ParaView::ClientServerCoreRendering
-  ParaView::VTKExtensionsCore
-  ParaView::VTKExtensionsRendering
+  Visocyte::ClientServerCoreRendering
+  Visocyte::VTKExtensionsCore
+  Visocyte::VTKExtensionsRendering
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

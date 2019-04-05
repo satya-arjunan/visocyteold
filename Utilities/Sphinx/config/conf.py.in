@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# ParaView/Python documentation build configuration file, created by
+# Visocyte/Python documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb  7 15:18:02 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -44,7 +44,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ParaView/Python'
+project = u'Visocyte/Python'
 copyright = u'2013, Kitware, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -131,17 +131,17 @@ html_theme_path = ['_themes']
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = 'ParaView'
+html_short_title = 'Visocyte'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '@ParaView_SOURCE_DIR@/Utilities/Doxygen/images/visocyte-logo-small.png'
+html_logo = '@Visocyte_SOURCE_DIR@/Utilities/Doxygen/images/visocyte-logo-small.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 #html_favicon = None
-html_favicon = '@ParaView_SOURCE_DIR@/Applications/ParaView/pvIcon.ico'
+html_favicon = '@Visocyte_SOURCE_DIR@/Applications/Visocyte/pvIcon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -190,7 +190,7 @@ html_show_sourcelink = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ParaViewPythondoc'
+htmlhelp_basename = 'VisocytePythondoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -209,7 +209,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ParaViewPython.tex', u'ParaView/Python Documentation',
+  ('index', 'VisocytePython.tex', u'Visocyte/Python Documentation',
    u'Kitware, Inc.', 'manual'),
 ]
 
@@ -239,7 +239,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'visocytepython', u'ParaView/Python Documentation',
+    ('index', 'visocytepython', u'Visocyte/Python Documentation',
      [u'Kitware, Inc.'], 1)
 ]
 
@@ -253,8 +253,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ParaViewPython', u'ParaView/Python Documentation',
-   u'Kitware, Inc.', 'ParaViewPython', 'One line description of project.',
+  ('index', 'VisocytePython', u'Visocyte/Python Documentation',
+   u'Kitware, Inc.', 'VisocytePython', 'One line description of project.',
    'Miscellaneous'),
 ]
 

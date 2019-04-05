@@ -76,7 +76,7 @@ void vtkPVX3DExporter::WriteColorLegends(vtkX3DExporterWriter* writer)
     }
     else if (currentRenderer->GetLayer() == 2)
     {
-      // Hard-coded layer for ParaView
+      // Hard-coded layer for Visocyte
       annotationRenderer = currentRenderer;
     }
 

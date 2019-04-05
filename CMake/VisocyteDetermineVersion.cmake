@@ -1,6 +1,6 @@
 #=========================================================================
 #
-#  Program:   ParaView
+#  Program:   Visocyte
 #
 #  Copyright (c) Kitware, Inc.
 #  All rights reserved.
@@ -12,7 +12,7 @@
 #
 #=========================================================================
 
-# Used to determine the version for ParaView source using "git describe", if git
+# Used to determine the version for Visocyte source using "git describe", if git
 # is found. On success sets following variables in caller's scope:
 #   ${var_prefix}_VERSION
 #   ${var_prefix}_VERSION_MAJOR

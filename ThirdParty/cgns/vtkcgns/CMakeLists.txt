@@ -1,4 +1,4 @@
-if (FALSE) # XXX(kitware): ParaView handles versions.
+if (FALSE) # XXX(kitware): Visocyte handles versions.
 cmake_minimum_required(VERSION 2.8)
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
@@ -17,7 +17,7 @@ endif ()
 project("cgns" C)
 set(CGNS_VERSION "3.3")
 
-if (FALSE) # XXX(kitware): ParaView doesn't need CPack here.
+if (FALSE) # XXX(kitware): Visocyte doesn't need CPack here.
 # Allow for building a package
 set(CPACK_PACKAGE_VERSION "${CGNS_VERSION}-develop")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY "cgns-${CGNS_VERSION}")
@@ -113,7 +113,7 @@ else (CGNS_ENABLE_LFS)
   remove_definitions(-DHAVE_OPEN64 -DHAVE_LSEEK64)
 endif (CGNS_ENABLE_LFS)
 
-# XXX(kitware): Hardcoded for ParaView.
+# XXX(kitware): Hardcoded for Visocyte.
 if (FALSE)
 option(CGNS_ENABLE_TESTS "Enable test programs" "OFF")
 else ()
@@ -226,7 +226,7 @@ else ()
 set(CGNS_ENABLE_HDF5 ON)
 endif ()
 
-if (FALSE) # XXX(kitware): Adapted for ParaView.
+if (FALSE) # XXX(kitware): Adapted for Visocyte.
 if (CGNS_ENABLE_HDF5)
 
   if (CGNS_BUILD_SHARED)
@@ -370,7 +370,7 @@ endif ()
 # parallel cgns #
 #################
 
-if (FALSE) # XXX(kitware): Adapted for ParaView.
+if (FALSE) # XXX(kitware): Adapted for Visocyte.
 if (CGNS_ENABLE_HDF5 AND HDF5_NEED_MPI)
   set(CGNS_ENABLE_PARALLEL "OFF" CACHE BOOL "Enable or disable parallel interface ?")
   mark_as_advanced(CLEAR CGNS_ENABLE_PARALLEL)
@@ -390,7 +390,7 @@ endif ()
 # RPATH Management #
 ####################
 
-if (FALSE) # XXX(kitware): ParaView handles rpaths.
+if (FALSE) # XXX(kitware): Visocyte handles rpaths.
 # use, i.e. don't skip the full RPATH for the build tree
 set(CMAKE_SKIP_BUILD_RPATH  FALSE)
 

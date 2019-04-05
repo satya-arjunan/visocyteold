@@ -22,7 +22,7 @@ file(COPY config
      PATTERN "*.in" EXCLUDE)
 
 set (visocyte_paths
-  "['${ParaView_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}',
+  "['${Visocyte_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}',
     '${CMAKE_RUNTIME_OUTPUT_DIRECTORY}',
     '${CMAKE_LIBRARY_OUTPUT_DIRECTORY}']")
 configure_file(config/conf.py.in config/conf.py @ONLY)
@@ -31,11 +31,11 @@ configure_file(config/conf.py.in config/conf.py @ONLY)
 # Since all python files are copies to lib/site-packages at configure time and
 # since this CMakeLists.txt file is added at the end of the top-level
 # CMakeLists.txt file, that indeed is true.
-add_custom_target(ParaViewPythonDoc
+add_custom_target(VisocytePythonDoc
   COMMAND $<TARGET_FILE:pvpython>
           "${CMAKE_CURRENT_SOURCE_DIR}/sphinx_apidoc.py"
           -o "${CMAKE_CURRENT_BINARY_DIR}/config"
-          "${ParaView_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/visocyte"
+          "${Visocyte_BINARY_DIR}/${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}/visocyte"
   COMMAND ${sphinx-build}
           -b html "${CMAKE_CURRENT_BINARY_DIR}/config"
           "${VISOCYTE_GENERATED_DOCUMENTATION_OUTPUT_DIRECTORY}/python"

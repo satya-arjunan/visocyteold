@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: ParaView
+#     Program: Visocyte
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     ParaView is a free software; you can redistribute it and/or modify it
-#     under the terms of the ParaView license version 1.2.
+#     Visocyte is a free software; you can redistribute it and/or modify it
+#     under the terms of the Visocyte license version 1.2.
 #
-#     See License_v1.2.txt for the full ParaView license.
+#     See License_v1.2.txt for the full Visocyte license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -133,8 +133,8 @@ set(classes
   pqOpacityTableModel
   pqPVAnimationWidget
   pqPVApplicationCore
-  pqParaViewBehaviors
-  pqParaViewMenuBuilders
+  pqVisocyteBehaviors
+  pqVisocyteMenuBuilders
   pqPauseLiveSourcePropertyWidget
   pqPersistentMainWindowStateBehavior
   pqPipelineContextMenuBehavior
@@ -199,7 +199,7 @@ set(classes
 set(headers
   pqCatalystContinueReaction.h)
 
-if (TARGET ParaView::pqPython)
+if (TARGET Visocyte::pqPython)
   list(APPEND classes
     pqCatalystExportInspector
     pqMacroReaction
@@ -279,16 +279,16 @@ set(CMAKE_AUTORCC 1)
 set(CMAKE_AUTOUIC 1)
 set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/Resources/UI")
 
-vtk_module_add_module(ParaView::pqApplicationComponents
+vtk_module_add_module(Visocyte::pqApplicationComponents
   CLASSES ${classes}
   HEADERS ${headers}
   SOURCES ${ui_files}
           ${resource_files})
-vtk_module_link(ParaView::pqApplicationComponents
+vtk_module_link(Visocyte::pqApplicationComponents
   PRIVATE
     Qt5::Widgets)
 if (VISOCYTE_USE_QTHELP)
-  vtk_module_link(ParaView::pqApplicationComponents
+  vtk_module_link(Visocyte::pqApplicationComponents
     PRIVATE
       Qt5::Help)
 endif ()

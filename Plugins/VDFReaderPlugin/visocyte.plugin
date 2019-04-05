@@ -3,7 +3,7 @@ NAME
 DESCRIPTION
   Plugin to read NCAR VDR files
 REQUIRES_MODULES
-  ParaView::VTKExtensionsCore
+  Visocyte::VTKExtensionsCore
   VTK::CommonCore
   VTK::CommonDataModel
   VTK::CommonExecutionModel

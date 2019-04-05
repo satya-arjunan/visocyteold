@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPluginTracker.h
 
   Copyright (c) Kitware, Inc.

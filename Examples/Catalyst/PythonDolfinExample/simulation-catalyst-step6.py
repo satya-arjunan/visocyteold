@@ -30,7 +30,7 @@ on an L-shaped domain using Chorin's splitting method."""
 # Step 6 : Add field data arrays to VTK grid
 #
 
-# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and ParaView
+# [SC14-Catalyst] we need a python environment that enables import of both Dolfin and Visocyte
 execfile("simulation-env.py")
 
 # [SC14-Catalyst] import visocyte, vtk and visocyte's simple API

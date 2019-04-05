@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkChartRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkChartRepresentation
  *
  * vtkChartRepresentation is the base representation for charting
- * representations. Currently, ParaView's charting views are client-side only
+ * representations. Currently, Visocyte's charting views are client-side only
  * views that render only on the client side. That being the case, when running
  * in client-server mode or in parallel, the data-delivery mode is fixed. Hence,
  * unlike representations for 3D views, this representation delivers the data in

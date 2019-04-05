@@ -1,4 +1,4 @@
-StreamLinesRepresentation plugin for ParaView
+StreamLinesRepresentation plugin for Visocyte
 =============================================
 
 by B.Jacquet & J.Pouderoux, Kitware SAS 2017
@@ -9,7 +9,7 @@ Description
 -----------
 
 This plugin provides a new representation called "Stream Lines" for DataSet
-in ParaView. The representation displays an animated view of streamlines in
+in Visocyte. The representation displays an animated view of streamlines in
 a vector field of the dataset. Seeds are initialized randomly in the bounds
 of the domain and created each time a particle dies (time to live - ie, max
 number of iterations - is reached, out-of-domain or zero velocity).
@@ -21,7 +21,7 @@ The UI panel (ie. proxy) allows to specify:
 * Number Of Particles: Number of simulated particles in the flow.
 * Max Time To Live: Maximum number of iteration a particle is followed before
   it dies.
-The solid color and line width can be changed using default ParaView UI widgets.
+The solid color and line width can be changed using default Visocyte UI widgets.
 
 Note that pqStreamLinesAnimationManager class observes all pqRenderView. When a
 rendering on such a view is finished, it checks all existing representations

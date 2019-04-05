@@ -10,7 +10,7 @@ from twisted.web.error import Error
 
 from visocyte import simple
 from visocyte.web import helper
-from vtkmodules.vtkParaViewWebCore import vtkPVWebApplication
+from vtkmodules.vtkVisocyteWebCore import vtkPVWebApplication
 
 import exceptions
 import base64

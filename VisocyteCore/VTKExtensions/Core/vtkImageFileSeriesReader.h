@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkImageFileSeriesReader.h
 
   Copyright (c) Kitware, Inc.

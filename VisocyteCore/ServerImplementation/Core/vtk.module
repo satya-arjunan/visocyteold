@@ -1,15 +1,15 @@
 NAME
-  ParaView::ServerImplementationCore
+  Visocyte::ServerImplementationCore
 LIBRARY_NAME
   vtkPVServerImplementationCore
 GROUPS
-  ParaViewCore
+  VisocyteCore
 KIT
-  ParaView::ServerImplementation
+  Visocyte::ServerImplementation
 DEPENDS
-  ParaView::ClientServerCoreCore
-  ParaView::protobuf
+  Visocyte::ClientServerCoreCore
+  Visocyte::protobuf
 PRIVATE_DEPENDS
   VTK::vtksys
 TEST_LABELS
-  ParaView
+  Visocyte

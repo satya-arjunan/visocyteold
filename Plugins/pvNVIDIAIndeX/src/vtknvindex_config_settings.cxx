@@ -195,12 +195,12 @@ bool vtknvindex_xml_config_parser::get_home_path(std::string& home_path)
     return true;
   }
 
-// get home path from ParaView configuration folder
+// get home path from Visocyte configuration folder
 #ifdef _WIN32
   TCHAR app_data_path[MAX_PATH];
   if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, 0, app_data_path)))
   {
-    home_path = std::string(app_data_path) + "\\ParaView\\";
+    home_path = std::string(app_data_path) + "\\Visocyte\\";
     return true;
   }
 #else
@@ -208,7 +208,7 @@ bool vtknvindex_xml_config_parser::get_home_path(std::string& home_path)
 
   if (home != NULL && strlen(home) > 0)
   {
-    home_path = std::string(home) + std::string("/.config/ParaView/");
+    home_path = std::string(home) + std::string("/.config/Visocyte/");
     return true;
   }
 #endif // _WIN32

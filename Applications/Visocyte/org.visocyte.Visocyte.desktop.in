@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=ParaView
+Name=Visocyte
 Comment=Parallel visualization application
 Exec=visocyte %f
 TryExec=visocyte

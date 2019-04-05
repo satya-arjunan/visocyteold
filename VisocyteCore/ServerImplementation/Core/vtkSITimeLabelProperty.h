@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSITimeLabelProperty.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMComparativeAnimationCueProxy.h
 
   Copyright (c) Kitware, Inc.

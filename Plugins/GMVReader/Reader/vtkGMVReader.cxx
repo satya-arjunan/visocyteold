@@ -751,7 +751,7 @@ int vtkGMVReader::RequestData(vtkInformation* vtkNotUsed(request),
 
             // Catch case that no cells are defined. The nodes are still
             // rendered by GMV itself, but without topological and just
-            // geometric information they will not in ParaView. Define a vertex
+            // geometric information they will not in Visocyte. Define a vertex
             // per nodes.
             if (this->NumberOfCells == 0)
             {
@@ -1016,7 +1016,7 @@ int vtkGMVReader::RequestData(vtkInformation* vtkNotUsed(request),
                 // If they are, the vector's name is ignored by GMV.
                 // If they are not, gmvread.c assigns them generic names of format
                 // "{digit}-{vectorname}".
-                // Either way, ParaView handles things differently: It always prefixes the vector's
+                // Either way, Visocyte handles things differently: It always prefixes the vector's
                 // name to every component. Try to reduce that possible redundancy by removing
                 // redundant substrings:
                 // * For auto-generated component names strip the trailing vector name
@@ -1109,7 +1109,7 @@ int vtkGMVReader::RequestData(vtkInformation* vtkNotUsed(request),
                 // If they are, the vector's name is ignored by GMV.
                 // If they are not, gmvread.c assigns them generic names of format
                 // "{digit}-{vectorname}".
-                // Either way, ParaView handles things differently: It always prefixes the vector's
+                // Either way, Visocyte handles things differently: It always prefixes the vector's
                 // name to every component. Try to reduce that possible redundancy by removing
                 // redundant substrings:
                 // * For auto-generated component names strip the trailing vector name plus the dash

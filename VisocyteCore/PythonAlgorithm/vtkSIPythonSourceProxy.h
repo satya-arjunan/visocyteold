@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIPythonSourceProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -28,7 +28,7 @@ class vtkPythonInterpreter;
  * @brief vtkSISourceProxy for all `VTKPythonAlgorithmBase`-based algorithms.
  *
  * vtkSIPythonSourceProxy makes is possible to work with a
- * VTKPythonAlgorithmBase-based Python class in ParaView. By handling the
+ * VTKPythonAlgorithmBase-based Python class in Visocyte. By handling the
  * push/pull APIs to forward the calls to the Python object, we can make such
  * Python algorithms behave like regular C++-based algorithm subclasses.
  */

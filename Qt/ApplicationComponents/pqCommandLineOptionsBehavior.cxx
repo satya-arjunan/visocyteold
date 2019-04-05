@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqCommandLineOptionsBehavior.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -142,9 +142,9 @@ void pqCommandLineOptionsBehavior::processCommandLineOptions()
   }
 
   // check for --data option.
-  if (options->GetParaViewDataName())
+  if (options->GetVisocyteDataName())
   {
-    QString path = QString::fromLocal8Bit(options->GetParaViewDataName());
+    QString path = QString::fromLocal8Bit(options->GetVisocyteDataName());
     // Check if dataname has a state file extension.
     // This allows to pass a state file as last argument without --state option.
     if (path.endsWith(".pvsm", Qt::CaseInsensitive))
@@ -159,9 +159,9 @@ void pqCommandLineOptionsBehavior::processCommandLineOptions()
       pqFileDialog dialog(pqActiveObjects::instance().activeServer(), pqCoreUtilities::mainWidget(),
         tr("Internal Open File"), QString(), QString());
       dialog.setFileMode(pqFileDialog::ExistingFiles);
-      if (!dialog.selectFile(QString::fromLocal8Bit(options->GetParaViewDataName())))
+      if (!dialog.selectFile(QString::fromLocal8Bit(options->GetVisocyteDataName())))
       {
-        qCritical() << "Cannot open data file \"" << options->GetParaViewDataName() << "\"";
+        qCritical() << "Cannot open data file \"" << options->GetVisocyteDataName() << "\"";
       }
       QList<QStringList> files = dialog.getAllSelectedFiles();
       QStringList file;
@@ -169,7 +169,7 @@ void pqCommandLineOptionsBehavior::processCommandLineOptions()
       {
         if (pqLoadDataReaction::loadData(file) == NULL)
         {
-          qCritical() << "Failed to load data file: " << options->GetParaViewDataName();
+          qCritical() << "Failed to load data file: " << options->GetVisocyteDataName();
         }
       }
     }

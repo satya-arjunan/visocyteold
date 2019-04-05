@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkProcessModule.h
 
   Copyright (c) Kitware, Inc.
@@ -15,9 +15,9 @@
 /**
  * @class   vtkProcessModule
  * @brief   process initialization and management core for
- * ParaView processes.
+ * Visocyte processes.
  * vtkProcessModule is the process initialization and session management core
- * for ParaView processes.
+ * for Visocyte processes.
 */
 
 #ifndef vtkProcessModule_h
@@ -248,7 +248,7 @@ public:
 
   //@{
   /**
-   * Returns true if ParaView is to be run in symmetric mode. Symmetric mode
+   * Returns true if Visocyte is to be run in symmetric mode. Symmetric mode
    * implies that satellites process same code as the root node. This is
    * applicable only for PROCESS_BATCH.
    */
@@ -322,7 +322,7 @@ protected:
   vtkIdType MaxSessionId;
 
   /**
-   * Sets the executable path of the process so that ParaView can, e.g., set up
+   * Sets the executable path of the process so that Visocyte can, e.g., set up
    * paths for Python properly.
    */
   void SetExecutablePath(const std::string& path);
@@ -344,7 +344,7 @@ private:
 
   // Helper to initialize Python environment. This doesn't initialize Python
   // but simply sets up the environment so when Python is initialized, it can
-  // find ParaView modules. This does nothing if not build with Python support.
+  // find Visocyte modules. This does nothing if not build with Python support.
   bool InitializePythonEnvironment();
 
   static ProcessTypes ProcessType;

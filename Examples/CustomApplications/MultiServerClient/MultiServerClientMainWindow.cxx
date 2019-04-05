@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  MultiServerClientMainWindow.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -35,8 +35,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqActiveObjects.h"
 #include "pqApplicationCore.h"
 #include "pqObjectBuilder.h"
-#include "pqParaViewBehaviors.h"
-#include "pqParaViewMenuBuilders.h"
+#include "pqVisocyteBehaviors.h"
+#include "pqVisocyteMenuBuilders.h"
 #include "pqPipelineBrowserWidget.h"
 #include "pqServer.h"
 #include "pqServerConfiguration.h"
@@ -54,7 +54,7 @@ MultiServerClientMainWindow::MultiServerClientMainWindow(
   QWidget* parentObject, Qt::WindowFlags wflags)
   : Superclass(parentObject, wflags)
 {
-  // tells the ParaView libraries to enable support for multiple simultaneous
+  // tells the Visocyte libraries to enable support for multiple simultaneous
   // server connections.
   vtkProcessModule::GetProcessModule()->MultipleSessionsSupportOn();
   Ui::MultiServerClientMainWindow ui;
@@ -68,8 +68,8 @@ MultiServerClientMainWindow::MultiServerClientMainWindow(
 
   new pqServerConnectReaction(ui.action_Connect);
 
-  pqParaViewMenuBuilders::buildSourcesMenu(*ui.menu_Sources, this);
-  new pqParaViewBehaviors(this, this);
+  pqVisocyteMenuBuilders::buildSourcesMenu(*ui.menu_Sources, this);
+  new pqVisocyteBehaviors(this, this);
 
   // Keep around GUI components
   this->pipelineBrowser = ui.pipelineBrowser;

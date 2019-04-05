@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMProxyManager.h
 
   Copyright (c) Kitware, Inc.
@@ -88,7 +88,7 @@ public:
   /**
    * Returns a string with the format "visocyte version x.x.x, Date: YYYY-MM-DD"
    */
-  static const char* GetParaViewSourceVersion();
+  static const char* GetVisocyteSourceVersion();
 
   /**
    * Returns the current active session. If no active session is set, and

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMUncheckedPropertyHelper.h
 
   Copyright (c) Kitware, Inc.

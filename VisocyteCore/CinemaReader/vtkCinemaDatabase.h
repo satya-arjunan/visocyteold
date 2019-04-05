@@ -20,7 +20,7 @@
  * vtkCinemaDatabase is an abstraction that provides access to a
  * `cinema_python.database.file_store.FileStore` instance. The API is
  * limited to the functionality needed for the rendering Cinema layers in
- *  ParaView.
+ *  Visocyte.
  */
 
 #ifndef vtkCinemaDatabase_h

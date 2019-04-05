@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqApplyBehavior.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkSMAnimationSceneProxy.h"
 #include "vtkSMLiveInsituLinkProxy.h"
 #include "vtkSMPVRepresentationProxy.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSession.h"
 #include "vtkSMSessionProxyManager.h"
@@ -178,7 +178,7 @@ void pqApplyBehavior::applied(pqPropertiesPanel*)
 {
   //---------------------------------------------------------------------------
   // Update animation timesteps.
-  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
   vtkSMAnimationSceneProxy::UpdateAnimationUsingDataTimeSteps(
     controller->GetAnimationScene(pqActiveObjects::instance().activeServer()->session()));
 
@@ -275,7 +275,7 @@ void pqApplyBehavior::showData(pqPipelineSource* source, pqView* view)
     return;
   }
 
-  vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+  vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
   pqServerManagerModel* smmodel = pqApplicationCore::instance()->getServerManagerModel();
 
   vtkSMViewProxy* currentViewProxy = view ? view->getViewProxy() : NULL;
@@ -361,7 +361,7 @@ void pqApplyBehavior::hideInputIfRequired(pqPipelineFilter* filter, pqView* view
   int replace_input = filter->replaceInput();
   if (replace_input > 0)
   {
-    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
 
     // hide input source.
     QList<pqOutputPort*> inputs = filter->getAllInputs();

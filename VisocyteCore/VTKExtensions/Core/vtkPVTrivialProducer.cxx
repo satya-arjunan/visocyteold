@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile: vtkPVTrivialProducer.cxx,v $
 
   Copyright (c) Kitware, Inc.

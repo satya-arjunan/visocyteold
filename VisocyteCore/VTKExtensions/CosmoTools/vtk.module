@@ -1,17 +1,17 @@
 NAME
-  ParaView::VTKExtensionsCosmoTools
+  Visocyte::VTKExtensionsCosmoTools
 LIBRARY_NAME
   vtkPVVTKExtensionsCosmoTools
 KIT
-  ParaView::Extensions
+  Visocyte::Extensions
 DEPENDS
   VTK::CommonCore
   VTK::CommonExecutionModel
   VTK::IOCore
   VTK::mpi
 PRIVATE_DEPENDS
-  ParaView::VTKExtensionsCore
-  ParaView::cosmohalofinder
+  Visocyte::VTKExtensionsCore
+  Visocyte::cosmohalofinder
   VTK::CommonDataModel
   VTK::CommonMisc
   VTK::ParallelCore
@@ -24,4 +24,4 @@ TEST_DEPENDS
   VTK::TestingCore
   VTK::TestingRendering
 TEST_LABELS
-  ParaView
+  Visocyte

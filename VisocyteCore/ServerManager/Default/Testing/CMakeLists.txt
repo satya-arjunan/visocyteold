@@ -25,7 +25,7 @@ if (VISOCYTE_ENABLE_PYTHON)
     Data/poisson_3dall_2.xmf
     Data/quadraticTetra01.vtu)
 
-  ExternalData_Expand_Arguments(ParaViewData _
+  ExternalData_Expand_Arguments(VisocyteData _
     # Baselines
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/Baseline/,REGEX:SaveScreenshotOutline.*\\.png}"
     "DATA{${CMAKE_CURRENT_SOURCE_DIR}/Data/Baseline/,REGEX:SaveScreenshotSurface.*\\.png}")

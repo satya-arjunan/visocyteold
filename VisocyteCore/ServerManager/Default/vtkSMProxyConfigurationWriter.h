@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMProxyConfigurationWriter.h
 
   Copyright (c) Kitware, Inc.
@@ -18,7 +18,7 @@
  *
  *
  * vtkSMProxyConfigurationWriter writes state for properties for a single
- * proxy. Internally the ParaView state machinery is employed.
+ * proxy. Internally the Visocyte state machinery is employed.
  *
  * The notion of proxy configuration is similar to state but lighter
  * as the proxy its domains and and its server side objects are assumed to

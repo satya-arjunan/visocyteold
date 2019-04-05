@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVAlgorithmPortsInformation.cxx
 
   Copyright (c) Kitware, Inc.

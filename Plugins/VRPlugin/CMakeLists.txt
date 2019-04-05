@@ -113,11 +113,11 @@ target_include_directories(VRPlugin
 
 target_link_libraries(VRPlugin
   PRIVATE
-    ParaView::ClientServerCoreCore
-    ParaView::Core
-    ParaView::ServerManagerCore
-    ParaView::ServerManagerRendering
-    ParaView::pqApplicationComponents
+    Visocyte::ClientServerCoreCore
+    Visocyte::Core
+    Visocyte::ServerManagerCore
+    Visocyte::ServerManagerRendering
+    Visocyte::pqApplicationComponents
     VTK::CommonCore
     VTK::CommonMath
     VTK::CommonTransforms

@@ -27,10 +27,10 @@ set(files
 # `visocyte/tpl/cinema_python` should trampoline to import the
 # external `cinema_python` package.
 
-vtk_module_add_python_package(ParaView::CinemaPython
+vtk_module_add_python_package(Visocyte::CinemaPython
   FILES               ${files}
   PACKAGE             "visocyte.tpl.cinema_python"
   MODULE_DESTINATION  "${VISOCYTE_PYTHON_SITE_PACKAGES_SUFFIX}")
 
-vtk_module_add_python_module(ParaView::CinemaPython
+vtk_module_add_python_module(Visocyte::CinemaPython
   PACKAGES "visocyte.tpl.cinema_python")

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMPVMoleculeRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.

@@ -7,7 +7,7 @@
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_editSources/editSourcesText/qt_scrollarea_viewport" command="mousePress" arguments="1,1,0,358,121" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_editSources/editSourcesText/qt_scrollarea_viewport" command="mouseRelease" arguments="1,0,0,358,121" />
 
-  <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_editSources/editSourcesText" command="set_string" arguments="# Enter list of URLs to obtain server configurations from.&#xA;# Syntax:&#xA;#    pvsc &lt;url&gt; &lt;userfriendly-name&gt;&#xA;&#xA;# Official Kitware Server Configurations&#xA;pvsc http://www.visocyte.org/files/pvsc Kitware Inc.&#xA;pvsc http://visocyte.org/Wiki/images/e/e3/SampleServers.xml ParaView Wiki" />
+  <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_editSources/editSourcesText" command="set_string" arguments="# Enter list of URLs to obtain server configurations from.&#xA;# Syntax:&#xA;#    pvsc &lt;url&gt; &lt;userfriendly-name&gt;&#xA;&#xA;# Official Kitware Server Configurations&#xA;pvsc http://www.visocyte.org/files/pvsc Kitware Inc.&#xA;pvsc http://visocyte.org/Wiki/images/e/e3/SampleServers.xml Visocyte Wiki" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_editSources/editSourcesButtonBox/1QPushButton0" command="activate" arguments="" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_fetch/importServersTable" command="mousePress" arguments="1,1,0,47,22,/0:1" />
   <pqevent object="pqClientMainWindow/pqServerConnectDialog/stackedWidget/page_fetch/importServersTable" command="mouseRelease" arguments="1,0,0,47,22,/0:1" />

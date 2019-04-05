@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVInitializer.h
 
   Copyright (c) Kitware, Inc.

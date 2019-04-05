@@ -1,10 +1,10 @@
 NAME
-  ParaView::PVWebPython
+  Visocyte::PVWebPython
 LIBRARY_NAME
   vtkPVWebPython
 CONDITION
   VISOCYTE_ENABLE_PYTHON AND VISOCYTE_ENABLE_WEB
 TEST_LABELS
-  ParaView
-  ParaViewWeb
+  Visocyte
+  VisocyteWeb
 EXCLUDE_WRAP

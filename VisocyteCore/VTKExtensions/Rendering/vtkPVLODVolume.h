@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVLODVolume.h
 
   Copyright (c) Kitware, Inc.

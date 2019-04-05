@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqMainWindowEventManager.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -45,13 +45,13 @@ class QDropEvent;
 * pqMainWindowEventManager is a manager for marshalling a main window's events
 * to pqReactions.
 *
-* ParaView and ParaView-derived applications have their own main window class
+* Visocyte and Visocyte-derived applications have their own main window class
 * that inherits from QMainWindow. The standard Qt approach to intercepting
 * signals to the main window (e.g. "close application") is to reimplement
 * QMainWindow's event methods (e.g. closeEvent(QCloseEvent*)). This polymorphic
-* solution is not available to ParaView-derived applications comprised of
+* solution is not available to Visocyte-derived applications comprised of
 * plugins, however. To facilitate a plugin's ability to influence the behavior
-* of ParaView's main window, pqMainWindowEventManager is a registered manager
+* of Visocyte's main window, pqMainWindowEventManager is a registered manager
 * that emits signals when the main window receives events.
 */
 class PQCORE_EXPORT pqMainWindowEventManager : public QObject

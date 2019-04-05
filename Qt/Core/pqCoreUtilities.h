@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqCoreUtilities.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -105,14 +105,14 @@ public:
   }
 
   /**
-  * Return the path of the root ParaView user specific configuration directory
+  * Return the path of the root Visocyte user specific configuration directory
   */
-  static QString getParaViewUserDirectory();
+  static QString getVisocyteUserDirectory();
 
   /**
   * Return the path of the launched application
   */
-  static QString getParaViewApplicationDirectory();
+  static QString getVisocyteApplicationDirectory();
 
   /**
   * Return the list of full available path that exists inside the shared

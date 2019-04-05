@@ -10,7 +10,7 @@
   c->Print(cout);                                                                                  \
   c->Delete();
 
-int ParaViewCoreClientServerPythonPrintSelf(int, char* [])
+int VisocyteCoreClientServerPythonPrintSelf(int, char* [])
 {
   vtkObject* c;
 

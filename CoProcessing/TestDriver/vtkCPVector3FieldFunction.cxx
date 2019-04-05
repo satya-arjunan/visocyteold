@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCPVector3FieldFunction.cxx
 
   Copyright (c) Kitware, Inc.

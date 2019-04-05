@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    TestSubProxy.cxx
 
 Copyright (c) Kitware, Inc.

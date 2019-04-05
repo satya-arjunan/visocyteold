@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    SimpleDriver.cxx
 
   Copyright (c) Kitware, Inc.

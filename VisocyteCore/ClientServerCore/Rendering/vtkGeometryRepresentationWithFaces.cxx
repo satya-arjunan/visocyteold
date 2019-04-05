@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkGeometryRepresentationWithFaces.cxx
 
   Copyright (c) Kitware, Inc.

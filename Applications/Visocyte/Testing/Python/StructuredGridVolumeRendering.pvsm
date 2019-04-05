@@ -1,4 +1,4 @@
-<ParaView>
+<Visocyte>
   <ServerManagerState version="5.5.2">
     <Proxy group="additional_lights" type="Light" id="106145" servers="21">
       <Property name="ConeAngle" id="106145.ConeAngle" number_of_elements="1">
@@ -5606,4 +5606,4 @@
     </Links>
   </ServerManagerState>
   <InteractiveViewLinks/>
-</ParaView>
+</Visocyte>

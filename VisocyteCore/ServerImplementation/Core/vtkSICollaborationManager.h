@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSICollaborationManager.h
 
   Copyright (c) Kitware, Inc.

@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqApplicationCore.h
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -64,8 +64,8 @@ class vtkSMProxyLocator;
 class vtkSMStateLoader;
 
 /**
-* This class is the crux of the ParaView application. It creates
-* and manages various managers which are necessary for the ParaView-based
+* This class is the crux of the Visocyte application. It creates
+* and manages various managers which are necessary for the Visocyte-based
 * client to work with the ServerManager.
 * For clients based of the pqCore library,
 * simply instantiate this pqApplicationCore after QApplication initialization
@@ -86,7 +86,7 @@ public:
   * Preferred constructor. Initializes the server-manager engine and sets up
   * the core functionality. If application supports special command line
   * options, pass an instance of pqOptions subclass to the constructor,
-  * otherwise a new instance of pqOptions with standard ParaView command line
+  * otherwise a new instance of pqOptions with standard Visocyte command line
   * options will be created.
   */
   pqApplicationCore(int& argc, char** argv, pqOptions* options = 0, QObject* parent = 0);

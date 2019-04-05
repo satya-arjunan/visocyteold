@@ -177,7 +177,7 @@ def run(output_basename='log', dimension=100, view_size=(1920, 1080),
 def main(argv):
     import argparse
     parser = argparse.ArgumentParser(
-        description='Benchmark ParaView geometry rendering')
+        description='Benchmark Visocyte geometry rendering')
     parser.add_argument('-o', '--output-basename', default='log', type=str,
                         help='Basename to use for generated output files')
     parser.add_argument('-d', '--dimension', default=100, type=int,

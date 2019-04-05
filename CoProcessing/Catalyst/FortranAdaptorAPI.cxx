@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    FortranAdaptorAPI.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVAMRFragmentIntegration.cxx
 
   This software is distributed WITHOUT ANY WARRANTY; without even

@@ -1,5 +1,5 @@
 set(classes
   vtkSubsetInclusionLattice)
 
-vtk_module_add_module(ParaView::VTKExtensionsSIL
+vtk_module_add_module(Visocyte::VTKExtensionsSIL
   CLASSES ${classes})

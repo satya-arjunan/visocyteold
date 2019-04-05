@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSelectionLink.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestComparativeAnimationCueProxy.cxx
 
   Copyright (c) Kitware, Inc.

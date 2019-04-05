@@ -1,23 +1,23 @@
 NAME
-  ParaView::ClientServerCorePython
+  Visocyte::ClientServerCorePython
 LIBRARY_NAME
   vtkPVClientServerCorePython
 CONDITION
   VISOCYTE_ENABLE_PYTHON
 GROUPS
-  ParaViewCore
+  VisocyteCore
 KIT
-  ParaView::ClientServerKit
+  Visocyte::ClientServerKit
 DEPENDS
   VTK::CommonExecutionModel
   VTK::FiltersProgrammable
   VTK::PythonInterpreter
 PRIVATE_DEPENDS
-  ParaView::ClientServerCoreCore
+  Visocyte::ClientServerCoreCore
   VTK::ParallelCore
   VTK::WrappingPythonCore
 TEST_DEPENDS
-  ParaView::Core
+  Visocyte::Core
   VTK::TestingCore
 TEST_LABELS
-  ParaView
+  Visocyte

@@ -8,7 +8,7 @@
 #endif
 
 // Example of a C++ adaptor for a simulation code
-// where we use a hard-coded ParaView server-manager
+// where we use a hard-coded Visocyte server-manager
 // C++ pipeline. The simulation code has a fixed topology
 // grid. We treat the grid as an unstructured
 // grid even though in the example provided it

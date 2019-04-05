@@ -1,7 +1,7 @@
 /*=========================================================================
 
-  Program:   ParaView
-  Module:    vtkSMParaViewPipelineController.h
+  Program:   Visocyte
+  Module:    vtkSMVisocytePipelineController.h
 
   Copyright (c) Kitware, Inc.
   All rights reserved.
@@ -13,33 +13,33 @@
 
 =========================================================================*/
 /**
- * @class vtkSMParaViewPipelineController
- * @brief Controller that encapsulates control logic for typical ParaView
+ * @class vtkSMVisocytePipelineController
+ * @brief Controller that encapsulates control logic for typical Visocyte
  * applications.
  *
- * ParaView's ServerManager, together with it's proxies and properties provides
+ * Visocyte's ServerManager, together with it's proxies and properties provides
  * a mechanism to create visualization and data processing pipelines. However,
- * for a complex application like ParaView, there is considerable control logic
+ * for a complex application like Visocyte, there is considerable control logic
  * to manage these proxies, set them up, etc. for common operations supported by
- * the application. vtkSMParaViewPipelineController provides us a mechanism to
+ * the application. vtkSMVisocytePipelineController provides us a mechanism to
  * encapsulate just control logic with ability to customize and extend for
- * custom applications, similar to ParaView.
+ * custom applications, similar to Visocyte.
  *
- * vtkSMParaViewPipelineController has no state of itself. When needed, one
- * should simply create an instance of vtkSMParaViewPipelineController and
+ * vtkSMVisocytePipelineController has no state of itself. When needed, one
+ * should simply create an instance of vtkSMVisocytePipelineController and
  * release it once done.
  *
- * vtkSMParaViewPipelineController uses the vtkObjectFactory mechanism.
+ * vtkSMVisocytePipelineController uses the vtkObjectFactory mechanism.
  * Custom application developers can provide subclasses and override the
- * behaviour (see vtkSMParaViewPipelineControllerWithRender).
+ * behaviour (see vtkSMVisocytePipelineControllerWithRender).
  *
- * For an example of using vtkSMParaViewPipelineController in your application,
- * see `ParaView/ParaViewCore/ServerManager/Core/Testing/Cxx/TestParaViewPipelineController.cxx`.
+ * For an example of using vtkSMVisocytePipelineController in your application,
+ * see `Visocyte/VisocyteCore/ServerManager/Core/Testing/Cxx/TestVisocytePipelineController.cxx`.
  *
 */
 
-#ifndef vtkSMParaViewPipelineController_h
-#define vtkSMParaViewPipelineController_h
+#ifndef vtkSMVisocytePipelineController_h
+#define vtkSMVisocytePipelineController_h
 
 #include "vtkSMObject.h"
 
@@ -47,16 +47,16 @@ class vtkSMProxy;
 class vtkSMSession;
 class vtkSMSessionProxyManager;
 
-class VTKPVSERVERMANAGERCORE_EXPORT vtkSMParaViewPipelineController : public vtkSMObject
+class VTKPVSERVERMANAGERCORE_EXPORT vtkSMVisocytePipelineController : public vtkSMObject
 {
 public:
-  static vtkSMParaViewPipelineController* New();
-  vtkTypeMacro(vtkSMParaViewPipelineController, vtkSMObject);
+  static vtkSMVisocytePipelineController* New();
+  vtkTypeMacro(vtkSMVisocytePipelineController, vtkSMObject);
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   /**
    * Call this method to setup a branch new session with state considered
-   * essential for ParaView session. Returns true on success.
+   * essential for Visocyte session. Returns true on success.
    */
   virtual bool InitializeSession(vtkSMSession* session);
 
@@ -119,7 +119,7 @@ public:
    * becomes aware of it. One can optionally pass in the registration name to
    * use. Otherwise, this code will come up with a unique name.
    * Caveat: while pipeline proxies are generally registered under the "sources"
-   * group, there's one exception: sources that produce vtkSelection. ParaView
+   * group, there's one exception: sources that produce vtkSelection. Visocyte
    * treats them specially and registers them under "selection_sources".
    */
   virtual bool RegisterPipelineProxy(vtkSMProxy* proxy, const char* proxyname);
@@ -133,7 +133,7 @@ public:
    * and hence unsets the active source if the active source if this proxy,
    * unregisters the proxy with the TimeKeeper etc.
    * Users can use either this method or the catch-all
-   * vtkSMParaViewPipelineController::UnRegisterProxy() method which
+   * vtkSMVisocytePipelineController::UnRegisterProxy() method which
    * determines the type of the proxy and then calls the appropriate method.
    */
   virtual bool UnRegisterPipelineProxy(vtkSMProxy* proxy);
@@ -153,7 +153,7 @@ public:
   /**
    * Inverse of RegisterViewProxy.
    * Users can use either this method or the catch-all
-   * vtkSMParaViewPipelineController::UnRegisterProxy() method which
+   * vtkSMVisocytePipelineController::UnRegisterProxy() method which
    * determines the type of the proxy and then calls the appropriate method.
    * If the optional argument, \c unregister_representations, is false (default
    * is true), then this method will skip the unregistering of representations.
@@ -171,7 +171,7 @@ public:
   /**
    * Unregisters a representation proxy.
    * Users can use either this method or the catch-all
-   * vtkSMParaViewPipelineController::UnRegisterProxy() method which
+   * vtkSMVisocytePipelineController::UnRegisterProxy() method which
    * determines the type of the proxy and then calls the appropriate method.
    */
   virtual bool UnRegisterRepresentationProxy(vtkSMProxy* proxy);
@@ -245,7 +245,7 @@ public:
    * Inverse of RegisterAnimationProxy. Also unregisters cues if proxy is scene,
    * keyframes if proxy is a cue, etc.
    * Users can use either this method or the catch-all
-   * vtkSMParaViewPipelineController::UnRegisterProxy() method which
+   * vtkSMVisocytePipelineController::UnRegisterProxy() method which
    * determines the type of the proxy and then calls the appropriate method.
    */
   virtual bool UnRegisterAnimationProxy(vtkSMProxy* proxy);
@@ -278,8 +278,8 @@ public:
   static vtkStdString GetHelperProxyGroupName(vtkSMProxy*);
 
 protected:
-  vtkSMParaViewPipelineController();
-  ~vtkSMParaViewPipelineController() override;
+  vtkSMVisocytePipelineController();
+  ~vtkSMVisocytePipelineController() override;
 
   /**
    * Find proxy of the group type (xmlgroup, xmltype) registered under a
@@ -334,8 +334,8 @@ protected:
   virtual void DoMaterialSetup(vtkSMProxy* proxy);
 
 private:
-  vtkSMParaViewPipelineController(const vtkSMParaViewPipelineController&) = delete;
-  void operator=(const vtkSMParaViewPipelineController&) = delete;
+  vtkSMVisocytePipelineController(const vtkSMVisocytePipelineController&) = delete;
+  void operator=(const vtkSMVisocytePipelineController&) = delete;
   //@}
 
   class vtkInternals;

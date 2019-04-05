@@ -1,14 +1,14 @@
-Develop ParaView with Git
+Develop Visocyte with Git
 =========================
 
-This page documents how to develop ParaView through [Git][].
+This page documents how to develop Visocyte through [Git][].
 See the [README](README.md) for more information.
 
 [Git]: http://git-scm.com
 
 Git is an extremely powerful version control tool that supports many
 different "workflows" for individual development and collaboration.
-Here we document procedures used by the ParaView development community.
+Here we document procedures used by the Visocyte development community.
 In the interest of simplicity and brevity we do *not* provide an
 explanation of why we use this approach.
 
@@ -19,18 +19,18 @@ Before you begin, perform initial setup:
 
 1.  Register [GitLab Access][] to create an account and select a user name.
 
-2.  [Fork ParaView][] into your user's namespace on GitLab.
+2.  [Fork Visocyte][] into your user's namespace on GitLab.
 
 3.  Follow the [download instructions](download.md#clone) to create a
-    local clone of the main ParaView repository.  Optionally configure
+    local clone of the main Visocyte repository.  Optionally configure
     Git to [use SSH instead of HTTPS](download.md#use-ssh-instead-of-https).
     Then clone:
 
-        $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git ParaView
-        $ cd ParaView
+        $ git clone --recursive https://gitlab.kitware.com/visocyte/visocyte.git Visocyte
+        $ cd Visocyte
     The main repository will be configured as your `origin` remote.
 
-4.  Run the [developer setup script][] to prepare your ParaView work tree and
+4.  Run the [developer setup script][] to prepare your Visocyte work tree and
     create Git command aliases used below:
 
         $ ./Utilities/SetupForDevelopment.sh
@@ -38,20 +38,20 @@ Before you begin, perform initial setup:
     called `gitlab` to refer to it.
 
 5.  (Optional but highly recommended.)
-    [Register](https://open.cdash.org/register.php) with the ParaView project
+    [Register](https://open.cdash.org/register.php) with the Visocyte project
     on Kitware's CDash instance to better know how your code performs in
     regression tests.  After registering and signing in, click on
     "All Dashboards" link in the upper left corner, scroll down and click
-    "Subscribe to this project" on the right of ParaView.
+    "Subscribe to this project" on the right of Visocyte.
 
 [GitLab Access]: https://gitlab.kitware.com/users/sign_in
-[Fork ParaView]: https://gitlab.kitware.com/visocyte/visocyte/forks/new
+[Fork Visocyte]: https://gitlab.kitware.com/visocyte/visocyte/forks/new
 [developer setup script]: /Utilities/SetupForDevelopment.sh
 
 Workflow
 --------
 
-ParaView development uses a [branchy workflow][] based on topic branches.
+Visocyte development uses a [branchy workflow][] based on topic branches.
 Our collaboration workflow consists of three main steps:
 
 1.  Local Development:
@@ -138,7 +138,7 @@ cases, being your topic name with the issue number.
     * Choose `Tools .. Record Test` to start.
     * Choose `Tools .. Lock View Size Custom...` - a 400x400 window works well.
     * Perform actions in the GUI that exercise your feature. Stop recording.
-    * Put the resulting XML file into `Applications/ParaView/Testing/XML`
+    * Put the resulting XML file into `Applications/Visocyte/Testing/XML`
     * Add it to CMakeLists.txt, probably in a TESTS_WITH_BASELINES section
         * you can manually add `<pqcompareview>` for multiple image comparisons, then add to the TESTS_WITH_INLINE_COMPARES section
     * Follow the [vtk instructions][] to add the baseline images, which live in `Testing/Data/Baseline/`.
@@ -161,9 +161,9 @@ Share a Topic
 When a topic is ready for review and possible inclusion, share it by pushing
 to a fork of your repository in GitLab.  Be sure you have registered and
 signed in for [GitLab Access][] and created your fork by visiting the main
-[ParaView GitLab][] repository page and using the "Fork" button in the upper right.
+[Visocyte GitLab][] repository page and using the "Fork" button in the upper right.
 
-[ParaView GitLab]: https://gitlab.kitware.com/visocyte/visocyte
+[Visocyte GitLab]: https://gitlab.kitware.com/visocyte/visocyte
 
 1.  Checkout the topic if it is not your current branch:
 
@@ -347,7 +347,7 @@ succeeds.
 
 ### Testing ###
 
-ParaView has a [buildbot](http://buildbot.net) instance watching for merge requests
+Visocyte has a [buildbot](http://buildbot.net) instance watching for merge requests
 to test.  A developer must issue a command to buildbot to enable builds:
 
     Do: test
@@ -487,7 +487,7 @@ If you have any VTK changes, then you are required to get your changes
 incorporated into VTK using [VTK's development workflow][]. Once your VTK topic has
 been approved and merged into VTK, then:
 
-1. Create a [ParaView topic](#create-a-topic) if you haven't already.
+1. Create a [Visocyte topic](#create-a-topic) if you haven't already.
 2. Add your VTK topic head (or the latest VTK
    origin/master which includes your VTK topic head).
 

@@ -36,7 +36,7 @@ file(REMOVE
   )
 
 if (NOT EXISTS "${VISOCYTE_EXECUTABLE}")
-  message(FATAL_ERROR "Could not file ParaView '${VISOCYTE_EXECUTABLE}'")
+  message(FATAL_ERROR "Could not file Visocyte '${VISOCYTE_EXECUTABLE}'")
 endif()
 
 # On windows, execute_process runs VISOCYTE_EXECUTABLE in background.
@@ -54,7 +54,7 @@ execute_process_with_echo(COMMAND
     --exit
   RESULT_VARIABLE rv)
 if(rv)
-  message(FATAL_ERROR "ParaView return value was ${rv}")
+  message(FATAL_ERROR "Visocyte return value was ${rv}")
 endif()
 
 if(NOT EXISTS "${PVBATCH_EXECUTABLE}")

@@ -1,7 +1,7 @@
 Python Version 2 versus 3
 =========================
 
-ParaView is working towards full Python 3 support. To that end, python code should
+Visocyte is working towards full Python 3 support. To that end, python code should
 be written so it is compatible with Python 2.7 and Python 3.5.
 
 Here are the changes we have needed making the transition to Python 3.

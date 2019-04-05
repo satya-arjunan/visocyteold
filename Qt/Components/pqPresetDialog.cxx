@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqPresetDialog.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -892,7 +892,7 @@ void pqPresetDialog::importPresets()
 {
   pqFileDialog dialog(NULL, this, tr("Import Presets"), QString(),
     "Supported Presets/Color Map Files (*.json *.xml);;"
-    "ParaView Color/Opacity Presets (*.json);;Legacy Color Maps (*.xml);;All Files (*)");
+    "Visocyte Color/Opacity Presets (*.json);;Legacy Color Maps (*.xml);;All Files (*)");
   dialog.setObjectName("ImportPresets");
   dialog.setFileMode(pqFileDialog::ExistingFile);
   if (dialog.exec() == QDialog::Accepted && dialog.getSelectedFiles().size() > 0)
@@ -927,7 +927,7 @@ void pqPresetDialog::importPresets()
 void pqPresetDialog::exportPresets()
 {
   pqFileDialog dialog(NULL, this, tr("Export Preset(s)"), QString(),
-    "ParaView Color/Opacity Presets (*.json);;All Files (*)");
+    "Visocyte Color/Opacity Presets (*.json);;All Files (*)");
   dialog.setObjectName("ExportPresets");
   dialog.setFileMode(pqFileDialog::AnyFile);
   if (dialog.exec() != QDialog::Accepted || dialog.getSelectedFiles().size() == 0)

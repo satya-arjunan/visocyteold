@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:  pqSettingsDialog.h
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -41,7 +41,7 @@ class vtkSMProperty;
 
 /**
 * pqSettingsDialog provides a dialog for controlling application settings
-* for a ParaView application. It's designed to look show all proxies
+* for a Visocyte application. It's designed to look show all proxies
 * registered under the "settings" group by default. For each proxy, it creates
 * a pqProxyWidget and adds that to a tab-widget contained in the dialog.
 */

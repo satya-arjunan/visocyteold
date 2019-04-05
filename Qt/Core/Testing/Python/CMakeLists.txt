@@ -11,4 +11,4 @@ add_test(
          "--test-script=${CMAKE_CURRENT_SOURCE_DIR}/pqFileDialogTest.py"
          --exit
 )
-set_tests_properties(pqFileDialogTest PROPERTIES LABELS "ParaView")
+set_tests_properties(pqFileDialogTest PROPERTIES LABELS "Visocyte")

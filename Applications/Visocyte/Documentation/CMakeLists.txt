@@ -15,7 +15,7 @@ visocyte_client_documentation(
 
 set(table_of_contents
   "<toc>
-  <section title=\"ParaView User Manual\" ref=\"index.html\">
+  <section title=\"Visocyte User Manual\" ref=\"index.html\">
     <section title=\"Sources\" ref=\"Sources.html\"/>
     <section title=\"Filters\" ref=\"Filters.html\"/>
     <section title=\"Readers\" ref=\"Readers.html\"/>
@@ -39,20 +39,20 @@ visocyte_client_generate_help(
   DEPENDS     visocyte_doc
   TABLE_OF_CONTENTS "${table_of_contents}"
   RESOURCE_FILE   "${visocyte_documentation_qrc}"
-  RESOURCE_PREFIX "/ParaView/Documentation")
+  RESOURCE_PREFIX "/Visocyte/Documentation")
 
 set(CMAKE_AUTORCC 1)
 
 find_package(Qt5 REQUIRED QUIET COMPONENTS Core)
 
-add_library(vtkParaViewDocumentation STATIC
-  ParaViewDocumentationInitializer.cxx
-  ParaViewDocumentationInitializer.h
+add_library(vtkVisocyteDocumentation STATIC
+  VisocyteDocumentationInitializer.cxx
+  VisocyteDocumentationInitializer.h
   "${visocyte_documentation_qrc}")
-target_include_directories(vtkParaViewDocumentation
+target_include_directories(vtkVisocyteDocumentation
   PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>")
-target_link_libraries(vtkParaViewDocumentation
+target_link_libraries(vtkVisocyteDocumentation
   PRIVATE
     Qt5::Core)
 

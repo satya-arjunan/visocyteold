@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMAMRLevelsDomain.h
 
   Copyright (c) Kitware, Inc.

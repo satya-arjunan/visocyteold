@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIDoubleMapProperty.h
 
   Copyright (c) Kitware, Inc.

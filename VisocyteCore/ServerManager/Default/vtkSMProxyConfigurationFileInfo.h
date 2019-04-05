@@ -37,7 +37,7 @@ class vtkSMProxyConfigurationFileInfo
 public:
   vtkSMProxyConfigurationFileInfo()
     : FileIdentifier("SMProxyConfiguration")
-    , FileDescription("ParaView server manager proxy configuration")
+    , FileDescription("Visocyte server manager proxy configuration")
     , FileExtension(".pvpc")
   {
   }

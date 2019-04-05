@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkNetworkImageSource.cxx
 
   Copyright (c) Kitware, Inc.

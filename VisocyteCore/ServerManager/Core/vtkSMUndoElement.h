@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMUndoElement.h
 
   Copyright (c) Kitware, Inc.

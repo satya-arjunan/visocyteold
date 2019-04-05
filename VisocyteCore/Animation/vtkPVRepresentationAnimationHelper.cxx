@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVRepresentationAnimationHelper.cxx
 
   Copyright (c) Kitware, Inc.

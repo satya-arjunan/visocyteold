@@ -26,10 +26,10 @@ def initialize():
         ApplicationPython.vtkInitializationHelper.Initialize(sys.executable, CorePython.vtkProcessModule.PROCESS_BATCH, pvoptions)
 
     import visocyte.servermanager as pvsm
-    # we need ParaView 4.2 since ParaView 4.1 doesn't properly wrap
+    # we need Visocyte 4.2 since Visocyte 4.1 doesn't properly wrap
     # vtkPVPythonCatalystPython
     if pvsm.vtkSMProxyManager.GetVersionMajor() < 4 or (pvsm.vtkSMProxyManager.GetVersionMajor() == 4 and pvsm.vtkSMProxyManager.GetVersionMinor() < 2):
-        print 'Must use ParaView v4.2 or greater'
+        print 'Must use Visocyte v4.2 or greater'
         sys.exit(0)
 
     import numpy

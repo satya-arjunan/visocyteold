@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -28,7 +28,7 @@
  * as if they belong to the root proxy.
  *
  * A proxy keeps an iVar ConnectionID. This is the connection ID for the
- * connection on which this proxy exists. Currently, since a ParaView
+ * connection on which this proxy exists. Currently, since a Visocyte
  * client is connected to 1 and only 1 server. This ID is
  * insignificant. However, it provides the ground work to enable a client
  * to connect with multiple servers.  ConnectionID must be set immediately

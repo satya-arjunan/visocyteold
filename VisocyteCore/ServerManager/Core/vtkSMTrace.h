@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMTrace.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class   vtkSMTrace
- * @brief   vtkSMTrace is used to produce Python trace in the ParaView
+ * @brief   vtkSMTrace is used to produce Python trace in the Visocyte
  * application.
  *
- * vtkSMTrace is used to produce Python trace in the ParaView
+ * vtkSMTrace is used to produce Python trace in the Visocyte
  * application. To start/stop trace, use the static API vtkSMTrace::StartTrace()
  * and vtkSMTrace::StopTrace(). That sets up the vtkSMTrace instance used as the
  * ActiveTracer. You can setup configuration parameters on the vtkSMTrace
@@ -86,7 +86,7 @@ public:
    * already present, then this will simply return the current active tracer.
    *
    * @arg `preamble` non-null string to use as the header for the generated
-   *      trace. If nullptr, then a default preamble using ParaView version
+   *      trace. If nullptr, then a default preamble using Visocyte version
    *      number will be used. If empty string, then no preamble will
    *      be added added.
    */

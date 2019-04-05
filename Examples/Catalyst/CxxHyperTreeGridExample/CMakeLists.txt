@@ -10,7 +10,7 @@ add_executable(CxxHyperTreeGridExample
   FEDriver.cxx)
 target_link_libraries(CxxHyperTreeGridExample
   PRIVATE
-    ParaView::PythonCatalyst
+    Visocyte::PythonCatalyst
     VTK::ParallelMPI
     VTK::mpi)
 

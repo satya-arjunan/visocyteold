@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkGlyph3DRepresentation.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkGmshReader.h
 
   Copyright (c) Kitware, Inc.
@@ -19,9 +19,9 @@
  * Reader for visualization of high-order polynomial solutions under
  * the Gmsh format.
  * @par Thanks:
- * ParaViewGmshReaderPlugin - Copyright (C) 2015 Cenaero
+ * VisocyteGmshReaderPlugin - Copyright (C) 2015 Cenaero
  * See the Copyright.txt and License.txt files provided
- * with ParaViewGmshReaderPlugin for license information.
+ * with VisocyteGmshReaderPlugin for license information.
  *
 */
 

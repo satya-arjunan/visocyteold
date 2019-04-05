@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMNewWidgetRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.
@@ -15,14 +15,14 @@
 /**
  * @class   vtkSMNewWidgetRepresentationProxy
  * @brief   proxy for 3D widgets and
- * their representations in ParaView.
+ * their representations in Visocyte.
  *
  * vtkSMNewWidgetRepresentationProxy is a proxy for 3D widgets and their
  * representations. It has several responsibilities.
  * \li Sets up the link between the Widget and its representation on VTK side.
  * \li Sets up event handlers to ensure that the representation proxy's info
  * properties are updated any time the widget fires interaction events.
- * \li Provides API to perform tasks typical with 3DWidgets in ParaView e.g.
+ * \li Provides API to perform tasks typical with 3DWidgets in Visocyte e.g.
  * picking, placing widget on data bounds.
 */
 

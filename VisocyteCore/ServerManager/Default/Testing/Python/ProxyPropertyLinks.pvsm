@@ -1,4 +1,4 @@
-<ParaView>
+<Visocyte>
   <ServerManagerState version="4.1.0">
     <Proxy group="animation" type="AnimationScene" id="261" servers="16">
       <Property name="AnimationTime" id="261.AnimationTime" number_of_elements="1">
@@ -2472,4 +2472,4 @@
     <CustomProxyDefinitions/>
     <Links/>
   </ServerManagerState>
-</ParaView>
+</Visocyte>

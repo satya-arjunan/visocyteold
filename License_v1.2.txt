@@ -1,6 +1,6 @@
-Parts of ParaView are under the following licenses:
+Parts of Visocyte are under the following licenses:
 
-ParaView License Version 1.2
+Visocyte License Version 1.2
 ========================================================================
 
 Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.

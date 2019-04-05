@@ -52,7 +52,7 @@ visocyte_add_plugin(pvblot
 if (VISOCYTE_BUILD_QT_GUI)
   target_link_libraries(pvblot
     PRIVATE
-      ParaView::ClientServerCoreCore
+      Visocyte::ClientServerCoreCore
       VTK::GUISupportQt
       VTK::Python)
 endif ()

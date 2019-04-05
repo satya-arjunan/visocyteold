@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVClientServerSynchronizedRenderers.h
 
   Copyright (c) Kitware, Inc.
@@ -54,7 +54,7 @@ public:
 
   /**
    * Set and configure a compressor from it's own configuration stream. This
-   * is used by ParaView to configure the compressor from application wide
+   * is used by Visocyte to configure the compressor from application wide
    * user settings.
    */
   virtual void ConfigureCompressor(const char* stream);

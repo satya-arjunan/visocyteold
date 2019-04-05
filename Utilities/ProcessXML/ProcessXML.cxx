@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    ProcessXML.cxx
 
   Copyright (c) Kitware, Inc.

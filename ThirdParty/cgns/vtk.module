@@ -1,5 +1,5 @@
 NAME
-  ParaView::cgns
+  Visocyte::cgns
 LIBRARY_NAME
   vtkcgns
 DEPENDS

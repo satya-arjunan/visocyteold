@@ -14,7 +14,7 @@ set(private_headers
   vtkCGNSReaderInternal.h
   vtkFileSeriesHelper.h)
 
-vtk_module_add_module(ParaView::VTKExtensionsCGNSReader
+vtk_module_add_module(Visocyte::VTKExtensionsCGNSReader
   CLASSES ${classes}
   SOURCES ${sources}
   PRIVATE_HEADERS ${private_headers})

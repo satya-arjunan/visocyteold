@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMProxyInitializationHelper.h
 
   Copyright (c) Kitware, Inc.
@@ -17,11 +17,11 @@
  * @brief   initialization helper for a proxy.
  *
  * vtkSMProxyInitializationHelper is used to add custom initialization logic to
- * the initialization of a proxy done by vtkSMParaViewPipelineController.
+ * the initialization of a proxy done by vtkSMVisocytePipelineController.
  * Developers can create new subclasses of vtkSMProxyInitializationHelper for
  * specific proxy types. vtkSMProxyInitializationHelper will instantiate the
  * helper and call PostInitializeProxy() in
- * vtkSMParaViewPipelineController::PostInitializeProxy().
+ * vtkSMVisocytePipelineController::PostInitializeProxy().
  *
  * Helpers are added to a proxy in the XML configuration as follows:
  * \code{.xml}
@@ -48,7 +48,7 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
 
   /**
-   * Called during vtkSMParaViewPipelineController::PostInitializeProxy() to
+   * Called during vtkSMVisocytePipelineController::PostInitializeProxy() to
    * initialize a proxy.
    * @param proxy : the proxy being initialized.
    * @param xml : the XML configuration from this helper from this Hints for the

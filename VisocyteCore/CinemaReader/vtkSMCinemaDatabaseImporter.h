@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMCinemaDatabaseImporter.h
 
   Copyright (c) Kitware, Inc.
@@ -14,10 +14,10 @@
 =========================================================================*/
 /**
  * @class vtkSMCinemaDatabaseImporter
- * @brief helper to import a Cinema database in ParaView
+ * @brief helper to import a Cinema database in Visocyte
  *
  * vtkSMCinemaDatabaseImporter can be used by client code to import a Cinema
- * database in ParaView. The importer creates multiple proxies for
+ * database in Visocyte. The importer creates multiple proxies for
  * data-producers in the Cinema database.
  */
 

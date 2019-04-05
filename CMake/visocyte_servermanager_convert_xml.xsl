@@ -234,14 +234,14 @@
   </documentation>
 </xsl:template>
 
-<xsl:template match="ParaViewSources">
+<xsl:template match="VisocyteSources">
   <categoryindex>
     <label>Sources</label>
     <xsl:call-template name="GenerateCategoryIndex" />
   </categoryindex>
 </xsl:template>
 
-<xsl:template match="ParaViewFilters">
+<xsl:template match="VisocyteFilters">
   <categoryindex>
     <label>Filters</label>
     <xsl:call-template name="GenerateCategoryIndex" />

@@ -1,14 +1,14 @@
 #==========================================================================
 #
-#     Program: ParaView
+#     Program: Visocyte
 #
 #     Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
 #     All rights reserved.
 #
-#     ParaView is a free software; you can redistribute it and/or modify it
-#     under the terms of the ParaView license version 1.2.
+#     Visocyte is a free software; you can redistribute it and/or modify it
+#     under the terms of the Visocyte license version 1.2.
 #
-#     See License_v1.2.txt for the full ParaView license.
+#     See License_v1.2.txt for the full Visocyte license.
 #     A copy of this license can be obtained by contacting
 #     Kitware Inc.
 #     28 Corporate Drive
@@ -31,9 +31,9 @@
 
 # TODO: Restore Cray ATP support via a new module.
 # TODO: Support static plugins.
-# TODO: Link pvserver and friends to ParaView::PythonInitializer for static builds?
+# TODO: Link pvserver and friends to Visocyte::PythonInitializer for static builds?
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/ParaViewCommandLineExecutables.cmake")
+include("${CMAKE_CURRENT_SOURCE_DIR}/VisocyteCommandLineExecutables.cmake")
 
 foreach (exe IN ITEMS pvserver pvdataserver pvrenderserver)
   visocyte_add_executable("${exe}" "${exe}.cxx")

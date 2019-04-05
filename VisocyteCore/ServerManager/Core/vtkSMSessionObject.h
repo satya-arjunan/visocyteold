@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSessionObject.h
 
   Copyright (c) Kitware, Inc.

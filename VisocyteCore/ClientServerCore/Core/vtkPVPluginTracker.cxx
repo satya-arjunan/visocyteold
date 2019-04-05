@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPluginTracker.cxx
 
   Copyright (c) Kitware, Inc.
@@ -73,7 +73,7 @@ std::string vtkGetPluginFileNameFromName(const std::string& pluginname)
 #if defined(_WIN32) && !defined(__CYGWIN__)
   return pluginname + ".dll";
 #else
-  // starting with ParaView 5.7, we are building .so's even on macOS
+  // starting with Visocyte 5.7, we are building .so's even on macOS
   // since they are built as "add_library(.. MODULE)" which by default generates
   // `.so`s which seems to be the convention.
   return pluginname + ".so";

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVEnsembleDataReaderInformation.h
 
   Copyright (c) Kitware, Inc.

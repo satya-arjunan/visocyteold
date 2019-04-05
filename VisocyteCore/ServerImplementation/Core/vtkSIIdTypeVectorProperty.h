@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSIIdTypeVectorProperty.h
 
   Copyright (c) Kitware, Inc.

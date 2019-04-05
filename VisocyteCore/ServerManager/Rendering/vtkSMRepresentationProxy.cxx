@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    $RCSfile$
 
   Copyright (c) Kitware, Inc.
@@ -61,7 +61,7 @@ vtkSMRepresentationProxy::~vtkSMRepresentationProxy()
 void vtkSMRepresentationProxy::SetDebugName(const char* name)
 {
   VTK_LEGACY_REPLACED_BODY(
-    vtkSMRepresentationProxy::SetDebugName, "ParaView 5.7", vtkSMProxy::SetLogName);
+    vtkSMRepresentationProxy::SetDebugName, "Visocyte 5.7", vtkSMProxy::SetLogName);
   this->SetLogName(name);
 }
 #endif
@@ -71,7 +71,7 @@ void vtkSMRepresentationProxy::SetDebugName(const char* name)
 const char* vtkSMRepresentationProxy::GetDebugName()
 {
   VTK_LEGACY_REPLACED_BODY(
-    vtkSMRepresentationProxy::GetDebugName, "ParaView 5.7", vtkSMProxy::GetLogName);
+    vtkSMRepresentationProxy::GetDebugName, "Visocyte 5.7", vtkSMProxy::GetLogName);
   return this->GetLogName();
 }
 #endif

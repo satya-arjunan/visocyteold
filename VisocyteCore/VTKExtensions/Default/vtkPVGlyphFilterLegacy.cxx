@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVGlyphFilterLegacy.cxx
 
   Copyright (c) Kitware, Inc.

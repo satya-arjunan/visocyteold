@@ -166,7 +166,7 @@
     },
 
     { "name": "vtkPVClientServerCoreRendering",
-      "path": "ParaViewCore/ClientServerCore/Rendering",
+      "path": "VisocyteCore/ClientServerCore/Rendering",
       "include": [
         { "class": "vtkImageSliceRepresentation" },
         { "class": "vtkImageVolumeRepresentation" },
@@ -180,13 +180,13 @@
     },
 
     { "name": "vtkPVVTKExtensionsRendering",
-      "path": "ParaViewCore/VTKExtensions/Rendering",
+      "path": "VisocyteCore/VTKExtensions/Rendering",
       "include": [
         { "class": "vtkPVLODVolume" },
         { "class": "vtkVolumeRepresentationPreprocessor" }
       ],
       "replace": [
-        { "path":"ParaViewCore/VTKExtensions/Rendering/module.cmake" }
+        { "path":"VisocyteCore/VTKExtensions/Rendering/module.cmake" }
       ],
       "cswrap": true,
       "pythonwrap": true
@@ -194,7 +194,7 @@
 
   ],
   "proxies":[
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/rendering.xml",
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/rendering.xml",
       "proxies":[
         "DummyVolumeMapper",
         "FixedPointVolumeRayCastMapper",
@@ -203,7 +203,7 @@
         "UnstructuredGridVolumeZSweepMapper"
       ]
     },
-    { "path":"ParaViewCore/ServerManager/SMApplication/Resources/views_and_representations.xml",
+    { "path":"VisocyteCore/ServerManager/SMApplication/Resources/views_and_representations.xml",
       "proxies":[
         "AMRVolumeRepresentation",
         "GaussianRadius",

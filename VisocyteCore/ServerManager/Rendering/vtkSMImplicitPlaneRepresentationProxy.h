@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMImplicitPlaneRepresentationProxy.h
 
   Copyright (c) Kitware, Inc.

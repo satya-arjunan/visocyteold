@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPanoramicProjectionView.h
 
   Copyright (c) Kitware, Inc.

@@ -1,15 +1,15 @@
-ParaView 5.5.0 Release Notes
+Visocyte 5.5.0 Release Notes
 ============================
 
 The full list of issues addressed by this release is available
 [here](https://gitlab.kitware.com/visocyte/visocyte/milestones/7). Major changes
-made since ParaView 5.4.1 include the following:
+made since Visocyte 5.4.1 include the following:
 
 # Rendering Enhancements
 
 ## More updates to OSPRay ray traced rendering
 
-ParaView's Ray Traced Rendering capacity continues to evolve. In this release
+Visocyte's Ray Traced Rendering capacity continues to evolve. In this release
 we've updated to a new version of OSPRay that gives us the ability to directly
 volume render Overlapping AMR and Unstructured Grid data in addition to the
 Structured Grid that we've had for a couple of releases now. We've also exposed
@@ -39,12 +39,12 @@ lines as 3D tubes and points as 3D spheres.
 
 ## Preview mode
 
-To make it easier to generate publication quality images, ParaView has a new
+To make it easier to generate publication quality images, Visocyte has a new
 **Preview** mode. **Preview** mode is similar to the **Print Preview** mode
 offered by many tools, including your web browser. The idea is to provide a way
 to do final visualization setup just prior to saving a screenshot or animation
 in a way that minimizes surprise object rescaling in the save image output,
-which can happen if the ParaView window  aspect ratio differs from the requested
+which can happen if the Visocyte window  aspect ratio differs from the requested
 image resolution aspect ratio. To use **Preview** mode, select a target
 resolution from the **View -> Preview** submenu and the active layout will be
 resized to match the chosen resolution. If the target resolution is larger than
@@ -114,7 +114,7 @@ Please note that this feature works only with OpenGL driver >= 4.0.
 
 ## Horizontal color legend title in vertical orientation mode
 
-As in earlier versions of ParaView, it is again possible to orient the
+As in earlier versions of Visocyte, it is again possible to orient the
 color legend title horizontally when the color legend is oriented vertically.
 By default, the title is rotated 90 degrees counterclockwise and aligned with
 the color legend vertically.
@@ -157,7 +157,7 @@ compressor.
 
 ## Arbitrary-order Lagrange finite element support
 
-ParaView's XML readers and writers support arbitrary-order Lagrange finite
+Visocyte's XML readers and writers support arbitrary-order Lagrange finite
 elements. The **Unstructured Cell Type** source can be used to generate
 representative grids with Lagrange elements.
 
@@ -203,7 +203,7 @@ exposed correctly in the **Information Panel**.
 
 ## AMReX particles reader
 
-ParaView now supports reading particle data from AMReX plotfiles. The reader
+Visocyte now supports reading particle data from AMReX plotfiles. The reader
 supports both single plotfile or multiple plotfiles that form a time series.
 
 ## JSON based new meta file format for series added
@@ -230,13 +230,13 @@ example, for legacy VTK files, the reader now supports `.vtk` and `.vtk.series`
 
 ## GDAL and PDAL Readers
 
-ParaView now supports geospatial ([GDAL](http://www.gdal.org/) Raster and Vector
+Visocyte now supports geospatial ([GDAL](http://www.gdal.org/) Raster and Vector
 Reader) and point cloud data ([PDAL](https://www.pdal.io/) Reader). Any dataset
-supported by GDAL or PDAL libraries is now supported by ParaView.
+supported by GDAL or PDAL libraries is now supported by Visocyte.
 
 |![Orthorectified satellite image and a point cloud of Jacksonville, FL](img/5.5.0/point-cloud-and-image.png)|
 |:--:|
-| *An orthorectified satellite image and a point cloud of Jacksonville, FL, rendered in ParaView.* |
+| *An orthorectified satellite image and a point cloud of Jacksonville, FL, rendered in Visocyte.* |
 
 ## CGNS library updated to v3.3.1
 
@@ -266,7 +266,7 @@ PVD files by skipping arrays that may not be needed.
 
 ## Restore user preferences to default
 
-ParaView now supports restoring user preferences to default from the **Edit**
+Visocyte now supports restoring user preferences to default from the **Edit**
 menu. One can optionally generate backup files before restoring user preferences
 to default.
 
@@ -293,10 +293,10 @@ in the **Font Properties** property and then specifying the full path to the
 ## Upgrade from vtkHyperOctree to vtkHyperTreeGrid
 
 All functionality related to the experimental `vtkHyperOctree` tree-based AMR
-implementation has been deprecated in VTK and removed from ParaView. It is being
+implementation has been deprecated in VTK and removed from Visocyte. It is being
 replaced with the newer `vtkHyperTreeGrid` data structure, which is more
 efficient and more expressive than its predecessor. The new `vtkHyperTreeGrid`
-is a superset of previous implementation. This ParaView release includes a more
+is a superset of previous implementation. This Visocyte release includes a more
 efficient hyper tree grid implementation than in 5.4 along with VTK XML based
 IO, a few dedicated filters, and bug fixes.
 
@@ -361,29 +361,29 @@ is `.tsv`.
 
 We added a volume rendering edition for Catalyst.
 
-# ParaViewWeb
+# VisocyteWeb
 
-Several improvements have been made in VTK/ParaView Web to offer better image
+Several improvements have been made in VTK/Visocyte Web to offer better image
 delivery performances. We added new controls for the server side to manage image
 resolution and framerate while interacting.
 
 The Web applications have also been updated accordingly to leverage those new
 capabilities.
 
-ParaView 5.5 bundles the following applications:
+Visocyte 5.5 bundles the following applications:
 
-* ParaView Visualizer 3.1.0
-* ParaView Divvy 1.3.14
+* Visocyte Visualizer 3.1.0
+* Visocyte Divvy 1.3.14
 
 # Build and Installation Notes
 
 ## Installation tree cleanup
 
-On Unix, ParaView no longer installs its libraries under
+On Unix, Visocyte no longer installs its libraries under
 `<prefix>/lib/visocyte-${visocyte-version}`. Instead, it follows the standard
 practice of installing them under `<prefix>/lib` directly.
 
-Python packages built by ParaView are now built and installed under
+Python packages built by Visocyte are now built and installed under
 `<prefix>/lib/python-$<python-version>/site-packages` on \*nixes, and
 `<prefix>/bin/Lib/site-packages` on Windows. This is consistent with how
 Python installs its packages on the two platforms. In macOS app bundle, the
@@ -413,7 +413,7 @@ for details.
 ## Promote coprocessing plugin's writers and generator to Catalyst menu
 
 We removed the CoProcessingScriptGenerator plugin and promoted its functions to
-mainline ParaView. As before they depend on Python and Qt, but otherwise they
+mainline Visocyte. As before they depend on Python and Qt, but otherwise they
 are now always available. With this we removed the plugin's two menus and
 moved their contents under the **Catalyst** menu.
 
@@ -434,7 +434,7 @@ the domain to provide you additional tips for the items to choose.
 
 ## Adding QToolBar via plugins
 
-ParaView now supports add a QToolBar subclass via the plugin mechanism. In the
+Visocyte now supports add a QToolBar subclass via the plugin mechanism. In the
 past, one had to add actions to a toolbar via a QActionGroup. Now, directly
 adding a QToolBar is a supported by using `add_visocyte_toolbar` CMake function.
 

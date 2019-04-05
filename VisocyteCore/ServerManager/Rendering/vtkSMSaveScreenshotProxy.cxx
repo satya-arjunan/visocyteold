@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMSaveScreenshotProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -21,7 +21,7 @@
 #include "vtkObjectFactory.h"
 #include "vtkPVXMLElement.h"
 #include "vtkProcessModule.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxyListDomain.h"
@@ -701,7 +701,7 @@ vtkSmartPointer<vtkImageData> vtkSMSaveScreenshotProxy::CaptureImage(
     return nullptr;
   }
 
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
   controller->PreInitializeProxy(shProxy);
   vtkSMPropertyHelper(shProxy, "View").Set(view);
   vtkSMPropertyHelper(shProxy, "SaveAllViews").Set(0);
@@ -730,7 +730,7 @@ vtkSmartPointer<vtkImageData> vtkSMSaveScreenshotProxy::CaptureImage(
     return nullptr;
   }
 
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
   controller->PreInitializeProxy(shProxy);
   vtkSMPropertyHelper(shProxy, "Layout").Set(layout);
   vtkSMPropertyHelper(shProxy, "SaveAllViews").Set(1);

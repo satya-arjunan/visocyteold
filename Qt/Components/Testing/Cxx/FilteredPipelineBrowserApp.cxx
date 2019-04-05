@@ -26,7 +26,7 @@
 
 MainPipelineWindow::MainPipelineWindow()
 {
-  // Init ParaView
+  // Init Visocyte
   pqApplicationCore* core = pqApplicationCore::instance();
   pqObjectBuilder* ob = core->getObjectBuilder();
 

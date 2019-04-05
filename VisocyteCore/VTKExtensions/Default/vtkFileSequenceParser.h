@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkFileSequenceParser.h
 
   Copyright (c) Kitware, Inc.

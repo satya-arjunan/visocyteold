@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVXYChartView.h
 
   Copyright (c) Kitware, Inc.
@@ -296,7 +296,7 @@ public:
 
   //@{
   /**
-   * For axis ranges, ParaView overrides the VTK charts behavior.
+   * For axis ranges, Visocyte overrides the VTK charts behavior.
    * Users can either specify an explicit range or let the VTK chart determine
    * the range based on the data. To specify a range explicitly, users should
    * use SetAxisUseCustomRange() to on for the corresponding axis and then use

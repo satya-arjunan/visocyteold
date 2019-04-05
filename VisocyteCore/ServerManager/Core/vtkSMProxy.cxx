@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMProxy.cxx
 
   Copyright (c) Kitware, Inc.
@@ -880,8 +880,8 @@ bool vtkSMProxy::WarnIfDeprecated()
   if (this->Deprecated)
   {
     vtkWarningMacro("Proxy ("
-      << this->XMLGroup << ", " << this->XMLName << ")  has been deprecated in ParaView "
-      << this->Deprecated->GetAttribute("deprecated_in") << " and will be removed by ParaView "
+      << this->XMLGroup << ", " << this->XMLName << ")  has been deprecated in Visocyte "
+      << this->Deprecated->GetAttribute("deprecated_in") << " and will be removed by Visocyte "
       << this->Deprecated->GetAttribute("to_remove_in") << ". "
       << (this->Deprecated->GetCharacterData() ? this->Deprecated->GetCharacterData() : ""));
     return true;

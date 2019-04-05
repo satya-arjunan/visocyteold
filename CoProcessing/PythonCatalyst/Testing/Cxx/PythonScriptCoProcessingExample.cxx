@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    PythonScriptCoProcessingExample.cxx
 
   Copyright (c) Kitware, Inc.

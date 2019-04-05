@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVConnectivityFilter.cxx
 
   Copyright (c) Kitware, Inc.

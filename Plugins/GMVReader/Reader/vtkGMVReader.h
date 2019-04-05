@@ -149,7 +149,7 @@ public:
   // Description:
   // The following methods allow selective reading of solutions fields. By
   // default, ALL data fields (point data, cell data, field data) are read,
-  // but this can be modified (e.g. from the ParaView GUI).
+  // but this can be modified (e.g. from the Visocyte GUI).
   int GetNumberOfPointArrays();
   int GetNumberOfCellArrays();
   int GetNumberOfFieldArrays();

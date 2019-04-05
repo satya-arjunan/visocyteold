@@ -1,13 +1,13 @@
 NAME
-  ParaView::ServerImplementationRendering
+  Visocyte::ServerImplementationRendering
 LIBRARY_NAME
   vtkPVServerImplementationRendering
 GROUPS
-  ParaViewRendering
+  VisocyteRendering
 KIT
-  ParaView::ServerImplementation
+  Visocyte::ServerImplementation
 DEPENDS
-  ParaView::ClientServerCoreRendering
-  ParaView::ServerImplementationCore
+  Visocyte::ClientServerCoreRendering
+  Visocyte::ServerImplementationCore
 TEST_LABELS
-  ParaView
+  Visocyte

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-Program:   ParaView
+Program:   Visocyte
 Module:    pvbatch.cxx
 
 Copyright (c) Kitware, Inc.
@@ -28,5 +28,5 @@ int main(int argc, char* argv[])
   vtkOutputWindow::SetInstance(opwindow);
   opwindow->Delete();
 
-  return ParaViewPython::Run(vtkProcessModule::PROCESS_BATCH, argc, argv);
+  return VisocytePython::Run(vtkProcessModule::PROCESS_BATCH, argc, argv);
 }

@@ -1,7 +1,7 @@
 
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMCSVProxiesInitializationHelper.cxx
 
   Copyright (c) Kitware, Inc.

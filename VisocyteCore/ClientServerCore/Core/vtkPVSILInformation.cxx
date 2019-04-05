@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVSILInformation.cxx
 
   Copyright (c) Kitware, Inc.

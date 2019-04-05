@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCSVWriter.cxx
 
   Copyright (c) Kitware, Inc.

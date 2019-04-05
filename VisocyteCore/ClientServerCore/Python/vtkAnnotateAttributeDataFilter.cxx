@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkAnnotateAttributeDataFilter.cxx
 
   Copyright (c) Kitware, Inc.

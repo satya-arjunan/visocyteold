@@ -4,7 +4,7 @@ if (USE_CATALYST)
     FEAdaptor.h)
   target_link_libraries(CxxParticlePathExampleAdaptor
     PRIVATE
-      ParaView::PythonCatalyst
+      Visocyte::PythonCatalyst
       VTK::CommonDataModel
       VTK::ParallelMPI)
 endif ()
@@ -24,13 +24,13 @@ else ()
       MPI::MPI_C)
 endif ()
 
-if (TARGET ParaView::pvbatch AND BUILD_TESTING)
+if (TARGET Visocyte::pvbatch AND BUILD_TESTING)
   add_test(NAME CxxParticlePathExampleTest
     COMMAND ${CMAKE_COMMAND}
     -DCOPROCESSING_TEST_DRIVER:FILEPATH=$<TARGET_FILE:CxxParticlePathExample>
     -DCOPROCESSING_TEST_DIR:PATH=${CMAKE_BINARY_DIR}/Testing/Temporary
     -DCOPROCESSING_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}
-    -DPVBATCH:FILEPATH=$<TARGET_FILE:ParaView::pvbatch>
+    -DPVBATCH:FILEPATH=$<TARGET_FILE:Visocyte::pvbatch>
     -DMPIEXEC:FILEPATH=${MPIEXEC_EXECUTABLE}
     -DMPIEXEC_NUMPROC_FLAG:STRING=${MPIEXEC_NUMPROC_FLAG}
     -DMPIEXEC_NUMPROCS=4

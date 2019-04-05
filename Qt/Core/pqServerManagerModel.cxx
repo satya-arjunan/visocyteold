@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqServerManagerModel.cxx
 
    Copyright (c) 2005-2008 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkProcessModule.h"
 #include "vtkSMIntVectorProperty.h"
 #include "vtkSMOutputPort.h"
-#include "vtkSMParaViewPipelineController.h"
+#include "vtkSMVisocytePipelineController.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMPropertyIterator.h"
@@ -490,12 +490,12 @@ void pqServerManagerModel::onConnectionCreated(vtkIdType id)
   this->connect(server, SIGNAL(nameChanged(pqServerManagerModelItem*)), this,
     SIGNAL(nameChanged(pqServerManagerModelItem*)));
 
-  // The session must be initialized here as ParaView expects that the essential
+  // The session must be initialized here as Visocyte expects that the essential
   // proxies are created when following signals are fired. Also, registering
   // those proxies before pqServer is setup can result in those pqProxy classes
   // not being setup properly. Hence the need for doing this initialization
   // here.
-  vtkNew<vtkSMParaViewPipelineController> controller;
+  vtkNew<vtkSMVisocytePipelineController> controller;
   controller->InitializeSession(server->session());
 
   emit this->serverReady(server);

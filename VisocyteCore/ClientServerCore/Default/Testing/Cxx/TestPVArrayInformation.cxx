@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestPVArrayInformation.cxx
 
   Copyright (c) Kitware, Inc.

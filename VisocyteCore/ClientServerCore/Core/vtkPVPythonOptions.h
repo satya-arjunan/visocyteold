@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVPythonOptions.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVPythonOptions
- * @brief   ParaView options storage
+ * @brief   Visocyte options storage
  *
- * An object of this class represents a storage for ParaView options
+ * An object of this class represents a storage for Visocyte options
  *
  * These options can be retrieved during run-time, set using configuration file
  * or using Command Line Arguments.

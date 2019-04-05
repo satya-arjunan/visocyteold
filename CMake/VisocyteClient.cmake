@@ -1,5 +1,5 @@
-set(_ParaViewClient_cmake_dir "${CMAKE_CURRENT_LIST_DIR}")
-set(_ParaViewClient_script_file "${CMAKE_CURRENT_LIST_FILE}")
+set(_VisocyteClient_cmake_dir "${CMAKE_CURRENT_LIST_DIR}")
+set(_VisocyteClient_script_file "${CMAKE_CURRENT_LIST_FILE}")
 
 #[==[.md
 ## Building a client
@@ -295,15 +295,15 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
     "${CMAKE_CURRENT_BINARY_DIR}/pq${_visocyte_client_NAME}Initializer.cxx"
     "${CMAKE_CURRENT_BINARY_DIR}/pq${_visocyte_client_NAME}Initializer.h")
   configure_file(
-    "${_ParaViewClient_cmake_dir}/visocyte_client_main.cxx.in"
+    "${_VisocyteClient_cmake_dir}/visocyte_client_main.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_client_NAME}_main.cxx"
     @ONLY)
   configure_file(
-    "${_ParaViewClient_cmake_dir}/visocyte_client_initializer.cxx.in"
+    "${_VisocyteClient_cmake_dir}/visocyte_client_initializer.cxx.in"
     "${CMAKE_CURRENT_BINARY_DIR}/pq${_visocyte_client_NAME}Initializer.cxx"
     @ONLY)
   configure_file(
-    "${_ParaViewClient_cmake_dir}/visocyte_client_initializer.h.in"
+    "${_VisocyteClient_cmake_dir}/visocyte_client_initializer.h.in"
     "${CMAKE_CURRENT_BINARY_DIR}/pq${_visocyte_client_NAME}Initializer.h"
     @ONLY)
 
@@ -329,7 +329,7 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
   target_link_libraries("${_visocyte_client_NAME}"
     PRIVATE
       Qt5::Widgets
-      ParaView::pqApplicationComponents
+      Visocyte::pqApplicationComponents
       VTK::vtksys)
 
   if (DEFINED _visocyte_client_PLUGINS_TARGET)
@@ -360,7 +360,7 @@ IDI_ICON1 ICON \"${_visocyte_client_APPLICATION_ICON}\"\n")
     endforeach ()
 
     configure_file(
-      "${_ParaViewClient_cmake_dir}/visocyte_launcher.c.in"
+      "${_VisocyteClient_cmake_dir}/visocyte_launcher.c.in"
       "${CMAKE_CURRENT_BINARY_DIR}/${_visocyte_client_NAME}_launcher.c"
       @ONLY)
     add_executable("${_visocyte_client_NAME}-launcher"
@@ -522,13 +522,13 @@ function (visocyte_client_documentation)
             "-Doutput_file=${_visocyte_client_doc_OUTPUT_DIR}/${_visocyte_client_doc_TARGET}.xslt"
             "-Dxmls=${_visocyte_client_doc_xmls}"
             -D_visocyte_generate_proxy_documentation_run=ON
-            -P "${_ParaViewClient_script_file}"
+            -P "${_VisocyteClient_script_file}"
     DEPENDS ${_visocyte_client_doc_xmls_list}
-            "${_ParaViewClient_script_file}"
-            "${_ParaViewClient_cmake_dir}/visocyte_servermanager_convert_xml.xsl"
-            "${_ParaViewClient_cmake_dir}/visocyte_servermanager_convert_categoryindex.xsl"
-            "${_ParaViewClient_cmake_dir}/visocyte_servermanager_convert_html.xsl"
-            "${_ParaViewClient_cmake_dir}/visocyte_servermanager_convert_wiki.xsl.in"
+            "${_VisocyteClient_script_file}"
+            "${_VisocyteClient_cmake_dir}/visocyte_servermanager_convert_xml.xsl"
+            "${_VisocyteClient_cmake_dir}/visocyte_servermanager_convert_categoryindex.xsl"
+            "${_VisocyteClient_cmake_dir}/visocyte_servermanager_convert_html.xsl"
+            "${_VisocyteClient_cmake_dir}/visocyte_servermanager_convert_wiki.xsl.in"
     WORKING_DIRECTORY "${_visocyte_client_doc_OUTPUT_DIR}"
     COMMENT "Generating documentation for ${_visocyte_client_doc_TARGET}")
   add_custom_target("${_visocyte_client_doc_TARGET}"
@@ -794,7 +794,7 @@ function (visocyte_client_generate_help)
     "${_visocyte_client_help_OUTPUT_DIR}/${_visocyte_client_help_NAME}.qch")
   add_custom_command(
     OUTPUT  "${_visocyte_client_help_output}"
-    DEPENDS "${_ParaViewClient_script_file}"
+    DEPENDS "${_VisocyteClient_script_file}"
             ${_visocyte_client_help_copied_sources}
             ${_visocyte_client_help_DEPENDS}
     ${_visocyte_client_help_copy_sources}
@@ -807,7 +807,7 @@ function (visocyte_client_generate_help)
             "-Dtoc=${_visocyte_client_help_toc}"
             "-Dpatterns=${_visocyte_client_help_patterns}"
             -D_visocyte_generate_help_run=ON
-            -P "${_ParaViewClient_script_file}"
+            -P "${_VisocyteClient_script_file}"
     VERBATIM
     COMMAND Qt5::qhelpgenerator
             "${_visocyte_client_help_qhp}"

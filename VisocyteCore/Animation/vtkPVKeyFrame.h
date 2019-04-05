@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVKeyFrame.h
 
   Copyright (c) Kitware, Inc.

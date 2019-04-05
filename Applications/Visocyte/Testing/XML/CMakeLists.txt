@@ -1,6 +1,6 @@
 # TODO: Split these up and put them in the conditional which actually requires
 # the data.
-ExternalData_Expand_Arguments(ParaViewData _
+ExternalData_Expand_Arguments(VisocyteData _
   "DATA{${visocyte_test_data_directory_input}/Data/,REGEX:tensors_.*\\.vti}"
   "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/,REGEX:.*}"
   "DATA{${visocyte_test_data_directory_input}/Data/AMReX-MFIX/plt00000/,REGEX:.*}"
@@ -555,7 +555,7 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
   set ("${test_name}_FORCE_SERIAL" TRUE)
   add_pv_test("pv" "_DISABLE_C"
     COMMAND
-    --script-ignore-output-errors --script $<TARGET_FILE:ParaView::pvbatch> -sym
+    --script-ignore-output-errors --script $<TARGET_FILE:Visocyte::pvbatch> -sym
     ${CMAKE_CURRENT_SOURCE_DIR}/${CATALYST_SIMULATION}
     ${INSITU_SCRIPT} "${duration}"
 
@@ -571,11 +571,11 @@ macro(ADD_CATALYST_LIVE_TEST test_name duration command_line_connect_command)
   add_pv_test(pvcs "_DISABLE_CS"
     COMMAND
     --script-np 5 --script-ignore-output-errors
-    --script $<TARGET_FILE:ParaView::pvbatch> -sym
+    --script $<TARGET_FILE:Visocyte::pvbatch> -sym
     ${CMAKE_CURRENT_SOURCE_DIR}/${CATALYST_SIMULATION}
     ${INSITU_SCRIPT} "${duration}"
 
-    --server $<TARGET_FILE:ParaView::pvserver>
+    --server $<TARGET_FILE:Visocyte::pvserver>
     --enable-bt
 
     --client ${CLIENT_EXECUTABLE}
@@ -597,7 +597,7 @@ if(VISOCYTE_ENABLE_CATALYST AND VISOCYTE_ENABLE_PYTHON)
     FORCE_SERIAL
     TEST_SCRIPTS CatalystGUI.xml )
 
-  if (TARGET ParaView::CinemaPython)
+  if (TARGET Visocyte::CinemaPython)
     visocyte_add_client_tests(
       FORCE_SERIAL
       TEST_SCRIPTS CatalystCinemaGUI.xml )
@@ -847,7 +847,7 @@ if (TARGET VTK::IOParallelLSDyna)
 endif ()
 
 if(VTK_USE_LARGE_DATA)
-  ExternalData_Expand_Arguments(ParaViewData _
+  ExternalData_Expand_Arguments(VisocyteData _
     "DATA{${visocyte_test_data_directory_input}/Data/bake/bake.e}")
   list(APPEND TESTS_WITH_BASELINES
     CheckSelectedBlocks.xml
@@ -934,7 +934,7 @@ if (VISOCYTE_USE_MPI)
 
   if (VISOCYTE_ENABLE_COSMOTOOLS)
     # Test the Generic IO file writer in VTKExtensions/CosmoTools
-    ExternalData_Expand_Arguments(ParaViewData _
+    ExternalData_Expand_Arguments(VisocyteData _
       "DATA{${visocyte_test_data_directory_input}/Data/genericio/m000.499.allparticles}")
     visocyte_add_client_tests(
       ARGS --mpi
@@ -1002,7 +1002,7 @@ if(VISOCYTE_ENABLE_PYTHON)
     list(APPEND TESTS_WITH_INLINE_COMPARES
       FindDataDialog.xml)
 
-    if (TARGET ParaView::CinemaReader)
+    if (TARGET Visocyte::CinemaReader)
       # Cinema importing capabilities are only available in Python + OpenGL2
       # add the cinema database files.
       set(cinema_data
@@ -1024,7 +1024,7 @@ if(VISOCYTE_ENABLE_PYTHON)
         list(APPEND cinema_data_refs
           "DATA{${visocyte_test_data_directory_input}/Data/${cinema_data_file}}")
       endforeach ()
-      ExternalData_Expand_Arguments(ParaViewData _
+      ExternalData_Expand_Arguments(VisocyteData _
         ${cinema_data_refs})
 
       list(APPEND TESTS_WITH_BASELINES
@@ -1097,7 +1097,7 @@ if (EXISTS "${smooth_flash}")
 
     add_pv_test(pvcs "_DISABLE_CS"
       COMMAND
-         --server $<TARGET_FILE:ParaView::pvserver>
+         --server $<TARGET_FILE:Visocyte::pvserver>
          --enable-bt
          --enable-streaming
          --client ${CLIENT_EXECUTABLE}
@@ -1612,7 +1612,7 @@ if (TARGET visocyte)
       BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
       TEST_SCRIPTS Calculator54State.xml)
 
-    # Test backwards compatibility for Glyph filter change in ParaView 5.6
+    # Test backwards compatibility for Glyph filter change in Visocyte 5.6
     visocyte_add_client_tests(
       ARGS "--state=${CMAKE_CURRENT_SOURCE_DIR}/Glyph56State.py"
       BASELINE_DIR ${VISOCYTE_TEST_BASELINE_DIR}
@@ -1649,7 +1649,7 @@ if (TARGET visocyte)
 endif()
 
 #----------------------------------------------------------------------
-# Tests that produce some output (other than rendered images) from ParaView
+# Tests that produce some output (other than rendered images) from Visocyte
 # that should be checked for correctness. These work by executing an XML
 # test in the UI that produces some output, then pvpython runs a Python script
 # that checks the file for correctness. Example use: checking a CSV
@@ -1666,11 +1666,11 @@ set(visocyte_python_verify_tests
 
 if (VISOCYTE_ENABLE_PYTHON)
   foreach(test_name ${visocyte_python_verify_tests})
-    set(tname "ParaView::Applications::${test_name}")
+    set(tname "Visocyte::Applications::${test_name}")
     add_test(NAME ${tname}
       COMMAND ${CMAKE_COMMAND}
-      -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:ParaView::visocyte>
-      -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:ParaView::pvpython>
+      -DVISOCYTE_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::visocyte>
+      -DPVPYTHON_EXECUTABLE:FILEPATH=$<TARGET_FILE:Visocyte::pvpython>
       -DDATA_DIR:PATH=${visocyte_test_data_directory_output}
       -DTEST_NAME:STRING=${test_name}
       -DTEST_SCRIPT:FILEPATH=${CMAKE_CURRENT_SOURCE_DIR}/${test_name}.xml

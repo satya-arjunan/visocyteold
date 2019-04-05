@@ -1,7 +1,7 @@
-ParaView PythonQt Plugin
+Visocyte PythonQt Plugin
 ------------------------
 
-The PythonQt plugin makes the Qt API available to users from the ParaView
+The PythonQt plugin makes the Qt API available to users from the Visocyte
 Python console.  The plugin uses the PythonQt library.  The PythonQt homepage
 is pythonqt.sourceforge.net
 
@@ -32,7 +32,7 @@ When configuring PythonQt, my recommended settings are:
     PythonQt_Wrap_Qtgui=ON
     PythonQt_Wrap_Qtuitools=ON
 
-When configuring this PythonQt plugin for ParaView, CMake will look for the
+When configuring this PythonQt plugin for Visocyte, CMake will look for the
 installed PythonQt library and headers.  Set PYTHONQT_LIBRARY to the installed
 library, and set PYTHONQT_INCLUDE_DIR to the installed header directory that
 contains PythonQt.h.
@@ -41,16 +41,16 @@ contains PythonQt.h.
 Testing the Plugin
 ------------------
 
-After loading the PythonQt plugin in ParaView, you can try out the functions
+After loading the PythonQt plugin in Visocyte, you can try out the functions
 defined by samples/demo.py.
 
 
-Wrapping the ParaView Qt Interface
+Wrapping the Visocyte Qt Interface
 ----------------------------------
 
-This plugin contains a file named wrapped_methods.txt which lists some ParaView
+This plugin contains a file named wrapped_methods.txt which lists some Visocyte
 classes and functions that should be wrapped for PythonQt.  Using the wrapping it
-is possible for Python to access classes in ParaView that are derived from QObjects,
+is possible for Python to access classes in Visocyte that are derived from QObjects,
 the "pq" classes.  The python script named WrapPythonQt.py reads the methods files
 and generates a "decorator" file.  See the PythonQt documentation for more details
 on the "decorator" concept.  WrapPythonQt.py is invoked at build time to generate

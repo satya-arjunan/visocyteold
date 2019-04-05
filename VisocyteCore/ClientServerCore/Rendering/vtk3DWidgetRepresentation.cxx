@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtk3DWidgetRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

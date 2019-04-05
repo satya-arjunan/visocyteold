@@ -5,4 +5,4 @@ DESCRIPTION
 CONDITION
   VISOCYTE_ENABLE_PYTHON
 REQUIRES_MODULES
-  ParaView::ClientServerCorePython
+  Visocyte::ClientServerCorePython

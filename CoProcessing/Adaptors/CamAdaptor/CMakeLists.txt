@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.3)
 project(CamAdaptor CXX)
 
-find_package(ParaView REQUIRED COMPONENTS vtkPVPythonCatalyst)
+find_package(Visocyte REQUIRED COMPONENTS vtkPVPythonCatalyst)
 
 INCLUDE(${VISOCYTE_USE_FILE})
 if(NOT VISOCYTE_USE_MPI)
-  message(SEND_ERROR "ParaView must be built with MPI enabled")
+  message(SEND_ERROR "Visocyte must be built with MPI enabled")
 endif()
 
 configure_file(cesm1_2_2.patch.in cesm1_2_2.patch @ONLY)

@@ -1,5 +1,5 @@
 r"""
-The ParaViewWeb iPython module is used as a helper to create custom
+The VisocyteWeb iPython module is used as a helper to create custom
 iPython notebook profile.
 
 The following sample show how the helper class can be used inside
@@ -8,8 +8,8 @@ an iPython profile.
 # Global python import
 import exceptions, logging, random, sys, threading, time, os
 
-# Update python path to have ParaView libs
-pv_path = '/.../ParaView/build'
+# Update python path to have Visocyte libs
+pv_path = '/.../Visocyte/build'
 sys.path.append('%s/lib' % pv_path)
 sys.path.append('%s/lib/site-packages' % pv_path)
 
@@ -21,7 +21,7 @@ from visocyte.web import ipython as pv_ipython
 from vtk import *
 
 iPythonClient = None
-visocyteHelper = pv_ipython.ParaViewIPython()
+visocyteHelper = pv_ipython.VisocyteIPython()
 webArguments = pv_ipython.WebArguments('/.../path-to-web-directory')
 
 def _start_visocyte():
@@ -44,7 +44,7 @@ def _push_new_timestep():
     pv_ipython.IPythonProtocol.RegisterDataSet('iPython-demo', newDataset)
 
 
-def StartParaView(height=600, path='/apps/Visualizer/'):
+def StartVisocyte(height=600, path='/apps/Visualizer/'):
     global iPythonClient, visocyteHelper
     if not iPythonClient:
         iPythonClient = Client(profile='pvw')
@@ -56,7 +56,7 @@ def StartParaView(height=600, path='/apps/Visualizer/'):
     return  HTML("<iframe src='%s%s' width='100%%' height='%i'></iframe>"%(url, path, height))
 
 
-def StopParaView():
+def StopVisocyte():
     global iPythonClient, visocyteHelper
     iPythonClient[:].apply_sync(lambda:_stop_visocyte())
 
@@ -83,7 +83,7 @@ from vtkmodules.vtkCommonDataModel import *
 from vtkmodules.vtkCommonExecutionModel import *
 from vtkmodules.vtkFiltersSources import *
 from vtkmodules.vtkParallelCore import *
-from vtkmodules.vtkParaViewWebCore import *
+from vtkmodules.vtkVisocyteWebCore import *
 from vtkmodules.vtkPVClientServerCoreCore import *
 from vtkmodules.vtkPVServerManagerApplication import *
 from vtkmodules.vtkPVServerManagerCore import *
@@ -108,9 +108,9 @@ def _get_hostname():
         return socket.gethostbyaddr(socket.gethostname())[0]
 
 #------------------------------------------------------------------------------
-# ParaView iPython helper class
+# Visocyte iPython helper class
 #------------------------------------------------------------------------------
-class ParaViewIPython(object):
+class VisocyteIPython(object):
     processModule     = None
     globalController  = None
     localController   = None
@@ -120,78 +120,78 @@ class ParaViewIPython(object):
     number_of_process = -1
 
     def Initialize(self, log_file_path = None, logging_level = logging.DEBUG):
-        if not ParaViewIPython.processModule:
+        if not VisocyteIPython.processModule:
             vtkInitializationHelper.Initialize("ipython-notebook", 4) # 4 is type of process
-            ParaViewIPython.processModule = vtkProcessModule.GetProcessModule()
-            ParaViewIPython.globalController = ParaViewIPython.processModule.GetGlobalController()
+            VisocyteIPython.processModule = vtkProcessModule.GetProcessModule()
+            VisocyteIPython.globalController = VisocyteIPython.processModule.GetGlobalController()
 
-            if MPI.COMM_WORLD.Get_size() > 1 and (ParaViewIPython.globalController is None or ParaViewIPython.globalController.IsA("vtkDummyController") == True):
+            if MPI.COMM_WORLD.Get_size() > 1 and (VisocyteIPython.globalController is None or VisocyteIPython.globalController.IsA("vtkDummyController") == True):
                 import vtkParallelMPIPython
-                ParaViewIPython.globalController = vtkParallelMPIPython.vtkMPIController()
-                ParaViewIPython.globalController.Initialize()
-                ParaViewIPython.globalController.SetGlobalController(ParaViewIPython.globalController)
+                VisocyteIPython.globalController = vtkParallelMPIPython.vtkMPIController()
+                VisocyteIPython.globalController.Initialize()
+                VisocyteIPython.globalController.SetGlobalController(VisocyteIPython.globalController)
 
-            ParaViewIPython.processId = ParaViewIPython.globalController.GetLocalProcessId()
-            ParaViewIPython.number_of_process = ParaViewIPython.globalController.GetNumberOfProcesses()
-            ParaViewIPython.localController = ParaViewIPython.globalController.PartitionController(ParaViewIPython.number_of_process, ParaViewIPython.processId)
+            VisocyteIPython.processId = VisocyteIPython.globalController.GetLocalProcessId()
+            VisocyteIPython.number_of_process = VisocyteIPython.globalController.GetNumberOfProcesses()
+            VisocyteIPython.localController = VisocyteIPython.globalController.PartitionController(VisocyteIPython.number_of_process, VisocyteIPython.processId)
 
             # must unregister if the reference count is greater than 1
-            if ParaViewIPython.localController.GetReferenceCount() > 1:
-                ParaViewIPython.localController.UnRegister(None)
+            if VisocyteIPython.localController.GetReferenceCount() > 1:
+                VisocyteIPython.localController.UnRegister(None)
 
-            ParaViewIPython.globalController.SetGlobalController(ParaViewIPython.localController)
+            VisocyteIPython.globalController.SetGlobalController(VisocyteIPython.localController)
 
             if log_file_path:
                 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-                fh = logging.FileHandler('%s-%s.txt' % (log_file_path, str(ParaViewIPython.processId)))
+                fh = logging.FileHandler('%s-%s.txt' % (log_file_path, str(VisocyteIPython.processId)))
                 fh.setLevel(logging_level)
                 fh.setFormatter(formatter)
                 logger.addHandler(fh)
-                logger.info("Process %i initialized for ParaView" % os.getpid())
-                logger.info("Sub-Controller: " + str(ParaViewIPython.localController.GetLocalProcessId()) + "/" + str(ParaViewIPython.localController.GetNumberOfProcesses()))
-                logger.info("GlobalController: " + str(ParaViewIPython.processId) + "/" + str(ParaViewIPython.number_of_process))
+                logger.info("Process %i initialized for Visocyte" % os.getpid())
+                logger.info("Sub-Controller: " + str(VisocyteIPython.localController.GetLocalProcessId()) + "/" + str(VisocyteIPython.localController.GetNumberOfProcesses()))
+                logger.info("GlobalController: " + str(VisocyteIPython.processId) + "/" + str(VisocyteIPython.number_of_process))
         else:
-            logger.info("ParaView has already been initialized. No operation was performed.")
+            logger.info("Visocyte has already been initialized. No operation was performed.")
 
     def Finalize(self):
-        if ParaViewIPython.processModule:
+        if VisocyteIPython.processModule:
             vtkInitializationHelper.Finalize()
-            ParaViewIPython.processModule = None
+            VisocyteIPython.processModule = None
 
     def GetProcessId(self):
-        return ParaViewIPython.processId
+        return VisocyteIPython.processId
 
     def GetNumberOfProcesses(self):
-        return ParaViewIPython.number_of_process
+        return VisocyteIPython.number_of_process
 
     def __repr__(self):
         return self.__str__()
 
     def __str__(self):
-        return "Host: %s - Controller: %s - Rank: %d/%d" % (_get_hostname(), ParaViewIPython.localController.GetClassName(), ParaViewIPython.processId, ParaViewIPython.number_of_process)
+        return "Host: %s - Controller: %s - Rank: %d/%d" % (_get_hostname(), VisocyteIPython.localController.GetClassName(), VisocyteIPython.processId, VisocyteIPython.number_of_process)
 
     def SetWebProtocol(self, protocol, arguments):
-        ParaViewIPython.webProtocol = protocol
-        ParaViewIPython.webArguments = arguments
-        if not hasattr(ParaViewIPython.webArguments, 'port'):
-            ParaViewIPython.webArguments.port = 8080
-        ParaViewIPython.webProtocol.rootNode = (self.GetProcessId() == 0)
-        ParaViewIPython.webProtocol.updateArguments(ParaViewIPython.webArguments)
+        VisocyteIPython.webProtocol = protocol
+        VisocyteIPython.webArguments = arguments
+        if not hasattr(VisocyteIPython.webArguments, 'port'):
+            VisocyteIPython.webArguments.port = 8080
+        VisocyteIPython.webProtocol.rootNode = (self.GetProcessId() == 0)
+        VisocyteIPython.webProtocol.updateArguments(VisocyteIPython.webArguments)
 
     @staticmethod
     def _start_satelite():
-        logger.info('ParaView Satelite %d - Started' % ParaViewIPython.processId)
+        logger.info('Visocyte Satelite %d - Started' % VisocyteIPython.processId)
         sid = vtkSMSession.ConnectToSelf();
         vtkWebUtilities.ProcessRMIs()
-        ParaViewIPython.processModule.UnRegisterSession(sid);
-        logger.info('ParaView Satelite  %d - Ended' % ParaViewIPython.processId)
+        VisocyteIPython.processModule.UnRegisterSession(sid);
+        logger.info('Visocyte Satelite  %d - Ended' % VisocyteIPython.processId)
 
     @staticmethod
     def _start_web_server():
-        server.start_webserver(options=ParaViewIPython.webArguments, protocol=ParaViewIPython.webProtocol)
+        server.start_webserver(options=VisocyteIPython.webArguments, protocol=VisocyteIPython.webProtocol)
         from visocyte import simple
         simple.Disconnect()
-        ParaViewIPython.localController.TriggerBreakRMIs()
+        VisocyteIPython.localController.TriggerBreakRMIs()
 
     @staticmethod
     def debug():
@@ -201,19 +201,19 @@ class ParaViewIPython(object):
     def Start(self):
         thread = None
         if self.GetProcessId() == 0:
-            thread = threading.Thread(target=ParaViewIPython._start_web_server)
+            thread = threading.Thread(target=VisocyteIPython._start_web_server)
             thread.start()
             time.sleep(10)
             logger.info("WebServer thread started")
-            return "http://%s:%d" % (_get_hostname(), ParaViewIPython.webArguments.port)
+            return "http://%s:%d" % (_get_hostname(), VisocyteIPython.webArguments.port)
         else:
-            thread = threading.Thread(target=ParaViewIPython._start_satelite)
+            thread = threading.Thread(target=VisocyteIPython._start_satelite)
             thread.start()
             logger.info("Satelite thread started")
             return ""
 
 #------------------------------------------------------------------------------
-# ParaView iPython protocol
+# Visocyte iPython protocol
 #------------------------------------------------------------------------------
 
 class IPythonProtocol(pv_wamp.PVServerProtocol):
@@ -248,7 +248,7 @@ class IPythonProtocol(pv_wamp.PVServerProtocol):
         from visocyte import simple
         from visocyte.web import protocols as pv_protocols
 
-        # Make sure ParaView is initialized
+        # Make sure Visocyte is initialized
         if not simple.servermanager.ActiveConnection:
             simple.Connect()
 
@@ -259,15 +259,15 @@ class IPythonProtocol(pv_wamp.PVServerProtocol):
             simple.Render()
 
         # Bring used components
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebFileListing(IPythonProtocol.dataDir, "Home", IPythonProtocol.excludeRegex, IPythonProtocol.groupRegex))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebPipelineManager(IPythonProtocol.dataDir, IPythonProtocol.fileToLoad))
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebMouseHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPort())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortImageDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebViewPortGeometryDelivery())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebTimeHandler())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebRemoteConnection())
-        self.registerVtkWebProtocol(pv_protocols.ParaViewWebFileManager(IPythonProtocol.dataDir))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebFileListing(IPythonProtocol.dataDir, "Home", IPythonProtocol.excludeRegex, IPythonProtocol.groupRegex))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebPipelineManager(IPythonProtocol.dataDir, IPythonProtocol.fileToLoad))
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebMouseHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPort())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortImageDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebViewPortGeometryDelivery())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebTimeHandler())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebRemoteConnection())
+        self.registerVtkWebProtocol(pv_protocols.VisocyteWebFileManager(IPythonProtocol.dataDir))
 
         # Update authentication key to use
         self.updateSecret(IPythonProtocol.authKey)
@@ -276,7 +276,7 @@ class IPythonProtocol(pv_wamp.PVServerProtocol):
         return "Root node: " + str(IPythonProtocol.rootNode)
 
 #------------------------------------------------------------------------------
-# ParaView iPython default arguments
+# Visocyte iPython default arguments
 #------------------------------------------------------------------------------
 
 class WebArguments(object):

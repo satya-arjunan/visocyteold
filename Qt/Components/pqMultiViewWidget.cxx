@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    $RCSfile$
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "vtkErrorCode.h"
 #include "vtkImageData.h"
 #include "vtkNew.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMProperty.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMSaveScreenshotProxy.h"
@@ -788,7 +788,7 @@ void pqMultiViewWidget::destroyAllViews()
 #if !defined(VTK_LEGACY_REMOVE)
 void pqMultiViewWidget::setDecorationsVisible(bool val)
 {
-  VTK_LEGACY_REPLACED_BODY(pqMultiViewWidget::setDecorationsVisible, "ParaView 5.7",
+  VTK_LEGACY_REPLACED_BODY(pqMultiViewWidget::setDecorationsVisible, "Visocyte 5.7",
     pqMultiViewWidget::setDecorationsVisibility);
   this->setDecorationsVisibility(val);
 }
@@ -806,7 +806,7 @@ void pqMultiViewWidget::setDecorationsVisibility(bool val)
 #if !defined(VTK_LEGACY_REMOVE)
 bool pqMultiViewWidget::isDecorationsVisible() const
 {
-  VTK_LEGACY_REPLACED_BODY(pqMultiViewWidget::isDecorationsVisible, "ParaView 5.7",
+  VTK_LEGACY_REPLACED_BODY(pqMultiViewWidget::isDecorationsVisible, "Visocyte 5.7",
     pqMultiViewWidget::decorationsVisibility);
   return this->decorationsVisibility();
 }

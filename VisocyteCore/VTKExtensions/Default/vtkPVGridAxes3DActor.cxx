@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVGridAxes3DActor.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVFilePathEncodingHelper.cxx
 
   Copyright (c) Kitware, Inc.

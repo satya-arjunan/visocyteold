@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMWriterFactory.h
 
   Copyright (c) Kitware, Inc.
@@ -118,7 +118,7 @@ public:
   //@}
 
   /**
-   * This function is for ParaView based applications that only wish to expose
+   * This function is for Visocyte based applications that only wish to expose
    * a subset of the writers.  If this function is never called, the reader
    * factory will expose all the writers as it has in the past.  However, if
    * any writers are specified by passing their group name and reader name to

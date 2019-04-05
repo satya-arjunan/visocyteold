@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSpreadSheetRepresentation.h
 
   Copyright (c) Kitware, Inc.
@@ -16,7 +16,7 @@
  * @class   vtkSpreadSheetRepresentation
  *
  * Representation for showing data in a vtkSpreadSheetView. Unlike typical
- * ParaView representations, this one does not do any data movement, it merely
+ * Visocyte representations, this one does not do any data movement, it merely
  * updates the input and provides access to the input data objects (rather
  * clones of those). This filer has 3 input ports:
  * \li 0: Data (vtkDataObject)

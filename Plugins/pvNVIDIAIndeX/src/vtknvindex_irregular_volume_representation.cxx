@@ -104,7 +104,7 @@ vtknvindex_irregular_volume_representation::vtknvindex_irregular_volume_represen
 
   this->DefaultMapper->set_cluster_properties(m_cluster_properties);
 
-  // TODO: These values should be communicated by ParaView.
+  // TODO: These values should be communicated by Visocyte.
   // Currently there is no way to do this.
   m_roi_range_I[0] = -100.0;
   m_roi_range_I[1] = 100.0;
@@ -317,7 +317,7 @@ int vtknvindex_irregular_volume_representation::ProcessViewRequest(
     vtkPVDataDeliveryManager* ddm = view->GetDeliveryManager();
     vtkPKdTree* kd_tree = ddm->GetKdTree();
 
-    // Retrieve ParaView's KdTree in order to obtain domain subdivision bounding boxes.
+    // Retrieve Visocyte's KdTree in order to obtain domain subdivision bounding boxes.
     if (kd_tree)
     {
       DefaultMapper->set_domain_kdtree(kd_tree);
@@ -491,7 +491,7 @@ void vtknvindex_irregular_volume_representation::SetScalarOpacityUnitDistance(do
 }
 
 //
-// Configuration options set from ParaView GUI.
+// Configuration options set from Visocyte GUI.
 //-------------------------------------------------------------------------------------------------
 void vtknvindex_irregular_volume_representation::set_subcube_size(
   unsigned x, unsigned y, unsigned z)

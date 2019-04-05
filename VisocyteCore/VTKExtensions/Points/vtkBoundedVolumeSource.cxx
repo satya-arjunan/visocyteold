@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkBoundedVolumeSource.cxx
 
   Copyright (c) Kitware, Inc.

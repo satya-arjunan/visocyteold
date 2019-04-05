@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkOutlineRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

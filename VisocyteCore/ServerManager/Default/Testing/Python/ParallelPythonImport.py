@@ -1,6 +1,6 @@
 # test to make sure that we can import visocyte when running in parallel
 # from a regular Python shell. Note that PYTHONPATH needs to be set
-# to know where to find ParaView.
+# to know where to find Visocyte.
 
 import sys
 print('sys.path = %s' % sys.path)

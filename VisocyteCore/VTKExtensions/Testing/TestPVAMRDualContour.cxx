@@ -32,7 +32,7 @@ int TestPVAMRDualContour(int argc, char* argv[])
 
   int rc = 0;
   //  const char *fname =
-  //      "/media/shared/Data/ParaViewData/Data/SPCTH/Dave_Karelitz_Small/spcth.0";
+  //      "/media/shared/Data/VisocyteData/Data/SPCTH/Dave_Karelitz_Small/spcth.0";
 
   const char* fname =
     vtkTestUtilities::ExpandDataFileName(argc, argv, "Testing/Data/Dave_Karelitz_Small/spcth.0");

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    TestUnstructuredGrid.cxx
 
   Copyright (c) Menno Deij - van Rijswijk, MARIN, The Netherlands

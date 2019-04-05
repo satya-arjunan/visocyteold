@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkCompositeAnimationPlayer.h
 
   Copyright (c) Kitware, Inc.

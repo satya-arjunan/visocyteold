@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMNumberOfComponentsDomain.h
 
   Copyright (c) Kitware, Inc.

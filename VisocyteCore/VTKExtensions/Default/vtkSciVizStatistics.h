@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSciVizStatistics.h
 
   Copyright (c) Kitware, Inc.
@@ -27,7 +27,7 @@
  * optionally be used to assess the input dataset.
  *
  * This class serves as a base class that handles table conversion,
- * interfacing with the array selection in the ParaView user interface,
+ * interfacing with the array selection in the Visocyte user interface,
  * and provides a simplified interface to vtkStatisticsAlgorithm.
  * @par Thanks:
  * Thanks to David Thompson and Philippe Pebay from Sandia National Laboratories
@@ -79,7 +79,7 @@ public:
 
   //@{
   /**
-   * An alternate interface for preparing a selection of arrays in ParaView.
+   * An alternate interface for preparing a selection of arrays in Visocyte.
    */
   void EnableAttributeArray(const char* arrName);
   void ClearAttributeArrays();

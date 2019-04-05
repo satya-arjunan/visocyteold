@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqSpreadSheetViewDecorator.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -50,7 +50,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "pqUndoStack.h"
 #include "vtkNew.h"
 #include "vtkSMEnumerationDomain.h"
-#include "vtkSMParaViewPipelineControllerWithRendering.h"
+#include "vtkSMVisocytePipelineControllerWithRendering.h"
 #include "vtkSMPropertyHelper.h"
 #include "vtkSMProxy.h"
 #include "vtkSMStringVectorProperty.h"
@@ -379,7 +379,7 @@ void pqSpreadSheetViewDecorator::currentIndexChanged(pqOutputPort* port)
   SCOPED_UNDO_SET("SpreadSheetView visibility");
   if (port)
   {
-    vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+    vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
     if (controller->Show(
           port->getSourceProxy(), port->getPortNumber(), this->Spreadsheet->getViewProxy()))
     {
@@ -392,7 +392,7 @@ void pqSpreadSheetViewDecorator::currentIndexChanged(pqOutputPort* port)
     {
       assert(activeRepr->isVisible());
       auto inputPort = activeRepr->getOutputPortFromInput();
-      vtkNew<vtkSMParaViewPipelineControllerWithRendering> controller;
+      vtkNew<vtkSMVisocytePipelineControllerWithRendering> controller;
       controller->Hide(
         inputPort->getSourceProxy(), inputPort->getPortNumber(), this->Spreadsheet->getViewProxy());
       this->Spreadsheet->render();

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVRepresentedArrayListSettings.cxx
 
   Copyright (c) Kitware, Inc.

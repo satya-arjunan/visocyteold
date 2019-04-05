@@ -1,15 +1,15 @@
 /*=========================================================================
 
-   Program: ParaView
+   Program: Visocyte
    Module:    pqDataQueryReaction.cxx
 
    Copyright (c) 2005,2006 Sandia Corporation, Kitware Inc.
    All rights reserved.
 
-   ParaView is a free software; you can redistribute it and/or modify it
-   under the terms of the ParaView license version 1.2.
+   Visocyte is a free software; you can redistribute it and/or modify it
+   under the terms of the Visocyte license version 1.2.
 
-   See License_v1.2.txt for the full ParaView license.
+   See License_v1.2.txt for the full Visocyte license.
    A copy of this license can be obtained by contacting
    Kitware Inc.
    28 Corporate Drive
@@ -52,7 +52,7 @@ pqDataQueryReaction::~pqDataQueryReaction()
 //-----------------------------------------------------------------------------
 void pqDataQueryReaction::showQueryDialog()
 {
-#if VTK_MODULE_ENABLE_ParaView_pqPython
+#if VTK_MODULE_ENABLE_Visocyte_pqPython
   if (pqFindDataSingleton.isNull())
   {
     pqFindDataDialog* dialog = new pqFindDataDialog(pqCoreUtilities::mainWidget());
@@ -63,8 +63,8 @@ void pqDataQueryReaction::showQueryDialog()
   pqFindDataSingleton->raise();
 #else
   QMessageBox::warning(0, "Selection Not Supported",
-    "Error: Find Data requires that ParaView be built with Python enabled. "
+    "Error: Find Data requires that Visocyte be built with Python enabled. "
     "To enable Python set the CMake flag 'VISOCYTE_ENABLE_PYTHON' to True "
-    "and ensure that the 'ParaView::pqPython'module is available.");
+    "and ensure that the 'Visocyte::pqPython'module is available.");
 #endif
 }

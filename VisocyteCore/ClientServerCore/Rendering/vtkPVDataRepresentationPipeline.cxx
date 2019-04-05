@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVDataRepresentationPipeline.cxx
 
   Copyright (c) Kitware, Inc.

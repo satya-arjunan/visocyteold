@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVGL2PSExporter.h
 
   Copyright (c) Kitware, Inc.
@@ -14,9 +14,9 @@
 =========================================================================*/
 /**
  * @class   vtkPVGL2PSExporter
- * @brief   ParaView wrapper for vtkGL2PS exporter.
+ * @brief   Visocyte wrapper for vtkGL2PS exporter.
  *
- * This is used to export ParaView renderings to a variety of vector graphics
+ * This is used to export Visocyte renderings to a variety of vector graphics
  * formats.
 */
 

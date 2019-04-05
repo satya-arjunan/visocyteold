@@ -1,7 +1,7 @@
 Environment Variables       {#EnvironmentVariables}
 =====================
 
-This page documents environment variables that affect ParaView behavior at
+This page documents environment variables that affect Visocyte behavior at
 runtime.
 
 Variable | Description
@@ -21,7 +21,7 @@ PV_PLUGIN_DEBUG | (obsolete) Use **VISOCYTE_LOG_PLUGIN_VERBOSITY** instead.
 PV_SETTINGS_DEBUG | (obsolete) Use **VISOCYTE_LOG_APPLICATION_VERBOSITY** instead.
 PV_DEBUG_APPLY_BUTTON | (obsolete) Use **VISOCYTE_LOG_APPLICATION_VERBOSITY** instead.
 
-ParaView supports generating logs that includes debugging and tracking
+Visocyte supports generating logs that includes debugging and tracking
 information. The log messages are categorized and it is possible to temporarily
 elevate the log level for any category using the following environment
 variables. The value for each of the variables can be a number in the range
@@ -30,7 +30,7 @@ variables. The value for each of the variables can be a number in the range
 
 Variable | Description
 ---------|-----------------------------------------
-VISOCYTE_LOG_PLUGIN_VERBOSITY | Log messages related to ParaView plugins (see vtkPVLogger::GetPluginVerbosity())
+VISOCYTE_LOG_PLUGIN_VERBOSITY | Log messages related to Visocyte plugins (see vtkPVLogger::GetPluginVerbosity())
 VISOCYTE_LOG_PIPELINE_VERBOSITY  | Log messages related to Pipeline execution (see vtkPVLogger::GetPipelineVerbosity())
 VISOCYTE_LOG_DATA_MOVEMENT_VERBOSITY | Log messages related to data movement for rendering and other tasks (see vtkPVLogger::GetDataMovementVerbosity())
 VISOCYTE_LOG_APPLICATION_VERBOSITY | Log messages related to the application (see vtkPVLogger::GetApplicationVerbosity())

@@ -1,7 +1,7 @@
 Baseline images
 ===============
 
-ParaView has a large number of tests that involve executing some ParaView
+Visocyte has a large number of tests that involve executing some Visocyte
 functionality and then checking that the resulting image in the RenderView
 is the same as some reference baseline image to within some tolerance. These
 baseline images are stored in this directory under `Data/Baseline`. In many
@@ -14,7 +14,7 @@ Alternate baselines
 -------------------
 
 Some tests produce slightly different results on different platforms.
-To accommodate these differences, ParaView's testing infrastructure
+To accommodate these differences, Visocyte's testing infrastructure
 supports alternate baseline images. Naming alternate baseline images
 follows a simple pattern involving adding an underscore followed by a
 sequentially increasing integer to the end of the test name. For instance,

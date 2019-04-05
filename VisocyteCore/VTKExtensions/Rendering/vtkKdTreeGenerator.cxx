@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkKdTreeGenerator.cxx
 
   Copyright (c) Kitware, Inc.

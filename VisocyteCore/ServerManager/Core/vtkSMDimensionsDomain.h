@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMDimensionsDomain.h
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMComparativeAnimationCueUndoElement.cxx
 
   Copyright (c) Kitware, Inc.

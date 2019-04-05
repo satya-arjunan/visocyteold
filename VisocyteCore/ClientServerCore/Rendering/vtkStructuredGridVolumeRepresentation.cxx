@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkStructuredGridVolumeRepresentation.cxx
 
   Copyright (c) Kitware, Inc.

@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMInputArrayDomain.h
 
   Copyright (c) Kitware, Inc.
@@ -25,7 +25,7 @@
  * vtkSMInputArrayDomain also provides a mechanism to check if the attribute
  * arrays have a certain number of components.
  *
- * When enabled, ParaView supports automatic array conversion i.e. extracting
+ * When enabled, Visocyte supports automatic array conversion i.e. extracting
  * components or converting cell data to point data and vice-versa is done
  * implicitly. In that case, vtkSMInputArrayDomain's behavior also changes as
  * appropriate.
@@ -46,7 +46,7 @@
  * code, we print a warning if any required properties are specified).
  *
  * @attention
- * Prior to ParaView 5.0, attribute_type="any" meant all attributes excepting
+ * Prior to Visocyte 5.0, attribute_type="any" meant all attributes excepting
  * field data. For being consistent with general understanding of "any", this
  * has been changed to include field data arrays since 5.0. Use
  * "any-except-field" for cases where the intention is to match any attribute arrays except

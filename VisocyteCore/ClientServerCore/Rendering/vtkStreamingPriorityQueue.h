@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkStreamingPriorityQueue
 
   Copyright (c) Kitware, Inc.

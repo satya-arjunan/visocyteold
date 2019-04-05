@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkSMBooleanDomain.h
 
   Copyright (c) Kitware, Inc.

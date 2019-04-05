@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkBoundingRectContextDevice2D.h
 
   Copyright (c) Kitware, Inc.

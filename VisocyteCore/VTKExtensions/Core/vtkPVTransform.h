@@ -1,6 +1,6 @@
 /*=========================================================================
 
-  Program:   ParaView
+  Program:   Visocyte
   Module:    vtkPVTransform
 
   Copyright (c) Kitware, Inc.
@@ -14,7 +14,7 @@
 =========================================================================*/
 /**
  * @class   vtkPVTransform
- * @brief   baseclass for all ParaView vtkTransform class.
+ * @brief   baseclass for all Visocyte vtkTransform class.
  *
  * vtkPVTransform extend vtkTransform in the sens that it extend the vtkTransform
  * API with absolute position/rotation/scale change and not incremental one like
