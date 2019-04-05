@@ -1,0 +1,7 @@
+NAME
+  MyProxy
+DEPENDS
+  Visocyte::ServerManagerCore
+PRIVATE_DEPENDS
+  Visocyte::ClientServerCoreCore
+  VTK::CommonCore

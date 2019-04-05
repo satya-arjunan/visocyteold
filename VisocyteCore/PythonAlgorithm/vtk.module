@@ -1,0 +1,17 @@
+NAME
+  Visocyte::PythonAlgorithm
+LIBRARY_NAME
+  vtkPVPythonAlgorithm
+CONDITION
+  VISOCYTE_ENABLE_PYTHON
+DEPENDS
+  Visocyte::ClientServerCoreCore
+  Visocyte::ServerImplementationCore
+  VTK::CommonCore
+PRIVATE_DEPENDS
+  Visocyte::ClientServer
+  VTK::CommonExecutionModel
+  VTK::FiltersPython
+  VTK::Python
+  VTK::PythonInterpreter
+  VTK::WrappingPythonCore

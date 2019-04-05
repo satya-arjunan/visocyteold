@@ -1,0 +1,12 @@
+NAME
+  BagPlotViewsAndFilters::BagPlotViewsAndFiltersBagPlot
+LIBRARY_NAME
+  vtkBagPlotViewsAndFiltersBagPlot
+DEPENDS
+  Visocyte::ServerManagerRendering
+  Visocyte::ClientServerCoreRendering
+  VTK::CommonExecutionModel
+PRIVATE_DEPENDS
+  Visocyte::VTKExtensionsDefault
+  VTK::FiltersStatistics
+  VTK::InfovisCore
